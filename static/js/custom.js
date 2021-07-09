@@ -3,7 +3,7 @@ function importScript(params = {}) {
   const el = params.el || document.querySelector('head');
   const src = params.src;
   const oScript = document.createElement("script");
-  oScript.type = "text\/javascript";
+  oScript.type = "text/javascript";
   oScript.src = src;
 
   return new Promise((resolve,reject) => {
@@ -63,9 +63,9 @@ async function initValine() {
     src: '/js/valine.min.js',
   });
   new Valine({
-      el: '#vcomments',
-      appId: '87IC4ccx5EotHkYSpD0xCJmO-gzGzoHsz',
-      appKey: 'jDUTsuflq3tG1bYIMquqixA2'
+    el: '#vcomments',
+    appId: '87IC4ccx5EotHkYSpD0xCJmO-gzGzoHsz',
+    appKey: 'jDUTsuflq3tG1bYIMquqixA2'
   });
 }
 
