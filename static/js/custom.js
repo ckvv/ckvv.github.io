@@ -1,3 +1,23 @@
+// utils
+function importScript(params = {}) {
+  const el = params.el || document.querySelector('head');
+  const src = params.src;
+  const oScript = document.createElement("script");
+  oScript.type = "text\/javascript";
+  oScript.src = src;
+
+  return new Promise((resolve,reject) => {
+    oScript.onerror = (err) => {
+      reject(err);
+    };;
+    oScript.onload = (event) => {
+      resolve(event);
+    };
+    el.appendChild(oScript);
+  });
+}
+
+// init 搜索
 function initSearch() {
   const searchType = {
     github: 'github',
@@ -32,7 +52,16 @@ function initSearch() {
   }
 }
 
-function initValine() {
+// init 评论框
+async function initValine() {
+  if(!document.querySelector('#vcomments')) {
+    console.warn('not fount el #vcomments');
+    return;
+  };
+
+  await importScript({
+    src: '/js/valine.min.js',
+  });
   new Valine({
       el: '#vcomments',
       appId: '87IC4ccx5EotHkYSpD0xCJmO-gzGzoHsz',
@@ -40,7 +69,9 @@ function initValine() {
   });
 }
 
-(()=>{
+
+// init page event
+window.onload = () => {
   initSearch();
   initValine();
-})();
+};
