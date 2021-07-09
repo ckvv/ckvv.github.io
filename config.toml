@@ -1,0 +1,43 @@
+baseURL = "https://chenkai0520.github.io"
+languageCode = "zh-cn"
+title = "博客"
+theme = "hugo-theme-coder"
+paginate = 12
+enableGitInfo = true
+
+
+[params]
+  info = "我的博客"
+  description = "博客"
+  hideFooter = true
+  hideCredits = true
+  hideCopyright = true
+  colorScheme = "auto"
+  hidecolorschemetoggle = false
+  customCSS = ['css/custom.css']
+  customJS = [ "js/valine.min.js", "js/custom.js",]
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+# Menu links
+[[menu.main]]
+  name = "Home"
+  weight = 1
+  url  = "/"
+[[menu.main]]
+  name = "Categories"
+  weight = 2
+  url  = "categories/"
+[[menu.main]]
+  name = "Tags"
+  weight = 3
+  url  = "tags/"
+[[menu.main]]
+  name = "About"
+  weight = 4
+  url = "about/"
+
+[frontmatter]
+  date = [ ":git", "lastmod" ]
