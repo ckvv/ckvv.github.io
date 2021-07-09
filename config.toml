@@ -34,8 +34,12 @@ enableGitInfo = true
   weight = 3
   url  = "tags/"
 [[menu.main]]
-  name = "About"
+  name = "RSS"
   weight = 4
+  url  = "/index.xml"
+[[menu.main]]
+  name = "About"
+  weight = 5
   url = "about/"
 
 [frontmatter]
