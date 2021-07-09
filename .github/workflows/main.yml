@@ -17,7 +17,6 @@ jobs:
           hugo-version: '0.72.0'
           extended: true
 
-      - run: npm ci
       - run: hugo --minify
 
       - name: Deploy
