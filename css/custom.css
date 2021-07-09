@@ -4,7 +4,6 @@
   display: flex;
   margin-left: 12px;
 }
-
 #search-content #search-int {
   height: 26px;
   font-size: 12px;
@@ -26,4 +25,9 @@
   #search-content .search-btn {
     margin-top: 12px;
   }
+}
+
+
+.pagination li {
+  padding: 0 4px;
 }
