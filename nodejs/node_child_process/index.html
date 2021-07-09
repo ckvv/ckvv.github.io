@@ -97,4 +97,4 @@ const { spawn } = require('child_process'); const ls = spawn('ls', ['-lh', '/usr
 <span style=color:#a6e22e>pool</span>.<span style=color:#a6e22e>exec</span>(<span style=color:#a6e22e>longComputation</span>,[<span style=color:#a6e22e>count</span>]);
 </code></pre></div><p>#总结一下
 Worker线程相对于传统的生成子进程的方式更删除与主进程的通信，并且不开启一个node实例，占用更小的内存;
-fork太多子进程会导致内存爆炸，或者Too many open files in system（打开的文件/socket连接数量超过系统设定值的错误）。</p><div id=vcomments></div></article></section></div></main><script src=/js/coder.min.a350362441276ec5c1671926420497bb8e52b63ead1d51d3c9bc4342d0039526.js integrity="sha256-o1A2JEEnbsXBZxkmQgSXu45Stj6tHVHTybxDQtADlSY="></script><script src=/js/valine.min.js></script><script src=/js/custom.js></script></body></html>
+fork太多子进程会导致内存爆炸，或者Too many open files in system（打开的文件/socket连接数量超过系统设定值的错误）。</p><div id=vcomments></div></article></section></div></main><script src=/js/coder.min.a350362441276ec5c1671926420497bb8e52b63ead1d51d3c9bc4342d0039526.js integrity="sha256-o1A2JEEnbsXBZxkmQgSXu45Stj6tHVHTybxDQtADlSY="></script><script src=/js/custom.js></script></body></html>
