@@ -24,7 +24,7 @@ function initSearch() {
     google: 'google',
   }
   function searchBy(type){
-    const searchInput = document.querySelector('#search-int');
+    const searchInput = document.querySelector('.search-int');
     let searchLink = '';
     switch (type) {
       case searchType.google:
@@ -38,18 +38,17 @@ function initSearch() {
     }
     window.open(searchLink, '_blank')
   }
-  const searchGoogleBtn = document.querySelector('#search-by-google-btn');
-  if(searchGoogleBtn) searchGoogleBtn.addEventListener('click', () => searchBy(searchType.google));
 
-  const searchGithubBtn = document.querySelector('#search-by-github-btn');
-  if(searchGithubBtn) searchGithubBtn.addEventListener('click', () => searchBy(searchType.github));
+  const searchBtns = document.querySelectorAll('.search-btn');
+  if(searchBtns.length === 0) return;
+  searchBtns.forEach(el => {
+    el.addEventListener('click', () => searchBy(el.dataset.type));
+  });
 
-  const searchInput = document.querySelector('#search-int');
-  if(searchInput) {
-    searchInput.addEventListener('keyup', (event) => {
-      if (event.key === "Enter") searchBy(searchType.github);
-    });
-  }
+  const searchInput = document.querySelector('.search-int');
+  searchInput.addEventListener('keyup', (event) => {
+    if (event.key === "Enter") searchBy(searchType.github);
+  });
 }
 
 // init 评论框
