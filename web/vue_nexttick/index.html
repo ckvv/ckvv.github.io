@@ -1,0 +1,137 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=color-scheme content="light dark"><meta name=description content="nextTick是vue的一个全局API， 作用是在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
+Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。
+const callbacks = [] let pending = false function flushCallbacks () { pending = false const copies = callbacks.slice(0) callbacks.length = 0 for (let i = 0; i < copies.length; i++) { copies[i]() } } // Here we have async deferring wrappers using microtasks. // In 2."><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="vue_nextTick的原理"><meta name=twitter:description content="nextTick是vue的一个全局API， 作用是在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
+Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。
+const callbacks = [] let pending = false function flushCallbacks () { pending = false const copies = callbacks.slice(0) callbacks.length = 0 for (let i = 0; i < copies.length; i++) { copies[i]() } } // Here we have async deferring wrappers using microtasks. // In 2."><meta property="og:title" content="vue_nextTick的原理"><meta property="og:description" content="nextTick是vue的一个全局API， 作用是在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
+Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。
+const callbacks = [] let pending = false function flushCallbacks () { pending = false const copies = callbacks.slice(0) callbacks.length = 0 for (let i = 0; i < copies.length; i++) { copies[i]() } } // Here we have async deferring wrappers using microtasks. // In 2."><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai0520.github.io/web/vue_nexttick/"><meta property="article:published_time" content="2021-07-09T15:37:56+08:00"><meta property="article:modified_time" content="2021-07-09T15:37:56+08:00"><title>vue_nextTick的原理 · 博客</title><link rel=canonical href=https://chenkai0520.github.io/web/vue_nexttick/><link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.2b4a48c7f9f55547746a8263b9a071145bdce989003e514b08231c227b976bbb.css integrity="sha256-K0pIx/n1VUd0aoJjuaBxFFvc6YkAPlFLCCMcInuXa7s=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/custom.css><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><meta name=generator content="Hugo 0.72.0"></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>博客</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/categories/>Categories</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input id=search-int type=text placeholder=Search>
+<button class=search-btn id=search-by-google-btn>Google</button>
+<button class=search-btn id=search-by-github-btn>GitHub</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai0520.github.io/web/vue_nexttick/>vue_nextTick的原理</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title target=_blank href=https://github.com/chenkai0520/chenkai0520.github.io/edit/master/content/web/vue_nextTick.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><i class="fa fa-calendar" aria-hidden=true></i><time datetime=2021-07-09T15:37:56+08:00>2021-07-09</time></span></div><div class=tags><i class="fa fa-tag" aria-hidden=true></i><span class=tag><a href=/tags/web/>web</a></span>
+<span class=separator>•</span>
+<span class=tag><a href=/tags/vue/>vue</a></span></div></div><p><a href=https://cn.vuejs.org/v2/api/#Vue-nextTick>nextTick</a>是vue的一个全局API，
+作用是在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。</p><p>Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>callbacks</span> <span style=color:#f92672>=</span> []
+<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>pending</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>flushCallbacks</span> () {
+  <span style=color:#a6e22e>pending</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>copies</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>callbacks</span>.<span style=color:#a6e22e>slice</span>(<span style=color:#ae81ff>0</span>)
+  <span style=color:#a6e22e>callbacks</span>.<span style=color:#a6e22e>length</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+  <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>copies</span>.<span style=color:#a6e22e>length</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+    <span style=color:#a6e22e>copies</span>[<span style=color:#a6e22e>i</span>]()
+  }
+}
+
+<span style=color:#75715e>// Here we have async deferring wrappers using microtasks.
+</span><span style=color:#75715e>// In 2.5 we used (macro) tasks (in combination with microtasks).
+</span><span style=color:#75715e>// However, it has subtle problems when state is changed right before repaint
+</span><span style=color:#75715e>// (e.g. #6813, out-in transitions).
+</span><span style=color:#75715e>// Also, using (macro) tasks in event handler would cause some weird behaviors
+</span><span style=color:#75715e>// that cannot be circumvented (e.g. #7109, #7153, #7546, #7834, #8109).
+</span><span style=color:#75715e>// So we now use microtasks everywhere, again.
+</span><span style=color:#75715e>// A major drawback of this tradeoff is that there are some scenarios
+</span><span style=color:#75715e>// where microtasks have too high a priority and fire in between supposedly
+</span><span style=color:#75715e>// sequential events (e.g. #4521, #6690, which have workarounds)
+</span><span style=color:#75715e>// or even between bubbling of the same event (#6566).
+</span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>timerFunc</span>
+
+<span style=color:#75715e>// The nextTick behavior leverages the microtask queue, which can be accessed
+</span><span style=color:#75715e>// via either native Promise.then or MutationObserver.
+</span><span style=color:#75715e>// MutationObserver has wider support, however it is seriously bugged in
+</span><span style=color:#75715e>// UIWebView in iOS &gt;= 9.3.3 when triggered in touch event handlers. It
+</span><span style=color:#75715e>// completely stops working after triggering a few times... so, if native
+</span><span style=color:#75715e>// Promise is available, we will use it:
+</span><span style=color:#75715e></span><span style=color:#75715e>/* istanbul ignore next, $flow-disable-line */</span>
+<span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>typeof</span> Promise <span style=color:#f92672>!==</span> <span style=color:#e6db74>&#39;undefined&#39;</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>isNative</span>(Promise)) {
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>p</span> <span style=color:#f92672>=</span> Promise.<span style=color:#a6e22e>resolve</span>()
+  <span style=color:#a6e22e>timerFunc</span> <span style=color:#f92672>=</span> () =&gt; {
+    <span style=color:#a6e22e>p</span>.<span style=color:#a6e22e>then</span>(<span style=color:#a6e22e>flushCallbacks</span>)
+    <span style=color:#75715e>// In problematic UIWebViews, Promise.then doesn&#39;t completely break, but
+</span><span style=color:#75715e></span>    <span style=color:#75715e>// it can get stuck in a weird state where callbacks are pushed into the
+</span><span style=color:#75715e></span>    <span style=color:#75715e>// microtask queue but the queue isn&#39;t being flushed, until the browser
+</span><span style=color:#75715e></span>    <span style=color:#75715e>// needs to do some other work, e.g. handle a timer. Therefore we can
+</span><span style=color:#75715e></span>    <span style=color:#75715e>// &#34;force&#34; the microtask queue to be flushed by adding an empty timer.
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>isIOS</span>) <span style=color:#a6e22e>setTimeout</span>(<span style=color:#a6e22e>noop</span>)
+  }
+  <span style=color:#a6e22e>isUsingMicroTask</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>
+} <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>isIE</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#66d9ef>typeof</span> <span style=color:#a6e22e>MutationObserver</span> <span style=color:#f92672>!==</span> <span style=color:#e6db74>&#39;undefined&#39;</span> <span style=color:#f92672>&amp;&amp;</span> (
+  <span style=color:#a6e22e>isNative</span>(<span style=color:#a6e22e>MutationObserver</span>) <span style=color:#f92672>||</span>
+  <span style=color:#75715e>// PhantomJS and iOS 7.x
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>MutationObserver</span>.<span style=color:#a6e22e>toString</span>() <span style=color:#f92672>===</span> <span style=color:#e6db74>&#39;[object MutationObserverConstructor]&#39;</span>
+)) {
+  <span style=color:#75715e>// Use MutationObserver where native Promise is not available,
+</span><span style=color:#75715e></span>  <span style=color:#75715e>// e.g. PhantomJS, iOS7, Android 4.4
+</span><span style=color:#75715e></span>  <span style=color:#75715e>// (#6466 MutationObserver is unreliable in IE11)
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>counter</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>observer</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>MutationObserver</span>(<span style=color:#a6e22e>flushCallbacks</span>)
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>textNode</span> <span style=color:#f92672>=</span> document.<span style=color:#a6e22e>createTextNode</span>(String(<span style=color:#a6e22e>counter</span>))
+  <span style=color:#a6e22e>observer</span>.<span style=color:#a6e22e>observe</span>(<span style=color:#a6e22e>textNode</span>, {
+    <span style=color:#a6e22e>characterData</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>true</span>
+  })
+  <span style=color:#a6e22e>timerFunc</span> <span style=color:#f92672>=</span> () =&gt; {
+    <span style=color:#a6e22e>counter</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>counter</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>%</span> <span style=color:#ae81ff>2</span>
+    <span style=color:#a6e22e>textNode</span>.<span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> String(<span style=color:#a6e22e>counter</span>)
+  }
+  <span style=color:#a6e22e>isUsingMicroTask</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>
+} <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>typeof</span> <span style=color:#a6e22e>setImmediate</span> <span style=color:#f92672>!==</span> <span style=color:#e6db74>&#39;undefined&#39;</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>isNative</span>(<span style=color:#a6e22e>setImmediate</span>)) {
+  <span style=color:#75715e>// Fallback to setImmediate.
+</span><span style=color:#75715e></span>  <span style=color:#75715e>// Technically it leverages the (macro) task queue,
+</span><span style=color:#75715e></span>  <span style=color:#75715e>// but it is still a better choice than setTimeout.
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>timerFunc</span> <span style=color:#f92672>=</span> () =&gt; {
+    <span style=color:#a6e22e>setImmediate</span>(<span style=color:#a6e22e>flushCallbacks</span>)
+  }
+} <span style=color:#66d9ef>else</span> {
+  <span style=color:#75715e>// Fallback to setTimeout.
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>timerFunc</span> <span style=color:#f92672>=</span> () =&gt; {
+    <span style=color:#a6e22e>setTimeout</span>(<span style=color:#a6e22e>flushCallbacks</span>, <span style=color:#ae81ff>0</span>)
+  }
+}
+</code></pre></div><p>例如，当你设置 vm.someData = &lsquo;new value&rsquo;，该组件不会立即重新渲染。当刷新队列时，组件会在下一个事件循环“tick”中更新。
+为了在数据变化之后等待 Vue 完成更新 DOM，可以在数据变化之后立即使用 Vue.nextTick(callback),这样回调函数将在 DOM 更新完成后被调用。</p><p>使用方法</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// 修改数据
+</span><span style=color:#75715e></span><span style=color:#a6e22e>vm</span>.<span style=color:#a6e22e>msg</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Hello&#39;</span>
+<span style=color:#75715e>// DOM 还没有更新
+</span><span style=color:#75715e></span><span style=color:#a6e22e>Vue</span>.<span style=color:#a6e22e>nextTick</span>(<span style=color:#66d9ef>function</span> () {
+  <span style=color:#75715e>// DOM 更新了
+</span><span style=color:#75715e></span>});
+
+<span style=color:#75715e>// 因为 $nextTick() 返回一个 Promise 对象所以下面这种和上面是等效的
+</span><span style=color:#75715e></span><span style=color:#a6e22e>vm</span>.<span style=color:#a6e22e>msg</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Hello&#39;</span>;
+<span style=color:#75715e>// DOM 还没有更新
+</span><span style=color:#75715e></span><span style=color:#a6e22e>await</span> <span style=color:#a6e22e>Vue</span>.<span style=color:#a6e22e>nextTick</span>()
+<span style=color:#75715e>// DOM 更新了
+</span></code></pre></div><p>Vue.js中的 nextTick 函数，会传入一个 cb ，这个 cb 会被存储到一个队列中，在下一个 tick 时触发队列中的所有 cb 事件</p><p>nextTick方法</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>nextTick</span> (<span style=color:#a6e22e>cb</span><span style=color:#f92672>?:</span> Function, <span style=color:#a6e22e>ctx</span><span style=color:#f92672>?:</span> Object) {
+  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>_resolve</span>
+  <span style=color:#a6e22e>callbacks</span>.<span style=color:#a6e22e>push</span>(() =&gt; {
+    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>cb</span>) {
+      <span style=color:#66d9ef>try</span> {
+        <span style=color:#a6e22e>cb</span>.<span style=color:#a6e22e>call</span>(<span style=color:#a6e22e>ctx</span>)
+      } <span style=color:#66d9ef>catch</span> (<span style=color:#a6e22e>e</span>) {
+        <span style=color:#a6e22e>handleError</span>(<span style=color:#a6e22e>e</span>, <span style=color:#a6e22e>ctx</span>, <span style=color:#e6db74>&#39;nextTick&#39;</span>)
+      }
+    } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>_resolve</span>) {
+      <span style=color:#a6e22e>_resolve</span>(<span style=color:#a6e22e>ctx</span>)
+    }
+  })
+  <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>pending</span>) {
+    <span style=color:#a6e22e>pending</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>
+    <span style=color:#a6e22e>timerFunc</span>()
+  }
+  <span style=color:#75715e>// $flow-disable-line
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>cb</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#66d9ef>typeof</span> Promise <span style=color:#f92672>!==</span> <span style=color:#e6db74>&#39;undefined&#39;</span>) {
+    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> Promise(<span style=color:#a6e22e>resolve</span> =&gt; {
+      <span style=color:#a6e22e>_resolve</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>resolve</span>
+    })
+  }
+}
+</code></pre></div><h2 id=node中的nexttick>node中的nextTick
+<a class=heading-link href=#node%e4%b8%ad%e7%9a%84nexttick><i class="fa fa-link" aria-hidden=true></i></a></h2><p>node.js中也存在一个nextTick接口，它是都将在当前操作完成后处理 nextTickQueue， 而不管事件循环的当前阶段如何，任何时候在给定的阶段中调用 process.nextTick()，所有传递到 process.nextTick() 的回调将在事件循环继续之前解析</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;start&#39;</span>);
+<span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>nextTick</span>(() =&gt; {
+  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;nextTick callback&#39;</span>);
+});
+<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;scheduled&#39;</span>);
+<span style=color:#75715e>// Output:
+</span><span style=color:#75715e>// start
+</span><span style=color:#75715e>// scheduled
+</span><span style=color:#75715e>// nextTick callback
+</span></code></pre></div><div id=vcomments></div></article></section></div></main><script src=/js/coder.min.a350362441276ec5c1671926420497bb8e52b63ead1d51d3c9bc4342d0039526.js integrity="sha256-o1A2JEEnbsXBZxkmQgSXu45Stj6tHVHTybxDQtADlSY="></script><script src=/js/valine.min.js></script><script src=/js/custom.js></script></body></html>

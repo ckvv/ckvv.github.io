@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>web on 博客</title><link>https://chenkai0520.github.io/tags/web/</link><description>Recent content in web on 博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 09 Jul 2021 15:37:56 +0800</lastBuildDate><atom:link href="https://chenkai0520.github.io/tags/web/index.xml" rel="self" type="application/rss+xml"/><item><title>css元素选择器</title><link>https://chenkai0520.github.io/web/css_select/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/css_select/</guid><description>CSS 选择器规定了 CSS 规则会应用到哪些元素上。
+基本选择器 节点选择 CSS 类型选择器按节点名称匹配元素。换句话说，它选择文档中给定类型的所有元素。
+/* All &amp;lt;a&amp;gt; elements. */ a { color: red; } 类选择 该CSS 类选择匹配根据他们的内容元素class属性。
+/* All elements with class=&amp;#34;spacious&amp;#34; */ .spacious { margin: 2em; } /* All &amp;lt;li&amp;gt; elements with class=&amp;#34;spacious&amp;#34; */ li.spacious { margin: 2em; } /* All &amp;lt;li&amp;gt; elements with a class list that includes both &amp;#34;spacious&amp;#34; and &amp;#34;elegant&amp;#34; */ /* For example, class=&amp;#34;elegant retro spacious&amp;#34; */ li.</description></item><item><title>css关于浮动的知识</title><link>https://chenkai0520.github.io/web/css_float/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/css_float/</guid><description>float CSS属性指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。 当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移直到碰到了所处的容器的边框，或者碰到另外一个浮动的元素。
+float原始用法 float本意是为了允许文本和内联元素环它如（文字环绕图片）,就像下面一样
+.float { float: left; width: 200px; height: 200px; background-color: red; } &amp;lt;div class=&amp;#34;wrapper&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;float&amp;#34;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div&amp;gt; float本意是为了允许文本和内联元素环它; float本意是为了允许文本和内联元素环它; float本意是为了允许文本和内联元素环它; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 滥用float 带来的问题 我们使用float浮动做了很多其本职工作以外的事情，使用float进行分栏布局、列表排列，但是如果一个元素里只有浮动元素，那它的高度会是0。如果你想要它自适应即包含所有浮动元素，那你需要清除它的子元素。
+清除浮动的几种办法 ::after伪元素 这种方式不会影响任何其他样式，通用性强，覆盖面广，推荐使用
+#container::after { content: &amp;#34;&amp;#34;; display: block; clear: both; } 类似的可以在元素后面加一个&amp;lt;div style=&amp;quot;clear:both;&amp;quot; &amp;gt;&amp;lt;/div&amp;gt;空元素
+其他清除浮动方法 IE下清除浮动准则很简单，使元素haslayout就可以了。如宽度值，高度值，绝对定位，zoom，浮动本身都可以让元素haslayout。显然，首选zoom:1;不会干扰任何样式。非IE浏览器常用的是overflow属性
+container也浮动,这种方式治标不治本总不能一直浮动到root
+#container{ float:left; } 使用position: absolute</description></item><item><title>DOM中的event</title><link>https://chenkai0520.github.io/web/dom_event/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/dom_event/</guid><description>event Event 接口表示在 DOM 中发生的任何事件; 一些是用户生成的（例如鼠标或键盘事件），而其他由 API 生成（例如指示动画已经完成运行的事件，视频已被暂停等等。事件通常由外部源触发，同样也会以编程方式触发，例如执行一个 element 的一个 HTMLElement.click( ) 方法，或通过定义事件，然后使用 EventTarget.dispatchEvent() 将其派发到一个指定的目标。有许多类型的事件，其中一些使用基于主要事件接口的其他接口。事件本身包含所有事件通用的属性和方法。 事件处理函数可以附加在各种对象上，包括 DOM元素,window,document对象. 等
+有三种方式可以为DOM元素注册事件处理函数
+EventTarget.addEventListener // Assuming myButton is a button element myButton.addEventListener(&amp;#39;click&amp;#39;, function(){alert(&amp;#39;Hello world&amp;#39;);}, false); HTML 属性 &amp;lt;button onclick=&amp;#34;alert(&amp;#39;Hello world!&amp;#39;)&amp;#34;&amp;gt; DOM 元素属性 该函数在定义时，可以传入一个 event 形式的参数。 在HTML 规范中，其返回值会以一种特殊的方式被处理。
+// Assuming myButton is a button element myButton.onclick = function(event){alert('Hello world');}; 创建自定义事件 可以使用事件构造函数创建事件
+var event = new Event(&amp;#39;build&amp;#39;); let eventEle = document.</description></item><item><title>Flex弹性布局</title><link>https://chenkai0520.github.io/web/css_flex/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/css_flex/</guid><description>&lt;h2 id="弹性布局">
+弹性布局
+&lt;a class="heading-link" href="#%e5%bc%b9%e6%80%a7%e5%b8%83%e5%b1%80">
+&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
+&lt;/a>
+&lt;/h2>
+&lt;h3 id="一弹性布局是什么">
+一.弹性布局是什么？
+&lt;a class="heading-link" href="#%e4%b8%80%e5%bc%b9%e6%80%a7%e5%b8%83%e5%b1%80%e6%98%af%e4%bb%80%e4%b9%88">
+&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
+&lt;/a>
+&lt;/h3>
+&lt;p>任何一个容器都可以指定为 Flex 布局&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
+&lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">flex&lt;/span>;
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>行内元素也可以使用 Flex 布局。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
+&lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">inline&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#66d9ef">flex&lt;/span>;
+}
+&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>jsonwebtoken</title><link>https://chenkai0520.github.io/nodejs/jsonwebtoken/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/nodejs/jsonwebtoken/</guid><description>什么是JSON Web Token？ JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用SON对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT可以使用加密算法（使用HMAC算法）或使用RSA或ECDSA的公钥/私钥对进行签名。
+什么时候应该使用JSON Web令牌 以下是JSON Web令牌有用的一些场景：
+授权：这是使用JWT的最常见方案。一旦用户登录，每个后续请求将包括JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On是一种现在广泛使用JWT的功能，因为它的开销很小，并且能够在不同的域中轻松使用。
+信息交换：JSON Web令牌是在各方之间安全传输信息的好方法。因为JWT可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。
+JSON Web令牌结构 JSON Web Tokens由.分隔的三个部分组成，它们是：
+头 有效载荷 签名 因此，JWT通常如xxxxx.yyyyy.zzzzz所示. 头 标头通常由两部分组成：令牌的类型，即JWT，以及正在使用的签名算法，例如HMAC SHA256或RSA。
+{ &amp;quot;alg&amp;quot;: &amp;quot;HS256&amp;quot;, &amp;quot;typ&amp;quot;: &amp;quot;JWT&amp;quot; } 然后，这个JSON被编码为Base64Url，形成JWT的第一部分。
+有效载荷 令牌的第二部分是有效负载，其中包含声明。声明是关于实体（通常是用户）和其他数据的声明。有三种类型:registered、public、private claims.
+registered：这些是一组预定义声明，不是强制性的，但建议使用，以提供一组有用的，可互操作的声明。其中一些是： iss（发行人）， exp（到期时间），sub（主题）， aud（观众）等。 public：这些可以由使用JWT的人随意定义。但为避免冲突，应在 IANA JSON Web令牌注册表中定义它们，或者将 其定义为包含防冲突命名空间的URI。 private claims： 这是创建共享使用它们同意并既不是当事人之间的信息自定义声明注册或公众的权利要求 然后，有效负载经过Base64Url编码，形成JSON Web令牌的第二部分。</description></item><item><title>vue_nextTick的原理</title><link>https://chenkai0520.github.io/web/vue_nexttick/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/vue_nexttick/</guid><description>nextTick是vue的一个全局API， 作用是在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
+Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。
+const callbacks = [] let pending = false function flushCallbacks () { pending = false const copies = callbacks.slice(0) callbacks.length = 0 for (let i = 0; i &amp;lt; copies.length; i++) { copies[i]() } } // Here we have async deferring wrappers using microtasks. // In 2.</description></item><item><title>vue实践</title><link>https://chenkai0520.github.io/web/vue_guide/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/vue_guide/</guid><description>参考vue风格指南 参考vue编程指南
+Vue Router 路由懒加载 当打包构建应用时，JavaScript 包会变得非常大，影响页面加载。如果我们能把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应组件，这样就更加高效了结合 Vue 的异步组件和 Webpack 的代码分割功能，轻松实现路由组件的懒加载
+规范 vue文件内css样式尽量使用局部样式。全局样式可以统一放入静态库由app.vue文件导入
+注意事项 vue data中的对象状态是响应式的，那么当我们变更状态时，监视状态的 Vue 组件也会自动更新
+最好提前在你的 store 中初始化好所有所需属性。 当需要在对象上添加新属性时，你应该 使用 Vue.set(obj, 'newProp', 123), 或者 以新对象替换老对象。例如，利用对象展开运算符我们可以这样写： state.obj = { ...state.obj, newProp: 123 }</description></item><item><title>vue样式dev和build下不一致</title><link>https://chenkai0520.github.io/web/vue_page_style_dev_build_different/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/vue_page_style_dev_build_different/</guid><description>一次更新镜像后发现vue项目页面混乱，在开发模式模式下，写的样式有效，打包后无效
+一、多个相同样式文件同时存在项目中 现象：修改组件时，在项目中复制了一个组件重命名后进行修改，在本地执行正常，后打包上传，无法展示正常效果。 解决过程：在本地试图修改总是不见效果，在控制台查看样式仍是之前的样式，把其中一处样式在所有相关组件中修改，打包上传后样式生效，这说明是旧的样式在打包时覆盖了新的样式。将旧组件删除后解决上述问题。 原因猜测：因为相同组件包含不同样式时，无法判断哪份样式时在后面渲染，如果旧样式刚好打包后在后面渲染，则会覆盖掉新写的样式。在本地执行时，因为样式没有打包，访问页面时渲染的都是组件自身样式，所以不会出现上述问题。
+二、全局(main.js)引用样式 现象：在全局引入了Element UI 样式，在header组件中修改部分样式，在本地执行正常，后打包上传，无法展示正常效果。 解决过程：因为在项目中段发现该问题，以为是后续的样式造成的影响(虽然我也认为可能性极小)，删除新写的组件，没有效果。运行一段时间之前的代码，项目正常运行，这迫使我回想中间这段时间对项目做了什么？除了新写了一些组件，还将一些配置信息从index.js中转移到了main.js中，测试发现果然是这里出现了问题。配置中同时出现了Element UI 样式文件引用，还有router的引用，将yang样式引用放在router引用后解决问题。 原因猜测：不正常的样式显示的还是组件原始的样式，由此猜测router加载时会加载组件样式，将样式文件在router后引用会将router加载时渲染的样式覆盖掉，所以建议将router的引用放在最后面。在每个组件的样式中记得添加 ‘scoped’.
+import &amp;#39;element-ui/lib/theme-chalk/index.css&amp;#39; //element样式文件 import App from &amp;#39;./App&amp;#39; 如果相反，那么element-ui的样式会覆盖自定义的样式，所以会出现你修改的样式不生效问题！！</description></item><item><title>vue项目添加单元测试</title><link>https://chenkai0520.github.io/web/vue_test/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/vue_test/</guid><description>创建vue的单元测试项目
+vue-cli 创建项目 vue create vue-test Vue CLI 3可以向项目组中直接添加unit-jest vue add @vue/unit-jest 可以发现项目中多了很多文件，并且已经创建了一个测试文件demo，
+进行测试 vue在添加单元测试框架时会在package.jsonscripts添加一个test:unit，我们可以允许此命令打开测试
+在vue版本过低的项目中添加单元测试 我们可以选择以下两种方式
+升级vue版本及其依赖 vue版本如果太旧的不支持此种方式直接添加单元测试,可以选择更新vue版本2.5以上，并更新其依赖库。 此种方法可能会出现浏览器报exportes错误，把.babelrc文件transform-runtime删除即可。
+采用旧版本方式 Note: This example is outdated. It&amp;rsquo;s now recommended to scaffold your project with Vue CLI 3 which provides out-of-the-box configurations for unit testing.
+vue-test-utils-jest-example Example project using Jest + vue-test-utils together</description></item><item><title>WebWorker</title><link>https://chenkai0520.github.io/web/web-worker/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/web-worker/</guid><description>一、概述 JavaScript 语言采用的是单线程模型，也就是说，所有任务只能在一个线程上完成，一次只能做一件事。前面的任务没做完，后面的任务只能等着。随着电脑计算能力的增强，尤其是多核 CPU 的出现，单线程带来很大的不便，无法充分发挥计算机的计算能力。
+Web Worker 的作用，就是为 JavaScript 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给后者运行。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰。等到 Worker 线程完成计算任务，再把结果返回给主线程。这样的好处是，一些计算密集型或高延迟的任务，被 Worker 线程负担了，主线程（通常负责 UI 交互）就会很流畅，不会被阻塞或拖慢。
+Worker 线程一旦新建成功，就会始终运行，不会被主线程上的活动（比如用户点击按钮、提交表单）打断。这样有利于随时响应主线程的通信。但是，这也造成了 Worker 比较耗费资源，不应该过度使用，而且一旦使用完毕，就应该关闭。
+Web Worker 有以下几个使用注意点。
+（1）同源限制
+分配给 Worker 线程运行的脚本文件，必须与主线程的脚本文件同源。
+（2）DOM 限制
+Worker 线程所在的全局对象，与主线程不一样，无法读取主线程所在网页的 DOM 对象，也无法使用document、window、parent这些对象。但是，Worker 线程可以navigator对象和location对象。
+（3）通信联系
+Worker 线程和主线程不在同一个上下文环境，它们不能直接通信，必须通过消息完成。
+（4）脚本限制
+Worker 线程不能执行alert()方法和confirm()方法，但可以使用 XMLHttpRequest 对象发出 AJAX 请求。
+（5）文件限制
+Worker 线程无法读取本地文件，即不能打开本机的文件系统（file://），它所加载的脚本，必须来自网络。
+二、基本用法 2.1 主线程 主线程采用new命令，调用Worker()构造函数，新建一个 Worker 线程。
+var worker = new Worker(&amp;#39;work.js&amp;#39;); Worker()构造函数的参数是一个脚本文件，该文件就是 Worker 线程所要执行的任务。由于 Worker 不能读取本地文件，所以这个脚本必须来自网络。如果下载没有成功（比如404错误），Worker 就会默默地失败。</description></item><item><title>Web面试问题</title><link>https://chenkai0520.github.io/hide/web_mian_shi_qs2/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/hide/web_mian_shi_qs2/</guid><description>&lt;h2 id="前端工作面试问题">
+前端工作面试问题
+&lt;a class="heading-link" href="#%e5%89%8d%e7%ab%af%e5%b7%a5%e4%bd%9c%e9%9d%a2%e8%af%95%e9%97%ae%e9%a2%98">
+&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
+&lt;/a>
+&lt;/h2>
+&lt;p>本文包含了一些用于考查候选者的前端面试问题。不建议对单个候选者问及每个问题 (那需要好几个小时)。只要从列表里挑选一些，就能帮助你考查候选者是否具备所需要的技能。&lt;/p>
+&lt;p>&lt;strong>备注：&lt;/strong> 这些问题中很多都是开放性的，可以引发有趣的讨论。这比直接的答案更能体现此人的能力。&lt;/p>
+&lt;h2 id="a-nametoc目录a">
+&lt;!-- raw HTML omitted -->目录&lt;!-- raw HTML omitted -->
+&lt;a class="heading-link" href="#a-nametoc%e7%9b%ae%e5%bd%95a">
+&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
+&lt;/a>
+&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a href="#general-questions">常见问题&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#html-questions">HTML 相关问题&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#css-questions">CSS 相关问题&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#js-questions">JS 相关问题&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#testing-questions">测试相关问题&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#performance-questions">效能相关问题&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#network-questions">网络相关问题&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#coding-questions">代码相关问题&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#fun-questions">趣味问题&lt;/a>&lt;/li>
+&lt;/ol></description></item><item><title>前端下载文本</title><link>https://chenkai0520.github.io/javascript/brower_download_text/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/javascript/brower_download_text/</guid><description>前端保存文本 function download( text, filename) { var element = document.createElement(&amp;#39;a&amp;#39;); element.setAttribute(&amp;#39;href&amp;#39;, &amp;#39;data:text/plain;charset=utf-8,&amp;#39; + encodeURIComponent(text)); element.setAttribute(&amp;#39;download&amp;#39;, filename); element.style.display = &amp;#39;none&amp;#39;; document.body.appendChild(element); element.click(); document.body.removeChild(element); } download(&amp;#34;data.txt&amp;#34;, &amp;#34;hello word!&amp;#34;);　// 调用</description></item><item><title>前端开发面试题</title><link>https://chenkai0520.github.io/hide/web_mian_shi_qs1/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/hide/web_mian_shi_qs1/</guid><description>前端开发面试题 （题目列表页） 目录 前言 HTML部分 CSS部分 JavaScript部分 其他问题 前端学习网站推荐 前言 前言
+HTML Doctype作用？严格模式与混杂模式如何区分？它们有何意义?
+HTML5 为什么只需要写 ？
+行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
+页面导入样式时，使用link和@import有什么区别？
+介绍一下你对浏览器内核的理解？
+常见的浏览器内核有哪些？
+html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？
+简述一下你对HTML语义化的理解？
+HTML5的离线储存怎么使用，工作原理能不能解释一下？
+浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
+请描述一下 cookies，sessionStorage 和 localStorage 的区别？
+iframe有那些缺点？
+Label的作用是什么？是怎么用的？（加 for 或 包裹）</description></item><item><title>前端开发面试题及答案</title><link>https://chenkai0520.github.io/hide/web_min_shi_qsan/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/hide/web_min_shi_qsan/</guid><description>&lt;h2 id="前端开发面试题">
+前端开发面试题
+&lt;a class="heading-link" href="#%e5%89%8d%e7%ab%af%e5%bc%80%e5%8f%91%e9%9d%a2%e8%af%95%e9%a2%98">
+&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
+&lt;/a>
+&lt;/h2>
+&lt;h2 id="a-namepreface前言a-">
+&lt;!-- raw HTML omitted -->前言&lt;!-- raw HTML omitted -->
+&lt;a class="heading-link" href="#a-namepreface%e5%89%8d%e8%a8%80a-">
+&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
+&lt;/a>
+&lt;/h2>
+&lt;p>&lt;a href="http://markyun.github.io/2015/Front-end-Developer-Questions/" title="Questions">只看问题点这里 &lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers" title="Questions-and-Answers">看全部问题和答案点这里&lt;/a>&lt;/p>
+&lt;p>本文由我收集总结了一些前端面试题，初学者阅后也要用心钻研其中的原理，重要知识需要系统学习、透彻学习，形成自己的知识链。万不可投机取巧，临时抱佛脚只求面试侥幸混过关是错误的！也是不可能的！不可能的！不可能的！&lt;/p></description></item><item><title>常用的一些css样式</title><link>https://chenkai0520.github.io/web/css_useful_style/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/css_useful_style/</guid><description>文字超出后省略 white-space: nowrap; overflow: hidden; text-overflow: ellipsis;</description></item><item><title>拷贝数据到剪贴板</title><link>https://chenkai0520.github.io/web/brower_copy_to_clipboard/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/brower_copy_to_clipboard/</guid><description>介绍几种在浏览器中拷贝数据到剪贴板的方法
+document.execCommand(&amp;ldquo;copy&amp;rdquo;); 拷贝当前选中内容到剪贴板, 该api已经废弃不推荐使用，
+function fallbackCopyTextToClipboard(text) { const textArea = document.createElement(&amp;#34;textarea&amp;#34;); textArea.value = text; textArea.style.top = &amp;#34;0&amp;#34;; textArea.style.left = &amp;#34;0&amp;#34;; textArea.style.position = &amp;#34;fixed&amp;#34;; document.body.appendChild(textArea); textArea.focus(); textArea.select(); try { let msg = document.execCommand(&amp;#34;copy&amp;#34;); if (!msg) { throw new Error(&amp;#34;Copy filed&amp;#34;); } } finally { document.body.removeChild(textArea); } } navigator.clipboard 剪贴板 Clipboard API 提供了响应剪贴板命令（剪切、复制和粘贴）与异步读写系统剪贴板的能力。从权限 Permissions API 获取权限之后，才能访问剪贴板内容；如果用户没有授予权限，则不允许读取或更改剪贴板内容。该 API 被设计用来取代使用 document.execCommand() 的剪贴板访问方式。(基于 HTTP 的网站中包含的脚本则不能获得剪贴板对象)
+await navigator.clipboard.writeText(data); npm package clipboard, 内部使用的 document.</description></item><item><title>浏览器如何渲染页面</title><link>https://chenkai0520.github.io/web/how_brower_render_page/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/how_brower_render_page/</guid><description>参考https://coolshell.cn/articles/9666.html
+文章是为了说明浏览器如何将HTML，CSS和JavaScript转换为网站。
+首先 浏览器是一个可以从远程服务器或者本地磁盘将文件加载、显示、交互的软件。
+浏览器有两个重要部分：
+渲染引擎（Rendering Engine）：一般习惯称为“浏览器内核”，渲染引擎决定了浏览器如何显示网页的内容以及页面的格式信息。不同的浏览器内核对网页编写语法的解释也有不同如Gecko（火狐）、Blink（Chrome）、Webkit（Safari）、Trident（IE）等，因此同一网页在不同的内核的浏览器里的渲染效果也可能不同。
+JavaScript引擎：JavaScript由ECMAScript，DOM和BOM三者组成，不同浏览器针对JavaScript语法和语义标准有多种实现如：
+Chrome使用V8引擎， Safari使用JavaScriptCore， Firefox使用SpiderMonkey 浏览器接收数据 数据是通过Internet以数据包（Packet）为单位按字节形式发送到浏览器。浏览器将从硬盘（或网络）中读取HTML的原始数据字节转换为字符。
+从原始字节到DOM 当浏览器接受到扩展名为.html时，会将该文件解释为html对其进行解析，文件中的每个开始和结束html标签会转换为节点如
+&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt; 创建这些节点后，然后将这些节点链接到称为DOM的树数据结构中。DOM建立父子关系，相邻的兄弟关系等。每个节点之间的关系都在此DOM对象中建立。浏览器必须先将html数据的原始字节转换为DOM，然后才能进行任何操作。
+当浏览器接收数据的原始字节并启动DOM构造过程时，它还将发出请求以获取链接的样式表。 一旦浏览器开始解析html，一旦找到文件的link标签，浏览器css就会同时发出获取请求的请求。
+从原始字节到CSSOM 当浏览器收到CSS的原始字节时，也会启动HTML原始字节的类似过程。将数据的原始字节转换为字符，然后标记化节点，最后还形成CSS树结构，称为CSS对象模型，简称CSSOM。 CSS有一个叫做Cascade的东西。级联是浏览器如何确定将哪些样式应用于元素的方式。
+由于影响元素的样式可能来自父元素（即通过继承），或者已设置在元素本身上，因此CSSOM树结构变得很重要。浏览器必须递归地遍历CSS树结构并确定影响特定元素的样式。
+渲染树 DOM和CSSOM树结构是两个独立的结构。DOM包含有关页面HTML元素的关系的所有信息，而CSSOM包含有关元素样式的信息。浏览器现在将DOM和CSSOM树合并为一个称为渲染树(render tree)的东西。渲染树包含有关页面上所有可见DOM内容的信息，以及不同节点所需的所有CSSOM信息。
+如果一个元素被CSS隐藏，display; none例如使用，则该节点将不会在渲染树中表示。隐藏的元素将出现在DOM中，但不会出现在渲染树中。原因是渲染树结合了来自DOM和CSSOM的信息，因此它知道在树中不包括隐藏元素。
+构建了渲染树后，浏览器将继续进行下一步，即 布局！
+现在，我们在屏幕上拥有所有可见内容的内容和样式信息，但实际上并没有在屏幕上呈现任何内容,浏览器必须计算页面上每个对象的确切大小和位置。此布局步骤对从DOM和CSSOM接收到的内容和样式，进行了必要的布局计算，并绘制到屏幕上。DOM和CSSOM必须在成功绘制之前构建，所以优化网站的第一条规则是尽快将最重要的HTML和CSS交付给客户端。
+JavaScript JavaScript可以更改DOM和CSSOM。
+###Javascript执行前将停止整个DOM构造过程
+由于浏览器不确定此特定Javascript会做什么，因此通过停止整个DOM结构来采取预防措施。每当浏览器遇到script标签时，在脚本完成执行之前，将停止整个DOM构造过程。
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Medium Article Demo&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;style.</description></item></channel></rss>

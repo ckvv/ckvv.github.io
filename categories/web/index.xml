@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>web on 博客</title><link>https://chenkai0520.github.io/categories/web/</link><description>Recent content in web on 博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 09 Jul 2021 15:37:56 +0800</lastBuildDate><atom:link href="https://chenkai0520.github.io/categories/web/index.xml" rel="self" type="application/rss+xml"/><item><title>Flex弹性布局</title><link>https://chenkai0520.github.io/web/css_flex/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/css_flex/</guid><description>&lt;h2 id="弹性布局">
+弹性布局
+&lt;a class="heading-link" href="#%e5%bc%b9%e6%80%a7%e5%b8%83%e5%b1%80">
+&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
+&lt;/a>
+&lt;/h2>
+&lt;h3 id="一弹性布局是什么">
+一.弹性布局是什么？
+&lt;a class="heading-link" href="#%e4%b8%80%e5%bc%b9%e6%80%a7%e5%b8%83%e5%b1%80%e6%98%af%e4%bb%80%e4%b9%88">
+&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
+&lt;/a>
+&lt;/h3>
+&lt;p>任何一个容器都可以指定为 Flex 布局&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
+&lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">flex&lt;/span>;
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>行内元素也可以使用 Flex 布局。&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
+&lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">inline&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#66d9ef">flex&lt;/span>;
+}
+&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>前端下载文本</title><link>https://chenkai0520.github.io/javascript/brower_download_text/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/javascript/brower_download_text/</guid><description>前端保存文本 function download( text, filename) { var element = document.createElement(&amp;#39;a&amp;#39;); element.setAttribute(&amp;#39;href&amp;#39;, &amp;#39;data:text/plain;charset=utf-8,&amp;#39; + encodeURIComponent(text)); element.setAttribute(&amp;#39;download&amp;#39;, filename); element.style.display = &amp;#39;none&amp;#39;; document.body.appendChild(element); element.click(); document.body.removeChild(element); } download(&amp;#34;data.txt&amp;#34;, &amp;#34;hello word!&amp;#34;);　// 调用</description></item></channel></rss>

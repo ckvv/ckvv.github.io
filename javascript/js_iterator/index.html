@@ -1,0 +1,181 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=color-scheme content="light dark"><meta name=description content="什么是迭代器    ECMAScript 2015的几个补充，并不是新的内置实现或语法，而是协议。这些协议可以被任何遵循某些约定的对象来实现。有两个协议：可迭代协议和迭代器协议。 JavaScript 提供了许多迭代集合的方法，从简单的 for 循环到 map() 和 filter()，迭代器和生成器将迭代的概念直接带入核心语言，并提供了一种机制来自定义 for&mldr;of 循环的行为
+var myIterator = { next: function() { // ...  }, [Symbol.iterator]: function() { return this } } 可迭代协议    为了变成可迭代对象， 一个对象必须实现 @@iterator 方法, 意思是这个对象（或者它原型链 prototype chain 上的某个对象）必须有一个名字是 Symbol.iterator 的属性:
+ [Symbol.iterator] 返回一个对象的无参函数，被返回对象符合迭代器协议。
+ 当一个对象需要被迭代的时候（比如开始用于一个for..of循环中），它的@@iterator方法被调用并且无参数，然后返回一个用于在迭代中获得值的迭代器。
+class people{ constructor(index){ this.index = index; } next(){ this.index++; return{ done: this.index > 10, value: this.index } } [Symbol."><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="js的迭代器"><meta name=twitter:description content="什么是迭代器    ECMAScript 2015的几个补充，并不是新的内置实现或语法，而是协议。这些协议可以被任何遵循某些约定的对象来实现。有两个协议：可迭代协议和迭代器协议。 JavaScript 提供了许多迭代集合的方法，从简单的 for 循环到 map() 和 filter()，迭代器和生成器将迭代的概念直接带入核心语言，并提供了一种机制来自定义 for&mldr;of 循环的行为
+var myIterator = { next: function() { // ...  }, [Symbol.iterator]: function() { return this } } 可迭代协议    为了变成可迭代对象， 一个对象必须实现 @@iterator 方法, 意思是这个对象（或者它原型链 prototype chain 上的某个对象）必须有一个名字是 Symbol.iterator 的属性:
+ [Symbol.iterator] 返回一个对象的无参函数，被返回对象符合迭代器协议。
+ 当一个对象需要被迭代的时候（比如开始用于一个for..of循环中），它的@@iterator方法被调用并且无参数，然后返回一个用于在迭代中获得值的迭代器。
+class people{ constructor(index){ this.index = index; } next(){ this.index++; return{ done: this.index > 10, value: this.index } } [Symbol."><meta property="og:title" content="js的迭代器"><meta property="og:description" content="什么是迭代器    ECMAScript 2015的几个补充，并不是新的内置实现或语法，而是协议。这些协议可以被任何遵循某些约定的对象来实现。有两个协议：可迭代协议和迭代器协议。 JavaScript 提供了许多迭代集合的方法，从简单的 for 循环到 map() 和 filter()，迭代器和生成器将迭代的概念直接带入核心语言，并提供了一种机制来自定义 for&mldr;of 循环的行为
+var myIterator = { next: function() { // ...  }, [Symbol.iterator]: function() { return this } } 可迭代协议    为了变成可迭代对象， 一个对象必须实现 @@iterator 方法, 意思是这个对象（或者它原型链 prototype chain 上的某个对象）必须有一个名字是 Symbol.iterator 的属性:
+ [Symbol.iterator] 返回一个对象的无参函数，被返回对象符合迭代器协议。
+ 当一个对象需要被迭代的时候（比如开始用于一个for..of循环中），它的@@iterator方法被调用并且无参数，然后返回一个用于在迭代中获得值的迭代器。
+class people{ constructor(index){ this.index = index; } next(){ this.index++; return{ done: this.index > 10, value: this.index } } [Symbol."><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai0520.github.io/javascript/js_iterator/"><meta property="article:published_time" content="2021-07-09T15:37:56+08:00"><meta property="article:modified_time" content="2021-07-09T15:37:56+08:00"><title>js的迭代器 · 博客</title><link rel=canonical href=https://chenkai0520.github.io/javascript/js_iterator/><link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.2b4a48c7f9f55547746a8263b9a071145bdce989003e514b08231c227b976bbb.css integrity="sha256-K0pIx/n1VUd0aoJjuaBxFFvc6YkAPlFLCCMcInuXa7s=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/custom.css><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><meta name=generator content="Hugo 0.72.0"></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>博客</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/categories/>Categories</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input id=search-int type=text placeholder=Search>
+<button class=search-btn id=search-by-google-btn>Google</button>
+<button class=search-btn id=search-by-github-btn>GitHub</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai0520.github.io/javascript/js_iterator/>js的迭代器</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title target=_blank href=https://github.com/chenkai0520/chenkai0520.github.io/edit/master/content/javascript/js_iterator.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><i class="fa fa-calendar" aria-hidden=true></i><time datetime=2021-07-09T15:37:56+08:00>2021-07-09</time></span></div><div class=tags><i class="fa fa-tag" aria-hidden=true></i><span class=tag><a href=/tags/js/>js</a></span></div></div><h2 id=什么是迭代器>什么是迭代器
+<a class=heading-link href=#%e4%bb%80%e4%b9%88%e6%98%af%e8%bf%ad%e4%bb%a3%e5%99%a8><i class="fa fa-link" aria-hidden=true></i></a></h2><p>ECMAScript 2015的几个补充，并不是新的内置实现或语法，而是协议。这些协议可以被任何遵循某些约定的对象来实现。有两个协议：可迭代协议和迭代器协议。
+JavaScript 提供了许多迭代集合的方法，从简单的 for 循环到 map() 和 filter()，迭代器和生成器将迭代的概念直接带入核心语言，并提供了一种机制来自定义 for&mldr;of 循环的行为</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>myIterator</span> <span style=color:#f92672>=</span> {
+    <span style=color:#a6e22e>next</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span>() {
+        <span style=color:#75715e>// ...
+</span><span style=color:#75715e></span>    },
+    [<span style=color:#a6e22e>Symbol</span>.<span style=color:#a6e22e>iterator</span>]<span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span>() { <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span> }
+}
+</code></pre></div><h2 id=可迭代协议>可迭代协议
+<a class=heading-link href=#%e5%8f%af%e8%bf%ad%e4%bb%a3%e5%8d%8f%e8%ae%ae><i class="fa fa-link" aria-hidden=true></i></a></h2><p>为了变成可迭代对象， 一个对象必须实现 @@iterator 方法, 意思是这个对象（或者它原型链 prototype chain 上的某个对象）必须有一个名字是 Symbol.iterator 的属性:</p><blockquote><p>[Symbol.iterator]
+返回一个对象的无参函数，被返回对象符合迭代器协议。</p></blockquote><p>当一个对象需要被迭代的时候（比如开始用于一个for..of循环中），它的@@iterator方法被调用并且无参数，然后返回一个用于在迭代中获得值的迭代器。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>people</span>{
+    <span style=color:#a6e22e>constructor</span>(<span style=color:#a6e22e>index</span>){
+        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>index</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>index</span>;
+    }
+    <span style=color:#a6e22e>next</span>(){
+        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>index</span><span style=color:#f92672>++</span>;
+        <span style=color:#66d9ef>return</span>{
+            <span style=color:#a6e22e>done</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>index</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>10</span>,
+            <span style=color:#a6e22e>value</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>index</span>
+        }
+    }
+    [<span style=color:#a6e22e>Symbol</span>.<span style=color:#a6e22e>iterator</span>](){
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span>;
+    }
+}
+
+<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>a</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>people</span>(<span style=color:#ae81ff>3</span>);
+<span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>val</span> <span style=color:#66d9ef>of</span> <span style=color:#a6e22e>a</span>){
+    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>val</span>);
+}
+
+<span style=color:#75715e>//缺失[Symbol.iterator]会报错误a is not iterable
+</span></code></pre></div><p>或者</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>myIterator</span> <span style=color:#f92672>=</span> {
+    <span style=color:#a6e22e>num</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>2</span>,
+    <span style=color:#a6e22e>next</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
+
+        <span style=color:#66d9ef>return</span>  {
+            <span style=color:#a6e22e>value</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>num</span> <span style=color:#f92672>*=</span> <span style=color:#ae81ff>2</span>,
+            <span style=color:#a6e22e>done</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span>
+        }
+    },
+    [<span style=color:#a6e22e>Symbol</span>.<span style=color:#a6e22e>iterator</span>]<span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span>;
+    }
+}
+</code></pre></div><h2 id=迭代器协议>迭代器协议
+<a class=heading-link href=#%e8%bf%ad%e4%bb%a3%e5%99%a8%e5%8d%8f%e8%ae%ae><i class="fa fa-link" aria-hidden=true></i></a></h2><p>该迭代器协议定义了一种标准的方式来产生一个有限或无限序列的值，并且当所有的值都已经被迭代后，就会有一个默认的返回值。
+当一个对象只有满足下述条件才会被认为是一个迭代器：
+它实现了一个 next() 的方法并且拥有以下含义：</p><blockquote><p>next
+返回一个对象的无参函数，被返回对象拥有两个属性：
+done (boolean)
+true:迭代器已经超过了可迭代次数。这种情况下,value的值可以被省略
+如果迭代器可以产生序列中的下一个值，则为 false。这等效于没有指定done这个属性。
+value - 迭代器返回的任何 JavaScript 值。done 为 true 时可省略。
+next 方法必须要返回一一个对象，该对象有两个必要的属性： done和value，如果返回一个非对象值（比如false和undefined) 会展示一个 TypeError (&ldquo;iterator.next() returned a non-object value&rdquo;) 的错误</p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>people</span>{
+    <span style=color:#a6e22e>constructor</span>(<span style=color:#a6e22e>index</span>){
+        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>index</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>index</span>;
+    }
+    <span style=color:#a6e22e>next</span>(){
+        <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>index</span><span style=color:#f92672>++</span>;
+        <span style=color:#66d9ef>return</span>{
+            <span style=color:#a6e22e>done</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>index</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>10</span>,
+            <span style=color:#a6e22e>value</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>index</span>
+        }
+    }
+}
+
+<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>a</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>people</span>(<span style=color:#ae81ff>3</span>);
+<span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>val</span> <span style=color:#66d9ef>of</span> <span style=color:#a6e22e>a</span>){
+    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>val</span>);
+}
+</code></pre></div><h2 id=常见的迭代器>常见的迭代器
+<a class=heading-link href=#%e5%b8%b8%e8%a7%81%e7%9a%84%e8%bf%ad%e4%bb%a3%e5%99%a8><i class="fa fa-link" aria-hidden=true></i></a></h2><p>String, Array, TypedArray, Map and Set 是所有内置可迭代对象， 因为它们的原型对象都有一个 @@iterator 方法.</p><h2 id=string-是一个内置的可迭代对象>String 是一个内置的可迭代对象:
+<a class=heading-link href=#string-%e6%98%af%e4%b8%80%e4%b8%aa%e5%86%85%e7%bd%ae%e7%9a%84%e5%8f%af%e8%bf%ad%e4%bb%a3%e5%af%b9%e8%b1%a1><i class="fa fa-link" aria-hidden=true></i></a></h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>iterator</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;some&#39;</span>[<span style=color:#a6e22e>Symbol</span>.<span style=color:#a6e22e>iterator</span>]();
+<span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>val</span> <span style=color:#66d9ef>of</span> <span style=color:#a6e22e>iterator</span>){
+    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>val</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>,<span style=color:#a6e22e>iterator</span>.<span style=color:#a6e22e>next</span>());
+}
+
+<span style=color:#a6e22e>s</span> { <span style=color:#a6e22e>value</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;o&#39;</span>, <span style=color:#a6e22e>done</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span> }
+<span style=color:#a6e22e>m</span> { <span style=color:#a6e22e>value</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;e&#39;</span>, <span style=color:#a6e22e>done</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span> }
+</code></pre></div><h2 id=接受可迭代对象的内置-api>接受可迭代对象的内置 API
+<a class=heading-link href=#%e6%8e%a5%e5%8f%97%e5%8f%af%e8%bf%ad%e4%bb%a3%e5%af%b9%e8%b1%a1%e7%9a%84%e5%86%85%e7%bd%ae-api><i class="fa fa-link" aria-hidden=true></i></a></h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>myObj</span> <span style=color:#f92672>=</span> {};
+<span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Map</span>([[<span style=color:#ae81ff>1</span>,<span style=color:#e6db74>&#34;a&#34;</span>],[<span style=color:#ae81ff>2</span>,<span style=color:#e6db74>&#34;b&#34;</span>],[<span style=color:#ae81ff>3</span>,<span style=color:#e6db74>&#34;c&#34;</span>]]).<span style=color:#a6e22e>get</span>(<span style=color:#ae81ff>2</span>);               <span style=color:#75715e>// &#34;b&#34;
+</span><span style=color:#75715e></span><span style=color:#66d9ef>new</span> <span style=color:#a6e22e>WeakMap</span>([[{},<span style=color:#e6db74>&#34;a&#34;</span>],[<span style=color:#a6e22e>myObj</span>,<span style=color:#e6db74>&#34;b&#34;</span>],[{},<span style=color:#e6db74>&#34;c&#34;</span>]]).<span style=color:#a6e22e>get</span>(<span style=color:#a6e22e>myObj</span>); <span style=color:#75715e>// &#34;b&#34;
+</span><span style=color:#75715e></span><span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Set</span>([<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>]).<span style=color:#a6e22e>has</span>(<span style=color:#ae81ff>3</span>);                               <span style=color:#75715e>// true
+</span><span style=color:#75715e></span><span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Set</span>(<span style=color:#e6db74>&#34;123&#34;</span>).<span style=color:#a6e22e>has</span>(<span style=color:#e6db74>&#34;2&#34;</span>);                                 <span style=color:#75715e>// true
+</span><span style=color:#75715e></span><span style=color:#66d9ef>new</span> <span style=color:#a6e22e>WeakSet</span>(<span style=color:#66d9ef>function</span><span style=color:#f92672>*</span>() {
+    <span style=color:#66d9ef>yield</span> {};
+    <span style=color:#66d9ef>yield</span> <span style=color:#a6e22e>myObj</span>;
+    <span style=color:#66d9ef>yield</span> {};
+}()).<span style=color:#a6e22e>has</span>(<span style=color:#a6e22e>myObj</span>); 
+</code></pre></div><p>另外还有 Promise.all(iterable), Promise.race(iterable) 以及 Array.from().</p><h2 id=用于可迭代对象的语法>用于可迭代对象的语法
+<a class=heading-link href=#%e7%94%a8%e4%ba%8e%e5%8f%af%e8%bf%ad%e4%bb%a3%e5%af%b9%e8%b1%a1%e7%9a%84%e8%af%ad%e6%b3%95><i class="fa fa-link" aria-hidden=true></i></a></h2><p>一些语句和表达式是预料会用于可迭代对象，比如 for-of 循环，spread operator, yield* 和 destructuring assignment</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>value</span> <span style=color:#66d9ef>of</span> [<span style=color:#e6db74>&#34;a&#34;</span>, <span style=color:#e6db74>&#34;b&#34;</span>, <span style=color:#e6db74>&#34;c&#34;</span>]){
+    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>value</span>);
+}
+<span style=color:#75715e>// &#34;a&#34;
+</span><span style=color:#75715e>// &#34;b&#34;
+</span><span style=color:#75715e>// &#34;c&#34;
+</span><span style=color:#75715e></span>
+[...<span style=color:#e6db74>&#34;abc&#34;</span>]; <span style=color:#75715e>// [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;]
+</span><span style=color:#75715e></span>
+<span style=color:#66d9ef>function</span><span style=color:#f92672>*</span> <span style=color:#a6e22e>gen</span>(){
+  <span style=color:#66d9ef>yield</span><span style=color:#f92672>*</span> [<span style=color:#e6db74>&#34;a&#34;</span>, <span style=color:#e6db74>&#34;b&#34;</span>, <span style=color:#e6db74>&#34;c&#34;</span>];
+}
+
+<span style=color:#a6e22e>gen</span>().<span style=color:#a6e22e>next</span>(); <span style=color:#75715e>// { value:&#34;a&#34;, done:false }
+</span><span style=color:#75715e></span>
+[<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>, <span style=color:#a6e22e>c</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Set</span>([<span style=color:#e6db74>&#34;a&#34;</span>, <span style=color:#e6db74>&#34;b&#34;</span>, <span style=color:#e6db74>&#34;c&#34;</span>]);
+<span style=color:#a6e22e>a</span> <span style=color:#75715e>// &#34;a&#34;
+</span></code></pre></div><h2 id=自定义迭代器>自定义迭代器
+<a class=heading-link href=#%e8%87%aa%e5%ae%9a%e4%b9%89%e8%bf%ad%e4%bb%a3%e5%99%a8><i class="fa fa-link" aria-hidden=true></i></a></h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>myIterable</span> <span style=color:#f92672>=</span> {};
+<span style=color:#a6e22e>myIterable</span>[<span style=color:#a6e22e>Symbol</span>.<span style=color:#a6e22e>iterator</span>] <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span><span style=color:#f92672>*</span> () {
+    <span style=color:#66d9ef>yield</span> <span style=color:#ae81ff>1</span>;
+    <span style=color:#66d9ef>yield</span> <span style=color:#ae81ff>2</span>;
+    <span style=color:#66d9ef>yield</span> <span style=color:#ae81ff>3</span>;
+};
+[...<span style=color:#a6e22e>myIterable</span>]; <span style=color:#75715e>// [1, 2, 3]
+</span></code></pre></div><h2 id=迭代器示例>迭代器示例
+<a class=heading-link href=#%e8%bf%ad%e4%bb%a3%e5%99%a8%e7%a4%ba%e4%be%8b><i class="fa fa-link" aria-hidden=true></i></a></h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>makeIterator</span>(<span style=color:#a6e22e>array</span>){
+    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>nextIndex</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+    
+    <span style=color:#66d9ef>return</span> {
+       <span style=color:#a6e22e>next</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span>(){
+           <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>nextIndex</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>array</span>.<span style=color:#a6e22e>length</span> <span style=color:#f92672>?</span>
+               {<span style=color:#a6e22e>value</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>array</span>[<span style=color:#a6e22e>nextIndex</span><span style=color:#f92672>++</span>], <span style=color:#a6e22e>done</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span>} <span style=color:#f92672>:</span>
+               {<span style=color:#a6e22e>done</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>true</span>};
+       }
+    };
+}
+
+<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>it</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>makeIterator</span>([<span style=color:#e6db74>&#39;yo&#39;</span>, <span style=color:#e6db74>&#39;ya&#39;</span>]);
+
+<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>it</span>.<span style=color:#a6e22e>next</span>().<span style=color:#a6e22e>value</span>); <span style=color:#75715e>// &#39;yo&#39;
+</span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>it</span>.<span style=color:#a6e22e>next</span>().<span style=color:#a6e22e>value</span>); <span style=color:#75715e>// &#39;ya&#39;
+</span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>it</span>.<span style=color:#a6e22e>next</span>().<span style=color:#a6e22e>done</span>);  <span style=color:#75715e>// true
+</span></code></pre></div><h2 id=生成器式的迭代器>生成器式的迭代器
+<a class=heading-link href=#%e7%94%9f%e6%88%90%e5%99%a8%e5%bc%8f%e7%9a%84%e8%bf%ad%e4%bb%a3%e5%99%a8><i class="fa fa-link" aria-hidden=true></i></a></h2><p>生成器对象是由一个 generator function 返回的,并且它符合可迭代协议和迭代器协议</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>function</span><span style=color:#f92672>*</span> <span style=color:#a6e22e>anotherGenerator</span>(<span style=color:#a6e22e>i</span>) {
+  <span style=color:#66d9ef>yield</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>;
+  <span style=color:#66d9ef>yield</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>2</span>;
+  <span style=color:#66d9ef>yield</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>3</span>;
+}
+
+<span style=color:#66d9ef>function</span><span style=color:#f92672>*</span> <span style=color:#a6e22e>generator</span>(<span style=color:#a6e22e>i</span>){
+  <span style=color:#66d9ef>yield</span> <span style=color:#a6e22e>i</span>;
+
+  <span style=color:#75715e>//   yield* 表达式用于委托给另一个generator 或可迭代对象
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>yield</span><span style=color:#f92672>*</span> <span style=color:#a6e22e>anotherGenerator</span>(<span style=color:#a6e22e>i</span>);
+  <span style=color:#66d9ef>yield</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>10</span>;
+}
+
+<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>gen</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>generator</span>(<span style=color:#ae81ff>10</span>);
+</code></pre></div><p>生成器对象 既是迭代器也是可迭代对象:就像前面所说的，一个良好的迭代即实现了迭代器协议，又实现了可迭代协议，方式就是可迭代协议返回的是自身</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>aGeneratorObject</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span><span style=color:#f92672>*</span>(){
+    <span style=color:#66d9ef>yield</span> <span style=color:#ae81ff>1</span>;
+    <span style=color:#66d9ef>yield</span> <span style=color:#ae81ff>2</span>;
+    <span style=color:#66d9ef>yield</span> <span style=color:#ae81ff>3</span>;
+}();
+<span style=color:#66d9ef>typeof</span> <span style=color:#a6e22e>aGeneratorObject</span>.<span style=color:#a6e22e>next</span>;
+<span style=color:#75715e>// &#34;function&#34;, because it has a next method, so it&#39;s an iterator
+</span><span style=color:#75715e></span><span style=color:#66d9ef>typeof</span> <span style=color:#a6e22e>aGeneratorObject</span>[<span style=color:#a6e22e>Symbol</span>.<span style=color:#a6e22e>iterator</span>];
+<span style=color:#75715e>// &#34;function&#34;, because it has an @@iterator method, so it&#39;s an iterable
+</span><span style=color:#75715e></span><span style=color:#a6e22e>aGeneratorObject</span>[<span style=color:#a6e22e>Symbol</span>.<span style=color:#a6e22e>iterator</span>]() <span style=color:#f92672>===</span> <span style=color:#a6e22e>aGeneratorObject</span>;
+<span style=color:#75715e>// true, because its @@iterator method return its self (an iterator), so it&#39;s an well-formed iterable
+</span><span style=color:#75715e></span>[...<span style=color:#a6e22e>aGeneratorObject</span>];
+<span style=color:#75715e>// [1, 2, 3]
+</span></code></pre></div><div id=vcomments></div></article></section></div></main><script src=/js/coder.min.a350362441276ec5c1671926420497bb8e52b63ead1d51d3c9bc4342d0039526.js integrity="sha256-o1A2JEEnbsXBZxkmQgSXu45Stj6tHVHTybxDQtADlSY="></script><script src=/js/valine.min.js></script><script src=/js/custom.js></script></body></html>

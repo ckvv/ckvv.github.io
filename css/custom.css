@@ -1,0 +1,29 @@
+#search-content {
+  height: 100%;
+  font-size: 0 !important;
+  display: flex;
+  margin-left: 12px;
+}
+
+#search-content #search-int {
+  height: 26px;
+  font-size: 12px;
+  padding: 4px 8px;
+}
+#search-content .search-btn {
+  font-size: 12px;
+  height: 26px;
+  padding: 4px 8px;
+  border-left: 0;
+  border: 1px solid gray;
+}
+@media only screen and (max-width: 768px) {
+  #search-content {
+    margin-bottom: 15px;
+    flex-direction: column;
+    margin-left: 0;
+  }
+  #search-content .search-btn {
+    margin-top: 12px;
+  }
+}

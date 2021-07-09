@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>文章 on 博客</title><link>https://chenkai0520.github.io/tags/%E6%96%87%E7%AB%A0/</link><description>Recent content in 文章 on 博客</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 09 Jul 2021 15:37:56 +0800</lastBuildDate><atom:link href="https://chenkai0520.github.io/tags/%E6%96%87%E7%AB%A0/index.xml" rel="self" type="application/rss+xml"/><item><title>Base64原理及实现</title><link>https://chenkai0520.github.io/posts/base64_yuanli_and_shijian/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/posts/base64_yuanli_and_shijian/</guid><description>base64 Base64是用64个字符来表示数据的方法。Base64要求把每三个8Bit的字节转换为四个6Bit的字节，然后把6Bit再添两位高位0，组成四个8Bit的字节，也就是说，转换后的字符串理论上将要比原来的长1/3。如果要转码数据字节不是3的倍数，最后一组填充1到2个0字节，并在最后编码完成后在结尾添加1到2个=号。 转换后，我们每个字节范围为[00000000-00111111],所以我们可以用一个64码表来得到我们想要的字符串（也就是最终的Base64编码）标准的Base64用[A-Z,a-z,0-9,+,/]64个字符编码。
+编码 深入了解base64前，我们需要先了解编码。编码是信息从一种形式或格式转换为另一种形式的过程。计算机中，所有的数据在存储和运算时都使用二进制示，n位二进制组合成2的n次方个不同的信息，给每个信息规定一个具体码组，这种过程叫编码。而具体用哪些二进制数字表示哪个符号，每个人都可以约定自己的一套编码。
+如常用的ASCII是由美国国家标准学会制定的一种单字节字符编码，标准ASCII码使用7位二进制数（剩下的1位二进制为0）来表示所有的大写和小写字母，数字0到9、标点符号。在有的语言中128个符号是不够的，有些编码方案利用字节中闲置的最高位编入新的符号，有的利用两个（GBK等）或更多字节（utf-32等）表示一个符号（汉字）
+Base64编码 base64编码过程：
+ascii码s133对应的编码115 49 51 51 在内存2进制表示： 01110011 00110001 00110011 00110011 每三组分为6Bit四组 011100 110011 000100 110011 001100 110000 000000 000000 高位补0得到 00011100 00110011 00000100 00110011 00001100 00110000 00000000 00000000 对应十进制 28 51 4 51 12 48 0 0 查对照表 生成base64码czEzMw== base64解码过程：
+base64编码过程逆向即为解码
+javascript代码实现 Base64 = { _table: [ &amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;E&amp;#39;, &amp;#39;F&amp;#39;, &amp;#39;G&amp;#39;, &amp;#39;H&amp;#39;, &amp;#39;I&amp;#39;, &amp;#39;J&amp;#39;, &amp;#39;K&amp;#39;, &amp;#39;L&amp;#39;, &amp;#39;M&amp;#39;, &amp;#39;N&amp;#39;, &amp;#39;O&amp;#39;, &amp;#39;P&amp;#39;, &amp;#39;Q&amp;#39;, &amp;#39;R&amp;#39;, &amp;#39;S&amp;#39;, &amp;#39;T&amp;#39;, &amp;#39;U&amp;#39;, &amp;#39;V&amp;#39;, &amp;#39;W&amp;#39;, &amp;#39;X&amp;#39;, &amp;#39;Y&amp;#39;, &amp;#39;Z&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;, &amp;#39;e&amp;#39;, &amp;#39;f&amp;#39;, &amp;#39;g&amp;#39;, &amp;#39;h&amp;#39;, &amp;#39;i&amp;#39;, &amp;#39;j&amp;#39;, &amp;#39;k&amp;#39;, &amp;#39;l&amp;#39;, &amp;#39;m&amp;#39;, &amp;#39;n&amp;#39;, &amp;#39;o&amp;#39;, &amp;#39;p&amp;#39;, &amp;#39;q&amp;#39;, &amp;#39;r&amp;#39;, &amp;#39;s&amp;#39;, &amp;#39;t&amp;#39;, &amp;#39;u&amp;#39;, &amp;#39;v&amp;#39;, &amp;#39;w&amp;#39;, &amp;#39;x&amp;#39;, &amp;#39;y&amp;#39;, &amp;#39;z&amp;#39;, &amp;#39;0&amp;#39;, &amp;#39;1&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;3&amp;#39;, &amp;#39;4&amp;#39;, &amp;#39;5&amp;#39;, &amp;#39;6&amp;#39;, &amp;#39;7&amp;#39;, &amp;#39;8&amp;#39;, &amp;#39;9&amp;#39;, &amp;#39;+&amp;#39;, &amp;#39;/&amp;#39; ], _getReg: function () { return RegExp(`^[${this.</description></item><item><title>HTTP API 认证授权术</title><link>https://chenkai0520.github.io/posts/http-api-renzhengshouquan/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/posts/http-api-renzhengshouquan/</guid><description>转载自https://coolshell.cn/articles/19395.html#coolshell-2
+我们知道，HTTP是无状态的，所以，当我们需要获得用户是否在登录的状态时，我们需要检查用户的登录状态，一般来说，用户的登录成功后，服务器会发一个登录凭证（又被叫作Token），就像你去访问某个公司，在前台被认证过合法后，这个公司的前台会给你的一个访客卡一样，之后，你在这个公司内去到哪都用这个访客卡来开门，而不再校验你是哪一个人。在计算机的世界里，这个登录凭证的相关数据会放在两种地方，一个地方在用户端，以Cookie的方式（一般不会放在浏览器的Local Storage，因为这很容易出现登录凭证被XSS攻击），另一个地方是放在服务器端，又叫Session的方式（SessonID存于Cookie）。
+但是，这个世界还是比较复杂的，除了用户访问，还有用户委托的第三方的应用，还有企业和企业间的调用，这里，我想把业内常用的一些 API认证技术相对系统地总结归纳一下，这样可以让大家更为全面的了解这些技术。注意，这是一篇长文！
+本篇文章会覆盖如下技术：
+HTTP Basic Digest Access App Secret Key + HMAC JWT – JSON Web Tokens OAuth 1.0 – 3 legged &amp;amp; 2 legged OAuth 2.0 – Authentication Code &amp;amp; Client Credential 目录
+HTTP BasicDigest AccessApp Secret Key + HMACJWT – JSON Web TokensOAuth 1.0OAuth 2.0Authorization Code FlowClient Credential Flow小结两个概念和三个术语明白一些初衷相关的注意事项
+HTTP Basic HTTP Basic 是一个非常传统的API认证技术，也是一个比较简单的技术。这个技术也就是使用 username和 password 来进行登录。整个过程被定义在了 RFC 2617 中，也被描述在了 Wikipedia: Basic Access Authentication 词条中，同时也可以参看 MDN HTTP Authentication</description></item><item><title>HTTP的前世今生</title><link>https://chenkai0520.github.io/posts/http/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/posts/http/</guid><description>转载自https://coolshell.cn/articles/19840.html
+HTTP (Hypertext transfer protocol) 翻译成中文是超文本传输协议，是互联网上重要的一个协议，由欧洲核子研究委员会CERN的英国工程师 Tim Berners-Lee v发明的，同时，他也是WWW的发明人，最初的主要是用于传递通过HTML封装过的数据。在1991年发布了HTTP 0.9版，在1996年发布1.0版，1997年是1.1版，1.1版也是到今天为止传输最广泛的版本（初始RFC 2068 在1997年发布， 然后在1999年被 RFC 2616 取代，再在2014年被 RFC 7230 /7231/7232/7233/7234/7235取代），2015年发布了2.0版，其极大的优化了HTTP/1.1的性能和安全性，而2018年发布的3.0版，继续优化HTTP/2，激进地使用UDP取代TCP协议，目前，HTTP/3 在2019年9月26日 被 Chrome，Firefox，和Cloudflare支持，所以我想写下这篇文章，简单地说一下HTTP的前世今生，让大家学到一些知识，并希望可以在推动一下HTTP标准协议的发展。
+HTTP 0.9 / 1.0 0.9和1.0这两个版本，就是最传统的 request – response的模式了，HTTP 0.9版本的协议简单到极点，请求时，不支持请求头，只支持 GET 方法，没了。HTTP 1.0 扩展了0.9版，其中主要增加了几个变化：
+在请求中加入了HTTP版本号，如：GET /coolshell/index.html HTTP/1.0 HTTP 开始有 header了，不管是request还是response 都有header了。 增加了HTTP Status Code 标识相关的状态码。 还有 Content-Type 可以传输其它的文件了。 我们可以看到，HTTP 1.0 开始让这个协议变得很文明了，一种工程文明。因为：
+一个协议有没有版本管理，是一个工程化的象征。 header是协议可以说是把元数据和业务数据解耦，也可以说是控制逻辑和业务逻辑的分离。 Status Code 的出现可以让请求双方以及第三方的监控或管理程序有了统一的认识。最关键是还是控制错误和业务错误的分离。 （注：国内很多公司HTTP无论对错只返回200，这种把HTTP Status Code 全部抹掉完全是一种工程界的倒退）</description></item><item><title>JavaScript脚手架</title><link>https://chenkai0520.github.io/javascript/js_cli_jiaoshoujia/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/javascript/js_cli_jiaoshoujia/</guid><description>什么是脚手架 脚手架是为了保证各施工过程顺利进行而搭设的工作平台。在项目开发中我们把创建项目结构模版的工具也称之为脚手架。如vue-cli，create-react-app等。这些脚手架等原理都一样，即用Node.js命令行程序生成项目模版。
+第一个Node.js命令行脚本 编写脚手架其实就是Node.js命令行开发,和写shell脚本类似，使用JavaScript语言，写一个可执行脚本 hello wold过程如下： 新建一个hello文件，其中#!/usr/bin/env node不可少，其作用是它告诉系统这个脚本需要用node解释器来执行，语法与node一样。
+#!/usr/bin/env node console.log('hello world'); 然后,修改的权限
+chmod 755 hello 执行脚本
+./hello 如果想把 hello 前面的路径去除，可以将 hello 的路径加入环境变量 PATH。但是，另一种更好的做法，是在当前目录下新建 package.json ，写入下面的内容。
+{ &amp;#34;name&amp;#34;: &amp;#34;hello&amp;#34;, &amp;#34;bin&amp;#34;: { &amp;#34;hello&amp;#34;: &amp;#34;hello&amp;#34; } } 然后执行 npm link 命令。
+npm link 执行脚本
+hello 写一个脚手架 脚手架开发与上面过程类似，有一些npm库可以帮助我们开发命令行工具如shelljs、commander，它们封装了node命令行命令可以更方便命令行开发。 文件目录结构
+. ├── bin │ └── ckoa.js ├── package-lock.json ├── package.json └── utils └── download.js ckoa.js Node.</description></item><item><title>redis的五种数据结构及其使用场景</title><link>https://chenkai0520.github.io/posts/redis_use_scene/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/posts/redis_use_scene/</guid><description>from https://www.cnblogs.com/ottll/p/9470480.html
+String 常用命令：
+get、set、incr、decr、mget等
+应用场景：
+String是最常用的数据类型，普通的key/value都可以归为此类，value其实不仅是String，也可以是数字。
+比如想知道什么时候封锁一个IP地址(访问超过几次)。INCRBY命令让这些变得很容易，通过原子递增保持计数。
+实现方式：
+m,decr等操作时会转成数值型进行计算，此时redisObject的encoding字段为int。
+2.Hash
+常用命令：
+hget、hset、hgetall等
+应用场景：
+比如我们要存储一个用户的信息，包含以下信息：
+用户ID，为查找的key
+存储的value用户对象包含姓名name，年龄age，生日birthday 等信息
+如果以普通的key/value结构存储，主要有以下两种存储方式：
+第一种方式将用户id作为key，其他信息封装成对象以序列化的方式存储，如
+set u001 &amp;ldquo;李三,18,20010101&amp;rdquo;
+这种方式的缺点，增加了序列化/反序列化的开销；需要修改其中一项信息时，需要把整个对象取回，修改操作需要对并发进行保护，引入CAS等复杂问题。
+第二种方式是这个用户信息有多少成员就存成多少个key-value对，用用户id+对应属性名称作为唯一的标识来取得对应属性的值，如：
+mset user:001:name &amp;ldquo;李三 &amp;ldquo;user:001:age18 user:001:birthday &amp;ldquo;20010101&amp;rdquo;
+虽然省去了序列化开销和并发问题，但是用户ID为重复存储，如果存在大量这样的数据，内存浪费较大。
+redis提供的hash很好的解决了这个问题，redis的hash实际是内部存储的value为一个HashMap，并且提供了直接存取这个map的成员接口。如
+hmset user:001 name &amp;ldquo;李三&amp;rdquo; age 18 birthday &amp;ldquo;20010101&amp;rdquo;
+也就是说，key仍然是用户id，value是一个map，这个map的key是成员的属性名，value是属性值。
+这里同时需要注意，Redis提供了接口(hgetall)可以直接取到全部的属性数据,但是如果内部Map的成员很多，那么涉及到遍历整个内部Map的操作，由于Redis单线程模型的缘故，这个遍历操作可能会比较耗时，而另其它客户端的请求完全不响应，这点需要格外注意。
+实现方式：
+Redis的Hash对应的Value内部实际就是一个HashMap，实际有两种不同的实现，如果成员较少时，Redis为了节省内存会采用类似一维数组方式存储，对应的value RedisObject的encoding为zipmap，当成员数量增大时会自动转成真正的HashMap，此时encoding为ht。
+3.List
+常用命令：
+lpush,rpush,lpop,rpop,lrange,BLPOP(阻塞版)等。
+应用场景：
+最新消息排行。
+消息队列。利用Lists的push的操作，将任务存储在list中，然后工作线程再用pop操作将任务取出进行执行。
+实现方式：
+redis list的实现是一个双向链表，可以支持反向查找和遍历，更方便操作，不过带来了部分额外的内存开销，redis内部的很多实现，包括发送缓冲队列等也都用的是这个数据结构。
+Set 常用命令：
+sadd,srem,spop,sdiff ,smembers,sunion 等。
+应用场景：
+set类似list，特殊之处是set可以自动排重。
+set还提供了某个成员是否在一个set内的接口，这个也是list没有的。
+比如在微博应用中，每个人的好友存在一个集合（set）中，这样求两个人的共同好友的操作，可能就只需要用求交集命令即可。
+Redis还为集合提供了求交集、并集、差集等操作。
+实现方式：
+set内部实现是一个value永远为null的HashMap，实际就是通过hash的方式快速排重的。</description></item><item><title>rewire库</title><link>https://chenkai0520.github.io/posts/package_rewire/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/posts/package_rewire/</guid><description>如果模块未导出一些函数，则模块外部的测试代码无法调用该功能。那是由于JavaScript的工作方式，有时我们希望测试局部函数。 rewire库在模块中添加了一个特殊的setter和getter，因此您可以修改它们的行为以进行更好的单元测试 rewire库功能：
+为其他模块或全局变量（如进程）注入模拟 测试私有变量 覆盖模块中的变量 rewire接口 rewire(filename: String): rewiredModule Returns a rewired version of the module found at filename. Use rewire() exactly like require().
+rewiredModule.__set__(name: String, value: *): Function Sets the internal variable name to the given value. Returns a function which can be called to revert the change.
+rewiredModule.__set__(obj: Object): Function Takes all enumerable keys of obj as variable names and sets the values respectively.</description></item><item><title>WebAssembly上手</title><link>https://chenkai0520.github.io/posts/webassembly/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/posts/webassembly/</guid><description>WebAssembly是什么 WebAssembly是为高效执行和紧凑表示而设计的运行在现代处理器（包括浏览器）中的一种快速、安全、可移植的底层代码格式，具有紧凑的二进制格式，可以以接近本机的性能运行。2019年12月5日W3C宣布WebAssembly核心规范成为正式标准。名字上可以知道是给Web使用的汇编语言。但是WebAssembly并不是直接用汇编语言，而提供了转换机制（LLVM IR），把高级别的语言（AssemblyScript、go、C、C++、Rust等）编译为WebAssembly，以便有机会通过Web浏览器执行低级二进制语法 。
+WebAssembl的特点 WebAssembly是一门不同于JavaScript的语言，它不是用来取代JavaScript的。相反，它被设计为和JavaScript一起协同工作，从而使得网络开发者能够利用两种语言的优势，通过使用WebAssembly的JavaScriptAPI，你可以把WebAssembly模块加载到一个JavaScript应用中并且在两者之间共享功能。这允许你在同一个应用中利用WebAssembly的性能以及JavaScript的表达力和灵活性，即使你可能并不知道如何编写WebAssembly代码。
+快速：大幅度提高 Javascript 的性能，以接近本机的代码性能执行。 安全：代码经过验证并在内存安全沙盒环境中执行，可防止数据损坏或安全漏洞。 与语言无关：允许任何语言编译到WebAssembly， 可以用其他高级语言写网页。 与硬件无关：可以在所有现代体系结构，台式机或移动设备以及嵌入式系统上进行编译。 与平台无关：可以嵌入在浏览器中，作为独立VM运行或集成在其他环境中。 紧凑：具有比典型的文本或本机代码格式小的传输速度快的二进制格式。 模块化：程序可以分成较小的部分，可以分别传输，缓存和使用。 高效：可以通过快速一次通过来解码，验证和编译，等同于实时（JIT）或提前（AOT）编译。 Streamable：允许在看到所有数据之前尽快开始解码，验证和编译。 为什么WebAssembly比JavaScript 执行效率更高 WebAssembly最吸引人的特点便是它的执行效率，比JavaScript执行效率更高主要有以下原因：
+文件获取阶段：WebAssembly 比 JavaScript 抓取文件更快。即使 JavaScript 进行了压缩，WebAssembly 文件的体积也比 JavaScript 更小； 解析阶段：WebAssembly 的解码时间比 JavaScript 的解析时间更短； 编译和优化阶段：WebAssembly 更具优势，因为 WebAssembly 的代码更接近机器码，而 JavaScript 要先通过服务器端进行代码优化。 重优化阶段：WebAssembly 不会发生重优化现象。而 JS 引擎的优化假设则可能会发生“抛弃优化代码&amp;lt;-&amp;gt;重优化”现象。 执行阶段：WebAssembly 更快是因为开发人员不需要懂太多的编译器技巧，而这在 JavaScript 中是需要的。WebAssembly 代码也更适合生成机器执行效率更高的指令。 垃圾回收阶段：WebAssembly 垃圾回收都是手动控制的，效率比自动回收更高。 如何使用WebAssembly 高级语言编译到 .wasm 文件 WebAssembly 字节码是一种抹平了不同 CPU 架构的机器码，WebAssembly 字节码不能直接在任何一种 CPU 架构上运行， 但由于非常接近机器码，可以非常快的被翻译为对应架构的机器码，因此 WebAssembly 运行速度和机器码接近，这听上去非常像 Java 字节码。 想要编译成WebAssembly，你首先需要先编译 LLVM，参考webassembly.</description></item><item><title>webpack总结</title><link>https://chenkai0520.github.io/posts/webpack/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/posts/webpack/</guid><description>loader webpack 可以使用 loader 来预处理文件。这允许你打包除 JavaScript 之外的任何静态资源。你可以使用 Node.js 来很简单地编写自己的 loader。loader 通过在 require() 语句中使用 loadername! 前缀来激活，或者通过 webpack 配置中的正则表达式来自动应用;
+import Worker from &amp;#39;worker-loader!./Worker.js&amp;#39;; // 或者 { module: { rules: [ { test: /\.worker\.js$/, use: { loader: &amp;#39;worker-loader&amp;#39; } } ] } } 懒加载 代码分离 shimming 一些第三方的库(library)可能会引用一些全局依赖（例如 jQuery 中的 $）。这些库也可能创建一些需要被导出的全局变量。这些“不符合规范的模块”就是 shimming 发挥作用的地方。 使用 ProvidePlugin 后，能够在通过 webpack 编译的每个模块中，通过访问一个变量来获取到 package 包。如果 webpack 知道这个变量在某个模块中被使用了，那么 webpack 将在最终 bundle 中引入我们给定的 package。 本质上，我们所做的，就是告诉 webpack……</description></item><item><title>前后端通过切片上传文件</title><link>https://chenkai0520.github.io/posts/web_upload_file/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/posts/web_upload_file/</guid><description>最近在做前端上传文件，主要包括选择单个｜多个文件、单个｜多个文件夹、拖拽文件｜文件夹方式上传文件，上传时通过分片计算文件hash值实现断点续传、秒传功能，简要介绍下具体实行思路
+获取用户选择文件 注意这种方式用到的部分特性是非标准的
+拖拽上传 从可拖拽区域中获取过滤获取拖拽的文件的FileSystemEntry
+async drop(e) { e.stopPropagation(); e.preventDefault(); let items = e.dataTransfer.items; let dropFilesEntrys = []; for (let item of items) { if (!item || !item.webkitGetAsEntry) continue; item = item.webkitGetAsEntry(); if (!item) continue; let filesEntrys = await this.getFilesEntrys(item); dropFilesEntrys.push(...filesEntrys); } let files = await this.transformFilesEntrys(dropFilesEntrys); this.handerFiles(files); }, 获取FileSystemEntry包含的FilesEntrys，FileSystemEntry可能代表文件系统中的文件或者目录
+/** * 获取drop区域的文件 * @returns FilesEntrys */ async getFilesEntrys(item) { let filesEntrys = []; let scanFiles = async (item) =&amp;gt; { return new Promise((resolve) =&amp;gt; { if (item.</description></item><item><title>手机web端调试</title><link>https://chenkai0520.github.io/web/web_phone_debug_/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/web/web_phone_debug_/</guid><description>最近使用vue开发的一个应用，在部分手机页面中会出现时而正常时而异常的问题，由手机中调试不如桌面那么方便，想着在网上找找有没有现成的解决方案，大体分三种,下面大概介绍下
+捕获错误日志将日志发送到服务器查看 前端应用通过window.onerror事件捕获错误或者重写console方法，将日志通过请求发送到后端应用
+捕获错误日志把日志在前端应用查看 如腾讯的vConsole，该插件会在页面右下角插入一个按钮，点击可以打开一个类似调试页面的窗口。
+主要包括以下功能:
+查看 console 日志 查看网络请求 查看页面 element 结构 查看 Cookies、localStorage 和 SessionStorage 手动执行 JS 命令行 自定义插件 使用方法如下：
+import VConsole from &amp;#34;vconsole&amp;#34;; new VConsole(); 通过某些特殊应用调试 如使用谷歌浏览器的开发者工具远程调试Android和iOS页面，手机和电脑使用usb连接，手机要开启usb调试模式，在电脑端浏览器输入chrome://inspect会打开设备监视页面，这里可以监视到iOS和Android设备</description></item><item><title>记录一些npm库</title><link>https://chenkai0520.github.io/posts/npm_packages/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/posts/npm_packages/</guid><description>记录一些常用端库
+npm工具库 nodeppt: markdown 生成web ppt artillery: 负载接口测试 jsdoc,esdoc,documentation:构建js帮助文档 standard-version:使用semver和常规提交消息自动进行版本控制和CHANGELOG生成 Marked:markdown解析成html markdown-it: markdown解析成html dockerode: Docker远程API模块 nodemon: 文件更改时重新启动node服务 cypress: 端到端测试框架 eslint:eslint是一个javascript代码检测工具 ngrok: 内网穿透工具
+axios:基于Promise的HTTP客户端，用于浏览器和node.js ws:简单易用，为Node.js开辟了快速且经过全面测试的Websocket客户端和服务器 nuxtjs: 一个基于 Vue.js 的服务端渲染应用框架 fake-progress: 一个生成假进度的库 diff.js: 一个JavaScript文本diff实现 GraphQL.js:GraphQL的JavaScript参考实现，GraphQL是Facebook创建的API的查询语言。 JSONStream：流读取josn解析 http-proxy-middleware:node.js代理中间件，用于连接，表达和浏览器同步 iconv-lite: 文件编码转换 workerpool: workerpool提供了一种简单的方法来创建工作池，以动态卸载计算并管理专用工作池,runs on node.js, Chrome, Firefox, Opera, Safari, and IE10+. graphql: api查询数据语言 apollo-server: 封装的graphql @koa/router: 由koa-router修改而来 js-yaml: js解析yaml Knex &amp;amp; objection &amp;amp; Sequelize node 的orm框架
+c++ tippecanoe:Build vector tilesets from large collections of GeoJSON features mapnic:mapnic提供用于空间数据访问和可视化的算法和模式。</description></item><item><title>centos安装常用的软件</title><link>https://chenkai0520.github.io/posts/centos%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chenkai0520.github.io/posts/centos%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/</guid><description>安装pg 参考官网;
+Install the repository RPM: yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm Install the client packages: yum install postgresql11 Optionally install the server packages: yum install postgresql11-server Optionally initialize the database and enable automatic start: /usr/pgsql-11/bin/postgresql-11-setup initdb systemctl enable postgresql-11 systemctl stop postgresql-11 systemctl start postgresql-11 systemctl restart postgresql-11 systemctl status postgresql-11 修改配置允许外部ip访问数据库 修改/var/lib/pgsql/11/data/postgresql.conf #listen_addresses = 'localhost' # what IP address(es) to listen on; 改为 listen_addresses = '*' 修改/var/lib/pgsql/11/data/pg_hba.</description></item><item><title>面试总结</title><link>https://chenkai0520.github.io/hide/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://chenkai0520.github.io/hide/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/</guid><description>自我介绍 https://www.zhipin.com/web/geek/resume
+对公司有什么想要了解的 问答 做过最满意的项目是什么？ 上传、job任务
+可以从以下几方面介绍
+项目背景 为什么要做这件事情？ 最终达到什么效果？ 你处于什么样的角色，起到了什么方面的作用？ 在项目中遇到什么技术问题？具体是如何解决的？ 如果再做这个项目，你会在哪些方面进行改善？ 最近有了解哪些前沿知识 typescritp Vue3.0 WebAssembly worker_threads graphql pwa js 知识点 string array object funcion 原型 异步
+js继承的各种实现以及优缺点 通过prototype指定 Object.setPrototypeOf 用 Object.create实现类继承 ES6的extends javascript 连等赋值问题 var a = {n:1}; var b = a; // 持有a，以回查 a.</description></item></channel></rss>

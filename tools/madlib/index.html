@@ -1,0 +1,61 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=color-scheme content="light dark"><meta name=description content="Apache MADlib是一个在PostgreSQL、Greenplum中使用的,用于可扩展的数据库内分析的开源库。它为结构化和非结构化数据提供数学，统计，图形和机器学习方法的数据并行实现。
+我们可以用madlib做什么？    分类    当期望的输出本质上是分类时，我们使用分类方法来构建模型，该模型预测新结果将落入哪个不同类别。分类的目标是能够使用正确的记录类正确标记传入记录。
+示例：如果我们的数据描述了各种人口统计数据和申请贷款的个人的其他特征，并且我们有历史数据，其中包括过去贷款违约的情况，那么我们可以建立一个模型来描述一组新的人口统计数据的可能性 会导致贷款违约。 在这种情况下，类别是“将默认”或“不会默认”，这是两个不连续的输出类别。
+回归    当期望的输出本质上是连续的时，我们使用回归方法来构建预测输出值的模型。
+示例：如果我们有描述房地产列表属性的数据，那么我们可以建立一个模型来根据房屋的已知特征预测房屋的销售价值。 这是一个回归问题，因为输出响应本质上是连续的，而不是分类的。
+深度学习    深度学习是一种机器学习，受大脑生物学的启发，使用一类称为人工神经网络的算法。 这些网络有效地解决了各种各样的问题，主要是在监督学习领域。 GPU加速被广泛用于加速深度神经网络的训练。
+示例：如果我们想要将进入办公室大厅的员工的视频与她的图片进行匹配，我们可以使用卷积神经网络来完成此操作。 这将使她不必拿出她的员工徽章并将其刷入机器。 它还可以帮助减少早上赶时间的大厅排队。
+聚类    在这里，我们尝试识别数据组，使得一个群集中的项目彼此更相似，而不是任何其他群集中的项目。
+示例：在客户细分分析中，目标是识别以类似方式行事的特定客户群，以便可以设计各种营销活动以进入这些市场。 当预先知道客户群时，这将是监督的分类任务。 当我们让数据本身识别段时，这就成了一个聚类任务。
+主题建模    主题建模类似于聚类，因为它尝试识别彼此相似的文档集群，但它更具体到文本域，它也在尝试识别这些文档的主要主题。
+关联规则挖掘    也称为市场购物篮分析或频繁项目集挖掘，这是试图识别哪些项目往往比随机机会指示的更频繁地发生，表明项目之间的潜在关系。
+示例：在在线Web商店中，关联规则挖掘可用于识别倾向于一起购买的产品。 然后，这可以用作产品推荐引擎的输入，以建议客户可能感兴趣的项目并提供加售机会。
+描述性统计    描述性统计不提供模型，因此不被视为学习方法。 但是，它们可以帮助分析师提供信息以理解基础数据，并且可以为可能影响数据模型选择的数据提供有价值的见解。
+示例：计算数据集的每个变量中的数据分布可以帮助分析人员了解哪些变量应该被视为分类变量，哪些变量应该被视为连续变量，包括值所属的分布类型。
+验证    在不了解该模型的准确性的情况下使用模型可能导致不良结果。 因此，了解模型的错误并评估模型的测试数据准确性非常重要。 经常在数据分析中，训练数据和测试数据之间的分离仅仅是为了提供模型有效性的统计有效分析，并且评估模型不过度拟合训练数据。 还经常使用N倍交叉验证。
+安装madlib     安装  src/bin/madpack -p postgres -c postgres/postgres@localhost:5432/postgres install"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="madlib"><meta name=twitter:description content="Apache MADlib是一个在PostgreSQL、Greenplum中使用的,用于可扩展的数据库内分析的开源库。它为结构化和非结构化数据提供数学，统计，图形和机器学习方法的数据并行实现。
+我们可以用madlib做什么？    分类    当期望的输出本质上是分类时，我们使用分类方法来构建模型，该模型预测新结果将落入哪个不同类别。分类的目标是能够使用正确的记录类正确标记传入记录。
+示例：如果我们的数据描述了各种人口统计数据和申请贷款的个人的其他特征，并且我们有历史数据，其中包括过去贷款违约的情况，那么我们可以建立一个模型来描述一组新的人口统计数据的可能性 会导致贷款违约。 在这种情况下，类别是“将默认”或“不会默认”，这是两个不连续的输出类别。
+回归    当期望的输出本质上是连续的时，我们使用回归方法来构建预测输出值的模型。
+示例：如果我们有描述房地产列表属性的数据，那么我们可以建立一个模型来根据房屋的已知特征预测房屋的销售价值。 这是一个回归问题，因为输出响应本质上是连续的，而不是分类的。
+深度学习    深度学习是一种机器学习，受大脑生物学的启发，使用一类称为人工神经网络的算法。 这些网络有效地解决了各种各样的问题，主要是在监督学习领域。 GPU加速被广泛用于加速深度神经网络的训练。
+示例：如果我们想要将进入办公室大厅的员工的视频与她的图片进行匹配，我们可以使用卷积神经网络来完成此操作。 这将使她不必拿出她的员工徽章并将其刷入机器。 它还可以帮助减少早上赶时间的大厅排队。
+聚类    在这里，我们尝试识别数据组，使得一个群集中的项目彼此更相似，而不是任何其他群集中的项目。
+示例：在客户细分分析中，目标是识别以类似方式行事的特定客户群，以便可以设计各种营销活动以进入这些市场。 当预先知道客户群时，这将是监督的分类任务。 当我们让数据本身识别段时，这就成了一个聚类任务。
+主题建模    主题建模类似于聚类，因为它尝试识别彼此相似的文档集群，但它更具体到文本域，它也在尝试识别这些文档的主要主题。
+关联规则挖掘    也称为市场购物篮分析或频繁项目集挖掘，这是试图识别哪些项目往往比随机机会指示的更频繁地发生，表明项目之间的潜在关系。
+示例：在在线Web商店中，关联规则挖掘可用于识别倾向于一起购买的产品。 然后，这可以用作产品推荐引擎的输入，以建议客户可能感兴趣的项目并提供加售机会。
+描述性统计    描述性统计不提供模型，因此不被视为学习方法。 但是，它们可以帮助分析师提供信息以理解基础数据，并且可以为可能影响数据模型选择的数据提供有价值的见解。
+示例：计算数据集的每个变量中的数据分布可以帮助分析人员了解哪些变量应该被视为分类变量，哪些变量应该被视为连续变量，包括值所属的分布类型。
+验证    在不了解该模型的准确性的情况下使用模型可能导致不良结果。 因此，了解模型的错误并评估模型的测试数据准确性非常重要。 经常在数据分析中，训练数据和测试数据之间的分离仅仅是为了提供模型有效性的统计有效分析，并且评估模型不过度拟合训练数据。 还经常使用N倍交叉验证。
+安装madlib     安装  src/bin/madpack -p postgres -c postgres/postgres@localhost:5432/postgres install"><meta property="og:title" content="madlib"><meta property="og:description" content="Apache MADlib是一个在PostgreSQL、Greenplum中使用的,用于可扩展的数据库内分析的开源库。它为结构化和非结构化数据提供数学，统计，图形和机器学习方法的数据并行实现。
+我们可以用madlib做什么？    分类    当期望的输出本质上是分类时，我们使用分类方法来构建模型，该模型预测新结果将落入哪个不同类别。分类的目标是能够使用正确的记录类正确标记传入记录。
+示例：如果我们的数据描述了各种人口统计数据和申请贷款的个人的其他特征，并且我们有历史数据，其中包括过去贷款违约的情况，那么我们可以建立一个模型来描述一组新的人口统计数据的可能性 会导致贷款违约。 在这种情况下，类别是“将默认”或“不会默认”，这是两个不连续的输出类别。
+回归    当期望的输出本质上是连续的时，我们使用回归方法来构建预测输出值的模型。
+示例：如果我们有描述房地产列表属性的数据，那么我们可以建立一个模型来根据房屋的已知特征预测房屋的销售价值。 这是一个回归问题，因为输出响应本质上是连续的，而不是分类的。
+深度学习    深度学习是一种机器学习，受大脑生物学的启发，使用一类称为人工神经网络的算法。 这些网络有效地解决了各种各样的问题，主要是在监督学习领域。 GPU加速被广泛用于加速深度神经网络的训练。
+示例：如果我们想要将进入办公室大厅的员工的视频与她的图片进行匹配，我们可以使用卷积神经网络来完成此操作。 这将使她不必拿出她的员工徽章并将其刷入机器。 它还可以帮助减少早上赶时间的大厅排队。
+聚类    在这里，我们尝试识别数据组，使得一个群集中的项目彼此更相似，而不是任何其他群集中的项目。
+示例：在客户细分分析中，目标是识别以类似方式行事的特定客户群，以便可以设计各种营销活动以进入这些市场。 当预先知道客户群时，这将是监督的分类任务。 当我们让数据本身识别段时，这就成了一个聚类任务。
+主题建模    主题建模类似于聚类，因为它尝试识别彼此相似的文档集群，但它更具体到文本域，它也在尝试识别这些文档的主要主题。
+关联规则挖掘    也称为市场购物篮分析或频繁项目集挖掘，这是试图识别哪些项目往往比随机机会指示的更频繁地发生，表明项目之间的潜在关系。
+示例：在在线Web商店中，关联规则挖掘可用于识别倾向于一起购买的产品。 然后，这可以用作产品推荐引擎的输入，以建议客户可能感兴趣的项目并提供加售机会。
+描述性统计    描述性统计不提供模型，因此不被视为学习方法。 但是，它们可以帮助分析师提供信息以理解基础数据，并且可以为可能影响数据模型选择的数据提供有价值的见解。
+示例：计算数据集的每个变量中的数据分布可以帮助分析人员了解哪些变量应该被视为分类变量，哪些变量应该被视为连续变量，包括值所属的分布类型。
+验证    在不了解该模型的准确性的情况下使用模型可能导致不良结果。 因此，了解模型的错误并评估模型的测试数据准确性非常重要。 经常在数据分析中，训练数据和测试数据之间的分离仅仅是为了提供模型有效性的统计有效分析，并且评估模型不过度拟合训练数据。 还经常使用N倍交叉验证。
+安装madlib     安装  src/bin/madpack -p postgres -c postgres/postgres@localhost:5432/postgres install"><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai0520.github.io/tools/madlib/"><meta property="article:published_time" content="2021-07-09T15:37:56+08:00"><meta property="article:modified_time" content="2021-07-09T15:37:56+08:00"><title>madlib · 博客</title><link rel=canonical href=https://chenkai0520.github.io/tools/madlib/><link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.2b4a48c7f9f55547746a8263b9a071145bdce989003e514b08231c227b976bbb.css integrity="sha256-K0pIx/n1VUd0aoJjuaBxFFvc6YkAPlFLCCMcInuXa7s=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/custom.css><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><meta name=generator content="Hugo 0.72.0"></head><body class="preload-transitions colorscheme-auto"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>博客</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/categories/>Categories</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input id=search-int type=text placeholder=Search>
+<button class=search-btn id=search-by-google-btn>Google</button>
+<button class=search-btn id=search-by-github-btn>GitHub</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai0520.github.io/tools/madlib/>madlib</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title target=_blank href=https://github.com/chenkai0520/chenkai0520.github.io/edit/master/content/tools/madlib.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><i class="fa fa-calendar" aria-hidden=true></i><time datetime=2021-07-09T15:37:56+08:00>2021-07-09</time></span></div><div class=tags><i class="fa fa-tag" aria-hidden=true></i><span class=tag><a href=/tags/tool/>tool</a></span></div></div><p>Apache MADlib是一个在PostgreSQL、Greenplum中使用的,用于可扩展的数据库内分析的开源库。它为结构化和非结构化数据提供数学，统计，图形和机器学习方法的数据并行实现。</p><h2 id=我们可以用madlib做什么>我们可以用madlib做什么？
+<a class=heading-link href=#%e6%88%91%e4%bb%ac%e5%8f%af%e4%bb%a5%e7%94%a8madlib%e5%81%9a%e4%bb%80%e4%b9%88><i class="fa fa-link" aria-hidden=true></i></a></h2><h2 id=分类>分类
+<a class=heading-link href=#%e5%88%86%e7%b1%bb><i class="fa fa-link" aria-hidden=true></i></a></h2><p>当期望的输出本质上是分类时，我们使用分类方法来构建模型，该模型预测新结果将落入哪个不同类别。分类的目标是能够使用正确的记录类正确标记传入记录。</p><p>示例：如果我们的数据描述了各种人口统计数据和申请贷款的个人的其他特征，并且我们有历史数据，其中包括过去贷款违约的情况，那么我们可以建立一个模型来描述一组新的人口统计数据的可能性 会导致贷款违约。 在这种情况下，类别是“将默认”或“不会默认”，这是两个不连续的输出类别。</p><h2 id=回归>回归
+<a class=heading-link href=#%e5%9b%9e%e5%bd%92><i class="fa fa-link" aria-hidden=true></i></a></h2><p>当期望的输出本质上是连续的时，我们使用回归方法来构建预测输出值的模型。</p><p>示例：如果我们有描述房地产列表属性的数据，那么我们可以建立一个模型来根据房屋的已知特征预测房屋的销售价值。 这是一个回归问题，因为输出响应本质上是连续的，而不是分类的。</p><h2 id=深度学习>深度学习
+<a class=heading-link href=#%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a0><i class="fa fa-link" aria-hidden=true></i></a></h2><p>深度学习是一种机器学习，受大脑生物学的启发，使用一类称为人工神经网络的算法。 这些网络有效地解决了各种各样的问题，主要是在监督学习领域。 GPU加速被广泛用于加速深度神经网络的训练。</p><p>示例：如果我们想要将进入办公室大厅的员工的视频与她的图片进行匹配，我们可以使用卷积神经网络来完成此操作。 这将使她不必拿出她的员工徽章并将其刷入机器。 它还可以帮助减少早上赶时间的大厅排队。</p><h2 id=聚类>聚类
+<a class=heading-link href=#%e8%81%9a%e7%b1%bb><i class="fa fa-link" aria-hidden=true></i></a></h2><p>在这里，我们尝试识别数据组，使得一个群集中的项目彼此更相似，而不是任何其他群集中的项目。</p><p>示例：在客户细分分析中，目标是识别以类似方式行事的特定客户群，以便可以设计各种营销活动以进入这些市场。 当预先知道客户群时，这将是监督的分类任务。 当我们让数据本身识别段时，这就成了一个聚类任务。</p><h2 id=主题建模>主题建模
+<a class=heading-link href=#%e4%b8%bb%e9%a2%98%e5%bb%ba%e6%a8%a1><i class="fa fa-link" aria-hidden=true></i></a></h2><p>主题建模类似于聚类，因为它尝试识别彼此相似的文档集群，但它更具体到文本域，它也在尝试识别这些文档的主要主题。</p><h2 id=关联规则挖掘>关联规则挖掘
+<a class=heading-link href=#%e5%85%b3%e8%81%94%e8%a7%84%e5%88%99%e6%8c%96%e6%8e%98><i class="fa fa-link" aria-hidden=true></i></a></h2><p>也称为市场购物篮分析或频繁项目集挖掘，这是试图识别哪些项目往往比随机机会指示的更频繁地发生，表明项目之间的潜在关系。</p><p>示例：在在线Web商店中，关联规则挖掘可用于识别倾向于一起购买的产品。 然后，这可以用作产品推荐引擎的输入，以建议客户可能感兴趣的项目并提供加售机会。</p><h2 id=描述性统计>描述性统计
+<a class=heading-link href=#%e6%8f%8f%e8%bf%b0%e6%80%a7%e7%bb%9f%e8%ae%a1><i class="fa fa-link" aria-hidden=true></i></a></h2><p>描述性统计不提供模型，因此不被视为学习方法。 但是，它们可以帮助分析师提供信息以理解基础数据，并且可以为可能影响数据模型选择的数据提供有价值的见解。</p><p>示例：计算数据集的每个变量中的数据分布可以帮助分析人员了解哪些变量应该被视为分类变量，哪些变量应该被视为连续变量，包括值所属的分布类型。</p><h2 id=验证>验证
+<a class=heading-link href=#%e9%aa%8c%e8%af%81><i class="fa fa-link" aria-hidden=true></i></a></h2><p>在不了解该模型的准确性的情况下使用模型可能导致不良结果。 因此，了解模型的错误并评估模型的测试数据准确性非常重要。 经常在数据分析中，训练数据和测试数据之间的分离仅仅是为了提供模型有效性的统计有效分析，并且评估模型不过度拟合训练数据。 还经常使用N倍交叉验证。</p><h2 id=安装madlib>安装madlib
+<a class=heading-link href=#%e5%ae%89%e8%a3%85madlib><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li>安装</li></ul><pre><code>src/bin/madpack -p postgres -c postgres/postgres@localhost:5432/postgres install
+</code></pre><div id=vcomments></div></article></section></div></main><script src=/js/coder.min.a350362441276ec5c1671926420497bb8e52b63ead1d51d3c9bc4342d0039526.js integrity="sha256-o1A2JEEnbsXBZxkmQgSXu45Stj6tHVHTybxDQtADlSY="></script><script src=/js/valine.min.js></script><script src=/js/custom.js></script></body></html>
