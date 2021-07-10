@@ -1,28 +1,15 @@
 // copy code
 
 function initCopyBtn () {
-  document.querySelectorAll('pre').forEach(el => {
+  document.querySelectorAll('.highlight').forEach(el => {
     const copyBtn = document.createElement('span');
     copyBtn.innerText = 'Copy';
+    copyBtn.classList.add('copy-code-btn');
+    el.appendChild(copyBtn);
+
     el.onclick = async() => {
-      await navigator.clipboard.writeText(el.innerText);
-      copyBtn.innerText = 'Copyed';
+      await navigator.clipboard.writeText(el.querySelector('code').innerText);
     };
-
-    el.onmouseover = () => {
-      copyBtn.classList.remove('copyed-code-btn');
-      copyBtn.classList.add('copy-code-btn');
-      el.appendChild(copyBtn);
-    };
-
-    el.onmouseout = (event) => {
-      const s = event.toElement || event.relatedTarget;
-      if (el.contains(s)) return;
-      copyBtn.classList.remove('copy-code-btn');
-      copyBtn.classList.add('copyed-code-btn');
-      copyBtn.innerText = 'Copy';
-      el.removeChild(copyBtn);
-    }
   });
 }
 // utils
