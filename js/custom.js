@@ -1,3 +1,30 @@
+// copy code
+
+function initCopyBtn () {
+  document.querySelectorAll('pre').forEach(el => {
+    const copyBtn = document.createElement('span');
+    copyBtn.innerText = 'Copy';
+    el.onclick = async() => {
+      await navigator.clipboard.writeText(el.innerText);
+      copyBtn.innerText = 'Copyed';
+    };
+
+    el.onmouseover = () => {
+      copyBtn.classList.remove('copyed-code-btn');
+      copyBtn.classList.add('copy-code-btn');
+      el.appendChild(copyBtn);
+    };
+
+    el.onmouseout = (event) => {
+      const s = event.toElement || event.relatedTarget;
+      if (el.contains(s)) return;
+      copyBtn.classList.remove('copy-code-btn');
+      copyBtn.classList.add('copyed-code-btn');
+      copyBtn.innerText = 'Copy';
+      el.removeChild(copyBtn);
+    }
+  });
+}
 // utils
 function importScript(params = {}) {
   const el = params.el || document.querySelector('head');
@@ -71,6 +98,7 @@ async function initValine() {
 
 // init page event
 window.onload = () => {
+  initCopyBtn()
   initSearch();
   initValine();
 };
