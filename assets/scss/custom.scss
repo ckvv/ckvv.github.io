@@ -5,30 +5,26 @@ $dark-bg-color: #212121;
 $light-bd-color: rgba(33, 33, 33, .7);
 $dark-bd-color: rgba(218, 218, 218, .7);
 $active-color: #1565c0;
+
 #vcomments {
   margin-top: 6rem;
 }
 
-pre {
+.highlight {
   position: relative;
-}
-.copy-code-btn {
-  user-select: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px;
-  &:hover {
-    color: $active-color;
+  .copy-code-btn {
+    user-select: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 6px;
+    font-size: 1.5rem;
+    color: $light-color;
+    &:hover {
+      color: $active-color;
+    }
   }
-}
-.copyed-code-btn {
-  user-select: default;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px;
-  color: $active-color;
 }
 
 #search-content {
