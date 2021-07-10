@@ -12,7 +12,7 @@ enableGitInfo = true
   hideCopyright = true
   colorScheme = "auto"
   hidecolorschemetoggle = false
-  customCSS = ["css/custom.css"]
+  customSCSS = ["scss/custom.scss"]
   customJS = ["js/custom.js"]
   editUrl = "https://github.com/chenkai0520/chenkai0520.github.io/edit/main"
 

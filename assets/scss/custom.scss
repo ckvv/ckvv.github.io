@@ -1,0 +1,137 @@
+$dark-color: #212121;
+$light-color: #dadada;
+$light-bg-color: #fafafa;
+$dark-bg-color: #212121;
+$light-bd-color: rgba(33, 33, 33, .7);
+$dark-bd-color: rgba(218, 218, 218, .7);
+$active-color: #1565c0;
+#vcomments {
+  margin-top: 6rem;
+}
+
+pre {
+  position: relative;
+}
+.copy-code-btn {
+  user-select: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  &:hover {
+    color: $active-color;
+  }
+}
+.copyed-code-btn {
+  user-select: default;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  color: $active-color;
+}
+
+#search-content {
+  height: 100%;
+  font-size: 0 !important;
+  display: flex;
+  margin-left: 12px;
+  .search-int {
+    height: 26px;
+    font-size: 14px;
+    padding: 4px 8px;
+    font-weight: 400;
+
+    &:focus{
+      outline: 0;
+    }
+    &:focus-visible{
+      outline: 0;
+    }
+  }
+
+  .search-btn {
+    font-size: 1.4rem;
+    height: 26px;
+    padding: 4px 8px;
+    border-left: 0;
+    font-weight: 400;
+    cursor: pointer;
+
+    &:hover{
+      color: #1565c0 !important;
+    }
+  }
+}
+
+/* midia */
+@media only screen and (max-width: 768px) {
+  #search-content {
+    margin-bottom: 15px;
+    flex-direction: column;
+    margin-left: 0;
+    .search-btn {
+      margin-top: 12px;
+    }
+  }
+}
+@media only screen and (min-width: 768px) {
+  #search-content {
+    .search-btn {
+      border-left: 0 !important;
+    }
+  }
+}
+
+/* dark model */
+.colorscheme-dark {
+  #search-content {
+    .search-int {
+      border: 1px solid $dark-bd-color;
+      background-color: $dark-bg-color;
+      color: $light-color;
+
+      &::placeholder{
+        color: $dark-bd-color;
+      }
+    }
+    .search-btn {
+      border: 1px solid $dark-bd-color;
+      background-color: $dark-bg-color;
+      color: $light-color;
+    }
+  }
+
+  .taxonomy {
+    sup{
+      color: $dark-color;
+    }
+  }
+}
+
+/* light model */
+.colorscheme-light {
+  #search-content {
+    .search-int {
+      border: 1px solid $light-bd-color;
+      background-color: $light-bg-color;
+      color: $dark-bg-color;
+
+      &::placeholder{
+        color: rgba(33, 33, 33, .7);
+      }
+    }
+    .search-btn {
+      border: 1px solid $light-bd-color;
+      background-color: $light-bg-color;
+      color: $dark-bg-color;
+    }
+  }
+}
+
+/* 覆盖本地css */
+.pagination{
+  li {
+    padding: 0 4px !important;
+  }
+}
