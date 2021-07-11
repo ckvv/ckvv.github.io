@@ -7,9 +7,15 @@ function initCopyBtn () {
     copyBtn.classList.add('copy-code-btn');
     el.appendChild(copyBtn);
 
-    el.onclick = async() => {
+    copyBtn.onclick = async() => {
       await navigator.clipboard.writeText(el.querySelector('code').innerText);
+      copyBtn.classList.add('active-copy-code-btn');
     };
+    el.onmouseout = (event) => {
+      const s = event.toElement || event.relatedTarget;
+      if (el.contains(s)) return;
+      copyBtn.classList.remove('active-copy-code-btn');
+    }
   });
 }
 // utils
