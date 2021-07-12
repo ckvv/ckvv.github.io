@@ -1,0 +1,13 @@
+<div class="tags">
+  <svg class="icon" aria-hidden="true">
+    <use xlink:href="#icon-biaoqian"></use>
+  </svg>
+  {{- range $index, $el := . -}}
+    {{- if gt $index 0 }}
+      <span class="separator">•</span>
+    {{- end }}
+    <span class="tag">
+      <a href="{{ ( printf "tags/%s/" ( . | urlize ) ) | relLangURL }}">{{ . }}</a>
+    </span>
+  {{- end -}}
+</div>

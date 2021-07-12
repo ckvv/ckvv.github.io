@@ -13,7 +13,7 @@ enableGitInfo = true
   colorScheme = "auto"
   hidecolorschemetoggle = false
   customSCSS = ["scss/custom.scss"]
-  customJS = ["js/custom.js"]
+  customJS = ["js/custom.js", "js/font.min.js"]
   editUrl = "https://github.com/chenkai0520/chenkai0520.github.io/edit/main"
 
 [taxonomies]
