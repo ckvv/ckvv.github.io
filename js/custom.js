@@ -1,23 +1,3 @@
-// copy code
-
-function initCopyBtn () {
-  document.querySelectorAll('.highlight').forEach(el => {
-    const copyBtn = document.createElement('span');
-    copyBtn.innerText = 'Copy';
-    copyBtn.classList.add('copy-code-btn');
-    el.appendChild(copyBtn);
-
-    copyBtn.onclick = async() => {
-      await navigator.clipboard.writeText(el.querySelector('code').innerText);
-      copyBtn.classList.add('active-copy-code-btn');
-    };
-    el.onmouseout = (event) => {
-      const s = event.toElement || event.relatedTarget;
-      if (el.contains(s)) return;
-      copyBtn.classList.remove('active-copy-code-btn');
-    }
-  });
-}
 // utils
 function importScript(params = {}) {
   const el = params.el || document.querySelector('head');
@@ -34,6 +14,26 @@ function importScript(params = {}) {
       resolve(event);
     };
     el.appendChild(oScript);
+  });
+}
+
+// init copy code
+function initCopyBtn () {
+  document.querySelectorAll('.highlight').forEach(el => {
+    const copyBtn = document.createElement('span');
+    copyBtn.innerText = 'Copy';
+    copyBtn.classList.add('copy-code-btn');
+    el.appendChild(copyBtn);
+
+    copyBtn.onclick = async() => {
+      await navigator.clipboard.writeText(el.querySelector('code').innerText);
+      copyBtn.classList.add('active-copy-code-btn');
+    };
+    el.onmouseout = (event) => {
+      const s = event.toElement || event.relatedTarget;
+      if (el.contains(s)) return;
+      copyBtn.classList.remove('active-copy-code-btn');
+    }
   });
 }
 
@@ -74,7 +74,7 @@ function initSearch() {
 // init 评论框
 async function initValine() {
   if(!document.querySelector('#vcomments')) {
-    console.warn('not fount el #vcomments');
+    console.log('not fount el #vcomments');
     return;
   };
 
