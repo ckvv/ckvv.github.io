@@ -98,6 +98,9 @@ $active-color: #1565c0;
 
 /* dark model */
 .colorscheme-dark {
+  .navigation {
+    background-color: $dark-bg-color;
+  }
   #search-content {
     .search-int {
       border: 1px solid $dark-bd-color;
@@ -124,6 +127,9 @@ $active-color: #1565c0;
 
 /* light model */
 .colorscheme-light {
+  .navigation {
+    background-color: $light-bg-color;
+  }
   #search-content {
     .search-int {
       border: 1px solid $light-bd-color;
@@ -147,4 +153,17 @@ $active-color: #1565c0;
   li {
     padding: 0 4px !important;
   }
+}
+.content{
+  margin-top: 0 !important;
+  .container {
+    min-width: 80%;
+  }
+}
+
+.navigation {
+  height: auto !important;
+  z-index: 999;
+  position: sticky;
+  top: 0;
 }
