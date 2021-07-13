@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hides on CK's Blog</title><link>https://chenkai0520.github.io/hide/</link><description>Recent content in Hides on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 09 Jul 2021 16:21:38 +0800</lastBuildDate><atom:link href="https://chenkai0520.github.io/hide/index.xml" rel="self" type="application/rss+xml"/><item><title>纪录一些常用网站</title><link>https://chenkai0520.github.io/hide/some_web/</link><pubDate>Fri, 09 Jul 2021 16:21:38 +0800</pubDate><guid>https://chenkai0520.github.io/hide/some_web/</guid><description>百度技术团队1
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hides on CK's Blog</title><link>https://chenkai.life/hide/</link><description>Recent content in Hides on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 09 Jul 2021 16:21:38 +0800</lastBuildDate><atom:link href="https://chenkai.life/hide/index.xml" rel="self" type="application/rss+xml"/><item><title>纪录一些常用网站</title><link>https://chenkai.life/hide/some_web/</link><pubDate>Fri, 09 Jul 2021 16:21:38 +0800</pubDate><guid>https://chenkai.life/hide/some_web/</guid><description>百度技术团队1
 百度技术团队2
 美团技术团队
 IBM
@@ -6,11 +6,11 @@ Stack Overflow
 图像转ascii
 vue风格指南
 tc39:javascript规范
-javaScript 教程</description></item><item><title>面试总结</title><link>https://chenkai0520.github.io/hide/mian_shi_zhong_jie/</link><pubDate>Fri, 09 Jul 2021 16:21:38 +0800</pubDate><guid>https://chenkai0520.github.io/hide/mian_shi_zhong_jie/</guid><description>自我介绍 https://www.zhipin.com/web/geek/resume
+javaScript 教程</description></item><item><title>面试总结</title><link>https://chenkai.life/hide/mian_shi_zhong_jie/</link><pubDate>Fri, 09 Jul 2021 16:21:38 +0800</pubDate><guid>https://chenkai.life/hide/mian_shi_zhong_jie/</guid><description>自我介绍 https://www.zhipin.com/web/geek/resume
 对公司有什么想要了解的 问答 做过最满意的项目是什么？ 上传、job任务
 可以从以下几方面介绍
 项目背景 为什么要做这件事情？ 最终达到什么效果？ 你处于什么样的角色，起到了什么方面的作用？ 在项目中遇到什么技术问题？具体是如何解决的？ 如果再做这个项目，你会在哪些方面进行改善？ 最近有了解哪些前沿知识 typescritp Vue3.0 WebAssembly worker_threads graphql pwa js 知识点 string array object funcion 原型 异步
-js继承的各种实现以及优缺点 通过prototype指定 Object.setPrototypeOf 用 Object.create实现类继承 ES6的extends javascript 连等赋值问题 var a = {n:1}; var b = a; // 持有a，以回查 a.</description></item><item><title>Web面试问题</title><link>https://chenkai0520.github.io/hide/web_mian_shi_qs2/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/hide/web_mian_shi_qs2/</guid><description>&lt;h2 id="前端工作面试问题">
+js继承的各种实现以及优缺点 通过prototype指定 Object.setPrototypeOf 用 Object.create实现类继承 ES6的extends javascript 连等赋值问题 var a = {n:1}; var b = a; // 持有a，以回查 a.</description></item><item><title>Web面试问题</title><link>https://chenkai.life/hide/web_mian_shi_qs2/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/hide/web_mian_shi_qs2/</guid><description>&lt;h2 id="前端工作面试问题">
 前端工作面试问题
 &lt;a class="heading-link" href="#%e5%89%8d%e7%ab%af%e5%b7%a5%e4%bd%9c%e9%9d%a2%e8%af%95%e9%97%ae%e9%a2%98">
 &lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
@@ -34,7 +34,7 @@ js继承的各种实现以及优缺点 通过prototype指定 Object.setPrototype
 &lt;li>&lt;a href="#network-questions">网络相关问题&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#coding-questions">代码相关问题&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#fun-questions">趣味问题&lt;/a>&lt;/li>
-&lt;/ol></description></item><item><title>前端开发面试题</title><link>https://chenkai0520.github.io/hide/web_mian_shi_qs1/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/hide/web_mian_shi_qs1/</guid><description>前端开发面试题 （题目列表页） 目录 前言 HTML部分 CSS部分 JavaScript部分 其他问题 前端学习网站推荐 前言 前言
+&lt;/ol></description></item><item><title>前端开发面试题</title><link>https://chenkai.life/hide/web_mian_shi_qs1/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/hide/web_mian_shi_qs1/</guid><description>前端开发面试题 （题目列表页） 目录 前言 HTML部分 CSS部分 JavaScript部分 其他问题 前端学习网站推荐 前言 前言
 HTML Doctype作用？严格模式与混杂模式如何区分？它们有何意义?
 HTML5 为什么只需要写 ？
 行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
@@ -47,7 +47,7 @@ HTML5的离线储存怎么使用，工作原理能不能解释一下？
 浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
 请描述一下 cookies，sessionStorage 和 localStorage 的区别？
 iframe有那些缺点？
-Label的作用是什么？是怎么用的？（加 for 或 包裹）</description></item><item><title>前端开发面试题及答案</title><link>https://chenkai0520.github.io/hide/web_min_shi_qsan/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/hide/web_min_shi_qsan/</guid><description>&lt;h2 id="前端开发面试题">
+Label的作用是什么？是怎么用的？（加 for 或 包裹）</description></item><item><title>前端开发面试题及答案</title><link>https://chenkai.life/hide/web_min_shi_qsan/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/hide/web_min_shi_qsan/</guid><description>&lt;h2 id="前端开发面试题">
 前端开发面试题
 &lt;a class="heading-link" href="#%e5%89%8d%e7%ab%af%e5%bc%80%e5%8f%91%e9%9d%a2%e8%af%95%e9%a2%98">
 &lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
@@ -61,7 +61,7 @@ Label的作用是什么？是怎么用的？（加 for 或 包裹）</descriptio
 &lt;/h2>
 &lt;p>&lt;a href="http://markyun.github.io/2015/Front-end-Developer-Questions/" title="Questions">只看问题点这里 &lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers" title="Questions-and-Answers">看全部问题和答案点这里&lt;/a>&lt;/p>
-&lt;p>本文由我收集总结了一些前端面试题，初学者阅后也要用心钻研其中的原理，重要知识需要系统学习、透彻学习，形成自己的知识链。万不可投机取巧，临时抱佛脚只求面试侥幸混过关是错误的！也是不可能的！不可能的！不可能的！&lt;/p></description></item><item><title>面试题</title><link>https://chenkai0520.github.io/hide/mian_shi/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai0520.github.io/hide/mian_shi/</guid><description>晚上面试时发挥的十分差劲，会的题也答的马马虎虎，反思自己存在以下问题
+&lt;p>本文由我收集总结了一些前端面试题，初学者阅后也要用心钻研其中的原理，重要知识需要系统学习、透彻学习，形成自己的知识链。万不可投机取巧，临时抱佛脚只求面试侥幸混过关是错误的！也是不可能的！不可能的！不可能的！&lt;/p></description></item><item><title>面试题</title><link>https://chenkai.life/hide/mian_shi/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/hide/mian_shi/</guid><description>晚上面试时发挥的十分差劲，会的题也答的马马虎虎，反思自己存在以下问题
 相关方法还是掌握的不够熟练，不借助编辑器提示难以下手 遇到相关算法题脑子有些混乱，冷静下来想想还是能写出来 一些至少概念了解但并不十分清楚 缺乏面试经验，脑子有些转不过来 平常没有做相关面试题，面试题还是要刷的 还记起来的面试题大概有以下题目:
 array reduse 实现map方法 做不出来的原因， 对this还是不够熟悉
 不用reduse实现：
