@@ -3,7 +3,7 @@ title: "node调用系统命令"
 tags: ['node']
 ---
 
-```
+```js
 const exec = require('util').promisify(require('child_process').exec);
 
 async function run(command) {
