@@ -17,6 +17,7 @@ tags: ['文章']
 `cypress`: 端到端测试框架
 `eslint`:[eslint](https://eslint.bootcss.com/)是一个javascript代码检测工具
 `ngrok`: 内网穿透工具
+`vconsole` 可以用于手机端调试查看控制台、网络请求、存储等信息
 <!-- 代码 -->
 `axios`:基于Promise的HTTP客户端，用于浏览器和node.js
 `ws`:简单易用，为Node.js开辟了快速且经过全面测试的Websocket客户端和服务器
@@ -32,12 +33,16 @@ tags: ['文章']
 `apollo-server`: 封装的graphql
 `@koa/router`: 由koa-router修改而来
 `js-yaml`: js解析yaml
-`Knex & objection & Sequelize` node 的orm框架
+`fast-xml-parser`: Validate XML or Parse XML to JS/JSON very fast without C/C++ based libraries
+`typeorm、prisma、Sequelize、Knex & objection` node的orm框架
+`bulma`: css框架
+<!-- vue -->
+`element-ui、quasar、vuetify、naive-ui`vue ui框架
+`cube-ui、vant`vue 移动端 ui框架
+
 ## c++
 `tippecanoe`:Build vector tilesets from large collections of GeoJSON features
-`mapnic`:[mapnic](http://mapnik.org)提供用于空间数据访问和可视化的算法和模式。
-
+`mapnik`:[mapnik](http://mapnik.org)提供用于空间数据访问和可视化的算法和模式。
 
 ## 应用
 `typora` markdown编辑器，可以复制html转成markdown
-`vconsole` 可以用于手机端调试查看控制台、网络请求、存储等信息
