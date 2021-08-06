@@ -169,4 +169,16 @@ a {
   z-index: 999;
   position: sticky;
   top: 0;
+  .container {
+    min-width: 80%;
+  }
+  .navigation-title {
+    font-size: 2.5rem !important;
+  }
+}
+
+.post-meta {
+  icon: {
+    margin-right: 4px;
+  }
 }
