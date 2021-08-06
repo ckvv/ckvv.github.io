@@ -1,4 +1,4 @@
-# [CK'S BLOG](https://blog.chenkai.life)
+# [CK'S BLOG](https://chenkai.life)
 
 
 + Power by: [hugo](https://gohugo.io/)
