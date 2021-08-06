@@ -1,4 +1,4 @@
-baseURL = "https://blog.chenkai.life"
+baseURL = "https://chenkai.life"
 languageCode = "zh-cn"
 title = "CK's Blog"
 theme = "hugo-theme-coder"
