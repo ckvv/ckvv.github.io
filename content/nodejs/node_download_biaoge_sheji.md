@@ -18,7 +18,7 @@ function frows2XlsxBufferile(formatData) {
 }
 ```
 
-# 在ctx上下文添加下载文件的方法
+# 在ctx上下文添加下载文件的方法
 
 默认情况下返回的是文本数据这里需要处理,我这里需要在`header`中声明返回的内容是一个需要下载的文件
 
