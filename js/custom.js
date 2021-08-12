@@ -72,19 +72,17 @@ function initSearch() {
 }
 
 // init 评论框
-async function initValine() {
-  if(!document.querySelector('#vcomments')) {
-    console.log('not fount el #vcomments');
+async function initComments() {
+  if(!document.querySelector('#cusdis_thread')) {
+    console.log('not fount el #cusdis_thread');
     return;
   };
 
   await importScript({
-    src: '/js/valine.min.js',
+    src: '/js/cusdis/cusdis.min.js',
   });
-  new Valine({
-    el: '#vcomments',
-    appId: '87IC4ccx5EotHkYSpD0xCJmO-gzGzoHsz',
-    appKey: 'jDUTsuflq3tG1bYIMquqixA2'
+  document.querySelector('#dark-mode-toggle').addEventListener('click', ()=>{
+    window.CUSDIS.setTheme(localStorage.getItem('colorscheme'));
   });
 }
 
@@ -93,5 +91,5 @@ async function initValine() {
 window.onload = () => {
   initCopyBtn()
   initSearch();
-  initValine();
+  initComments();
 };
