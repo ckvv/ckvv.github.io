@@ -32,6 +32,12 @@ npm config set registry https://registry.npm.taobao.org/
 npm i -g express --registry https://registry.npm.taobao.org
 ```
 
++ 更新npm
+
+```
+npm install --global npm
+```
+
 # npm 发布包
 ```shell
 # 登陆
