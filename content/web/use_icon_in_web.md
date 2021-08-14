@@ -10,7 +10,7 @@ tags: ['web','icon']
 # 字体文件
 通过[font-face](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face),我们可以指定一个用于显示文本的自定义字体，字体文件内部类似一个`svg`我们可以在字体文件里面随便定义这些字符的形状，
 
-!(font)[https://img.alicdn.com/tps/TB1GfUJJFXXXXabXpXXXXXXXXXX-598-574.png]
+![font](https://img.alicdn.com/tps/TB1GfUJJFXXXXabXpXXXXXXXXXX-598-574.png)
 
 通过对应字体文件的字体编码我们就可以使用这些图标了,如下面是一个`close`图标
 
