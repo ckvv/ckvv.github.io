@@ -2,7 +2,6 @@
 title: 谈谈Web项目中图标的方式
 tags: ['web','icon']
 ---
-
 谈谈Web项目中图标的方式
 
 # 单个图标
@@ -73,13 +72,119 @@ tags: ['web','icon']
   </svg>
 ```
 
-我们还通过一些技巧，支持像字体那样，通过`font-size`,`color`来调整样式。
+我们还通过一些css技巧，支持svg像字体那样，通过`font-size`,`color`来调整样式。
+
+```css
+.icon {
+  /* em让宽高等于字体大小 */
+  width: 1em;
+  height: 1em;
+  /* 继承父级的 color 属性 */
+  fill: currentColor;
+}
+```
+
+```html
+<svg class="icon">
+  <use xlink:href="#icon-close"></use>
+</svg>
+```
 
 
 
-常用的图标库有阿里的[iconfont](https://www.iconfont.cn/)，字节的[IconPark](https://iconpark.oceanengine.com/)，`iconfont`保护上面三种使用方式，字节的`iconpark`只支持symbol引用的方式,并且
+# 常用的图标库对比
 
+常用的图标库有阿里的[iconfont](https://www.iconfont.cn/)，字节的[IconPark](https://iconpark.oceanengine.com/)，
 
+## iconfont特点
 
-# todo
++ 支持上传自己自己的图标，并将图标按照项目进行管理
+
++ 只支持字体、symbol引用的方式，并且可以单独下载图标为svg或者png格式
+
++ 支持通过文件的方式导入可与任何框架配合使用
+
+  
+
+## iconpark特点
+
+与iconfont不同的是它并没有使用symbol引用的方式，而是通过现代框架代码将其编译成了组件，我们可以更方便的对框架图标进行更细粒度的定制，
+
++ 只包含官方提供的svg图标，好处是图标风格样式更统一
+
++ 可对图标大小、颜色、线框粗细、端点等属性进行等更定制化的转换
++ 可以跨平台导出多种图标组件代码，包括React、Vue2、Vue3格式
+
+虽然没有使用symbol引用，但多次引用同一图标并不会导致打包后代码增加，在vue中字体组件会被编译成下面这张形式。
+
+```js
+var dj, pj, hj, mj = (pj = !1, hj = function(e) {
+  return Ao("svg", {
+    width: e.size,
+    height: e.size,
+    viewBox: "0 0 48 48",
+    fill: "none"
+  }, [Ao("path", {
+    d: "M9 18V42H39V18L24 6L9 18Z",
+    fill: e.colors[1]
+  }, null), Ao("path", {
+    d: "M9 42V18L4 22L24 6L44 22L39 18V42H9Z",
+    stroke: e.colors[0],
+    "stroke-width": e.strokeWidth,
+    "stroke-linecap": e.strokeLinecap,
+    "stroke-linejoin": e.strokeLinejoin
+  }, null), Ao("path", {
+    d: "M19 29V42H29V29H19Z",
+    fill: e.colors[3],
+    stroke: e.colors[2],
+    "stroke-width": e.strokeWidth,
+    "stroke-linejoin": e.strokeLinejoin
+  }, null), Ao("path", {
+    d: "M9 42H39",
+    stroke: e.colors[0],
+    "stroke-width": e.strokeWidth,
+    "stroke-linecap": e.strokeLinecap
+  }, null)])
+}, {
+  name: "icon-" + (dj = "home"),
+  props: ["size", "strokeWidth", "strokeLinecap", "strokeLinejoin", "theme", "fill", "spin"],
+  setup: function(e) {
+    // 。。。
+  }
+});
+```
+
+在我们的组件使用的地方如
+
+```html
+<home theme="filled"/>
+```
+
+被编译成了类似下面这种形式的函数调用
+
+```js
+P(u, {
+    theme: "filled"
+  })
+```
+
+## 如何选择
+
+对于如何选择这两个方式我们可以考虑以下情况
+
+选择iconfont
+
++ ui或者产品想使用自己的图标
+
++ 需要对图标进行管理
+
++ 前端项目非`React、Vue2、Vue3`框架
+
++ 想使用起来更简单更灵活一点
+
+选择iconpark
+
++ 需要方便对图标进行更定制化设置
++ 项目中需要对图标风格进行响应式的更改
+
 
