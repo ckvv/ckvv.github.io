@@ -43,4 +43,4 @@ enableGitInfo = true
   url = "about/"
 
 [frontmatter]
-  date = [ "date", ":git" ]
+  date = [ "date", ":git", ":fileModTime", ":default" ]
