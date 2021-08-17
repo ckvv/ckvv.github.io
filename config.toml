@@ -44,3 +44,8 @@ enableGitInfo = true
 
 [frontmatter]
   date = [ "date", ":git", ":fileModTime", ":default" ]
+
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
