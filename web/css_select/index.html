@@ -96,19 +96,19 @@
 }
 </code></pre></div><h2 id=子选择器>子选择器
 <a class=heading-link href=#%e5%ad%90%e9%80%89%e6%8b%a9%e5%99%a8><i class="fa fa-link" aria-hidden=true></i></a></h2><p>&lsquo;>&rsquo; 操作符选择第一个元素的直接子节点。
-ul > li 将会匹配<code>直接</code>嵌套在 元素内的所有 元素。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=color:#75715e>/* List items that are children of the &#34;my-things&#34; list */</span>
+ul > li 将会匹配<code>直接</code>嵌套在<ul>元素内的所有<li>元素。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=color:#75715e>/* List items that are children of the &#34;my-things&#34; list */</span>
 <span style=color:#f92672>ul</span>.<span style=color:#a6e22e>my-things</span> <span style=color:#f92672>&gt;</span> <span style=color:#f92672>li</span> {
   <span style=color:#66d9ef>margin</span>: <span style=color:#ae81ff>2</span><span style=color:#66d9ef>em</span>;
 }
 </code></pre></div><h2 id=后代选择器>后代选择器
 <a class=heading-link href=#%e5%90%8e%e4%bb%a3%e9%80%89%e6%8b%a9%e5%99%a8><i class="fa fa-link" aria-hidden=true></i></a></h2><p>' ' (空格) 操作符将选择第一个元素的子代节点。
-div span 将匹配 元素内<code>所有</code>的 元素。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=color:#75715e>/* List items that are descendants of the &#34;my-things&#34; list */</span>
+div span 将匹配<div>元素内<code>所有</code>的 <span>元素。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=color:#75715e>/* List items that are descendants of the &#34;my-things&#34; list */</span>
 <span style=color:#f92672>ul</span>.<span style=color:#a6e22e>my-things</span> <span style=color:#f92672>li</span> {
   <span style=color:#66d9ef>margin</span>: <span style=color:#ae81ff>2</span><span style=color:#66d9ef>em</span>;
 }
 </code></pre></div><h2 id=伪类>伪类
 <a class=heading-link href=#%e4%bc%aa%e7%b1%bb><i class="fa fa-link" aria-hidden=true></i></a></h2><p>伪类 允许基于未包含在文档树中的状态信息来选择元素，详细参考<a href=https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes>mdn:伪类</a>
-a:visited 会匹配所有被访问过的 元素。</p><pre><code>selector：伪类{
+a:visited 会匹配所有被访问过的 <a>元素。</p><pre><code>selector：伪类{
   适当的属性;
 }
 
@@ -116,7 +116,7 @@ li.list-wrapper:nth-child(1), li.list-wrapper:nth-child(2)
 </code></pre><h2 id=伪元素>伪元素
 <a class=heading-link href=#%e4%bc%aa%e5%85%83%e7%b4%a0><i class="fa fa-link" aria-hidden=true></i></a></h2><p>伪元素 表示所有未被包含在HTML的实体。详细参考[mdn:伪元素](<a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements>https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements</a>）
 <code>按照规范，应该使用双冒号（::）而不是单个冒号（:），以便区分伪类和伪元素。但是，由于旧版本的 W3C 规范并未对此进行特别区分，因此目前绝大多数的浏览器都同时支持使用这两种方式来表示伪元素</code>
-p::first-line 会匹配所有 元素的第一行。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=color:#f92672>selector</span>::<span style=color:#a6e22e>pseudo-element</span> {
+p::first-line 会匹配所有<p>元素的第一行。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=color:#f92672>selector</span>::<span style=color:#a6e22e>pseudo-element</span> {
   property: value;
 }
 </code></pre></div><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=ec542021ed037126423f266a601b60e8 data-page-url=https://chenkai.life/web/css_select/ data-page-title=css元素选择器 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.a350362441276ec5c1671926420497bb8e52b63ead1d51d3c9bc4342d0039526.js integrity="sha256-o1A2JEEnbsXBZxkmQgSXu45Stj6tHVHTybxDQtADlSY="></script><script src=/js/custom.js></script><script src=/js/font.min.js></script></body></html>

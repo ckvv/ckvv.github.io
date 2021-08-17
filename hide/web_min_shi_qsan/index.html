@@ -42,7 +42,7 @@
 <label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/index.xml>RSS</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input class=search-int type=text placeholder=Search>
 <button class=search-btn data-type=google>Google</button>
 <button class=search-btn data-type=github>GitHub</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai.life/hide/web_min_shi_qsan/>前端开发面试题及答案</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title target=_blank href=https://github.com/chenkai0520/chenkai0520.github.io/edit/main/content/hide/Web_min_shi_qs&an.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg><time datetime=2021-07-09T15:37:56+08:00>2021-07-09</time></span></div><div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg><span class=tag><a href=/tags/web/>web</a></span></div></div><h2 id=前端开发面试题>前端开发面试题
-<a class=heading-link href=#%e5%89%8d%e7%ab%af%e5%bc%80%e5%8f%91%e9%9d%a2%e8%af%95%e9%a2%98><i class="fa fa-link" aria-hidden=true></i></a></h2><h2 id=a-namepreface前言a->前言
+<a class=heading-link href=#%e5%89%8d%e7%ab%af%e5%bc%80%e5%8f%91%e9%9d%a2%e8%af%95%e9%a2%98><i class="fa fa-link" aria-hidden=true></i></a></h2><h2 id=a-namepreface前言a-><a name=preface>前言</a>
 <a class=heading-link href=#a-namepreface%e5%89%8d%e8%a8%80a-><i class="fa fa-link" aria-hidden=true></i></a></h2><p><a href=http://markyun.github.io/2015/Front-end-Developer-Questions/ title=Questions>只看问题点这里</a></p><p><a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers title=Questions-and-Answers>看全部问题和答案点这里</a></p><p>本文由我收集总结了一些前端面试题，初学者阅后也要用心钻研其中的原理，重要知识需要系统学习、透彻学习，形成自己的知识链。万不可投机取巧，临时抱佛脚只求面试侥幸混过关是错误的！也是不可能的！不可能的！不可能的！</p><p>前端还是一个年轻的行业，新的行业标准， 框架， 库都不断在更新和新增，正如赫门在2015深JS大会上的《前端服务化之路》主题演讲中说的一句话：“每18至24个月，前端都会难一倍”，这些变化使前端的能力更加丰富、创造的应用也会更加完美。所以关注各种前端技术，跟上快速变化的节奏，也是身为一个前端程序员必备的技能之一。</p><p>最近也收到许多微博私信的鼓励和更正题目信息，后面会经常更新题目和答案到<a href=http://markyun.github.io/>github博客</a>。希望前端er达到既能使用也会表达，对理论知识有自己的理解。可根据下面的知识点一个一个去进阶学习，形成自己的职业技能链。</p><p><strong>面试有几点需注意：(来源<a href=http://weibo.com/wintercn title=微博：寒冬winter>寒冬winter</a> 老师，github:@wintercn)</strong></p><ol><li><p>面试题目： 根据你的等级和职位的变化，入门级到专家级，广度和深度都会有所增加。</p></li><li><p>题目类型： 理论知识、算法、项目细节、技术视野、开放性题、工作案例。</p></li><li><p>细节追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种知识关联是长时期的学习，临时抱佛脚绝对是记不住的。</p></li><li><p>回答问题再棒，面试官（可能是你面试职位的直接领导），会考虑我要不要这个人做我的同事？所以态度很重要、除了能做事，还要会做人。（感觉更像是相亲( •̣̣̣̣̣̥́௰•̣̣̣̣̣̥̀ )）</p></li><li><p>资深的前端开发能把absolute和relative弄混，这样的人不要也罢，因为团队需要的是：你这个人具有可以依靠的才能（靠谱）。</p></li></ol><p><strong>前端开发知识点：</strong></p><pre><code>HTML&amp;CSS：
     对Web标准的理解、浏览器内核差异、兼容性、hack、CSS基本功：布局、盒子模型、选择器优先级、
     HTML5、CSS3、Flexbox
@@ -81,7 +81,7 @@ JavaScript：
 更新记录：
 2016年3月25日：新增ECMAScript6 相关问题
 </code></pre><h3 id=更新时间--2016-3-25>更新时间: 2016-3-25
-<a class=heading-link href=#%e6%9b%b4%e6%96%b0%e6%97%b6%e9%97%b4--2016-3-25><i class="fa fa-link" aria-hidden=true></i></a></h3><h2 id=a-namehtmlhtmla>HTML
+<a class=heading-link href=#%e6%9b%b4%e6%96%b0%e6%97%b6%e9%97%b4--2016-3-25><i class="fa fa-link" aria-hidden=true></i></a></h3><h2 id=a-namehtmlhtmla><a name=html>HTML</a>
 <a class=heading-link href=#a-namehtmlhtmla><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>Doctype作用？标准模式与兼容模式各有什么区别?</p><pre><code>  （1）、&lt;!DOCTYPE&gt;声明位于位于HTML文档中的第一行，处于 &lt;html&gt; 标签之前。告知浏览器的解析器用什么文档标准解析这个文档。DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。
 
   （2）、标准模式的排版 和JS运作模式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。
@@ -221,7 +221,7 @@ HTML5？</p><pre><code>  * HTML5 现在已经不是 SGML 的子集，主要是�
   Semantic Style Elements -- 语义样式标签
   strong, em, ins, del, code
   应该准确使用语义样式标签, 但不能滥用, 如果不能确定时首选使用自然样式标签。
-</code></pre></li></ul><h2 id=a-namecsscssa>CSS
+</code></pre></li></ul><h2 id=a-namecsscssa><a name=css>CSS</a>
 <a class=heading-link href=#a-namecsscssa><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？</p><pre><code>  （1）有两种， IE 盒子模型、W3C 盒子模型；
   （2）盒模型： 内容(content)、填充(padding)、边界(margin)、 边框(border)；
   （3）区  别： IE的content部分把 border 和 padding计算了进去;
@@ -507,8 +507,8 @@ HTML5？</p><pre><code>  * HTML5 现在已经不是 SGML 的子集，主要是�
   可以通过css3里面的动画属性scale进行缩放。
 </code></pre></li><li><p>移动端的布局用过媒体查询吗？</p><p>假设你现在正用一台显示设备来阅读这篇文章，同时你也想把它投影到屏幕上，或者打印出来，
 而显示设备、屏幕投影和打印等这些媒介都有自己的特点，CSS就是为文档提供在不同媒介上展示的适配方法</p><p>当媒体查询为真时，相关的样式表或样式规则会按照正常的级联规被应用。
-当媒体查询返回假， 标签上带有媒体查询的样式表 仍将被下载 （只不过不会被应用）。</p><p>包含了一个媒体类型和至少一个使用 宽度、高度和颜色等媒体属性来限制样式表范围的表达式。
-CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某些特定的设备范围。</p></li><li><p>使用 CSS 预处理器吗？喜欢那个？</p><pre><code>  SASS (SASS、LESS没有本质区别，只因为团队前端都是用的SASS)
+当媒体查询返回假， <link>标签上带有媒体查询的样式表 仍将被下载 （只不过不会被应用）。</p><link rel=stylesheet media="(max-width: 800px)" href=example.css><p>包含了一个媒体类型和至少一个使用 宽度、高度和颜色等媒体属性来限制样式表范围的表达式。
+CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某些特定的设备范围。</p><style>@media(min-width:700px) and (orientation:landscape){.sidebar{display:none}}</style></li><li><p>使用 CSS 预处理器吗？喜欢那个？</p><pre><code>  SASS (SASS、LESS没有本质区别，只因为团队前端都是用的SASS)
 </code></pre></li><li><p>CSS优化、提高性能的方法有哪些？</p><pre><code>  关键选择器（key selector）。选择器的最后面的部分为关键选择器（即用来匹配目标元素的部分）；
   如果规则拥有 ID 选择器作为其关键选择器，则不要为规则增加标签。过滤掉无关的规则（这样样式系统就不会浪费时间去匹配它们了）；
   提取项目的通用公有样式，增强可复用性，按模块编写组件；增强项目的协同开发性、可维护性和可扩展性;
@@ -557,7 +557,7 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
 
   - 后处理器例如：PostCSS，通常被视为在完成的样式表中根据CSS规范处理CSS，让其更有效；目前最常做的
     是给CSS属性添加浏览器私有前缀，实现跨浏览器兼容性的问题。
-</code></pre></li></ul><h2 id=a-namejsjavascripta>JavaScript
+</code></pre></li></ul><h2 id=a-namejsjavascripta><a name=js>JavaScript</a>
 <a class=heading-link href=#a-namejsjavascripta><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>介绍js的基本数据类型。</p><pre><code>  Undefined、Null、Boolean、Number、String、
   ECMAScript 2015 新增:Symbol(创建后独一无二且不可变的数据类型 )
 </code></pre></li><li><p>介绍js有哪些内置对象？</p><pre><code> Object 是 JavaScript 中所有对象的父对象
@@ -1119,7 +1119,7 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
   String.lastIndexOf() 方法返回指定值（本例中的'.'）在调用该方法的字符串中最后出现的位置，如果没找到则返回 -1。
   对于'filename'和'.hiddenfile'，lastIndexOf的返回值分别为0和-1无符号右移操作符(»&gt;) 将-1转换为4294967295，将-2转换为4294967294，这个方法可以保证边缘情况时文件名不变。
   String.prototype.slice() 从上面计算的索引处提取文件的扩展名。如果索引比文件名的长度大，结果为&quot;&quot;。
-</code></pre></li></ul><h4 id=a-nameotherecmascript6-相关a>ECMAScript6 相关
+</code></pre></li></ul><h4 id=a-nameotherecmascript6-相关a><a name=other>ECMAScript6 相关</a>
 <a class=heading-link href=#a-nameotherecmascript6-%e7%9b%b8%e5%85%b3a><i class="fa fa-link" aria-hidden=true></i></a></h4><ul><li><p>Object.is() 与原来的比较操作符“ ===”、“ ==”的区别？</p><pre><code>  两等号判等，会在比较时进行类型转换；
   三等号判等(判断严格)，比较时不进行隐式类型转换,（类型不同则会返回false）；
 
@@ -1127,8 +1127,8 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
   但 Object.is(NaN, NaN) 会返回 true.
 
   Object.is 应被认为有其特殊的用途，而不能用它认为它比其它的相等对比更宽松或严格。
-</code></pre></li></ul><h4 id=a-nameother前端框架相关a>前端框架相关
-<a class=heading-link href=#a-nameother%e5%89%8d%e7%ab%af%e6%a1%86%e6%9e%b6%e7%9b%b8%e5%85%b3a><i class="fa fa-link" aria-hidden=true></i></a></h4><ul><li><p>react-router 路由系统的实现原理？</p></li><li><p>React中如何解决第三方类库的问题?</p></li></ul><h2 id=a-nameother其他问题a>其他问题
+</code></pre></li></ul><h4 id=a-nameother前端框架相关a><a name=other>前端框架相关</a>
+<a class=heading-link href=#a-nameother%e5%89%8d%e7%ab%af%e6%a1%86%e6%9e%b6%e7%9b%b8%e5%85%b3a><i class="fa fa-link" aria-hidden=true></i></a></h4><ul><li><p>react-router 路由系统的实现原理？</p></li><li><p>React中如何解决第三方类库的问题?</p></li></ul><h2 id=a-nameother其他问题a><a name=other>其他问题</a>
 <a class=heading-link href=#a-nameother%e5%85%b6%e4%bb%96%e9%97%ae%e9%a2%98a><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>原来公司工作流程是怎么样的，如何与其他人协作的？如何跨部门合作的？</p></li><li><p>你遇到过比较难的技术问题是？你是如何解决的？</p></li><li><p>设计模式 知道什么是singleton, factory, strategy, decrator么?</p></li><li><p>常使用的库有哪些？常用的前端开发工具？开发过什么应用或组件？</p></li><li><p>页面重构怎么操作？</p><pre><code>  网站重构：在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。
   也就是说是在不改变UI的情况下，对网站进行优化，在扩展的同时保持一致的UI。
 
@@ -1358,7 +1358,7 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
   标签及文字的排布方式、
   依靠明文确认密码、
   合理的键盘利用、
-</code></pre></li><li><p>简单描述一下你做过的移动APP项目研发流程？</p></li><li><p>你在现在的团队处于什么样的角色，起到了什么明显的作用？</p></li><li><p>你认为怎样才是全端工程师（Full Stack developer）？</p></li><li><p>介绍一个你最得意的作品吧？</p></li><li><p>你有自己的技术博客吗，用了哪些技术？</p></li><li><p>对前端安全有什么看法？</p></li><li><p>是否了解Web注入攻击，说下原理，最常见的两种攻击（XSS 和 CSRF）了解到什么程度？</p></li><li><p>项目中遇到国哪些印象深刻的技术难题，具体是什么问题，怎么解决？。</p></li><li><p>最近在学什么东西？</p></li><li><p>你的优点是什么？缺点是什么？</p></li><li><p>如何管理前端团队?</p></li><li><p>最近在学什么？能谈谈你未来3，5年给自己的规划吗？</p></li></ul><h2 id=a-nameweb前端学习网站推荐a>前端学习网站推荐
+</code></pre></li><li><p>简单描述一下你做过的移动APP项目研发流程？</p></li><li><p>你在现在的团队处于什么样的角色，起到了什么明显的作用？</p></li><li><p>你认为怎样才是全端工程师（Full Stack developer）？</p></li><li><p>介绍一个你最得意的作品吧？</p></li><li><p>你有自己的技术博客吗，用了哪些技术？</p></li><li><p>对前端安全有什么看法？</p></li><li><p>是否了解Web注入攻击，说下原理，最常见的两种攻击（XSS 和 CSRF）了解到什么程度？</p></li><li><p>项目中遇到国哪些印象深刻的技术难题，具体是什么问题，怎么解决？。</p></li><li><p>最近在学什么东西？</p></li><li><p>你的优点是什么？缺点是什么？</p></li><li><p>如何管理前端团队?</p></li><li><p>最近在学什么？能谈谈你未来3，5年给自己的规划吗？</p></li></ul><h2 id=a-nameweb前端学习网站推荐a><a name=web>前端学习网站推荐</a>
 <a class=heading-link href=#a-nameweb%e5%89%8d%e7%ab%af%e5%ad%a6%e4%b9%a0%e7%bd%91%e7%ab%99%e6%8e%a8%e8%8d%90a><i class="fa fa-link" aria-hidden=true></i></a></h2><pre><code>1. 极客标签：     http://www.gbtags.com/
 
 2. 码农周刊：     http://weekly.manong.io/issues/
@@ -1380,7 +1380,7 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
 10.w3school：    http://www.w3school.com.cn/
 
 11.mozilla：     https://developer.mozilla.org/zh-CN/docs/Web/JavaScript
-</code></pre><h2 id=a-nameweb文档推荐a>文档推荐
+</code></pre><h2 id=a-nameweb文档推荐a><a name=web>文档推荐</a>
 <a class=heading-link href=#a-nameweb%e6%96%87%e6%a1%a3%e6%8e%a8%e8%8d%90a><i class="fa fa-link" aria-hidden=true></i></a></h2><ol><li><p><a href=http://docs.huihoo.com/jquery/jquery-fundamentals/zh-cn/index.html title="jQuery 基本原理">jQuery 基本原理</a></p></li><li><p><a href=http://bonsaiden.github.io/JavaScript-Garden/zh/>JavaScript 秘密花园</a></p></li><li><p><a href=http://css.doyoe.com/>CSS参考手册</a></p></li><li><p><a href=http://javascript.ruanyifeng.com/>JavaScript 标准参考教程</a></p></li><li><p><a href=http://es6.ruanyifeng.com/>ECMAScript 6入门</a></p></li></ol><p><strong>备注：</strong></p><pre><code>根据自己需要选择性阅读，面试题是对理论知识的总结，让自己学会应该如何表达。
 
 资料答案不够正确和全面，欢迎欢迎Star和提交issues。

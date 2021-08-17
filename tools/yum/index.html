@@ -83,7 +83,7 @@ baseurl=url://path/to/repository/
 baseurl=url://server2/path/to/repository/
 baseurl=url://server3/path/to/repository/
 </code></pre><p>其中url 指向的目录必须是这个repository header 目录的上一级，它也支持𝑟𝑒𝑙𝑒𝑎𝑠𝑒𝑣𝑒𝑟releaseverbasearch 这样的变量。
-url 之后可以加上多个选项，如gpgcheck、exclude、failovermethod 等，比如：</p><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code>[updates-released]
+url 之后可以加上多个选项，如gpgcheck、exclude、failovermethod 等，比如：</p><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code>[updates-released]
 name=Fedora Core $releasever - $basearch - Released Updates
 baseurl=http://download.atrpms.net/mirrors/fedoracore/updates/$releasever/$basearch
 　　　　 http://redhat.linux.ee/pub/fedora/linux/core/updates/$releasever/$basearch
@@ -100,7 +100,7 @@ failovermethod=priority
 </code></pre><p>第三步：运行yum makecache生成缓存</p><pre><code>yum clean all　　//清理缓存
 yum makecache　　//更新缓存
 </code></pre><h3 id=yum工具的使用httpswwwcnblogscomzhichaomap7533247html2542095789>yum工具的使用<a href=https://www.cnblogs.com/zhichaoma/p/7533247.html#2542095789>#</a>
-<a class=heading-link href=#yum%e5%b7%a5%e5%85%b7%e7%9a%84%e4%bd%bf%e7%94%a8httpswwwcnblogscomzhichaomap7533247html2542095789><i class="fa fa-link" aria-hidden=true></i></a></h3><p>rpm的更新</p><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code>检查可更新的rpm包
+<a class=heading-link href=#yum%e5%b7%a5%e5%85%b7%e7%9a%84%e4%bd%bf%e7%94%a8httpswwwcnblogscomzhichaomap7533247html2542095789><i class="fa fa-link" aria-hidden=true></i></a></h3><p>rpm的更新</p><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code>检查可更新的rpm包
 #yum check-update
 更新所有的rpm包
 #yum update
@@ -108,12 +108,12 @@ yum makecache　　//更新缓存
 #yum update kernel kernel-source
 大规模的版本升级,与yum update不同的是,连旧的淘汰的包也升级
 #yum upgrade
-</code></pre><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><p>rpm包的安装和删除</p><pre><code>安装rpm包,如xmms-mp3
+</code></pre><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><p>rpm包的安装和删除</p><pre><code>安装rpm包,如xmms-mp3
 #yum install xmms-mp3
 删除rpm包,包括与该包有倚赖性的包
 #yum remove licq
 注:同时会提示删除licq-gnome,licq-qt,licq-text
-</code></pre><p>yum暂存(/var/cache/yum/)的相关参数</p><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code>清除暂存中rpm包文件
+</code></pre><p>yum暂存(/var/cache/yum/)的相关参数</p><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code>清除暂存中rpm包文件
 #yum clean packages
 清除暂存中rpm头文件
 #yum clearn headers
@@ -122,7 +122,7 @@ yum makecache　　//更新缓存
 清除暂存中旧的rpm头文件和包文件
 #yum clearn 或#yum clearn all
 注:相当于yum clean packages + yum clean oldheaders
-</code></pre><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><p>包列表</p><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code>列出资源库中所有可以安装或更新的rpm包
+</code></pre><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><p>包列表</p><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code>列出资源库中所有可以安装或更新的rpm包
 #yum list
 列出资源库中特定的可以安装或更新以及已经安装的rpm包
 #yum list mozilla#yum list mozilla*
@@ -134,7 +134,7 @@ yum makecache　　//更新缓存
 列出已经安装的但是不包含在资源库中的rpm包
 #yum list extras
 注:通过其它网站下载安装的rpm包
-</code></pre><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><p>rpm包信息显示(info参数同list)</p><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code>列出资源库中所有可以安装或更新的rpm包的信息
+</code></pre><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><p>rpm包信息显示(info参数同list)</p><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code>列出资源库中所有可以安装或更新的rpm包的信息
 #yum info
 列出资源库中特定的可以安装或更新以及已经安装的rpm包的信息
 #yum info mozilla#yum info mozilla*
@@ -146,12 +146,12 @@ yum makecache　　//更新缓存
 列出已经安装的但是不包含在资源库中的rpm包的信息
 #yum info extras
 注:通过其它网站下载安装的rpm包的信息
-</code></pre><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><p>搜索rpm包</p><pre><code>搜索匹配特定字符的rpm包
+</code></pre><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><p>搜索rpm包</p><pre><code>搜索匹配特定字符的rpm包
 #yum search mozilla
 注:在rpm包名,包描述等中搜索
 搜索有包含特定文件名的rpm包
 #yum provides realplay 
-</code></pre><p>增加资源库</p><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code>例如:增加rpm.livna.org作为资源库
+</code></pre><p>增加资源库</p><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code>例如:增加rpm.livna.org作为资源库
 安装Livna.org rpms GPG key
 #rpm --import http://rpm.livna.org/RPM-LIVNA-GPG-KEY
 检查GPG Key
@@ -159,7 +159,7 @@ yum makecache　　//更新缓存
 显示Key信息
 #rpm -qi gpg-pubkey-a109b1ec-3f6e28d5
 (注:如果要删除Key,使用#rpm -e gpg-pubkey-a109b1ec-3f6e28d5)
-</code></pre><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><p>yum常用的命令</p><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code># yum install xxx            　　安装xxx软件
+</code></pre><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><p>yum常用的命令</p><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><pre><code># yum install xxx            　　安装xxx软件
 # yum info xxx                　 查看xxx软件的信息
 # yum remove xxx        　　　　　删除软件包
 # yum list                      列出软件包
@@ -176,4 +176,4 @@ yum makecache　　//更新缓存
 # yum list updates            列出所有升级源上的可以更新包；
 # yum list installed          列出已经安装的包；
 # yun update kernel           升级内核；
-</code></pre><p><a href><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><p>搭建内网YUM仓库：http://www.cnblogs.com/zhichaoma/p/7581957.html</p><p>更多使用请参考：http://man.linuxde.net/yum</p><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=2ae323249a8ce2010263d3dbd083866d data-page-url=https://chenkai.life/tools/yum/ data-page-title=yum data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.a350362441276ec5c1671926420497bb8e52b63ead1d51d3c9bc4342d0039526.js integrity="sha256-o1A2JEEnbsXBZxkmQgSXu45Stj6tHVHTybxDQtADlSY="></script><script src=/js/custom.js></script><script src=/js/font.min.js></script></body></html>
+</code></pre><p><a href=javascript:void(0);><img src=https://common.cnblogs.com/images/copycode.gif alt=复制代码></a></p><p>搭建内网YUM仓库：http://www.cnblogs.com/zhichaoma/p/7581957.html</p><p>更多使用请参考：http://man.linuxde.net/yum</p><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=2ae323249a8ce2010263d3dbd083866d data-page-url=https://chenkai.life/tools/yum/ data-page-title=yum data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.a350362441276ec5c1671926420497bb8e52b63ead1d51d3c9bc4342d0039526.js integrity="sha256-o1A2JEEnbsXBZxkmQgSXu45Stj6tHVHTybxDQtADlSY="></script><script src=/js/custom.js></script><script src=/js/font.min.js></script></body></html>

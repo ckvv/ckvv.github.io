@@ -19,7 +19,7 @@ js继承的各种实现以及优缺点 通过prototype指定 Object.setPrototype
 &lt;p>本文包含了一些用于考查候选者的前端面试问题。不建议对单个候选者问及每个问题 (那需要好几个小时)。只要从列表里挑选一些，就能帮助你考查候选者是否具备所需要的技能。&lt;/p>
 &lt;p>&lt;strong>备注：&lt;/strong> 这些问题中很多都是开放性的，可以引发有趣的讨论。这比直接的答案更能体现此人的能力。&lt;/p>
 &lt;h2 id="a-nametoc目录a">
-&lt;!-- raw HTML omitted -->目录&lt;!-- raw HTML omitted -->
+&lt;a name='toc'>目录&lt;/a>
 &lt;a class="heading-link" href="#a-nametoc%e7%9b%ae%e5%bd%95a">
 &lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
 &lt;/a>
@@ -46,15 +46,14 @@ html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的�
 HTML5的离线储存怎么使用，工作原理能不能解释一下？
 浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
 请描述一下 cookies，sessionStorage 和 localStorage 的区别？
-iframe有那些缺点？
-Label的作用是什么？是怎么用的？（加 for 或 包裹）</description></item><item><title>前端开发面试题及答案</title><link>https://chenkai.life/hide/web_min_shi_qsan/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/hide/web_min_shi_qsan/</guid><description>&lt;h2 id="前端开发面试题">
+iframe有那些缺点？</description></item><item><title>前端开发面试题及答案</title><link>https://chenkai.life/hide/web_min_shi_qsan/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/hide/web_min_shi_qsan/</guid><description>&lt;h2 id="前端开发面试题">
 前端开发面试题
 &lt;a class="heading-link" href="#%e5%89%8d%e7%ab%af%e5%bc%80%e5%8f%91%e9%9d%a2%e8%af%95%e9%a2%98">
 &lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
 &lt;/a>
 &lt;/h2>
 &lt;h2 id="a-namepreface前言a-">
-&lt;!-- raw HTML omitted -->前言&lt;!-- raw HTML omitted -->
+&lt;a name='preface'>前言&lt;/a>
 &lt;a class="heading-link" href="#a-namepreface%e5%89%8d%e8%a8%80a-">
 &lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
 &lt;/a>

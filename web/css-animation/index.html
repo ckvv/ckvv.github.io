@@ -1,0 +1,64 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=color-scheme content="light dark"><meta name=description content="本文简单介绍如何定义css动画
+transition    transitions 可以决定哪些属性发生动画效果transition-property (明确地列出这些属性,如果省略则包含所有属性)，何时开始 transition-delay (设置 delay），持续多久transition-duration (设置 duration) 以及如何动画transition-timing-function (定义timing function，比如匀速地或先快后慢)
+如下面指定字体大小颜色和字体发生动画效果
+.transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } transition的发生需要属性被修改时才会触发，比如hover时我们修改字体大小和颜色，如果没有定义transition这些属性会立即修改，
+.transition-box:hover { font-size: 2rem; color: green; }   .transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } .transition-box:hover { font-size: 3rem; color: green; }  把鼠标放上查看效果   CSS 过渡 由简写属性transition 定义是最好的方式，可以避免属性值列表长度不一，节省调试时间。
+也可以用下面子属性来控制过渡的各部分
+transition-property: color, font-size; transition-duration: 4s; transition-timing-function: ease; transition-delay: 0s; transition的特点      只能在css属性变化时被动触发"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="css动画"><meta name=twitter:description content="本文简单介绍如何定义css动画
+transition    transitions 可以决定哪些属性发生动画效果transition-property (明确地列出这些属性,如果省略则包含所有属性)，何时开始 transition-delay (设置 delay），持续多久transition-duration (设置 duration) 以及如何动画transition-timing-function (定义timing function，比如匀速地或先快后慢)
+如下面指定字体大小颜色和字体发生动画效果
+.transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } transition的发生需要属性被修改时才会触发，比如hover时我们修改字体大小和颜色，如果没有定义transition这些属性会立即修改，
+.transition-box:hover { font-size: 2rem; color: green; }   .transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } .transition-box:hover { font-size: 3rem; color: green; }  把鼠标放上查看效果   CSS 过渡 由简写属性transition 定义是最好的方式，可以避免属性值列表长度不一，节省调试时间。
+也可以用下面子属性来控制过渡的各部分
+transition-property: color, font-size; transition-duration: 4s; transition-timing-function: ease; transition-delay: 0s; transition的特点      只能在css属性变化时被动触发"><meta property="og:title" content="css动画"><meta property="og:description" content="本文简单介绍如何定义css动画
+transition    transitions 可以决定哪些属性发生动画效果transition-property (明确地列出这些属性,如果省略则包含所有属性)，何时开始 transition-delay (设置 delay），持续多久transition-duration (设置 duration) 以及如何动画transition-timing-function (定义timing function，比如匀速地或先快后慢)
+如下面指定字体大小颜色和字体发生动画效果
+.transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } transition的发生需要属性被修改时才会触发，比如hover时我们修改字体大小和颜色，如果没有定义transition这些属性会立即修改，
+.transition-box:hover { font-size: 2rem; color: green; }   .transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } .transition-box:hover { font-size: 3rem; color: green; }  把鼠标放上查看效果   CSS 过渡 由简写属性transition 定义是最好的方式，可以避免属性值列表长度不一，节省调试时间。
+也可以用下面子属性来控制过渡的各部分
+transition-property: color, font-size; transition-duration: 4s; transition-timing-function: ease; transition-delay: 0s; transition的特点      只能在css属性变化时被动触发"><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai.life/web/css-animation/"><meta property="article:published_time" content="2021-08-17T19:08:42+08:00"><meta property="article:modified_time" content="2021-08-17T19:08:42+08:00"><title>css动画 · CK's Blog</title><link rel=canonical href=https://chenkai.life/web/css-animation/><link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/scss/custom.min.f733d78043ffdbf1abd7dee860be0edf6dbb3bbea6b2ce1714d447b5ccf595c8.css integrity="sha256-9zPXgEP/2/Gr197oYL4O3227O76mss4XFNRHtcz1lcg=" crossorigin=anonymous media=screen><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><meta name=generator content="Hugo 0.72.0"></head><body class="preload-transitions colorscheme-auto"><div class=float-container><span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg></span></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>CK's Blog</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/index.xml>RSS</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input class=search-int type=text placeholder=Search>
+<button class=search-btn data-type=google>Google</button>
+<button class=search-btn data-type=github>GitHub</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai.life/web/css-animation/>css动画</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title target=_blank href=https://github.com/chenkai0520/chenkai0520.github.io/edit/main/content/web/css-animation.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg><time datetime=2021-08-17T19:08:42+08:00>2021-08-17</time></span></div><div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg><span class=tag><a href=/tags/web/>web</a></span>
+<span class=separator>•</span>
+<span class=tag><a href=/tags/css/>css</a></span></div></div><p>本文简单介绍如何定义css动画</p><h1 id=transition>transition
+<a class=heading-link href=#transition><i class="fa fa-link" aria-hidden=true></i></a></h1><p>transitions 可以决定哪些属性发生动画效果<code>transition-property</code> (明确地列出这些属性,如果省略则包含所有属性)，何时开始<code> transition-delay</code> (设置 delay），持续多久<code>transition-duration</code> (设置 duration) 以及如何动画<code>transition-timing-function</code> (定义<em>timing function</em>，比如匀速地或先快后慢)</p><p>如下面指定字体大小颜色和字体发生动画效果</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>.transition-box{
+  font-size: 1rem;
+  color: red;
+  transition: color 2s, font-size 2s;
+}
+
+</code></pre></div><p>transition的发生需要属性被修改时才会触发，比如hover时我们修改字体大小和颜色，如果没有定义transition这些属性会立即修改，</p><pre><code>.transition-box:hover {
+  font-size: 2rem;
+  color: green;
+}
+</code></pre><hr><style>.transition-box{font-size:1rem;color:red;transition:color 2s,font-size 2s}.transition-box:hover{font-size:3rem;color:green}</style><div class=transition-box>把鼠标放上查看效果</div><hr><p>CSS 过渡 由简写属性<a href=https://developer.mozilla.org/en-US/docs/CSS/transition> </a><a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/transition><code>transition</code></a> 定义是最好的方式，可以避免属性值列表长度不一，节省调试时间。</p><p>也可以用下面子属性来控制过渡的各部分</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css>  <span style=color:#f92672>transition-property</span><span style=color:#f92672>:</span> <span style=color:#f92672>color</span><span style=color:#f92672>,</span> <span style=color:#f92672>font-size</span><span style=color:#f92672>;</span>
+  <span style=color:#f92672>transition-duration</span><span style=color:#f92672>:</span> <span style=color:#f92672>4s</span><span style=color:#f92672>;</span>
+  <span style=color:#f92672>transition-timing-function</span><span style=color:#f92672>:</span> <span style=color:#f92672>ease</span><span style=color:#f92672>;</span>
+  <span style=color:#f92672>transition-delay</span><span style=color:#f92672>:</span> <span style=color:#f92672>0s</span><span style=color:#f92672>;</span>
+</code></pre></div><h2 id=transition的特点>transition的特点
+<a class=heading-link href=#transition%e7%9a%84%e7%89%b9%e7%82%b9><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>只能在css属性变化时被动触发</p></li><li><p>transition是一次性的，不能重复发生，除非一再触发</p></li><li><p>transition只能定义开始状态和结束状态，不能定义中间状态</p></li></ul><h1 id=animation>animation
+<a class=heading-link href=#animation><i class="fa fa-link" aria-hidden=true></i></a></h1><p><strong>animation</strong> 属性用来指定一组或多组动画，每组之间用逗号相隔,是 <a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-name><code>animation-name</code></a>，<a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-duration><code>animation-duration</code></a>, <a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-timing-function><code>animation-timing-function</code></a>，<a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-delay><code>animation-delay</code></a>，<a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-iteration-count><code>animation-iteration-count</code></a>，<a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-direction><code>animation-direction</code></a>，<a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-fill-mode><code>animation-fill-mode</code></a> 和 <a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation-play-state><code>animation-play-state</code></a> 属性的一个简写属性形式。</p><p>首先我们需要先定义一个关键帧<code>keyframes</code>, <strong><code>@keyframes</code></strong> <a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/At-rule>at-rule</a> 规则通过在动画序列中定义关键帧（或waypoints）的样式来控制CSS动画序列中的中间步骤。和 <a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Transitions>转换 transition</a> 相比，关键帧 keyframes 可以控制动画序列的中间步骤。</p><p>下面定义了一个开始时正常大小，中间时放大1.5倍，结束时回复正常大小</p><pre><code>@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</code></pre><p>下面我们定义了一个button，在<code>animation</code>中指定scale，动画世界0.8秒，infinite表示动画播放的次数无限次</p><pre><code>.animation-btn{
+  background-color: #ff2b99;
+  border: 0px solid gray;
+  color: #fff;
+  animation: scale .8s infinite;
+  border-radius: 4px;
+  width: 120px;
+  height: 30px;
+  font-size: 16px;
+}
+</code></pre><hr><style>@keyframes scale{0%{transform:scale(1)}50%{transform:scale(1.5)}100%{transform:scale(1)}}.animation-btn{background-color:#ff2b99;border:0 solid gray;color:#fff;animation:scale .8s infinite;border-radius:4px;width:120px;height:30px;font-size:16px}</style><p><button class=animation-btn>AUTO SCALE</button></p><hr><h1 id=参考>参考
+<a class=heading-link href=#%e5%8f%82%e8%80%83><i class="fa fa-link" aria-hidden=true></i></a></h1><ul><li><p><a href=https://developer.mozilla.org/en-US/docs/Web/CSS/animation>https://developer.mozilla.org/en-US/docs/Web/CSS/animation</a></p></li><li><p><a href=https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Transitions>https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Transitions</a></p></li></ul><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=630ebb9a800c7e03725df1abfe260371 data-page-url=https://chenkai.life/web/css-animation/ data-page-title=css动画 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.a350362441276ec5c1671926420497bb8e52b63ead1d51d3c9bc4342d0039526.js integrity="sha256-o1A2JEEnbsXBZxkmQgSXu45Stj6tHVHTybxDQtADlSY="></script><script src=/js/custom.js></script><script src=/js/font.min.js></script></body></html>

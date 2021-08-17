@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>web on CK's Blog</title><link>https://chenkai.life/tags/web/</link><description>Recent content in web on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sat, 14 Aug 2021 10:25:11 +0800</lastBuildDate><atom:link href="https://chenkai.life/tags/web/index.xml" rel="self" type="application/rss+xml"/><item><title>谈谈Web项目中图标的方式</title><link>https://chenkai.life/web/use_icon_in_web/</link><pubDate>Sat, 14 Aug 2021 10:25:11 +0800</pubDate><guid>https://chenkai.life/web/use_icon_in_web/</guid><description>谈谈Web项目中图标的方式
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>web on CK's Blog</title><link>https://chenkai.life/tags/web/</link><description>Recent content in web on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 17 Aug 2021 19:08:42 +0800</lastBuildDate><atom:link href="https://chenkai.life/tags/web/index.xml" rel="self" type="application/rss+xml"/><item><title>css动画</title><link>https://chenkai.life/web/css-animation/</link><pubDate>Tue, 17 Aug 2021 19:08:42 +0800</pubDate><guid>https://chenkai.life/web/css-animation/</guid><description>本文简单介绍如何定义css动画
+transition transitions 可以决定哪些属性发生动画效果transition-property (明确地列出这些属性,如果省略则包含所有属性)，何时开始 transition-delay (设置 delay），持续多久transition-duration (设置 duration) 以及如何动画transition-timing-function (定义timing function，比如匀速地或先快后慢)
+如下面指定字体大小颜色和字体发生动画效果
+.transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } transition的发生需要属性被修改时才会触发，比如hover时我们修改字体大小和颜色，如果没有定义transition这些属性会立即修改，
+.transition-box:hover { font-size: 2rem; color: green; } .transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } .transition-box:hover { font-size: 3rem; color: green; } 把鼠标放上查看效果 CSS 过渡 由简写属性transition 定义是最好的方式，可以避免属性值列表长度不一，节省调试时间。
+也可以用下面子属性来控制过渡的各部分
+transition-property: color, font-size; transition-duration: 4s; transition-timing-function: ease; transition-delay: 0s; transition的特点 只能在css属性变化时被动触发</description></item><item><title>谈谈Web项目中图标的方式</title><link>https://chenkai.life/web/use_icon_in_web/</link><pubDate>Sat, 14 Aug 2021 10:25:11 +0800</pubDate><guid>https://chenkai.life/web/use_icon_in_web/</guid><description>谈谈Web项目中图标的方式
 单个图标 我们可以选择单独引用图标文件如png、svg等等，这种方式缺点显而易见，图标多了之后不方便维护
 字体文件 通过font-face,我们可以指定一个用于显示文本的自定义字体，字体文件内部类似一个svg我们可以在字体文件里面随便定义这些字符的形状，
 通过对应字体文件的字体编码我们就可以使用这些图标了,如下面是一个close图标
@@ -93,7 +99,7 @@ var worker = new Worker(&amp;#39;work.js&amp;#39;); Worker()构造函数的参�
 &lt;p>本文包含了一些用于考查候选者的前端面试问题。不建议对单个候选者问及每个问题 (那需要好几个小时)。只要从列表里挑选一些，就能帮助你考查候选者是否具备所需要的技能。&lt;/p>
 &lt;p>&lt;strong>备注：&lt;/strong> 这些问题中很多都是开放性的，可以引发有趣的讨论。这比直接的答案更能体现此人的能力。&lt;/p>
 &lt;h2 id="a-nametoc目录a">
-&lt;!-- raw HTML omitted -->目录&lt;!-- raw HTML omitted -->
+&lt;a name='toc'>目录&lt;/a>
 &lt;a class="heading-link" href="#a-nametoc%e7%9b%ae%e5%bd%95a">
 &lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
 &lt;/a>
@@ -120,15 +126,14 @@ html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的�
 HTML5的离线储存怎么使用，工作原理能不能解释一下？
 浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
 请描述一下 cookies，sessionStorage 和 localStorage 的区别？
-iframe有那些缺点？
-Label的作用是什么？是怎么用的？（加 for 或 包裹）</description></item><item><title>前端开发面试题及答案</title><link>https://chenkai.life/hide/web_min_shi_qsan/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/hide/web_min_shi_qsan/</guid><description>&lt;h2 id="前端开发面试题">
+iframe有那些缺点？</description></item><item><title>前端开发面试题及答案</title><link>https://chenkai.life/hide/web_min_shi_qsan/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/hide/web_min_shi_qsan/</guid><description>&lt;h2 id="前端开发面试题">
 前端开发面试题
 &lt;a class="heading-link" href="#%e5%89%8d%e7%ab%af%e5%bc%80%e5%8f%91%e9%9d%a2%e8%af%95%e9%a2%98">
 &lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
 &lt;/a>
 &lt;/h2>
 &lt;h2 id="a-namepreface前言a-">
-&lt;!-- raw HTML omitted -->前言&lt;!-- raw HTML omitted -->
+&lt;a name='preface'>前言&lt;/a>
 &lt;a class="heading-link" href="#a-namepreface%e5%89%8d%e8%a8%80a-">
 &lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
 &lt;/a>
