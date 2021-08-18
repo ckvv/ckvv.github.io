@@ -102,9 +102,9 @@ CSS 过渡 由简写属性[ ](https://developer.mozilla.org/en-US/docs/CSS/trans
   color: #fff;
   animation: scale .8s infinite;
   border-radius: 4px;
-  width: 120px;
-  height: 30px;
-  font-size: 16px;
+  width: 160px;
+  height: 40px;
+  font-size: 12px;
 }
 ```
 
@@ -129,9 +129,9 @@ CSS 过渡 由简写属性[ ](https://developer.mozilla.org/en-US/docs/CSS/trans
   color: #fff;
   animation: scale .8s infinite;
   border-radius: 4px;
-  width: 120px;
-  height: 30px;
-  font-size: 16px;
+  width: 160px;
+  height: 40px;
+  font-size: 12px;
 }
 </style>
 <button class="animation-btn">AUTO SCALE</button>
