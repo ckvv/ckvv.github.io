@@ -24,9 +24,10 @@ nginx
 ## 重启
 nginx -s reload
 
-
 ## 要获取所有 running nginx 进程的列表，可以使用ps实用程序，例如
 ps -ax | grep nginx
+
+##
 ```
 
 ## nginx.config
@@ -109,6 +110,7 @@ nobody           20440   0.0  0.0  4300320   1332   ??  S     2:02下午   0:00.
 nobody           20439   0.0  0.0  4300320   1256   ??  S     2:02下午   0:00.00 nginx: worker process
 ```
 由于启动用户和nginx工作用户不一致所致,将nginx.config的user改为和启动用户一致,修改nginx.config
+
 ```
 user root everyone;
 ```
@@ -119,12 +121,15 @@ user root everyone;
 ```
 open() "/usr/local/var/run/nginx/proxy_temp/1/04/0000000041" failed (13: Permission denied) while reading upstream, client: 127.0.0.1,
 ```
+
 查看当前nginx用户
+
 ```shell
  ps aux | grep "nginx: worker process"
 ```
 
 修改目录权限
+
 ```shell
 sudo chown -R youn_name /usr/local/var/run/nginx/proxy_temp
 ```
