@@ -7,7 +7,6 @@ show: false
 
 ## 联系方式
 
-+ WeChat: `chenkai-180`
 + Email: [k_0520@qq.com](mailto:k_0520@qq.com)
 + GitHub: <https://github.com/chenkai0520>
 
