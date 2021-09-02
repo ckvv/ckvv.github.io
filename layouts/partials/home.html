@@ -27,10 +27,4 @@
       {{ partial "pagination.html" . }}
     </section>
   </div>
-  <script>
-    // init service-worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js');
-    }
-  </script>
 </section>
