@@ -6,7 +6,7 @@ function importScript(params = {}) {
   oScript.type = "text/javascript";
   oScript.src = src;
 
-  return new Promise((resolve,reject) => {
+  return new Promise((resolve, reject) => {
     oScript.onerror = (err) => {
       reject(err);
     };;
@@ -18,14 +18,14 @@ function importScript(params = {}) {
 }
 
 // init copy code
-function initCopyBtn () {
+function initCopyBtn() {
   document.querySelectorAll('.highlight').forEach(el => {
     const copyBtn = document.createElement('span');
     copyBtn.innerText = 'Copy';
     copyBtn.classList.add('copy-code-btn');
     el.appendChild(copyBtn);
 
-    copyBtn.onclick = async() => {
+    copyBtn.onclick = async () => {
       await navigator.clipboard.writeText(el.querySelector('code').innerText);
       copyBtn.classList.add('active-copy-code-btn');
     };
@@ -43,7 +43,8 @@ function initSearch() {
     github: 'github',
     google: 'google',
   }
-  function searchBy(type){
+
+  function searchBy(type) {
     const searchInput = document.querySelector('.search-int');
     let searchLink = '';
     switch (type) {
@@ -52,7 +53,7 @@ function initSearch() {
         break;
       case searchType.github:
         searchLink = `https://github.com/chenkai0520/chenkai0520.github.io/search?l=Markdown&q=${searchInput.value}`;
-        break;  
+        break;
       default:
         return;
     }
@@ -60,7 +61,7 @@ function initSearch() {
   }
 
   const searchBtns = document.querySelectorAll('.search-btn');
-  if(searchBtns.length === 0) return;
+  if (searchBtns.length === 0) return;
   searchBtns.forEach(el => {
     el.addEventListener('click', () => searchBy(el.dataset.type));
   });
@@ -73,7 +74,7 @@ function initSearch() {
 
 // init 评论框
 async function initComments() {
-  if(!document.querySelector('#cusdis_thread')) {
+  if (!document.querySelector('#cusdis_thread')) {
     console.log('not fount el #cusdis_thread');
     return;
   };
@@ -81,11 +82,15 @@ async function initComments() {
   await importScript({
     src: '/js/cusdis/cusdis.min.js',
   });
-  document.querySelector('#dark-mode-toggle').addEventListener('click', ()=>{
+  document.querySelector('#dark-mode-toggle').addEventListener('click', () => {
     window.CUSDIS.setTheme(localStorage.getItem('colorscheme'));
   });
 }
 
+// init service-worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js');
+}
 
 // init page event
 window.onload = () => {
