@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Language" content="{{ .Site.Language.Lang }}">
+    <meta name="theme-color" content="#ffffff">
     <meta name="color-scheme" content="light dark">
-
     {{ if .Site.Params.csp }}
       {{ partial "csp.html" . }}
     {{ end }}
@@ -76,11 +76,8 @@
       {{ end }}
     {{ end }}
 
-    <link rel="icon" type="image/png" href="{{ .Site.Params.favicon_32 | default "/images/favicon-32x32.png" | relURL }}" sizes="32x32">
-    <link rel="icon" type="image/png" href="{{ .Site.Params.favicon_16 | default "/images/favicon-16x16.png" | relURL }}" sizes="16x16">
-
-    <link rel="apple-touch-icon" href="{{ .Site.Params.touchicon | default "/images/apple-touch-icon.png" | relURL }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.Params.touchicon | default "/images/apple-touch-icon.png" | relURL }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.Params.favicon_32 | default "/images/favicon-32x32.png" | relURL }}">
+    <link rel="apple-touch-icon" type="image/png" sizes="256x256" href="{{ .Site.Params.touchicon | default "/images/favicon-512x512.png" | relURL }}">
 
     {{ range .AlternativeOutputFormats -}}
       {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
