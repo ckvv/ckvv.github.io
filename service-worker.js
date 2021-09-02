@@ -1,4 +1,4 @@
-const cacheName = 'ck-blog-cache-v4';
+const cacheName = 'ck-blog-cache-v5';
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(cacheName).then((cache) => cache.addAll([
