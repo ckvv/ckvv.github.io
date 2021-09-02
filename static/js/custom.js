@@ -74,11 +74,7 @@ function initSearch() {
 
 // init 评论框
 async function initComments() {
-  if (!document.querySelector('#cusdis_thread')) {
-    console.log('not fount el #cusdis_thread');
-    return;
-  };
-
+  if (!document.querySelector('#cusdis_thread')) return;
   await importScript({
     src: '/js/cusdis/cusdis.min.js',
   });
