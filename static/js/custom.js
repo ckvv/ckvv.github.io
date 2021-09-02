@@ -87,14 +87,9 @@ async function initComments() {
   });
 }
 
-// init service-worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js');
-}
-
 // init page event
 window.onload = () => {
-  initCopyBtn()
+  initCopyBtn();
   initSearch();
   initComments();
 };
