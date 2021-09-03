@@ -111,6 +111,6 @@ svg的viewBox属性允许指定一个给定的一组图形伸展以适应特定�
 </svg>
 ```
 
-<svg class="hd" width="100%" height="50" viewBox="0 0 900 50"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg style="width: 100%;" class="hd" width="100%" height="50" viewBox="0 0 900 50"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <text class="svg-text" x="0" y="20">这个标题很长哦可能一行放不下的怎么办呢这个标题很长哦可能一行放不下的怎么办呢这个标题很长哦可能一行放不下的怎么办呢</text>
 </svg>
