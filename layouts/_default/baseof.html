@@ -24,8 +24,6 @@
       <link rel="canonical" href="{{ .Permalink }}">
     {{ end }}
 
-    <!-- <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin> -->
-
     {{ if .Site.IsServer }}
       {{ $cssOpts := (dict "targetPath" "css/coder.css" "enableSourceMap" true ) }}
       {{ $styles := resources.Get "scss/coder.scss" | resources.ExecuteAsTemplate "style.coder.css" . | toCSS $cssOpts }}
@@ -76,7 +74,7 @@
       {{ end }}
     {{ end }}
 
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.Params.favicon_32 | default "/images/favicon-32x32.png" | relURL }}">
+    <link rel="icon" type="image/svg+xml" href="{{ .Site.Params.favicon_32 | default "/favicon.ico" | relURL }}">
     <link rel="apple-touch-icon" type="image/png" sizes="256x256" href="{{ .Site.Params.touchicon | default "/images/favicon-512x512.png" | relURL }}">
 
     {{ range .AlternativeOutputFormats -}}
