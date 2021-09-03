@@ -1,7 +1,8 @@
-const cacheName = 'ck-blog-cache-v5';
+const cacheName = 'ck-blog-cache-v6';
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(cacheName).then((cache) => cache.addAll([
+      '/favicon.ico',
       '/js/font.min.js',
       '/js/custom.js',
       '/js/cusdis/cusdis.min.js',
