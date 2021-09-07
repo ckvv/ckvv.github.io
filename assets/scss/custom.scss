@@ -6,8 +6,8 @@ $light-bd-color: rgba(33, 33, 33, .7);
 $dark-bd-color: rgba(218, 218, 218, .7);
 $active-color: #1565c0;
 
-a {
-  word-wrap: break-word;
+* {
+  word-break:break-all;
 }
 .icon {
   width: 1em;
