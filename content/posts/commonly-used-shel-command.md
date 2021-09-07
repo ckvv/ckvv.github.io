@@ -1,5 +1,5 @@
 ---
-title: "Commonly used shel command"
+title: "常用的shell命令总结"
 tags: ['shell']
 ---
 
