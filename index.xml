@@ -43,7 +43,7 @@ function frows2XlsxBufferile(formatData) { const ws = xlsx.utils.json_to_sheet(f
 function file(name, data) { // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition // 说明浏览器应该将内容下载到本地；filename 的值预填为下载后的文件名 this.response.set(&amp;#39;Content-disposition&amp;#39;, `attachment;filename=&amp;#34;${name}&amp;#34;`); // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type // 说明返回的是一个二进制流数据 this.response.set(&amp;#39;Content-Type&amp;#39;, &amp;#39;application/octet-stream&amp;#39;); return this.response.body = data; } 返回表格 我们将上面封装下，方便调用,
 async download() { const { ctx } = this; const result = await this.</description></item><item><title>常用的一些css样式</title><link>https://chenkai.life/web/css_useful_style/</link><pubDate>Fri, 06 Aug 2021 15:06:32 +0800</pubDate><guid>https://chenkai.life/web/css_useful_style/</guid><description>字体 文字超出后省略
 white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 中文简&amp;gt;繁转换
-font-variant-east-asian: traditional;</description></item><item><title>记录一些npm库和应用</title><link>https://chenkai.life/posts/npm_packages/</link><pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/posts/npm_packages/</guid><description>记录一些npm库、应用
+font-variant-east-asian: traditional;</description></item><item><title>记录一些npm库和应用</title><link>https://chenkai.life/posts/npm_packages/</link><pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/posts/npm_packages/</guid><description>记录一些npm库
 npm工具库 nodeppt: markdown 生成web ppt
 artillery: 负载接口测试
 jsdoc,esdoc,documentation:构建js帮助文档
