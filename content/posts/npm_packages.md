@@ -4,7 +4,7 @@ tags: ['文章', 'npm']
 date: '2021-08-02'
 ---
 
-记录一些npm库、应用
+记录一些npm库
 
 ## npm工具库
 
@@ -47,7 +47,3 @@ date: '2021-08-02'
 
 `tippecanoe`: Build vector tilesets from large collections of GeoJSON features  
 `mapnik`: [mapnik](http://mapnik.org)提供用于空间数据访问和可视化的算法和模式  
-
-## 应用
-
-`typora` markdown编辑器，可以复制html转成markdown  
