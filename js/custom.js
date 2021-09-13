@@ -113,7 +113,7 @@ function autoContents() {
 
 function setActive() {
   if(!TableOfContents) return;
-  const ele = [...document.querySelector('.page').querySelectorAll('h1,h2,h3')].find((ele)=>{
+  const ele = [...document.querySelector('.content').querySelectorAll('h1,h2,h3')].find((ele)=>{
     return ele.getBoundingClientRect(ele).top >= 0;
   });
   if(ele) {
