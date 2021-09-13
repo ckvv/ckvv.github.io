@@ -123,6 +123,7 @@ function setActive() {
     const activeA = tableOfContents.querySelector(`.active`);
     if(activeA) activeA.classList.remove('active');
     toActive.classList.add('active');
+    window.history.pushState(null, null, `#${ele.id}`);
   }
 }
 
