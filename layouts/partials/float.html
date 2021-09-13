@@ -6,8 +6,7 @@
         </svg>
     </span>
 </div>
-{{ if gt .FuzzyWordCount 200 }}
-<details id="table-of-contents-wapper" open>
+<details id="table-of-contents-wapper">
     <summary>
         <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-caidan"></use>
@@ -15,5 +14,4 @@
     </summary>
     {{.TableOfContents}}
 </details>
-{{ end }}
 {{ end }}
