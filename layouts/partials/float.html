@@ -6,4 +6,14 @@
         </svg>
     </span>
 </div>
+{{ if gt .WordCount 400 }}
+<details id="table-of-contents-wapper" open>
+    <summary>
+        <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-caidan"></use>
+        </svg>
+    </summary>
+    {{.TableOfContents}}
+</details>
+{{ end }}
 {{ end }}

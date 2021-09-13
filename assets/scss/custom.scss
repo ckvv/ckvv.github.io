@@ -7,8 +7,10 @@ $dark-bd-color: rgba(218, 218, 218, .7);
 $active-color: #1565c0;
 
 * {
-  word-break:break-all;
+  word-break: break-all;
+  box-sizing: border-box;
 }
+
 .icon {
   width: 1em;
   height: 1em;
@@ -25,9 +27,11 @@ $active-color: #1565c0;
 
 .highlight {
   position: relative;
+
   code {
     margin-top: 0.8rem;
   }
+
   .copy-code-btn {
     user-select: none;
     cursor: pointer;
@@ -37,11 +41,13 @@ $active-color: #1565c0;
     padding-right: 6px;
     font-size: 1.5rem;
     color: $light-color;
-    &:hover{
+
+    &:hover {
       font-size: 1.7rem;
     }
   }
-  .active-copy-code-btn{
+
+  .active-copy-code-btn {
     color: $active-color;
     font-size: 1.7rem;
   }
@@ -52,16 +58,18 @@ $active-color: #1565c0;
   font-size: 0 !important;
   display: flex;
   margin-left: 12px;
+
   .search-int {
     height: 26px;
     font-size: 14px;
     padding: 4px 8px;
     font-weight: 400;
 
-    &:focus{
+    &:focus {
       outline: 0;
     }
-    &:focus-visible{
+
+    &:focus-visible {
       outline: 0;
     }
   }
@@ -74,7 +82,7 @@ $active-color: #1565c0;
     font-weight: 400;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
       color: #1565c0 !important;
     }
   }
@@ -86,11 +94,13 @@ $active-color: #1565c0;
     margin-bottom: 15px;
     flex-direction: column;
     margin-left: 0;
+
     .search-btn {
       margin-top: 12px;
     }
   }
 }
+
 @media only screen and (min-width: 768px) {
   #search-content {
     .search-btn {
@@ -104,16 +114,18 @@ $active-color: #1565c0;
   .navigation {
     background-color: $dark-bg-color;
   }
+
   #search-content {
     .search-int {
       border: 1px solid $dark-bd-color;
       background-color: $dark-bg-color;
       color: $light-color;
 
-      &::placeholder{
+      &::placeholder {
         color: $dark-bd-color;
       }
     }
+
     .search-btn {
       border: 1px solid $dark-bd-color;
       background-color: $dark-bg-color;
@@ -122,8 +134,18 @@ $active-color: #1565c0;
   }
 
   .taxonomy {
-    sup{
+    sup {
       color: $dark-color;
+    }
+  }
+
+  #table-of-contents-wapper {
+    summary {
+      background-color: $dark-bg-color;
+    }
+
+    #TableOfContents {
+      background-color: $dark-bg-color;
     }
   }
 }
@@ -133,34 +155,48 @@ $active-color: #1565c0;
   .navigation {
     background-color: $light-bg-color;
   }
+
   #search-content {
     .search-int {
       border: 1px solid $light-bd-color;
       background-color: $light-bg-color;
       color: $dark-bg-color;
 
-      &::placeholder{
+      &::placeholder {
         color: rgba(33, 33, 33, .7);
       }
     }
+
     .search-btn {
       border: 1px solid $light-bd-color;
       background-color: $light-bg-color;
       color: $dark-bg-color;
     }
   }
+
+  #table-of-contents-wapper {
+    summary {
+      background-color: $light-bg-color;
+    }
+
+    #TableOfContents {
+      background-color: $light-bg-color;
+    }
+  }
 }
 
 /* 覆盖本地css */
-.pagination{
+.pagination {
   li {
     padding: 0 4px !important;
   }
 }
-.content{
+
+.content {
   margin-top: 0 !important;
+
   .container {
-    min-width: 80%;
+    min-width: calc(100% - 40rem);
   }
 }
 
@@ -169,10 +205,12 @@ $active-color: #1565c0;
   z-index: 999;
   position: sticky;
   top: 0;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0, .12);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .12);
+
   .container {
-    min-width: 80%;
+    min-width: calc(100% - 40rem);
   }
+
   .navigation-title {
     font-size: 2.5rem !important;
   }
@@ -181,5 +219,72 @@ $active-color: #1565c0;
 .post-meta {
   .icon {
     margin-right: 4px;
+  }
+}
+
+#table-of-contents-wapper {
+  user-select: none;
+  position: fixed;
+  right: 1em;
+  top: 5em;
+  border-radius: 8px;
+  z-index: 999;
+
+  @media only screen and (min-width: 768px) {
+    &[open] summary {
+      position: relative;
+      left: 5.8em;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    top: auto;
+    right: auto;
+    bottom: 1.8rem;
+    left: 1.8rem;
+  }
+
+  summary {
+    display: inline-block;
+    font-size: 1.5em;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: .2em;
+  }
+
+  #TableOfContents {
+    line-height: 1.3;
+    width: 19rem;
+    font-size: 1rem;
+    padding: 0 .5em;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    overflow-y: scroll;
+    max-height: calc(100vh - 20rem);
+
+    ul li {
+      display: inline-block;
+      width: 100%;
+      list-style-type: none;
+
+      a {
+        display: inline-block;
+        width: 100%;
+        color: currentColor;
+        padding-left: .5em;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    ul {
+      padding-left: 0em;
+
+      ul {
+        padding-left: 1em;
+      }
+    }
   }
 }
