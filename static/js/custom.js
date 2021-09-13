@@ -112,14 +112,15 @@ function autoContents() {
 }
 
 function setActive() {
-  if(!TableOfContents) return;
+  const tableOfContents = document.querySelector('#TableOfContents');
+  if(!tableOfContents) return;
   const ele = [...document.querySelector('.content').querySelectorAll('h1,h2,h3')].find((ele)=>{
     return ele.getBoundingClientRect(ele).top >= 0;
   });
   if(ele) {
-    const activeA = TableOfContents.querySelector(`.active`);
+    const activeA = tableOfContents.querySelector(`.active`);
     if(activeA) activeA.classList.remove('active');
-    (TableOfContents.querySelector(`a[href="#${ele.id}"]`) || TableOfContents.querySelector('a')).classList.add('active');
+    (tableOfContents.querySelector(`a[href="#${ele.id}"]`) || tableOfContents.querySelector('a')).classList.add('active');
   }
 }
 
