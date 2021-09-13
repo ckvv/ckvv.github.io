@@ -278,6 +278,11 @@ $active-color: #1565c0;
         overflow: hidden;
         text-overflow: ellipsis;
       }
+      
+      .active {
+        border-left: 2px solid #42a5f5;
+        color: #42a5f5;
+      }
     }
 
     ul {
