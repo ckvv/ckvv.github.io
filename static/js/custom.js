@@ -114,13 +114,15 @@ function autoContents() {
 function setActive() {
   const tableOfContents = document.querySelector('#TableOfContents');
   if(!tableOfContents) return;
-  const ele = [...document.querySelector('.content').querySelectorAll('h1,h2,h3')].find((ele)=>{
-    return ele.getBoundingClientRect(ele).top >= 0;
+  const ele = [...document.querySelector('.content').querySelectorAll('h1[id],h2[id],h3[id]')].find((ele, index, arr)=>{
+    return ele.getBoundingClientRect(ele).top >= 0 || index >= arr.length -1;
   });
   if(ele) {
+    const toActive= tableOfContents.querySelector(`a[href="#${ele.id}"]`);
+    if(!toActive) return;
     const activeA = tableOfContents.querySelector(`.active`);
     if(activeA) activeA.classList.remove('active');
-    (tableOfContents.querySelector(`a[href="#${ele.id}"]`) || tableOfContents.querySelector('a')).classList.add('active');
+    toActive.classList.add('active');
   }
 }
 
