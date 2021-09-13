@@ -83,9 +83,17 @@ async function initComments() {
   });
 }
 
+function autoContents() {
+  const contents = document.querySelector('#table-of-contents-wapper');
+  if(!contents) return;
+  if(!contents.querySelector('ul')) return contents.remove();
+  contents.open = window.innerWidth >= 768;
+}
+
 // init page event
 window.onload = () => {
   initCopyBtn();
   initSearch();
   initComments();
+  autoContents();
 };
