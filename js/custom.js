@@ -115,7 +115,7 @@ function setActive() {
   const tableOfContents = document.querySelector('#TableOfContents');
   if(!tableOfContents) return;
   const ele = [...document.querySelector('.content').querySelectorAll('h1[id],h2[id],h3[id]')].find((ele, index, arr)=>{
-    return ele.getBoundingClientRect(ele).top >= 0 || index >= arr.length -1;
+    return ele.getBoundingClientRect().top >= 0 || index >= arr.length -1;
   });
   if(ele) {
     const toActive= tableOfContents.querySelector(`a[href="#${ele.id}"]`);
