@@ -128,6 +128,11 @@ function setActive() {
     if(activeA) activeA.classList.remove('active');
     toActive.classList.add('active');
     window.history.pushState(null, null, `#${ele.id}`);
+    tableOfContents.scrollTo({
+      left: 0,
+      top: toActive.offsetTop - tableOfContents.getBoundingClientRect().height/2,
+      behavior: 'smooth',
+    });
   }
 }
 
