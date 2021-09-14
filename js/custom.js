@@ -17,23 +17,27 @@ function importScript(params = {}) {
   });
 }
 
-function debounce(func, wait, immediate) {
-  var timer;
-  return function() {
-    var context = this;
-    var args = arguments;
-
-    if (timer) clearTimeout(timer);
-    if (immediate) {
-      var callNow = !timer;
-      timer = setTimeout(function() {
-        timer = null;
-      }, wait);
-      if (callNow) func.apply(context, args)
-    } else {
-      timer = setTimeout(function() {
-        func.apply(context, args)
-      }, wait);
+function debounce(func, wait, options = {
+  immediate: false,
+  middle: true,
+  thisArg: null,
+}) {
+  let timer;
+  let restDate = new Date();
+  const immediate = options.immediate !== false;
+  const middle = options.middle !== false;
+  const thisArg = options.thisArg || null;
+  return function(...args) {
+    timer && clearTimeout(timer);
+    let isFirst = !timer;
+    timer = setTimeout(() => {
+      func.apply(thisArg, args);
+      restDate = new Date();
+    }, wait);
+    if((new Date() - restDate > wait && middle) || (isFirst && immediate)){
+      clearTimeout(timer);
+      func.apply(thisArg, args);
+      restDate = new Date();
     }
   }
 }
