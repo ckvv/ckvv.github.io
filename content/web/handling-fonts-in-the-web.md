@@ -75,31 +75,40 @@ tags: ['css', 'web']
 我们可以通过外层容器宽高和字体容器宽高计算出需要缩放的比例，通过设置zoom、scale来自适应容器宽高,如:
 
 ```html
-<textarea id="textarea" rows="5" placeholder="输入文字，看下面实时效果"></textarea>
-<div id="wrapper" style="border: 1px solid gray; width: 60px; height: 60px;"></div>
+<div id="wrapper" contenteditable="true" style="border: 1px solid gray; width: 120px; height: 120px;resize: both; overflow: scroll;line-height: 1.2;">
+  <div id="inner" style="display: inline;">
+    通过拖动右下角,或者增加删除文字查看字体缩放。
+  </div>
+</div>
+</body>
 <script>
-textarea.addEventListener('input', function () {
-  wrapper.innerHTML = `<div id="inner" style="word-break: break-all;overflow-wrap: break-word;">${this.value}</div>`;
+function autoFit() {
   const wrapperSty = wrapper.getBoundingClientRect();
   const innerSty = inner.getBoundingClientRect();
-  const scale = Math.min(wrapperSty.width /innerSty.width, wrapperSty.height /innerSty.height, 1)
+  const scale = Math.floor(Math.min(wrapperSty.width /innerSty.width, wrapperSty.height /innerSty.height)*100)/100;
   inner.style.zoom = scale;
-});
+}
+new ResizeObserver(autoFit).observe(wrapper);
+wrapper.oninput = autoFit;
 </script>
 ```
 
-<textarea id="textarea" rows="5" placeholder="输入文字，看下面实时效果"></textarea>
-<div id="wrapper" style="border: 1px solid gray; width: 60px; height: 60px;"></div>
+<div id="wrapper" contenteditable="true" style="border: 1px solid gray; width: 120px; height: 120px;resize: both; overflow: scroll;line-height: 1.2;">
+  <div id="inner" style="display: inline;">
+    通过拖动右下角,或者增加删除文字查看字体缩放。
+  </div>
+</div>
+</body>
 <script>
-textarea.addEventListener('input', function () {
-  wrapper.innerHTML = `<div id="inner" style="word-break: break-all;overflow-wrap: break-word;">${this.value}</div>`;
-  const wrapperSty = wrapper.getBoundingClientRect();
-  const innerSty = inner.getBoundingClientRect();
-  const scale = Math.min(wrapperSty.width /innerSty.width, wrapperSty.height /innerSty.height, 1)
-  inner.style.zoom = scale;
-});
+  function autoFit() {
+    const wrapperSty = wrapper.getBoundingClientRect();
+    const innerSty = inner.getBoundingClientRect();
+    const scale = Math.floor(Math.min(wrapperSty.width /innerSty.width, wrapperSty.height /innerSty.height)*100)/100;
+    inner.style.zoom = scale;
+  }
+  new ResizeObserver(autoFit).observe(wrapper);
+  wrapper.oninput = autoFit;
 </script>
-
 
 ## svg的viewBox
 
