@@ -1,6 +1,7 @@
 ---
-title: "记录一些实用、有趣的工具"
-tags: ['tool']
+title: 记录一些实用、有趣的工具
+tags: [tool]
+date: 2021-09-13
 ---
 
 # 博客
@@ -12,6 +13,7 @@ tags: ['tool']
 
 # Web
 
+[javascript info](https://javascript.info/) JavaScript 教程网址
 [caniuse](https://caniuse.com/)查询浏览器对Web标准的支持性  
 
 
