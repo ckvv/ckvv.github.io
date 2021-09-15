@@ -145,7 +145,7 @@ $active-color: #1565c0;
       background-color: $dark-bg-color;
     }
 
-    #TableOfContents {
+    #table-of-contents {
       background-color: $dark-bg-color;
     }
   }
@@ -180,7 +180,7 @@ $active-color: #1565c0;
       background-color: $light-bg-color;
     }
 
-    #TableOfContents {
+    #table-of-contents {
       background-color: $light-bg-color;
       position: relative;
     }
@@ -254,44 +254,29 @@ $active-color: #1565c0;
     padding: .2em;
   }
 
-  #TableOfContents {
+  #table-of-contents {
     line-height: 1.3;
     width: 19rem;
-    font-size: 1rem;
-    padding: 0 .5em;
+    font-size: .8rem;
+    padding: .8em;
     border: 1px solid currentColor;
     border-radius: 6px;
     overflow-y: scroll;
     max-height: calc(100vh - 20rem);
+    color: currentColor;
 
-    ul li {
-      display: inline-block;
+    a {
       width: 100%;
-      list-style-type: none;
-
-      a {
-        display: inline-block;
-        width: 100%;
-        color: currentColor;
-        padding-left: .5em;
-
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      
-      .active {
-        border-left: 2px solid #42a5f5;
-        color: #42a5f5;
-      }
+      display: inline-block;
+      color: currentColor;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-
-    ul {
-      padding-left: 0em;
-
-      ul {
-        padding-left: 1em;
-      }
+    .active {
+      border-left: 2px solid #42a5f5;
+      color: #42a5f5;
     }
   }
 }

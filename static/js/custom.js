@@ -108,20 +108,12 @@ async function initComments() {
   });
 }
 
-function autoContents() {
-  const contents = document.querySelector('#table-of-contents-wapper');
-  if(!contents) return;
-  if(!contents.querySelector('ul')) return contents.remove();
-  contents.open = window.innerWidth >= 768;
-}
-
-function setActive() {
-  const tableOfContents = document.querySelector('#TableOfContents');
-  if(!tableOfContents) return;
-  const ele = [...document.querySelector('.content').querySelectorAll('h1[id],h2[id],h3[id]')].find((ele, index, arr)=>{
+function setActive(anchors) {
+  const ele = anchors.find((ele, index, arr)=>{
     return ele.getBoundingClientRect().top >= 0 || index >= arr.length -1;
   });
   if(ele) {
+    const tableOfContents = document.querySelector('#table-of-contents');
     const toActive= tableOfContents.querySelector(`a[href="#${ele.id}"]`);
     if(!toActive) return;
     const activeA = tableOfContents.querySelector(`.active`);
@@ -136,12 +128,36 @@ function setActive() {
   }
 }
 
+function initContents() {
+  const contents = document.querySelector('#table-of-contents-wapper');
+  if(!contents) return;
+  const anchors = [...document.querySelector('.content').querySelectorAll('h1[id],h2[id],h3[id]')];
+  if(!anchors.length) return contents.remove();
+  const tableOfContents = document.createElement('div');
+  tableOfContents.id='table-of-contents';
+  anchors.forEach(ele=>{
+    const a = document.createElement('a');
+    if(!ele.innerText) return;
+    a.innerText = ele.innerText;
+    a.href=`#${ele.id}`;
+    a.style.paddingLeft = `${ele.tagName.charAt(1)}em`;
+    tableOfContents.appendChild(a);
+  });
+
+  contents.appendChild(tableOfContents);
+  contents.open = window.innerWidth >= 768;
+
+  setActive(anchors);
+  const debounceSetActive = debounce(setActive, 200)
+  window.addEventListener('scroll', ()=>{
+    debounceSetActive(anchors);
+  });
+}
+
 // init page event
 window.onload = () => {
+  initContents();
   initCopyBtn();
   initSearch();
   initComments();
-  autoContents();
-  setActive();
-  window.addEventListener('scroll', debounce(setActive, 200));
 };
