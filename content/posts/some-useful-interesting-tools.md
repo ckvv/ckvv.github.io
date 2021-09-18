@@ -22,5 +22,5 @@ date: 2021-09-13
 
 # 学习
 
-+ [the-way-to-go](https://github.com/chenkai0520/the-way-to-go_ZH_CN/blob/master/eBook/directory.md)
++ [the-way-to-go](https://github.com/chenkai0520/the-way-to-go_ZH_CN/blob/master/eBook/directory.md) 学习 Go 语言
 + [javascript-info](https://javascript.info/) JavaScript 教程学习网站
