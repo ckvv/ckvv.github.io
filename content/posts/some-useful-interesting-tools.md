@@ -19,6 +19,9 @@ date: 2021-09-13
 # 应用
 
 + [typora](https://www.typora.io/) markdown编辑器，可以复制html转成markdown  
++ [Unsplash](https://source.unsplash.com/) 通过api获取随机图片
++ [Weekly Visitor Report](https://clearbit.com/resources/tools/visitor-report) 获取访问您网站的公司的每周报告
++ [responsively](https://responsively.app/) 更快的进行响应式Web开发。
 
 # 学习
 
