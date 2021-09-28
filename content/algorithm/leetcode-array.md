@@ -1,9 +1,8 @@
 ---
-title: 算法不定时更新-array
+title: 算法-array
 tags: ['算法']
 date: 2021-09-11
 ---
-
 ### [删除排序数组中的重复项](https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2gy9m/)
 
 给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，返回删除后数组的新长度。
