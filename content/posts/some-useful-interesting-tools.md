@@ -32,3 +32,4 @@ date: 2021-09-13
 + [the-way-to-go](https://github.com/ckvv/the-way-to-go_ZH_CN/blob/master/eBook/directory.md) 学习 Go 语言
 + [javascript-info](https://javascript.info/) JavaScript 教程学习网站
 + [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)深入研究 JavaScript 语言核心机制的书籍
++ [the-way-to-go_ZH_CN](https://github.com/unknwon/the-way-to-go_ZH_CN)Go入门指南
