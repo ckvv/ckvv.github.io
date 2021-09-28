@@ -65,7 +65,7 @@ if(!process.argv || process.argv.length <= 2){
     process.exit(1);
 }
 
-const gitPath = 'chenkai0520/cli_koa';
+const gitPath = 'ckvv/cli_koa';
 program
     .version(require('../package').version)
 

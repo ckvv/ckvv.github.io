@@ -14,7 +14,7 @@ enableGitInfo = true
   hidecolorschemetoggle = false
   customSCSS = ["scss/custom.scss"]
   customJS = ["js/custom.js", "js/font.min.js"]
-  editUrl = "https://github.com/chenkai0520/chenkai0520.github.io/edit/main"
+  editUrl = "https://github.com/ckvv/ckvv.github.io/edit/main"
 
 [taxonomies]
   # category = "categories"

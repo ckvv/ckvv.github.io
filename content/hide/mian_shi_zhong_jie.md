@@ -1372,7 +1372,7 @@ CSS **`position`**属性用于指定一个元素在文档中的定位方式。[`
 
 ## 请解释浮动 (Floats) 及其工作原理
 
-[https://chenkai0520.github.io/public/web/css关于浮动/](https://chenkai0520.github.io/public/web/css关于浮动/)
+[https://ckvv.github.io/public/web/css关于浮动/](https://ckvv.github.io/public/web/css关于浮动/)
 
 ## flex有哪些属性
 
@@ -1652,7 +1652,7 @@ run：开始编译 make：从entry开始递归分析依赖并对依赖进行buil
 # 前端框架
 
 ## 剖析vue实现原理，自己动手实现mvvm
-[vue实现原理](https://github.com/chenkai0520/mvvm)
+[vue实现原理](https://github.com/ckvv/mvvm)
 
 
 

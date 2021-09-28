@@ -7,9 +7,9 @@ show: false
 ## 联系方式
 
 + Email: [k_0520@qq.com](mailto:k_0520@qq.com)
-+ GitHub: <https://github.com/chenkai0520>
++ GitHub: <https://github.com/ckvv>
 
 ## 仓库地址
 
-+ Repository: [chenkai0520.github.io](https://github.com/chenkai0520/chenkai0520.github.io)
++ Repository: [ckvv.github.io](https://github.com/ckvv/ckvv.github.io)
 
