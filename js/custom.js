@@ -77,7 +77,7 @@ function initSearch() {
         searchLink = `https://www.google.com/search?q=site:${window.location.host} ${searchInput.value}`;
         break;
       case searchType.github:
-        searchLink = `https://github.com/chenkai0520/chenkai0520.github.io/search?l=Markdown&q=${searchInput.value}`;
+        searchLink = `https://github.com/ckvv/ckvv.github.io/search?l=Markdown&q=${searchInput.value}`;
         break;
       default:
         return;
