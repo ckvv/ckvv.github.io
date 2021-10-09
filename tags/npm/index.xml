@@ -10,7 +10,7 @@ nodemon: 文件更改时重新启动node服务
 cypress: 端到端测试框架
 eslint:eslint是一个javascript代码检测工具
 ngrok: 内网穿透工具
-vconsole 可以用于手机端调试查看控制台、网络请求、存储等信息
+vconsole 可以用于手机端调试查看控制台、网络请求、存储等信息 jsoneditor 基于 Web 查看、编辑、格式化和验证 JSON 的工具
 axios: 基于Promise的HTTP客户端，用于浏览器和node.js
 ws: 简单易用，为Node.js开辟了快速且经过全面测试的Websocket客户端和服务器
 nuxtjs: 一个基于 Vue.js 的服务端渲染应用框架
