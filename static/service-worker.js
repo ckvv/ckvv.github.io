@@ -1,6 +1,16 @@
-const cacheName = 'ck-blog-cache-v9';
-self.addEventListener('install', (e) => {
-  e.waitUntil(
+const cacheName = 'ck-blog-cache-v10';
+
+async function removeCache() {
+  const keyList = await caches.keys()
+  return Promise.all(keyList.map((key) => {
+    if (key !== cacheName) {
+      return caches.delete(key);
+    }
+  }));
+}
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
     caches.open(cacheName).then((cache) => cache.addAll([
       '/favicon.ico',
       '/js/font.min.js',
@@ -15,20 +25,12 @@ self.addEventListener('install', (e) => {
   );
 });
 
+self.addEventListener('activate', function(event) {
+  event.waitUntil(removeCache());
+});
 
-function removeCache() {
-  caches.keys().then((keyList)=> {
-    return Promise.all(keyList.map(function(key) {
-        if (key !== cacheName) {
-          return caches.delete(key);
-        }
-    }));
-  });
-}
-removeCache();
-
-self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request).then((response) => response || fetch(e.request)),
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => response || fetch(event.request)),
   );
 });
