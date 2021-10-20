@@ -15,9 +15,10 @@ date: '2021-08-02'
 `standard-version`:使用semver和常规提交消息自动进行版本控制和CHANGELOG生成  
 `Marked`:markdown解析成html  
 `markdown-it`: markdown解析成html  
-`dockerode`: Docker远程API模块  
-`nodemon`: 文件更改时重新启动node服务  
-`cypress`: 端到端测试框架  
+`dockerode`: Docker远程API模块. 
+`nodemon`: 文件更改时重新启动node服务. 
+`pm2`: 具有内置负载平衡器的 Node.JS 应用程序的生产流程管理器. 
+`cypress`: 端到端测试框架. 
 `eslint`:[eslint](https://eslint.bootcss.com/)是一个javascript代码检测工具  
 `ngrok`: 内网穿透工具  
 `vconsole` 可以用于手机端调试查看控制台、网络请求、存储等信息
