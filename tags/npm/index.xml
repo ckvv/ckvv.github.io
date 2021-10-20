@@ -12,10 +12,7 @@ jsdoc,esdoc,documentation:构建js帮助文档
 standard-version:使用semver和常规提交消息自动进行版本控制和CHANGELOG生成
 Marked:markdown解析成html
 markdown-it: markdown解析成html
-dockerode: Docker远程API模块
-nodemon: 文件更改时重新启动node服务
-cypress: 端到端测试框架
-eslint:eslint是一个javascript代码检测工具
+dockerode: Docker远程API模块. nodemon: 文件更改时重新启动node服务. pm2: 具有内置负载平衡器的 Node.JS 应用程序的生产流程管理器. cypress: 端到端测试框架. eslint:eslint是一个javascript代码检测工具
 ngrok: 内网穿透工具
 vconsole 可以用于手机端调试查看控制台、网络请求、存储等信息 jsoneditor 基于 Web 查看、编辑、格式化和验证 JSON 的工具
 axios: 基于Promise的HTTP客户端，用于浏览器和node.js
@@ -30,6 +27,4 @@ iconv-lite: 文件编码转换
 workerpool: workerpool提供了一种简单的方法来创建工作池，以动态卸载计算并管理专用工作池,runs on node.js, Chrome, Firefox, Opera, Safari, and IE10+.
 graphql: api查询数据语言
 apollo-server: 封装的graphql
-@koa/router: 由koa-router修改而来
-js-yaml: js解析yaml
-fast-xml-parser: Validate XML or Parse XML to JS/JSON very fast without C/C++ based libraries</description></item></channel></rss>
+@koa/router: 由koa-router修改而来</description></item></channel></rss>
