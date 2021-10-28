@@ -44,7 +44,7 @@ date: '2021-08-02'
 `glob`: 使用 shell 使用的模式匹配文件
 `sass`: Sass 的纯 JavaScript 实现. 
 `prisma`: Prisma 是一个开源的一个ORM框架. 
-`swc`: swc 是一个typescript/javascript 编译器。比`babel`快很多
+`swc`: swc 是一个typescript/javascript 编译器。比`babel`快很多. 
 <!-- vue -->  
 `element-ui、quasar、vuetify、naive-ui`: vue ui框架  
 `cube-ui、vant`: vue 移动端 ui框架  
