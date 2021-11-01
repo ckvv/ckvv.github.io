@@ -57,3 +57,9 @@ async function runScript(code, context = {}, options = {}) {
 
 ### [vm2](https://www.npmjs.com/package/vm2)
 vm2 是一个沙箱，可以使用列入白名单的 Node 的内置模块运行不受信任的代码, 它使用内部 VM 模块来创建安全上下文,它使用代理来防止逃离沙箱, 它覆盖了内置的 require 来控制对模块的访问.
+
+## 参考资料
+
++ https://mp.weixin.qq.com/s/euHJpS6rcRRqVBIPAnbUHA
++ https://juejin.cn/post/6844903954074058760
++ https://cnodejs.org/topic/5adcd8dfba60fcc66b7b875b
