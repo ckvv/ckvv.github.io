@@ -60,7 +60,7 @@ vm2 是一个沙箱，可以使用列入白名单的 Node 的内置模块运行�
 
 ## 参考资料
 
-+ https://mp.weixin.qq.com/s/euHJpS6rcRRqVBIPAnbUHA
-+ https://juejin.cn/post/6844903954074058760
-+ https://cnodejs.org/topic/5adcd8dfba60fcc66b7b875b
-+ https://fed.taobao.org/blog/taofed/do71ct/nodejs-memory-leak-analyze/
++ [浅析 JavaScript 沙箱](https://mp.weixin.qq.com/s/euHJpS6rcRRqVBIPAnbUHA)
++ [说说JS中的沙箱](https://juejin.cn/post/6844903954074058760)
++ [为 Node.js 应用建立一个更安全的沙箱环境](https://cnodejs.org/topic/5adcd8dfba60fcc66b7b875b)
++ [记一次 Node.js 应用内存暴涨分析](https://fed.taobao.org/blog/taofed/do71ct/nodejs-memory-leak-analyze/)
