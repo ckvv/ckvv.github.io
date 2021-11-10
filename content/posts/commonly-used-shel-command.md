@@ -67,7 +67,7 @@ tags: ['shell']
 + [su](https://github.com/ckvv/shel-command/blob/master/command/su.md)用于切换当前用户身份到其他用户身份`su root`
 + [sudo](https://github.com/ckvv/shel-command/blob/master/command/sudo.md)用来以其他身份来执行命令，预设的身份为root
 + [systemctl](https://github.com/ckvv/shel-command/blob/master/command/systemctl.md)系统服务管理器指令`service httpd restart`,`systemctl list-units --type=service`
-+ [tail](https://github.com/ckvv/shel-command/blob/master/command/tail.md)在屏幕上显示指定文件的末尾若干行`tail -f -25 fileName`
++ [tail](https://github.com/ckvv/shel-command/blob/master/command/tail.md)在屏幕上显示指定文件的末尾若干行`tail -f -n 25 fileName`
 + [tar](https://github.com/ckvv/shel-command/blob/master/command/tar.md)用来打包和备份`tar -jcv -f filename.tar.bz2 fileName|path`,`tar -jxv -f filename.tar.bz2 -C dirPath`
 + [test](https://github.com/ckvv/shel-command/blob/master/command/test.md)条件表达式`if test –d File `
 + [top](https://github.com/ckvv/shel-command/blob/master/command/top.md)显示或管理执行中的程序
