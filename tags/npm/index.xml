@@ -15,7 +15,7 @@ Marked:markdown解析成html
 markdown-it: markdown解析成html
 dockerode: Docker远程API模块. nodemon: 文件更改时重新启动node服务. pm2: 具有内置负载平衡器的 Node.JS 应用程序的生产流程管理器. cypress: 端到端测试框架. eslint:eslint是一个javascript代码检测工具
 ngrok: 内网穿透工具
-vconsole 可以用于手机端调试查看控制台、网络请求、存储等信息 jsoneditor 基于 Web 查看、编辑、格式化和验证 JSON 的工具
+vconsole 可以用于手机端调试查看控制台、网络请求、存储等信息 jsoneditor 基于 Web 查看、编辑、格式化和验证 JSON 的工具 autocannon 用 node 编写的 HTTP 基准测试工具
 axios: 基于Promise的HTTP客户端，用于浏览器和node.js
 ws: 简单易用，为Node.js开辟了快速且经过全面测试的Websocket客户端和服务器
 nuxtjs: 一个基于 Vue.js 的服务端渲染应用框架
@@ -25,7 +25,4 @@ GraphQL.js:GraphQL的JavaScript参考实现，GraphQL是Facebook创建的API的�
 JSONStream：流读取josn解析
 http-proxy-middleware:node.js代理中间件，用于连接，表达和浏览器同步
 iconv-lite: 文件编码转换
-workerpool: workerpool提供了一种简单的方法来创建工作池，以动态卸载计算并管理专用工作池,runs on node.js, Chrome, Firefox, Opera, Safari, and IE10+.
-graphql: api查询数据语言
-apollo-server: 封装的graphql
-@koa/router: 由koa-router修改而来</description></item></channel></rss>
+workerpool: workerpool提供了一种简单的方法来创建工作池，以动态卸载计算并管理专用工作池,runs on node.js, Chrome, Firefox, Opera, Safari, and IE10+.</description></item></channel></rss>
