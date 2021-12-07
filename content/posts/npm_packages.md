@@ -23,6 +23,7 @@ date: '2021-08-02'
 `ngrok`: 内网穿透工具  
 `vconsole` 可以用于手机端调试查看控制台、网络请求、存储等信息
 `jsoneditor` 基于 Web 查看、编辑、格式化和验证 JSON 的工具
+`autocannon` 用 node 编写的 HTTP 基准测试工具
 <!-- 代码 -->  
 `axios`: 基于Promise的HTTP客户端，用于浏览器和node.js  
 `ws`: 简单易用，为Node.js开辟了快速且经过全面测试的Websocket客户端和服务器  
