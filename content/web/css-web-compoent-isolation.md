@@ -107,7 +107,7 @@ render(
 
 # Scoped CSS
 
-在VUE中有`Scoped` CSS的概念，当 <style> 标签有 scoped 属性时，它的 CSS 只作用于当前组件中的元素。这类似于 Shadow DOM 中的样式封装。通过对组件添加[数据属性](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*),然后在style中使用[属性选择器](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors)让组件的样式只作用于组件。它通过使用 PostCSS 来实现以下转换：
+在VUE中有`Scoped` CSS的概念，当 `<style>` 标签有 scoped 属性时，它的 CSS 只作用于当前组件中的元素。这类似于 Shadow DOM 中的样式封装。通过对组件添加[数据属性](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*),然后在style中使用[属性选择器](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors)让组件的样式只作用于组件。它通过使用 PostCSS 来实现以下转换：
 
 ```html
 <style scoped>
