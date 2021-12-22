@@ -52,6 +52,7 @@ date: '2021-08-02'
 `cube-ui、vant`: vue 移动端 ui框架  
 <!-- GIS -->
 `global-mercator`: 帮助使用TMS，Quadkey和Google（XYZ）瓷砖的工具. 
+`windicss`: 原子化css
 ## c++
 
 `tippecanoe`: Build vector tilesets from large collections of GeoJSON features  
