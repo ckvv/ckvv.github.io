@@ -8,7 +8,8 @@ tags: ['vue']
 + [element-plus](https://element-plus.org/)
 + [naive-ui](https://naiveui.com/)
 + [arco-design](https://arco.design/vue)
-+ [antdv](https://antdv.com/docs/vue/introduce-cn/)
++ [tdesign-vue](https://tdesign.tencent.com/)
++ [Ant Design Vue](https://antdv.com/docs/vue/introduce-cn/)
 + [quasar](https://quasar-framework.org/)
 + [vuetify](https://vuetifyjs.com/)
 
