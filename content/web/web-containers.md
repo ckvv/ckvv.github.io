@@ -1,12 +1,13 @@
 ---
 title: 在浏览器中本地运行 Node.js - WebContainers
+date: 2021-12-29
 ---
 
 ## 起因
 
 在`nodejs.dev`网站看到了一个在线编辑的程序<https://nodejs.dev/learn/introduction-to-nodejs#an-example-nodejs-application> ,起初我以为这是一个类似`codepen`的在线编辑器，通过关键词`webcontainer`, 我发现这是一个在浏览器中本地运行 Node.js程序， 并找到了下面这篇文章<https://blog.stackblitz.com/posts/introducing-webcontainers/>，
 
-> 以面是翻译：
+> 以下内容为文章翻译：
 
 ## WebContainers 简介：在浏览器中本地运行 Node.js
 
