@@ -75,39 +75,55 @@ tags: ['css', 'web']
 我们可以通过外层容器宽高和字体容器宽高计算出需要缩放的比例，通过设置zoom、scale来自适应容器宽高,如:
 
 ```html
-<div id="wrapper" contenteditable="true" style="border: 1px solid gray; width: 120px; height: 120px;resize: both; overflow: scroll;line-height: 1.2;">
-  <div id="inner" style="display: inline;">
+<div class="auto-size" contenteditable="true" style="border: 1px solid gray; width: 120px; height: 120px;resize: both; overflow: scroll;">
+  <span>
     通过拖动右下角,或者增加删除文字查看字体缩放。
-  </div>
+  </span>
 </div>
-</body>
 <script>
-function autoFit() {
-  const wrapperSty = wrapper.getBoundingClientRect();
-  const innerSty = inner.getBoundingClientRect();
-  const scale = Math.floor(Math.min(wrapperSty.width /innerSty.width, wrapperSty.height /innerSty.height)*100)/100;
-  inner.style.zoom = scale;
+function autoFit(ele) {
+    const wrapperSty = ele.getBoundingClientRect();
+    const inner = ele.children[0];
+    const innerSty = inner.getBoundingClientRect();
+    const scale = Math.floor(Math.min(wrapperSty.width / innerSty.width, wrapperSty.height / innerSty.height) * 100) / 100;
+    inner.style.zoom = scale;
+    // inner.style.display="inline-block"
+    // const translate = (1 / scale - 1) / 2 * 100;
+    // inner.style.transform = `scale(${scale}) translate(-${translate}%, -${translate}%)`;
 }
-new ResizeObserver(autoFit).observe(wrapper);
-wrapper.oninput = autoFit;
+document.querySelectorAll('.auto-size').forEach(ele => {
+  new ResizeObserver(() => {
+    autoFit(ele)
+    ele.oninput = () => {
+      autoFit(ele)
+    };
+  }).observe(ele);
+});
 </script>
 ```
 
-<div id="wrapper" contenteditable="true" style="border: 1px solid gray; width: 120px; height: 120px;resize: both; overflow: scroll;line-height: 1.2;">
-  <div id="inner" style="display: inline;">
+<div class="auto-size" contenteditable="true" style="border: 1px solid gray; width: 120px; height: 120px;resize: both; overflow: scroll; line-height: 1.2">
+  <span>
     通过拖动右下角,或者增加删除文字查看字体缩放。
-  </div>
+  </span>
 </div>
-</body>
+
 <script>
-  function autoFit() {
-    const wrapperSty = wrapper.getBoundingClientRect();
+function autoFit(ele) {
+    const wrapperSty = ele.getBoundingClientRect();
+    const inner = ele.children[0];
     const innerSty = inner.getBoundingClientRect();
-    const scale = Math.floor(Math.min(wrapperSty.width /innerSty.width, wrapperSty.height /innerSty.height)*100)/100;
+    const scale = Math.floor(Math.min(wrapperSty.width / innerSty.width, wrapperSty.height / innerSty.height) * 100) / 100;
     inner.style.zoom = scale;
-  }
-  new ResizeObserver(autoFit).observe(wrapper);
-  wrapper.oninput = autoFit;
+}
+document.querySelectorAll('.auto-size').forEach(ele => {
+  new ResizeObserver(() => {
+    autoFit(ele)
+    ele.oninput = () => {
+      autoFit(ele)
+    };
+  }).observe(ele);
+});
 </script>
 
 ## svg的viewBox
