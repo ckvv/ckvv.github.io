@@ -1,5 +1,5 @@
 ---
-title: 记录一些Vue 3组件、插件库
+title: 记录一些Vue 相关的组件、插件库
 tags: ['vue']
 ---
 
@@ -25,6 +25,7 @@ tags: ['vue']
 
 # 其他
 
++ [petite-vue](https://github.com/vuejs/petite-vue) petite-vue 是 Vue 的替代发行版，针对渐进式增强进行了优化
 + [@ckpack/vue-color](https://github.com/ckpack/vue-color)
 
 
