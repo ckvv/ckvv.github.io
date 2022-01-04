@@ -60,12 +60,12 @@ var event = new Event(&amp;#39;build&amp;#39;); let eventEle = document.</descri
 &lt;/a>
 &lt;/h3>
 &lt;p>任何一个容器都可以指定为 Flex 布局&lt;/p>
-&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
 &lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">flex&lt;/span>;
 }
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>行内元素也可以使用 Flex 布局。&lt;/p>
-&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
-&lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">inline&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#66d9ef">flex&lt;/span>;
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
+&lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">inline-flex&lt;/span>;
 }
 &lt;/code>&lt;/pre>&lt;/div></description></item><item><title>jsonwebtoken</title><link>https://chenkai.life/nodejs/jsonwebtoken/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/nodejs/jsonwebtoken/</guid><description>什么是JSON Web Token？ JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用SON对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT可以使用加密算法（使用HMAC算法）或使用RSA或ECDSA的公钥/私钥对进行签名。
 什么时候应该使用JSON Web令牌 以下是JSON Web令牌有用的一些场景：
@@ -147,9 +147,9 @@ iframe有那些缺点？</description></item><item><title>前端开发面试题�
 &lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
 &lt;/a>
 &lt;/h2>
-&lt;h2 id="a-namepreface前言a-">
+&lt;h2 id="a-namepreface前言a">
 &lt;a name='preface'>前言&lt;/a>
-&lt;a class="heading-link" href="#a-namepreface%e5%89%8d%e8%a8%80a-">
+&lt;a class="heading-link" href="#a-namepreface%e5%89%8d%e8%a8%80a">
 &lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
 &lt;/a>
 &lt;/h2>

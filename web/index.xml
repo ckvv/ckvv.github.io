@@ -65,12 +65,12 @@ var event = new Event(&amp;#39;build&amp;#39;); let eventEle = document.</descri
 &lt;/a>
 &lt;/h3>
 &lt;p>任何一个容器都可以指定为 Flex 布局&lt;/p>
-&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
 &lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">flex&lt;/span>;
 }
 &lt;/code>&lt;/pre>&lt;/div>&lt;p>行内元素也可以使用 Flex 布局。&lt;/p>
-&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
-&lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">inline&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#66d9ef">flex&lt;/span>;
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
+&lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">inline-flex&lt;/span>;
 }
 &lt;/code>&lt;/pre>&lt;/div></description></item><item><title>vue_nextTick的原理</title><link>https://chenkai.life/web/vue_nexttick/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/web/vue_nexttick/</guid><description>nextTick是vue的一个全局API， 作用是在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
 Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。

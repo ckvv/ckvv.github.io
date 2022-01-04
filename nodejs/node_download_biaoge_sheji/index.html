@@ -1,32 +1,139 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=theme-color content="#ffffff"><meta name=color-scheme content="light dark"><meta name=description content="我们在做后台开发时可能有很多接口的数据需要下载下来,如果从头开发无疑会有很多重复代码如参数校验、权限验证等，接下来我谈谈我是如何利用现有的node接口下载表格
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=content-language content="en">
+<meta name=theme-color content="#ffffff">
+<meta name=color-scheme content="light dark">
+<meta name=description content="我们在做后台开发时可能有很多接口的数据需要下载下来,如果从头开发无疑会有很多重复代码如参数校验、权限验证等，接下来我谈谈我是如何利用现有的node接口下载表格
 json数组转表格    一般我们的接口返回的是json数组,我们很容易想到只需要把返回数据的json转为表格下载就可以了其他逻辑都是一样的，node有很多现成的库可以处理如xlsx
 function frows2XlsxBufferile(formatData) { const ws = xlsx.utils.json_to_sheet(formatData); const wb = xlsx.utils.book_new(); xlsx.utils.book_append_sheet(wb, ws, 'SheetJS'); return xlsx.write(wb, { type: 'buffer', bookType: 'xlsx' }); } 在ctx上下文添加下载文件的方法    默认情况下返回的是文本数据这里需要处理,我这里需要在header中声明返回的内容是一个需要下载的文件
 function file(name, data) { // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition  // 说明浏览器应该将内容下载到本地；filename 的值预填为下载后的文件名  this.response.set('Content-disposition', `attachment;filename=&#34;${name}&#34;`); // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type  // 说明返回的是一个二进制流数据  this.response.set('Content-Type', 'application/octet-stream'); return this.response.body = data; } 返回表格    我们将上面封装下，方便调用,
-async download() { const { ctx } = this; const result = await this."><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="node复用原始接口下载表格"><meta name=twitter:description content="我们在做后台开发时可能有很多接口的数据需要下载下来,如果从头开发无疑会有很多重复代码如参数校验、权限验证等，接下来我谈谈我是如何利用现有的node接口下载表格
+async download() { const { ctx } = this; const result = await this.">
+<meta name=keywords content>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="node复用原始接口下载表格">
+<meta name=twitter:description content="我们在做后台开发时可能有很多接口的数据需要下载下来,如果从头开发无疑会有很多重复代码如参数校验、权限验证等，接下来我谈谈我是如何利用现有的node接口下载表格
 json数组转表格    一般我们的接口返回的是json数组,我们很容易想到只需要把返回数据的json转为表格下载就可以了其他逻辑都是一样的，node有很多现成的库可以处理如xlsx
 function frows2XlsxBufferile(formatData) { const ws = xlsx.utils.json_to_sheet(formatData); const wb = xlsx.utils.book_new(); xlsx.utils.book_append_sheet(wb, ws, 'SheetJS'); return xlsx.write(wb, { type: 'buffer', bookType: 'xlsx' }); } 在ctx上下文添加下载文件的方法    默认情况下返回的是文本数据这里需要处理,我这里需要在header中声明返回的内容是一个需要下载的文件
 function file(name, data) { // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition  // 说明浏览器应该将内容下载到本地；filename 的值预填为下载后的文件名  this.response.set('Content-disposition', `attachment;filename=&#34;${name}&#34;`); // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type  // 说明返回的是一个二进制流数据  this.response.set('Content-Type', 'application/octet-stream'); return this.response.body = data; } 返回表格    我们将上面封装下，方便调用,
-async download() { const { ctx } = this; const result = await this."><meta property="og:title" content="node复用原始接口下载表格"><meta property="og:description" content="我们在做后台开发时可能有很多接口的数据需要下载下来,如果从头开发无疑会有很多重复代码如参数校验、权限验证等，接下来我谈谈我是如何利用现有的node接口下载表格
+async download() { const { ctx } = this; const result = await this.">
+<meta property="og:title" content="node复用原始接口下载表格">
+<meta property="og:description" content="我们在做后台开发时可能有很多接口的数据需要下载下来,如果从头开发无疑会有很多重复代码如参数校验、权限验证等，接下来我谈谈我是如何利用现有的node接口下载表格
 json数组转表格    一般我们的接口返回的是json数组,我们很容易想到只需要把返回数据的json转为表格下载就可以了其他逻辑都是一样的，node有很多现成的库可以处理如xlsx
 function frows2XlsxBufferile(formatData) { const ws = xlsx.utils.json_to_sheet(formatData); const wb = xlsx.utils.book_new(); xlsx.utils.book_append_sheet(wb, ws, 'SheetJS'); return xlsx.write(wb, { type: 'buffer', bookType: 'xlsx' }); } 在ctx上下文添加下载文件的方法    默认情况下返回的是文本数据这里需要处理,我这里需要在header中声明返回的内容是一个需要下载的文件
 function file(name, data) { // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition  // 说明浏览器应该将内容下载到本地；filename 的值预填为下载后的文件名  this.response.set('Content-disposition', `attachment;filename=&#34;${name}&#34;`); // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type  // 说明返回的是一个二进制流数据  this.response.set('Content-Type', 'application/octet-stream'); return this.response.body = data; } 返回表格    我们将上面封装下，方便调用,
-async download() { const { ctx } = this; const result = await this."><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai.life/nodejs/node_download_biaoge_sheji/"><meta property="article:published_time" content="2021-08-11T11:12:19+08:00"><meta property="article:modified_time" content="2021-08-11T11:12:19+08:00"><title>node复用原始接口下载表格 · CK's Blog</title><link rel=canonical href=https://chenkai.life/nodejs/node_download_biaoge_sheji/><link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/scss/custom.min.cf20e9188fc724977efd195b6bc707f2ac0744dd88f99c005b75aaac785e163c.css integrity="sha256-zyDpGI/HJJd+/Rlba8cH8qwHRN2I+ZwAW3WqrHheFjw=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/favicon.ico><link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png><meta name=generator content="Hugo 0.72.0"><link rel=manifest href=/manifest.webmanifest></head><body class="preload-transitions colorscheme-auto"><div class=float-container><span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg></span></div><details id=table-of-contents-wapper><summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></summary></details><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>CK's Blog</a>
+async download() { const { ctx } = this; const result = await this.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chenkai.life/nodejs/node_download_biaoge_sheji/"><meta property="article:section" content="nodejs">
+<meta property="article:modified_time" content="2021-08-11T11:12:19+08:00">
+<title>
+node复用原始接口下载表格 · CK's Blog
+</title>
+<link rel=canonical href=https://chenkai.life/nodejs/node_download_biaoge_sheji/>
+<link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen>
+<link rel=icon type=image/svg+xml href=/favicon.ico>
+<link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png>
+<meta name=generator content="Hugo 0.91.2">
+<link rel=manifest href=/manifest.webmanifest>
+</head>
+<body class="preload-transitions colorscheme-auto">
+<div class=float-container>
+<span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg>
+</span>
+</div>
+<details id=table-of-contents-wapper>
+<summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
+</summary>
+</details>
+<main class=wrapper>
+<nav class=navigation>
+<section class=container>
+<a class=navigation-title href=/>
+CK's Blog
+</a>
 <input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/index.xml>RSS</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input class=search-int type=text placeholder=Search>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
+</label>
+<ul class=navigation-list>
+<li class=navigation-item>
+<a class=navigation-link href=/>Home</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/tags/>Tags</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/index.xml>RSS</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/about/>About</a>
+</li>
+<li class=navigation-item id=search-content>
+<input class=search-int type=text placeholder=Search>
 <button class=search-btn data-type=github>GitHub</button>
-<button class=search-btn data-type=google>Google</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai.life/nodejs/node_download_biaoge_sheji/>node复用原始接口下载表格</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/nodejs/node_download_biaoge_sheji.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg><time datetime=2021-08-11T11:12:19+08:00>2021-08-11</time></span></div><div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg><span class=tag><a href=/tags/node/>node</a></span>
+<button class=search-btn data-type=google>Google</button>
+</li>
+</ul>
+</section>
+</nav>
+<div class=content>
+<section class="container page">
+<article>
+<header>
+<h1 class=title>
+<a class=title-link href=https://chenkai.life/nodejs/node_download_biaoge_sheji/>
+node复用原始接口下载表格
+</a>
+</h1>
+<div class=edit-link style=float:right;color:#0366d6>
+<a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/nodejs/node_download_biaoge_sheji.md>编辑</a>
+</div>
+</header>
+<div class=post-meta>
+<div class=date>
+<span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
+<time datetime=2021-08-11T11:12:19+08:00>
+2021-08-11
+</time>
+</span>
+</div>
+<div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
+<span class=tag>
+<a href=/tags/node/>node</a>
+</span>
 <span class=separator>•</span>
-<span class=tag><a href=/tags/web/>web</a></span>
+<span class=tag>
+<a href=/tags/web/>web</a>
+</span>
 <span class=separator>•</span>
-<span class=tag><a href=/tags/download/>download</a></span></div></div><p>我们在做后台开发时可能有很多接口的数据需要下载下来,如果从头开发无疑会有很多重复代码如参数校验、权限验证等，接下来我谈谈我是如何利用现有的node接口下载表格</p><h1 id=json数组转表格>json数组转表格
-<a class=heading-link href=#json%e6%95%b0%e7%bb%84%e8%bd%ac%e8%a1%a8%e6%a0%bc><i class="fa fa-link" aria-hidden=true></i></a></h1><p>一般我们的接口返回的是json数组,我们很容易想到只需要把返回数据的json转为表格下载就可以了其他逻辑都是一样的，node有很多现成的库可以处理如<code>xlsx</code></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>frows2XlsxBufferile</span>(<span style=color:#a6e22e>formatData</span>) {
+<span class=tag>
+<a href=/tags/download/>download</a>
+</span></div>
+</div>
+<p>我们在做后台开发时可能有很多接口的数据需要下载下来,如果从头开发无疑会有很多重复代码如参数校验、权限验证等，接下来我谈谈我是如何利用现有的node接口下载表格</p>
+<h1 id=json数组转表格>
+json数组转表格
+<a class=heading-link href=#json%e6%95%b0%e7%bb%84%e8%bd%ac%e8%a1%a8%e6%a0%bc>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h1>
+<p>一般我们的接口返回的是json数组,我们很容易想到只需要把返回数据的json转为表格下载就可以了其他逻辑都是一样的，node有很多现成的库可以处理如<code>xlsx</code></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>frows2XlsxBufferile</span>(<span style=color:#a6e22e>formatData</span>) {
   <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>ws</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>xlsx</span>.<span style=color:#a6e22e>utils</span>.<span style=color:#a6e22e>json_to_sheet</span>(<span style=color:#a6e22e>formatData</span>);
   <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>wb</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>xlsx</span>.<span style=color:#a6e22e>utils</span>.<span style=color:#a6e22e>book_new</span>();
   <span style=color:#a6e22e>xlsx</span>.<span style=color:#a6e22e>utils</span>.<span style=color:#a6e22e>book_append_sheet</span>(<span style=color:#a6e22e>wb</span>, <span style=color:#a6e22e>ws</span>, <span style=color:#e6db74>&#39;SheetJS&#39;</span>);
   <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>xlsx</span>.<span style=color:#a6e22e>write</span>(<span style=color:#a6e22e>wb</span>, { <span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;buffer&#39;</span>, <span style=color:#a6e22e>bookType</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;xlsx&#39;</span> });
 }
-</code></pre></div><h1 id=在ctx上下文添加下载文件的方法>在ctx上下文添加下载文件的方法
-<a class=heading-link href=#%e5%9c%a8ctx%e4%b8%8a%e4%b8%8b%e6%96%87%e6%b7%bb%e5%8a%a0%e4%b8%8b%e8%bd%bd%e6%96%87%e4%bb%b6%e7%9a%84%e6%96%b9%e6%b3%95><i class="fa fa-link" aria-hidden=true></i></a></h1><p>默认情况下返回的是文本数据这里需要处理,我这里需要在<code>header</code>中声明返回的内容是一个需要下载的文件</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>file</span>(<span style=color:#a6e22e>name</span>, <span style=color:#a6e22e>data</span>) {
+</code></pre></div><h1 id=在ctx上下文添加下载文件的方法>
+在ctx上下文添加下载文件的方法
+<a class=heading-link href=#%e5%9c%a8ctx%e4%b8%8a%e4%b8%8b%e6%96%87%e6%b7%bb%e5%8a%a0%e4%b8%8b%e8%bd%bd%e6%96%87%e4%bb%b6%e7%9a%84%e6%96%b9%e6%b3%95>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h1>
+<p>默认情况下返回的是文本数据这里需要处理,我这里需要在<code>header</code>中声明返回的内容是一个需要下载的文件</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>file</span>(<span style=color:#a6e22e>name</span>, <span style=color:#a6e22e>data</span>) {
   <span style=color:#75715e>// https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition
 </span><span style=color:#75715e></span>  <span style=color:#75715e>// 说明浏览器应该将内容下载到本地；filename 的值预填为下载后的文件名
 </span><span style=color:#75715e></span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>response</span>.<span style=color:#a6e22e>set</span>(<span style=color:#e6db74>&#39;Content-disposition&#39;</span>, <span style=color:#e6db74>`attachment;filename=&#34;</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>name</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;`</span>);
@@ -35,22 +142,46 @@ async download() { const { ctx } = this; const result = await this."><meta prope
 </span><span style=color:#75715e></span>  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>response</span>.<span style=color:#a6e22e>set</span>(<span style=color:#e6db74>&#39;Content-Type&#39;</span>, <span style=color:#e6db74>&#39;application/octet-stream&#39;</span>);
   <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>response</span>.<span style=color:#a6e22e>body</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>;
 }
-</code></pre></div><h1 id=返回表格>返回表格
-<a class=heading-link href=#%e8%bf%94%e5%9b%9e%e8%a1%a8%e6%a0%bc><i class="fa fa-link" aria-hidden=true></i></a></h1><p>我们将上面封装下，方便调用,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>async</span> <span style=color:#a6e22e>download</span>() {
+</code></pre></div><h1 id=返回表格>
+返回表格
+<a class=heading-link href=#%e8%bf%94%e5%9b%9e%e8%a1%a8%e6%a0%bc>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h1>
+<p>我们将上面封装下，方便调用,</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>async</span> <span style=color:#a6e22e>download</span>() {
   <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>ctx</span> } <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span>;
 
-  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>await</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>index</span>();
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>index</span>();
   <span style=color:#75715e>// 如果返回接口返回信息，如果失败将原始信息返回
 </span><span style=color:#75715e></span>  <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>result</span> <span style=color:#f92672>||</span> <span style=color:#a6e22e>result</span>.<span style=color:#a6e22e>code</span> <span style=color:#f92672>!==</span> <span style=color:#ae81ff>0</span>) {
     <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>ctx</span>.<span style=color:#a6e22e>error</span>(<span style=color:#a6e22e>result</span>);
   }
   <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>ctx</span>.<span style=color:#a6e22e>file</span>(<span style=color:#e6db74>&#39;offer.xlsx&#39;</span>, <span style=color:#a6e22e>rows2XlsxBuffer</span>(<span style=color:#a6e22e>result</span>.<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>rows</span>));
 }
-</code></pre></div><h1 id=其他问题>其他问题
-<a class=heading-link href=#%e5%85%b6%e4%bb%96%e9%97%ae%e9%a2%98><i class="fa fa-link" aria-hidden=true></i></a></h1><h2 id=分页>分页
-<a class=heading-link href=#%e5%88%86%e9%a1%b5><i class="fa fa-link" aria-hidden=true></i></a></h2><p>一般情况下我们下载的表格是不需要分页的,而我们调用的原始接口如上面的<code>this.index</code>可能默认是有分页信息的，这里我们需要特殊处理告诉它，本次请求不需要分页</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>ctx</span>.<span style=color:#a6e22e>noPaging</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>;
-</code></pre></div><p>然后我们需要在对应接口中检查<code>noPaging</code>参数决定是否分页</p><h2 id=压缩>压缩
-<a class=heading-link href=#%e5%8e%8b%e7%bc%a9><i class="fa fa-link" aria-hidden=true></i></a></h2><p>有时如果返回的表格较大我们可能需要对表压缩，这里我用<a href=https://github.com/archiverjs/node-zip-stream>zip-stream</a>直接对buffer压缩并返回对应压缩流</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>zipBuffer2Stream</span>(<span style=color:#a6e22e>buffer</span>, <span style=color:#a6e22e>outputName</span>) {
+</code></pre></div><h1 id=其他问题>
+其他问题
+<a class=heading-link href=#%e5%85%b6%e4%bb%96%e9%97%ae%e9%a2%98>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h1>
+<h2 id=分页>
+分页
+<a class=heading-link href=#%e5%88%86%e9%a1%b5>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>一般情况下我们下载的表格是不需要分页的,而我们调用的原始接口如上面的<code>this.index</code>可能默认是有分页信息的，这里我们需要特殊处理告诉它，本次请求不需要分页</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>ctx</span>.<span style=color:#a6e22e>noPaging</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>;
+</code></pre></div><p>然后我们需要在对应接口中检查<code>noPaging</code>参数决定是否分页</p>
+<h2 id=压缩>
+压缩
+<a class=heading-link href=#%e5%8e%8b%e7%bc%a9>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>有时如果返回的表格较大我们可能需要对表压缩，这里我用<a href=https://github.com/archiverjs/node-zip-stream>zip-stream</a>直接对buffer压缩并返回对应压缩流</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>zipBuffer2Stream</span>(<span style=color:#a6e22e>buffer</span>, <span style=color:#a6e22e>outputName</span>) {
   <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>archive</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>ZipStream</span>({
     <span style=color:#a6e22e>zlib</span><span style=color:#f92672>:</span> { <span style=color:#a6e22e>level</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>9</span> },
   });
@@ -60,4 +191,15 @@ async download() { const { ctx } = this; const result = await this."><meta prope
   });
   <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>archive</span>;
 }
-</code></pre></div><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=daeb455473f44c44422bb36e7e558ed7 data-page-url=https://chenkai.life/nodejs/node_download_biaoge_sheji/ data-page-title=node复用原始接口下载表格 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.a350362441276ec5c1671926420497bb8e52b63ead1d51d3c9bc4342d0039526.js integrity="sha256-o1A2JEEnbsXBZxkmQgSXu45Stj6tHVHTybxDQtADlSY="></script><script src=/js/custom.js></script><script src=/js/font.min.js></script></body><script>if('serviceWorker'in navigator){navigator.serviceWorker.register('/service-worker.js');}</script></html>
+</code></pre></div>
+<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=daeb455473f44c44422bb36e7e558ed7 data-page-url=https://chenkai.life/nodejs/node_download_biaoge_sheji/ data-page-title=node复用原始接口下载表格 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
+</article>
+</section>
+</div>
+</main>
+<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+<script src=/js/custom.js></script>
+<script src=/js/font.min.js></script>
+</body>
+<script>'serviceWorker'in navigator&&navigator.serviceWorker.register('/service-worker.js')</script>
+</html>

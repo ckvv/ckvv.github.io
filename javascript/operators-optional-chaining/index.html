@@ -1,40 +1,169 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=theme-color content="#ffffff"><meta name=color-scheme content="light dark"><meta name=description content="可选链操作符    可选链操作符( ?. )允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效。?. 操作符的功能类似于 . 链式操作符，不同之处在于，在引用为空(nullish ) (null 或者 undefined) 的情况下不会引起错误，该表达式短路返回值是 undefined。与函数调用一起使用时，如果给定的函数不存在，则返回 undefined。
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=content-language content="en">
+<meta name=theme-color content="#ffffff">
+<meta name=color-scheme content="light dark">
+<meta name=description content="可选链操作符    可选链操作符( ?. )允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效。?. 操作符的功能类似于 . 链式操作符，不同之处在于，在引用为空(nullish ) (null 或者 undefined) 的情况下不会引起错误，该表达式短路返回值是 undefined。与函数调用一起使用时，如果给定的函数不存在，则返回 undefined。
 当尝试访问可能不存在的对象属性时，可选链操作符将会使表达式更短、更简明。在探索一个对象的内容时，如果不能确定哪些属性必定存在，可选链操作符也是很有帮助的。
  语法    obj?.prop obj?.[expr] arr?.[index] func?.(args) 描述    通过连接的对象的引用或函数可能是 undefined 或 null 时，可选链操作符提供了一种方法来简化被连接对象的值访问。
 比如，思考一个存在嵌套结构的对象 obj。不使用可选链的话，查找一个深度嵌套的子属性时，需要验证之间的引用，例如：
 let nestedProp = obj.first && obj.first.second; 为了避免报错，在访问obj.first.second之前，要保证 obj.first 的值既不是 null，也不是 undefined。如果只是直接访问 obj.first.second，而不对 obj.first 进行校验，则有可能抛出错误。
 有了可选链操作符（?.），在访问 obj.first.second 之前，不再需要明确地校验 obj.first 的状态，再并用短路计算获取最终结果：
-let nestedProp = obj.first?.second; 通过使用 ?. 操作符取代 . 操作符，JavaScript 会在尝试访问 obj.first.second 之前，先隐式地检查并确定 obj.first 既不是 null 也不是 undefined。如果obj."><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="JavaScript可选链操作符"><meta name=twitter:description content="可选链操作符    可选链操作符( ?. )允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效。?. 操作符的功能类似于 . 链式操作符，不同之处在于，在引用为空(nullish ) (null 或者 undefined) 的情况下不会引起错误，该表达式短路返回值是 undefined。与函数调用一起使用时，如果给定的函数不存在，则返回 undefined。
+let nestedProp = obj.first?.second; 通过使用 ?. 操作符取代 . 操作符，JavaScript 会在尝试访问 obj.first.second 之前，先隐式地检查并确定 obj.first 既不是 null 也不是 undefined。如果obj.">
+<meta name=keywords content>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="JavaScript可选链操作符">
+<meta name=twitter:description content="可选链操作符    可选链操作符( ?. )允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效。?. 操作符的功能类似于 . 链式操作符，不同之处在于，在引用为空(nullish ) (null 或者 undefined) 的情况下不会引起错误，该表达式短路返回值是 undefined。与函数调用一起使用时，如果给定的函数不存在，则返回 undefined。
 当尝试访问可能不存在的对象属性时，可选链操作符将会使表达式更短、更简明。在探索一个对象的内容时，如果不能确定哪些属性必定存在，可选链操作符也是很有帮助的。
  语法    obj?.prop obj?.[expr] arr?.[index] func?.(args) 描述    通过连接的对象的引用或函数可能是 undefined 或 null 时，可选链操作符提供了一种方法来简化被连接对象的值访问。
 比如，思考一个存在嵌套结构的对象 obj。不使用可选链的话，查找一个深度嵌套的子属性时，需要验证之间的引用，例如：
 let nestedProp = obj.first && obj.first.second; 为了避免报错，在访问obj.first.second之前，要保证 obj.first 的值既不是 null，也不是 undefined。如果只是直接访问 obj.first.second，而不对 obj.first 进行校验，则有可能抛出错误。
 有了可选链操作符（?.），在访问 obj.first.second 之前，不再需要明确地校验 obj.first 的状态，再并用短路计算获取最终结果：
-let nestedProp = obj.first?.second; 通过使用 ?. 操作符取代 . 操作符，JavaScript 会在尝试访问 obj.first.second 之前，先隐式地检查并确定 obj.first 既不是 null 也不是 undefined。如果obj."><meta property="og:title" content="JavaScript可选链操作符"><meta property="og:description" content="可选链操作符    可选链操作符( ?. )允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效。?. 操作符的功能类似于 . 链式操作符，不同之处在于，在引用为空(nullish ) (null 或者 undefined) 的情况下不会引起错误，该表达式短路返回值是 undefined。与函数调用一起使用时，如果给定的函数不存在，则返回 undefined。
+let nestedProp = obj.first?.second; 通过使用 ?. 操作符取代 . 操作符，JavaScript 会在尝试访问 obj.first.second 之前，先隐式地检查并确定 obj.first 既不是 null 也不是 undefined。如果obj.">
+<meta property="og:title" content="JavaScript可选链操作符">
+<meta property="og:description" content="可选链操作符    可选链操作符( ?. )允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效。?. 操作符的功能类似于 . 链式操作符，不同之处在于，在引用为空(nullish ) (null 或者 undefined) 的情况下不会引起错误，该表达式短路返回值是 undefined。与函数调用一起使用时，如果给定的函数不存在，则返回 undefined。
 当尝试访问可能不存在的对象属性时，可选链操作符将会使表达式更短、更简明。在探索一个对象的内容时，如果不能确定哪些属性必定存在，可选链操作符也是很有帮助的。
  语法    obj?.prop obj?.[expr] arr?.[index] func?.(args) 描述    通过连接的对象的引用或函数可能是 undefined 或 null 时，可选链操作符提供了一种方法来简化被连接对象的值访问。
 比如，思考一个存在嵌套结构的对象 obj。不使用可选链的话，查找一个深度嵌套的子属性时，需要验证之间的引用，例如：
 let nestedProp = obj.first && obj.first.second; 为了避免报错，在访问obj.first.second之前，要保证 obj.first 的值既不是 null，也不是 undefined。如果只是直接访问 obj.first.second，而不对 obj.first 进行校验，则有可能抛出错误。
 有了可选链操作符（?.），在访问 obj.first.second 之前，不再需要明确地校验 obj.first 的状态，再并用短路计算获取最终结果：
-let nestedProp = obj.first?.second; 通过使用 ?. 操作符取代 . 操作符，JavaScript 会在尝试访问 obj.first.second 之前，先隐式地检查并确定 obj.first 既不是 null 也不是 undefined。如果obj."><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai.life/javascript/operators-optional-chaining/"><meta property="article:published_time" content="2021-10-08T13:56:23+08:00"><meta property="article:modified_time" content="2021-10-08T13:56:23+08:00"><title>JavaScript可选链操作符 · CK's Blog</title><link rel=canonical href=https://chenkai.life/javascript/operators-optional-chaining/><link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/scss/custom.min.cf20e9188fc724977efd195b6bc707f2ac0744dd88f99c005b75aaac785e163c.css integrity="sha256-zyDpGI/HJJd+/Rlba8cH8qwHRN2I+ZwAW3WqrHheFjw=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/favicon.ico><link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png><meta name=generator content="Hugo 0.72.0"><link rel=manifest href=/manifest.webmanifest></head><body class="preload-transitions colorscheme-auto"><div class=float-container><span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg></span></div><details id=table-of-contents-wapper><summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></summary></details><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>CK's Blog</a>
+let nestedProp = obj.first?.second; 通过使用 ?. 操作符取代 . 操作符，JavaScript 会在尝试访问 obj.first.second 之前，先隐式地检查并确定 obj.first 既不是 null 也不是 undefined。如果obj.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chenkai.life/javascript/operators-optional-chaining/"><meta property="article:section" content="javascript">
+<meta property="article:modified_time" content="2021-10-08T13:56:23+08:00">
+<title>
+JavaScript可选链操作符 · CK's Blog
+</title>
+<link rel=canonical href=https://chenkai.life/javascript/operators-optional-chaining/>
+<link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen>
+<link rel=icon type=image/svg+xml href=/favicon.ico>
+<link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png>
+<meta name=generator content="Hugo 0.91.2">
+<link rel=manifest href=/manifest.webmanifest>
+</head>
+<body class="preload-transitions colorscheme-auto">
+<div class=float-container>
+<span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg>
+</span>
+</div>
+<details id=table-of-contents-wapper>
+<summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
+</summary>
+</details>
+<main class=wrapper>
+<nav class=navigation>
+<section class=container>
+<a class=navigation-title href=/>
+CK's Blog
+</a>
 <input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/index.xml>RSS</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input class=search-int type=text placeholder=Search>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
+</label>
+<ul class=navigation-list>
+<li class=navigation-item>
+<a class=navigation-link href=/>Home</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/tags/>Tags</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/index.xml>RSS</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/about/>About</a>
+</li>
+<li class=navigation-item id=search-content>
+<input class=search-int type=text placeholder=Search>
 <button class=search-btn data-type=github>GitHub</button>
-<button class=search-btn data-type=google>Google</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai.life/javascript/operators-optional-chaining/>JavaScript可选链操作符</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/javascript/operators-optional-chaining.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg><time datetime=2021-10-08T13:56:23+08:00>2021-10-08</time></span></div><div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg><span class=tag><a href=/tags/js/>js</a></span></div></div><h1 id=可选链操作符>可选链操作符
-<a class=heading-link href=#%e5%8f%af%e9%80%89%e9%93%be%e6%93%8d%e4%bd%9c%e7%ac%a6><i class="fa fa-link" aria-hidden=true></i></a></h1><p><strong>可选链</strong>操作符( <strong><code>?.</code></strong> )允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效。<code>?.</code> 操作符的功能类似于 <code>.</code> 链式操作符，不同之处在于，在引用为空(<a href=https://developer.mozilla.org/zh-CN/docs/Glossary/Nullish>nullish</a> ) (<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null><code>null</code></a> 或者 <a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined><code>undefined</code></a>) 的情况下不会引起错误，该表达式短路返回值是 <code>undefined</code>。与函数调用一起使用时，如果给定的函数不存在，则返回 <code>undefined</code>。</p><p>当尝试访问可能不存在的对象属性时，可选链操作符将会使表达式更短、更简明。在探索一个对象的内容时，如果不能确定哪些属性必定存在，可选链操作符也是很有帮助的。</p><iframe class=interactive height=692 src=https://interactive-examples.mdn.mozilla.net/pages/js/expressions-optionalchainingoperator.html title="MDN Web Docs Interactive Example" loading=lazy style=box-sizing:border-box;background-color:#f4f4f4;border:0;color:#1b1b1b;padding:10px;width:1002px;max-width:100%></iframe><h2 id=语法httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining语法><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E8%AF%AD%E6%B3%95>语法</a>
-<a class=heading-link href=#%e8%af%ad%e6%b3%95httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e8%af%ad%e6%b3%95><i class="fa fa-link" aria-hidden=true></i></a></h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>obj</span><span style=color:#f92672>?</span>.<span style=color:#a6e22e>prop</span>
+<button class=search-btn data-type=google>Google</button>
+</li>
+</ul>
+</section>
+</nav>
+<div class=content>
+<section class="container page">
+<article>
+<header>
+<h1 class=title>
+<a class=title-link href=https://chenkai.life/javascript/operators-optional-chaining/>
+JavaScript可选链操作符
+</a>
+</h1>
+<div class=edit-link style=float:right;color:#0366d6>
+<a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/javascript/operators-optional-chaining.md>编辑</a>
+</div>
+</header>
+<div class=post-meta>
+<div class=date>
+<span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
+<time datetime=2021-10-08T13:56:23+08:00>
+2021-10-08
+</time>
+</span>
+</div>
+<div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
+<span class=tag>
+<a href=/tags/js/>js</a>
+</span></div>
+</div>
+<h1 id=可选链操作符>
+可选链操作符
+<a class=heading-link href=#%e5%8f%af%e9%80%89%e9%93%be%e6%93%8d%e4%bd%9c%e7%ac%a6>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h1>
+<p><strong>可选链</strong>操作符( <strong><code>?.</code></strong> )允许读取位于连接对象链深处的属性的值，而不必明确验证链中的每个引用是否有效。<code>?.</code> 操作符的功能类似于 <code>.</code> 链式操作符，不同之处在于，在引用为空(<a href=https://developer.mozilla.org/zh-CN/docs/Glossary/Nullish>nullish</a> ) (<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null><code>null</code></a> 或者 <a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined><code>undefined</code></a>) 的情况下不会引起错误，该表达式短路返回值是 <code>undefined</code>。与函数调用一起使用时，如果给定的函数不存在，则返回 <code>undefined</code>。</p>
+<p>当尝试访问可能不存在的对象属性时，可选链操作符将会使表达式更短、更简明。在探索一个对象的内容时，如果不能确定哪些属性必定存在，可选链操作符也是很有帮助的。</p>
+<iframe class=interactive height=692 src=https://interactive-examples.mdn.mozilla.net/pages/js/expressions-optionalchainingoperator.html title="MDN Web Docs Interactive Example" loading=lazy style=box-sizing:border-box;background-color:#f4f4f4;border:0;color:#1b1b1b;padding:10px;width:1002px;max-width:100%></iframe>
+<h2 id=语法httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining语法>
+<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E8%AF%AD%E6%B3%95>语法</a>
+<a class=heading-link href=#%e8%af%ad%e6%b3%95httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e8%af%ad%e6%b3%95>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>obj</span><span style=color:#f92672>?</span>.<span style=color:#a6e22e>prop</span>
 <span style=color:#a6e22e>obj</span><span style=color:#f92672>?</span>.[<span style=color:#a6e22e>expr</span>]
 <span style=color:#a6e22e>arr</span><span style=color:#f92672>?</span>.[<span style=color:#a6e22e>index</span>]
 <span style=color:#a6e22e>func</span><span style=color:#f92672>?</span>.(<span style=color:#a6e22e>args</span>)
-</code></pre></div><h2 id=描述httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining描述><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E6%8F%8F%E8%BF%B0>描述</a>
-<a class=heading-link href=#%e6%8f%8f%e8%bf%b0httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e6%8f%8f%e8%bf%b0><i class="fa fa-link" aria-hidden=true></i></a></h2><p>通过连接的对象的引用或函数可能是 <code>undefined</code> 或 <code>null</code> 时，可选链操作符提供了一种方法来简化被连接对象的值访问。</p><p>比如，思考一个存在嵌套结构的对象 <code>obj</code>。不使用可选链的话，查找一个深度嵌套的子属性时，需要验证之间的引用，例如：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>nestedProp</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>first</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>first</span>.<span style=color:#a6e22e>second</span>;
-</code></pre></div><p>为了避免报错，在访问<code>obj.first.second</code>之前，要保证 <code>obj.first</code> 的值既不是 <code>null</code>，也不是 <code>undefined</code>。如果只是直接访问 <code>obj.first.second</code>，而不对 <code>obj.first</code> 进行校验，则有可能抛出错误。</p><p>有了可选链操作符（<code>?.</code>），在访问 <code>obj.first.second</code> 之前，不再需要明确地校验 <code>obj.first</code> 的状态，再并用短路计算获取最终结果：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>nestedProp</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>first</span><span style=color:#f92672>?</span>.<span style=color:#a6e22e>second</span>;
-</code></pre></div><p>通过使用 <code>?.</code> 操作符取代 <code>.</code> 操作符，JavaScript 会在尝试访问 <code>obj.first.second</code> 之前，先隐式地检查并确定 <code>obj.first</code> 既不是 <code>null</code> 也不是 <code>undefined</code>。如果<code>obj.first </code>是 <code>null</code> 或者 <code>undefined</code>，表达式将会短路计算直接返回 <code>undefined</code>。</p><p>这等价于以下表达式，但实际上没有创建临时变量：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>temp</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>first</span>;
+</code></pre></div><h2 id=描述httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining描述>
+<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E6%8F%8F%E8%BF%B0>描述</a>
+<a class=heading-link href=#%e6%8f%8f%e8%bf%b0httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e6%8f%8f%e8%bf%b0>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>通过连接的对象的引用或函数可能是 <code>undefined</code> 或 <code>null</code> 时，可选链操作符提供了一种方法来简化被连接对象的值访问。</p>
+<p>比如，思考一个存在嵌套结构的对象 <code>obj</code>。不使用可选链的话，查找一个深度嵌套的子属性时，需要验证之间的引用，例如：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>nestedProp</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>first</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>first</span>.<span style=color:#a6e22e>second</span>;
+</code></pre></div><p>为了避免报错，在访问<code>obj.first.second</code>之前，要保证 <code>obj.first</code> 的值既不是 <code>null</code>，也不是 <code>undefined</code>。如果只是直接访问 <code>obj.first.second</code>，而不对 <code>obj.first</code> 进行校验，则有可能抛出错误。</p>
+<p>有了可选链操作符（<code>?.</code>），在访问 <code>obj.first.second</code> 之前，不再需要明确地校验 <code>obj.first</code> 的状态，再并用短路计算获取最终结果：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>nestedProp</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>first</span><span style=color:#f92672>?</span>.<span style=color:#a6e22e>second</span>;
+</code></pre></div><p>通过使用 <code>?.</code> 操作符取代 <code>.</code> 操作符，JavaScript 会在尝试访问 <code>obj.first.second</code> 之前，先隐式地检查并确定 <code>obj.first</code> 既不是 <code>null</code> 也不是 <code>undefined</code>。如果<code>obj.first </code>是 <code>null</code> 或者 <code>undefined</code>，表达式将会短路计算直接返回 <code>undefined</code>。</p>
+<p>这等价于以下表达式，但实际上没有创建临时变量：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>temp</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>first</span>;
 <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>nestedProp</span> <span style=color:#f92672>=</span> ((<span style=color:#a6e22e>temp</span> <span style=color:#f92672>===</span> <span style=color:#66d9ef>null</span> <span style=color:#f92672>||</span> <span style=color:#a6e22e>temp</span> <span style=color:#f92672>===</span> <span style=color:#66d9ef>undefined</span>) <span style=color:#f92672>?</span> <span style=color:#66d9ef>undefined</span> <span style=color:#f92672>:</span> <span style=color:#a6e22e>temp</span>.<span style=color:#a6e22e>second</span>);
-</code></pre></div><h3 id=可选链与函数调用httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining可选链与函数调用><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E5%8F%AF%E9%80%89%E9%93%BE%E4%B8%8E%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8>可选链与函数调用</a>
-<a class=heading-link href=#%e5%8f%af%e9%80%89%e9%93%be%e4%b8%8e%e5%87%bd%e6%95%b0%e8%b0%83%e7%94%a8httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e5%8f%af%e9%80%89%e9%93%be%e4%b8%8e%e5%87%bd%e6%95%b0%e8%b0%83%e7%94%a8><i class="fa fa-link" aria-hidden=true></i></a></h3><p>当尝试调用一个可能不存在的方法时也可以使用可选链。这将是很有帮助的，比如，当使用一个API的方法可能不可用时，要么因为实现的版本问题要么因为当前用户的设备不支持该功能。</p><p>函数调用时如果被调用的方法不存在，使用可选链可以使表达式自动返回<code>undefined</code>而不是抛出一个异常。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>someInterface</span>.<span style=color:#a6e22e>customMethod</span><span style=color:#f92672>?</span>.();
-</code></pre></div><p><strong>注意:</strong> 如果存在一个属性名且不是函数, 使用 <code>?.</code> 仍然会产生一个 <a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError><code>TypeError</code></a> 异常 (<code>x.y`` is not a function</code>).</p><p><strong>注意:</strong> 如果 <code>someInterface</code> 自身是 <code>null</code> 或者 <code>undefined</code> ，异常 <a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError><code>TypeError</code></a> 仍会被抛出 <code>someInterface is null</code> 如果你希望允许 <code>someInterface</code> 也为 <code>null</code> 或者 <code>undefined</code> ，那么你需要像这样写 <code>someInterface?.customMethod?.()</code></p><h4 id=处理可选的回调函数或者事件处理器>处理可选的回调函数或者事件处理器
-<a class=heading-link href=#%e5%a4%84%e7%90%86%e5%8f%af%e9%80%89%e7%9a%84%e5%9b%9e%e8%b0%83%e5%87%bd%e6%95%b0%e6%88%96%e8%80%85%e4%ba%8b%e4%bb%b6%e5%a4%84%e7%90%86%e5%99%a8><i class="fa fa-link" aria-hidden=true></i></a></h4><p>如果使用<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment>解构赋值</a>来解构的一个对象的回调函数或 fetch 方法，你可能得到不能当做函数直接调用的不存在的值，除非你已经校验了他们的存在性。使用<code>?.</code>的你可以忽略这些额外的校验：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>//  ES2019的写法
+</code></pre></div><h3 id=可选链与函数调用httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining可选链与函数调用>
+<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E5%8F%AF%E9%80%89%E9%93%BE%E4%B8%8E%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8>可选链与函数调用</a>
+<a class=heading-link href=#%e5%8f%af%e9%80%89%e9%93%be%e4%b8%8e%e5%87%bd%e6%95%b0%e8%b0%83%e7%94%a8httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e5%8f%af%e9%80%89%e9%93%be%e4%b8%8e%e5%87%bd%e6%95%b0%e8%b0%83%e7%94%a8>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p>当尝试调用一个可能不存在的方法时也可以使用可选链。这将是很有帮助的，比如，当使用一个API的方法可能不可用时，要么因为实现的版本问题要么因为当前用户的设备不支持该功能。</p>
+<p>函数调用时如果被调用的方法不存在，使用可选链可以使表达式自动返回<code>undefined</code>而不是抛出一个异常。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>someInterface</span>.<span style=color:#a6e22e>customMethod</span><span style=color:#f92672>?</span>.();
+</code></pre></div><p><strong>注意:</strong> 如果存在一个属性名且不是函数, 使用 <code>?.</code> 仍然会产生一个 <a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError><code>TypeError</code></a> 异常 (<code>x.y`` is not a function</code>).</p>
+<p><strong>注意:</strong> 如果 <code>someInterface</code> 自身是 <code>null</code> 或者 <code>undefined</code> ，异常 <a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError><code>TypeError</code></a> 仍会被抛出 <code>someInterface is null</code> 如果你希望允许 <code>someInterface</code> 也为 <code>null</code> 或者 <code>undefined</code> ，那么你需要像这样写 <code>someInterface?.customMethod?.()</code></p>
+<h4 id=处理可选的回调函数或者事件处理器>
+处理可选的回调函数或者事件处理器
+<a class=heading-link href=#%e5%a4%84%e7%90%86%e5%8f%af%e9%80%89%e7%9a%84%e5%9b%9e%e8%b0%83%e5%87%bd%e6%95%b0%e6%88%96%e8%80%85%e4%ba%8b%e4%bb%b6%e5%a4%84%e7%90%86%e5%99%a8>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>如果使用<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment>解构赋值</a>来解构的一个对象的回调函数或 fetch 方法，你可能得到不能当做函数直接调用的不存在的值，除非你已经校验了他们的存在性。使用<code>?.</code>的你可以忽略这些额外的校验：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>//  ES2019的写法
 </span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>doSomething</span>(<span style=color:#a6e22e>onContent</span>, <span style=color:#a6e22e>onError</span>) {
   <span style=color:#66d9ef>try</span> {
     <span style=color:#75715e>// ... do something with the data
@@ -45,7 +174,7 @@ let nestedProp = obj.first?.second; 通过使用 ?. 操作符取代 . 操作符�
     }
   }
 }
-</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// 使用可选链进行函数调用
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// 使用可选链进行函数调用
 </span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>doSomething</span>(<span style=color:#a6e22e>onContent</span>, <span style=color:#a6e22e>onError</span>) {
   <span style=color:#66d9ef>try</span> {
    <span style=color:#75715e>// ... do something with the data
@@ -54,27 +183,66 @@ let nestedProp = obj.first?.second; 通过使用 ?. 操作符取代 . 操作符�
     <span style=color:#a6e22e>onError</span><span style=color:#f92672>?</span>.(<span style=color:#a6e22e>err</span>.<span style=color:#a6e22e>message</span>); <span style=color:#75715e>// 如果onError是undefined也不会有异常
 </span><span style=color:#75715e></span>  }
 }
-</code></pre></div><h3 id=可选链和表达式httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining可选链和表达式><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E5%8F%AF%E9%80%89%E9%93%BE%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F>可选链和表达式</a>
-<a class=heading-link href=#%e5%8f%af%e9%80%89%e9%93%be%e5%92%8c%e8%a1%a8%e8%be%be%e5%bc%8fhttpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e5%8f%af%e9%80%89%e9%93%be%e5%92%8c%e8%a1%a8%e8%be%be%e5%bc%8f><i class="fa fa-link" aria-hidden=true></i></a></h3><p>当使用<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Property_Accessors#%E6%96%B9%E6%8B%AC%E5%8F%B7%E8%A1%A8%E7%A4%BA%E6%B3%95>方括号与属性名</a>的形式来访问属性时，你也可以使用可选链操作符：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>nestedProp</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>obj</span><span style=color:#f92672>?</span>.[<span style=color:#e6db74>&#39;prop&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;Name&#39;</span>];
-</code></pre></div><h3 id=可选链不能用于赋值httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining可选链不能用于赋值><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E5%8F%AF%E9%80%89%E9%93%BE%E4%B8%8D%E8%83%BD%E7%94%A8%E4%BA%8E%E8%B5%8B%E5%80%BC>可选链不能用于赋值</a>
-<a class=heading-link href=#%e5%8f%af%e9%80%89%e9%93%be%e4%b8%8d%e8%83%bd%e7%94%a8%e4%ba%8e%e8%b5%8b%e5%80%bchttpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e5%8f%af%e9%80%89%e9%93%be%e4%b8%8d%e8%83%bd%e7%94%a8%e4%ba%8e%e8%b5%8b%e5%80%bc><i class="fa fa-link" aria-hidden=true></i></a></h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>object</span> <span style=color:#f92672>=</span> {};
+</code></pre></div><h3 id=可选链和表达式httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining可选链和表达式>
+<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E5%8F%AF%E9%80%89%E9%93%BE%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F>可选链和表达式</a>
+<a class=heading-link href=#%e5%8f%af%e9%80%89%e9%93%be%e5%92%8c%e8%a1%a8%e8%be%be%e5%bc%8fhttpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e5%8f%af%e9%80%89%e9%93%be%e5%92%8c%e8%a1%a8%e8%be%be%e5%bc%8f>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p>当使用<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Property_Accessors#%E6%96%B9%E6%8B%AC%E5%8F%B7%E8%A1%A8%E7%A4%BA%E6%B3%95>方括号与属性名</a>的形式来访问属性时，你也可以使用可选链操作符：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>nestedProp</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>obj</span><span style=color:#f92672>?</span>.[<span style=color:#e6db74>&#39;prop&#39;</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;Name&#39;</span>];
+</code></pre></div><h3 id=可选链不能用于赋值httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining可选链不能用于赋值>
+<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E5%8F%AF%E9%80%89%E9%93%BE%E4%B8%8D%E8%83%BD%E7%94%A8%E4%BA%8E%E8%B5%8B%E5%80%BC>可选链不能用于赋值</a>
+<a class=heading-link href=#%e5%8f%af%e9%80%89%e9%93%be%e4%b8%8d%e8%83%bd%e7%94%a8%e4%ba%8e%e8%b5%8b%e5%80%bchttpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e5%8f%af%e9%80%89%e9%93%be%e4%b8%8d%e8%83%bd%e7%94%a8%e4%ba%8e%e8%b5%8b%e5%80%bc>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>object</span> <span style=color:#f92672>=</span> {};
 <span style=color:#a6e22e>object</span><span style=color:#f92672>?</span>.<span style=color:#a6e22e>property</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>; <span style=color:#75715e>// Uncaught SyntaxError: Invalid left-hand side in assignment
-</span></code></pre></div><h3 id=可选链访问数组元素httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining可选链访问数组元素><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E5%8F%AF%E9%80%89%E9%93%BE%E8%AE%BF%E9%97%AE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0>可选链访问数组元素</a>
-<a class=heading-link href=#%e5%8f%af%e9%80%89%e9%93%be%e8%ae%bf%e9%97%ae%e6%95%b0%e7%bb%84%e5%85%83%e7%b4%a0httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e5%8f%af%e9%80%89%e9%93%be%e8%ae%bf%e9%97%ae%e6%95%b0%e7%bb%84%e5%85%83%e7%b4%a0><i class="fa fa-link" aria-hidden=true></i></a></h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>arrayItem</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>arr</span><span style=color:#f92672>?</span>.[<span style=color:#ae81ff>42</span>];
-</code></pre></div><h2 id=例子httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining例子><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E4%BE%8B%E5%AD%90>例子</a>
-<a class=heading-link href=#%e4%be%8b%e5%ad%90httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e4%be%8b%e5%ad%90><i class="fa fa-link" aria-hidden=true></i></a></h2><h3 id=基本例子httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining基本例子><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E5%9F%BA%E6%9C%AC%E4%BE%8B%E5%AD%90>基本例子</a>
-<a class=heading-link href=#%e5%9f%ba%e6%9c%ac%e4%be%8b%e5%ad%90httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e5%9f%ba%e6%9c%ac%e4%be%8b%e5%ad%90><i class="fa fa-link" aria-hidden=true></i></a></h3><p>如下的例子在一个不含 <code>bar</code> 成员的 Map 中查找 <code>bar</code> 成员的 <code>name</code> 属性，因此结果是 <code>undefined</code>。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>myMap</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Map</span>();
+</span></code></pre></div><h3 id=可选链访问数组元素httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining可选链访问数组元素>
+<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E5%8F%AF%E9%80%89%E9%93%BE%E8%AE%BF%E9%97%AE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0>可选链访问数组元素</a>
+<a class=heading-link href=#%e5%8f%af%e9%80%89%e9%93%be%e8%ae%bf%e9%97%ae%e6%95%b0%e7%bb%84%e5%85%83%e7%b4%a0httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e5%8f%af%e9%80%89%e9%93%be%e8%ae%bf%e9%97%ae%e6%95%b0%e7%bb%84%e5%85%83%e7%b4%a0>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>arrayItem</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>arr</span><span style=color:#f92672>?</span>.[<span style=color:#ae81ff>42</span>];
+</code></pre></div><h2 id=例子httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining例子>
+<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E4%BE%8B%E5%AD%90>例子</a>
+<a class=heading-link href=#%e4%be%8b%e5%ad%90httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e4%be%8b%e5%ad%90>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<h3 id=基本例子httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining基本例子>
+<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E5%9F%BA%E6%9C%AC%E4%BE%8B%E5%AD%90>基本例子</a>
+<a class=heading-link href=#%e5%9f%ba%e6%9c%ac%e4%be%8b%e5%ad%90httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e5%9f%ba%e6%9c%ac%e4%be%8b%e5%ad%90>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p>如下的例子在一个不含 <code>bar</code> 成员的 Map 中查找 <code>bar</code> 成员的 <code>name</code> 属性，因此结果是 <code>undefined</code>。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>myMap</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Map</span>();
 <span style=color:#a6e22e>myMap</span>.<span style=color:#a6e22e>set</span>(<span style=color:#e6db74>&#34;foo&#34;</span>, {<span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;baz&#34;</span>, <span style=color:#a6e22e>desc</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;inga&#34;</span>});
 
 <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>nameBar</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>myMap</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#34;bar&#34;</span>)<span style=color:#f92672>?</span>.<span style=color:#a6e22e>name</span>;
-</code></pre></div><h3 id=短路计算httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining短路计算><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E7%9F%AD%E8%B7%AF%E8%AE%A1%E7%AE%97>短路计算</a>
-<a class=heading-link href=#%e7%9f%ad%e8%b7%af%e8%ae%a1%e7%ae%97httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e7%9f%ad%e8%b7%af%e8%ae%a1%e7%ae%97><i class="fa fa-link" aria-hidden=true></i></a></h3><p>当在表达式中使用可选链时，如果左操作数是 <code>null</code> 或 <code>undefined</code>，表达式将不会被计算，例如：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>potentiallyNullObj</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span>;
+</code></pre></div><h3 id=短路计算httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining短路计算>
+<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E7%9F%AD%E8%B7%AF%E8%AE%A1%E7%AE%97>短路计算</a>
+<a class=heading-link href=#%e7%9f%ad%e8%b7%af%e8%ae%a1%e7%ae%97httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e7%9f%ad%e8%b7%af%e8%ae%a1%e7%ae%97>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p>当在表达式中使用可选链时，如果左操作数是 <code>null</code> 或 <code>undefined</code>，表达式将不会被计算，例如：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>potentiallyNullObj</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span>;
 <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
 <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>prop</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>potentiallyNullObj</span><span style=color:#f92672>?</span>.[<span style=color:#a6e22e>x</span><span style=color:#f92672>++</span>];
 
 <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>x</span>); <span style=color:#75715e>// x 将不会被递增，依旧输出 0
-</span></code></pre></div><h3 id=连用可选链操作符httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining连用可选链操作符><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E8%BF%9E%E7%94%A8%E5%8F%AF%E9%80%89%E9%93%BE%E6%93%8D%E4%BD%9C%E7%AC%A6>连用可选链操作符</a>
-<a class=heading-link href=#%e8%bf%9e%e7%94%a8%e5%8f%af%e9%80%89%e9%93%be%e6%93%8d%e4%bd%9c%e7%ac%a6httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e8%bf%9e%e7%94%a8%e5%8f%af%e9%80%89%e9%93%be%e6%93%8d%e4%bd%9c%e7%ac%a6><i class="fa fa-link" aria-hidden=true></i></a></h3><p>可以连续使用可选链读取多层嵌套结构：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>customer</span> <span style=color:#f92672>=</span> {
+</span></code></pre></div><h3 id=连用可选链操作符httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining连用可选链操作符>
+<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E8%BF%9E%E7%94%A8%E5%8F%AF%E9%80%89%E9%93%BE%E6%93%8D%E4%BD%9C%E7%AC%A6>连用可选链操作符</a>
+<a class=heading-link href=#%e8%bf%9e%e7%94%a8%e5%8f%af%e9%80%89%e9%93%be%e6%93%8d%e4%bd%9c%e7%ac%a6httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e8%bf%9e%e7%94%a8%e5%8f%af%e9%80%89%e9%93%be%e6%93%8d%e4%bd%9c%e7%ac%a6>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p>可以连续使用可选链读取多层嵌套结构：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>customer</span> <span style=color:#f92672>=</span> {
   <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Carl&#34;</span>,
   <span style=color:#a6e22e>details</span><span style=color:#f92672>:</span> {
     <span style=color:#a6e22e>age</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>82</span>,
@@ -85,11 +253,28 @@ let nestedProp = obj.first?.second; 通过使用 ?. 操作符取代 . 操作符�
 
 <span style=color:#75715e>// … 可选链也可以和函数调用一起使用
 </span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>duration</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>vacations</span>.<span style=color:#a6e22e>trip</span><span style=color:#f92672>?</span>.<span style=color:#a6e22e>getTime</span><span style=color:#f92672>?</span>.();
-</code></pre></div><h3 id=使用空值合并操作符httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining使用空值合并操作符><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E4%BD%BF%E7%94%A8%E7%A9%BA%E5%80%BC%E5%90%88%E5%B9%B6%E6%93%8D%E4%BD%9C%E7%AC%A6>使用空值合并操作符</a>
-<a class=heading-link href=#%e4%bd%bf%e7%94%a8%e7%a9%ba%e5%80%bc%e5%90%88%e5%b9%b6%e6%93%8d%e4%bd%9c%e7%ac%a6httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e4%bd%bf%e7%94%a8%e7%a9%ba%e5%80%bc%e5%90%88%e5%b9%b6%e6%93%8d%e4%bd%9c%e7%ac%a6><i class="fa fa-link" aria-hidden=true></i></a></h3><p><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator><code>空值合并操作符</code></a>可以在使用可选链时设置一个默认值：</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>customer</span> <span style=color:#f92672>=</span> {
+</code></pre></div><h3 id=使用空值合并操作符httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining使用空值合并操作符>
+<a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#%E4%BD%BF%E7%94%A8%E7%A9%BA%E5%80%BC%E5%90%88%E5%B9%B6%E6%93%8D%E4%BD%9C%E7%AC%A6>使用空值合并操作符</a>
+<a class=heading-link href=#%e4%bd%bf%e7%94%a8%e7%a9%ba%e5%80%bc%e5%90%88%e5%b9%b6%e6%93%8d%e4%bd%9c%e7%ac%a6httpsdevelopermozillaorgzh-cndocswebjavascriptreferenceoperatorsoptional_chaining%e4%bd%bf%e7%94%a8%e7%a9%ba%e5%80%bc%e5%90%88%e5%b9%b6%e6%93%8d%e4%bd%9c%e7%ac%a6>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p><a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator><code>空值合并操作符</code></a>可以在使用可选链时设置一个默认值：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>customer</span> <span style=color:#f92672>=</span> {
   <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Carl&#34;</span>,
   <span style=color:#a6e22e>details</span><span style=color:#f92672>:</span> { <span style=color:#a6e22e>age</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>82</span> }
 };
 <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>customerCity</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>customer</span><span style=color:#f92672>?</span>.<span style=color:#a6e22e>city</span> <span style=color:#f92672>??</span> <span style=color:#e6db74>&#34;暗之城&#34;</span>;
 <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>customerCity</span>); <span style=color:#75715e>// “暗之城”
-</span></code></pre></div><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=bdc330b0b6e8e583d076fdc109db5918 data-page-url=https://chenkai.life/javascript/operators-optional-chaining/ data-page-title=JavaScript可选链操作符 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.a350362441276ec5c1671926420497bb8e52b63ead1d51d3c9bc4342d0039526.js integrity="sha256-o1A2JEEnbsXBZxkmQgSXu45Stj6tHVHTybxDQtADlSY="></script><script src=/js/custom.js></script><script src=/js/font.min.js></script></body><script>if('serviceWorker'in navigator){navigator.serviceWorker.register('/service-worker.js');}</script></html>
+</span></code></pre></div>
+<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=bdc330b0b6e8e583d076fdc109db5918 data-page-url=https://chenkai.life/javascript/operators-optional-chaining/ data-page-title=JavaScript可选链操作符 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
+</article>
+</section>
+</div>
+</main>
+<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+<script src=/js/custom.js></script>
+<script src=/js/font.min.js></script>
+</body>
+<script>'serviceWorker'in navigator&&navigator.serviceWorker.register('/service-worker.js')</script>
+</html>
