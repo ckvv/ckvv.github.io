@@ -44,6 +44,7 @@ tags: ['shell']
 + [login](https://github.com/ckvv/shel-command/blob/master/command/login.md)登录系统或切换用户身份
 + [logname](https://github.com/ckvv/shel-command/blob/master/command/logname.md)用来显示用户名称
 + [ls](https://github.com/ckvv/shel-command/blob/master/command/ls.md)显示目录内容列表`ls -alh`
++ [ln](https://github.com/ckvv/shel-command/blob/master/command/ln.md)用来为文件创建软硬连接 创建硬链接`ln 源文件 目标文件`，软链接`ln -s 源文文件或目录 目标文件或目录`
 + [lsof](https://github.com/ckvv/shel-command/blob/master/command/lsof.md)用于查看你进程开打的文件，打开文件的进程，进程打开的端口(TCP、UDP)`lsof -i:5577`
 + [mkdir](https://github.com/ckvv/shel-command/blob/master/command/mkdir.md)用来创建目录`mkdir -m 700 /usr/meng/test`
 + [more](https://github.com/ckvv/shel-command/blob/master/command/more.md)显示文件内容，每次显示一屏`more -c -10 file`
