@@ -1,4 +1,4 @@
-const cacheName = 'ck-blog-cache-v10';
+const cacheName = 'ck-blog-cache-v11';
 
 async function removeCache() {
   const keyList = await caches.keys()

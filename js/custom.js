@@ -131,7 +131,7 @@ function setActive(anchors) {
 function initContents() {
   const contents = document.querySelector('#table-of-contents-wapper');
   if(!contents) return;
-  const anchors = [...document.querySelector('.content').querySelectorAll('h1[id],h2[id],h3[id]')];
+  const anchors = [...document.querySelector('.content').querySelectorAll('h1[id],h2[id],h3[id],h4[id]')];
   if(!anchors.length) return contents.remove();
   const tableOfContents = document.createElement('div');
   tableOfContents.id='table-of-contents';
