@@ -1,0 +1,299 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=content-language content="en">
+<meta name=theme-color content="#ffffff">
+<meta name=color-scheme content="light dark">
+<meta name=description content="广告市场的参与者    Demand    需求方,这里的需求方包括广告主，代表广告主利益的代理商或其他技术形态的采买方，概括来说，就是想要投放广告的一方。
+Supply    供给方,这里的供给方可以是媒体，也可以是其他技术形态的变现平台。在移动互联网时代，媒体指一切拥有流量的电视媒体、报纸、Web网站、移动APP、H5页面等等。概括来说就是给想要投放广告的需求方提供广告位的一方。
+受众    受众就是我们这群看广告的人啦，之所以说是被动的，因为给我们看什么广告并不是我们决定的，而是由需求方和供给方来决定的。
+SSP(supply side platform)    供给方平台, 它是为媒体方服务的，负责和ADX对接。接入SSP的媒体，在广告位有单个流量到来时，可发起广告请求，向ADX询问是否有合适的广告可展现。
+DSP(demand side platform)    需求方平台, 它是为广告主服务的，负责和ADX对接。若干广告主将预算、创意、出价、流量要求等提交给DSP，DSP负责具体投放决策。
+ADX(ad exchange)    它是为DSP和SSP服务的，起到衔接、匹配的作用。它接收到SSP的请求后，将广告流量信息传递给DSP，询问它们的出价。DSP响应后返回相应的广告创意及出价。
+DMP(Data Management Platform)    DMP能够为广告投放提供人群标签进行受众精准定向，并通过投放数据建立用户画像，进行人群标签的管理以及再投放。
+Advertiser    广告主, 广告主手握预算，他们有展示自己产品的需求，需要优质的广告
+Publisher    媒体方, 媒体拥有广告展示资源，他们有将广告位和流量变现的需求
+广告市场的收费方式    广告这一商业行为，对于需求方来说，其目的主要有两个：一是吸引用户消费，二是塑造品牌形象；对于供给方来说，那当然是赚钱了。需求方想要在供给方这里放广告，当然是要付钱的。那么本节所介绍的，就是需求方如何向供给方付钱的。
+CPM（Cost Per Mille）    千次展示计费 = (消费量/展现量)*1000), 即每展示1000次需求方的广告，需求方需要支付给供给方的钱。假设约定是1000元，那么广告展示5000次的话，需求方需要支付供给方5000元。">
+<meta name=keywords content>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="计算广告-基本概念">
+<meta name=twitter:description content="广告市场的参与者    Demand    需求方,这里的需求方包括广告主，代表广告主利益的代理商或其他技术形态的采买方，概括来说，就是想要投放广告的一方。
+Supply    供给方,这里的供给方可以是媒体，也可以是其他技术形态的变现平台。在移动互联网时代，媒体指一切拥有流量的电视媒体、报纸、Web网站、移动APP、H5页面等等。概括来说就是给想要投放广告的需求方提供广告位的一方。
+受众    受众就是我们这群看广告的人啦，之所以说是被动的，因为给我们看什么广告并不是我们决定的，而是由需求方和供给方来决定的。
+SSP(supply side platform)    供给方平台, 它是为媒体方服务的，负责和ADX对接。接入SSP的媒体，在广告位有单个流量到来时，可发起广告请求，向ADX询问是否有合适的广告可展现。
+DSP(demand side platform)    需求方平台, 它是为广告主服务的，负责和ADX对接。若干广告主将预算、创意、出价、流量要求等提交给DSP，DSP负责具体投放决策。
+ADX(ad exchange)    它是为DSP和SSP服务的，起到衔接、匹配的作用。它接收到SSP的请求后，将广告流量信息传递给DSP，询问它们的出价。DSP响应后返回相应的广告创意及出价。
+DMP(Data Management Platform)    DMP能够为广告投放提供人群标签进行受众精准定向，并通过投放数据建立用户画像，进行人群标签的管理以及再投放。
+Advertiser    广告主, 广告主手握预算，他们有展示自己产品的需求，需要优质的广告
+Publisher    媒体方, 媒体拥有广告展示资源，他们有将广告位和流量变现的需求
+广告市场的收费方式    广告这一商业行为，对于需求方来说，其目的主要有两个：一是吸引用户消费，二是塑造品牌形象；对于供给方来说，那当然是赚钱了。需求方想要在供给方这里放广告，当然是要付钱的。那么本节所介绍的，就是需求方如何向供给方付钱的。
+CPM（Cost Per Mille）    千次展示计费 = (消费量/展现量)*1000), 即每展示1000次需求方的广告，需求方需要支付给供给方的钱。假设约定是1000元，那么广告展示5000次的话，需求方需要支付供给方5000元。">
+<meta property="og:title" content="计算广告-基本概念">
+<meta property="og:description" content="广告市场的参与者    Demand    需求方,这里的需求方包括广告主，代表广告主利益的代理商或其他技术形态的采买方，概括来说，就是想要投放广告的一方。
+Supply    供给方,这里的供给方可以是媒体，也可以是其他技术形态的变现平台。在移动互联网时代，媒体指一切拥有流量的电视媒体、报纸、Web网站、移动APP、H5页面等等。概括来说就是给想要投放广告的需求方提供广告位的一方。
+受众    受众就是我们这群看广告的人啦，之所以说是被动的，因为给我们看什么广告并不是我们决定的，而是由需求方和供给方来决定的。
+SSP(supply side platform)    供给方平台, 它是为媒体方服务的，负责和ADX对接。接入SSP的媒体，在广告位有单个流量到来时，可发起广告请求，向ADX询问是否有合适的广告可展现。
+DSP(demand side platform)    需求方平台, 它是为广告主服务的，负责和ADX对接。若干广告主将预算、创意、出价、流量要求等提交给DSP，DSP负责具体投放决策。
+ADX(ad exchange)    它是为DSP和SSP服务的，起到衔接、匹配的作用。它接收到SSP的请求后，将广告流量信息传递给DSP，询问它们的出价。DSP响应后返回相应的广告创意及出价。
+DMP(Data Management Platform)    DMP能够为广告投放提供人群标签进行受众精准定向，并通过投放数据建立用户画像，进行人群标签的管理以及再投放。
+Advertiser    广告主, 广告主手握预算，他们有展示自己产品的需求，需要优质的广告
+Publisher    媒体方, 媒体拥有广告展示资源，他们有将广告位和流量变现的需求
+广告市场的收费方式    广告这一商业行为，对于需求方来说，其目的主要有两个：一是吸引用户消费，二是塑造品牌形象；对于供给方来说，那当然是赚钱了。需求方想要在供给方这里放广告，当然是要付钱的。那么本节所介绍的，就是需求方如何向供给方付钱的。
+CPM（Cost Per Mille）    千次展示计费 = (消费量/展现量)*1000), 即每展示1000次需求方的广告，需求方需要支付给供给方的钱。假设约定是1000元，那么广告展示5000次的话，需求方需要支付供给方5000元。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chenkai.life/notes/computing-advertising/"><meta property="article:section" content="notes">
+<meta property="article:published_time" content="2022-01-10T00:00:00+00:00">
+<meta property="article:modified_time" content="2022-01-10T17:04:15+08:00">
+<title>
+计算广告-基本概念 · CK's Blog
+</title>
+<link rel=canonical href=https://chenkai.life/notes/computing-advertising/>
+<link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen>
+<link rel=icon type=image/svg+xml href=/favicon.ico>
+<link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png>
+<meta name=generator content="Hugo 0.91.2">
+<link rel=manifest href=/manifest.webmanifest>
+</head>
+<body class="preload-transitions colorscheme-auto">
+<div class=float-container>
+<span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg>
+</span>
+</div>
+<details id=table-of-contents-wapper>
+<summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
+</summary>
+</details>
+<main class=wrapper>
+<nav class=navigation>
+<section class=container>
+<a class=navigation-title href=/>
+CK's Blog
+</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
+</label>
+<ul class=navigation-list>
+<li class=navigation-item>
+<a class=navigation-link href=/>Home</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/tags/>Tags</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/index.xml>RSS</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/about/>About</a>
+</li>
+<li class=navigation-item id=search-content>
+<input class=search-int type=text placeholder=Search>
+<button class=search-btn data-type=github>GitHub</button>
+<button class=search-btn data-type=google>Google</button>
+</li>
+</ul>
+</section>
+</nav>
+<div class=content>
+<section class="container page">
+<article>
+<header>
+<h1 class=title>
+<a class=title-link href=https://chenkai.life/notes/computing-advertising/>
+计算广告-基本概念
+</a>
+</h1>
+<div class=edit-link style=float:right;color:#0366d6>
+<a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/notes/computing-advertising.md>编辑</a>
+</div>
+</header>
+<div class=post-meta>
+<div class=date>
+<span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
+<time datetime=2022-01-10T00:00:00Z>
+2022-01-10
+</time>
+</span>
+</div>
+<div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
+<span class=tag>
+<a href=/tags/%E8%AE%A1%E7%AE%97%E5%B9%BF%E5%91%8A/>计算广告</a>
+</span></div>
+</div>
+<h2 id=广告市场的参与者>
+广告市场的参与者
+<a class=heading-link href=#%e5%b9%bf%e5%91%8a%e5%b8%82%e5%9c%ba%e7%9a%84%e5%8f%82%e4%b8%8e%e8%80%85>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p><img src=https://cdn.nlark.com/yuque/0/2020/png/352470/1602316109021-564677bc-2e4e-47a5-b97f-3e337d4fe14d.png alt></p>
+<h4 id=demand>
+Demand
+<a class=heading-link href=#demand>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>需求方,这里的需求方包括广告主，代表广告主利益的代理商或其他技术形态的采买方，概括来说，就是想要投放广告的一方。</p>
+<h4 id=supply>
+Supply
+<a class=heading-link href=#supply>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>供给方,这里的供给方可以是媒体，也可以是其他技术形态的变现平台。在移动互联网时代，媒体指一切拥有流量的电视媒体、报纸、Web网站、移动APP、H5页面等等。概括来说就是给想要投放广告的需求方提供广告位的一方。</p>
+<h4 id=受众>
+受众
+<a class=heading-link href=#%e5%8f%97%e4%bc%97>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>受众就是我们这群看广告的人啦，之所以说是被动的，因为给我们看什么广告并不是我们决定的，而是由需求方和供给方来决定的。</p>
+<h4 id=sspsupply-side-platform>
+SSP(supply side platform)
+<a class=heading-link href=#sspsupply-side-platform>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>供给方平台, 它是为媒体方服务的，负责和ADX对接。接入SSP的媒体，在广告位有单个流量到来时，可发起广告请求，向ADX询问是否有合适的广告可展现。</p>
+<h4 id=dspdemand-side-platform>
+DSP(demand side platform)
+<a class=heading-link href=#dspdemand-side-platform>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>需求方平台, 它是为广告主服务的，负责和ADX对接。若干广告主将预算、创意、出价、流量要求等提交给DSP，DSP负责具体投放决策。</p>
+<h4 id=adxad-exchange>
+ADX(ad exchange)
+<a class=heading-link href=#adxad-exchange>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>它是为DSP和SSP服务的，起到衔接、匹配的作用。它接收到SSP的请求后，将广告流量信息传递给DSP，询问它们的出价。DSP响应后返回相应的广告创意及出价。</p>
+<h4 id=dmpdata-management-platform>
+DMP(Data Management Platform)
+<a class=heading-link href=#dmpdata-management-platform>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>DMP能够为广告投放提供人群标签进行受众精准定向，并通过投放数据建立用户画像，进行人群标签的管理以及再投放。</p>
+<h4 id=advertiser>
+Advertiser
+<a class=heading-link href=#advertiser>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>广告主, 广告主手握预算，他们有展示自己产品的需求，需要优质的广告</p>
+<h4 id=publisher>
+Publisher
+<a class=heading-link href=#publisher>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>媒体方, 媒体拥有广告展示资源，他们有将广告位和流量变现的需求</p>
+<h2 id=广告市场的收费方式>
+广告市场的收费方式
+<a class=heading-link href=#%e5%b9%bf%e5%91%8a%e5%b8%82%e5%9c%ba%e7%9a%84%e6%94%b6%e8%b4%b9%e6%96%b9%e5%bc%8f>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>广告这一商业行为，对于需求方来说，其目的主要有两个：一是吸引用户消费，二是塑造品牌形象；对于供给方来说，那当然是赚钱了。需求方想要在供给方这里放广告，当然是要付钱的。那么本节所介绍的，就是需求方如何向供给方付钱的。</p>
+<h4 id=cpmcost-per-mille>
+CPM（Cost Per Mille）
+<a class=heading-link href=#cpmcost-per-mille>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>千次展示计费 = <code>(消费量/展现量)*1000)</code>, 即每展示1000次需求方的广告，需求方需要支付给供给方的钱。假设约定是1000元，那么广告展示5000次的话，需求方需要支付供给方5000元。</p>
+<p>它受到越来越多的审查，因为无论消费者是否真正看到它，客户都要为印象付费。例如，在网络上，如果广告出现在浏览器窗口下方并且用户从不向下滚动，则广告商仍需付费。在移动端，同样如此。这很容易受到欺诈，典型情况是欺诈者在同一空间中加载 5、10 或 15 个广告，彼此堆叠。</p>
+<h4 id=cpccost-per-click>
+CPC(Cost per Click)
+<a class=heading-link href=#cpccost-per-click>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>按点击计费 = <code>消费量/点击量</code>, 即广告每被受众点击一次，需求方需要支付给供给方的钱。假设约定的是一次3块，如果广告展示了1000次，共被点击20次，那么需求方需要支付给供给方60元。</p>
+<p>一些广告客户更喜欢购买 CPC 而不是 CPM，因为他们认为只有在有人对消息足够感兴趣并想要更多信息时才会付费。这很可能是真的。一些 CPC 计划非常有效，但如果公司故意使用机器人或其他技术来驱动不是由真人发起的点击，则存在欺诈的可能性。</p>
+<h4 id=cpacost-per-action>
+CPA(Cost per Action)
+<a class=heading-link href=#cpacost-per-action>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>按转化付费 = <code>消费量/转化量</code> = <code>(CPC*点击量)/(CVR*点击量)</code> = <code>CPC/CVR</code>, 这里的转化形式可以很多，比如我们推送了一个公众号的广告，用户点击并关注公众号算是一种转化，推送了一个商品广告，用户购买或者加入购物车算是一种转化。假设需求方通过广告展示获得了200个用户的关注，每一个关注支付给供给方5元，那么供给方的收入共1000元。</p>
+<h4 id=cpscost-per-sale>
+CPS(Cost per Sale)
+<a class=heading-link href=#cpscost-per-sale>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>按销售额付费, CPS是CPA支付模式的一个具体案例，主要按照需求方的收入来决定的。假设需求方通过广告展示获得了1000元的销售额，按照20%的比例支付给供给方，那么供给方的收入便是200元。</p>
+<h4 id=cptcost-per-time>
+CPT(Cost per Time)
+<a class=heading-link href=#cptcost-per-time>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>按时间付费,供给方将某个广告位以独占的方式给广告主，并按独占的时间段收取费用。</p>
+<h4 id=cpvcost-per-view>
+CPV(Cost Per View)
+<a class=heading-link href=#cpvcost-per-view>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>按照展示效果付费，就是广告联盟通过实际的广告显示数量来计费。也就是说，独立IP显示一次就计 费一次</p>
+<h4 id=cpicost-per-install>
+CPI(Cost per Install)
+<a class=heading-link href=#cpicost-per-install>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>在移动应用营销中，CPI 是指广告商为每个安装的应用付费的媒体计划。<br>
+安装的质量因媒体供应商而异。一些 CPI 供应商非常有信誉，并且努力寻找可能会使用应用程序的用户。其他人在一个应用程序中使用激励措施来吸引用户安装另一个应用程序。那些“激励安装”的质量可能很低，尽管有一些方法可以通过可播放广告来提高质量。</p>
+<p>与往常一样，欺诈也是一个问题：一些欺诈者使用机器人来推动 CPI 活动并收取收入。甚至还有一些物理安装场，人们在数百或数千台设备上手动安装应用程序。然而，其中大多数现在完全是虚拟的。</p>
+<h4 id=roireturn-on-investment>
+ROI(Return on Investment)
+<a class=heading-link href=#roireturn-on-investment>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>投资回报率 = <code>订单额/消费量(即广告费用）</code> = <code>(单均额*转化量)/(CPA*转化量</code> = <code>单均额/CPA</code></p>
+<h2 id=供给方的指标>
+供给方的指标
+<a class=heading-link href=#%e4%be%9b%e7%bb%99%e6%96%b9%e7%9a%84%e6%8c%87%e6%a0%87>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>上一节介绍的是需求方如何向供给方进行付费，尽管有不同的收费方式，但供给方最终大都会转换为同样的标准来衡量自己的收益。
+eCPC(Effective CPC): 千次点击期望= <code>总收入/总点击量 * 1000</code>
+eCPM(Effective CPM): 千次展示期望= <code>总收入/总展现量 * 1000</code></p>
+<p>下面介绍eCPM和上述几种付费方式的关系。</p>
+<ul>
+<li>对于CPM的付费方式，很简单，eCPM=CPM。</li>
+<li>对于CPC的付费方式，eCPM = 1000 * CTR * V。此时供给方会对需求方给出的广告预估一个点击率CTR，假设一个广告的CTR为10%，每次点击广告主的付费是V=5元，那么eCPM = 1000 * 0.1 * 5 = 500。</li>
+<li>对于CPS或者CPA的付费方式，eCPM = 1000 * CTR * CVR * V。此时供给方不仅需要预估广告的点击率CTR，还需要预估广告的转化率，以及每次转化所带来的收益V。假设一个广告的CTR为10%，CVR为20%，每次的销售分成或转化付费是10元，那么eCPM = 1000 * 10% * 20% * 10 = 200。(这里的CVR是点击并转化的用户占所有点击用户的比例，而非转化的用户占曝光用户的比例)。</li>
+<li>对于CPT的付费方式，我们可以预估一个每日的曝光量，比如需求方约定的是展示一天付给供给方10000元，预估的曝光量是20000，那么eCPM = 1000 * 10000 ／ 20000 = 500</li>
+</ul>
+<h2 id=ctr--cvr>
+CTR && CVR
+<a class=heading-link href=#ctr--cvr>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>CTR(Click Through Rate): 点击率 = <code>点击量/展现量</code>, 例如，如果您的广告展示了 50,000 次，并且被点击了 500 次，那么 CTR 为 1%
+CVR(Conversion Rate): 转化率 = <code>转化量/点击量</code>, 例如，如果 1000 人点击了一个广告页告诉他们安装游戏，其中 20 人这样做了，那么 CVR 将为 2%。</p>
+<p>CTR通常用于衡量有多少人看到广告并与之互动，但它并不能告诉您点击后他们做了什么。转化率是衡量某人在广告的推动下何时采取特定行动的更好方法。因此，结合使用 CTR 和 CVR 有助于更详细地了解您的广告活动的效果。</p>
+<p>例如，高 CTR 但低 CVR 可能意味着您的广告创意非常引人注目，但点击广告的人并不适合您所宣传的内容。相反，低 CTR 但高 CVR 可能表明您的广告正在吸引更高质量的流量，但没有在正确的位置展示。获得正确的平衡通常需要大量的试验和错误</p>
+<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=5db92ef5eb42f8109c40b3ce71319d20 data-page-url=https://chenkai.life/notes/computing-advertising/ data-page-title=计算广告-基本概念 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
+</article>
+</section>
+</div>
+</main>
+<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+<script src=/js/custom.js></script>
+<script src=/js/font.min.js></script>
+</body>
+<script>'serviceWorker'in navigator&&navigator.serviceWorker.register('/service-worker.js')</script>
+</html>
