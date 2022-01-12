@@ -4,6 +4,9 @@ date: 2022-01-10
 tags: [计算广告]
 ---
 
+![image](https://user-images.githubusercontent.com/30174970/149088419-45869ffc-88cb-4b45-96e3-f5f3d5c83b30.png)
+
+
 ## 广告市场的参与者
 
 ![](https://cdn.nlark.com/yuque/0/2020/png/352470/1602316109021-564677bc-2e4e-47a5-b97f-3e337d4fe14d.png)
