@@ -3,13 +3,9 @@ title: 计算广告-基本概念
 date: 2022-01-10
 tags: [计算广告]
 ---
-
 ![image](https://user-images.githubusercontent.com/30174970/149088419-45869ffc-88cb-4b45-96e3-f5f3d5c83b30.png)
 
-
 ## 广告市场的参与者
-
-![](https://cdn.nlark.com/yuque/0/2020/png/352470/1602316109021-564677bc-2e4e-47a5-b97f-3e337d4fe14d.png)
 
 #### Demand
 需求方,这里的需求方包括广告主，代表广告主利益的代理商或其他技术形态的采买方，概括来说，就是想要投放广告的一方。
