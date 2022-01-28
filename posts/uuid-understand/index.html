@@ -32,7 +32,7 @@ UUID是固定长度128位，表示为 32 个十六进制（base-16）数字，�
 版本（version）    对于“变体（variants）1、2，标准中定义了五个版本（versions），在特定用例中每个版本可能比其他版本更合适。版本由 M 字符串中指示。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/posts/uuid-understand/"><meta property="article:section" content="posts">
-<meta property="article:modified_time" content="2021-12-07T15:24:55+08:00">
+<meta property="article:modified_time" content="2022-01-28T15:24:29+08:00">
 <title>
 深入理解UUID · CK's Blog
 </title>
@@ -101,8 +101,8 @@ CK's Blog
 <div class=post-meta>
 <div class=date>
 <span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
-<time datetime=2021-12-07T15:24:55+08:00>
-2021-12-07
+<time datetime=2022-01-28T15:24:29+08:00>
+2022-01-28
 </time>
 </span>
 </div>
@@ -173,33 +173,17 @@ variants位生成: <code>& 0x3f | 0x80</code>, <code>0x3f</code>的二进制表�
 </span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>_data</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Uint8Array</span>(<span style=color:#ae81ff>16</span>);
 <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>_hex</span> <span style=color:#f92672>=</span> [...<span style=color:#66d9ef>new</span> Array(<span style=color:#ae81ff>256</span>)].<span style=color:#a6e22e>map</span>((<span style=color:#a6e22e>val</span>, <span style=color:#a6e22e>index</span>) =&gt; <span style=color:#a6e22e>index</span>.<span style=color:#a6e22e>toString</span>(<span style=color:#ae81ff>16</span>).<span style=color:#a6e22e>padStart</span>(<span style=color:#ae81ff>2</span>, <span style=color:#e6db74>&#39;0&#39;</span>));
 
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>generateUuid</span>() {
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>uuidv4</span>() {
   <span style=color:#75715e>// 给定的 typedArray 填充随机值
-</span><span style=color:#75715e></span>  <span style=color:#a6e22e>getRandomValues</span>(<span style=color:#a6e22e>_data</span>);
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>getRandomValues</span>(<span style=color:#a6e22e>data</span>);
   <span style=color:#75715e>// set version bits
-</span><span style=color:#75715e></span>  <span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>6</span>] <span style=color:#f92672>=</span> (<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>6</span>] <span style=color:#f92672>&amp;</span> <span style=color:#ae81ff>0x0f</span>) <span style=color:#f92672>|</span> <span style=color:#ae81ff>0x40</span>;
-  <span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>8</span>] <span style=color:#f92672>=</span> (<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>8</span>] <span style=color:#f92672>&amp;</span> <span style=color:#ae81ff>0x3f</span>) <span style=color:#f92672>|</span> <span style=color:#ae81ff>0x80</span>;
-
-	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>0</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>1</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>2</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>3</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;-&#39;</span>
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>4</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>5</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;-&#39;</span>
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>6</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>7</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;-&#39;</span>
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>8</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>9</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;-&#39;</span>
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>10</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>11</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>12</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>13</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>14</span>]]
-	<span style=color:#f92672>+</span> <span style=color:#a6e22e>_hex</span>[<span style=color:#a6e22e>_data</span>[<span style=color:#ae81ff>15</span>]]
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>6</span>] <span style=color:#f92672>=</span> (<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>6</span>] <span style=color:#f92672>&amp;</span> <span style=color:#ae81ff>0x0f</span>) <span style=color:#f92672>|</span> <span style=color:#ae81ff>0x40</span>;
+  <span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>8</span>] <span style=color:#f92672>=</span> (<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>8</span>] <span style=color:#f92672>&amp;</span> <span style=color:#ae81ff>0x3f</span>) <span style=color:#f92672>|</span> <span style=color:#ae81ff>0x80</span>;
+  <span style=color:#66d9ef>return</span> <span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>0</span>]]<span style=color:#e6db74>}${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>1</span>]]<span style=color:#e6db74>}${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>2</span>]]<span style=color:#e6db74>}${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>3</span>]]<span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>
+  <span style=color:#f92672>+</span> <span style=color:#e6db74>`-</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>4</span>]]<span style=color:#e6db74>}${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>5</span>]]<span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>
+  <span style=color:#f92672>+</span> <span style=color:#e6db74>`-</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>6</span>]]<span style=color:#e6db74>}${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>7</span>]]<span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>
+  <span style=color:#f92672>+</span> <span style=color:#e6db74>`-</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>8</span>]]<span style=color:#e6db74>}${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>9</span>]]<span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>
+  <span style=color:#f92672>+</span> <span style=color:#e6db74>`-</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>10</span>]]<span style=color:#e6db74>}${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>11</span>]]<span style=color:#e6db74>}${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>12</span>]]<span style=color:#e6db74>}${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>13</span>]]<span style=color:#e6db74>}${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>14</span>]]<span style=color:#e6db74>}${</span><span style=color:#a6e22e>hex</span>[<span style=color:#a6e22e>data</span>[<span style=color:#ae81ff>15</span>]]<span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>;
 }
 </code></pre></div>
 </div>
