@@ -56,33 +56,17 @@ const {
 const _data = new Uint8Array(16);
 const _hex = [...new Array(256)].map((val, index) => index.toString(16).padStart(2, '0'));
 
-function generateUuid() {
+function uuidv4() {
   // 给定的 typedArray 填充随机值
-  getRandomValues(_data);
+  getRandomValues(data);
   // set version bits
-  _data[6] = (_data[6] & 0x0f) | 0x40;
-  _data[8] = (_data[8] & 0x3f) | 0x80;
-
-	return _hex[_data[0]]
-	+ _hex[_data[1]]
-	+ _hex[_data[2]]
-	+ _hex[_data[3]]
-	+ '-'
-	+ _hex[_data[4]]
-	+ _hex[_data[5]]
-	+ '-'
-	+ _hex[_data[6]]
-	+ _hex[_data[7]]
-	+ '-'
-	+ _hex[_data[8]]
-	+ _hex[_data[9]]
-	+ '-'
-	+ _hex[_data[10]]
-	+ _hex[_data[11]]
-	+ _hex[_data[12]]
-	+ _hex[_data[13]]
-	+ _hex[_data[14]]
-	+ _hex[_data[15]]
+  data[6] = (data[6] & 0x0f) | 0x40;
+  data[8] = (data[8] & 0x3f) | 0x80;
+  return `${hex[data[0]]}${hex[data[1]]}${hex[data[2]]}${hex[data[3]]}`
+  + `-${hex[data[4]]}${hex[data[5]]}`
+  + `-${hex[data[6]]}${hex[data[7]]}`
+  + `-${hex[data[8]]}${hex[data[9]]}`
+  + `-${hex[data[10]]}${hex[data[11]]}${hex[data[12]]}${hex[data[13]]}${hex[data[14]]}${hex[data[15]]}`;
 }
 ```
 
