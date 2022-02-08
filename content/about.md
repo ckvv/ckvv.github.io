@@ -8,7 +8,7 @@ show: false
 ## 其他
 
 ### 仓库地址
-你可以forck[ckvv.github.io](https://github.com/ckvv/ckvv.github.io)写自己的博客. 
+你可以Fork[ckvv.github.io](https://github.com/ckvv/ckvv.github.io)写自己的博客. 
 
 ### 联系方式
 如果你有什么问题，可以联系我或在下方留言。
