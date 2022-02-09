@@ -1,4 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Webs on CK's Blog</title><link>https://chenkai.life/web/</link><description>Recent content in Webs on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 31 Dec 2021 18:26:28 +0800</lastBuildDate><atom:link href="https://chenkai.life/web/index.xml" rel="self" type="application/rss+xml"/><item><title>记录一些Vue 相关的组件、插件库</title><link>https://chenkai.life/web/vue-libs/</link><pubDate>Fri, 31 Dec 2021 18:26:28 +0800</pubDate><guid>https://chenkai.life/web/vue-libs/</guid><description>组件库 element-plus naive-ui arco-design tdesign-vue Ant Design Vue quasar vuetify 移动端组件库 varlet cube-ui vant 服务端渲染 nuxtjs 其他 petite-vue petite-vue 是 Vue 的替代发行版，针对渐进式增强进行了优化 @ckpack/vue-color 其他参考https://github.com/vuejs/awesome-vue</description></item><item><title>处理浏览器中的字体常见问题</title><link>https://chenkai.life/web/handling-fonts-in-the-web/</link><pubDate>Fri, 31 Dec 2021 15:18:49 +0800</pubDate><guid>https://chenkai.life/web/handling-fonts-in-the-web/</guid><description>当页面中的标题字数是不定的，并且需要适应各种机型屏幕宽度，可能会遇到下面的需求,
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Webs on CK's Blog</title><link>https://chenkai.life/web/</link><description>Recent content in Webs on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 09 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://chenkai.life/web/index.xml" rel="self" type="application/rss+xml"/><item><title>跨域资源共享 (CORS)</title><link>https://chenkai.life/web/cross-origin-resource-sharing/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/cross-origin-resource-sharing/</guid><description>转载自 web.dev
+浏览器的同源策略阻止了浏览器读取不同源的资源。这种机制能够阻止恶意网站读取另一个网站的数据，但也会阻碍合法使用。如果您希望获取其他国家的天气数据该怎么办？
+在现代网络应用程序中，应用程序通常希望从不同源获取资源。例如，您想要从不同的域读取 JSON 数据或者将另一个网站的图像加载到&amp;lt;canvas&amp;gt;元素中。
+换句话说，部分公共资源应该可以供任何人读取，但同源策略会阻碍这一点。开发者使用过诸如 JSONP 之类的变通方法，但跨域资源共享 (CORS) 能够通过标准方式修复此问题。
+启用 CORS 可以让服务器告知浏览器自己已获许使用其他源。
+资源请求在网络上是如何运作的？ # 图：客户端请求和服务器响应图示
+浏览器和服务器可以使用超文本传输协议 (HTTP) 来通过网络交换数据。HTTP 定义了请求者和响应者之间的通信规则，其中包括获取资源所需的信息。
+HTTP 标头用于协商客户端和服务器之间的消息交换类型，并用于确定访问权限。浏览器的请求和服务器的响应消息都分为两部分：标头和主体：
+标头 # 包含消息的相关信息，例如消息类型或消息编码。标头可以包括各种信息，这些信息通过键值对表示。请求头和响应头包含不同的信息。
+请务必注意，标头不能包含评论。
+请求头示例
+Accept: text/html Cookie: Version=1 以上内容相当于表示“我希望收到 HTML 的响应。这是我的一个 cookie。”
+响应头示例
+Content-Encoding: gzip Cache-Control: no-store 以上内容相当于表示“数据是用 gzip 编码的。请不要将其缓存。”
+主体 # 消息本身。主体可以是纯文本、二进制图像、JSON、HTML 等。
+CORS 是如何运作的？ # 请记住，同源策略会让浏览器阻止跨域请求。当您想从不同的源获取公共资源时，提供资源的服务器需要告知浏览器“发出该请求的这个源可以访问我的资源”。浏览器会记住这一点，并允许跨域资源共享。
+第一步：客户端（浏览器）请求 # 当浏览器发出跨域请求时，该浏览器会添加一个包含当前源（协议、主机和端口）的Origin标头。</description></item><item><title>记录一些Vue 相关的组件、插件库</title><link>https://chenkai.life/web/vue-libs/</link><pubDate>Fri, 31 Dec 2021 18:26:28 +0800</pubDate><guid>https://chenkai.life/web/vue-libs/</guid><description>组件库 element-plus naive-ui arco-design tdesign-vue Ant Design Vue quasar vuetify 移动端组件库 varlet cube-ui vant 服务端渲染 nuxtjs 其他 petite-vue petite-vue 是 Vue 的替代发行版，针对渐进式增强进行了优化 @ckpack/vue-color 其他参考https://github.com/vuejs/awesome-vue</description></item><item><title>处理浏览器中的字体常见问题</title><link>https://chenkai.life/web/handling-fonts-in-the-web/</link><pubDate>Fri, 31 Dec 2021 15:18:49 +0800</pubDate><guid>https://chenkai.life/web/handling-fonts-in-the-web/</guid><description>当页面中的标题字数是不定的，并且需要适应各种机型屏幕宽度，可能会遇到下面的需求,
 字体末尾如何显示省略号 如果显示区域很小，我们可以只设置为单行显示，对于单行文本末尾显示省略号很简单
 .wrapper { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } 但是如果是显示区域很大,我们需要设置多行的最后一行显示省略号，对于多行文本，常用的方法如下
 移动端兼容较好，适用于webkit内核浏览器, 另外对于超出部分的字体仍会显示出来，如下图所示
