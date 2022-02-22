@@ -10,26 +10,7 @@ javascript代码实现 Base64 = { _table: [ &amp;#39;A&amp;#39;, &amp;#39;B&amp;
 本篇文章会覆盖如下技术：
 HTTP Basic Digest Access App Secret Key + HMAC JWT – JSON Web Tokens OAuth 1.0 – 3 legged &amp;amp; 2 legged OAuth 2.0 – Authentication Code &amp;amp; Client Credential 目录
 HTTP BasicDigest AccessApp Secret Key + HMACJWT – JSON Web TokensOAuth 1.0OAuth 2.0Authorization Code FlowClient Credential Flow小结两个概念和三个术语明白一些初衷相关的注意事项
-HTTP Basic HTTP Basic 是一个非常传统的API认证技术，也是一个比较简单的技术。这个技术也就是使用 username和 password 来进行登录。整个过程被定义在了 RFC 2617 中，也被描述在了 Wikipedia: Basic Access Authentication 词条中，同时也可以参看 MDN HTTP Authentication</description></item><item><title>记录一些实用、有趣的工具</title><link>https://chenkai.life/posts/some-useful-interesting-tools/</link><pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/posts/some-useful-interesting-tools/</guid><description>博客 文件类型转换 https://editor.method.ac/制作svg Web caniuse查询浏览器对Web标准的支持性 应用 typora markdown编辑器，可以复制html转成markdown Unsplash 通过api获取随机图片 Weekly Visitor Report 获取访问您网站的公司的每周报告 responsively 更快的进行响应式Web开发 在线代码编辑器，更快地创建和共享 Web 应用程序 codesandbox https://codepen.io/ jsfiddle 需要VPN访问 stackblitz figma Web端的UI设计工具。 学习 the-way-to-go 学习 Go 语言 javascript-info JavaScript 教程学习网站 You-Dont-Know-JS深入研究 JavaScript 语言核心机制的书籍 the-way-to-go_ZH_CNGo入门指南 awesome-interview 剑指前端 Offer</description></item><item><title>记录一些npm库和应用</title><link>https://chenkai.life/posts/npm-packages/</link><pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/posts/npm-packages/</guid><description>记录一些npm库
-npm工具库 nodeppt: markdown 生成web ppt
-artillery: 负载接口测试
-jsdoc,esdoc,documentation:构建js帮助文档
-standard-version:使用semver和常规提交消息自动进行版本控制和CHANGELOG生成
-Marked:markdown解析成html
-markdown-it: markdown解析成html
-dockerode: Docker远程API模块. nodemon: 文件更改时重新启动node服务. pm2: 具有内置负载平衡器的 Node.JS 应用程序的生产流程管理器. cypress: 端到端测试框架. eslint:eslint是一个javascript代码检测工具
-ngrok: 内网穿透工具
-vconsole 可以用于手机端调试查看控制台、网络请求、存储等信息 jsoneditor 基于 Web 查看、编辑、格式化和验证 JSON 的工具. autocannon 用 node 编写的 HTTP 基准测试工具.
-axios: 基于Promise的HTTP客户端，用于浏览器和node.js
-ws: 简单易用，为Node.js开辟了快速且经过全面测试的Websocket客户端和服务器
-nuxtjs: 一个基于 Vue.js 的服务端渲染应用框架
-fake-progress: 一个生成假进度的库
-diff.js: 一个JavaScript文本diff实现
-GraphQL.js:GraphQL的JavaScript参考实现，GraphQL是Facebook创建的API的查询语言。
-JSONStream：流读取josn解析
-http-proxy-middleware:node.js代理中间件，用于连接，表达和浏览器同步
-iconv-lite: 文件编码转换
-workerpool: workerpool提供了一种简单的方法来创建工作池，以动态卸载计算并管理专用工作池,runs on node.js, Chrome, Firefox, Opera, Safari, and IE10+.</description></item><item><title>centos安装常用的软件</title><link>https://chenkai.life/posts/yum-install-software/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/posts/yum-install-software/</guid><description>安装pg 参考官网;
+HTTP Basic HTTP Basic 是一个非常传统的API认证技术，也是一个比较简单的技术。这个技术也就是使用 username和 password 来进行登录。整个过程被定义在了 RFC 2617 中，也被描述在了 Wikipedia: Basic Access Authentication 词条中，同时也可以参看 MDN HTTP Authentication</description></item><item><title>centos安装常用的软件</title><link>https://chenkai.life/posts/yum-install-software/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/posts/yum-install-software/</guid><description>安装pg 参考官网;
 Install the repository RPM: yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm Install the client packages: yum install postgresql11 Optionally install the server packages: yum install postgresql11-server Optionally initialize the database and enable automatic start: /usr/pgsql-11/bin/postgresql-11-setup initdb systemctl enable postgresql-11 systemctl stop postgresql-11 systemctl start postgresql-11 systemctl restart postgresql-11 systemctl status postgresql-11 修改配置允许外部ip访问数据库 修改/var/lib/pgsql/11/data/postgresql.conf #listen_addresses = 'localhost' # what IP address(es) to listen on; 改为 listen_addresses = '*' 修改/var/lib/pgsql/11/data/pg_hba.</description></item><item><title>glob表达式</title><link>https://chenkai.life/posts/glob-expression/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/posts/glob-expression/</guid><description>glob表达式是匹配文件路径的表达式。
 glob表达式规则 Matches 0 or more characters in a single path portion ? Matches 1 character [&amp;hellip;] Matches a range of characters, similar to a RegExp range. If the first character of the range is ! or + ^ then it matches any character not in the range. !(pattern|pattern|pattern) Matches anything that does not match any of the patterns provided. ?(pattern|pattern|pattern) Matches zero or one occurrence of the patterns provided.</description></item><item><title>HTTP的前世今生</title><link>https://chenkai.life/posts/http/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/posts/http/</guid><description>转载自https://coolshell.cn/articles/19840.html
 HTTP (Hypertext transfer protocol) 翻译成中文是超文本传输协议，是互联网上重要的一个协议，由欧洲核子研究委员会CERN的英国工程师 Tim Berners-Lee v发明的，同时，他也是WWW的发明人，最初的主要是用于传递通过HTML封装过的数据。在1991年发布了HTTP 0.9版，在1996年发布1.0版，1997年是1.1版，1.1版也是到今天为止传输最广泛的版本（初始RFC 2068 在1997年发布， 然后在1999年被 RFC 2616 取代，再在2014年被 RFC 7230 /7231/7232/7233/7234/7235取代），2015年发布了2.0版，其极大的优化了HTTP/1.1的性能和安全性，而2018年发布的3.0版，继续优化HTTP/2，激进地使用UDP取代TCP协议，目前，HTTP/3 在2019年9月26日 被 Chrome，Firefox，和Cloudflare支持，所以我想写下这篇文章，简单地说一下HTTP的前世今生，让大家学到一些知识，并希望可以在推动一下HTTP标准协议的发展。

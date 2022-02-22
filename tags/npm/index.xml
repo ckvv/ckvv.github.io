@@ -1,23 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>npm on CK's Blog</title><link>https://chenkai.life/tags/npm/</link><description>Recent content in npm on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://chenkai.life/tags/npm/index.xml" rel="self" type="application/rss+xml"/><item><title>记录一些npm库和应用</title><link>https://chenkai.life/posts/npm-packages/</link><pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/posts/npm-packages/</guid><description>记录一些npm库
-npm工具库 nodeppt: markdown 生成web ppt
-artillery: 负载接口测试
-jsdoc,esdoc,documentation:构建js帮助文档
-standard-version:使用semver和常规提交消息自动进行版本控制和CHANGELOG生成
-Marked:markdown解析成html
-markdown-it: markdown解析成html
-dockerode: Docker远程API模块. nodemon: 文件更改时重新启动node服务. pm2: 具有内置负载平衡器的 Node.JS 应用程序的生产流程管理器. cypress: 端到端测试框架. eslint:eslint是一个javascript代码检测工具
-ngrok: 内网穿透工具
-vconsole 可以用于手机端调试查看控制台、网络请求、存储等信息 jsoneditor 基于 Web 查看、编辑、格式化和验证 JSON 的工具. autocannon 用 node 编写的 HTTP 基准测试工具.
-axios: 基于Promise的HTTP客户端，用于浏览器和node.js
-ws: 简单易用，为Node.js开辟了快速且经过全面测试的Websocket客户端和服务器
-nuxtjs: 一个基于 Vue.js 的服务端渲染应用框架
-fake-progress: 一个生成假进度的库
-diff.js: 一个JavaScript文本diff实现
-GraphQL.js:GraphQL的JavaScript参考实现，GraphQL是Facebook创建的API的查询语言。
-JSONStream：流读取josn解析
-http-proxy-middleware:node.js代理中间件，用于连接，表达和浏览器同步
-iconv-lite: 文件编码转换
-workerpool: workerpool提供了一种简单的方法来创建工作池，以动态卸载计算并管理专用工作池,runs on node.js, Chrome, Firefox, Opera, Safari, and IE10+.</description></item><item><title>npm</title><link>https://chenkai.life/tools/npm/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/tools/npm/</guid><description>npm 配置 修改配置文件 npm配置文件地址~/.npmrc，npm config ls -l,npm config edit命令;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>npm on CK's Blog</title><link>https://chenkai.life/tags/npm/</link><description>Recent content in npm on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 09 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://chenkai.life/tags/npm/index.xml" rel="self" type="application/rss+xml"/><item><title>npm</title><link>https://chenkai.life/tools/npm/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/tools/npm/</guid><description>npm 配置 修改配置文件 npm配置文件地址~/.npmrc，npm config ls -l,npm config edit命令;
 npm的全局node包在哪里？ 就是那些通过npm install xxx -g或者cnpm install xxx -g或者yarn global add xxx安装的xxx文件，到底安装在什么地方？这个其实也挺好找的。默认情况下，可以通过下面的命令查看其基础路径。
 npm config get prefix npm root -g 默认的全局安装包位置： win系统下路径是：%APPDATA%/npm/node_modules/ mac系统下路径是：/usr/local/lib/node_modules/
 npm 清空缓存 npm cache clean -
