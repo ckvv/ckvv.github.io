@@ -1,6 +1,7 @@
 ---
 title: "shell 命令"
 tags: ['shell']
+date: '2021-07-09'
 ---
 
 ## 

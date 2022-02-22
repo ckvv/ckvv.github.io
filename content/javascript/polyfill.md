@@ -1,6 +1,7 @@
 ---
 title: "了解什么是polyfill"
-tags: ['js']
+tags: ['js', 'polyfill']
+date: '2021-07-09'
 ---
 
 # 什么是polyfill

@@ -1,6 +1,7 @@
 ---
 title: "brew"
 tags: ['tool']
+date: '2021-07-09'
 ---
 
 # 切换到国内源

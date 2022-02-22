@@ -1,7 +1,9 @@
 ---
 title: "HTTP的前世今生"
 tags: ['文章']
+date: '2021-07-09'
 ---
+
 > 转载自[https://coolshell.cn/articles/19840.html](https://coolshell.cn/articles/19840.html)
 
 HTTP (Hypertext transfer protocol) 翻译成中文是超文本传输协议，是互联网上重要的一个协议，由欧洲核子研究委员会CERN的英国工程师 [Tim Berners-Lee](https://en.wikipedia.org/wiki/Tim_Berners-Lee) v发明的，同时，他也是WWW的发明人，最初的主要是用于传递通过HTML封装过的数据。在1991年发布了HTTP 0.9版，在1996年发布1.0版，1997年是1.1版，1.1版也是到今天为止传输最广泛的版本（初始[RFC 2068](https://tools.ietf.org/html/rfc2068) 在1997年发布， 然后在1999年被 [RFC 2616](https://tools.ietf.org/html/rfc2616) 取代，再在2014年被 [RFC 7230](https://tools.ietf.org/html/rfc7230) /[7231](https://tools.ietf.org/html/rfc7231)/[7232](https://tools.ietf.org/html/rfc7232)/[7233](https://tools.ietf.org/html/rfc7233)/[7234](https://tools.ietf.org/html/rfc7234)/[7235](https://tools.ietf.org/html/rfc7235)取代），2015年发布了2.0版，其极大的优化了HTTP/1.1的性能和安全性，而2018年发布的3.0版，继续优化HTTP/2，激进地使用UDP取代TCP协议，目前，HTTP/3 在2019年9月26日 被 Chrome，Firefox，和Cloudflare支持，所以我想写下这篇文章，简单地说一下HTTP的前世今生，让大家学到一些知识，并希望可以在推动一下HTTP标准协议的发展。

@@ -1,6 +1,7 @@
 ---
 title: "kubectl命令"
 tags: ['tool', 'docker']
+date: '2021-07-09'
 ---
 
 This page is an overview of the `kubectl` command.

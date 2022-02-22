@@ -1,6 +1,7 @@
 ---
 title: 'nginx'
 tags: ['tool', 'nginx']
+date: '2021-07-09'
 ---
 
 ## 安装nginx

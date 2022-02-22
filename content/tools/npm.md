@@ -1,6 +1,7 @@
 ---
 title: "npm"
-tags: ['tool']
+tags: ['tool', 'npm']
+date: '2021-07-09'
 ---
 
 ## npm 配置

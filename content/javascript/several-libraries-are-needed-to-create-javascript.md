@@ -1,6 +1,7 @@
 ---
 title: "创建JavaScript项目需要用到的工具库"
 tags: ['js']
+date: '2021-07-09'
 ---
 
 创建JavaScript需要用到的几个工具库

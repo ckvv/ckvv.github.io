@@ -1,6 +1,7 @@
 ---
 title: "docker"
 tags: ['tool', 'docker']
+date: '2021-07-09'
 ---
 
 ## 安装/卸载docker

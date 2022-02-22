@@ -1,6 +1,7 @@
 ---
 title: '浏览器处理cookie'
-tags: ['js']
+tags: ['js', 'cookie']
+date: '2021-07-09'
 ---
 
 ## 设置cookie

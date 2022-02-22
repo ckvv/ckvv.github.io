@@ -1,7 +1,9 @@
 ---
 title: "Jenkins"
 tags: ['tool']
+date: '2021-07-09'
 ---
+
 默认用户名：`admin`,查看密码：`sudo vi /Users/Shared/Jenkins/Home/secrets/initialAdminPassword`
 
 安装包安装的Jenkins

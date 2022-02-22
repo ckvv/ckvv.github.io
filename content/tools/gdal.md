@@ -1,6 +1,7 @@
 ---
 title: "gdal命令"
-tags: ['tool']
+tags: ['tool', 'gdal']
+date: '2021-07-09'
 ---
 
 ## 类型转换

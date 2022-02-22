@@ -1,7 +1,7 @@
 ---
 title: "pgpool"
-tags: ['database']
-categories: ['database']
+tags: ['database', 'pgpool']
+date: '2021-07-09'
 ---
 ## 什么是pgpool
 [pgpool-II](https://www.pgpool.net/docs/latest/en/html/example-configs.html) 是一个位于 PostgreSQL 服务器和 PostgreSQL 数据库客户端之间的中间件，它提供以下功能：

@@ -1,6 +1,7 @@
 ---
 title: WebWorker
-tags: ['web', 'js']
+tags: ['web', 'WebWorker']
+date: '2021-12-29'
 ---
 
 ## 一、概述

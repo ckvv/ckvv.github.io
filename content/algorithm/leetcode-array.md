@@ -1,7 +1,7 @@
 ---
-title: 算法-array
+title: '算法-array'
 tags: ['算法']
-date: 2021-09-11
+date: '2021-09-11'
 ---
 ### [删除排序数组中的重复项](https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2gy9m/)
 

@@ -1,6 +1,7 @@
 ---
 title: "git"
 tags: ['tool', 'git']
+date: '2021-07-09'
 ---
 
 ## 更新git

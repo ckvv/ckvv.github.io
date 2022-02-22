@@ -1,7 +1,9 @@
 ---
 title: "madlib"
 tags: [ "tool"]
+date: '2021-07-09'
 ---
+
 Apache MADlib是一个在PostgreSQL、Greenplum中使用的,用于可扩展的数据库内分析的开源库。它为结构化和非结构化数据提供数学，统计，图形和机器学习方法的数据并行实现。
 
 ## 我们可以用madlib做什么？

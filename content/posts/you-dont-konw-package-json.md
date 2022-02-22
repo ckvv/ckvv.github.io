@@ -1,6 +1,7 @@
 ---
 title: 你不知道的package.json
-tags: ['文章', 'npm']
+tags: ['package', 'npm']
+date: '2021-07-09'
 ---
 
 ## engines

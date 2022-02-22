@@ -1,6 +1,7 @@
 ---
 title: 跨域资源共享 (CORS)
-date: 2022-02-09
+tags: ['web', 'cors']
+date: '2022-02-09'
 ---
 
 转载自 [web.dev](https://web.dev/cross-origin-resource-sharing/?utm_source=devtools)

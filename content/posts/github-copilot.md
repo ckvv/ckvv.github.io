@@ -1,6 +1,7 @@
 ---
 title: "Github Copilot AI 编程初体验"
-tags: ['文章']
+tags: ['Github']
+date: '2021-01-10'
 ---
 
 [Github Copilot](https://copilot.github.com/) 作为微软与OpenAI共同推出了一款AI编程工具, 通过用户的注释、函数名、等自动生成代码。一直没有觉得噱头大过实际。今天体验了下从结果上来说还是很让人惊艳的。尤其是本篇文章中的部分段落也是Github Copilot补充的。
