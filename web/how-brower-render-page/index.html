@@ -1,0 +1,310 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=content-language content="en">
+<meta name=theme-color content="#ffffff">
+<meta name=color-scheme content="light dark">
+<meta name=description content="参考https://coolshell.cn/articles/9666.html
+ 文章是为了说明浏览器如何将HTML，CSS和JavaScript转换为网站。
+首先    浏览器是一个可以从远程服务器或者本地磁盘将文件加载、显示、交互的软件。
+浏览器有两个重要部分：
+渲染引擎（Rendering Engine）：一般习惯称为“浏览器内核”，渲染引擎决定了浏览器如何显示网页的内容以及页面的格式信息。不同的浏览器内核对网页编写语法的解释也有不同如Gecko（火狐）、Blink（Chrome）、Webkit（Safari）、Trident（IE）等，因此同一网页在不同的内核的浏览器里的渲染效果也可能不同。
+JavaScript引擎：JavaScript由ECMAScript，DOM和BOM三者组成，不同浏览器针对JavaScript语法和语义标准有多种实现如：
+ Chrome使用V8引擎， Safari使用JavaScriptCore， Firefox使用SpiderMonkey  浏览器接收数据    数据是通过Internet以数据包（Packet）为单位按字节形式发送到浏览器。浏览器将从硬盘（或网络）中读取HTML的原始数据字节转换为字符。
+从原始字节到DOM    当浏览器接受到扩展名为.html时，会将该文件解释为html对其进行解析，文件中的每个开始和结束html标签会转换为节点如
+<div></div> 创建这些节点后，然后将这些节点链接到称为DOM的树数据结构中。DOM建立父子关系，相邻的兄弟关系等。每个节点之间的关系都在此DOM对象中建立。浏览器必须先将html数据的原始字节转换为DOM，然后才能进行任何操作。
+当浏览器接收数据的原始字节并启动DOM构造过程时，它还将发出请求以获取链接的样式表。 一旦浏览器开始解析html，一旦找到文件的link标签，浏览器css就会同时发出获取请求的请求。
+从原始字节到CSSOM    当浏览器收到CSS的原始字节时，也会启动HTML原始字节的类似过程。将数据的原始字节转换为字符，然后标记化节点，最后还形成CSS树结构，称为CSS对象模型，简称CSSOM。 CSS有一个叫做Cascade的东西。级联是浏览器如何确定将哪些样式应用于元素的方式。
+由于影响元素的样式可能来自父元素（即通过继承），或者已设置在元素本身上，因此CSSOM树结构变得很重要。浏览器必须递归地遍历CSS树结构并确定影响特定元素的样式。
+渲染树    DOM和CSSOM树结构是两个独立的结构。DOM包含有关页面HTML元素的关系的所有信息，而CSSOM包含有关元素样式的信息。浏览器现在将DOM和CSSOM树合并为一个称为渲染树(render tree)的东西。渲染树包含有关页面上所有可见DOM内容的信息，以及不同节点所需的所有CSSOM信息。
+ 如果一个元素被CSS隐藏，display; none例如使用，则该节点将不会在渲染树中表示。隐藏的元素将出现在DOM中，但不会出现在渲染树中。原因是渲染树结合了来自DOM和CSSOM的信息，因此它知道在树中不包括隐藏元素。
+ 构建了渲染树后，浏览器将继续进行下一步，即 布局！
+现在，我们在屏幕上拥有所有可见内容的内容和样式信息，但实际上并没有在屏幕上呈现任何内容,浏览器必须计算页面上每个对象的确切大小和位置。此布局步骤对从DOM和CSSOM接收到的内容和样式，进行了必要的布局计算，并绘制到屏幕上。DOM和CSSOM必须在成功绘制之前构建，所以优化网站的第一条规则是尽快将最重要的HTML和CSS交付给客户端。
+JavaScript    JavaScript可以更改DOM和CSSOM。
+###Javascript执行前将停止整个DOM构造过程
+由于浏览器不确定此特定Javascript会做什么，因此通过停止整个DOM结构来采取预防措施。每当浏览器遇到script标签时，在脚本完成执行之前，将停止整个DOM构造过程。
+<!DOCTYPE html> <html> <head> <meta name=&#34;viewport&#34; content=&#34;width=device-width,initial-scale=1&#34;> <title>Medium Article Demo</title> <link rel=&#34;stylesheet&#34; href=&#34;style.">
+<meta name=keywords content>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="浏览器如何渲染页面">
+<meta name=twitter:description content="参考https://coolshell.cn/articles/9666.html
+ 文章是为了说明浏览器如何将HTML，CSS和JavaScript转换为网站。
+首先    浏览器是一个可以从远程服务器或者本地磁盘将文件加载、显示、交互的软件。
+浏览器有两个重要部分：
+渲染引擎（Rendering Engine）：一般习惯称为“浏览器内核”，渲染引擎决定了浏览器如何显示网页的内容以及页面的格式信息。不同的浏览器内核对网页编写语法的解释也有不同如Gecko（火狐）、Blink（Chrome）、Webkit（Safari）、Trident（IE）等，因此同一网页在不同的内核的浏览器里的渲染效果也可能不同。
+JavaScript引擎：JavaScript由ECMAScript，DOM和BOM三者组成，不同浏览器针对JavaScript语法和语义标准有多种实现如：
+ Chrome使用V8引擎， Safari使用JavaScriptCore， Firefox使用SpiderMonkey  浏览器接收数据    数据是通过Internet以数据包（Packet）为单位按字节形式发送到浏览器。浏览器将从硬盘（或网络）中读取HTML的原始数据字节转换为字符。
+从原始字节到DOM    当浏览器接受到扩展名为.html时，会将该文件解释为html对其进行解析，文件中的每个开始和结束html标签会转换为节点如
+<div></div> 创建这些节点后，然后将这些节点链接到称为DOM的树数据结构中。DOM建立父子关系，相邻的兄弟关系等。每个节点之间的关系都在此DOM对象中建立。浏览器必须先将html数据的原始字节转换为DOM，然后才能进行任何操作。
+当浏览器接收数据的原始字节并启动DOM构造过程时，它还将发出请求以获取链接的样式表。 一旦浏览器开始解析html，一旦找到文件的link标签，浏览器css就会同时发出获取请求的请求。
+从原始字节到CSSOM    当浏览器收到CSS的原始字节时，也会启动HTML原始字节的类似过程。将数据的原始字节转换为字符，然后标记化节点，最后还形成CSS树结构，称为CSS对象模型，简称CSSOM。 CSS有一个叫做Cascade的东西。级联是浏览器如何确定将哪些样式应用于元素的方式。
+由于影响元素的样式可能来自父元素（即通过继承），或者已设置在元素本身上，因此CSSOM树结构变得很重要。浏览器必须递归地遍历CSS树结构并确定影响特定元素的样式。
+渲染树    DOM和CSSOM树结构是两个独立的结构。DOM包含有关页面HTML元素的关系的所有信息，而CSSOM包含有关元素样式的信息。浏览器现在将DOM和CSSOM树合并为一个称为渲染树(render tree)的东西。渲染树包含有关页面上所有可见DOM内容的信息，以及不同节点所需的所有CSSOM信息。
+ 如果一个元素被CSS隐藏，display; none例如使用，则该节点将不会在渲染树中表示。隐藏的元素将出现在DOM中，但不会出现在渲染树中。原因是渲染树结合了来自DOM和CSSOM的信息，因此它知道在树中不包括隐藏元素。
+ 构建了渲染树后，浏览器将继续进行下一步，即 布局！
+现在，我们在屏幕上拥有所有可见内容的内容和样式信息，但实际上并没有在屏幕上呈现任何内容,浏览器必须计算页面上每个对象的确切大小和位置。此布局步骤对从DOM和CSSOM接收到的内容和样式，进行了必要的布局计算，并绘制到屏幕上。DOM和CSSOM必须在成功绘制之前构建，所以优化网站的第一条规则是尽快将最重要的HTML和CSS交付给客户端。
+JavaScript    JavaScript可以更改DOM和CSSOM。
+###Javascript执行前将停止整个DOM构造过程
+由于浏览器不确定此特定Javascript会做什么，因此通过停止整个DOM结构来采取预防措施。每当浏览器遇到script标签时，在脚本完成执行之前，将停止整个DOM构造过程。
+<!DOCTYPE html> <html> <head> <meta name=&#34;viewport&#34; content=&#34;width=device-width,initial-scale=1&#34;> <title>Medium Article Demo</title> <link rel=&#34;stylesheet&#34; href=&#34;style.">
+<meta property="og:title" content="浏览器如何渲染页面">
+<meta property="og:description" content="参考https://coolshell.cn/articles/9666.html
+ 文章是为了说明浏览器如何将HTML，CSS和JavaScript转换为网站。
+首先    浏览器是一个可以从远程服务器或者本地磁盘将文件加载、显示、交互的软件。
+浏览器有两个重要部分：
+渲染引擎（Rendering Engine）：一般习惯称为“浏览器内核”，渲染引擎决定了浏览器如何显示网页的内容以及页面的格式信息。不同的浏览器内核对网页编写语法的解释也有不同如Gecko（火狐）、Blink（Chrome）、Webkit（Safari）、Trident（IE）等，因此同一网页在不同的内核的浏览器里的渲染效果也可能不同。
+JavaScript引擎：JavaScript由ECMAScript，DOM和BOM三者组成，不同浏览器针对JavaScript语法和语义标准有多种实现如：
+ Chrome使用V8引擎， Safari使用JavaScriptCore， Firefox使用SpiderMonkey  浏览器接收数据    数据是通过Internet以数据包（Packet）为单位按字节形式发送到浏览器。浏览器将从硬盘（或网络）中读取HTML的原始数据字节转换为字符。
+从原始字节到DOM    当浏览器接受到扩展名为.html时，会将该文件解释为html对其进行解析，文件中的每个开始和结束html标签会转换为节点如
+<div></div> 创建这些节点后，然后将这些节点链接到称为DOM的树数据结构中。DOM建立父子关系，相邻的兄弟关系等。每个节点之间的关系都在此DOM对象中建立。浏览器必须先将html数据的原始字节转换为DOM，然后才能进行任何操作。
+当浏览器接收数据的原始字节并启动DOM构造过程时，它还将发出请求以获取链接的样式表。 一旦浏览器开始解析html，一旦找到文件的link标签，浏览器css就会同时发出获取请求的请求。
+从原始字节到CSSOM    当浏览器收到CSS的原始字节时，也会启动HTML原始字节的类似过程。将数据的原始字节转换为字符，然后标记化节点，最后还形成CSS树结构，称为CSS对象模型，简称CSSOM。 CSS有一个叫做Cascade的东西。级联是浏览器如何确定将哪些样式应用于元素的方式。
+由于影响元素的样式可能来自父元素（即通过继承），或者已设置在元素本身上，因此CSSOM树结构变得很重要。浏览器必须递归地遍历CSS树结构并确定影响特定元素的样式。
+渲染树    DOM和CSSOM树结构是两个独立的结构。DOM包含有关页面HTML元素的关系的所有信息，而CSSOM包含有关元素样式的信息。浏览器现在将DOM和CSSOM树合并为一个称为渲染树(render tree)的东西。渲染树包含有关页面上所有可见DOM内容的信息，以及不同节点所需的所有CSSOM信息。
+ 如果一个元素被CSS隐藏，display; none例如使用，则该节点将不会在渲染树中表示。隐藏的元素将出现在DOM中，但不会出现在渲染树中。原因是渲染树结合了来自DOM和CSSOM的信息，因此它知道在树中不包括隐藏元素。
+ 构建了渲染树后，浏览器将继续进行下一步，即 布局！
+现在，我们在屏幕上拥有所有可见内容的内容和样式信息，但实际上并没有在屏幕上呈现任何内容,浏览器必须计算页面上每个对象的确切大小和位置。此布局步骤对从DOM和CSSOM接收到的内容和样式，进行了必要的布局计算，并绘制到屏幕上。DOM和CSSOM必须在成功绘制之前构建，所以优化网站的第一条规则是尽快将最重要的HTML和CSS交付给客户端。
+JavaScript    JavaScript可以更改DOM和CSSOM。
+###Javascript执行前将停止整个DOM构造过程
+由于浏览器不确定此特定Javascript会做什么，因此通过停止整个DOM结构来采取预防措施。每当浏览器遇到script标签时，在脚本完成执行之前，将停止整个DOM构造过程。
+<!DOCTYPE html> <html> <head> <meta name=&#34;viewport&#34; content=&#34;width=device-width,initial-scale=1&#34;> <title>Medium Article Demo</title> <link rel=&#34;stylesheet&#34; href=&#34;style.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chenkai.life/web/how-brower-render-page/"><meta property="article:section" content="web">
+<meta property="article:published_time" content="2022-02-09T00:00:00+00:00">
+<meta property="article:modified_time" content="2022-02-22T12:18:41+08:00">
+<title>
+浏览器如何渲染页面 · CK's Blog
+</title>
+<link rel=canonical href=https://chenkai.life/web/how-brower-render-page/>
+<link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen>
+<link rel=icon type=image/svg+xml href=/favicon.ico>
+<link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png>
+<meta name=generator content="Hugo 0.91.2">
+<link rel=manifest href=/manifest.webmanifest>
+</head>
+<body class="preload-transitions colorscheme-auto">
+<div class=float-container>
+<span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg>
+</span>
+</div>
+<details id=table-of-contents-wapper>
+<summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
+</summary>
+</details>
+<main class=wrapper>
+<nav class=navigation>
+<section class=container>
+<a class=navigation-title href=/>
+CK's Blog
+</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
+</label>
+<ul class=navigation-list>
+<li class=navigation-item>
+<a class=navigation-link href=/>Home</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/tags/>Tags</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/index.xml>RSS</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/about/>About</a>
+</li>
+<li class=navigation-item id=search-content>
+<input class=search-int type=text placeholder=Search>
+<button class=search-btn data-type=github>GitHub</button>
+<button class=search-btn data-type=google>Google</button>
+</li>
+</ul>
+</section>
+</nav>
+<div class=content>
+<section class="container page">
+<article>
+<header>
+<h1 class=title>
+<a class=title-link href=https://chenkai.life/web/how-brower-render-page/>
+浏览器如何渲染页面
+</a>
+</h1>
+<div class=edit-link style=float:right;color:#0366d6>
+<a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/web/how-brower-render-page.md>编辑</a>
+</div>
+</header>
+<div class=post-meta>
+<div class=date>
+<span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
+<time datetime=2022-02-09T00:00:00Z>
+2022-02-09
+</time>
+</span>
+</div>
+<div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
+<span class=tag>
+<a href=/tags/web/>web</a>
+</span></div>
+</div>
+<blockquote>
+<p>参考<a href=https://coolshell.cn/articles/9666.html>https://coolshell.cn/articles/9666.html</a></p>
+</blockquote>
+<p>文章是为了说明浏览器如何将HTML，CSS和JavaScript转换为网站。</p>
+<h2 id=首先>
+首先
+<a class=heading-link href=#%e9%a6%96%e5%85%88>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>浏览器是一个可以从远程服务器或者本地磁盘将文件加载、显示、交互的软件。</p>
+<p>浏览器有两个重要部分：</p>
+<p>渲染引擎（Rendering Engine）：一般习惯称为“浏览器内核”，渲染引擎决定了浏览器如何显示网页的内容以及页面的格式信息。不同的浏览器内核对网页编写语法的解释也有不同如Gecko（火狐）、Blink（Chrome）、Webkit（Safari）、Trident（IE）等，因此同一网页在不同的内核的浏览器里的渲染效果也可能不同。</p>
+<p>JavaScript引擎：JavaScript由ECMAScript，DOM和BOM三者组成，不同浏览器针对JavaScript语法和语义标准有多种实现如：</p>
+<ul>
+<li>Chrome使用V8引擎，</li>
+<li>Safari使用JavaScriptCore，</li>
+<li>Firefox使用SpiderMonkey</li>
+</ul>
+<h2 id=浏览器接收数据>
+浏览器接收数据
+<a class=heading-link href=#%e6%b5%8f%e8%a7%88%e5%99%a8%e6%8e%a5%e6%94%b6%e6%95%b0%e6%8d%ae>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>数据是通过Internet以<a href=https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%8C%85/489739>数据包（Packet）</a>为单位按字节形式发送到浏览器。浏览器将从硬盘（或网络）中读取HTML的原始数据字节转换为字符。</p>
+<h2 id=从原始字节到dom>
+从原始字节到DOM
+<a class=heading-link href=#%e4%bb%8e%e5%8e%9f%e5%a7%8b%e5%ad%97%e8%8a%82%e5%88%b0dom>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>当浏览器接受到扩展名为.html时，会将该文件解释为html对其进行解析，文件中的每个开始和结束html标签会转换为节点如</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>div</span>&gt;&lt;/<span style=color:#f92672>div</span>&gt;
+</code></pre></div><p>创建这些节点后，然后将这些节点链接到称为DOM的树数据结构中。DOM建立父子关系，相邻的兄弟关系等。每个节点之间的关系都在此DOM对象中建立。浏览器必须先将html数据的原始字节转换为DOM，然后才能进行任何操作。</p>
+<p>当浏览器接收数据的原始字节并启动DOM构造过程时，它还将发出请求以获取链接的样式表。
+一旦浏览器开始解析html，一旦找到文件的link标签，浏览器css就会同时发出获取请求的请求。</p>
+<h2 id=从原始字节到cssom>
+从原始字节到CSSOM
+<a class=heading-link href=#%e4%bb%8e%e5%8e%9f%e5%a7%8b%e5%ad%97%e8%8a%82%e5%88%b0cssom>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>当浏览器收到CSS的原始字节时，也会启动HTML原始字节的类似过程。将数据的原始字节转换为字符，然后标记化节点，最后还形成CSS树结构，称为CSS对象模型，简称CSSOM。
+CSS有一个叫做<a href=https://blog.logrocket.com/how-css-works-understanding-the-cascade-d181cd89a4d8/>Cascade</a>的东西。级联是浏览器如何确定将哪些样式应用于元素的方式。</p>
+<p>由于影响元素的样式可能来自父元素（即通过继承），或者已设置在元素本身上，因此CSSOM树结构变得很重要。浏览器必须递归地遍历CSS树结构并确定影响特定元素的样式。</p>
+<h2 id=渲染树>
+渲染树
+<a class=heading-link href=#%e6%b8%b2%e6%9f%93%e6%a0%91>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>DOM和CSSOM树结构是两个<strong>独立的</strong>结构。DOM包含有关页面HTML元素的关系的所有信息，而CSSOM包含有关元素样式的信息。浏览器现在将DOM和CSSOM树合并为一个称为渲染树(render tree)的东西。渲染树包含有关页面上所有可见DOM内容的信息，以及不同节点所需的所有CSSOM信息。</p>
+<blockquote>
+<p>如果一个元素被CSS隐藏，<code>display; none</code>例如使用，则该节点将不会在渲染树中表示。隐藏的元素将出现在DOM中，但不会出现在渲染树中。原因是渲染树结合了来自DOM和CSSOM的信息，因此它知道在树中不包括隐藏元素。</p>
+</blockquote>
+<p>构建了渲染树后，浏览器将继续进行下一步，即 布局！</p>
+<p>现在，我们在屏幕上拥有所有可见内容的内容和样式信息，但实际上并没有在屏幕上呈现任何内容,浏览器必须计算页面上每个对象的确切大小和位置。此布局步骤对从DOM和CSSOM接收到的内容和样式，进行了必要的布局计算，并绘制到屏幕上。DOM和CSSOM必须在成功绘制之前构建，所以优化网站的第一条规则是尽快将最重要的HTML和CSS交付给客户端。</p>
+<h2 id=javascript>
+JavaScript
+<a class=heading-link href=#javascript>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>JavaScript可以更改DOM和CSSOM。</p>
+<p>###Javascript执行前将停止整个DOM构造过程</p>
+<p>由于浏览器不确定此特定Javascript会做什么，因此通过停止整个DOM结构来采取预防措施。每当浏览器遇到<code>script</code>标签时，在脚本完成执行之前，将停止整个DOM构造过程。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=color:#75715e>&lt;!DOCTYPE html&gt;</span>
+&lt;<span style=color:#f92672>html</span>&gt;
+&lt;<span style=color:#f92672>head</span>&gt;
+    &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;viewport&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;width=device-width,initial-scale=1&#34;</span>&gt;
+    &lt;<span style=color:#f92672>title</span>&gt;Medium Article Demo&lt;/<span style=color:#f92672>title</span>&gt;
+    &lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;style.css&#34;</span>&gt;
+&lt;/<span style=color:#f92672>head</span>&gt;
+
+&lt;<span style=color:#f92672>body</span>&gt;
+    &lt;<span style=color:#f92672>p</span> <span style=color:#a6e22e>id</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;header&#34;</span>&gt;How Browser Rendering Works&lt;/<span style=color:#f92672>p</span>&gt;
+    &lt;<span style=color:#f92672>div</span>&gt;&lt;<span style=color:#f92672>img</span> <span style=color:#a6e22e>src</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://i.imgur.com/jDq3k3r.jpg&#34;</span>&gt;&lt;/<span style=color:#f92672>div</span>&gt;
+    &lt;<span style=color:#f92672>script</span>&gt;
+        <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>header</span> <span style=color:#f92672>=</span> document.<span style=color:#a6e22e>getElementById</span>(<span style=color:#e6db74>&#34;header&#34;</span>);
+        <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;header is: &#34;</span>, <span style=color:#a6e22e>header</span>);
+    &lt;/<span style=color:#f92672>script</span>&gt;
+&lt;/<span style=color:#f92672>body</span>&gt;
+&lt;/<span style=color:#f92672>html</span>&gt;
+</code></pre></div><p>在<code>script</code>标签中，我使用来访问节点的DOM <code>id</code>，<code>header</code>然后将其输出到控制台。</p>
+<p>让我们将其放在头部，</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=color:#75715e>&lt;!DOCTYPE html&gt;</span>
+&lt;<span style=color:#f92672>html</span>&gt;
+&lt;<span style=color:#f92672>head</span>&gt;
+    &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>name</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;viewport&#34;</span> <span style=color:#a6e22e>content</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;width=device-width,initial-scale=1&#34;</span>&gt;
+    &lt;<span style=color:#f92672>title</span>&gt;Medium Article Demo&lt;/<span style=color:#f92672>title</span>&gt;
+    &lt;<span style=color:#f92672>link</span> <span style=color:#a6e22e>rel</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;stylesheet&#34;</span> <span style=color:#a6e22e>href</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;style.css&#34;</span>&gt;
+    &lt;<span style=color:#f92672>script</span>&gt;
+        <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>header</span> <span style=color:#f92672>=</span> document.<span style=color:#a6e22e>getElementById</span>(<span style=color:#e6db74>&#34;header&#34;</span>);
+        <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;header is: &#34;</span>, <span style=color:#a6e22e>header</span>);
+    &lt;/<span style=color:#f92672>script</span>&gt;
+&lt;/<span style=color:#f92672>head</span>&gt;
+
+&lt;<span style=color:#f92672>body</span>&gt;
+    &lt;<span style=color:#f92672>p</span> <span style=color:#a6e22e>id</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;header&#34;</span>&gt;How Browser Rendering Works&lt;/<span style=color:#f92672>p</span>&gt;
+    &lt;<span style=color:#f92672>div</span>&gt;&lt;<span style=color:#f92672>img</span> <span style=color:#a6e22e>src</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;https://i.imgur.com/jDq3k3r.jpg&#34;</span>&gt;&lt;/<span style=color:#f92672>div</span>&gt;
+&lt;/<span style=color:#f92672>body</span>&gt;
+&lt;/<span style=color:#f92672>html</span>&gt;
+</code></pre></div><p>header变量将解析为<code>null</code>。</p>
+<p>在HTML解析器正在构造DOM的过程中，找到了一个<code>script</code>标签。在脚本执行完成之前，将停止DOM构建：在<code>script</code>尝试使用<code>id</code>of 访问DOM节点时，该节点<code>header</code>不存在，因为<code>body</code>尚未解析标签及其所有内容。<strong>所以脚本的位置很重要</strong></p>
+<p>这还不是重点</p>
+<p>如果将内联提取<code>script</code>到外部<code>app.js</code>文件，则行为是相同的。DOM构造仍然停止</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>script</span> <span style=color:#a6e22e>src</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;app.js&#34;</span>&gt;&lt;/<span style=color:#f92672>script</span>&gt;
+</code></pre></div><p>如果网络速度很慢并且获取需要数秒，那么DOM构建也会暂停数秒。</p>
+<p>###CSSOM准备就绪前，将停止执行Javascript</p>
+<p>解析器遇到<code>script</code>标签但CSSOM尚未准备就绪时，将停止执行Javascript。这也是为什么一般将style标签放在网站上面，script标签放网站下面的原因。</p>
+<p>###例外</p>
+<p>默认情况下，每个脚本都会阻止DOM构建，但是，有一种方法可以更改此默认行为。如果将<code>async</code>关键字添加到<code>script</code>标签，则不会停止DOM构建。DOM构建将继续进行，并且在完成下载并准备就绪后将执行脚本。</p>
+<p>尝试下面三种情况页面的渲染有什么不同</p>
+<blockquote>
+<p>Index.js</p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript>  <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+  <span style=color:#66d9ef>do</span> {
+  <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>;
+  } <span style=color:#66d9ef>while</span> (<span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>1000000000</span>)
+  <span style=color:#a6e22e>matrix</span>.<span style=color:#a6e22e>innerText</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>i</span>;
+</code></pre></div><blockquote>
+<p>Index.html</p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>    &lt;<span style=color:#f92672>div</span>&gt;1&lt;/<span style=color:#f92672>div</span>&gt;
+    &lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>id</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;matrix&#34;</span>&gt;
+        &lt;<span style=color:#f92672>script</span> <span style=color:#a6e22e>src</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;./1.js&#34;</span>&gt;&lt;/<span style=color:#f92672>script</span>&gt;
+    &lt;/<span style=color:#f92672>div</span>&gt;
+    &lt;<span style=color:#f92672>div</span>&gt;2&lt;/<span style=color:#f92672>div</span>&gt;
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>  &lt;<span style=color:#f92672>div</span>&gt;1&lt;/<span style=color:#f92672>div</span>&gt;
+  &lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>id</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;matrix&#34;</span>&gt;
+    &lt;<span style=color:#f92672>script</span> <span style=color:#a6e22e>src</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;./1.js&#34;</span> <span style=color:#a6e22e>async</span>&gt;&lt;/<span style=color:#f92672>script</span>&gt;
+  &lt;/<span style=color:#f92672>div</span>&gt;
+  &lt;<span style=color:#f92672>div</span>&gt;2&lt;/<span style=color:#f92672>div</span>&gt;
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>  &lt;<span style=color:#f92672>div</span>&gt;1&lt;/<span style=color:#f92672>div</span>&gt;
+  &lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>id</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;matrix&#34;</span>&gt;
+    &lt;<span style=color:#f92672>script</span>&gt;
+      <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+      <span style=color:#66d9ef>do</span> {
+      <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>;
+      } <span style=color:#66d9ef>while</span> (<span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>1000000000</span>)
+      <span style=color:#a6e22e>matrix</span>.<span style=color:#a6e22e>innerText</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>i</span>;
+    &lt;/<span style=color:#f92672>script</span>&gt;
+  &lt;/<span style=color:#f92672>div</span>&gt;
+  &lt;<span style=color:#f92672>div</span>&gt;2&lt;/<span style=color:#f92672>div</span>&gt;
+</code></pre></div><p>浏览器接收HTML，CSS和JS字节并将它们转换为屏幕上的渲染像素之间采取的步骤称为<strong>关键渲染路径</strong>。一个经过优化的站点应该进行渐进式渲染，通过优先确定要加载的资源和加载的顺序来尽快加载页面，不会阻塞整个过程。</p>
+<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=6c8be784a07a6a84d732b2977e2ffd82 data-page-url=https://chenkai.life/web/how-brower-render-page/ data-page-title=浏览器如何渲染页面 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
+</article>
+</section>
+</div>
+</main>
+<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+<script src=/js/custom.js></script>
+<script src=/js/font.min.js></script>
+</body>
+<script>'serviceWorker'in navigator&&navigator.serviceWorker.register('/service-worker.js')</script>
+</html>

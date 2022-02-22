@@ -23,7 +23,8 @@ WebAssembl的特点    WebAssembly是一门不同于JavaScript的语言，它不
  文件获取阶段：WebAssembly 比 JavaScript 抓取文件更快。即使 JavaScript 进行了压缩，WebAssembly 文件的体积也比 JavaScript 更小； 解析阶段：WebAssembly 的解码时间比 JavaScript 的解析时间更短； 编译和优化阶段：WebAssembly 更具优势，因为 WebAssembly 的代码更接近机器码，而 JavaScript 要先通过服务器端进行代码优化。 重优化阶段：WebAssembly 不会发生重优化现象。而 JS 引擎的优化假设则可能会发生“抛弃优化代码<->重优化”现象。 执行阶段：WebAssembly 更快是因为开发人员不需要懂太多的编译器技巧，而这在 JavaScript 中是需要的。WebAssembly 代码也更适合生成机器执行效率更高的指令。 垃圾回收阶段：WebAssembly 垃圾回收都是手动控制的，效率比自动回收更高。  如何使用WebAssembly    高级语言编译到 .wasm 文件    WebAssembly 字节码是一种抹平了不同 CPU 架构的机器码，WebAssembly 字节码不能直接在任何一种 CPU 架构上运行， 但由于非常接近机器码，可以非常快的被翻译为对应架构的机器码，因此 WebAssembly 运行速度和机器码接近，这听上去非常像 Java 字节码。 想要编译成WebAssembly，你首先需要先编译 LLVM，参考webassembly.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/posts/webassembly/"><meta property="article:section" content="posts">
-<meta property="article:modified_time" content="2021-07-09T15:37:56+08:00">
+<meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
+<meta property="article:modified_time" content="2022-02-22T12:18:41+08:00">
 <title>
 WebAssembly上手 · CK's Blog
 </title>
@@ -92,14 +93,14 @@ WebAssembly上手
 <div class=post-meta>
 <div class=date>
 <span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
-<time datetime=2021-07-09T15:37:56+08:00>
+<time datetime=2021-07-09T00:00:00Z>
 2021-07-09
 </time>
 </span>
 </div>
 <div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
 <span class=tag>
-<a href=/tags/%E6%96%87%E7%AB%A0/>文章</a>
+<a href=/tags/webassembly/>WebAssembly</a>
 </span></div>
 </div>
 </header>

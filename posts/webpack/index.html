@@ -17,7 +17,8 @@ import Worker from 'worker-loader!./Worker.js'; // 或者 { module: { rules: [ {
 import Worker from 'worker-loader!./Worker.js'; // 或者 { module: { rules: [ { test: /\.worker\.js$/, use: { loader: 'worker-loader' } } ] } } 懒加载    代码分离    shimming    一些第三方的库(library)可能会引用一些全局依赖（例如 jQuery 中的 $）。这些库也可能创建一些需要被导出的全局变量。这些“不符合规范的模块”就是 shimming 发挥作用的地方。 使用 ProvidePlugin 后，能够在通过 webpack 编译的每个模块中，通过访问一个变量来获取到 package 包。如果 webpack 知道这个变量在某个模块中被使用了，那么 webpack 将在最终 bundle 中引入我们给定的 package。 本质上，我们所做的，就是告诉 webpack……">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/posts/webpack/"><meta property="article:section" content="posts">
-<meta property="article:modified_time" content="2021-07-09T15:37:56+08:00">
+<meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
+<meta property="article:modified_time" content="2022-02-22T12:18:41+08:00">
 <title>
 webpack总结 · CK's Blog
 </title>
@@ -86,14 +87,14 @@ webpack总结
 <div class=post-meta>
 <div class=date>
 <span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
-<time datetime=2021-07-09T15:37:56+08:00>
+<time datetime=2021-07-09T00:00:00Z>
 2021-07-09
 </time>
 </span>
 </div>
 <div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
 <span class=tag>
-<a href=/tags/%E6%96%87%E7%AB%A0/>文章</a>
+<a href=/tags/webpack/>webpack</a>
 </span></div>
 </div>
 </header>

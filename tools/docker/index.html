@@ -17,7 +17,8 @@ yum update ## 使用以下命令来设置的存储库 sudo yum-config-manager --
 yum update ## 使用以下命令来设置的存储库 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo sudo yum install docker-ce docker-ce-cli containerd.io sudo systemctl start docker 卸载    sudo yum -y remove docker-ee ## 删除所有图像，容器和卷 sudo rm -rf /var/lib/docker ## 删除其他与Docker相关的资源 $ sudo rm -rf /run/docker $ sudo rm -rf /var/run/docker $ sudo rm -rf /etc/docker 安装过程中可能会遇到以下问题     doceker版本和系统内核版本不兼容 升级系统内核或者降低docker版本 yum安装失败  ## 解决依赖冲突 package-cleanup --cleandupes  找不到安装包 添加设置的存储库  容器生命周期管理    docker start :启动一个或多个已经被停止的容器 docker stop :停止一个运行中的容器 docker restart :重启容器  docker-compose 文件启动镜像  docker-compose up -d redis  创建一个新的容器但不启动，用法同docker run  使用docker镜像nginx:latest创建一个容器,并将容器命名为myrunoob docker create --name myrunoob nginx:latest  创建一个新的容器并运行一个命令  使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx。 docker run --name mynginx -d nginx:latest 使用镜像nginx:latest以后台模式启动一个容器,并将容器的80端口映射到主机随机端口。 docker run -P -d nginx:latest 使用镜像 nginx:latest，以后台模式启动一个容器,将主机的 80 端口映射到 容器的 80 端口,主机的目录 /data 映射到容器的 /data。 docker run -p 80:80 -v /data:/data -d nginx:latest 镜像容器管理     给image打标签  docker tag e9cb35287c01 geohey-nlpa-platform:gd  保存为本地文件  docker save -o geohey-nlpa-platform.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/tools/docker/"><meta property="article:section" content="tools">
-<meta property="article:modified_time" content="2021-07-09T15:37:56+08:00">
+<meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
+<meta property="article:modified_time" content="2022-02-22T12:18:41+08:00">
 <title>
 docker · CK's Blog
 </title>
@@ -85,7 +86,7 @@ docker
 <div class=post-meta>
 <div class=date>
 <span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
-<time datetime=2021-07-09T15:37:56+08:00>
+<time datetime=2021-07-09T00:00:00Z>
 2021-07-09
 </time>
 </span>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Reacts on CK's Blog</title><link>https://chenkai.life/react/</link><description>Recent content in Reacts on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 21 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://chenkai.life/react/index.xml" rel="self" type="application/rss+xml"/><item><title>react hooks 入门</title><link>https://chenkai.life/react/react-hooks/</link><pubDate>Mon, 21 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/react/react-hooks/</guid><description>React Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性
+hooks 什么是hook API 基础hook useState useEffect useContext
+其他hook useReducer useCallback useMemo useRef useImperativeHandle useLayoutEffect useDebugValue
+与Vue3 Composition API的区别</description></item></channel></rss>

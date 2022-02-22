@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>package on CK's Blog</title><link>https://chenkai.life/tags/package/</link><description>Recent content in package on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 09 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://chenkai.life/tags/package/index.xml" rel="self" type="application/rss+xml"/><item><title>你不知道的package.json</title><link>https://chenkai.life/posts/you-dont-konw-package-json/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/posts/you-dont-konw-package-json/</guid><description>engines 描述模块的兼容性如:
+指定模块运行的node版本
+{ &amp;#34;engines&amp;#34;: { &amp;#34;node&amp;#34;: &amp;#34;&amp;gt;=0.10.3 &amp;lt;15&amp;#34; } } 指定模块运行的npm版本
+{ &amp;#34;engines&amp;#34;: { &amp;#34;npm&amp;#34;: &amp;#34;~1.0.20&amp;#34; } } 禁止使用yarn
+{ &amp;#34;engines&amp;#34;: { &amp;#34;yarn&amp;#34;: &amp;#34;please use npm&amp;#34; } } files 指定发布到npm中的文件,默认是所有文件[&amp;quot;*&amp;quot;] 你也可以通过.npmignore防止某些文件被包含在内，它不会覆盖files字段，但会覆盖其子目录。 如果不存在.npmignore将使用.gitignore替代
+一般来说npm上我们只需要发布打包好的文件，对于git则恰好相反我们只需要提交源代码
+bin 安装可执行文件 如果你的包都有一个或多个想要安装到 PATH 中的可执行文件，请在package.json中提供一个bin字段，它是命令名到本地文件名的映射。当这个包被全局安装时，该文件将被链接到全局bin所在的位置，因此它可以按名称运行。当这个包作为另一个包的依赖项安装时，该文件将被链接到该包可以直接通过 npm exec 或通过 npm run-script 调用它们时在其他脚本中的名称, 以typescript举例，在package.json文件中存在
+{ &amp;#34;bin&amp;#34;: { &amp;#34;tsc&amp;#34;: &amp;#34;./bin/tsc&amp;#34;, &amp;#34;tsserver&amp;#34;: &amp;#34;./bin/tsserver&amp;#34; }, } 全局安装 所以通过全局安装npm install -g typescript 我们可以在命令行中使用tsc命令, 通过which tsc 我们可以查看可执行文件在/Users/chenkai/.</description></item></channel></rss>

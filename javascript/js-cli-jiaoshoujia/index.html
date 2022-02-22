@@ -1,0 +1,285 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=content-language content="en">
+<meta name=theme-color content="#ffffff">
+<meta name=color-scheme content="light dark">
+<meta name=description content="什么是脚手架    脚手架是为了保证各施工过程顺利进行而搭设的工作平台。在项目开发中我们把创建项目结构模版的工具也称之为脚手架。如vue-cli，create-react-app等。这些脚手架等原理都一样，即用Node.js命令行程序生成项目模版。
+第一个Node.js命令行脚本    编写脚手架其实就是Node.js命令行开发,和写shell脚本类似，使用JavaScript语言，写一个可执行脚本 hello wold过程如下： 新建一个hello文件，其中#!/usr/bin/env node不可少，其作用是它告诉系统这个脚本需要用node解释器来执行，语法与node一样。
+#!/usr/bin/env node console.log('hello world'); 然后,修改的权限
+chmod 755 hello 执行脚本
+./hello 如果想把 hello 前面的路径去除，可以将 hello 的路径加入环境变量 PATH。但是，另一种更好的做法，是在当前目录下新建 package.json ，写入下面的内容。
+{ &#34;name&#34;: &#34;hello&#34;, &#34;bin&#34;: { &#34;hello&#34;: &#34;hello&#34; } } 然后执行 npm link 命令。
+npm link 执行脚本
+hello 写一个脚手架    脚手架开发与上面过程类似，有一些npm库可以帮助我们开发命令行工具如shelljs、commander，它们封装了node命令行命令可以更方便命令行开发。 文件目录结构
+. ├── bin │ └── ckoa.js ├── package-lock.json ├── package.json └── utils └── download.js ckoa.js    Node.">
+<meta name=keywords content>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="JavaScript脚手架">
+<meta name=twitter:description content="什么是脚手架    脚手架是为了保证各施工过程顺利进行而搭设的工作平台。在项目开发中我们把创建项目结构模版的工具也称之为脚手架。如vue-cli，create-react-app等。这些脚手架等原理都一样，即用Node.js命令行程序生成项目模版。
+第一个Node.js命令行脚本    编写脚手架其实就是Node.js命令行开发,和写shell脚本类似，使用JavaScript语言，写一个可执行脚本 hello wold过程如下： 新建一个hello文件，其中#!/usr/bin/env node不可少，其作用是它告诉系统这个脚本需要用node解释器来执行，语法与node一样。
+#!/usr/bin/env node console.log('hello world'); 然后,修改的权限
+chmod 755 hello 执行脚本
+./hello 如果想把 hello 前面的路径去除，可以将 hello 的路径加入环境变量 PATH。但是，另一种更好的做法，是在当前目录下新建 package.json ，写入下面的内容。
+{ &#34;name&#34;: &#34;hello&#34;, &#34;bin&#34;: { &#34;hello&#34;: &#34;hello&#34; } } 然后执行 npm link 命令。
+npm link 执行脚本
+hello 写一个脚手架    脚手架开发与上面过程类似，有一些npm库可以帮助我们开发命令行工具如shelljs、commander，它们封装了node命令行命令可以更方便命令行开发。 文件目录结构
+. ├── bin │ └── ckoa.js ├── package-lock.json ├── package.json └── utils └── download.js ckoa.js    Node.">
+<meta property="og:title" content="JavaScript脚手架">
+<meta property="og:description" content="什么是脚手架    脚手架是为了保证各施工过程顺利进行而搭设的工作平台。在项目开发中我们把创建项目结构模版的工具也称之为脚手架。如vue-cli，create-react-app等。这些脚手架等原理都一样，即用Node.js命令行程序生成项目模版。
+第一个Node.js命令行脚本    编写脚手架其实就是Node.js命令行开发,和写shell脚本类似，使用JavaScript语言，写一个可执行脚本 hello wold过程如下： 新建一个hello文件，其中#!/usr/bin/env node不可少，其作用是它告诉系统这个脚本需要用node解释器来执行，语法与node一样。
+#!/usr/bin/env node console.log('hello world'); 然后,修改的权限
+chmod 755 hello 执行脚本
+./hello 如果想把 hello 前面的路径去除，可以将 hello 的路径加入环境变量 PATH。但是，另一种更好的做法，是在当前目录下新建 package.json ，写入下面的内容。
+{ &#34;name&#34;: &#34;hello&#34;, &#34;bin&#34;: { &#34;hello&#34;: &#34;hello&#34; } } 然后执行 npm link 命令。
+npm link 执行脚本
+hello 写一个脚手架    脚手架开发与上面过程类似，有一些npm库可以帮助我们开发命令行工具如shelljs、commander，它们封装了node命令行命令可以更方便命令行开发。 文件目录结构
+. ├── bin │ └── ckoa.js ├── package-lock.json ├── package.json └── utils └── download.js ckoa.js    Node.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chenkai.life/javascript/js-cli-jiaoshoujia/"><meta property="article:section" content="javascript">
+<meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
+<meta property="article:modified_time" content="2022-02-22T12:18:41+08:00">
+<title>
+JavaScript脚手架 · CK's Blog
+</title>
+<link rel=canonical href=https://chenkai.life/javascript/js-cli-jiaoshoujia/>
+<link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen>
+<link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen>
+<link rel=icon type=image/svg+xml href=/favicon.ico>
+<link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png>
+<meta name=generator content="Hugo 0.91.2">
+<link rel=manifest href=/manifest.webmanifest>
+</head>
+<body class="preload-transitions colorscheme-auto">
+<div class=float-container>
+<span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg>
+</span>
+</div>
+<details id=table-of-contents-wapper>
+<summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
+</summary>
+</details>
+<main class=wrapper>
+<nav class=navigation>
+<section class=container>
+<a class=navigation-title href=/>
+CK's Blog
+</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
+</label>
+<ul class=navigation-list>
+<li class=navigation-item>
+<a class=navigation-link href=/>Home</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/tags/>Tags</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/index.xml>RSS</a>
+</li>
+<li class=navigation-item>
+<a class=navigation-link href=/about/>About</a>
+</li>
+<li class=navigation-item id=search-content>
+<input class=search-int type=text placeholder=Search>
+<button class=search-btn data-type=github>GitHub</button>
+<button class=search-btn data-type=google>Google</button>
+</li>
+</ul>
+</section>
+</nav>
+<div class=content>
+<section class="container page">
+<article>
+<header>
+<h1 class=title>
+<a class=title-link href=https://chenkai.life/javascript/js-cli-jiaoshoujia/>
+JavaScript脚手架
+</a>
+</h1>
+<div class=edit-link style=float:right;color:#0366d6>
+<a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/javascript/js-cli-jiaoshoujia.md>编辑</a>
+</div>
+</header>
+<div class=post-meta>
+<div class=date>
+<span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
+<time datetime=2021-07-09T00:00:00Z>
+2021-07-09
+</time>
+</span>
+</div>
+<div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
+<span class=tag>
+<a href=/tags/%E6%96%87%E7%AB%A0/>文章</a>
+</span></div>
+</div>
+<h2 id=什么是脚手架>
+什么是脚手架
+<a class=heading-link href=#%e4%bb%80%e4%b9%88%e6%98%af%e8%84%9a%e6%89%8b%e6%9e%b6>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>脚手架是为了保证各施工过程顺利进行而搭设的工作平台。在项目开发中我们把创建项目结构模版的工具也称之为脚手架。如vue-cli，create-react-app等。这些脚手架等原理都一样，即用Node.js命令行程序生成项目模版。</p>
+<h2 id=第一个nodejs命令行脚本>
+第一个Node.js命令行脚本
+<a class=heading-link href=#%e7%ac%ac%e4%b8%80%e4%b8%aanodejs%e5%91%bd%e4%bb%a4%e8%a1%8c%e8%84%9a%e6%9c%ac>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>编写脚手架其实就是Node.js命令行开发,和写shell脚本类似，使用JavaScript语言，写一个可执行脚本 hello wold过程如下：
+新建一个<code>hello</code>文件，其中<code>#!/usr/bin/env node</code>不可少，其作用是它告诉系统这个脚本需要用node解释器来执行，语法与node一样。</p>
+<pre tabindex=0><code>#!/usr/bin/env node
+console.log('hello world');
+</code></pre><p>然后,修改的权限</p>
+<pre tabindex=0><code>chmod 755 hello
+</code></pre><p>执行脚本</p>
+<pre tabindex=0><code>./hello
+</code></pre><p>如果想把 hello 前面的路径去除，可以将 hello 的路径加入环境变量 PATH。但是，另一种更好的做法，是在当前目录下新建 package.json ，写入下面的内容。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>{
+  <span style=color:#e6db74>&#34;name&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;hello&#34;</span>,
+  <span style=color:#e6db74>&#34;bin&#34;</span><span style=color:#f92672>:</span> {
+    <span style=color:#e6db74>&#34;hello&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;hello&#34;</span>
+  }
+}
+</code></pre></div><p>然后执行 npm link 命令。</p>
+<pre tabindex=0><code>npm link
+</code></pre><p>执行脚本</p>
+<pre tabindex=0><code>hello
+</code></pre><h2 id=写一个脚手架>
+写一个脚手架
+<a class=heading-link href=#%e5%86%99%e4%b8%80%e4%b8%aa%e8%84%9a%e6%89%8b%e6%9e%b6>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>脚手架开发与上面过程类似，有一些npm库可以帮助我们开发命令行工具如<code>shelljs</code>、<code>commander</code>，它们封装了node命令行命令可以更方便命令行开发。
+文件目录结构</p>
+<pre tabindex=0><code>.
+├── bin
+│   └── ckoa.js
+├── package-lock.json
+├── package.json
+└── utils
+    └── download.js
+</code></pre><h2 id=ckoajs>
+ckoa.js
+<a class=heading-link href=#ckoajs>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>Node.js命令行</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>#!/usr/bin/env node
+</span><span style=color:#75715e></span>
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>program</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;commander&#39;</span>)
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>chalk</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;chalk&#39;</span>)
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>downLoad</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;../utils/download&#39;</span>)
+
+<span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span><span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>argv</span> <span style=color:#f92672>||</span> <span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>argv</span>.<span style=color:#a6e22e>length</span> <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>2</span>){
+    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>chalk</span>.<span style=color:#a6e22e>yellow</span>(<span style=color:#e6db74>`\nOptions: \n   -h, --help for a list of available commands.`</span>));
+    <span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>exit</span>(<span style=color:#ae81ff>1</span>);
+}
+
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>gitPath</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;ckvv/cli_koa&#39;</span>;
+<span style=color:#a6e22e>program</span>
+    .<span style=color:#a6e22e>version</span>(<span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;../package&#39;</span>).<span style=color:#a6e22e>version</span>)
+
+<span style=color:#a6e22e>program</span>
+    .<span style=color:#a6e22e>command</span>(<span style=color:#e6db74>&#39;init&#39;</span>)
+    .<span style=color:#a6e22e>description</span>(<span style=color:#e6db74>&#39;初始化一个koa项目&#39;</span>)
+    .<span style=color:#a6e22e>arguments</span>(<span style=color:#e6db74>&#39;&lt;project_name&gt; [env]&#39;</span>)
+    .<span style=color:#a6e22e>action</span>(<span style=color:#66d9ef>async</span> (<span style=color:#a6e22e>args</span>) =&gt; {
+        <span style=color:#a6e22e>downLoad</span>(<span style=color:#a6e22e>gitPath</span>, <span style=color:#e6db74>`./</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>args</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>);
+    });
+
+
+<span style=color:#a6e22e>program</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#39;option:verbose&#39;</span>, <span style=color:#66d9ef>function</span> () {
+    <span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>env</span>.<span style=color:#a6e22e>VERBOSE</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>verbose</span>;
+});
+
+
+<span style=color:#75715e>// 未知命令会报错
+</span><span style=color:#75715e></span><span style=color:#a6e22e>program</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#39;command:*&#39;</span>, <span style=color:#66d9ef>function</span> () {
+    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>chalk</span>.<span style=color:#a6e22e>red</span>(<span style=color:#e6db74>`Invalid command: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>program</span>.<span style=color:#a6e22e>args</span>.<span style=color:#a6e22e>join</span>(<span style=color:#e6db74>&#39; &#39;</span>)<span style=color:#e6db74>}</span><span style=color:#e6db74>\nSee --help for a list of available commands.`</span>));
+    <span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>exit</span>(<span style=color:#ae81ff>1</span>);
+});
+<span style=color:#a6e22e>program</span>.<span style=color:#a6e22e>parse</span>(<span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>argv</span>);
+</code></pre></div><h2 id=downloadjs>
+download.js
+<a class=heading-link href=#downloadjs>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>从git仓库下载文件</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>downLoad</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;download-git-repo&#39;</span>)
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>ora</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;ora&#39;</span>)
+
+<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>clone</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>;
+<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>downGit</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>url</span>, <span style=color:#a6e22e>name</span>) =&gt; {
+    <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>url</span> <span style=color:#f92672>||</span> <span style=color:#f92672>!</span><span style=color:#a6e22e>name</span>) {
+        <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`缺少参数:url-</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>url</span><span style=color:#e6db74>}</span><span style=color:#e6db74>,name-</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>name</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>);
+        <span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>exit</span>(<span style=color:#ae81ff>1</span>);
+        <span style=color:#66d9ef>return</span>;
+    }
+    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>spinner</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>ora</span>(<span style=color:#e6db74>`正在拉取git模板:</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>url</span><span style=color:#e6db74>}</span><span style=color:#e6db74>...`</span>)
+    <span style=color:#a6e22e>spinner</span>.<span style=color:#a6e22e>start</span>();
+    <span style=color:#a6e22e>downLoad</span>(<span style=color:#a6e22e>url</span>, <span style=color:#a6e22e>name</span>, {
+        <span style=color:#a6e22e>clone</span>
+    }, <span style=color:#a6e22e>err</span> =&gt; {
+        <span style=color:#a6e22e>spinner</span>.<span style=color:#a6e22e>stop</span>()
+        <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>err</span> <span style=color:#f92672>?</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>:</span> <span style=color:#e6db74>`拉取git模板:</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>url</span><span style=color:#e6db74>}</span><span style=color:#e6db74>完成`</span>);
+        <span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>exit</span>(<span style=color:#ae81ff>1</span>)
+    })
+}
+
+<span style=color:#a6e22e>module</span>.<span style=color:#a6e22e>exports</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>downGit</span>
+</code></pre></div><h2 id=packagejson>
+package.json
+<a class=heading-link href=#packagejson>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>把下面配置添加到<code>package.json</code>中，npm会将ckoa.js符号链接（symlink）到<code>/usr/local/bin/ckoa</code>(全局安装)或者<code>./node_modules/.bin/</code>(本地安装)
+当我们全局安装时我们可以使用ckoa命令行工具啦，</p>
+<pre tabindex=0><code>  &quot;bin&quot;: {
+    &quot;ckoa&quot;: &quot;bin/ckoa.js&quot;
+  },
+</code></pre><p><strong>注意请确保bin中引用的文件以<code>#!/usr/bin/env node</code>开头</strong></p>
+<h2 id=脚手架发布到npm中>
+脚手架发布到npm中
+<a class=heading-link href=#%e8%84%9a%e6%89%8b%e6%9e%b6%e5%8f%91%e5%b8%83%e5%88%b0npm%e4%b8%ad>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>登陆</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm login --registry http://registry.npmjs.org
+</code></pre></div><p>推送</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm publish --registry http://registry.npmjs.org --access<span style=color:#f92672>=</span>public
+</code></pre></div><h2 id=使用脚手架>
+使用脚手架
+<a class=heading-link href=#%e4%bd%bf%e7%94%a8%e8%84%9a%e6%89%8b%e6%9e%b6>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h2>
+<p>全局安装</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install -g @c_kai/cli
+</code></pre></div><p>使用命令行</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e>## 查看帮助</span>
+ckoa -h
+
+<span style=color:#75715e>## 用脚手架创建项目</span>
+ckoa init my_app;
+</code></pre></div>
+<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=33de0fb97dd613c6f82c983890db957d data-page-url=https://chenkai.life/javascript/js-cli-jiaoshoujia/ data-page-title=JavaScript脚手架 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
+</article>
+</section>
+</div>
+</main>
+<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+<script src=/js/custom.js></script>
+<script src=/js/font.min.js></script>
+</body>
+<script>'serviceWorker'in navigator&&navigator.serviceWorker.register('/service-worker.js')</script>
+</html>

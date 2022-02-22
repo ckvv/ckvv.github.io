@@ -1,53 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>web on CK's Blog</title><link>https://chenkai.life/tags/web/</link><description>Recent content in web on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 31 Dec 2021 15:18:49 +0800</lastBuildDate><atom:link href="https://chenkai.life/tags/web/index.xml" rel="self" type="application/rss+xml"/><item><title>处理浏览器中的字体常见问题</title><link>https://chenkai.life/web/handling-fonts-in-the-web/</link><pubDate>Fri, 31 Dec 2021 15:18:49 +0800</pubDate><guid>https://chenkai.life/web/handling-fonts-in-the-web/</guid><description>当页面中的标题字数是不定的，并且需要适应各种机型屏幕宽度，可能会遇到下面的需求,
-字体末尾如何显示省略号 如果显示区域很小，我们可以只设置为单行显示，对于单行文本末尾显示省略号很简单
-.wrapper { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } 但是如果是显示区域很大,我们需要设置多行的最后一行显示省略号，对于多行文本，常用的方法如下
-移动端兼容较好，适用于webkit内核浏览器, 另外对于超出部分的字体仍会显示出来，如下图所示
-hello hello hello hello hello hello hello hello 所以我们一般需要搭配固定高度及overflow: hidden;, line-height或者font-size使用
-hello hello hello hello hello hello hello hello .wrapper { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; } 解决多行文字时最后一排文字可能超出边框显示不全问题 对于多行文字，最后一排文字可能超出边框显示不全的情况，对于这种情况我们需要设置外部容器高度为字体高度的整数倍如对于一个高6em的容器,我们可以设置他的line-height为3em, 或者我们设置他的font-size为 2.5em,并且把line-height设置为1.2,
-如何文字大小自适应容器 动态修改字体大小 根据不同的字体长度, 设置不同的字体大小； 或者逐渐修改初始字体大小，直到字体容器宽度和高度小于外层包裹的容器宽, 但是由于字体大小有最小值，这种办法对太对的文本也无能为力
-zoom,transform缩放字体容器 我们可以通过外层容器宽高和字体容器宽高计算出需要缩放的比例，通过设置zoom、scale来自适应容器宽高,如:</description></item><item><title>组件间样式隔离的几种方案</title><link>https://chenkai.life/web/css-web-compoent-isolation/</link><pubDate>Wed, 15 Dec 2021 18:31:16 +0800</pubDate><guid>https://chenkai.life/web/css-web-compoent-isolation/</guid><description>CSS即层叠样式表(Cascading Style Sheets）是一种样式表语言，它没有作用域的概念，引入即全局生效的，但一个样式是否起作用由多个因素共同决定，比如：
-重要程度 优先级 样式加载顺序 所以当我们在页面中使用时可能会遇到组件间的样式互相影响的情况，特别是引入了多个组件库或者类名命名不规范时，我们就需要对样式进行隔离，这样就可以避免样式冲突。下面我介绍几种方案： 类名添加特定的前缀 一般来说，我们会在组件内部使用一个特定的前缀，避免组件之间的样式冲突。比如antd的组件内部的样式，都会使用ant-前缀，element-ui的组件内部的样式，都会使用el-前缀。 由于原生css的功能太弱鸡了, 我们在实际开发中一般使用css预处理框架如less, sass等，对于这种我们也可以使用一个类似的功能。
-对于less // button.less @name: v-; .@{name}button { background-color: green; } // 编译为 // .v-button { // background-color: green; // } 重写前缀
-@import 'button.less'; @name: k-; // 编译为 // .k-button { // background-color: green; // } 对于sass sass目前版本支持与less类似的写法，但是Sass 团队不鼓励继续使用@import规则。 并计划在未来几年逐步淘汰它，作为替代方案，他们推荐使用@use规则。详细原因请参考https://sass-lang.com/documentation/at-rules/import。
-/* button.scss */ $name: v-; @mixinconfigure($name: $name) { @if $name { $name: $name !</description></item><item><title>浏览器中获取宽、高相关的属性</title><link>https://chenkai.life/web/get-width-and-height-attributes-in-the-browser/</link><pubDate>Wed, 01 Sep 2021 17:13:52 +0800</pubDate><guid>https://chenkai.life/web/get-width-and-height-attributes-in-the-browser/</guid><description>我们可能需要针对宽屏和高屏编写不同代码，下面我总结一下从浏览器中获取宽、高相关的属性
-css 如果宽高屏不设计具体逻辑代码，我们可以采用css的@media媒体查询的方式判断;
-orientation 宽度和高度相等时会被判断为纵向
-/* viewport 处于纵向，即高度大于等于宽度 */ @media (orientation: portrait) { } /* viewport 处于横向，即宽度大于高度。 */ @media (orientation: landscape) { } aspect-ratio 利用宽高比我们也可以判断宽高屏，当如果同时满足后面的样式会覆盖前面，所以下面当宽高相等时生效的是@media (aspect-ratio: 1/1) {}
-/* 最大宽高比 */ @media (max-aspect-ratio: 1/1){ } /* 最小宽高比 */ @media (min-aspect-ratio: 1/1) { } /* 指定宽高比 */ @media (aspect-ratio: 1/1) { } js window innerHeight innerWidth outerHeight outerWidth 获取浏览器窗口的视口（viewport）高度、宽度（以像素为单位）</description></item><item><title>浅谈css动画</title><link>https://chenkai.life/web/css-animation/</link><pubDate>Wed, 18 Aug 2021 11:31:16 +0800</pubDate><guid>https://chenkai.life/web/css-animation/</guid><description>本文简单介绍如何定义css动画
-transition transitions 可以决定哪些属性发生动画效果transition-property (明确地列出这些属性,如果省略则包含所有属性)，何时开始 transition-delay (设置 delay），持续多久transition-duration (设置 duration) 以及如何动画transition-timing-function (定义timing function，比如匀速地或先快后慢)
-如下面指定字体大小颜色和字体发生动画效果
-.transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } transition的发生需要属性被修改时才会触发，比如hover时我们修改字体大小和颜色，如果没有定义transition这些属性会立即修改，
-.transition-box:hover { font-size: 2rem; color: green; } .transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } .transition-box:hover { font-size: 3rem; color: green; } 把鼠标放上查看效果 CSS 过渡 由简写属性transition 定义是最好的方式，可以避免属性值列表长度不一，节省调试时间。
-也可以用下面子属性来控制过渡的各部分
-transition-property: color, font-size; transition-duration: 4s; transition-timing-function: ease; transition-delay: 0s; transition的特点 只能在css属性变化时被动触发</description></item><item><title>谈谈Web项目中图标的方式</title><link>https://chenkai.life/web/use_icon_in_web/</link><pubDate>Sat, 14 Aug 2021 10:25:11 +0800</pubDate><guid>https://chenkai.life/web/use_icon_in_web/</guid><description>谈谈Web项目中图标的方式
-单个图标 我们可以选择单独引用图标文件如png、svg等等，这种方式缺点显而易见，图标多了之后不方便维护
-字体文件 通过font-face,我们可以指定一个用于显示文本的自定义字体，字体文件内部类似一个svg我们可以在字体文件里面随便定义这些字符的形状，
-通过对应字体文件的字体编码我们就可以使用这些图标了,如下面是一个close图标
-&amp;lt;i class=&amp;#34;iconfont&amp;#34;&amp;gt;&amp;amp;#xe64f;&amp;lt;/i&amp;gt; 这样有个明显的缺点就是图标不直观，我们很难根据&amp;amp;#x33;知道它是什么图标，我们可以通过提前定义好对应图标css的::before的content，将其改造成自定义class引用的方式
-.icon-close:before{ content: &amp;#34;\e64f&amp;#34; } 然后我们在页面中可以这样使用
-&amp;lt;span class=&amp;#34;iconfont icon-close&amp;#34;&amp;gt;&amp;lt;/span&amp;gt; 因为是字体格式所以这种方式使用图标有以下特点
-兼容性最好，支持ie6+，及所有现代浏览器。 支持按字体的方式去动态调整图标大小，颜色等等。 不支持多色。 symbol 引用 symbol 元素用来定义一个图形模板对象，它可以用一个use元素实例化。一个symbol元素本身是不呈现的。只有symbol元素的实例（亦即，一个引用了symbol的 use元素）才能呈现，如
-&amp;lt;svg&amp;gt; &amp;lt;!-- symbol definition NEVER draw --&amp;gt; &amp;lt;symbol id=&amp;#34;sym01&amp;#34; viewBox=&amp;#34;0 0 150 110&amp;#34;&amp;gt; &amp;lt;circle cx=&amp;#34;50&amp;#34; cy=&amp;#34;50&amp;#34; r=&amp;#34;40&amp;#34; stroke-width=&amp;#34;8&amp;#34; stroke=&amp;#34;red&amp;#34; fill=&amp;#34;red&amp;#34; /&amp;gt; &amp;lt;circle cx=&amp;#34;90&amp;#34; cy=&amp;#34;60&amp;#34; r=&amp;#34;40&amp;#34; stroke-width=&amp;#34;8&amp;#34; stroke=&amp;#34;green&amp;#34; fill=&amp;#34;white&amp;#34; /&amp;gt; &amp;lt;/symbol&amp;gt; &amp;lt;!-- actual drawing by &amp;#34;use&amp;#34; element --&amp;gt; &amp;lt;use xlink:href=&amp;#34;#sym01&amp;#34; x=&amp;#34;0&amp;#34; y=&amp;#34;0&amp;#34; width=&amp;#34;100&amp;#34; height=&amp;#34;50&amp;#34; /&amp;gt; &amp;lt;use xlink:href=&amp;#34;#sym01&amp;#34; x=&amp;#34;0&amp;#34; y=&amp;#34;50&amp;#34; width=&amp;#34;75&amp;#34; height=&amp;#34;38&amp;#34; /&amp;gt; &amp;lt;use xlink:href=&amp;#34;#sym01&amp;#34; x=&amp;#34;0&amp;#34; y=&amp;#34;100&amp;#34; width=&amp;#34;50&amp;#34; height=&amp;#34;25&amp;#34; /&amp;gt; &amp;lt;/svg&amp;gt; symbol的作用域是全局的我们也可以在svg中单独使用如</description></item><item><title>node复用原始接口下载表格</title><link>https://chenkai.life/nodejs/node_download_biaoge_sheji/</link><pubDate>Wed, 11 Aug 2021 11:12:19 +0800</pubDate><guid>https://chenkai.life/nodejs/node_download_biaoge_sheji/</guid><description>我们在做后台开发时可能有很多接口的数据需要下载下来,如果从头开发无疑会有很多重复代码如参数校验、权限验证等，接下来我谈谈我是如何利用现有的node接口下载表格
-json数组转表格 一般我们的接口返回的是json数组,我们很容易想到只需要把返回数据的json转为表格下载就可以了其他逻辑都是一样的，node有很多现成的库可以处理如xlsx
-function frows2XlsxBufferile(formatData) { const ws = xlsx.utils.json_to_sheet(formatData); const wb = xlsx.utils.book_new(); xlsx.utils.book_append_sheet(wb, ws, &amp;#39;SheetJS&amp;#39;); return xlsx.write(wb, { type: &amp;#39;buffer&amp;#39;, bookType: &amp;#39;xlsx&amp;#39; }); } 在ctx上下文添加下载文件的方法 默认情况下返回的是文本数据这里需要处理,我这里需要在header中声明返回的内容是一个需要下载的文件
-function file(name, data) { // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition // 说明浏览器应该将内容下载到本地；filename 的值预填为下载后的文件名 this.response.set(&amp;#39;Content-disposition&amp;#39;, `attachment;filename=&amp;#34;${name}&amp;#34;`); // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type // 说明返回的是一个二进制流数据 this.response.set(&amp;#39;Content-Type&amp;#39;, &amp;#39;application/octet-stream&amp;#39;); return this.response.body = data; } 返回表格 我们将上面封装下，方便调用,
-async download() { const { ctx } = this; const result = await this.</description></item><item><title>常用的一些css样式</title><link>https://chenkai.life/web/css_useful_style/</link><pubDate>Fri, 06 Aug 2021 15:06:32 +0800</pubDate><guid>https://chenkai.life/web/css_useful_style/</guid><description>字体 文字超出后省略
-white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 中文简&amp;gt;繁转换
-font-variant-east-asian: traditional;</description></item><item><title>css元素选择器</title><link>https://chenkai.life/web/css_select/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/web/css_select/</guid><description>CSS 选择器规定了 CSS 规则会应用到哪些元素上。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>web on CK's Blog</title><link>https://chenkai.life/tags/web/</link><description>Recent content in web on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 09 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://chenkai.life/tags/web/index.xml" rel="self" type="application/rss+xml"/><item><title>css元素选择器</title><link>https://chenkai.life/web/css-select/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/css-select/</guid><description>CSS 选择器规定了 CSS 规则会应用到哪些元素上。
 基本选择器 节点选择 CSS 类型选择器按节点名称匹配元素。换句话说，它选择文档中给定类型的所有元素。
 /* All &amp;lt;a&amp;gt; elements. */ a { color: red; } 类选择 该CSS 类选择匹配根据他们的内容元素class属性。
-/* All elements with class=&amp;#34;spacious&amp;#34; */ .spacious { margin: 2em; } /* All &amp;lt;li&amp;gt; elements with class=&amp;#34;spacious&amp;#34; */ li.spacious { margin: 2em; } /* All &amp;lt;li&amp;gt; elements with a class list that includes both &amp;#34;spacious&amp;#34; and &amp;#34;elegant&amp;#34; */ /* For example, class=&amp;#34;elegant retro spacious&amp;#34; */ li.</description></item><item><title>css关于浮动的知识</title><link>https://chenkai.life/web/css_float/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/web/css_float/</guid><description>float CSS属性指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。 当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移直到碰到了所处的容器的边框，或者碰到另外一个浮动的元素。
+/* All elements with class=&amp;#34;spacious&amp;#34; */ .spacious { margin: 2em; } /* All &amp;lt;li&amp;gt; elements with class=&amp;#34;spacious&amp;#34; */ li.spacious { margin: 2em; } /* All &amp;lt;li&amp;gt; elements with a class list that includes both &amp;#34;spacious&amp;#34; and &amp;#34;elegant&amp;#34; */ /* For example, class=&amp;#34;elegant retro spacious&amp;#34; */ li.</description></item><item><title>css关于浮动的知识</title><link>https://chenkai.life/web/css-float/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/css-float/</guid><description>float CSS属性指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。 当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移直到碰到了所处的容器的边框，或者碰到另外一个浮动的元素。
 float原始用法 float本意是为了允许文本和内联元素环它如（文字环绕图片）,就像下面一样
 .float { float: left; width: 200px; height: 200px; background-color: red; } &amp;lt;div class=&amp;#34;wrapper&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;float&amp;#34;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div&amp;gt; float本意是为了允许文本和内联元素环它; float本意是为了允许文本和内联元素环它; float本意是为了允许文本和内联元素环它; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 滥用float 带来的问题 我们使用float浮动做了很多其本职工作以外的事情，使用float进行分栏布局、列表排列，但是如果一个元素里只有浮动元素，那它的高度会是0。如果你想要它自适应即包含所有浮动元素，那你需要清除它的子元素。
 清除浮动的几种办法 ::after伪元素 这种方式不会影响任何其他样式，通用性强，覆盖面广，推荐使用
 #container::after { content: &amp;#34;&amp;#34;; display: block; clear: both; } 类似的可以在元素后面加一个&amp;lt;div style=&amp;quot;clear:both;&amp;quot; &amp;gt;&amp;lt;/div&amp;gt;空元素
 其他清除浮动方法 IE下清除浮动准则很简单，使元素haslayout就可以了。如宽度值，高度值，绝对定位，zoom，浮动本身都可以让元素haslayout。显然，首选zoom:1;不会干扰任何样式。非IE浏览器常用的是overflow属性
 container也浮动,这种方式治标不治本总不能一直浮动到root
-#container{ float:left; } 使用position: absolute</description></item><item><title>DOM中的event</title><link>https://chenkai.life/web/dom_event/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/web/dom_event/</guid><description>event Event 接口表示在 DOM 中发生的任何事件; 一些是用户生成的（例如鼠标或键盘事件），而其他由 API 生成（例如指示动画已经完成运行的事件，视频已被暂停等等。事件通常由外部源触发，同样也会以编程方式触发，例如执行一个 element 的一个 HTMLElement.click( ) 方法，或通过定义事件，然后使用 EventTarget.dispatchEvent() 将其派发到一个指定的目标。有许多类型的事件，其中一些使用基于主要事件接口的其他接口。事件本身包含所有事件通用的属性和方法。 事件处理函数可以附加在各种对象上，包括 DOM元素,window,document对象. 等
+#container{ float:left; } 使用position: absolute</description></item><item><title>DOM中的event</title><link>https://chenkai.life/web/dom-event/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/dom-event/</guid><description>event Event 接口表示在 DOM 中发生的任何事件; 一些是用户生成的（例如鼠标或键盘事件），而其他由 API 生成（例如指示动画已经完成运行的事件，视频已被暂停等等。事件通常由外部源触发，同样也会以编程方式触发，例如执行一个 element 的一个 HTMLElement.click( ) 方法，或通过定义事件，然后使用 EventTarget.dispatchEvent() 将其派发到一个指定的目标。有许多类型的事件，其中一些使用基于主要事件接口的其他接口。事件本身包含所有事件通用的属性和方法。 事件处理函数可以附加在各种对象上，包括 DOM元素,window,document对象. 等
 有三种方式可以为DOM元素注册事件处理函数
 EventTarget.addEventListener // Assuming myButton is a button element myButton.addEventListener(&amp;#39;click&amp;#39;, function(){alert(&amp;#39;Hello world&amp;#39;);}, false); HTML 属性 &amp;lt;button onclick=&amp;#34;alert(&amp;#39;Hello world!&amp;#39;)&amp;#34;&amp;gt; DOM 元素属性 该函数在定义时，可以传入一个 event 形式的参数。 在HTML 规范中，其返回值会以一种特殊的方式被处理。
 // Assuming myButton is a button element myButton.onclick = function(event){alert('Hello world');}; 创建自定义事件 可以使用事件构造函数创建事件
-var event = new Event(&amp;#39;build&amp;#39;); let eventEle = document.</description></item><item><title>Flex弹性布局</title><link>https://chenkai.life/web/css_flex/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/web/css_flex/</guid><description>&lt;h2 id="弹性布局">
+var event = new Event(&amp;#39;build&amp;#39;); let eventEle = document.</description></item><item><title>Flex弹性布局</title><link>https://chenkai.life/web/css-flex/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/css-flex/</guid><description>&lt;h2 id="弹性布局">
 弹性布局
 &lt;a class="heading-link" href="#%e5%bc%b9%e6%80%a7%e5%b8%83%e5%b1%80">
 &lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
@@ -67,98 +32,41 @@ var event = new Event(&amp;#39;build&amp;#39;); let eventEle = document.</descri
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
 &lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">inline-flex&lt;/span>;
 }
-&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>jsonwebtoken</title><link>https://chenkai.life/nodejs/jsonwebtoken/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/nodejs/jsonwebtoken/</guid><description>什么是JSON Web Token？ JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用SON对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT可以使用加密算法（使用HMAC算法）或使用RSA或ECDSA的公钥/私钥对进行签名。
-什么时候应该使用JSON Web令牌 以下是JSON Web令牌有用的一些场景：
-授权：这是使用JWT的最常见方案。一旦用户登录，每个后续请求将包括JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On是一种现在广泛使用JWT的功能，因为它的开销很小，并且能够在不同的域中轻松使用。
-信息交换：JSON Web令牌是在各方之间安全传输信息的好方法。因为JWT可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。
-JSON Web令牌结构 JSON Web Tokens由.分隔的三个部分组成，它们是：
-头 有效载荷 签名 因此，JWT通常如xxxxx.yyyyy.zzzzz所示. 头 标头通常由两部分组成：令牌的类型，即JWT，以及正在使用的签名算法，例如HMAC SHA256或RSA。
-{ &amp;quot;alg&amp;quot;: &amp;quot;HS256&amp;quot;, &amp;quot;typ&amp;quot;: &amp;quot;JWT&amp;quot; } 然后，这个JSON被编码为Base64Url，形成JWT的第一部分。
-有效载荷 令牌的第二部分是有效负载，其中包含声明。声明是关于实体（通常是用户）和其他数据的声明。有三种类型:registered、public、private claims.
-registered：这些是一组预定义声明，不是强制性的，但建议使用，以提供一组有用的，可互操作的声明。其中一些是： iss（发行人）， exp（到期时间），sub（主题）， aud（观众）等。 public：这些可以由使用JWT的人随意定义。但为避免冲突，应在 IANA JSON Web令牌注册表中定义它们，或者将 其定义为包含防冲突命名空间的URI。 private claims： 这是创建共享使用它们同意并既不是当事人之间的信息自定义声明注册或公众的权利要求 然后，有效负载经过Base64Url编码，形成JSON Web令牌的第二部分。</description></item><item><title>vue_nextTick的原理</title><link>https://chenkai.life/web/vue_nexttick/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/web/vue_nexttick/</guid><description>nextTick是vue的一个全局API， 作用是在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
+&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>vue_nextTick的原理</title><link>https://chenkai.life/web/vue-nex-tick/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/vue-nex-tick/</guid><description>nextTick是vue的一个全局API， 作用是在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
 Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。
-const callbacks = [] let pending = false function flushCallbacks () { pending = false const copies = callbacks.slice(0) callbacks.length = 0 for (let i = 0; i &amp;lt; copies.length; i++) { copies[i]() } } // Here we have async deferring wrappers using microtasks. // In 2.</description></item><item><title>vue实践</title><link>https://chenkai.life/web/vue_guide/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/web/vue_guide/</guid><description>参考vue风格指南 参考vue编程指南
+const callbacks = [] let pending = false function flushCallbacks () { pending = false const copies = callbacks.slice(0) callbacks.length = 0 for (let i = 0; i &amp;lt; copies.length; i++) { copies[i]() } } // Here we have async deferring wrappers using microtasks. // In 2.</description></item><item><title>vue实践</title><link>https://chenkai.life/web/vue-guide/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/vue-guide/</guid><description>参考vue风格指南 参考vue编程指南
 Vue Router 路由懒加载 当打包构建应用时，JavaScript 包会变得非常大，影响页面加载。如果我们能把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应组件，这样就更加高效了结合 Vue 的异步组件和 Webpack 的代码分割功能，轻松实现路由组件的懒加载
 规范 vue文件内css样式尽量使用局部样式。全局样式可以统一放入静态库由app.vue文件导入
 注意事项 vue data中的对象状态是响应式的，那么当我们变更状态时，监视状态的 Vue 组件也会自动更新
-最好提前在你的 store 中初始化好所有所需属性。 当需要在对象上添加新属性时，你应该 使用 Vue.set(obj, 'newProp', 123), 或者 以新对象替换老对象。例如，利用对象展开运算符我们可以这样写： state.obj = { ...state.obj, newProp: 123 }</description></item><item><title>vue样式dev和build下不一致</title><link>https://chenkai.life/web/vue_page_style_dev_build_different/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/web/vue_page_style_dev_build_different/</guid><description>一次更新镜像后发现vue项目页面混乱，在开发模式模式下，写的样式有效，打包后无效
+最好提前在你的 store 中初始化好所有所需属性。 当需要在对象上添加新属性时，你应该 使用 Vue.set(obj, 'newProp', 123), 或者 以新对象替换老对象。例如，利用对象展开运算符我们可以这样写： state.obj = { ...state.obj, newProp: 123 }</description></item><item><title>vue样式dev和build下不一致</title><link>https://chenkai.life/web/vue-page-style-dev-build-different/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/vue-page-style-dev-build-different/</guid><description>一次更新镜像后发现vue项目页面混乱，在开发模式模式下，写的样式有效，打包后无效
 一、多个相同样式文件同时存在项目中 现象：修改组件时，在项目中复制了一个组件重命名后进行修改，在本地执行正常，后打包上传，无法展示正常效果。 解决过程：在本地试图修改总是不见效果，在控制台查看样式仍是之前的样式，把其中一处样式在所有相关组件中修改，打包上传后样式生效，这说明是旧的样式在打包时覆盖了新的样式。将旧组件删除后解决上述问题。 原因猜测：因为相同组件包含不同样式时，无法判断哪份样式时在后面渲染，如果旧样式刚好打包后在后面渲染，则会覆盖掉新写的样式。在本地执行时，因为样式没有打包，访问页面时渲染的都是组件自身样式，所以不会出现上述问题。
 二、全局(main.js)引用样式 现象：在全局引入了Element UI 样式，在header组件中修改部分样式，在本地执行正常，后打包上传，无法展示正常效果。 解决过程：因为在项目中段发现该问题，以为是后续的样式造成的影响(虽然我也认为可能性极小)，删除新写的组件，没有效果。运行一段时间之前的代码，项目正常运行，这迫使我回想中间这段时间对项目做了什么？除了新写了一些组件，还将一些配置信息从index.js中转移到了main.js中，测试发现果然是这里出现了问题。配置中同时出现了Element UI 样式文件引用，还有router的引用，将yang样式引用放在router引用后解决问题。 原因猜测：不正常的样式显示的还是组件原始的样式，由此猜测router加载时会加载组件样式，将样式文件在router后引用会将router加载时渲染的样式覆盖掉，所以建议将router的引用放在最后面。在每个组件的样式中记得添加 ‘scoped’.
-import &amp;#39;element-ui/lib/theme-chalk/index.css&amp;#39; //element样式文件 import App from &amp;#39;./App&amp;#39; 如果相反，那么element-ui的样式会覆盖自定义的样式，所以会出现你修改的样式不生效问题！！</description></item><item><title>vue项目添加单元测试</title><link>https://chenkai.life/web/vue_test/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/web/vue_test/</guid><description>创建vue的单元测试项目
+import &amp;#39;element-ui/lib/theme-chalk/index.css&amp;#39; //element样式文件 import App from &amp;#39;./App&amp;#39; 如果相反，那么element-ui的样式会覆盖自定义的样式，所以会出现你修改的样式不生效问题！！</description></item><item><title>vue项目添加单元测试</title><link>https://chenkai.life/web/vue-test/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/vue-test/</guid><description>创建vue的单元测试项目
 vue-cli 创建项目 vue create vue-test Vue CLI 3可以向项目组中直接添加unit-jest vue add @vue/unit-jest 可以发现项目中多了很多文件，并且已经创建了一个测试文件demo，
 进行测试 vue在添加单元测试框架时会在package.jsonscripts添加一个test:unit，我们可以允许此命令打开测试
 在vue版本过低的项目中添加单元测试 我们可以选择以下两种方式
 升级vue版本及其依赖 vue版本如果太旧的不支持此种方式直接添加单元测试,可以选择更新vue版本2.5以上，并更新其依赖库。 此种方法可能会出现浏览器报exportes错误，把.babelrc文件transform-runtime删除即可。
 采用旧版本方式 Note: This example is outdated. It&amp;rsquo;s now recommended to scaffold your project with Vue CLI 3 which provides out-of-the-box configurations for unit testing.
-vue-test-utils-jest-example Example project using Jest + vue-test-utils together</description></item><item><title>WebWorker</title><link>https://chenkai.life/web/web-worker/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/web/web-worker/</guid><description>一、概述 JavaScript 语言采用的是单线程模型，也就是说，所有任务只能在一个线程上完成，一次只能做一件事。前面的任务没做完，后面的任务只能等着。随着电脑计算能力的增强，尤其是多核 CPU 的出现，单线程带来很大的不便，无法充分发挥计算机的计算能力。
-Web Worker 的作用，就是为 JavaScript 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给后者运行。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰。等到 Worker 线程完成计算任务，再把结果返回给主线程。这样的好处是，一些计算密集型或高延迟的任务，被 Worker 线程负担了，主线程（通常负责 UI 交互）就会很流畅，不会被阻塞或拖慢。
-Worker 线程一旦新建成功，就会始终运行，不会被主线程上的活动（比如用户点击按钮、提交表单）打断。这样有利于随时响应主线程的通信。但是，这也造成了 Worker 比较耗费资源，不应该过度使用，而且一旦使用完毕，就应该关闭。
-Web Worker 有以下几个使用注意点。
-（1）同源限制
-分配给 Worker 线程运行的脚本文件，必须与主线程的脚本文件同源。
-（2）DOM 限制
-Worker 线程所在的全局对象，与主线程不一样，无法读取主线程所在网页的 DOM 对象，也无法使用document、window、parent这些对象。但是，Worker 线程可以navigator对象和location对象。
-（3）通信联系
-Worker 线程和主线程不在同一个上下文环境，它们不能直接通信，必须通过消息完成。
-（4）脚本限制
-Worker 线程不能执行alert()方法和confirm()方法，但可以使用 XMLHttpRequest 对象发出 AJAX 请求。
-（5）文件限制
-Worker 线程无法读取本地文件，即不能打开本机的文件系统（file://），它所加载的脚本，必须来自网络。
-二、基本用法 2.1 主线程 主线程采用new命令，调用Worker()构造函数，新建一个 Worker 线程。
-var worker = new Worker(&amp;#39;work.js&amp;#39;); Worker()构造函数的参数是一个脚本文件，该文件就是 Worker 线程所要执行的任务。由于 Worker 不能读取本地文件，所以这个脚本必须来自网络。如果下载没有成功（比如404错误），Worker 就会默默地失败。</description></item><item><title>Web面试问题</title><link>https://chenkai.life/hide/web_mian_shi_qs2/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/hide/web_mian_shi_qs2/</guid><description>&lt;h2 id="前端工作面试问题">
-前端工作面试问题
-&lt;a class="heading-link" href="#%e5%89%8d%e7%ab%af%e5%b7%a5%e4%bd%9c%e9%9d%a2%e8%af%95%e9%97%ae%e9%a2%98">
-&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
-&lt;/a>
-&lt;/h2>
-&lt;p>本文包含了一些用于考查候选者的前端面试问题。不建议对单个候选者问及每个问题 (那需要好几个小时)。只要从列表里挑选一些，就能帮助你考查候选者是否具备所需要的技能。&lt;/p>
-&lt;p>&lt;strong>备注：&lt;/strong> 这些问题中很多都是开放性的，可以引发有趣的讨论。这比直接的答案更能体现此人的能力。&lt;/p>
-&lt;h2 id="a-nametoc目录a">
-&lt;a name='toc'>目录&lt;/a>
-&lt;a class="heading-link" href="#a-nametoc%e7%9b%ae%e5%bd%95a">
-&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
-&lt;/a>
-&lt;/h2>
-&lt;ol>
-&lt;li>&lt;a href="#general-questions">常见问题&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#html-questions">HTML 相关问题&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#css-questions">CSS 相关问题&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#js-questions">JS 相关问题&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#testing-questions">测试相关问题&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#performance-questions">效能相关问题&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#network-questions">网络相关问题&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#coding-questions">代码相关问题&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#fun-questions">趣味问题&lt;/a>&lt;/li>
-&lt;/ol></description></item><item><title>前端下载文本</title><link>https://chenkai.life/javascript/brower_download_text/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/javascript/brower_download_text/</guid><description>前端保存文本 function download( text, filename) { var element = document.createElement(&amp;#39;a&amp;#39;); element.setAttribute(&amp;#39;href&amp;#39;, &amp;#39;data:text/plain;charset=utf-8,&amp;#39; + encodeURIComponent(text)); element.setAttribute(&amp;#39;download&amp;#39;, filename); element.style.display = &amp;#39;none&amp;#39;; document.body.appendChild(element); element.click(); document.body.removeChild(element); } download(&amp;#34;data.txt&amp;#34;, &amp;#34;hello word!&amp;#34;);　// 调用</description></item><item><title>前端开发面试题</title><link>https://chenkai.life/hide/web_mian_shi_qs1/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/hide/web_mian_shi_qs1/</guid><description>前端开发面试题 （题目列表页） 目录 前言 HTML部分 CSS部分 JavaScript部分 其他问题 前端学习网站推荐 前言 前言
-HTML Doctype作用？严格模式与混杂模式如何区分？它们有何意义?
-HTML5 为什么只需要写 ？
-行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
-页面导入样式时，使用link和@import有什么区别？
-介绍一下你对浏览器内核的理解？
-常见的浏览器内核有哪些？
-html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？
-简述一下你对HTML语义化的理解？
-HTML5的离线储存怎么使用，工作原理能不能解释一下？
-浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
-请描述一下 cookies，sessionStorage 和 localStorage 的区别？
-iframe有那些缺点？</description></item><item><title>前端开发面试题及答案</title><link>https://chenkai.life/hide/web_min_shi_qsan/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/hide/web_min_shi_qsan/</guid><description>&lt;h2 id="前端开发面试题">
-前端开发面试题
-&lt;a class="heading-link" href="#%e5%89%8d%e7%ab%af%e5%bc%80%e5%8f%91%e9%9d%a2%e8%af%95%e9%a2%98">
-&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
-&lt;/a>
-&lt;/h2>
-&lt;h2 id="a-namepreface前言a">
-&lt;a name='preface'>前言&lt;/a>
-&lt;a class="heading-link" href="#a-namepreface%e5%89%8d%e8%a8%80a">
-&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
-&lt;/a>
-&lt;/h2>
-&lt;p>&lt;a href="http://markyun.github.io/2015/Front-end-Developer-Questions/" title="Questions">只看问题点这里 &lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers" title="Questions-and-Answers">看全部问题和答案点这里&lt;/a>&lt;/p>
-&lt;p>本文由我收集总结了一些前端面试题，初学者阅后也要用心钻研其中的原理，重要知识需要系统学习、透彻学习，形成自己的知识链。万不可投机取巧，临时抱佛脚只求面试侥幸混过关是错误的！也是不可能的！不可能的！不可能的！&lt;/p></description></item><item><title>拷贝数据到剪贴板</title><link>https://chenkai.life/web/brower_copy_to_clipboard/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/web/brower_copy_to_clipboard/</guid><description>介绍几种在浏览器中拷贝数据到剪贴板的方法
-document.execCommand(&amp;ldquo;copy&amp;rdquo;); 拷贝当前选中内容到剪贴板, 该api已经废弃不推荐使用，
-function fallbackCopyTextToClipboard(text) { const textArea = document.createElement(&amp;#34;textarea&amp;#34;); textArea.value = text; textArea.style.top = &amp;#34;0&amp;#34;; textArea.style.left = &amp;#34;0&amp;#34;; textArea.style.position = &amp;#34;fixed&amp;#34;; document.body.appendChild(textArea); textArea.focus(); textArea.select(); try { let msg = document.execCommand(&amp;#34;copy&amp;#34;); if (!msg) { throw new Error(&amp;#34;Copy filed&amp;#34;); } } finally { document.body.removeChild(textArea); } } navigator.clipboard 剪贴板 Clipboard API 提供了响应剪贴板命令（剪切、复制和粘贴）与异步读写系统剪贴板的能力。从权限 Permissions API 获取权限之后，才能访问剪贴板内容；如果用户没有授予权限，则不允许读取或更改剪贴板内容。该 API 被设计用来取代使用 document.execCommand() 的剪贴板访问方式。(基于 HTTP 的网站中包含的脚本则不能获得剪贴板对象)
-await navigator.clipboard.writeText(data); npm package clipboard, 内部使用的 document.</description></item><item><title>浏览器如何渲染页面</title><link>https://chenkai.life/web/how_brower_render_page/</link><pubDate>Fri, 09 Jul 2021 15:37:56 +0800</pubDate><guid>https://chenkai.life/web/how_brower_render_page/</guid><description>参考https://coolshell.cn/articles/9666.html
+vue-test-utils-jest-example Example project using Jest + vue-test-utils together</description></item><item><title>处理浏览器中的字体常见问题</title><link>https://chenkai.life/web/handling-fonts-in-the-web/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/handling-fonts-in-the-web/</guid><description>当页面中的标题字数是不定的，并且需要适应各种机型屏幕宽度，可能会遇到下面的需求,
+字体末尾如何显示省略号 如果显示区域很小，我们可以只设置为单行显示，对于单行文本末尾显示省略号很简单
+.wrapper { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } 但是如果是显示区域很大,我们需要设置多行的最后一行显示省略号，对于多行文本，常用的方法如下
+移动端兼容较好，适用于webkit内核浏览器, 另外对于超出部分的字体仍会显示出来，如下图所示
+hello hello hello hello hello hello hello hello 所以我们一般需要搭配固定高度及overflow: hidden;, line-height或者font-size使用
+hello hello hello hello hello hello hello hello .wrapper { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; } 解决多行文字时最后一排文字可能超出边框显示不全问题 对于多行文字，最后一排文字可能超出边框显示不全的情况，对于这种情况我们需要设置外部容器高度为字体高度的整数倍如对于一个高6em的容器,我们可以设置他的line-height为3em, 或者我们设置他的font-size为 2.5em,并且把line-height设置为1.2,
+如何文字大小自适应容器 动态修改字体大小 根据不同的字体长度, 设置不同的字体大小； 或者逐渐修改初始字体大小，直到字体容器宽度和高度小于外层包裹的容器宽, 但是由于字体大小有最小值，这种办法对太对的文本也无能为力
+zoom,transform缩放字体容器 我们可以通过外层容器宽高和字体容器宽高计算出需要缩放的比例，通过设置zoom、scale来自适应容器宽高,如:</description></item><item><title>常用的一些css样式</title><link>https://chenkai.life/web/css-useful-style/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/css-useful-style/</guid><description>字体 文字超出后省略
+white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 中文简&amp;gt;繁转换
+font-variant-east-asian: traditional;</description></item><item><title>浅谈css动画</title><link>https://chenkai.life/web/css-animation/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/css-animation/</guid><description>本文简单介绍如何定义css动画
+transition transitions 可以决定哪些属性发生动画效果transition-property (明确地列出这些属性,如果省略则包含所有属性)，何时开始 transition-delay (设置 delay），持续多久transition-duration (设置 duration) 以及如何动画transition-timing-function (定义timing function，比如匀速地或先快后慢)
+如下面指定字体大小颜色和字体发生动画效果
+.transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } transition的发生需要属性被修改时才会触发，比如hover时我们修改字体大小和颜色，如果没有定义transition这些属性会立即修改，
+.transition-box:hover { font-size: 2rem; color: green; } .transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } .transition-box:hover { font-size: 3rem; color: green; } 把鼠标放上查看效果 CSS 过渡 由简写属性transition 定义是最好的方式，可以避免属性值列表长度不一，节省调试时间。
+也可以用下面子属性来控制过渡的各部分
+transition-property: color, font-size; transition-duration: 4s; transition-timing-function: ease; transition-delay: 0s; transition的特点 只能在css属性变化时被动触发</description></item><item><title>浏览器中获取宽、高相关的属性</title><link>https://chenkai.life/web/get-width-and-height-attributes-in-the-browser/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/get-width-and-height-attributes-in-the-browser/</guid><description>我们可能需要针对宽屏和高屏编写不同代码，下面我总结一下从浏览器中获取宽、高相关的属性
+css 如果宽高屏不设计具体逻辑代码，我们可以采用css的@media媒体查询的方式判断;
+orientation 宽度和高度相等时会被判断为纵向
+/* viewport 处于纵向，即高度大于等于宽度 */ @media (orientation: portrait) { } /* viewport 处于横向，即宽度大于高度。 */ @media (orientation: landscape) { } aspect-ratio 利用宽高比我们也可以判断宽高屏，当如果同时满足后面的样式会覆盖前面，所以下面当宽高相等时生效的是@media (aspect-ratio: 1/1) {}
+/* 最大宽高比 */ @media (max-aspect-ratio: 1/1){ } /* 最小宽高比 */ @media (min-aspect-ratio: 1/1) { } /* 指定宽高比 */ @media (aspect-ratio: 1/1) { } js window innerHeight innerWidth outerHeight outerWidth 获取浏览器窗口的视口（viewport）高度、宽度（以像素为单位）</description></item><item><title>浏览器如何渲染页面</title><link>https://chenkai.life/web/how-brower-render-page/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/how-brower-render-page/</guid><description>参考https://coolshell.cn/articles/9666.html
 文章是为了说明浏览器如何将HTML，CSS和JavaScript转换为网站。
 首先 浏览器是一个可以从远程服务器或者本地磁盘将文件加载、显示、交互的软件。
 浏览器有两个重要部分：
@@ -177,4 +85,67 @@ Chrome使用V8引擎， Safari使用JavaScriptCore， Firefox使用SpiderMonkey 
 JavaScript JavaScript可以更改DOM和CSSOM。
 ###Javascript执行前将停止整个DOM构造过程
 由于浏览器不确定此特定Javascript会做什么，因此通过停止整个DOM结构来采取预防措施。每当浏览器遇到script标签时，在脚本完成执行之前，将停止整个DOM构造过程。
-&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Medium Article Demo&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;style.</description></item></channel></rss>
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Medium Article Demo&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;style.</description></item><item><title>组件间样式隔离的几种方案</title><link>https://chenkai.life/web/css-web-compoent-isolation/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/css-web-compoent-isolation/</guid><description>CSS即层叠样式表(Cascading Style Sheets）是一种样式表语言，它没有作用域的概念，引入即全局生效的，但一个样式是否起作用由多个因素共同决定，比如：
+重要程度 优先级 样式加载顺序 所以当我们在页面中使用时可能会遇到组件间的样式互相影响的情况，特别是引入了多个组件库或者类名命名不规范时，我们就需要对样式进行隔离，这样就可以避免样式冲突。下面我介绍几种方案： 类名添加特定的前缀 一般来说，我们会在组件内部使用一个特定的前缀，避免组件之间的样式冲突。比如antd的组件内部的样式，都会使用ant-前缀，element-ui的组件内部的样式，都会使用el-前缀。 由于原生css的功能太弱鸡了, 我们在实际开发中一般使用css预处理框架如less, sass等，对于这种我们也可以使用一个类似的功能。
+对于less // button.less @name: v-; .@{name}button { background-color: green; } // 编译为 // .v-button { // background-color: green; // } 重写前缀
+@import 'button.less'; @name: k-; // 编译为 // .k-button { // background-color: green; // } 对于sass sass目前版本支持与less类似的写法，但是Sass 团队不鼓励继续使用@import规则。 并计划在未来几年逐步淘汰它，作为替代方案，他们推荐使用@use规则。详细原因请参考https://sass-lang.com/documentation/at-rules/import。
+/* button.scss */ $name: v-; @mixinconfigure($name: $name) { @if $name { $name: $name !</description></item><item><title>谈谈Web项目中图标的方式</title><link>https://chenkai.life/web/use-icon-in-web/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/use-icon-in-web/</guid><description>谈谈Web项目中图标的方式
+单个图标 我们可以选择单独引用图标文件如png、svg等等，这种方式缺点显而易见，图标多了之后不方便维护
+字体文件 通过font-face,我们可以指定一个用于显示文本的自定义字体，字体文件内部类似一个svg我们可以在字体文件里面随便定义这些字符的形状，
+通过对应字体文件的字体编码我们就可以使用这些图标了,如下面是一个close图标
+&amp;lt;i class=&amp;#34;iconfont&amp;#34;&amp;gt;&amp;amp;#xe64f;&amp;lt;/i&amp;gt; 这样有个明显的缺点就是图标不直观，我们很难根据&amp;amp;#x33;知道它是什么图标，我们可以通过提前定义好对应图标css的::before的content，将其改造成自定义class引用的方式
+.icon-close:before{ content: &amp;#34;\e64f&amp;#34; } 然后我们在页面中可以这样使用
+&amp;lt;span class=&amp;#34;iconfont icon-close&amp;#34;&amp;gt;&amp;lt;/span&amp;gt; 因为是字体格式所以这种方式使用图标有以下特点
+兼容性最好，支持ie6+，及所有现代浏览器。 支持按字体的方式去动态调整图标大小，颜色等等。 不支持多色。 symbol 引用 symbol 元素用来定义一个图形模板对象，它可以用一个use元素实例化。一个symbol元素本身是不呈现的。只有symbol元素的实例（亦即，一个引用了symbol的 use元素）才能呈现，如
+&amp;lt;svg&amp;gt; &amp;lt;!-- symbol definition NEVER draw --&amp;gt; &amp;lt;symbol id=&amp;#34;sym01&amp;#34; viewBox=&amp;#34;0 0 150 110&amp;#34;&amp;gt; &amp;lt;circle cx=&amp;#34;50&amp;#34; cy=&amp;#34;50&amp;#34; r=&amp;#34;40&amp;#34; stroke-width=&amp;#34;8&amp;#34; stroke=&amp;#34;red&amp;#34; fill=&amp;#34;red&amp;#34; /&amp;gt; &amp;lt;circle cx=&amp;#34;90&amp;#34; cy=&amp;#34;60&amp;#34; r=&amp;#34;40&amp;#34; stroke-width=&amp;#34;8&amp;#34; stroke=&amp;#34;green&amp;#34; fill=&amp;#34;white&amp;#34; /&amp;gt; &amp;lt;/symbol&amp;gt; &amp;lt;!-- actual drawing by &amp;#34;use&amp;#34; element --&amp;gt; &amp;lt;use xlink:href=&amp;#34;#sym01&amp;#34; x=&amp;#34;0&amp;#34; y=&amp;#34;0&amp;#34; width=&amp;#34;100&amp;#34; height=&amp;#34;50&amp;#34; /&amp;gt; &amp;lt;use xlink:href=&amp;#34;#sym01&amp;#34; x=&amp;#34;0&amp;#34; y=&amp;#34;50&amp;#34; width=&amp;#34;75&amp;#34; height=&amp;#34;38&amp;#34; /&amp;gt; &amp;lt;use xlink:href=&amp;#34;#sym01&amp;#34; x=&amp;#34;0&amp;#34; y=&amp;#34;100&amp;#34; width=&amp;#34;50&amp;#34; height=&amp;#34;25&amp;#34; /&amp;gt; &amp;lt;/svg&amp;gt; symbol的作用域是全局的我们也可以在svg中单独使用如</description></item><item><title>跨域资源共享 (CORS)</title><link>https://chenkai.life/web/cross-origin-resource-sharing/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/cross-origin-resource-sharing/</guid><description>转载自 web.dev
+浏览器的同源策略阻止了浏览器读取不同源的资源。这种机制能够阻止恶意网站读取另一个网站的数据，但也会阻碍合法使用。如果您希望获取其他国家的天气数据该怎么办？
+在现代网络应用程序中，应用程序通常希望从不同源获取资源。例如，您想要从不同的域读取 JSON 数据或者将另一个网站的图像加载到&amp;lt;canvas&amp;gt;元素中。
+换句话说，部分公共资源应该可以供任何人读取，但同源策略会阻碍这一点。开发者使用过诸如 JSONP 之类的变通方法，但跨域资源共享 (CORS) 能够通过标准方式修复此问题。
+启用 CORS 可以让服务器告知浏览器自己已获许使用其他源。
+资源请求在网络上是如何运作的？ # 图：客户端请求和服务器响应图示
+浏览器和服务器可以使用超文本传输协议 (HTTP) 来通过网络交换数据。HTTP 定义了请求者和响应者之间的通信规则，其中包括获取资源所需的信息。
+HTTP 标头用于协商客户端和服务器之间的消息交换类型，并用于确定访问权限。浏览器的请求和服务器的响应消息都分为两部分：标头和主体：
+标头 # 包含消息的相关信息，例如消息类型或消息编码。标头可以包括各种信息，这些信息通过键值对表示。请求头和响应头包含不同的信息。
+请务必注意，标头不能包含评论。
+请求头示例
+Accept: text/html Cookie: Version=1 以上内容相当于表示“我希望收到 HTML 的响应。这是我的一个 cookie。”
+响应头示例
+Content-Encoding: gzip Cache-Control: no-store 以上内容相当于表示“数据是用 gzip 编码的。请不要将其缓存。”
+主体 # 消息本身。主体可以是纯文本、二进制图像、JSON、HTML 等。
+CORS 是如何运作的？ # 请记住，同源策略会让浏览器阻止跨域请求。当您想从不同的源获取公共资源时，提供资源的服务器需要告知浏览器“发出该请求的这个源可以访问我的资源”。浏览器会记住这一点，并允许跨域资源共享。
+第一步：客户端（浏览器）请求 # 当浏览器发出跨域请求时，该浏览器会添加一个包含当前源（协议、主机和端口）的Origin标头。</description></item><item><title>WebWorker</title><link>https://chenkai.life/web/web-worker/</link><pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/web-worker/</guid><description>一、概述 JavaScript 语言采用的是单线程模型，也就是说，所有任务只能在一个线程上完成，一次只能做一件事。前面的任务没做完，后面的任务只能等着。随着电脑计算能力的增强，尤其是多核 CPU 的出现，单线程带来很大的不便，无法充分发挥计算机的计算能力。
+Web Worker 的作用，就是为 JavaScript 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给后者运行。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰。等到 Worker 线程完成计算任务，再把结果返回给主线程。这样的好处是，一些计算密集型或高延迟的任务，被 Worker 线程负担了，主线程（通常负责 UI 交互）就会很流畅，不会被阻塞或拖慢。
+Worker 线程一旦新建成功，就会始终运行，不会被主线程上的活动（比如用户点击按钮、提交表单）打断。这样有利于随时响应主线程的通信。但是，这也造成了 Worker 比较耗费资源，不应该过度使用，而且一旦使用完毕，就应该关闭。
+Web Worker 有以下几个使用注意点。
+（1）同源限制
+分配给 Worker 线程运行的脚本文件，必须与主线程的脚本文件同源。
+（2）DOM 限制
+Worker 线程所在的全局对象，与主线程不一样，无法读取主线程所在网页的 DOM 对象，也无法使用document、window、parent这些对象。但是，Worker 线程可以navigator对象和location对象。
+（3）通信联系
+Worker 线程和主线程不在同一个上下文环境，它们不能直接通信，必须通过消息完成。
+（4）脚本限制
+Worker 线程不能执行alert()方法和confirm()方法，但可以使用 XMLHttpRequest 对象发出 AJAX 请求。
+（5）文件限制
+Worker 线程无法读取本地文件，即不能打开本机的文件系统（file://），它所加载的脚本，必须来自网络。
+二、基本用法 2.1 主线程 主线程采用new命令，调用Worker()构造函数，新建一个 Worker 线程。
+var worker = new Worker(&amp;#39;work.js&amp;#39;); Worker()构造函数的参数是一个脚本文件，该文件就是 Worker 线程所要执行的任务。由于 Worker 不能读取本地文件，所以这个脚本必须来自网络。如果下载没有成功（比如404错误），Worker 就会默默地失败。</description></item><item><title>手机web端调试</title><link>https://chenkai.life/web/web-phone-debug-/</link><pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/web-phone-debug-/</guid><description>最近使用vue开发的一个应用，在部分手机页面中会出现时而正常时而异常的问题，由手机中调试不如桌面那么方便，想着在网上找找有没有现成的解决方案，大体分三种,下面大概介绍下
+捕获错误日志将日志发送到服务器查看 前端应用通过window.onerror事件捕获错误或者重写console方法，将日志通过请求发送到后端应用
+捕获错误日志把日志在前端应用查看 如腾讯的vConsole，该插件会在页面右下角插入一个按钮，点击可以打开一个类似调试页面的窗口。
+主要包括以下功能:
+查看 console 日志 查看网络请求 查看页面 element 结构 查看 Cookies、localStorage 和 SessionStorage 手动执行 JS 命令行 自定义插件 使用方法如下：
+import VConsole from &amp;#34;vconsole&amp;#34;; new VConsole(); 通过某些特殊应用调试 如使用谷歌浏览器的开发者工具远程调试Android和iOS页面，手机和电脑使用usb连接，手机要开启usb调试模式，在电脑端浏览器输入chrome://inspect会打开设备监视页面，这里可以监视到iOS和Android设备</description></item><item><title>jsonwebtoken</title><link>https://chenkai.life/nodejs/jsonwebtoken/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/nodejs/jsonwebtoken/</guid><description>什么是JSON Web Token？ JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用SON对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT可以使用加密算法（使用HMAC算法）或使用RSA或ECDSA的公钥/私钥对进行签名。
+什么时候应该使用JSON Web令牌 以下是JSON Web令牌有用的一些场景：
+授权：这是使用JWT的最常见方案。一旦用户登录，每个后续请求将包括JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On是一种现在广泛使用JWT的功能，因为它的开销很小，并且能够在不同的域中轻松使用。
+信息交换：JSON Web令牌是在各方之间安全传输信息的好方法。因为JWT可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。
+JSON Web令牌结构 JSON Web Tokens由.分隔的三个部分组成，它们是：
+头 有效载荷 签名 因此，JWT通常如xxxxx.yyyyy.zzzzz所示. 头 标头通常由两部分组成：令牌的类型，即JWT，以及正在使用的签名算法，例如HMAC SHA256或RSA。
+{ &amp;quot;alg&amp;quot;: &amp;quot;HS256&amp;quot;, &amp;quot;typ&amp;quot;: &amp;quot;JWT&amp;quot; } 然后，这个JSON被编码为Base64Url，形成JWT的第一部分。
+有效载荷 令牌的第二部分是有效负载，其中包含声明。声明是关于实体（通常是用户）和其他数据的声明。有三种类型:registered、public、private claims.
+registered：这些是一组预定义声明，不是强制性的，但建议使用，以提供一组有用的，可互操作的声明。其中一些是： iss（发行人）， exp（到期时间），sub（主题）， aud（观众）等。 public：这些可以由使用JWT的人随意定义。但为避免冲突，应在 IANA JSON Web令牌注册表中定义它们，或者将 其定义为包含防冲突命名空间的URI。 private claims： 这是创建共享使用它们同意并既不是当事人之间的信息自定义声明注册或公众的权利要求 然后，有效负载经过Base64Url编码，形成JSON Web令牌的第二部分。</description></item><item><title>node复用原始接口下载表格</title><link>https://chenkai.life/nodejs/node-download-biaoge-sheji/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/nodejs/node-download-biaoge-sheji/</guid><description>我们在做后台开发时可能有很多接口的数据需要下载下来,如果从头开发无疑会有很多重复代码如参数校验、权限验证等，接下来我谈谈我是如何利用现有的node接口下载表格
+json数组转表格 一般我们的接口返回的是json数组,我们很容易想到只需要把返回数据的json转为表格下载就可以了其他逻辑都是一样的，node有很多现成的库可以处理如xlsx
+function frows2XlsxBufferile(formatData) { const ws = xlsx.utils.json_to_sheet(formatData); const wb = xlsx.utils.book_new(); xlsx.utils.book_append_sheet(wb, ws, &amp;#39;SheetJS&amp;#39;); return xlsx.write(wb, { type: &amp;#39;buffer&amp;#39;, bookType: &amp;#39;xlsx&amp;#39; }); } 在ctx上下文添加下载文件的方法 默认情况下返回的是文本数据这里需要处理,我这里需要在header中声明返回的内容是一个需要下载的文件
+function file(name, data) { // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition // 说明浏览器应该将内容下载到本地；filename 的值预填为下载后的文件名 this.response.set(&amp;#39;Content-disposition&amp;#39;, `attachment;filename=&amp;#34;${name}&amp;#34;`); // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type // 说明返回的是一个二进制流数据 this.response.set(&amp;#39;Content-Type&amp;#39;, &amp;#39;application/octet-stream&amp;#39;); return this.response.body = data; } 返回表格 我们将上面封装下，方便调用,
+async download() { const { ctx } = this; const result = await this.</description></item><item><title>前端下载文本</title><link>https://chenkai.life/javascript/brower-download-text/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/javascript/brower-download-text/</guid><description>前端保存文本 function download( text, filename) { var element = document.createElement(&amp;#39;a&amp;#39;); element.setAttribute(&amp;#39;href&amp;#39;, &amp;#39;data:text/plain;charset=utf-8,&amp;#39; + encodeURIComponent(text)); element.setAttribute(&amp;#39;download&amp;#39;, filename); element.style.display = &amp;#39;none&amp;#39;; document.body.appendChild(element); element.click(); document.body.removeChild(element); } download(&amp;#34;data.txt&amp;#34;, &amp;#34;hello word!&amp;#34;);　// 调用</description></item><item><title>拷贝数据到剪贴板</title><link>https://chenkai.life/web/brower-copy-to-clipboard/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/web/brower-copy-to-clipboard/</guid><description>介绍几种在浏览器中拷贝数据到剪贴板的方法
+document.execCommand(&amp;ldquo;copy&amp;rdquo;); 拷贝当前选中内容到剪贴板, 该api已经废弃不推荐使用，
+function fallbackCopyTextToClipboard(text) { const textArea = document.createElement(&amp;#34;textarea&amp;#34;); textArea.value = text; textArea.style.top = &amp;#34;0&amp;#34;; textArea.style.left = &amp;#34;0&amp;#34;; textArea.style.position = &amp;#34;fixed&amp;#34;; document.body.appendChild(textArea); textArea.focus(); textArea.select(); try { let msg = document.execCommand(&amp;#34;copy&amp;#34;); if (!msg) { throw new Error(&amp;#34;Copy filed&amp;#34;); } } finally { document.body.removeChild(textArea); } } navigator.clipboard 剪贴板 Clipboard API 提供了响应剪贴板命令（剪切、复制和粘贴）与异步读写系统剪贴板的能力。从权限 Permissions API 获取权限之后，才能访问剪贴板内容；如果用户没有授予权限，则不允许读取或更改剪贴板内容。该 API 被设计用来取代使用 document.execCommand() 的剪贴板访问方式。(基于 HTTP 的网站中包含的脚本则不能获得剪贴板对象)
+await navigator.clipboard.writeText(data); npm package clipboard, 内部使用的 document.</description></item></channel></rss>
