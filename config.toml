@@ -2,7 +2,7 @@ baseURL = "https://chenkai.life"
 languageCode = "zh-cn"
 title = "CK's Blog"
 theme = "hugo-theme-coder"
-paginate = 16
+paginate = 18
 enableGitInfo = true
 
 
@@ -34,12 +34,16 @@ enableGitInfo = true
   weight = 3
   url  = "tags/"
 [[menu.main]]
-  name = "RSS"
+  name = "Marks"
   weight = 4
+  url = "marks/"
+[[menu.main]]
+  name = "RSS"
+  weight = 5
   url  = "/index.xml"
 [[menu.main]]
   name = "About"
-  weight = 5
+  weight = 6
   url = "about/"
 
 [frontmatter]

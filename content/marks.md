@@ -1,14 +1,38 @@
 ---
-title: "记录一些npm库和应用"
-tags: ['文章', 'npm']
-date: '2021-08-02'
+title: "记录一些网站、资源等"
+show: false
 ---
 
-记录一些npm库
 
-## npm工具库
+# 技术网站
++ [百度技术团队1](http://fex.baidu.com/)
++ [百度技术团队2](https://efe.baidu.com/)
++ [美团技术团队](https://tech.meituan.com/)
++ [IBM](https://www.ibm.com/developerworks/cn/web/)
++ [Stack Overflow](https://stackoverflow.com/)
++ [tc39:javascript规范](https://tc39.es/)
++ [javascript-info教程](https://javascript.info/) JavaScript 教程学习网站
++ [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)深入研究 JavaScript 语言核心机制的书籍
++ [the-way-to-go](https://github.com/unknwon/the-way-to-go_ZH_CN)Go入门指南
++ [awesome-interview](https://github.com/hzfe/awesome-interview) 剑指前端 Offer
 
-<!-- 工具 -->
+
+# 工具
+
++ [https://editor.method.ac/](https://editor.method.ac/)制作svg  
++ [caniuse](https://caniuse.com/)查询浏览器对Web标准的支持性  
++ [typora](https://www.typora.io/) markdown编辑器，可以复制html转成markdown  
++ [Unsplash](https://source.unsplash.com/) 通过api获取随机图片
++ [Weekly Visitor Report](https://clearbit.com/resources/tools/visitor-report) 获取访问您网站的公司的每周报告
++ [responsively](https://responsively.app/) 更快的进行响应式Web开发
++ [figma](https://www.figma.com/) Web端的UI设计工具。
++ 在线代码编辑器，更快地创建和共享 Web 应用程序
+  - [codesandbox](https://codesandbox.io/)
+  - [https://codepen.io/](https://codepen.io/)
+  - [jsfiddle](https://jsfiddle.net/) 需要VPN访问
+  - [stackblitz](https://stackblitz.com/)
+
+# npm工具库
 `nodeppt`: markdown 生成web ppt  
 `artillery`: 负载接口测试  
 `jsdoc`,`esdoc`,`documentation`:构建js帮助文档  
@@ -24,7 +48,6 @@ date: '2021-08-02'
 `vconsole` 可以用于手机端调试查看控制台、网络请求、存储等信息
 `jsoneditor` 基于 Web 查看、编辑、格式化和验证 JSON 的工具. 
 `autocannon` 用 node 编写的 HTTP 基准测试工具. 
-<!-- 代码 -->  
 `axios`: 基于Promise的HTTP客户端，用于浏览器和node.js  
 `ws`: 简单易用，为Node.js开辟了快速且经过全面测试的Websocket客户端和服务器  
 `nuxtjs`: 一个基于 Vue.js 的服务端渲染应用框架  
@@ -47,13 +70,10 @@ date: '2021-08-02'
 `prisma`: Prisma 是一个开源的一个ORM框架. 
 `swc`: swc 是一个typescript/javascript 编译器。比`babel`快很多. 
 `vm2`: Node.js 的高级虚拟机/沙箱. 
-<!-- vue -->  
 `element-ui、quasar、vuetify、naive-ui`: vue ui框架  
 `cube-ui、vant`: vue 移动端 ui框架  
-<!-- GIS -->
-`global-mercator`: 帮助使用TMS，Quadkey和Google（XYZ）瓷砖的工具. 
 `windicss`: 原子化css
-## c++
-
+# GIS相关
 `tippecanoe`: Build vector tilesets from large collections of GeoJSON features  
-`mapnik`: [mapnik](http://mapnik.org)提供用于空间数据访问和可视化的算法和模式  
+`global-mercator`: 帮助使用TMS，Quadkey和Google（XYZ）瓷砖的工具. 
+`mapnik`: [mapnik](http://mapnik.org)提供用于空间数据访问和可视化的算法和模式 
