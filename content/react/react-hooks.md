@@ -11,7 +11,7 @@ Hook 是一个特殊的函数，它可以让你“钩入” React 的特性。�
 # Hooks API
 ## useState
 在函数组件中存储内部 state
-```js
+```jsx
 const [state, setState] = useState(initialState);
 ```
 参数:
@@ -25,7 +25,7 @@ const [state, setState] = useState(initialState);
 
 这个例子用来显示一个计数器。当你点击按钮，计数器的值就会增加
 
-```js
+```jsx
 function Counter(props) {
   const [count, setCount] = useState(props.initialCount)
 
@@ -44,7 +44,7 @@ Counter.defaultProps = {
 
 值得注意的是，类似class 组件中的`setState`,在我们执行`setCount`时count的值不是立即更新的，而是在下一个重渲染时才会更新，后调用的 setCount() 将覆盖同一周期内先调用 setCount 的值。
 
-```js
+```jsx
 // 所以如在同一周期内多次执行setCount
 setCount(count + 1);
 setCount(count + 2);
@@ -58,11 +58,11 @@ setCount(count + 1);
 
 如果新的 state 需要通过使用先前的 state 计算得出，那么可以将函数传递给State Hook 的更新函数，该回调函数将接收先前的 state，并返回一个更新后的值。
 
-```js
+```jsx
 setCount((count) => count + 1);
 ```
 
-```js
+```jsx
 setCount(count => count + 1);
 setCount(count => count + 2);
 setCount(count => count + 1);
@@ -71,7 +71,7 @@ setCount(count => count + 1);
 
 > 与 class 组件中的 `setState` 方法不同，`setState` 不会自动合并更新对象。你可以用函数式的 `setState` 结合展开运算符来达到合并更新对象的效果。
 >
-> ```js
+> ```jsx
 > const [people, setPeople] = useState({
 >   age: 18,
 >   name: '小红',
@@ -96,7 +96,7 @@ setCount(count => count + 1);
 
 `initialState` 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。如果初始 state 需要通过复杂计算获得，则可以传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用。
 
-```js
+```jsx
 const [state, setState] = useState(() => {
   const initialState = someExpensiveComputation(props);
   return initialState;
@@ -109,7 +109,7 @@ const [state, setState] = useState(() => {
 
 如下面由于`Object.is`对比前后两次的state值未改变(引用内存中的同一个对象),所以未触发组件的更新。
 
-```js
+```jsx
 function CountButton() {
   const countObj = {
     value: 18
@@ -138,7 +138,7 @@ function CountButton() {
 
 ### 基础用法
 
-```js
+```jsx
 function CountButton() {
   const [count, setCount] = useState(0);
 
@@ -160,7 +160,7 @@ function CountButton() {
 
 通常，组件卸载时需要清除 effect 创建的诸如订阅或计时器 ID 等资源。要实现这一点，`useEffect` 函数需返回一个清除函数。
 
-```js
+```jsx
 // 每秒更新时间
 function DateLabel() {
   const [date, setCount] = useState(new Date().toLocaleString());
@@ -189,7 +189,7 @@ function DateLabel() {
 
  `useEffect` 会在浏览器绘制后延迟执行，在任何新的渲染前执行。React 将在组件更新前刷新上一轮渲染的 effect。因此不应在函数中执行阻塞浏览器更新屏幕的操作。
 
-```js
+```jsx
 function CountBtn() {
   const [count, setCount] = useState(0);
 	// 在useEffect之前调用
@@ -217,7 +217,7 @@ function CountBtn() {
 
 如果某些特定值在两次重渲染之间没有发生变化，你可以通知 React **跳过**对 effect 的调用，
 
-```js
+```jsx
 useEffect(() => {
   document.title = `You clicked ${count} times`;
 }, [count]); // 仅在 count 更改时更新
@@ -228,7 +228,7 @@ useEffect(() => {
 
 + 如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组作为第二个参数。effect 内部的 props 和 state 就会一直拥有其初始值。
 
-  ```js
+  ```jsx
   function Count() {
     const [count, setCount] = useState(0);
   
@@ -257,7 +257,7 @@ useEffect(() => {
 
 ### 基础用法
 
-```js
+```jsx
 import { useState, createContext, useContext } from "react";
 
 const themes = {
@@ -309,7 +309,7 @@ function ThemedButton() {
 
 context 对象可以是任意值所以，你也可以通过 context往下传一个 `hooks` 函数
 
-```js
+```jsx
 const TodosDispatch = React.createContext(null);
 
 function TodosApp() {
@@ -336,7 +336,7 @@ function TodosApp() {
 
 ### 基础用法
 
-```js
+```jsx
 const initialState = {count: 0};
 
 function reducer(state, action) {
@@ -366,7 +366,7 @@ function Counter() {
 
 你可以选择惰性地创建初始 state。为此，需要将 `init` 函数作为 `useReducer` 的第三个参数传入，这样初始 state 将被设置为 `init(initialArg)`
 
-```js
+```jsx
 const [state, dispatch] = useReducer(reducer, initialArg, init);
 // state = init(initialArg);
 ```
@@ -375,7 +375,7 @@ const [state, dispatch] = useReducer(reducer, initialArg, init);
 
 与`useState`类似，如果 Reducer Hook 的返回值与当前 state 相同，React 将跳过子组件的渲染及副作用的执行。
 
-```js
+```jsx
 const initialState = {count: 1};
 function reducer(state, action) {
   console.log(state);
@@ -409,7 +409,7 @@ function Counter() {
 
 把内联回调函数及依赖项数组作为参数传入 `useCallback`，它将返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新。当你把回调函数传递给经过优化的并使用`引用相等性`去避免非必要渲染（例如 `shouldComponentUpdate`）的子组件时，它将非常有用。
 
-```js
+```jsx
 //当a&b不变时返回同一个memoizedCallback（引用不变）
 const memoizedCallback = useCallback(
   () => {
@@ -426,7 +426,7 @@ const memoizedCallback = useCallback(
 
 下面的例子中如果`const getLabel = () => label.toUpperCase();` 当count改变时会导致CountButton重新渲染，每次都会重新声明`getLabel`函数导致传递给Label组件的引用发生改变，引起不必要的渲染。
 
-```js
+```jsx
 import { useCallback, useState, useEffect } from "react";
 
 function Label({getLabel}) {
@@ -471,14 +471,14 @@ export default CountButton;
 + 如果没有提供依赖项数组，`useMemo` 在每次渲染时都会计算新的值。
 + **你只可以把 `useMemo` 作为性能优化的手段，但不要把它当成语义上的保证。**将来，React 可能会选择“遗忘”以前的一些 memoized 值并在下次渲染时重新计算它们
 
-```js
+```jsx
 //当a&b不变时返回memoizedValue（引用不变）
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
 ### 基础用法
 
-```js
+```jsx
 function CountButton() {
   let [ label, setLabel ] = useState('');
   let [ count, setCount ] = useState(0);
@@ -507,7 +507,7 @@ function CountButton() {
 
 一个常见的用例便是命令式地访问子组件
 
-```js
+```jsx
 function TextInputWithFocusButton() {
   const inputEl = useRef(null);
   const onButtonClick = () => {
@@ -548,17 +548,126 @@ function TextInputWithFocusButton() {
 
 ### 回调Ref
 
-你也可以传递一个函数。这个函数中接受 React 组件实例或 HTML DOM 元素作为参数,它能助你更精细地控制何时 refs 被设置和解除。
+如果想要在 React 绑定或解绑 DOM 节点的 ref 时运行某些代码，你也可以传递一个函数。这个函数中接受 React 组件实例或 HTML DOM 元素作为参数,它能助你更精细地控制何时 refs 被设置和解除。
+
+```jsx
+function TextInput() {
+  let textInput = null;
+  // 不需要使用useRef
+  const inputRef = (ele)=>{
+    console.log(ele);
+    textInput = ele;
+  };
+  return (
+    <>
+      <input ref={inputRef} type="text" />
+      <button onClick={() => {console.log(textInput)}}>Focus the input</button>
+    </>
+  );
+}
+```
 
 ## useImperativeHandle
 
+`useImperativeHandle` 可以让你在使用 `ref` 时自定义暴露给父组件的实例值。`useImperativeHandle` 应当与 [`forwardRef`](https://react.docschina.org/docs/react-api.html#reactforwardref) 一起使用：
+
+```js
+useImperativeHandle(ref, createHandle, [deps])
+```
+
 ### 基础用法
+
+父组件可以调用 `inputRef.current.focus()`。
+
+```jsx
+//该渲染函数会将 ref 传递给 <input ref={ref}> 元素。
+function FancyInput(props, ref) {
+  const inputRef = useRef();
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus();
+    }
+  }));
+  return <input ref={inputRef} />;
+}
+FancyInput = forwardRef(FancyInput);
+
+function Wrapper(){
+  const inputRef = useRef();
+  // React 会将 <FancyButton ref={ref}> 元素的 ref 作为第二个参数传递给 React.forwardRef 函数中的渲染函数。
+  
+  return (
+    <div>
+      <FancyInput ref={inputRef} />
+      <button onClick={() => inputRef.current.focus()}>focus</button>
+    </div>
+  );
+}
+```
+
+### createHandle条件执行
+
+默认情况下，在组建重新渲染后useImperativeHandle中的createHandle 均会执行，为了不必要的性能损失我们可以传入依赖避免不必要的性能损失
+
+```js
+useImperativeHandle(ref, () => ({
+  count,
+  focus: () => {
+    inputRef.current.focus();
+  }
+}), [count]);
+```
+
+
+
 ## useLayoutEffect
+
+其函数签名与 `useEffect` 相同，但它会在所有的 DOM 变更之后同步调用 effect。可以使用它来读取 DOM 布局并同步触发重渲染。在浏览器执行绘制之前，`useLayoutEffect` 内部的更新计划将被同步刷新。
+
+尽可能使用标准的 `useEffect` 以避免阻塞视觉更新。
+
 ### 基础用法
 ## useDebugValue
+
+`useDebugValue` 可用于在 React 开发者工具中显示自定义 hook 的标签。
+
+```js
+useDebugValue(value)
+```
+
 ### 基础用法
 
+```js
+function testHook(initialCount) {
+  const [count, setCount] = useState(initialCount)
+  // 在开发者工具中的这个 Hook 旁边显示标签
+  // e.g. "testHook: 好好学习"
+  useDebugValue('好好学习');
+  return [count, setCount];
+}
 
+function Counter(props) {
+  const [count, setCount] = testHook(props.initialCount);
+  return (
+    <button type="button" onClick={() => setCount(count + 1)}>
+      count is: {count}
+    </button>
+  );
+}
+```
+
+### 延迟格式化 debug 值
+
+在某些情况下，格式化值的显示可能是一项开销很大的操作。除非需要检查 Hook，否则没有必要这么做。
+
+因此，`useDebugValue` 接受一个格式化函数作为可选的第二个参数。该函数只有在 Hook 被检查时才会被调用。它接受 debug 值作为参数，并且会返回一个格式化的显示值。
+
+例如，一个返回 `Date` 值的自定义 Hook 可以通过格式化函数来避免不必要的 `toDateString` 函数调用：
+
+```js
+//只有在 Hook 被检查时才会被调用
+useDebugValue(date, date => date.toDateString());
+```
 
 # 关于hooks
 ## Hooks的原理
