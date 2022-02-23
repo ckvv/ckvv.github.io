@@ -14,7 +14,7 @@ const [state, setState] = useState(initialState); 参数:
 function Counter(props) { const [count, setCount] = useState(props.">
 <meta name=keywords content>
 <meta name=twitter:card content="summary">
-<meta name=twitter:title content="react hooks 入门">
+<meta name=twitter:title content="React Hooks 入门">
 <meta name=twitter:description content="在React中，如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。但是 Class组件在变得复杂之后会变得难以维护, 通过React Hook (React 16.8 的新增特性) 可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
 Hook 是一个特殊的函数，它可以让你“钩入” React 的特性。例如，useState 是允许你在 React 函数组件中添加 state 的 Hook。现在你可以在现有的函数组件中使用 Hook，所以通常来说hook使得在组件之间复用状态逻辑变得便捷、逻辑也更清晰。
 Hooks API    useState    在函数组件中存储内部 state
@@ -22,7 +22,7 @@ const [state, setState] = useState(initialState); 参数:
  initialState: state初始值  返回值:
  state: 当前的 state setState: 更新 state 的方法, 它接收一个新的 state 值并将组件的一次重新渲染加入队列。如果你的更新函数返回值与当前 state 完全相同，则随后的重渲染会被完全跳过  基础用法    这个例子用来显示一个计数器。当你点击按钮，计数器的值就会增加
 function Counter(props) { const [count, setCount] = useState(props.">
-<meta property="og:title" content="react hooks 入门">
+<meta property="og:title" content="React Hooks 入门">
 <meta property="og:description" content="在React中，如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。但是 Class组件在变得复杂之后会变得难以维护, 通过React Hook (React 16.8 的新增特性) 可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
 Hook 是一个特殊的函数，它可以让你“钩入” React 的特性。例如，useState 是允许你在 React 函数组件中添加 state 的 Hook。现在你可以在现有的函数组件中使用 Hook，所以通常来说hook使得在组件之间复用状态逻辑变得便捷、逻辑也更清晰。
 Hooks API    useState    在函数组件中存储内部 state
@@ -33,9 +33,9 @@ function Counter(props) { const [count, setCount] = useState(props.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/react/react-hooks/"><meta property="article:section" content="react">
 <meta property="article:published_time" content="2022-02-21T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-02-23T14:40:39+08:00">
+<meta property="article:modified_time" content="2022-02-23T19:32:54+08:00">
 <title>
-react hooks 入门 · CK's Blog
+React Hooks 入门 · CK's Blog
 </title>
 <link rel=canonical href=https://chenkai.life/react/react-hooks/>
 <link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen>
@@ -94,7 +94,7 @@ CK's Blog
 <header>
 <h1 class=title>
 <a class=title-link href=https://chenkai.life/react/react-hooks/>
-react hooks 入门
+React Hooks 入门
 </a>
 </h1>
 <div class=edit-link style=float:right;color:#0366d6>
@@ -366,60 +366,317 @@ useContext
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h2>
+<p>接收一个 context 对象（<code>React.createContext</code> 的返回值）并返回该 context 的当前值。当前的 context 值由上层组件中距离当前组件最近的 <code>&lt;MyContext.Provider></code> 的 <code>value</code> prop 决定。调用了 <code>useContext</code> 的组件总会在 context 值变化时重新渲染。如果重渲染组件的开销较大，你可以 <a href=https://github.com/facebook/react/issues/15156#issuecomment-474590693>通过使用 memoization 来优化</a>。</p>
+<p>当组件上层最近的 <code>&lt;MyContext.Provider></code> 更新时，该 Hook 会触发重渲染，并使用最新传递给 <code>MyContext</code> provider 的 context <code>value</code> 值。即使祖先使用 <a href=https://react.docschina.org/docs/react-api.html#reactmemo><code>React.memo</code></a> 或 <a href=https://react.docschina.org/docs/react-component.html#shouldcomponentupdate><code>shouldComponentUpdate</code></a>，也会在组件本身使用 <code>useContext</code> 时重新渲染。</p>
 <h3 id=基础用法-2>
 基础用法
 <a class=heading-link href=#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95-2>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<h2 id=usereducer>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>useState</span>, <span style=color:#a6e22e>createContext</span>, <span style=color:#a6e22e>useContext</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
+
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>themes</span> <span style=color:#f92672>=</span> {
+  <span style=color:#a6e22e>light</span><span style=color:#f92672>:</span> {
+    <span style=color:#a6e22e>color</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;#000000&#34;</span>,
+    <span style=color:#a6e22e>background</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;#eeeeee&#34;</span>
+  },
+  <span style=color:#a6e22e>dark</span><span style=color:#f92672>:</span> {
+    <span style=color:#a6e22e>color</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;#ffffff&#34;</span>,
+    <span style=color:#a6e22e>background</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;#222222&#34;</span>
+  }
+};
+
+<span style=color:#75715e>// 设置Context 默认值
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>ThemeContext</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createContext</span>(<span style=color:#a6e22e>themes</span>.<span style=color:#a6e22e>light</span>);
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>App</span>() {
+  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>model</span>, <span style=color:#a6e22e>setModel</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#e6db74>&#39;light&#39;</span>);
+  <span style=color:#66d9ef>return</span> (
+    <span style=color:#75715e>// 当value 变化时，调用了 useContext的组件重新渲染
+</span><span style=color:#75715e></span>    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>ThemeContext</span>.<span style=color:#a6e22e>Provider</span> <span style=color:#a6e22e>value</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>themes</span>[<span style=color:#a6e22e>model</span>]}<span style=color:#f92672>&gt;</span>
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Toolbar</span> <span style=color:#f92672>/&gt;</span>
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setModel</span>(<span style=color:#a6e22e>model</span> <span style=color:#f92672>===</span> <span style=color:#e6db74>&#39;light&#39;</span> <span style=color:#f92672>?</span> <span style=color:#e6db74>&#39;dark&#39;</span> <span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;light&#39;</span>)}<span style=color:#f92672>&gt;</span><span style=color:#a6e22e>Change</span> <span style=color:#a6e22e>Theme</span><span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/ThemeContext.Provider&gt;</span>
+  );
+}
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Toolbar</span>() {
+  <span style=color:#66d9ef>return</span> (
+    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span><span style=color:#f92672>&gt;</span>
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>ThemedButton</span> <span style=color:#f92672>/&gt;</span>
+    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+  );
+}
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>ThemedButton</span>() {
+  <span style=color:#75715e>//useContext(MyContext) 只是让你能够读取 context 的值以及订阅 context 的变化。你仍然需要在上层组件树中使用 &lt;Provider&gt; 来为下层组件提供 context
+</span><span style=color:#75715e></span>  <span style=color:#75715e>//调用了 useContext 的组件总会在 context 值变化时重新渲染 
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>theme</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useContext</span>(<span style=color:#a6e22e>ThemeContext</span>);
+  <span style=color:#66d9ef>return</span> (
+    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>style</span><span style=color:#f92672>=</span>{{ ...<span style=color:#a6e22e>theme</span> }}<span style=color:#f92672>&gt;</span>
+      <span style=color:#a6e22e>I</span> <span style=color:#a6e22e>am</span> <span style=color:#a6e22e>styled</span> <span style=color:#a6e22e>by</span> <span style=color:#a6e22e>theme</span> <span style=color:#a6e22e>context</span><span style=color:#f92672>!</span>
+    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+  );
+}
+</code></pre></div><h3 id=传递hooks>
+传递hooks
+<a class=heading-link href=#%e4%bc%a0%e9%80%92hooks>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p>context 对象可以是任意值所以，你也可以通过 context往下传一个 <code>hooks</code> 函数</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>TodosDispatch</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>React</span>.<span style=color:#a6e22e>createContext</span>(<span style=color:#66d9ef>null</span>);
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>TodosApp</span>() {
+  <span style=color:#75715e>// 提示：`dispatch` 不会在重新渲染之间变化
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>todos</span>, <span style=color:#a6e22e>dispatch</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useReducer</span>(<span style=color:#a6e22e>todosReducer</span>);
+
+  <span style=color:#66d9ef>return</span> (
+    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>TodosDispatch</span>.<span style=color:#a6e22e>Provider</span> <span style=color:#a6e22e>value</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>dispatch</span>}<span style=color:#f92672>&gt;</span>
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>DeepTree</span> <span style=color:#a6e22e>todos</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>todos</span>} <span style=color:#f92672>/&gt;</span>
+    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/TodosDispatch.Provider&gt;</span>
+  );
+}
+</code></pre></div><h2 id=usereducer>
 useReducer
 <a class=heading-link href=#usereducer>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h2>
+<p><a href=https://react.docschina.org/docs/hooks-reference.html#usestate><code>useState</code></a> 的替代方案。它接收一个形如 <code>(state, action) => newState</code> 的 reducer，并返回当前的 state 以及与其配套的 <code>dispatch</code> 方法。</p>
+<p>在某些场景下，<code>useReducer</code> 会比 <code>useState</code> 更适用，例如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等。并且，使用 <code>useReducer</code> 还能给那些会触发深更新的组件做性能优化，因为<a href=https://react.docschina.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down>你可以向子组件传递 <code>dispatch</code> 而不是回调函数</a> 。</p>
+<blockquote>
+<p><code>dispatch</code> 不会在重新渲染之间变化,所以可以安全地从 <code>useEffect</code> 或 <code>useCallback</code> 的依赖列表中省略 <code>dispatch</code></p>
+</blockquote>
 <h3 id=基础用法-3>
 基础用法
 <a class=heading-link href=#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95-3>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<h2 id=usecallback>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>initialState</span> <span style=color:#f92672>=</span> {<span style=color:#a6e22e>count</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0</span>};
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>reducer</span>(<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>action</span>) {
+  <span style=color:#66d9ef>switch</span> (<span style=color:#a6e22e>action</span>.<span style=color:#a6e22e>type</span>) {
+    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;increment&#39;</span><span style=color:#f92672>:</span>
+      <span style=color:#66d9ef>return</span> {<span style=color:#a6e22e>count</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>};
+    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;decrement&#39;</span><span style=color:#f92672>:</span>
+      <span style=color:#66d9ef>return</span> {<span style=color:#a6e22e>count</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>count</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>};
+    <span style=color:#66d9ef>default</span><span style=color:#f92672>:</span>
+      <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> Error();
+  }
+}
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Counter</span>() {
+  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>dispatch</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useReducer</span>(<span style=color:#a6e22e>reducer</span>, <span style=color:#a6e22e>initialState</span>);
+  <span style=color:#66d9ef>return</span> (
+    <span style=color:#f92672>&lt;&gt;</span>
+      <span style=color:#a6e22e>Count</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>count</span>}
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>dispatch</span>({<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;decrement&#39;</span>})}<span style=color:#f92672>&gt;-&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>dispatch</span>({<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;increment&#39;</span>})}<span style=color:#f92672>&gt;+&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/&gt;</span>
+  );
+}
+</code></pre></div><h3 id=惰性初始化>
+惰性初始化
+<a class=heading-link href=#%e6%83%b0%e6%80%a7%e5%88%9d%e5%a7%8b%e5%8c%96>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p>你可以选择惰性地创建初始 state。为此，需要将 <code>init</code> 函数作为 <code>useReducer</code> 的第三个参数传入，这样初始 state 将被设置为 <code>init(initialArg)</code></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>dispatch</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useReducer</span>(<span style=color:#a6e22e>reducer</span>, <span style=color:#a6e22e>initialArg</span>, <span style=color:#a6e22e>init</span>);
+<span style=color:#75715e>// state = init(initialArg);
+</span></code></pre></div><h3 id=跳过-dispatch>
+跳过 dispatch
+<a class=heading-link href=#%e8%b7%b3%e8%bf%87-dispatch>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p>与<code>useState</code>类似，如果 Reducer Hook 的返回值与当前 state 相同，React 将跳过子组件的渲染及副作用的执行。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>initialState</span> <span style=color:#f92672>=</span> {<span style=color:#a6e22e>count</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>1</span>};
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>reducer</span>(<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>action</span>) {
+  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>state</span>);
+  <span style=color:#66d9ef>switch</span> (<span style=color:#a6e22e>action</span>.<span style=color:#a6e22e>type</span>) {
+    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;increment&#39;</span><span style=color:#f92672>:</span>
+    	<span style=color:#75715e>// Object.is 判断返回state相同，所以将跳过子组件的渲染及副作用的执行
+</span><span style=color:#75715e></span>      <span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>count</span> <span style=color:#f92672>++</span>;
+      <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>state</span>;
+    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;decrement&#39;</span><span style=color:#f92672>:</span>
+      <span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>count</span> <span style=color:#f92672>--</span>;
+      <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>state</span>;
+    <span style=color:#66d9ef>default</span><span style=color:#f92672>:</span>
+      <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> Error();
+  }
+}
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Counter</span>() {
+  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>dispatch</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useReducer</span>(<span style=color:#a6e22e>reducer</span>, <span style=color:#a6e22e>initialState</span>);
+  <span style=color:#66d9ef>return</span> (
+    <span style=color:#f92672>&lt;&gt;</span>
+      <span style=color:#a6e22e>Count</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>count</span>}
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>dispatch</span>({<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;decrement&#39;</span>})}<span style=color:#f92672>&gt;-&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>dispatch</span>({<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;increment&#39;</span>})}<span style=color:#f92672>&gt;+&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/&gt;</span>
+  );
+}
+
+</code></pre></div><h2 id=usecallback>
 useCallback
 <a class=heading-link href=#usecallback>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h2>
+<p>把内联回调函数及依赖项数组作为参数传入 <code>useCallback</code>，它将返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新。当你把回调函数传递给经过优化的并使用<code>引用相等性</code>去避免非必要渲染（例如 <code>shouldComponentUpdate</code>）的子组件时，它将非常有用。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>//当a&amp;b不变时返回同一个memoizedCallback（引用不变）
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>memoizedCallback</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useCallback</span>(
+  () =&gt; {
+    <span style=color:#a6e22e>doSomething</span>(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>);
+  },
+  [<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>],
+);
+<span style=color:#75715e>// ``useCallback(fn, deps)` 相当于 `useMemo(() =&gt; fn, deps)`
+</span></code></pre></div><blockquote>
+<p>依赖项数组不会作为参数传给回调函数。虽然从概念上来说它表现为：所有回调函数中引用的值都应该出现在依赖项数组中。未来编译器会更加智能，届时自动创建数组将成为可能</p>
+</blockquote>
 <h3 id=基础用法-4>
 基础用法
 <a class=heading-link href=#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95-4>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<h2 id=usememo>
+<p>下面的例子中如果<code>const getLabel = () => label.toUpperCase();</code> 当count改变时会导致CountButton重新渲染，每次都会重新声明<code>getLabel</code>函数导致传递给Label组件的引用发生改变，引起不必要的渲染。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>useCallback</span>, <span style=color:#a6e22e>useState</span>, <span style=color:#a6e22e>useEffect</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Label</span>({<span style=color:#a6e22e>getLabel</span>}) {
+  <span style=color:#a6e22e>useEffect</span>(()=&gt;{
+    <span style=color:#75715e>//如果getLabel引用改变会导致useEffect执行
+</span><span style=color:#75715e></span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;useEffect: getLabel&#39;</span>)
+  }, [<span style=color:#a6e22e>getLabel</span>]);
+  <span style=color:#66d9ef>return</span>(
+    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>label</span><span style=color:#f92672>&gt;</span> { <span style=color:#a6e22e>getLabel</span>() } <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/label&gt;</span>
+  )
+}
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>CountButton</span>() {
+  <span style=color:#66d9ef>let</span> [ <span style=color:#a6e22e>label</span>, <span style=color:#a6e22e>setLabel</span> ] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#e6db74>&#39;&#39;</span>);
+  <span style=color:#66d9ef>let</span> [ <span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span> ] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#ae81ff>0</span>);
+  <span style=color:#75715e>// 如果label未改变每次重新渲染，返回的getLabel引用值相同
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>getLabel</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useCallback</span>(() =&gt; {
+    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>label</span>.<span style=color:#a6e22e>toUpperCase</span>();
+  }, [<span style=color:#a6e22e>label</span>]);
+  <span style=color:#66d9ef>return</span> (
+    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span><span style=color:#f92672>&gt;</span>
+      <span style=color:#a6e22e>lable</span><span style=color:#f92672>:</span> <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>input</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text&#34;</span> <span style=color:#a6e22e>onChange</span><span style=color:#f92672>=</span>{(<span style=color:#a6e22e>e</span>) =&gt; <span style=color:#a6e22e>setLabel</span>(<span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>target</span>.<span style=color:#a6e22e>value</span>)}<span style=color:#f92672>/&gt;</span>
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}<span style=color:#f92672>&gt;</span>
+          <span style=color:#a6e22e>count</span> <span style=color:#a6e22e>is</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>}
+      <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Label</span> <span style=color:#a6e22e>getLabel</span><span style=color:#f92672>=</span>{ <span style=color:#a6e22e>getLabel</span> }<span style=color:#f92672>/&gt;</span>
+    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+  );
+}
+
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>CountButton</span>;
+</code></pre></div><h2 id=usememo>
 useMemo
 <a class=heading-link href=#usememo>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h2>
-<h3 id=基础用法-5>
+<p>把“创建”函数和依赖项数组作为参数传入 <code>useMemo</code>，它仅会在某个依赖项改变时才重新计算 memoized 值。这种优化有助于避免在每次渲染时都进行高开销的计算。</p>
+<ul>
+<li>
+<p>传入 <code>useMemo</code> 的函数会在渲染期间执行。请不要在这个函数内部执行与渲染无关的操作，诸如副作用这类的操作属于 <code>useEffect</code> 的适用范畴</p>
+</li>
+<li>
+<p>如果没有提供依赖项数组，<code>useMemo</code> 在每次渲染时都会计算新的值。</p>
+</li>
+<li>
+<p>**你只可以把 <code>useMemo</code> 作为性能优化的手段，但不要把它当成语义上的保证。**将来，React 可能会选择“遗忘”以前的一些 memoized 值并在下次渲染时重新计算它们</p>
+</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>//当a&amp;b不变时返回memoizedValue（引用不变）
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>memoizedValue</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useMemo</span>(() =&gt; <span style=color:#a6e22e>computeExpensiveValue</span>(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>), [<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>]);
+</code></pre></div><h3 id=基础用法-5>
 基础用法
 <a class=heading-link href=#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95-5>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<h2 id=useref>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>CountButton</span>() {
+  <span style=color:#66d9ef>let</span> [ <span style=color:#a6e22e>label</span>, <span style=color:#a6e22e>setLabel</span> ] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#e6db74>&#39;&#39;</span>);
+  <span style=color:#66d9ef>let</span> [ <span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span> ] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#ae81ff>0</span>);
+  <span style=color:#75715e>// 如果依赖项label不变memoizedValue不会重新计算
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>memoizedValue</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useMemo</span>(()=&gt;{
+    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;useMemo&#39;</span>);
+    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>label</span>.<span style=color:#a6e22e>toUpperCase</span>();
+  }, [<span style=color:#a6e22e>label</span>]);
+  <span style=color:#66d9ef>return</span> (
+    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span><span style=color:#f92672>&gt;</span>
+      <span style=color:#a6e22e>lable</span><span style=color:#f92672>:</span> <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>input</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text&#34;</span> <span style=color:#a6e22e>onChange</span><span style=color:#f92672>=</span>{(<span style=color:#a6e22e>e</span>) =&gt; <span style=color:#a6e22e>setLabel</span>(<span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>target</span>.<span style=color:#a6e22e>value</span>)}<span style=color:#f92672>/&gt;</span>
+      {<span style=color:#a6e22e>memoizedValue</span>}
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}<span style=color:#f92672>&gt;</span>
+          <span style=color:#a6e22e>count</span> <span style=color:#a6e22e>is</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>}
+      <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+  );
+}
+</code></pre></div><h2 id=useref>
 useRef
 <a class=heading-link href=#useref>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h2>
+<p><code>useRef</code> 返回一个可变的 ref 对象，其 <code>.current</code> 属性被初始化为传入的参数（<code>initialValue</code>）。返回的 ref 对象在组件的整个生命周期内保持不变。</p>
 <h3 id=基础用法-6>
 基础用法
 <a class=heading-link href=#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95-6>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
+<p>一个常见的用例便是命令式地访问子组件</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>TextInputWithFocusButton</span>() {
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>inputEl</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useRef</span>(<span style=color:#66d9ef>null</span>);
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>onButtonClick</span> <span style=color:#f92672>=</span> () =&gt; {
+    <span style=color:#75715e>// `current` 指向已挂载到 DOM 上的文本输入元素
+</span><span style=color:#75715e></span>    <span style=color:#a6e22e>inputEl</span>.<span style=color:#a6e22e>current</span>.<span style=color:#a6e22e>focus</span>();
+  };
+  <span style=color:#66d9ef>return</span> (
+    <span style=color:#f92672>&lt;&gt;</span>
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>input</span> <span style=color:#a6e22e>ref</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>inputEl</span>} <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text&#34;</span> <span style=color:#f92672>/&gt;</span>
+      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>onButtonClick</span>}<span style=color:#f92672>&gt;</span><span style=color:#a6e22e>Focus</span> <span style=color:#a6e22e>the</span> <span style=color:#a6e22e>input</span><span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/&gt;</span>
+  );
+}
+</code></pre></div><h3 id=保存实例变量>
+保存实例变量
+<a class=heading-link href=#%e4%bf%9d%e5%ad%98%e5%ae%9e%e4%be%8b%e5%8f%98%e9%87%8f>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p><a href=https://react.docschina.org/docs/hooks-reference.html#useref><code>useRef()</code></a> Hook 不仅可以用于 DOM refs。本质上，<code>useRef</code> 就像是可以在其 <code>.current</code> 属性中保存一个可变值的“盒子”, 类似于一个 class 的实例属性。<code>useRef()</code> 和自建一个 <code>{current: ...}</code> 对象的唯一区别是，<code>useRef</code> 会在每次渲染时返回同一个 ref 对象.</p>
+<p>当 ref 对象内容发生变化时，<code>useRef</code> 并<em>不会</em>通知你。即变更 <code>.current</code> 属性不会引发组件重新渲染。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>TextInputWithFocusButton</span>() {
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>countRes</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useRef</span>(<span style=color:#ae81ff>0</span>);
+  <span style=color:#66d9ef>return</span> (
+    &lt;&gt;
+      &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; {
+        <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>countRes</span>.<span style=color:#a6e22e>current</span>);
+        <span style=color:#a6e22e>countRes</span>.<span style=color:#a6e22e>current</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>countRes</span>.<span style=color:#a6e22e>current</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>;
+      }}&gt;<span style=color:#a6e22e>Focus</span> <span style=color:#a6e22e>the</span> <span style=color:#a6e22e>input</span>&lt;/<span style=color:#f92672>button</span>&gt;
+<span style=color:#75715e>// `.current` 属性改变不会引发组件重新渲染
+</span><span style=color:#75715e></span>      {<span style=color:#a6e22e>countRes</span>.<span style=color:#a6e22e>current</span>}
+    &lt;/&gt;
+  );
+}
+
+</code></pre></div><h3 id=回调ref>
+回调Ref
+<a class=heading-link href=#%e5%9b%9e%e8%b0%83ref>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p>你也可以传递一个函数。这个函数中接受 React 组件实例或 HTML DOM 元素作为参数,它能助你更精细地控制何时 refs 被设置和解除。</p>
 <h2 id=useimperativehandle>
 useImperativeHandle
 <a class=heading-link href=#useimperativehandle>
@@ -486,7 +743,7 @@ React 是如何把对 Hook 的调用和组件联系起来的
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h2>
-<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=fade26ff9e0c2bbbc44ff7101a762533 data-page-url=https://chenkai.life/react/react-hooks/ data-page-title="react hooks 入门" data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
+<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=fade26ff9e0c2bbbc44ff7101a762533 data-page-url=https://chenkai.life/react/react-hooks/ data-page-title="React Hooks 入门" data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
 </article>
 </section>
 </div>
