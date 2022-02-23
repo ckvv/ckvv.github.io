@@ -33,7 +33,7 @@ function Counter(props) { const [count, setCount] = useState(props.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/react/react-hooks/"><meta property="article:section" content="react">
 <meta property="article:published_time" content="2022-02-21T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-02-23T19:32:54+08:00">
+<meta property="article:modified_time" content="2022-02-23T22:23:49+08:00">
 <title>
 React Hooks 入门 · CK's Blog
 </title>
@@ -133,7 +133,7 @@ useState
 </a>
 </h2>
 <p>在函数组件中存储内部 state</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>setState</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#a6e22e>initialState</span>);
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>setState</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#a6e22e>initialState</span>);
 </code></pre></div><p>参数:</p>
 <ul>
 <li><code>initialState</code>: state初始值</li>
@@ -150,20 +150,20 @@ useState
 </a>
 </h3>
 <p>这个例子用来显示一个计数器。当你点击按钮，计数器的值就会增加</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Counter</span>(<span style=color:#a6e22e>props</span>) {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Counter</span>(<span style=color:#a6e22e>props</span>) {
   <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#a6e22e>props</span>.<span style=color:#a6e22e>initialCount</span>)
 
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}<span style=color:#f92672>&gt;</span>
+    &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}&gt;
       <span style=color:#a6e22e>count</span> <span style=color:#a6e22e>is</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>}
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+    &lt;/<span style=color:#f92672>button</span>&gt;
   );
 }
 <span style=color:#a6e22e>Counter</span>.<span style=color:#a6e22e>defaultProps</span> <span style=color:#f92672>=</span> {
   <span style=color:#a6e22e>initialCount</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>10</span>,
 }
 </code></pre></div><p>值得注意的是，类似class 组件中的<code>setState</code>,在我们执行<code>setCount</code>时count的值不是立即更新的，而是在下一个重渲染时才会更新，后调用的 setCount() 将覆盖同一周期内先调用 setCount 的值。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// 所以如在同一周期内多次执行setCount
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#75715e>// 所以如在同一周期内多次执行setCount
 </span><span style=color:#75715e></span><span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>);
 <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>2</span>);
 <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>);
@@ -176,14 +176,14 @@ useState
 </a>
 </h3>
 <p>如果新的 state 需要通过使用先前的 state 计算得出，那么可以将函数传递给State Hook 的更新函数，该回调函数将接收先前的 state，并返回一个更新后的值。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>setCount</span>((<span style=color:#a6e22e>count</span>) =&gt; <span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>);
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> =&gt; <span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>);
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#a6e22e>setCount</span>((<span style=color:#a6e22e>count</span>) =&gt; <span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>);
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> =&gt; <span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>);
 <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> =&gt; <span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>2</span>);
 <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> =&gt; <span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>);
 <span style=color:#75715e>// 这相当于setCount(count + 4);
 </span></code></pre></div><blockquote>
 <p>与 class 组件中的 <code>setState</code> 方法不同，<code>setState</code> 不会自动合并更新对象。你可以用函数式的 <code>setState</code> 结合展开运算符来达到合并更新对象的效果。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>people</span>, <span style=color:#a6e22e>setPeople</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>({
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>people</span>, <span style=color:#a6e22e>setPeople</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>({
   <span style=color:#a6e22e>age</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>18</span>,
   <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;小红&#39;</span>,
 });
@@ -209,7 +209,7 @@ useState
 </a>
 </h3>
 <p><code>initialState</code> 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。如果初始 state 需要通过复杂计算获得，则可以传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>setState</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(() =&gt; {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>setState</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(() =&gt; {
   <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>initialState</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>someExpensiveComputation</span>(<span style=color:#a6e22e>props</span>);
   <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>initialState</span>;
 });
@@ -221,22 +221,22 @@ useState
 </h3>
 <p>如果您将 State Hook 更新为与当前状态相同的值，React 将跳过子组件的渲染及 effect 的执行。（React 使用 <a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description>Object.is</a> 来比较 state。）</p>
 <p>如下面由于<code>Object.is</code>对比前后两次的state值未改变(引用内存中的同一个对象),所以未触发组件的更新。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>CountButton</span>() {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>CountButton</span>() {
   <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>countObj</span> <span style=color:#f92672>=</span> {
     <span style=color:#a6e22e>value</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>18</span>
   };
   <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#a6e22e>countObj</span>)
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span><span style=color:#f92672>&gt;</span>
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; {
+    &lt;<span style=color:#f92672>div</span>&gt;
+      &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; {
           <span style=color:#a6e22e>countObj</span>.<span style=color:#a6e22e>value</span> <span style=color:#f92672>++</span>;
           <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>countObj</span>);
           <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>countObj</span>);
     		<span style=color:#75715e>// setCount({...countObj}); 如果想要触发更新可以这样做
-</span><span style=color:#75715e></span>        }}<span style=color:#f92672>&gt;</span>
+</span><span style=color:#75715e></span>        }}&gt;
           <span style=color:#a6e22e>count</span> <span style=color:#a6e22e>is</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>.<span style=color:#a6e22e>value</span>}
-        <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+        &lt;/<span style=color:#f92672>button</span>&gt;
+    &lt;/<span style=color:#f92672>div</span>&gt;
   )
 }
 </code></pre></div><h2 id=useeffect>
@@ -253,16 +253,16 @@ useEffect
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>CountButton</span>() {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>CountButton</span>() {
   <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#ae81ff>0</span>);
 
   <span style=color:#a6e22e>useEffect</span>(()=&gt;{
     <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>count</span>);
   });
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span><span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>)}<span style=color:#f92672>&gt;</span>
+    &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span><span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>)}&gt;
         <span style=color:#a6e22e>count</span> <span style=color:#a6e22e>is</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>}
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+    &lt;/<span style=color:#f92672>button</span>&gt;
   );
 }
 
@@ -275,7 +275,7 @@ useEffect
 </a>
 </h3>
 <p>通常，组件卸载时需要清除 effect 创建的诸如订阅或计时器 ID 等资源。要实现这一点，<code>useEffect</code> 函数需返回一个清除函数。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// 每秒更新时间
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#75715e>// 每秒更新时间
 </span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>DateLabel</span>() {
   <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>date</span>, <span style=color:#a6e22e>setCount</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#66d9ef>new</span> Date().<span style=color:#a6e22e>toLocaleString</span>());
 
@@ -290,9 +290,9 @@ useEffect
     }
   });
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>label</span><span style=color:#f92672>&gt;</span>
+    &lt;<span style=color:#f92672>label</span>&gt;
       <span style=color:#a6e22e>当前时间是</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>date</span>}
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/label&gt;</span>
+    &lt;/<span style=color:#f92672>label</span>&gt;
   );
 }
 </code></pre></div><p>为防止内存泄漏，清除函数会在组件卸载前执行。另外，如果组件多次渲染（通常如此），则<strong>在执行下一个 effect 之前，上一个 effect 就已被清除</strong>。在上述示例中，意味着组件的每一次更新都会创建新的订阅。若想避免每次更新都触发 effect 的执行，请参阅<code>effect 的执行时机</code>。</p>
@@ -303,7 +303,7 @@ effect 的执行时机
 </a>
 </h3>
 <p><code>useEffect</code> 会在浏览器绘制后延迟执行，在任何新的渲染前执行。React 将在组件更新前刷新上一轮渲染的 effect。因此不应在函数中执行阻塞浏览器更新屏幕的操作。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>CountBtn</span>() {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>CountBtn</span>() {
   <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#ae81ff>0</span>);
 	<span style=color:#75715e>// 在useEffect之前调用
 </span><span style=color:#75715e></span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;函数中;useEffect前&#39;</span>,<span style=color:#a6e22e>count</span>);
@@ -317,9 +317,9 @@ effect 的执行时机
 </span><span style=color:#75715e></span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;函数中;useEffect后&#39;</span>,<span style=color:#a6e22e>count</span>);
 
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>className</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;count-btn&#39;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> =&gt; <span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>)}<span style=color:#f92672>&gt;</span>
+    &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>className</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;count-btn&#39;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> =&gt; <span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>)}&gt;
       <span style=color:#a6e22e>当前count</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>}
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+    &lt;/<span style=color:#f92672>button</span>&gt;
   );
 }
 </code></pre></div><h3 id=effect-的条件执行>
@@ -330,7 +330,7 @@ effect 的条件执行
 </h3>
 <p>默认情况下，effect 会在每轮组件渲染完成后执行。这样的话，一旦 effect 的依赖发生变化，它就会被重新创建。</p>
 <p>如果某些特定值在两次重渲染之间没有发生变化，你可以通知 React <strong>跳过</strong>对 effect 的调用，</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>useEffect</span>(() =&gt; {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#a6e22e>useEffect</span>(() =&gt; {
   document.<span style=color:#a6e22e>title</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`You clicked </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>count</span><span style=color:#e6db74>}</span><span style=color:#e6db74> times`</span>;
 }, [<span style=color:#a6e22e>count</span>]); <span style=color:#75715e>// 仅在 count 更改时更新
 </span><span style=color:#75715e></span>
@@ -340,7 +340,7 @@ effect 的条件执行
 </li>
 <li>
 <p>如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组作为第二个参数。effect 内部的 props 和 state 就会一直拥有其初始值。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Count</span>() {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Count</span>() {
   <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#ae81ff>0</span>);
 
   <span style=color:#a6e22e>useEffect</span>(()=&gt;{
@@ -353,9 +353,9 @@ effect 的条件执行
     }
   }, []);
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}<span style=color:#f92672>&gt;</span>
+    &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}&gt;
       <span style=color:#a6e22e>当前count</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>}
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+    &lt;/<span style=color:#f92672>button</span>&gt;
   );
 }
 </code></pre></div></li>
@@ -374,7 +374,7 @@ useContext
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>useState</span>, <span style=color:#a6e22e>createContext</span>, <span style=color:#a6e22e>useContext</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>useState</span>, <span style=color:#a6e22e>createContext</span>, <span style=color:#a6e22e>useContext</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
 
 <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>themes</span> <span style=color:#f92672>=</span> {
   <span style=color:#a6e22e>light</span><span style=color:#f92672>:</span> {
@@ -394,18 +394,18 @@ useContext
   <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>model</span>, <span style=color:#a6e22e>setModel</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#e6db74>&#39;light&#39;</span>);
   <span style=color:#66d9ef>return</span> (
     <span style=color:#75715e>// 当value 变化时，调用了 useContext的组件重新渲染
-</span><span style=color:#75715e></span>    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>ThemeContext</span>.<span style=color:#a6e22e>Provider</span> <span style=color:#a6e22e>value</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>themes</span>[<span style=color:#a6e22e>model</span>]}<span style=color:#f92672>&gt;</span>
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Toolbar</span> <span style=color:#f92672>/&gt;</span>
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setModel</span>(<span style=color:#a6e22e>model</span> <span style=color:#f92672>===</span> <span style=color:#e6db74>&#39;light&#39;</span> <span style=color:#f92672>?</span> <span style=color:#e6db74>&#39;dark&#39;</span> <span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;light&#39;</span>)}<span style=color:#f92672>&gt;</span><span style=color:#a6e22e>Change</span> <span style=color:#a6e22e>Theme</span><span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/ThemeContext.Provider&gt;</span>
+</span><span style=color:#75715e></span>    &lt;<span style=color:#f92672>ThemeContext.Provider</span> <span style=color:#a6e22e>value</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>themes</span>[<span style=color:#a6e22e>model</span>]}&gt;
+      &lt;<span style=color:#f92672>Toolbar</span> /&gt;
+      &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setModel</span>(<span style=color:#a6e22e>model</span> <span style=color:#f92672>===</span> <span style=color:#e6db74>&#39;light&#39;</span> <span style=color:#f92672>?</span> <span style=color:#e6db74>&#39;dark&#39;</span> <span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;light&#39;</span>)}&gt;<span style=color:#a6e22e>Change</span> <span style=color:#a6e22e>Theme</span>&lt;/<span style=color:#f92672>button</span>&gt;
+    &lt;/<span style=color:#f92672>ThemeContext.Provider</span>&gt;
   );
 }
 
 <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Toolbar</span>() {
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span><span style=color:#f92672>&gt;</span>
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>ThemedButton</span> <span style=color:#f92672>/&gt;</span>
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+    &lt;<span style=color:#f92672>div</span>&gt;
+      &lt;<span style=color:#f92672>ThemedButton</span> /&gt;
+    &lt;/<span style=color:#f92672>div</span>&gt;
   );
 }
 
@@ -414,9 +414,9 @@ useContext
 </span><span style=color:#75715e></span>  <span style=color:#75715e>//调用了 useContext 的组件总会在 context 值变化时重新渲染 
 </span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>theme</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useContext</span>(<span style=color:#a6e22e>ThemeContext</span>);
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>style</span><span style=color:#f92672>=</span>{{ ...<span style=color:#a6e22e>theme</span> }}<span style=color:#f92672>&gt;</span>
+    &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>style</span><span style=color:#f92672>=</span>{{ ...<span style=color:#a6e22e>theme</span> }}&gt;
       <span style=color:#a6e22e>I</span> <span style=color:#a6e22e>am</span> <span style=color:#a6e22e>styled</span> <span style=color:#a6e22e>by</span> <span style=color:#a6e22e>theme</span> <span style=color:#a6e22e>context</span><span style=color:#f92672>!</span>
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+    &lt;/<span style=color:#f92672>button</span>&gt;
   );
 }
 </code></pre></div><h3 id=传递hooks>
@@ -426,16 +426,16 @@ useContext
 </a>
 </h3>
 <p>context 对象可以是任意值所以，你也可以通过 context往下传一个 <code>hooks</code> 函数</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>TodosDispatch</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>React</span>.<span style=color:#a6e22e>createContext</span>(<span style=color:#66d9ef>null</span>);
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>TodosDispatch</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>React</span>.<span style=color:#a6e22e>createContext</span>(<span style=color:#66d9ef>null</span>);
 
 <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>TodosApp</span>() {
   <span style=color:#75715e>// 提示：`dispatch` 不会在重新渲染之间变化
 </span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>todos</span>, <span style=color:#a6e22e>dispatch</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useReducer</span>(<span style=color:#a6e22e>todosReducer</span>);
 
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>TodosDispatch</span>.<span style=color:#a6e22e>Provider</span> <span style=color:#a6e22e>value</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>dispatch</span>}<span style=color:#f92672>&gt;</span>
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>DeepTree</span> <span style=color:#a6e22e>todos</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>todos</span>} <span style=color:#f92672>/&gt;</span>
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/TodosDispatch.Provider&gt;</span>
+    &lt;<span style=color:#f92672>TodosDispatch.Provider</span> <span style=color:#a6e22e>value</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>dispatch</span>}&gt;
+      &lt;<span style=color:#f92672>DeepTree</span> <span style=color:#a6e22e>todos</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>todos</span>} /&gt;
+    &lt;/<span style=color:#f92672>TodosDispatch.Provider</span>&gt;
   );
 }
 </code></pre></div><h2 id=usereducer>
@@ -455,7 +455,7 @@ useReducer
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>initialState</span> <span style=color:#f92672>=</span> {<span style=color:#a6e22e>count</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0</span>};
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>initialState</span> <span style=color:#f92672>=</span> {<span style=color:#a6e22e>count</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0</span>};
 
 <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>reducer</span>(<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>action</span>) {
   <span style=color:#66d9ef>switch</span> (<span style=color:#a6e22e>action</span>.<span style=color:#a6e22e>type</span>) {
@@ -471,11 +471,11 @@ useReducer
 <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Counter</span>() {
   <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>dispatch</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useReducer</span>(<span style=color:#a6e22e>reducer</span>, <span style=color:#a6e22e>initialState</span>);
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;&gt;</span>
+    &lt;&gt;
       <span style=color:#a6e22e>Count</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>count</span>}
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>dispatch</span>({<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;decrement&#39;</span>})}<span style=color:#f92672>&gt;-&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>dispatch</span>({<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;increment&#39;</span>})}<span style=color:#f92672>&gt;+&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/&gt;</span>
+      &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>dispatch</span>({<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;decrement&#39;</span>})}&gt;<span style=color:#f92672>-</span>&lt;/<span style=color:#f92672>button</span>&gt;
+      &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>dispatch</span>({<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;increment&#39;</span>})}&gt;<span style=color:#f92672>+</span>&lt;/<span style=color:#f92672>button</span>&gt;
+    &lt;/&gt;
   );
 }
 </code></pre></div><h3 id=惰性初始化>
@@ -485,7 +485,7 @@ useReducer
 </a>
 </h3>
 <p>你可以选择惰性地创建初始 state。为此，需要将 <code>init</code> 函数作为 <code>useReducer</code> 的第三个参数传入，这样初始 state 将被设置为 <code>init(initialArg)</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>dispatch</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useReducer</span>(<span style=color:#a6e22e>reducer</span>, <span style=color:#a6e22e>initialArg</span>, <span style=color:#a6e22e>init</span>);
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>dispatch</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useReducer</span>(<span style=color:#a6e22e>reducer</span>, <span style=color:#a6e22e>initialArg</span>, <span style=color:#a6e22e>init</span>);
 <span style=color:#75715e>// state = init(initialArg);
 </span></code></pre></div><h3 id=跳过-dispatch>
 跳过 dispatch
@@ -494,7 +494,7 @@ useReducer
 </a>
 </h3>
 <p>与<code>useState</code>类似，如果 Reducer Hook 的返回值与当前 state 相同，React 将跳过子组件的渲染及副作用的执行。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>initialState</span> <span style=color:#f92672>=</span> {<span style=color:#a6e22e>count</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>1</span>};
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>initialState</span> <span style=color:#f92672>=</span> {<span style=color:#a6e22e>count</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>1</span>};
 <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>reducer</span>(<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>action</span>) {
   <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>state</span>);
   <span style=color:#66d9ef>switch</span> (<span style=color:#a6e22e>action</span>.<span style=color:#a6e22e>type</span>) {
@@ -513,11 +513,11 @@ useReducer
 <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Counter</span>() {
   <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>state</span>, <span style=color:#a6e22e>dispatch</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useReducer</span>(<span style=color:#a6e22e>reducer</span>, <span style=color:#a6e22e>initialState</span>);
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;&gt;</span>
+    &lt;&gt;
       <span style=color:#a6e22e>Count</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>count</span>}
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>dispatch</span>({<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;decrement&#39;</span>})}<span style=color:#f92672>&gt;-&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>dispatch</span>({<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;increment&#39;</span>})}<span style=color:#f92672>&gt;+&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/&gt;</span>
+      &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>dispatch</span>({<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;decrement&#39;</span>})}&gt;<span style=color:#f92672>-</span>&lt;/<span style=color:#f92672>button</span>&gt;
+      &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>dispatch</span>({<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;increment&#39;</span>})}&gt;<span style=color:#f92672>+</span>&lt;/<span style=color:#f92672>button</span>&gt;
+    &lt;/&gt;
   );
 }
 
@@ -528,7 +528,7 @@ useCallback
 </a>
 </h2>
 <p>把内联回调函数及依赖项数组作为参数传入 <code>useCallback</code>，它将返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新。当你把回调函数传递给经过优化的并使用<code>引用相等性</code>去避免非必要渲染（例如 <code>shouldComponentUpdate</code>）的子组件时，它将非常有用。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>//当a&amp;b不变时返回同一个memoizedCallback（引用不变）
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#75715e>//当a&amp;b不变时返回同一个memoizedCallback（引用不变）
 </span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>memoizedCallback</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useCallback</span>(
   () =&gt; {
     <span style=color:#a6e22e>doSomething</span>(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>);
@@ -546,7 +546,7 @@ useCallback
 </a>
 </h3>
 <p>下面的例子中如果<code>const getLabel = () => label.toUpperCase();</code> 当count改变时会导致CountButton重新渲染，每次都会重新声明<code>getLabel</code>函数导致传递给Label组件的引用发生改变，引起不必要的渲染。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>useCallback</span>, <span style=color:#a6e22e>useState</span>, <span style=color:#a6e22e>useEffect</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>useCallback</span>, <span style=color:#a6e22e>useState</span>, <span style=color:#a6e22e>useEffect</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;react&#34;</span>;
 
 <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Label</span>({<span style=color:#a6e22e>getLabel</span>}) {
   <span style=color:#a6e22e>useEffect</span>(()=&gt;{
@@ -554,7 +554,7 @@ useCallback
 </span><span style=color:#75715e></span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;useEffect: getLabel&#39;</span>)
   }, [<span style=color:#a6e22e>getLabel</span>]);
   <span style=color:#66d9ef>return</span>(
-    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>label</span><span style=color:#f92672>&gt;</span> { <span style=color:#a6e22e>getLabel</span>() } <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/label&gt;</span>
+    &lt;<span style=color:#f92672>label</span>&gt; { <span style=color:#a6e22e>getLabel</span>() } &lt;/<span style=color:#f92672>label</span>&gt;
   )
 }
 
@@ -566,13 +566,13 @@ useCallback
     <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>label</span>.<span style=color:#a6e22e>toUpperCase</span>();
   }, [<span style=color:#a6e22e>label</span>]);
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span><span style=color:#f92672>&gt;</span>
-      <span style=color:#a6e22e>lable</span><span style=color:#f92672>:</span> <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>input</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text&#34;</span> <span style=color:#a6e22e>onChange</span><span style=color:#f92672>=</span>{(<span style=color:#a6e22e>e</span>) =&gt; <span style=color:#a6e22e>setLabel</span>(<span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>target</span>.<span style=color:#a6e22e>value</span>)}<span style=color:#f92672>/&gt;</span>
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}<span style=color:#f92672>&gt;</span>
+    &lt;<span style=color:#f92672>div</span>&gt;
+      <span style=color:#a6e22e>lable</span><span style=color:#f92672>:</span> &lt;<span style=color:#f92672>input</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text&#34;</span> <span style=color:#a6e22e>onChange</span><span style=color:#f92672>=</span>{(<span style=color:#a6e22e>e</span>) =&gt; <span style=color:#a6e22e>setLabel</span>(<span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>target</span>.<span style=color:#a6e22e>value</span>)}/&gt;
+      &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}&gt;
           <span style=color:#a6e22e>count</span> <span style=color:#a6e22e>is</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>}
-      <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>Label</span> <span style=color:#a6e22e>getLabel</span><span style=color:#f92672>=</span>{ <span style=color:#a6e22e>getLabel</span> }<span style=color:#f92672>/&gt;</span>
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+      &lt;/<span style=color:#f92672>button</span>&gt;
+      &lt;<span style=color:#f92672>Label</span> <span style=color:#a6e22e>getLabel</span><span style=color:#f92672>=</span>{ <span style=color:#a6e22e>getLabel</span> }/&gt;
+    &lt;/<span style=color:#f92672>div</span>&gt;
   );
 }
 
@@ -595,7 +595,7 @@ useMemo
 <p>**你只可以把 <code>useMemo</code> 作为性能优化的手段，但不要把它当成语义上的保证。**将来，React 可能会选择“遗忘”以前的一些 memoized 值并在下次渲染时重新计算它们</p>
 </li>
 </ul>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>//当a&amp;b不变时返回memoizedValue（引用不变）
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#75715e>//当a&amp;b不变时返回memoizedValue（引用不变）
 </span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>memoizedValue</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useMemo</span>(() =&gt; <span style=color:#a6e22e>computeExpensiveValue</span>(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>), [<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>]);
 </code></pre></div><h3 id=基础用法-5>
 基础用法
@@ -603,7 +603,7 @@ useMemo
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>CountButton</span>() {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>CountButton</span>() {
   <span style=color:#66d9ef>let</span> [ <span style=color:#a6e22e>label</span>, <span style=color:#a6e22e>setLabel</span> ] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#e6db74>&#39;&#39;</span>);
   <span style=color:#66d9ef>let</span> [ <span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span> ] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#ae81ff>0</span>);
   <span style=color:#75715e>// 如果依赖项label不变memoizedValue不会重新计算
@@ -612,13 +612,13 @@ useMemo
     <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>label</span>.<span style=color:#a6e22e>toUpperCase</span>();
   }, [<span style=color:#a6e22e>label</span>]);
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>div</span><span style=color:#f92672>&gt;</span>
-      <span style=color:#a6e22e>lable</span><span style=color:#f92672>:</span> <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>input</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text&#34;</span> <span style=color:#a6e22e>onChange</span><span style=color:#f92672>=</span>{(<span style=color:#a6e22e>e</span>) =&gt; <span style=color:#a6e22e>setLabel</span>(<span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>target</span>.<span style=color:#a6e22e>value</span>)}<span style=color:#f92672>/&gt;</span>
+    &lt;<span style=color:#f92672>div</span>&gt;
+      <span style=color:#a6e22e>lable</span><span style=color:#f92672>:</span> &lt;<span style=color:#f92672>input</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text&#34;</span> <span style=color:#a6e22e>onChange</span><span style=color:#f92672>=</span>{(<span style=color:#a6e22e>e</span>) =&gt; <span style=color:#a6e22e>setLabel</span>(<span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>target</span>.<span style=color:#a6e22e>value</span>)}/&gt;
       {<span style=color:#a6e22e>memoizedValue</span>}
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}<span style=color:#f92672>&gt;</span>
+      &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}&gt;
           <span style=color:#a6e22e>count</span> <span style=color:#a6e22e>is</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>}
-      <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/div&gt;</span>
+      &lt;/<span style=color:#f92672>button</span>&gt;
+    &lt;/<span style=color:#f92672>div</span>&gt;
   );
 }
 </code></pre></div><h2 id=useref>
@@ -635,17 +635,17 @@ useRef
 </a>
 </h3>
 <p>一个常见的用例便是命令式地访问子组件</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>TextInputWithFocusButton</span>() {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>TextInputWithFocusButton</span>() {
   <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>inputEl</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useRef</span>(<span style=color:#66d9ef>null</span>);
   <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>onButtonClick</span> <span style=color:#f92672>=</span> () =&gt; {
     <span style=color:#75715e>// `current` 指向已挂载到 DOM 上的文本输入元素
 </span><span style=color:#75715e></span>    <span style=color:#a6e22e>inputEl</span>.<span style=color:#a6e22e>current</span>.<span style=color:#a6e22e>focus</span>();
   };
   <span style=color:#66d9ef>return</span> (
-    <span style=color:#f92672>&lt;&gt;</span>
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>input</span> <span style=color:#a6e22e>ref</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>inputEl</span>} <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text&#34;</span> <span style=color:#f92672>/&gt;</span>
-      <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>onButtonClick</span>}<span style=color:#f92672>&gt;</span><span style=color:#a6e22e>Focus</span> <span style=color:#a6e22e>the</span> <span style=color:#a6e22e>input</span><span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
-    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/&gt;</span>
+    &lt;&gt;
+      &lt;<span style=color:#f92672>input</span> <span style=color:#a6e22e>ref</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>inputEl</span>} <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text&#34;</span> /&gt;
+      &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>onButtonClick</span>}&gt;<span style=color:#a6e22e>Focus</span> <span style=color:#a6e22e>the</span> <span style=color:#a6e22e>input</span>&lt;/<span style=color:#f92672>button</span>&gt;
+    &lt;/&gt;
   );
 }
 </code></pre></div><h3 id=保存实例变量>
@@ -676,25 +676,80 @@ useRef
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<p>你也可以传递一个函数。这个函数中接受 React 组件实例或 HTML DOM 元素作为参数,它能助你更精细地控制何时 refs 被设置和解除。</p>
-<h2 id=useimperativehandle>
+<p>如果想要在 React 绑定或解绑 DOM 节点的 ref 时运行某些代码，你也可以传递一个函数。这个函数中接受 React 组件实例或 HTML DOM 元素作为参数,它能助你更精细地控制何时 refs 被设置和解除。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>TextInput</span>() {
+  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>textInput</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span>;
+  <span style=color:#75715e>// 不需要使用useRef
+</span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>inputRef</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>ele</span>)=&gt;{
+    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>ele</span>);
+    <span style=color:#a6e22e>textInput</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>ele</span>;
+  };
+  <span style=color:#66d9ef>return</span> (
+    &lt;&gt;
+      &lt;<span style=color:#f92672>input</span> <span style=color:#a6e22e>ref</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>inputRef</span>} <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text&#34;</span> /&gt;
+      &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; {<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>textInput</span>)}}&gt;<span style=color:#a6e22e>Focus</span> <span style=color:#a6e22e>the</span> <span style=color:#a6e22e>input</span>&lt;/<span style=color:#f92672>button</span>&gt;
+    &lt;/&gt;
+  );
+}
+</code></pre></div><h2 id=useimperativehandle>
 useImperativeHandle
 <a class=heading-link href=#useimperativehandle>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h2>
-<h3 id=基础用法-7>
+<p><code>useImperativeHandle</code> 可以让你在使用 <code>ref</code> 时自定义暴露给父组件的实例值。<code>useImperativeHandle</code> 应当与 <a href=https://react.docschina.org/docs/react-api.html#reactforwardref><code>forwardRef</code></a> 一起使用：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>useImperativeHandle</span>(<span style=color:#a6e22e>ref</span>, <span style=color:#a6e22e>createHandle</span>, [<span style=color:#a6e22e>deps</span>])
+</code></pre></div><h3 id=基础用法-7>
 基础用法
 <a class=heading-link href=#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95-7>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<h2 id=uselayouteffect>
+<p>父组件可以调用 <code>inputRef.current.focus()</code>。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#75715e>//该渲染函数会将 ref 传递给 &lt;input ref={ref}&gt; 元素。
+</span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>FancyInput</span>(<span style=color:#a6e22e>props</span>, <span style=color:#a6e22e>ref</span>) {
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>inputRef</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useRef</span>();
+  <span style=color:#a6e22e>useImperativeHandle</span>(<span style=color:#a6e22e>ref</span>, () =&gt; ({
+    <span style=color:#a6e22e>focus</span><span style=color:#f92672>:</span> () =&gt; {
+      <span style=color:#a6e22e>inputRef</span>.<span style=color:#a6e22e>current</span>.<span style=color:#a6e22e>focus</span>();
+    }
+  }));
+  <span style=color:#66d9ef>return</span> &lt;<span style=color:#f92672>input</span> <span style=color:#a6e22e>ref</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>inputRef</span>} /&gt;;
+}
+<span style=color:#a6e22e>FancyInput</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>forwardRef</span>(<span style=color:#a6e22e>FancyInput</span>);
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Wrapper</span>(){
+  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>inputRef</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>useRef</span>();
+  <span style=color:#75715e>// React 会将 &lt;FancyButton ref={ref}&gt; 元素的 ref 作为第二个参数传递给 React.forwardRef 函数中的渲染函数。
+</span><span style=color:#75715e></span>  
+  <span style=color:#66d9ef>return</span> (
+    &lt;<span style=color:#f92672>div</span>&gt;
+      &lt;<span style=color:#f92672>FancyInput</span> <span style=color:#a6e22e>ref</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>inputRef</span>} /&gt;
+      &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>inputRef</span>.<span style=color:#a6e22e>current</span>.<span style=color:#a6e22e>focus</span>()}&gt;<span style=color:#a6e22e>focus</span>&lt;/<span style=color:#f92672>button</span>&gt;
+    &lt;/<span style=color:#f92672>div</span>&gt;
+  );
+}
+</code></pre></div><h3 id=createhandle条件执行>
+createHandle条件执行
+<a class=heading-link href=#createhandle%e6%9d%a1%e4%bb%b6%e6%89%a7%e8%a1%8c>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p>默认情况下，在组建重新渲染后useImperativeHandle中的createHandle 均会执行，为了不必要的性能损失我们可以传入依赖避免不必要的性能损失</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>useImperativeHandle</span>(<span style=color:#a6e22e>ref</span>, () =&gt; ({
+  <span style=color:#a6e22e>count</span>,
+  <span style=color:#a6e22e>focus</span><span style=color:#f92672>:</span> () =&gt; {
+    <span style=color:#a6e22e>inputRef</span>.<span style=color:#a6e22e>current</span>.<span style=color:#a6e22e>focus</span>();
+  }
+}), [<span style=color:#a6e22e>count</span>]);
+</code></pre></div><h2 id=uselayouteffect>
 useLayoutEffect
 <a class=heading-link href=#uselayouteffect>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h2>
+<p>其函数签名与 <code>useEffect</code> 相同，但它会在所有的 DOM 变更之后同步调用 effect。可以使用它来读取 DOM 布局并同步触发重渲染。在浏览器执行绘制之前，<code>useLayoutEffect</code> 内部的更新计划将被同步刷新。</p>
+<p>尽可能使用标准的 <code>useEffect</code> 以避免阻塞视觉更新。</p>
 <h3 id=基础用法-8>
 基础用法
 <a class=heading-link href=#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95-8>
@@ -707,13 +762,42 @@ useDebugValue
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h2>
-<h3 id=基础用法-9>
+<p><code>useDebugValue</code> 可用于在 React 开发者工具中显示自定义 hook 的标签。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>useDebugValue</span>(<span style=color:#a6e22e>value</span>)
+</code></pre></div><h3 id=基础用法-9>
 基础用法
 <a class=heading-link href=#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95-9>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<h1 id=关于hooks>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>testHook</span>(<span style=color:#a6e22e>initialCount</span>) {
+  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#a6e22e>initialCount</span>)
+  <span style=color:#75715e>// 在开发者工具中的这个 Hook 旁边显示标签
+</span><span style=color:#75715e></span>  <span style=color:#75715e>// e.g. &#34;testHook: 好好学习&#34;
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>useDebugValue</span>(<span style=color:#e6db74>&#39;好好学习&#39;</span>);
+  <span style=color:#66d9ef>return</span> [<span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span>];
+}
+
+<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Counter</span>(<span style=color:#a6e22e>props</span>) {
+  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>testHook</span>(<span style=color:#a6e22e>props</span>.<span style=color:#a6e22e>initialCount</span>);
+  <span style=color:#66d9ef>return</span> (
+    <span style=color:#f92672>&lt;</span><span style=color:#a6e22e>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}<span style=color:#f92672>&gt;</span>
+      <span style=color:#a6e22e>count</span> <span style=color:#a6e22e>is</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>}
+    <span style=color:#f92672>&lt;</span><span style=color:#960050;background-color:#1e0010>/button&gt;</span>
+  );
+}
+</code></pre></div><h3 id=延迟格式化-debug-值>
+延迟格式化 debug 值
+<a class=heading-link href=#%e5%bb%b6%e8%bf%9f%e6%a0%bc%e5%bc%8f%e5%8c%96-debug-%e5%80%bc>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h3>
+<p>在某些情况下，格式化值的显示可能是一项开销很大的操作。除非需要检查 Hook，否则没有必要这么做。</p>
+<p>因此，<code>useDebugValue</code> 接受一个格式化函数作为可选的第二个参数。该函数只有在 Hook 被检查时才会被调用。它接受 debug 值作为参数，并且会返回一个格式化的显示值。</p>
+<p>例如，一个返回 <code>Date</code> 值的自定义 Hook 可以通过格式化函数来避免不必要的 <code>toDateString</code> 函数调用：</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>//只有在 Hook 被检查时才会被调用
+</span><span style=color:#75715e></span><span style=color:#a6e22e>useDebugValue</span>(<span style=color:#a6e22e>date</span>, <span style=color:#a6e22e>date</span> =&gt; <span style=color:#a6e22e>date</span>.<span style=color:#a6e22e>toDateString</span>());
+</code></pre></div><h1 id=关于hooks>
 关于hooks
 <a class=heading-link href=#%e5%85%b3%e4%ba%8ehooks>
 <i class="fa fa-link" aria-hidden=true></i>
