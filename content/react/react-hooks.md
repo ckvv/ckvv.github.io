@@ -4,20 +4,28 @@ tags: ['react', 'hooks']
 date: "2022-02-21"
 ---
 
-在React中，如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。但是 [Class组件](https://reactjs.org/docs/react-component.html)在变得复杂之后会变得难以维护, 通过`React Hook` (React 16.8 的新增特性) 可以让你在不编写 `class` 的情况下使用 `state` 以及其他的 React 特性。
+在React中，如果在编写函数组件并需要向其添加一些 state，以前的做法是必须将其它转化为 class。通过一个实例化的`class`，保存组件的`state`等状态，对于每一次更新只需要调用`render`方法就可以。但是 [Class组件](https://reactjs.org/docs/react-component.html)在变得复杂之后会变得难以维护。
 
-Hook 是一个特殊的函数，它可以让你“钩入” React 的特性。例如，`useState` 是允许你在 React 函数组件中添加 state 的 Hook。现在你可以在现有的函数组件中使用 Hook，所以通常来说`hook`使得在组件之间复用状态逻辑变得便捷、逻辑也更清晰。
+在`function`组件中，没有一个状态去保存这些信息，每一次函数上下文执行，所有变量，常量都重新声明，执行完毕，再被垃圾机制回收。为了保存一些状态,执行一些副作用钩子,React 16.8新增了`React Hooks`，去帮助记录组件的状态，处理一些额外的副作用。通过`React Hook` 可以让你在不编写 `class` 的情况下使用 `state` 以及其他的 React 特性。
+
+Hook 是一个特殊的函数，它可以让你“钩入” React 的特性。例如，`useState` 是允许你在 React 函数组件中添加 state 的 Hook。你可以在现有的函数组件中使用 Hook，所以通常来说`hook`使得在组件之间复用状态逻辑变得方便、更容易实现代码的关注点分离。
 
 # Hooks API
+
 ## useState
+
 在函数组件中存储内部 state
+
 ```jsx
 const [state, setState] = useState(initialState);
 ```
+
 参数:
+
 - `initialState`: state初始值
 
 返回值: 
+
 - `state`: 当前的 state
 - `setState`: 更新 state 的方法, 它接收一个新的 state 值并将组件的一次重新渲染加入队列。如果你的更新函数返回值与当前 state 完全相同，则随后的重渲染会被完全跳过
 
@@ -39,8 +47,6 @@ Counter.defaultProps = {
   initialCount: 10,
 }
 ```
-
-
 
 值得注意的是，类似class 组件中的`setState`,在我们执行`setCount`时count的值不是立即更新的，而是在下一个重渲染时才会更新，后调用的 setCount() 将覆盖同一周期内先调用 setCount 的值。
 
@@ -70,7 +76,7 @@ setCount(count => count + 1);
 ```
 
 > 与 class 组件中的 `setState` 方法不同，`setState` 不会自动合并更新对象。你可以用函数式的 `setState` 结合展开运算符来达到合并更新对象的效果。
->
+> 
 > ```jsx
 > const [people, setPeople] = useState({
 >   age: 18,
@@ -88,7 +94,7 @@ setCount(count => count + 1);
 >   ..prevState,
 >   age: prevState.age + 1,
 > });
->   
+> 
 > // people {age: 19, name: '小红'}
 > ```
 
@@ -121,7 +127,7 @@ function CountButton() {
           countObj.value ++;
           console.log(countObj);
           setCount(countObj);
-    		// setCount({...countObj}); 如果想要触发更新可以这样做
+            // setCount({...countObj}); 如果想要触发更新可以这样做
         }}>
           count is: {count.value}
         </button>
@@ -192,14 +198,14 @@ function DateLabel() {
 ```jsx
 function CountBtn() {
   const [count, setCount] = useState(0);
-	// 在useEffect之前调用
+    // 在useEffect之前调用
   console.log('函数中;useEffect前',count);
 
   useEffect(()=>{
     // Dom 已经变化
     console.log(document.querySelector('.count-btn').textContent);
   });
-  
+
   // 在useEffect之前调用
   console.log('函数中;useEffect后',count);
 
@@ -221,13 +227,12 @@ function CountBtn() {
 useEffect(() => {
   document.title = `You clicked ${count} times`;
 }, [count]); // 仅在 count 更改时更新
-
 ```
 
 + 请确保数组中包含了**所有外部作用域中会随时间变化并且在 effect 中使用的变量**，否则你的代码会引用到先前渲染中的旧变量。
 
 + 如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组作为第二个参数。effect 内部的 props 和 state 就会一直拥有其初始值。
-
+  
   ```jsx
   function Count() {
     const [count, setCount] = useState(0);
@@ -324,8 +329,6 @@ function TodosApp() {
 }
 ```
 
-
-
 ## useReducer
 
 [`useState`](https://react.docschina.org/docs/hooks-reference.html#usestate) 的替代方案。它接收一个形如 `(state, action) => newState` 的 reducer，并返回当前的 state 以及与其配套的 `dispatch` 方法。
@@ -381,7 +384,7 @@ function reducer(state, action) {
   console.log(state);
   switch (action.type) {
     case 'increment':
-    	// Object.is 判断返回state相同，所以将跳过子组件的渲染及副作用的执行
+        // Object.is 判断返回state相同，所以将跳过子组件的渲染及副作用的执行
       state.count ++;
       return state;
     case 'decrement':
@@ -402,7 +405,6 @@ function Counter() {
     </>
   );
 }
-
 ```
 
 ## useCallback
@@ -460,8 +462,6 @@ function CountButton() {
 export default CountButton;
 ```
 
-
-
 ## useMemo
 
 把“创建”函数和依赖项数组作为参数传入 `useMemo`，它仅会在某个依赖项改变时才重新计算 memoized 值。这种优化有助于避免在每次渲染时都进行高开销的计算。
@@ -469,6 +469,7 @@ export default CountButton;
 + 传入 `useMemo` 的函数会在渲染期间执行。请不要在这个函数内部执行与渲染无关的操作，诸如副作用这类的操作属于 `useEffect` 的适用范畴
 
 + 如果没有提供依赖项数组，`useMemo` 在每次渲染时都会计算新的值。
+
 + **你只可以把 `useMemo` 作为性能优化的手段，但不要把它当成语义上的保证。**将来，React 可能会选择“遗忘”以前的一些 memoized 值并在下次渲染时重新计算它们
 
 ```jsx
@@ -543,7 +544,29 @@ function TextInputWithFocusButton() {
     </>
   );
 }
+```
 
+### 获取上一轮的 props 或 state
+
+```js
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  const prevCount = usePrevious(count);
+  return (
+    <>
+      <h1>Now: {count}, before: {prevCount}</h1>
+      <button onClick={() => setCount(count + 1)}>Add</button>
+    </>
+  );
+}
 ```
 
 ### 回调Ref
@@ -595,7 +618,7 @@ FancyInput = forwardRef(FancyInput);
 function Wrapper(){
   const inputRef = useRef();
   // React 会将 <FancyButton ref={ref}> 元素的 ref 作为第二个参数传递给 React.forwardRef 函数中的渲染函数。
-  
+
   return (
     <div>
       <FancyInput ref={inputRef} />
@@ -618,8 +641,6 @@ useImperativeHandle(ref, () => ({
 }), [count]);
 ```
 
-
-
 ## useLayoutEffect
 
 其函数签名与 `useEffect` 相同，但它会在所有的 DOM 变更之后同步调用 effect。可以使用它来读取 DOM 布局并同步触发重渲染。在浏览器执行绘制之前，`useLayoutEffect` 内部的更新计划将被同步刷新。
@@ -627,6 +648,7 @@ useImperativeHandle(ref, () => ({
 尽可能使用标准的 `useEffect` 以避免阻塞视觉更新。
 
 ### 基础用法
+
 ## useDebugValue
 
 `useDebugValue` 可用于在 React 开发者工具中显示自定义 hook 的标签。
@@ -669,8 +691,74 @@ function Counter(props) {
 useDebugValue(date, date => date.toDateString());
 ```
 
-# 关于hooks
+# 关于hooks的问题
+
 ## Hooks的原理
+
+React 保持对当前渲染中的组件的追踪。多亏了 [Hook 规范](https://zh-hans.reactjs.org/docs/hooks-rules.html)，我们得知 Hook 只会在 React 组件中被调用（或自定义 Hook —— 同样只会在 React 组件中被调用）。
+
+每个组件内部都有一个「记忆单元格」列表。它们只不过是我们用来存储一些数据的 JavaScript 对象。当你用 `useState()` 调用一个 Hook 的时候，它会读取当前的单元格（或在首次渲染时将其初始化），然后把指针移动到下一个。这就是多个 `useState()` 调用会得到各自独立的本地 state 的原因。
+
+```js
+// 每次执行一个`hooks`函数，都产生一个`hook`对象，里面保存了当前`hook`信息,
+// 然后将每个`hooks`以链表形式串联起来，并赋值给`workInProgress`的`memoizedState`。
+// 也就证实了上述所说的，函数组件用`memoizedState`存放`hooks`链表。
+function mountWorkInProgressHook(): Hook {
+  const hook: Hook = {
+    memoizedState: null,
+
+    baseState: null,
+    baseQueue: null,
+    queue: null,
+
+    next: null,
+  };
+
+  if (workInProgressHook === null) {
+    // This is the first hook in the list
+    currentlyRenderingFiber.memoizedState = workInProgressHook = hook;
+  } else {
+    // Append to the end of the list
+    workInProgressHook = workInProgressHook.next = hook;
+  }
+  return workInProgressHook;
+}
+```
+
+所以一旦在条件语句中声明`hooks`，在下一次函数组件更新，`hooks`链表结构，将会被破坏，`current`树的`memoizedState`缓存`hooks`信息，和当前`workInProgress`不一致，如果涉及到读取`state`等操作，就会发生异常
+
 ## Hooks的使用限制
-## React Hooks与Vue3 Composition API的区别
-## React 是如何把对 Hook 的调用和组件联系起来的
+
+### 只在最顶层使用 Hook
+
+**不要在循环，条件或嵌套函数中调用 Hook，** 确保总是在你的 React 函数的最顶层调用他们。遵守这条规则，你就能确保 Hook 在每一次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 `useState` 和 `useEffect` 调用之间保持 hook 状态的正确。参考`Hooks的原理`
+
+> 如果我们想要有条件地执行一个 effect，可以将判断放到 Hook 的*内部*：
+> 
+> ```js
+> useEffect(function persistForm() {
+>   // 👍 将条件判断放置在 effect 中
+>   if (name !== '') {
+>     localStorage.setItem('formData', name);
+>   }
+> });
+> ```
+
+### 只在 React 函数中调用 Hook
+
+**不要在普通的 JavaScript 函数中调用 Hook**你可以：
+
+- ✅ 在 React 的函数组件中调用 Hook
+- ✅ 在自定义 Hook 中调用其他 Hook
+
+遵循此规则，确保组件的状态逻辑在代码中清晰可见。
+
+### 自定义 Hook 必须以 “`use`” 开头
+
+这个约定非常重要。不遵循的话，由于无法判断某个函数是否包含对其内部 Hook 的调用，React 将无法自动检查你的 Hook 是否违反了 [Hook 的规则](https://zh-hans.reactjs.org/docs/hooks-rules.html)。
+
+# 参考文档
+
++ https://zh-hans.reactjs.org/docs/hooks-reference.html
+
++ https://zhuanlan.zhihu.com/p/376914196
