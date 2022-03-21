@@ -5,9 +5,11 @@ date: '2021-07-09'
 ---
 
 ## Proxy
+
 Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。Proxy 这个词的原意是代理，用在这里表示由它来“代理”某些操作，可以译为“代理器”。
 ES6 原生提供 Proxy 构造函数，用来生成 Proxy 实例。`var proxy = new Proxy(target, handler);`
 Proxy 对象的所有用法，都是上面这种形式，不同的只是handler参数的写法。其中，
+
 + `new Proxy()`表示生成一个Proxy实例，
 + `target`参数表示所要拦截的目标对象，
 + `handler`参数也是一个对象，用来定制拦截行为。
@@ -22,6 +24,7 @@ proxy.time // 35
 proxy.name // 35
 proxy.title // 35
 ```
+
 上面代码中，作为构造函数，Proxy接受两个参数。第一个参数是所要代理的目标对象（上例是一个空对象），即如果没有Proxy的介入，操作原来要访问的就是这个对象；第二个参数是一个配置对象，对于每一个被代理的操作，需要提供一个对应的处理函数，该函数将拦截对应的操作。比如，上面代码中，配置对象有一个get方法，用来拦截对目标对象属性的访问请求。get方法的两个参数分别是目标对象和所要访问的属性。可以看到，由于拦截函数总是返回35，所以访问任何属性都得到35。
 注意，要使得Proxy起作用，必须针对`Proxy实例`（上例是proxy对象）进行操作，而不是针对目标对象（上例是空对象）进行操作。
 
@@ -36,7 +39,9 @@ proxyP.name = 'ck';
 peo.name    //'ck'
 
 ```
+
 下面是 Proxy 支持的拦截操作一览，一共 13 种。
+
 + `get(target, propKey, receiver)`：拦截对象属性的读取，比如proxy.foo和proxy['foo']。
 + `set(target, propKey, value, receiver)`：拦截对象属性的设置，比如proxy.foo = v或proxy['foo'] = v，返回一个布尔值。
 + `has(target, propKey)`：拦截propKey in proxy的操作，返回一个布尔值。
@@ -51,11 +56,12 @@ peo.name    //'ck'
 + `apply(target, object, args)`：拦截 Proxy 实例作为函数调用的操作，比如proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。
 + `construct(target, args)`：拦截 Proxy 实例作为构造函数调用的操作，比如new proxy(...args)。
 
-
 ## Reflect
+
 Reflect 是一个内置的对象，它提供拦截 JavaScript 操作的方法。这些方法与处理器对象的方法相同。与大多数全局对象不同，Reflect没有构造函数。你不能将其与一个new运算符一起使用，或者将Reflect对象作为一个函数来调用。Reflect的所有属性和方法都是静态的（就像Math对象）。
 
 Reflect对象提供以下静态函数，它们具有与处理器对象方法相同的名称。这些方法中的一些与 Object 上的对应方法相同。
+
 ```
 Reflect.apply(target, thisArg, args)
 Reflect.construct(target, args)
@@ -71,6 +77,7 @@ Reflect.getOwnPropertyDescriptor(target, name)
 Reflect.getPrototypeOf(target)
 Reflect.setPrototypeOf(target, prototype)
 ```
+
 + `Reflect.apply()`对一个函数进行调用操作，同时可以传入一个数组作为调用参数。和 Function.prototype.apply() 功能类似。
 + `Reflect.construct()`
 对构造函数进行 new 操作，相当于执行 new target(...args)。
@@ -93,6 +100,7 @@ Reflect.get(myObject, 'foo') // 1
 Reflect.get(myObject, 'bar') // 2
 Reflect.get(myObject, 'baz') // 3
 ```
+
 + `Reflect.getOwnPropertyDescriptor()`类似于 Object.getOwnPropertyDescriptor()。
 + `Reflect.getPrototypeOf()`类似于 Object.getPrototypeOf()。
 + `Reflect.has()`判断一个对象是否存在某个属性，和 in 运算符 的功能完全相同。
@@ -102,11 +110,10 @@ Reflect.get(myObject, 'baz') // 3
 + `Reflect.set()`将值分配给属性的函数。返回一个Boolean，如果更新成功，则返回true。
 + `Reflect.setPrototypeOf()`类似于 Object.setPrototypeOf()。
 
-
-
 ## demo
 
 观察者模式：当一个对象被修改时,则会自动通知它的依赖对象
+
 ```js
 // 存放修改时触发的行为
 const queuedObservers = new Set();

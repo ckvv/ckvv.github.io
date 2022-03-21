@@ -4,7 +4,8 @@ tags: ['database']
 date: '2021-07-09'
 ---
 
-##  触发器
+## 触发器
+
 一个触发器声明了当执行一种特定类型的操作时数据库应该自动执行一个特殊的函数。触发器可以被附加到表（分区的或者不分区的）、视图和外部表。
 在表和外部表上，触发器可以被定义为在 INSERT、UPDATE或 DELETE操作之前或之后被执行， 可以为每个SQL语句被执行一次或者为每个修改的行 被执行一次。UPDATE 触发器可以进一步地设置为只针对UPDATE 语句的SET子句的特定列出发。触发器也可以被 TRUNCATE语句触发。如果一个触发器事件发生， 触发器函数会在适当的事件被调用来处理该事件。
 
@@ -12,7 +13,9 @@ date: '2021-07-09'
 一旦一个合适的触发器函数被创建，就可以使用CREATE TRIGGER建立触发器。同一个触发器函数可以被用于多个触发器。
 
 ## 触发器函数规则
+
 当一个PL/pgSQL函数当做触发器调用时，在顶层块会自动创建一些特殊变量。它们是：
+
 + NEW
 数据类型是RECORD；该变量为行级触发器中的INSERT/UPDATE操作保持新数据行。在语句级别的触发器以及DELETE操作，这个变量是null。
 + OLD
@@ -80,6 +83,7 @@ CREATE TRIGGER emp_stamp BEFORE INSERT OR UPDATE ON emp
 ```
 
 这个例子触发器保证了在emp表上的任何插入、更新或删除一行的动作都被记录（即审计）在emp_audit表中。当前时间和用户名会被记录到行中，还有在其上执行的操作类型。
+
 ```SQL
 CREATE TABLE emp (
     empname           text NOT NULL,
@@ -115,4 +119,3 @@ CREATE TRIGGER emp_audit
 AFTER INSERT OR UPDATE OR DELETE ON emp
     FOR EACH ROW EXECUTE FUNCTION process_emp_audit();
 ```
-

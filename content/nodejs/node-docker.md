@@ -5,6 +5,7 @@ date: '2021-07-09'
 ---
 
 ## 准备demo程序
+
 + index.js
 
 ```javascript
@@ -49,6 +50,7 @@ CMD [ "node", "index.js" ]
 
 + `.dockerignore` 文件
 这将避免你的本地模块以及调试日志被拷贝进入到你的 Docker 镜像中
+
 ```
 node_modules
 npm-debug.log
@@ -63,14 +65,15 @@ npm-debug.log
 //Don’t forget the . character at the end, which sets the build context to the current directory.
 docker build -t chenkai/node-web-app:v1.0.0 .
 ```
-检测镜像是否构建成功`docker images | grep node-web-app` 可以看到构建的镜像
 
+检测镜像是否构建成功`docker images | grep node-web-app` 可以看到构建的镜像
 
 运行镜像,使用 -d 模式运行镜像将以分离模式运行 Docker 容器，使得容器在后台自助运行。开关符 -p 在容器中把一个公共端口导向到私有的端口，请用以下命令运行你之前构建的镜像
 
 ```
 docker run -p 4444:6677 -d chenkai/node-web-app:v1.0.0
 ```
+
 `docker ps | grep node-web-app`可以看到启动的容器
 `docker logs -f ${CONTAINER ID }`可以看到容器输出的日志
 
@@ -85,8 +88,9 @@ docker run -p 4444:6677 -d chenkai/node-web-app:v1.0.0
 ## dockerfile
 
 一次运行容器报`sh: app.js,: unknown operand`错误，原因是dockerfile文件里面
+
 ```shell
 CMD [ "node", 'app.js' ]
 ```
-js养成了引号、双引号的习惯没检查出来，
 
+js养成了引号、双引号的习惯没检查出来，

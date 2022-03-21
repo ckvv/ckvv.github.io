@@ -7,6 +7,7 @@ date: '2022-02-09'
 我们可能需要针对宽屏和高屏编写不同代码，下面我总结一下从浏览器中获取宽、高相关的属性
 
 # css
+
 如果宽高屏不设计具体逻辑代码，我们可以采用css的`@media`媒体查询的方式判断;
 
 ## orientation
@@ -42,7 +43,7 @@ date: '2022-02-09'
 
 ## window
 
-`innerHeight` `innerWidth` `outerHeight` ` outerWidth` 获取浏览器窗口的视口（viewport）高度、宽度（以像素为单位）
+`innerHeight` `innerWidth` `outerHeight` `outerWidth` 获取浏览器窗口的视口（viewport）高度、宽度（以像素为单位）
 
 ![img](https://developer.mozilla.org/@api/deki/files/213/=FirefoxInnerVsOuterHeight2.png)
 
@@ -50,11 +51,11 @@ date: '2022-02-09'
 
 height: 以像素为单位返回屏幕的高度  
 
-width:  以像素为单位返回屏幕的宽度. 
+width:  以像素为单位返回屏幕的宽度.
 
-orientation: 返回当前屏幕的转向. 
+orientation: 返回当前屏幕的转向.
 
-availHeight: 指定屏幕的高度（以像素为单位）减去操作系统显示的永久或半永久用户界面功能，例如 Windows 上的任务栏. 
+availHeight: 指定屏幕的高度（以像素为单位）减去操作系统显示的永久或半永久用户界面功能，例如 Windows 上的任务栏.
 
 ## element
 
@@ -71,8 +72,6 @@ availHeight: 指定屏幕的高度（以像素为单位）减去操作系统显�
 ### getClientRects
 
 返回值是ClientRect对象集合，该对象是与该元素相关的CSS边框， 每个ClientRect对象包含一组描述该边框的只读属性——left、top、right和bottom，单位为像素，这些属性值是相对于视口的top-left的， 对于行内元素，元素内部的每一行都会有一个边框；对于块级元素，如果里面没有其他元素，一整块元素只有一个边框
-
-
 
 ### style
 

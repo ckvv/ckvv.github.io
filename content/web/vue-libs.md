@@ -29,5 +29,4 @@ date: '2022-02-09'
 + [petite-vue](https://github.com/vuejs/petite-vue) petite-vue 是 Vue 的替代发行版，针对渐进式增强进行了优化
 + [@ckpack/vue-color](https://github.com/ckpack/vue-color)
 
-
 > 其他参考<https://github.com/vuejs/awesome-vue>

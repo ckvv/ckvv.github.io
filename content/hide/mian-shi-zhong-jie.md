@@ -8,7 +8,7 @@ date: '2021-07-09'
 
 # 自我介绍
 
-https://www.zhipin.com/web/geek/resume
+<https://www.zhipin.com/web/geek/resume>
 
 ## 对公司有什么想要了解的
 
@@ -48,8 +48,6 @@ https://www.zhipin.com/web/geek/resume
 + `Object.setPrototypeOf`
 + 用 `Object.create`实现类继承
 + ES6的`extends`
-
-
 
 ## javascript 连等赋值问题
 
@@ -94,8 +92,6 @@ Array.prototype.map = function (fun) {
     return mapArr;
 }
 ```
-
-
 
 ## 实现一个无限查找素数的方法
 
@@ -269,7 +265,7 @@ function formatArr(arr) {
 }
 ```
 
-## class URLSearchParams {} 语法实现一个该接口 ? polyfill，需实现下面列举的要求：
+## class URLSearchParams {} 语法实现一个该接口 ? polyfill，需实现下面列举的要求
 
 ```javascript
 // 构造函数支持传 ? URL 参数 ? 
@@ -719,6 +715,7 @@ let a = {
     }
 }
 ```
+
 ## js不用递归实现斐波那契数列
 
 ```javascript
@@ -734,6 +731,7 @@ function getFibonacci(n) {
     return resArr[n - 1];
 }
 ```
+
 ## 实现链式操作如下代码
 
 ```javascript
@@ -831,13 +829,21 @@ function search(arr, number) {
 let arr = [1, 2, 3, 4,4, 4, 5, 6, 7]
 console.log(search(arr,3))
 ```
+
 ## 实现继承的方式
+
 ## Reflect&Proxy
+
 ## defineProperty
+
 ## 迭代器
+
 ## 字符串、数组、对象、正则
+
 ## 函数声明和函数表达式
+
 函数声明
+
 ```javascript
 function say(){
   console.log('函数声明');
@@ -995,8 +1001,6 @@ function foreachTreeS(treeData){
 }
 ```
 
-
-
 ## 二叉树遍历-广度优先
 
 从上往下对每一层依次访问，在每一层中，从左往右（也可以从右往左）访问结点，访问完一层就进入下一层，直到没有结点可以访问为止
@@ -1018,7 +1022,7 @@ function foreachTreeG(treeData){
 }
 ```
 
-## 找出两个对象不一致的是哪个变量，
+## 找出两个对象不一致的是哪个变量
 
 返回的格式类似：”root变量-父变量-…-不一致的变量”的字符串；
 
@@ -1121,7 +1125,7 @@ let obj2 = {
 console.log(compare(obj1, obj2));
 ```
 
-## 设计一个自由可灵活配置的时间调度器，
+## 设计一个自由可灵活配置的时间调度器
 
 有a,b,c,d...很多个需要被调度的方法（方法名称的命名可随意），调度有两种形式，一个是顺序调用（例如调度完a后才能调度b），一个是间隔某个时间进行循环调度。用一个统一的方法进行封装可以实现下列的例子：
 
@@ -1313,8 +1317,6 @@ sche.start();
 
 ```
 
-
-
 # node
 
 ## koa中间件传参数，允许输入参数限制请求
@@ -1344,16 +1346,14 @@ CSS **`position`**属性用于指定一个元素在文档中的定位方式。[`
 
 定位类型
 
-- **定位元素（positioned element）**是其[计算后](https://developer.mozilla.org/zh-CN/docs/Web/CSS/computed_value)位置属性为 `relative`, `absolute`, `fixed `或 `sticky` 的一个元素（换句话说，除`static`以外的任何东西）。
-- **相对定位元素（****relatively positioned element****）**是[计算后](https://developer.mozilla.org/zh-CN/docs/Web/CSS/computed_value)位置属性为 `relative `的元素。
-- **绝对定位元素（absolutely positioned element）**是[计算后](https://developer.mozilla.org/zh-CN/docs/Web/CSS/computed_value)位置属性为 `absolute` 或 `fixed` 的元素。
-- **粘性定位元素****（****stickily positioned element****）**是[计算后](https://developer.mozilla.org/zh-CN/docs/Web/CSS/computed_value)位置属性为 `sticky` 的元素。
++ **定位元素（positioned element）**是其[计算后](https://developer.mozilla.org/zh-CN/docs/Web/CSS/computed_value)位置属性为 `relative`, `absolute`, `fixed`或 `sticky` 的一个元素（换句话说，除`static`以外的任何东西）。
++ **相对定位元素（****relatively positioned element****）**是[计算后](https://developer.mozilla.org/zh-CN/docs/Web/CSS/computed_value)位置属性为 `relative`的元素。
++ **绝对定位元素（absolutely positioned element）**是[计算后](https://developer.mozilla.org/zh-CN/docs/Web/CSS/computed_value)位置属性为 `absolute` 或 `fixed` 的元素。
++ **粘性定位元素****（****stickily positioned element****）**是[计算后](https://developer.mozilla.org/zh-CN/docs/Web/CSS/computed_value)位置属性为 `sticky` 的元素。
 
 > 绝对定位的元素可以通过指定[`top`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/top)和[`bottom`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/bottom) ，保留[`height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height)未指定（即`auto`），来填充可用的垂直空间。它们同样可以通过指定[`left`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/left) 和 [`right`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/right)并将[`width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 指定为`auto`来填充可用的水平空间。
 
-
-
-`static`该关键字指定元素使用正常的布局行为，即元素在文档常规流中当前的布局位置。此时 `top`, `right`, `bottom`, `left` 和 `z-index `属性无效。
+`static`该关键字指定元素使用正常的布局行为，即元素在文档常规流中当前的布局位置。此时 `top`, `right`, `bottom`, `left` 和 `z-index`属性无效。
 
 `relative`该关键字下，元素先放置在未添加定位时的位置，再在不改变页面布局的前提下调整元素位置（因此会在此元素未添加定位时所在位置留下空白）。position:relative 对 table-*-group, table-row, table-column, table-cell, table-caption 元素无效。
 
@@ -1379,28 +1379,26 @@ CSS **`position`**属性用于指定一个元素在文档中的定位方式。[`
 
 [http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
-Webkit内核的浏览器，必须加上-webkit前缀 
+Webkit内核的浏览器，必须加上-webkit前缀
 
 以下6个属性设置在容器上
 
-- `flex-direction`属性决定主轴的方向,即项目的水平或垂直的排列方向`row | row-reverse | column | column-reverse`,默认`row`
-- `flex-wrap`属性决定主轴如何换行`nowrap | wrap | wrap-reverse`,默认`nowrap`
-- `flex-flow`属性是flex-direction属性和flex-wrap属性的简写形式` || `，默认`row nowrap`
-- `justify-content`属性定义了项目在主轴上的对齐方式`flex-start | flex-end | center | space-between | space-around`，默认`flex-start`左对齐
-- `align-items`属性定义项目在交叉轴上如何对齐`lex-start | flex-end | center | baseline | stretch`，默认stretch，如果项目未设置高度或设为auto，将占满整个容器的高度
-- `align-content`属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
++ `flex-direction`属性决定主轴的方向,即项目的水平或垂直的排列方向`row | row-reverse | column | column-reverse`,默认`row`
++ `flex-wrap`属性决定主轴如何换行`nowrap | wrap | wrap-reverse`,默认`nowrap`
++ `flex-flow`属性是flex-direction属性和flex-wrap属性的简写形式` || `，默认`row nowrap`
++ `justify-content`属性定义了项目在主轴上的对齐方式`flex-start | flex-end | center | space-between | space-around`，默认`flex-start`左对齐
++ `align-items`属性定义项目在交叉轴上如何对齐`lex-start | flex-end | center | baseline | stretch`，默认stretch，如果项目未设置高度或设为auto，将占满整个容器的高度
++ `align-content`属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用
 
 以下6个属性设置在项目上
 
-- `order`属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
-- `flex-grow`属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不大，如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。
-- `flex-shrink`属性定义了
-- 的缩小比例，默认为1，即如果空间不足，该项目将缩小
-- `flex-basis`属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小
-- `flex`属性是`flex-grow`, `flex-shrink` 和`flex-basis`的简写，后两个属性可选,该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto),默认值为0 1 auto。
-- `align-self`属性允许单个项目有与其他项目不一样的对齐方式，`auto | flex-start | flex-end | center | baseline | stretch`可覆盖align-items属性,默认值为auto,表示继承父元素的align-items属性，如果没有父元素，则等同于stretch
-
-
++ `order`属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
++ `flex-grow`属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不大，如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。
++ `flex-shrink`属性定义了
++ 的缩小比例，默认为1，即如果空间不足，该项目将缩小
++ `flex-basis`属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小
++ `flex`属性是`flex-grow`, `flex-shrink` 和`flex-basis`的简写，后两个属性可选,该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto),默认值为0 1 auto。
++ `align-self`属性允许单个项目有与其他项目不一样的对齐方式，`auto | flex-start | flex-end | center | baseline | stretch`可覆盖align-items属性,默认值为auto,表示继承父元素的align-items属性，如果没有父元素，则等同于stretch
 
 ## grid布局
 
@@ -1488,8 +1486,6 @@ flex和grid布局都可以轻松实现垂直居中或水平居中
 + 利用相对布局加平移，将子级设为 **`position: relative;`** 加 **`left: 50%;`** 加 **`transform: translateX(-50%);`** 实现子元素水平居中
 + 将有宽度的子元素左右间距设为 **`auto`** 实现子元素水平居中
 
-
-
 # 浏览器
 
 ## 浏览器输入URL的展现过程
@@ -1527,10 +1523,6 @@ flex和grid布局都可以轻松实现垂直居中或水平居中
 + CSRF Token验证，利用浏览器的同源限制，在HTTP接口执行前验证Cookie中的Token，验证通过才会继续执行请求
 + 人机交互，例如短信验证码、界面的滑块
 
-
-
-
-
 ## 怎么处理浏览器兼容性
 
 处理css兼容性
@@ -1551,11 +1543,11 @@ flex和grid布局都可以轻松实现垂直居中或水平居中
 
 ## 前端性能优化
 
-- 文件合并
-- 文件最小化/文件压缩
-- 使用 CDN 托管
-- 缓存的使用
-- 升级http2.0
++ 文件合并
++ 文件最小化/文件压缩
++ 使用 CDN 托管
++ 缓存的使用
++ 升级http2.0
 
 ## 什么是跨域资源共享 (CORS)？它用于解决什么问题？
 
@@ -1603,23 +1595,6 @@ async
 
 1. 百度统计
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # 计算机网络
 
 ## HTTP的前世今生
@@ -1636,8 +1611,8 @@ async
 
 ## 网络七层协议
 
-
 # 构建工具
+
 ## webpack中loader和plugin区别
 
 > loader
@@ -1653,15 +1628,12 @@ run：开始编译 make：从entry开始递归分析依赖并对依赖进行buil
 # 前端框架
 
 ## 剖析vue实现原理，自己动手实现mvvm
+
 [vue实现原理](https://github.com/ckvv/mvvm)
-
-
 
 Vue2.0中 将遍历此对象所有的 property，并使用 [`Object.defineProperty`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) 把这些 property 全部转为 [getter/setter](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Working_with_Objects#定义_getters_与_setters)。每个组件实例都对应一个 **watcher** 实例，它会在组件渲染的过程中把“接触”过的数据 property 记录为依赖。之后当依赖项的 setter 触发时，会通知 watcher，从而使它关联的组件重新渲染。
 
 ![data](https://cn.vuejs.org/images/data.png)
-
-
 
 Vue **不能检测**数组和对象的变化。
 
@@ -1712,11 +1684,13 @@ vm.items.splice(indexOfItem, 1, newValue)
 
 [vue插件](https://cn.vuejs.org/v2/guide/plugins.html)
 插件通常用来为 Vue 添加全局功能
+
 + 添加全局方法或者属性。如：vue-custom-element，
 + 添加全局资源：指令/过滤器/过渡等。如 vue-touch
 + 通过全局混入来添加一些组件选项。如 vue-router
 + 添加 Vue 实例方法，通过把它们添加到 Vue.prototype 上实现,消息提醒，event-bus
 通过全局方法 Vue.use() 使用插件,Vue.js 的插件应该暴露一个 install 方法。这个方法的第一个参数是 Vue 构造器，第二个参数是一个可选的选项对象：
+
 ```javascript
 MyPlugin.install = function (Vue, options) {
   // 1. 添加全局方法或属性
@@ -1737,40 +1711,42 @@ MyPlugin.install = function (Vue, options) {
   }
 }
 ```
+
 一个库，提供自己的 API，同时提供上面提到的一个或多个功能。如 vue-router
 
 ## vue自定义指令
+
 [vue文档](https://cn.vuejs.org/v2/guide/custom-directive.html)
 
 有的情况下，你仍然需要对普通 DOM 元素进行底层操作，这时候就会用到自定义指令。,一个指令定义对象可以提供如下几个钩子函数 (均为可选)：
 
-- `bind`：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。
-- `inserted`：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。
-- `update`：所在组件的 VNode 更新时调用，
++ `bind`：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。
++ `inserted`：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。
++ `update`：所在组件的 VNode 更新时调用，
 
-- `componentUpdated`：指令所在组件的 VNode **及其子 VNode** 全部更新后调用。
-- `unbind`：只调用一次，指令与元素解绑时调用。
++ `componentUpdated`：指令所在组件的 VNode **及其子 VNode** 全部更新后调用。
++ `unbind`：只调用一次，指令与元素解绑时调用。
 
 指令钩子函数会被传入以下参数：
 
-- `el`：指令所绑定的元素，可以用来直接操作 DOM。
++ `el`：指令所绑定的元素，可以用来直接操作 DOM。
 
-- ```
++ ```
   binding
   ```
 
   ：一个对象，包含以下 property：
 
-  - `name`：指令名，不包括 `v-` 前缀。
-  - `value`：指令的绑定值，例如：`v-my-directive="1 + 1"` 中，绑定值为 `2`。
-  - `oldValue`：指令绑定的前一个值，仅在 `update` 和 `componentUpdated` 钩子中可用。无论值是否改变都可用。
-  - `expression`：字符串形式的指令表达式。例如 `v-my-directive="1 + 1"` 中，表达式为 `"1 + 1"`。
-  - `arg`：传给指令的参数，可选。例如 `v-my-directive:foo` 中，参数为 `"foo"`。
-  - `modifiers`：一个包含修饰符的对象。例如：`v-my-directive.foo.bar` 中，修饰符对象为 `{ foo: true, bar: true }`。
+  + `name`：指令名，不包括 `v-` 前缀。
+  + `value`：指令的绑定值，例如：`v-my-directive="1 + 1"` 中，绑定值为 `2`。
+  + `oldValue`：指令绑定的前一个值，仅在 `update` 和 `componentUpdated` 钩子中可用。无论值是否改变都可用。
+  + `expression`：字符串形式的指令表达式。例如 `v-my-directive="1 + 1"` 中，表达式为 `"1 + 1"`。
+  + `arg`：传给指令的参数，可选。例如 `v-my-directive:foo` 中，参数为 `"foo"`。
+  + `modifiers`：一个包含修饰符的对象。例如：`v-my-directive.foo.bar` 中，修饰符对象为 `{ foo: true, bar: true }`。
 
-- `vnode`：Vue 编译生成的虚拟节点
++ `vnode`：Vue 编译生成的虚拟节点
 
-- `oldVnode`：上一个虚拟节点，仅在 `update` 和 `componentUpdated` 钩子中可用。
++ `oldVnode`：上一个虚拟节点，仅在 `update` 和 `componentUpdated` 钩子中可用。
 
 ```javascript
 <input v-focus="isFocus" />   
@@ -1786,9 +1762,8 @@ directives: {
 },
 ```
 
-
-
 ## 自定义组件的 v-model
+
 一个组件上的 `v-model` 默认会利用名为 `value` 的 prop 和名为 `input` 的事件,但是像单选框、复选框等类型的输入控件可能会将 `value` attribute 用于[不同的目的](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#Value)。`model` 选项可以用来避免这样的冲突
 
 ```javascript
@@ -1812,8 +1787,6 @@ Vue.component('base-checkbox', {
 //现在在这个组件上使用 v-model 
 <base-checkbox v-model="lovingVue"></base-checkbox>
 ```
-
-
 
 ## vue双向绑定的方法
 
@@ -1840,8 +1813,6 @@ this.$emit('update:title', newTitle)
 //同理在一个包含 title prop 的假设的组件中，我们可以用以下方法表达对其赋新值的意图：
 this.$emit('update:title', newTitle)
 ```
-
-
 
 ## vue[插槽](https://cn.vuejs.org/v2/guide/components-slots.html)
 
@@ -1902,17 +1873,11 @@ this.$emit('update:title', newTitle)
 </base-layout>
 ```
 
-
-
-
-
 ## 访问父组件
 
 ```
 this.$parent.<?>
 ```
-
-
 
 ## 访问子组建
 
@@ -1923,8 +1888,6 @@ this.$parent.<?>
 
 this.$refs.usernameInput
 ```
-
-
 
 ## [依赖注入](https://cn.vuejs.org/v2/guide/components-edge-cases.html#依赖注入)
 
@@ -1977,15 +1940,12 @@ Vue.filter('capitalize', function (value) {
 })
 ```
 
-
-
 ## VUE的生命周期
 
-## vuex的mutation和action的区别，为什么要设立两个而不是直接用mutation操作state；
+## vuex的mutation和action的区别，为什么要设立两个而不是直接用mutation操作state
+
 mutation
 更改 Vuex 的 store 中的状态的唯一方法是提交 mutation
-
-
 
 # 数据库
 
@@ -2007,12 +1967,6 @@ redis的数据类型
 
 + 有序集合(sorted set)：Redis 有序集合和集合一样也是string类型元素的集合,且不允许重复的成员。不同的是每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。有序集合的成员是唯一的,但分数(score)却可以重复。
 
-
-
 # 其他
 
 [前端笔试题](https://fe.padding.me/#/questions/1)
-
-
-
-

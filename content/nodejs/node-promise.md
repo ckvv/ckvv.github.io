@@ -8,6 +8,7 @@ date: '2021-07-09'
 
 回调地狱的解决方案是Promises。而不是通过回调同步返回值或传递结果，我们可以返回一个Promise，我们将来会返回一些值或错误。 有许多像好的库如Bluebird和Q可以用来处理Promise。但是内置的模块和很多其他库不能使用Promises。这些库能够将传统的回调方法转换为Promise，在Node v8中我们现在可以使用util.promisify来处理回调方法。根据Node.js的文档：
 util.promisify(original)
+
 + original <Function>
 + Returns: <Function>
 
@@ -49,6 +50,7 @@ fs.readFile('./index.js', 'utf8', (err, text) => {
 ```
 
 现在这个例子可以用Promises写成如下：
+
 ```js
 const fs = require('fs');
 const util = require('util');
@@ -61,6 +63,7 @@ readFile('./index.js', 'utf8')
         console.log('Error', err);
     });
 ```
+
 在这里我们习惯于util.promisify将fs.readFile转换为基于promise的方法。现在，而不是采取回调，readFile方法作为一个pormise。promise有两个方法，then和catch。then如果函数调用成功，则用于获取结果。而catch用于捕获错误。Promise的优点在于，我们可以使用异步的链式写法而不会陷入回调地狱
 
 结合async和await关键字，promise可以更容易处理。链式太长的话也会使程序难于阅读。async和await使它看起来更清洁。以下是Async＆Await的上面的例子：
@@ -79,8 +82,10 @@ const readFile = util.promisify(fs.readFile);
 })();
 ```
 
-##  异步函数改为回调
+## 异步函数改为回调
+
 回调是异步执行的，并且具有有限的堆栈跟踪。如果回调抛出，则进程将发出一个'uncaughtException' 事件，如果未处理则将退出
+
 ```js
 util.callbackify(original)
 original <Function> An async function

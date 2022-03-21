@@ -9,27 +9,34 @@ date: '2021-07-09'
 格式`ogr2ogr -f "fileType" fileName sourceFile`
 
 数据库>geojson
+
 ```
 ogr2ogr -f "GeoJSON" cn_polygon.geojson PG:"host=localhost dbname=postgres user=postgres password=password" -sql "select * from planet_osm_polygon limit 30000"
 ```
 
-geojson>shp 
+geojson>shp
+
 ```
 ogr2ogr -f "ESRI Shapefile" test.shp china_diaoyudao.geojson.json
 
 ```
 
 ## 数据入库
+
 geojson>postgre
+
 ```
 /usr/local/Cellar/gdal2/2.3.2_1/bin/ogr2ogr -dim XY -gt 65536 -skipfailures -progress --config OGR_FORCE_ASCII NO --config PG_USE_COPY YES -overwrite -f PostgreSQL  PG:"host=localhost port=5432 dbname=g-default user=projx password=sss"  -lco FID=_id -lco GEOMETRY_NAME=the_geom -nln ${表名} "${文件名}"
 ```
+
 csv>postgre
+
 ```
 /usr/local/Cellar/gdal2/2.3.2_1/bin/ogr2ogr -dim XY -gt 65536 -skipfailures --config PG_USE_COPY YES -overwrite -oo AUTODETECT_TYPE=YES -f PostgreSQL  PG:"host=localhost port=5432 dbname=g-default user=projx password=sss" -lco FID=_id -nln ${start.getTime()} ${start.getTime()}.CSV
 ```
 
 ## 查询大文件文件
+
 ```
 ogr2ogr -f "GeoJson" -dialect sqlite -sql "select * from 'layer name' limit 10" sm.geojson 50m.geojson
 查询信息
@@ -43,6 +50,7 @@ ogrinfo -al -so 900m.geojson
 ```
 
 ## 查看文件元数据
+
 ```
 ogrinfo -so -al file
 

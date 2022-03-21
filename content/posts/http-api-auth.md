@@ -18,13 +18,9 @@ tags: ['文章']
 - OAuth 1.0 – 3 legged & 2 legged
 - OAuth 2.0 – Authentication Code & Client Credential
 
-
-
 目录
 
-
-
-[HTTP Basic](https://coolshell.cn/articles/19395.html#HTTP_Basic)[Digest Access](https://coolshell.cn/articles/19395.html#Digest_Access)[App Secret Key + HMAC](https://coolshell.cn/articles/19395.html#App_Secret_Key_HMAC)[JWT – JSON Web Tokens](https://coolshell.cn/articles/19395.html#JWT_JSON_Web_Tokens)[OAuth 1.0](https://coolshell.cn/articles/19395.html#OAuth_10)[OAuth 2.0](https://coolshell.cn/articles/19395.html#OAuth_20)[Authorization Code Flow](https://coolshell.cn/articles/19395.html#Authorization_Code_Flow)[ Client Credential Flow](https://coolshell.cn/articles/19395.html#_Client_Credential_Flow)[小结](https://coolshell.cn/articles/19395.html#coolshell)[两个概念和三个术语](https://coolshell.cn/articles/19395.html#coolshell-2)[明白一些初衷](https://coolshell.cn/articles/19395.html#coolshell-3)[相关的注意事项](https://coolshell.cn/articles/19395.html#coolshell-4)
+[HTTP Basic](https://coolshell.cn/articles/19395.html#HTTP_Basic)[Digest Access](https://coolshell.cn/articles/19395.html#Digest_Access)[App Secret Key + HMAC](https://coolshell.cn/articles/19395.html#App_Secret_Key_HMAC)[JWT – JSON Web Tokens](https://coolshell.cn/articles/19395.html#JWT_JSON_Web_Tokens)[OAuth 1.0](https://coolshell.cn/articles/19395.html#OAuth_10)[OAuth 2.0](https://coolshell.cn/articles/19395.html#OAuth_20)[Authorization Code Flow](https://coolshell.cn/articles/19395.html#Authorization_Code_Flow)[Client Credential Flow](https://coolshell.cn/articles/19395.html#_Client_Credential_Flow)[小结](https://coolshell.cn/articles/19395.html#coolshell)[两个概念和三个术语](https://coolshell.cn/articles/19395.html#coolshell-2)[明白一些初衷](https://coolshell.cn/articles/19395.html#coolshell-3)[相关的注意事项](https://coolshell.cn/articles/19395.html#coolshell-4)
 
 #### HTTP Basic
 
@@ -85,8 +81,6 @@ Authorization: Digest username="Mufasa",
 
 先说HMAC技术，这个东西来自于MAC – [Message Authentication Code](https://en.wikipedia.org/wiki/Message_authentication_code)，是一种用于给消息签名的技术，也就是说，我们怕消息在传递的过程中被人修改，所以，我们需要用对消息进行一个MAC算法，得到一个摘要字串，然后，接收方得到消息后，进行同样的计算，然后比较这个MAC字符串，如果一致，则表明没有被修改过（整个过程参看下图）。而HMAC – [Hash-based Authenticsation Code](https://en.wikipedia.org/wiki/HMAC)，指的是利用Hash技术完成这一工作，比如：SHA-256算法。
 
- 
-
 ![img](https://coolshell.cn/wp-content/uploads/2019/05/MAC-1024x634.png)
 
 （图片来自 [Wikipedia – MAC 词条](https://en.wikipedia.org/wiki/Message_authentication_code) ）
@@ -102,8 +96,6 @@ Authorization: Digest username="Mufasa",
 
 ![img](https://coolshell.cn/wp-content/uploads/2019/05/sigV4-using-query-params.png)
 
- 
-
 最后，发出HTTP Request时，在HTTP头的 `Authorization`字段中放入如下的信息：
 
 ```
@@ -112,8 +104,6 @@ Authorization: AWS4-HMAC-SHA256
                SignedHeaders=content-type;host;x-amz-date, 
                Signature=5d672d79c15b13162d9279b0855cfba6789a8edb4c82c400e06b5924a6f2b5d7
 ```
-
- 
 
 其中的 `AKIDEXAMPLE` 是 AWS Access Key ID， 也就是所谓的 AppID，服务器端会根据这个AppID来查相关的 Secret Access Key，然后再验证签名。如果，你对这个过程有点没看懂的话，你可以读一读这篇文章——《[Amazon S3 Rest API with curl](https://czak.pl/2015/09/15/s3-rest-api-with-curl.html)》这篇文章里有好些代码，代码应该是最有细节也是最准确的了。
 
@@ -220,8 +210,6 @@ Authorization Code 是最常使用的OAuth 2.0的授权许可类型，它适用�
 
 ![img](https://coolshell.cn/wp-content/uploads/2019/05/auth_code_flow.png)
 
- 
-
 下面是对这个流程的一个细节上的解释：
 
 1）当用户（Resource Owner）访问第三方应用（Client）的时候，第三方应用会把用户带到认证服务器（Authorization Server）上去，主要请求的是 `/authorize` API，其中的请求方式如下所示。
@@ -237,11 +225,11 @@ https://login.authorization-server.com/authorize?
 
 其中：
 
-- - `client_id`为第三方应用的App ID
-  - `response_type=code`为告诉认证服务器，我要走Authorization Code Flow。
-  - `redirect_uri`意思是我跳转回第三方应用的URL
-  - `scope`意是相关的权限
-  - `state` 是一个随机的字符串，主要用于防CSRF攻击。
+  - - `client_id`为第三方应用的App ID
+- `response_type=code`为告诉认证服务器，我要走Authorization Code Flow。
+- `redirect_uri`意思是我跳转回第三方应用的URL
+- `scope`意是相关的权限
+- `state` 是一个随机的字符串，主要用于防CSRF攻击。
 
 2）当Authorization Server收到这个URL请求后，其会通过 `client_id`来检查 `redirect_uri`和 `scope`是否合法，如果合法，则弹出一个页面，让用户授权（如果用户没有登录，则先让用户登录，登录完成后，出现授权访问页面）。
 
@@ -255,8 +243,8 @@ https://example-client.com/callback?
 
 我们可以看到，
 
-- - 请流动的链接是第 1）步中的 `redirect_uri`
-  - 其中的 `state` 的值也和第 1）步的 `state`一样。
+  - - 请流动的链接是第 1）步中的 `redirect_uri`
+- 其中的 `state` 的值也和第 1）步的 `state`一样。
 
 4）接下来，Client 就可以使用 Authorization Code 获得 Access Token。其需要向 Authorization Server 发出如下请求。
 
@@ -285,9 +273,9 @@ code=Yzk5ZDczMzRlNDEwYlrEqdFSBzjqfTG
 
 其中，
 
-- - `access_token`就是访问请求令牌了
-  - `refresh_token`用于刷新 `access_token`
-  - `id_token` 是JWT的token，其中一般会包含用户的OpenID
+  - - `access_token`就是访问请求令牌了
+- `refresh_token`用于刷新 `access_token`
+- `id_token` 是JWT的token，其中一般会包含用户的OpenID
 
 6）接下来就是用 Access Token 请求用户的资源了。
 
@@ -298,9 +286,7 @@ Host: https://example.resource.com
 Authorization: Bearer iJKV1QiLCJhbGciOiJSUzI1NiI
 ```
 
- 
-
-#####  Client Credential Flow
+##### Client Credential Flow
 
 Client Credential 是一个简化版的API认证，主要是用于认证服务器到服务器的调用，也就是没有用户参与的的认证流程。下面是相关的流程图。
 
@@ -335,8 +321,6 @@ grant_type=client_credentials
 这里，容我多扯一句，微信公从平台的开发文档中，使用了OAuth 2.0 的 Client Credentials的方式（参看文档“[微信公众号获取access token](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140183)”），我截了个图如下所谓。我们可以看到，**微信公众号使用的是GET方式的请求，把AppID和AppSecret放在了URL中，虽然这也符合OAuth 2.0，但是并不好，因为大多数网关代理会把整个URI请求记到日志中。我们只要脑补一下腾讯的网关的Access Log，里面的日志一定会有很多的各个用户的AppID和AppSecret……**
 
 ![img](https://coolshell.cn/wp-content/uploads/2019/05/wechat.dev_-1024x876.png)
-
- 
 
 #### 小结
 

@@ -6,7 +6,6 @@ date: '2021-07-09'
 
 >转载自[知乎-外婆的彭湖湾](https://zhuanlan.zhihu.com/p/97768916)
 
-
 前端较少涉及对二进制数据的处理，但即便如此，我们偶尔总能在角落里看见它们的身影，今天我们就来聊一聊JS的二进制家族：Blob、ArrayBuffer和Buffer（Buffer由Node.js提供）
 
 ## **概述**
@@ -76,8 +75,6 @@ blob:d3958f5c-0777-0845-9dcf-2cb28783acaf
 
 ![img](https://pic2.zhimg.com/80/v2-d7f55a0672650d794aadde67654839dd_1440w.jpg)
 
-
-
 **Blob实现图片本地显示**
 
 window.URL.createObjectURL生成的Blob URL还可以赋给img.src，从而实现图片的显示
@@ -102,8 +99,6 @@ window.URL.createObjectURL生成的Blob URL还可以赋给img.src，从而实现
 ```
 
 **运行结果**
-
-
 
 ![img](https://pic2.zhimg.com/80/v2-f32a444dba17ae1da39a2ffb6a600205_1440w.jpg)
 
@@ -167,8 +162,6 @@ utilized in Zhanjiang from January to October this year was
 
 ![img](https://pic2.zhimg.com/80/v2-c71d6f70afd5281d6a72ae4c00c1c5c1_1440w.jpg)
 
-
-
 **本地读取文件内容**
 
 如果想要读取Blob或者文件对象并转化为其他格式的数据，可以借助FileReader对象的API进行操作
@@ -213,8 +206,6 @@ utilized in Zhanjiang from January to October this year was
 下面一一进行细节的介绍
 
 ## ArrayBuffer实战
-
-
 
 **通过ArrayBuffer的格式读取本地数据**
 

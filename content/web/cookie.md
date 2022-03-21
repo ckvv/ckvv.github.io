@@ -17,7 +17,6 @@ function setCookie(options) {
 
 ## 获取cookie
 
-
 ```js
 function getCookie(cookie_name) {
   let value = null;
@@ -36,13 +35,18 @@ function getCookie(cookie_name) {
 ```
 
 ## 删除cookie
+
 设置cookie过期时间小于当前时间，那么就会删除该cookie`"token=; expire=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=localhost`
 
 ### cookie无法删除
+
 不能删除cookie一般有以下两种情况
+
 ## 可以获取cookie
+
 `document.cookie`可以拿到cookie，一般是因为path或者domain写错了导致的
 
 ## 获取到到cookie为空
+
 cookie存在但是`document.cookie`拿到的cookie为空，可能是因为cookie设置了HttpOnly，如果HTTP响应头中包含HttpOnly标志，只要浏览器支持HttpOnly标志，客户端脚本就无法访问cookie，并且无法设置该cookie。客户端脚本代码尝试读取包含HttpOnly标志的cookie，如果浏览器支持HttpOnly，则返回一个空字符串作为结果。这样能够阻止恶意代码（通常是XSS攻击）将cookie数据发到攻击者网站。
 如果要删除cookie需要通过发一个退出到请求，通过后端达到删除cookie的目的。

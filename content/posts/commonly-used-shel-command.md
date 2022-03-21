@@ -16,7 +16,7 @@ date: '2021-07-09'
 + [command](https://github.com/ckvv/shel-command/blob/master/command/command.md)调用并执行指定的命令`command echo Linux`
 + [cp](https://github.com/ckvv/shel-command/blob/master/command/cp.md)将源文件或目录复制到目标文件或目录中`cp -r /usr/men /usr/zh`
 + [crontab](https://github.com/ckvv/shel-command/blob/master/command/crontab.md)提交和管理用户的需要周期性执行的任务
-+ [curl](https://github.com/ckvv/shel-command/blob/master/command/curl.md)利用URL规则在命令行下工作的文件传输工具` curl baidu.com -o baidu.html --progress`
++ [curl](https://github.com/ckvv/shel-command/blob/master/command/curl.md)利用URL规则在命令行下工作的文件传输工具`curl baidu.com -o baidu.html --progress`
 + [df](https://github.com/ckvv/shel-command/blob/master/command/df.md)显示磁盘的相关信息`df -ah`
 + [diff](https://github.com/ckvv/shel-command/blob/master/command/diff.md)比较给定的两个文件的不同`diff /usr/li test.txt`
 + [dig](https://github.com/ckvv/shel-command/blob/master/command/dig.md)域名查询工具`dig baidu.com`
@@ -36,8 +36,8 @@ date: '2021-07-09'
 + [head](https://github.com/ckvv/shel-command/blob/master/command/head.md)在屏幕上显示指定文件的开头若干行`head -n 10 CHANGELOG`
 + [history](https://github.com/ckvv/shel-command/blob/master/command/history.md)用于显示历史命令`history 100`
 + [host](https://github.com/ckvv/shel-command/blob/master/command/host.md)常用的分析域名查询工具`host chenkai.life`
-+ [htop](https://github.com/ckvv/shel-command/blob/master/command/htop.md)[非内部命令]一个互动的进程查看器，可以动态观察系统进程状况
-+ [iconv](https://github.com/ckvv/shel-command/blob/master/command/iconv.md)转换文件的编码方式`iconv file1 -f EUC-JP-MS -t UTF-8 -o file2 `
++ [htop][https://github.com/ckvv/shel-command/blob/master/command/htop.md](非内部命令)一个互动的进程查看器，可以动态观察系统进程状况
++ [iconv](https://github.com/ckvv/shel-command/blob/master/command/iconv.md)转换文件的编码方式`iconv file1 -f EUC-JP-MS -t UTF-8 -o file2`
 + [ifconfig](https://github.com/ckvv/shel-command/blob/master/command/ifconfig.md)配置和显示Linux系统网卡的网络参数
 + [kill](https://github.com/ckvv/shel-command/blob/master/command/kill.md)删除执行中的程序或工作
 + [last](https://github.com/ckvv/shel-command/blob/master/command/last.md)列出目前与过去登入系统的用户相关信息
@@ -71,7 +71,7 @@ date: '2021-07-09'
 + [systemctl](https://github.com/ckvv/shel-command/blob/master/command/systemctl.md)系统服务管理器指令`service httpd restart`,`systemctl list-units --type=service`
 + [tail](https://github.com/ckvv/shel-command/blob/master/command/tail.md)在屏幕上显示指定文件的末尾若干行`tail -f -n 25 fileName`
 + [tar](https://github.com/ckvv/shel-command/blob/master/command/tar.md)用来打包和备份`tar -jcv -f filename.tar.bz2 fileName|path`,`tar -jxv -f filename.tar.bz2 -C dirPath`
-+ [test](https://github.com/ckvv/shel-command/blob/master/command/test.md)条件表达式`if test –d File `
++ [test](https://github.com/ckvv/shel-command/blob/master/command/test.md)条件表达式`if test –d File`
 + [top](https://github.com/ckvv/shel-command/blob/master/command/top.md)显示或管理执行中的程序
 + [touch](https://github.com/ckvv/shel-command/blob/master/command/touch.md)创建新的空文件`touch fileName`
 + [tr](https://github.com/ckvv/shel-command/blob/master/command/tr.md)将字符进行替换压缩和删除`echo "HELLO WORLD" | tr 'A-Z' 'a-z'`
@@ -86,7 +86,7 @@ date: '2021-07-09'
 + [vi](https://github.com/ckvv/shel-command/blob/master/command/vi.md)文本编辑器
 + [w](https://github.com/ckvv/shel-command/blob/master/command/w.md)用于显示已经登陆系统的用户列表，并显示用户正在执行的指令`w root`
 + [watch](https://github.com/ckvv/shel-command/blob/master/command/watch.md)可以帮你监测一个命令的运行结果，省得你一遍遍的手动运行`watch -n 1 -d ls`
-+ [wc](https://github.com/ckvv/shel-command/blob/master/command/wc.md)统计文件的字节数、字数、行数`wc -l *.js `
++ [wc](https://github.com/ckvv/shel-command/blob/master/command/wc.md)统计文件的字节数、字数、行数`wc -l *.js`
 + [wget](https://github.com/ckvv/shel-command/blob/master/command/wget.md)载文件工具`wget -O wordpress.zip http://www.jsdig.com/download.aspx?id=1080`
 + [whatis](https://github.com/ckvv/shel-command/blob/master/command/whatis.md)查询一个命令执行什么功能`whatis ls`
 + [which](https://github.com/ckvv/shel-command/blob/master/command/which.md)查找并显示给定命令的绝对路径`which node`

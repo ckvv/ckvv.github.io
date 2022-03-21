@@ -6,6 +6,7 @@ date: '2021-07-09'
 
 
 ## egg初始化设置
+
 ```
 const dir = path.join(app.baseDir, '/app/model/');
 app.loader.loadToContext(dir, 'model');

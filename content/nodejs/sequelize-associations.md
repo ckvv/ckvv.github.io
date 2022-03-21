@@ -66,21 +66,13 @@ As mentioned, usually the Sequelize associations are defined in pairs. In summar
 
 - To create a
 
-   
-
   Many-To-Many
 
-   
-
   relationship, two
-
-   
 
   ```
   belongsToMany
   ```
-
-   
 
   calls are used together.
 
@@ -485,8 +477,6 @@ console.log((await ship.getCaptain()).toJSON());
 ### Defining an Alias
 
 Defining an Alias is more powerful than simply specifying a custom name for the foreign key. This is better understood with an example:
-
-
 
 ```js
 Ship.belongsTo(Captain, { as: 'leader' }); // This creates the `leaderId` foreign key in Ship.

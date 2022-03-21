@@ -16,6 +16,7 @@ date: '2021-07-09'
 还记起来的面试题大概有以下题目:
 
 ## array reduse 实现map方法
+
 做不出来的原因，
 对this还是不够熟悉
 
@@ -62,10 +63,12 @@ function name(methods) {
 
 ## webpack中loader和plugin区别
 
-### loader 
+### loader
+
 用于对模块的源代码进行转换。loader 可以使你在 import 或"加载"模块时预处理文件。因此，loader 类似于其他构建工具中“任务(task)”，并提供了处理前端构建步骤的强大方法。loader 可以将文件从不同的语言（如 TypeScript）转换为 JavaScript，或将内联图像转换为 data URL。loader 甚至允许你直接在 JavaScript 模块中 import CSS文件！
 
 ### plugin
+
 对于plugin，它就是一个扩展器，它丰富了wepack本身，针对是loader结束后，webpack打包的整个过程，它并不直接操作文件，而是基于事件机制工作，会监听webpack打包过程中的某些节点，例如
 
 run：开始编译
@@ -76,7 +79,6 @@ program：开始对AST进行遍历，当遇到require时触发call require事件
 seal：所有依赖build完成，开始对chunk进行优化（抽取公共模块、加hash等）
 optimize-chunk-assets：压缩代码
 emit：把各个chunk输出到结果文件
-
 
 ## 给定有序数组array和数字n，找出n在array中起始位置的下标和终止位置的下标
 
@@ -271,8 +273,6 @@ function getShu() {
 }
 ```
 
-
-
 ## flex布局有哪些属性
 
 Webkit内核的浏览器，必须加上-webkit前缀
@@ -291,5 +291,5 @@ Webkit内核的浏览器，必须加上-webkit前缀
 + `flex-grow`属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不大，如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。
 + `flex-shrink`属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小
 + `flex-basis`属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小
-+ `flex`属性是`flex-grow`, `flex-shrink` 和` flex-basis`的简写，后两个属性可选,该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto),默认值为0 1 auto。
++ `flex`属性是`flex-grow`, `flex-shrink` 和`flex-basis`的简写，后两个属性可选,该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto),默认值为0 1 auto。
 + `align-self`属性允许单个项目有与其他项目不一样的对齐方式，`auto | flex-start | flex-end | center | baseline | stretch`可覆盖align-items属性,默认值为auto,表示继承父元素的align-items属性，如果没有父元素，则等同于stretch

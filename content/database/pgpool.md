@@ -4,7 +4,9 @@ tags: ['database', 'pgpool']
 date: '2021-07-09'
 ---
 ## 什么是pgpool
+
 [pgpool-II](https://www.pgpool.net/docs/latest/en/html/example-configs.html) 是一个位于 PostgreSQL 服务器和 PostgreSQL 数据库客户端之间的中间件，它提供以下功能：
+
 + 连接池
 pgpool-II 保持已经连接到 PostgreSQL 服务器的连接，并在使用相同参数（例如：用户名，数据库，协议版本）连接进来时重用它们。它减少了连接开销，并增加了系统的总体吞吐量。
 + 复制
@@ -31,12 +33,16 @@ create extension pgpool_regclass;
 ```
 
 ## 常用命令
+
 ```
 <!-- 查看节点 -->
 show pool_nodes;
 ```
+
 ## 问题
+
 ## could not open pid file as /var/run/pgpool/pgpool.pid
+
 ```
 mkdir /var/run/pgpool/
 sudo chmod -R 777 你的文件夹名
@@ -47,4 +53,3 @@ pgpool.conf 节点连接方式写错了，重启后show pool_nodes；发现状�
 ```
 sudo pgpool 
 ```
-

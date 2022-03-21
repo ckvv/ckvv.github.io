@@ -3,9 +3,9 @@ title: Flex弹性布局
 tags: ['web', 'css']
 date: '2022-02-09'
 ---
-##  弹性布局
+## 弹性布局
 
-###  一.弹性布局是什么？
+### 一.弹性布局是什么？
 
 任何一个容器都可以指定为 Flex 布局
 
@@ -14,8 +14,6 @@ date: '2022-02-09'
   display: flex;
 }
 ```
-
-
 
 行内元素也可以使用 Flex 布局。
 
@@ -59,7 +57,7 @@ align-items
 align-content
 ```
 
-####  3.1.flex-direction
+#### 3.1.flex-direction
 
 `flex-direction`属性决定主轴的方向（即项目的排列方向）。
 
@@ -275,4 +273,3 @@ align-content
 ![img](http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071016.png)
 
 该属性可能取6个值，除了auto，其他都与align-items属性完全一致。
-

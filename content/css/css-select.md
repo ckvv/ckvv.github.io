@@ -5,6 +5,7 @@ date: '2022-02-09'
 ---
 
 CSS 选择器规定了 CSS 规则会应用到哪些元素上。
+
 ## 基本选择器
 
 ## 节点选择
@@ -41,6 +42,7 @@ li.spacious.elegant {
 ```
 
 ## ID选择
+
 CSS ID 选择器会根据该元素的ID属性中的内容匹配元素
 
 ```css
@@ -51,6 +53,7 @@ CSS ID 选择器会根据该元素的ID属性中的内容匹配元素
 ```
 
 ## 通用选择
+
 (*)就是一个通配选择器.它可以匹配任意类型的HTML元素
 
 ```css
@@ -58,6 +61,7 @@ CSS ID 选择器会根据该元素的ID属性中的内容匹配元素
 ```
 
 ## 属性选择
+
 CSS 属性选择器通过已经存在的属性名或属性值匹配元素
 
 ```css
@@ -106,6 +110,7 @@ a[href$=".org"] {
 ## 组合选择器
 
 ## 相邻兄弟选择器
+
 '+' 操作符选择相邻元素，即第二个节点紧邻着第一个节点，并且拥有共同的父节点。
 
 ```css
@@ -117,6 +122,7 @@ img + p {
 ```
 
 ## 一般兄弟选择
+
 '~' 操作符选择兄弟元素，也就是说，第二个节点在第一个节点后面的任意位置，并且这俩节点的父节点相同
 
 ```css
@@ -128,6 +134,7 @@ img ~ p {
 ```
 
 ## 子选择器
+
 '>' 操作符选择第一个元素的直接子节点。
 ul > li 将会匹配`直接`嵌套在 <ul> 元素内的所有 <li> 元素。
 
@@ -137,7 +144,9 @@ ul.my-things > li {
   margin: 2em;
 }
 ```
+
 ## 后代选择器
+
 ' '  (空格) 操作符将选择第一个元素的子代节点。
 div span 将匹配 <div> 元素内`所有`的 <span> 元素。
 
@@ -147,7 +156,9 @@ ul.my-things li {
   margin: 2em;
 }
 ```
+
 ## 伪类
+
 伪类 允许基于未包含在文档树中的状态信息来选择元素，详细参考[mdn:伪类](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)
 a:visited 会匹配所有被访问过的  <a>  元素。
 
@@ -158,8 +169,10 @@ selector：伪类{
 
 li.list-wrapper:nth-child(1), li.list-wrapper:nth-child(2) 
 ```
+
 ## 伪元素
-伪元素 表示所有未被包含在HTML的实体。详细参考[mdn:伪元素](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements）
+
+伪元素 表示所有未被包含在HTML的实体。详细参考[mdn:伪元素](<https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements>）
 `按照规范，应该使用双冒号（::）而不是单个冒号（:），以便区分伪类和伪元素。但是，由于旧版本的 W3C 规范并未对此进行特别区分，因此目前绝大多数的浏览器都同时支持使用这两种方式来表示伪元素`
 p::first-line 会匹配所有 <p> 元素的第一行。
 

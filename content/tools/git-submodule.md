@@ -128,4 +128,3 @@ When working with submodules, a common pattern of confusion and error is forgett
 ## Conclusion
 
 Git submodules are a powerful way to leverage git as an external dependency management tool. Weigh the pros and cons of git submodules before using them, as they are an advanced feature and may take a learning curve for team members to adopt.
-

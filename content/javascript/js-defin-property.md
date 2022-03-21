@@ -8,10 +8,12 @@ Object.defineProperty() 方法会直接在一个对象上定义一个新属性�
 ```
 Object.defineProperty(obj, prop, descriptor)
 ```
+
 obj:要在其上定义属性的对象。
 prop:要定义或修改的属性的名称。
 descriptor:将被定义或修改的属性描述符。
 描述符可以有以下属性：
+
 + configurable：当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认为 false
 + enumerable： 当且仅当该属性的enumerable为true时，该属性才能够出现在对象的枚举属性中，default：false
 + value： 该属性对应的值。可以是任何有效的 JavaScript 值（数值，对象，函数等）。默认为 undefined
@@ -22,6 +24,7 @@ descriptor:将被定义或修改的属性描述符。
 @return:传递给函数的对象。
 
 ## example
+
 ```js
 // 数组拦截
 /**
@@ -45,7 +48,7 @@ function observe(data) {
                 val = newVal;
             }
         });
-	});
+ });
 };
 
 
@@ -72,7 +75,7 @@ function observe(data) {
                 val = newVal;
             }
         });
-	});
+ });
 };
 
 // Proxy监视对象包括数组变化

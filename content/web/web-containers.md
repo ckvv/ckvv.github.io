@@ -24,7 +24,7 @@ date: '2021-12-29'
 
 我们决定试一试。我们抱有最好的希望，也期待最坏的结果。两年后（时间过得真快😅），结果出乎意料地惊人。
 
-### 今天我们很高兴地宣布**WebContainers**。
+### 今天我们很高兴地宣布**WebContainers**
 
 WebContainers 允许您创建全栈 Node.js 环境，这些环境在几毫秒内启动并立即在线和链接共享 - 只需单击一下。该环境加载了 VS Code 强大的编辑体验、完整的终端、npm 等。它还*完全在您的浏览器内*运行，这会产生一些关键优势：
 
@@ -53,7 +53,7 @@ WebContainers 允许您创建全栈 Node.js 环境，这些环境在几毫秒内
 
 设置本地环境是一个巨大的嗡嗡声——特别是如果你想快速制作一个很酷的想法原型，尝试一个新的开源库，创建一个错误再现或与同事合作（“嘿，你能很快在本地查看这个分支吗？ ？”😒）。随着 Web 开发转向像 Next.js 这样的全栈 SSR 和 SSG 工具链，这个问题比以往任何时候都更加普遍。
 
-运行用户提交的代码来复制错误也成为开源维护者和[财富 100 强公司]（https://www.kb.cert.org/vuls/id/319816）的[主要安全风险]（https://www.kb.cert.org/vuls/id/319816） /stackblitz.com/enterprise) 类似，并且这些类型的供应链攻击正在[上升](https://www.zdnet.com/article/supply-chain-hacking-attacks-government-eyes-new-rules -to-tighten-security/)。
+运行用户提交的代码来复制错误也成为开源维护者和[财富 100 强公司]（<https://www.kb.cert.org/vuls/id/319816>）的[主要安全风险]（<https://www.kb.cert.org/vuls/id/319816>） /stackblitz.com/enterprise) 类似，并且这些类型的供应链攻击正在[上升](<https://www.zdnet.com/article/supply-chain-hacking-attacks-government-eyes-new-rules> -to-tighten-security/)。
 
 StackBlitz 通过利用浏览器内置的数十年的速度和安全创新解决了这些问题。 StackBlitz 中的所有计算都在浏览器安全沙箱中立即发生，并且无法突破到您的本地机器。此模型还解锁了一些关键的开发和调试优势（稍后将详细介绍这些优势）。
 
@@ -69,9 +69,9 @@ StackBlitz 通过利用浏览器内置的数十年的速度和安全创新解决
 >
 > GitHub 创始人 & StackBlitz 投资人
 
-## 释放浏览器的力量。
+## 释放浏览器的力量
 
-### 使用 Chrome DevTools 进行无缝 Node.js 调试。
+### 使用 Chrome DevTools 进行无缝 Node.js 调试
 
 事实证明，浏览器非常擅长调试 Javascript。令人震惊，我知道 ;) 通过在浏览器中执行 Node.js，与 Chrome DevTools 的集成“开箱即用”。无需安装，无需扩展，只需在浏览器中进行**本机后端调试**：
 
@@ -87,37 +87,37 @@ StackBlitz 通过利用浏览器内置的数十年的速度和安全创新解决
 >
 > Vercel 创始人 & Next.js 创始人
 
-### 运行服务器。在您的浏览器中。
+### 运行服务器。在您的浏览器中
 
 是的，实际上。 WebContainers 包括一个映射到浏览器的 ServiceWorker API 的虚拟化 TCP 网络堆栈，使您能够立即按需创建实时 Node.js 服务器，即使您离线也能继续工作。因为它完全在浏览器安全沙箱中运行，所以服务器响应的延迟比 localhost* (!) 少，并保护您的 Web 服务器免受 localhost 抓取攻击：
 
 ![在浏览器中运行 API 服务器](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d069a6783fe04f23bef24755024c10a6~tplv-k3u1fbpfcp-zoom-1.image)
 
-### 零足迹。以毫秒为单位启动。
+### 零足迹。以毫秒为单位启动
 
 浏览器在执行 Javascript 和 WebAssembly 方面非常快。我们利用它来创建一个不使用服务器资源的即时开发操作系统，并且不会在您的计算机上创建“node_modules”黑洞。
 
-#### 每个页面加载的新鲜环境。
+#### 每个页面加载的新鲜环境
 
 再见，`rm -rf node_modules`！ WebContainer 内置的 npm 客户端速度非常快，以至于它在每次加载页面时都运行全新安装，确保您每次都能获得干净的环境。如果您的环境*确实*出了问题，您可以像处理任何其他网络应用程序一样恢复到干净状态：点击刷新按钮。
 
 ![页面加载时的新鲜环境](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6b8b4e8918914f4681b5362b93012fe4~tplv-k3u1fbpfcp-zoom-1.image)
 
-### 零延迟。离线工作。
+### 零延迟。离线工作
 
 如果在家工作支点教会了我们什么，那就是经常发生网络故障。 ISP 宕机了——很多。使用 StackBlitz，您可以在没有互联网连接的情况下继续工作，无论您是在火车上、飞机上，还是在雨中的后座 uber-ing：
 
 ![离线工作](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/14d975faf5b14cb98f6a58bff324288c~tplv-k3u1fbpfcp-zoom-1.image)
 
-### 默认安全。
+### 默认安全
 
 使用 StackBlitz 的新颖计算模型，100% 的代码执行发生在浏览器安全沙箱中。这导致比本地开发环境更快且*更少*限制，同时提供*更多*的安全性，这是一种非常罕见的组合。
 
 事实上，默认的安全状态是如此稳固，以至于我们的嵌入式包管理器是 [第一个公开可用的工具](https://twitter.com/samccone/status/1395421621528064003) 解决了 Sam Saccone 发现的长期未解决的 npm 漏洞 [五年多前](https://www.kb.cert.org/vuls/id/319816)。
 
-##让我们暂停一下。
+## 让我们暂停一下
 
-## 因为这是故事真正令人费解的地方。
+## 因为这是故事真正令人费解的地方
 
 > 在 Google I/O 上，我们很高兴展示 StackBlitz 如何使用最新的网络功能来提供一种将网络应用程序和桌面应用程序混淆的体验。
 >
@@ -129,13 +129,13 @@ StackBlitz 通过利用浏览器内置的数十年的速度和安全创新解决
 
 “网络”应用程序和“本机”应用程序之间有什么区别？ Chrome 团队一直在发布新的功能 API 来缩小这一差距，而增量正在迅速接近零。
 
-### 桌面级编辑。即时桌面应用安装。
+### 桌面级编辑。即时桌面应用安装
 
 由于 Chrome 的 PWA 功能，安装 StackBlitz 就像单击一样简单。几毫秒后，您就有了一个可以从 Dock 启动的桌面 IDE。您依赖于日常工作效率的按键绑定，如 CMD + W 和 CMD + T “正常工作”。此外，就像在本地一样，您可以在一个完全独立的窗口中打开和调试您的开发服务器。
 
 ![桌面 PWA](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1c5145cd73c74f41a6e8bbddace33fd3~tplv-k3u1fbpfcp-zoom-1.image)
 
-### 从本地文件系统读取和写入。
+### 从本地文件系统读取和写入
 
 Chrome 团队最近发布了 [文件系统访问 API](https://web.dev/file-system-access/)。这使 PWA 能够请求对本地文件系统的某些部分进行持久的读写访问。与 StackBlitz WebContainers 搭配使用，这暗示了一个潜在的未来，不需要节点、npm、git、VS Code 或任何其他安装在硬盘上的东西。您只需要一个网络浏览器：
 
@@ -158,7 +158,7 @@ Chrome 团队最近发布了 [文件系统访问 API](https://web.dev/file-syste
 
 我们与 Vercel 和 Next.js 的合作关系也刚刚开始触及皮毛。为前所未有的无缝开发体验做好准备（抢先体验 [此处](https://stackblitz.com/v2)）。
 
-## 软件开发的未来是光明的。
+## 软件开发的未来是光明的
 
 还有很多工作要做，但我们现在可以自信地说，一个没有本地节点、npm、git 和 VS Code 实例的未来是切实可行的，甚至可以让世界上的软件在以前无法运行的地方运行。
 
@@ -177,5 +177,3 @@ Chrome 团队最近发布了 [文件系统访问 API](https://web.dev/file-syste
 喜欢您所看到的并希望帮助我们实现 Web 开发未来的愿景吗？转到 [stackblitz.com](https://stackblitz.com/) 并帮助我们完善 Next.js 测试版并[提供反馈](https://github.com/stackblitz/webcontainer-core)。与我们合作[为您最喜欢的开源库带来兼容性](https://github.com/stackblitz/webcontainer-core)。参与帮助 [将世界上的原生二进制文件转换为 WebAssembly](https://github.com/stackblitz/webcontainer-core)。快来加入 [StackBlitz 团队](https://stackblitz.com/careers)。或者，告诉您的朋友有关在浏览器中本机运行的最快、最安全和一致的 Web 开发环境！
 
 最后，我要感谢 StackBlitz 了不起的团队，他们为使这个项目成为现实而不懈努力❤让我们走吧！
-
-

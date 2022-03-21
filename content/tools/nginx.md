@@ -5,6 +5,7 @@ date: '2021-07-09'
 ---
 
 ## 安装nginx
+
 mac:
 
 ```
@@ -13,10 +14,12 @@ brew install nginx
 
 centos:
 
-Install the prerequisites: 
+Install the prerequisites:
+
 ```shell
 sudo yum install yum-utils
 ```
+
 ```repo
 [nginx-stable]
 name=nginx stable repo
@@ -35,13 +38,13 @@ gpgkey=https://nginx.org/keys/nginx_signing.key
 module_hotfixes=true
 ```
 
- By default, the repository for stable nginx packages is used. If you would like to use mainline nginx packages, run the following command: 
+ By default, the repository for stable nginx packages is used. If you would like to use mainline nginx packages, run the following command:
 
 ```shell
 sudo yum-config-manager --enable nginx-mainline
 ```
 
- To install nginx, run the following command: 
+ To install nginx, run the following command:
 
 ```shell
 sudo yum install nginx
@@ -49,9 +52,7 @@ sudo yum install nginx
 
 其他安装方式
 
-参考https://nginx.org/en/linux_packages.html
-
-
+参考<https://nginx.org/en/linux_packages.html>
 
 ## Nginx命令
 
@@ -128,8 +129,8 @@ events {
 http {
     include       mime.types;   #文件扩展名与文件类型映射表
     default_type  application/octet-stream; #默认文件类型，默认为text/plain
-		#access_log off; #取消服务日志    
-    log_format myFormat '$remote_addr–$remote_user [$time_local] $request $status $body_bytes_sent $http_referer 			$http_user_agent $http_x_forwarded_for'; #自定义格式
+  #access_log off; #取消服务日志    
+    log_format myFormat '$remote_addr–$remote_user [$time_local] $request $status $body_bytes_sent $http_referer    $http_user_agent $http_x_forwarded_for'; #自定义格式
     access_log log/access.log myFormat;  #combined为日志格式的默认值
     sendfile on;   #允许sendfile方式传输文件，默认为off，可以在http块，server块，location块。
     sendfile_max_chunk 100k;  #每个进程每次调用传输数量不能大于设定的值，默认为0，即不设上限。
@@ -171,6 +172,7 @@ http {
 
 + nginx访问时报403
 `ps aux | grep nginx`
+
 ```
 root             66372   0.0  0.0  4300068   1584   ??  Ss   五06下午   0:00.10 nginx: master process nginx
 nobody           20442   0.0  0.0  4300320   1272   ??  S     2:02下午   0:00.00 nginx: worker process
@@ -178,7 +180,9 @@ nobody           20441   0.0  0.0  4300320   1584   ??  S     2:02下午   0:00.
 nobody           20440   0.0  0.0  4300320   1332   ??  S     2:02下午   0:00.00 nginx: worker process
 nobody           20439   0.0  0.0  4300320   1256   ??  S     2:02下午   0:00.00 nginx: worker process
 ```
+
 由于启动用户和nginx工作用户不一致所致,将nginx.config的user改为和启动用户一致,修改nginx.config
+
 ```
 user root everyone;
 ```
@@ -189,12 +193,15 @@ user root everyone;
 ```
 open() "/usr/local/var/run/nginx/proxy_temp/1/04/0000000041" failed (13: Permission denied) while reading upstream, client: 127.0.0.1,
 ```
+
 查看当前nginx用户
+
 ```shell
  ps aux | grep "nginx: worker process"
 ```
 
 修改目录权限
+
 ```shell
 sudo chown -R youn_name /usr/local/var/run/nginx/proxy_temp
 ```

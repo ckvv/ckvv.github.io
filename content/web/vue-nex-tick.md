@@ -7,8 +7,8 @@ date: '2022-02-09'
 [nextTick](https://cn.vuejs.org/v2/api/#Vue-nextTick)是vue的一个全局API，
 作用是在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
 
-
 Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。
+
 ```js
 const callbacks = []
 let pending = false
@@ -92,6 +92,7 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
 为了在数据变化之后等待 Vue 完成更新 DOM，可以在数据变化之后立即使用 Vue.nextTick(callback),这样回调函数将在 DOM 更新完成后被调用。
 
 使用方法
+
 ```js
 // 修改数据
 vm.msg = 'Hello'
@@ -106,9 +107,11 @@ vm.msg = 'Hello';
 await Vue.nextTick()
 // DOM 更新了
 ```
+
 Vue.js中的 nextTick 函数，会传入一个 cb ，这个 cb 会被存储到一个队列中，在下一个 tick 时触发队列中的所有 cb 事件
 
 nextTick方法
+
 ```js
 export function nextTick (cb?: Function, ctx?: Object) {
   let _resolve
@@ -137,7 +140,9 @@ export function nextTick (cb?: Function, ctx?: Object) {
 ```
 
 ## node中的nextTick
+
 node.js中也存在一个nextTick接口，它是都将在当前操作完成后处理 nextTickQueue， 而不管事件循环的当前阶段如何，任何时候在给定的阶段中调用 process.nextTick()，所有传递到 process.nextTick() 的回调将在事件循环继续之前解析
+
 ```js
 console.log('start');
 process.nextTick(() => {
@@ -149,4 +154,3 @@ console.log('scheduled');
 // scheduled
 // nextTick callback
 ```
-

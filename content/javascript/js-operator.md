@@ -33,13 +33,9 @@ let customerCity = customer?.city ?? "暗之城";
 console.log(customerCity); // “暗之城”
 ```
 
-
-
 ## 可选链式操作
 
 **`?.`** 可以按照操作符之前的属性是否有效，链式读取对象的属性或者使整个对象链返回 `undefined`。`?.` 运算符的作用与 `.` 运算符类似，不同之处在于，如果对象链上的引用是 nullish(null或undefined)操作符会抛出一个错误，而 `?.` 操作符则会按照短路计算的方式进行处理，返回 `undefined`。可选链操作符也可用于函数调用，如果操作符前的函数不存在，也将会返回 `undefined`。
-
-
 
 ```javascript
 const adventurer = {
@@ -59,8 +55,6 @@ console.log(adventurer.someNonExistentMethod?.());
 ## new.target
 
 检测函数或构造方法是否是通过new运算符被调用的。在通过new运算符被初始化的函数或构造方法中，`new.target`返回一个指向构造方法或函数的引用。在普通的函数调用中，`new.target` 的值是`undefined`
-
-
 
 ```javascript
 function Foo() {
@@ -83,8 +77,6 @@ var a = new A(); // logs "A"
 var b = new B(); // logs "B"
 ```
 
-
-
 ## 逗号操作符
 
 对它的每个操作数求值（从左到右），并返回最后一个操作数的值
@@ -101,8 +93,6 @@ console.log(x);
 
 ```
 
-
-
 ## 管道操作符
 
 试验性的管道操作符 `|>` （目前其标准化流程处于 stage 1 阶段）允许以一种易读的方式去对函数链式调用。本质上来说，管道操作符是单参数函数调用的语法糖，它允许你像这样执行一个调用
@@ -113,8 +103,6 @@ let url = "%21" |> decodeURI;
 使用传统语法写的话，等效的代码是这样的：
 let url = decodeURI("%21");
 ```
-
-
 
 # 装饰器
 

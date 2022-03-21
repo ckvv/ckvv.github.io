@@ -7,11 +7,13 @@ date: '2021-07-09'
 如果模块未导出一些函数，则模块外部的测试代码无法调用该功能。那是由于JavaScript的工作方式，有时我们希望测试局部函数。
 [rewire库](https://www.npmjs.com/package/rewire)在模块中添加了一个特殊的setter和getter，因此您可以修改它们的行为以进行更好的单元测试
 rewire库功能：
+
 + 为其他模块或全局变量（如进程）注入模拟
 + 测试私有变量
 + 覆盖模块中的变量
 
 ## rewire接口
+
 `rewire(filename: String): rewiredModule`
 Returns a rewired version of the module found at filename. Use rewire() exactly like require().
 
@@ -48,6 +50,7 @@ module.exports = {
 ```
 
 测试模块
+
 ```javascript
 var assert = require('assert');
 const rewire = require('rewire');

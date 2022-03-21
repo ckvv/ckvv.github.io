@@ -31,7 +31,6 @@ func?.(args)
 let nestedProp = obj.first && obj.first.second;
 ```
 
-
 为了避免报错，在访问`obj.first.second`之前，要保证 `obj.first` 的值既不是 `null`，也不是 `undefined`。如果只是直接访问 `obj.first.second`，而不对 `obj.first` 进行校验，则有可能抛出错误。
 
 有了可选链操作符（`?.`），在访问 `obj.first.second` 之前，不再需要明确地校验 `obj.first` 的状态，再并用短路计算获取最终结果：
@@ -40,8 +39,7 @@ let nestedProp = obj.first && obj.first.second;
 let nestedProp = obj.first?.second;
 ```
 
-
-通过使用 `?.` 操作符取代 `.` 操作符，JavaScript 会在尝试访问 `obj.first.second` 之前，先隐式地检查并确定 `obj.first` 既不是 `null` 也不是 `undefined`。如果`obj.first `是 `null` 或者 `undefined`，表达式将会短路计算直接返回 `undefined`。
+通过使用 `?.` 操作符取代 `.` 操作符，JavaScript 会在尝试访问 `obj.first.second` 之前，先隐式地检查并确定 `obj.first` 既不是 `null` 也不是 `undefined`。如果`obj.first`是 `null` 或者 `undefined`，表达式将会短路计算直接返回 `undefined`。
 
 这等价于以下表达式，但实际上没有创建临时变量：
 
@@ -49,7 +47,6 @@ let nestedProp = obj.first?.second;
 let temp = obj.first;
 let nestedProp = ((temp === null || temp === undefined) ? undefined : temp.second);
 ```
-
 
 ### [可选链与函数调用](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#可选链与函数调用)
 
@@ -60,7 +57,6 @@ let nestedProp = ((temp === null || temp === undefined) ? undefined : temp.secon
 ```js
 let result = someInterface.customMethod?.();
 ```
-
 
 **注意:** 如果存在一个属性名且不是函数, 使用 `?.` 仍然会产生一个 [`TypeError`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError) 异常 (`x.y`` is not a function`).
 
@@ -84,7 +80,6 @@ function doSomething(onContent, onError) {
 }
 ```
 
-
 ```js
 // 使用可选链进行函数调用
 function doSomething(onContent, onError) {
@@ -97,7 +92,6 @@ function doSomething(onContent, onError) {
 }
 ```
 
-
 ### [可选链和表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#可选链和表达式)
 
 当使用[方括号与属性名](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Property_Accessors#方括号表示法)的形式来访问属性时，你也可以使用可选链操作符：
@@ -105,7 +99,6 @@ function doSomething(onContent, onError) {
 ```js
 let nestedProp = obj?.['prop' + 'Name'];
 ```
-
 
 ### [可选链不能用于赋值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#可选链不能用于赋值)
 
@@ -133,7 +126,6 @@ myMap.set("foo", {name: "baz", desc: "inga"});
 let nameBar = myMap.get("bar")?.name;
 ```
 
-
 ### [短路计算](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#短路计算)
 
 当在表达式中使用可选链时，如果左操作数是 `null` 或 `undefined`，表达式将不会被计算，例如：
@@ -145,7 +137,6 @@ let prop = potentiallyNullObj?.[x++];
 
 console.log(x); // x 将不会被递增，依旧输出 0
 ```
-
 
 ### [连用可选链操作符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#连用可选链操作符)
 
@@ -164,7 +155,6 @@ let customerCity = customer.details?.address?.city;
 // … 可选链也可以和函数调用一起使用
 let duration = vacations.trip?.getTime?.();
 ```
-
 
 ### [使用空值合并操作符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#使用空值合并操作符)
 

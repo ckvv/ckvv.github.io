@@ -41,8 +41,6 @@ module.exports = router
 app.use(render.routes(), render.allowedMethods());
 ```
 
-
-
 ## 使用koa-views + Nunjucks 等
 
 ```javascript
@@ -78,4 +76,3 @@ router.get('/', async (ctx, next) => {
 
 module.exports = router
 ```
-

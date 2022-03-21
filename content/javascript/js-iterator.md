@@ -5,6 +5,7 @@ date: '2021-07-09'
 ---
 
 ## 什么是迭代器
+
 ECMAScript 2015的几个补充，并不是新的内置实现或语法，而是协议。这些协议可以被任何遵循某些约定的对象来实现。有两个协议：可迭代协议和迭代器协议。
 JavaScript 提供了许多迭代集合的方法，从简单的 for 循环到 map() 和 filter()，迭代器和生成器将迭代的概念直接带入核心语言，并提供了一种机制来自定义 for...of 循环的行为
 
@@ -16,7 +17,9 @@ var myIterator = {
     [Symbol.iterator]: function() { return this }
 }
 ```
+
 ## 可迭代协议
+
 为了变成可迭代对象， 一个对象必须实现 @@iterator 方法, 意思是这个对象（或者它原型链 prototype chain 上的某个对象）必须有一个名字是 Symbol.iterator 的属性:
 > [Symbol.iterator]
 返回一个对象的无参函数，被返回对象符合迭代器协议。
@@ -65,6 +68,7 @@ var myIterator = {
     }
 }
 ```
+
 ## 迭代器协议
 
 该迭代器协议定义了一种标准的方式来产生一个有限或无限序列的值，并且当所有的值都已经被迭代后，就会有一个默认的返回值。
@@ -98,9 +102,13 @@ for (let val of a){
     console.log(val);
 }
 ```
+
 ## 常见的迭代器
+
 String, Array, TypedArray, Map and Set 是所有内置可迭代对象， 因为它们的原型对象都有一个 @@iterator 方法.
-## String 是一个内置的可迭代对象:
+
+## String 是一个内置的可迭代对象
+
 ```javascript
 var iterator = 'some'[Symbol.iterator]();
 for (let val of iterator){
@@ -110,6 +118,7 @@ for (let val of iterator){
 s { value: 'o', done: false }
 m { value: 'e', done: false }
 ```
+
 ## 接受可迭代对象的内置 API
 
 ```javascript
@@ -124,9 +133,11 @@ new WeakSet(function*() {
     yield {};
 }()).has(myObj); 
 ```
+
 另外还有 Promise.all(iterable), Promise.race(iterable) 以及 Array.from().
 
 ## 用于可迭代对象的语法
+
 一些语句和表达式是预料会用于可迭代对象，比如 for-of 循环，spread operator, yield* 和 destructuring assignment
 
 ```javascript
@@ -148,7 +159,9 @@ gen().next(); // { value:"a", done:false }
 [a, b, c] = new Set(["a", "b", "c"]);
 a // "a"
 ```
+
 ## 自定义迭代器
+
 ```javascript
 var myIterable = {};
 myIterable[Symbol.iterator] = function* () {
@@ -180,9 +193,11 @@ console.log(it.next().value); // 'yo'
 console.log(it.next().value); // 'ya'
 console.log(it.next().done);  // true
 ```
+
 ## 生成器式的迭代器
 
 生成器对象是由一个 generator function 返回的,并且它符合可迭代协议和迭代器协议
+
 ```javascript
 function* anotherGenerator(i) {
   yield i + 1;
@@ -202,6 +217,7 @@ var gen = generator(10);
 ```
 
 生成器对象 既是迭代器也是可迭代对象:就像前面所说的，一个良好的迭代即实现了迭代器协议，又实现了可迭代协议，方式就是可迭代协议返回的是自身
+
 ```javascript
 var aGeneratorObject = function*(){
     yield 1;

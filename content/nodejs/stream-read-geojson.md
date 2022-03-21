@@ -14,13 +14,16 @@ date: '2021-07-09'
 JSONStream.parse("JSONPath表达式")
 
 ```
+
 > JSONPath表达式
 JSONPath表达式始终引用JSON结构，其方式与XPath表达式与XML文档结合使用的方式相同。由于JSON结构通常是匿名的，并且不一定具有“根成员对象”，因此JSONPath假定$分配给外部对象的抽象名称
 例子：
+
 ```
 $.store.book[0].title
 $['store']['book'][0]['title']
 ```
+
 XPath和JSONPath语法
 
 | XPath | JSONPath         | Description                                                  |
@@ -38,12 +41,6 @@ XPath和JSONPath语法
 | []    | ?()              | applies a filter (script)   expression.                      |
 | n/a   | ()               | script expression, using   the underlying script engine.     |
 | ()    | n/a              | grouping in Xpath                                            |
-
-
-
-
-
-
 
 ```
 

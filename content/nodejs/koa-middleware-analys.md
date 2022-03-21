@@ -4,8 +4,11 @@ tags: ['koa']
 date: '2021-07-09'
 ---
 中间件是koa的核心，koa的中间件机制是一个剥洋葱式的模型，多个中间件通过use放进一个数组队列然后从外层开始执行，遇到next后进入队列中的下一个中间件，所有中间件执行完后开始回帧，执行队列中之前中间件中未执行的代码部分。
+
 ## 源码
+
 koa在`koa-compose`中实现了中间件部分，
+
 ```javascript
 function compose (middleware) {
   // compose首先会对middleware进行参数检验，middleware必须是一个函数数组，
@@ -46,22 +49,29 @@ function compose (middleware) {
 ```
 
 ## 解析
+
 ## compose函数解析
+
 执行compose函数会返回一个函数，该函数有两个参数，context, next，
+
 + context是middleware中的第一个参数
 + 可选参数，当所有middleware的next执行后，如果next存在会执行next函数，该参数一般用于koa中设置请求返回值，
+
 ## dispatch函数解析
+
 dispatch函数初看有些复杂，其实主要代码是以下两行
 
 ```
     let fn = middleware[i]
     fn(context, dispatch.bind(null, i + 1)));
 ```
+
 dispatch函数作用就是执行第i个中间件，并把dispatch(i+1)作为next参数传给第i个中间件
 首次会开始执行参数为i为0的dispatch函数，此时fn为中间件数组的第一个函数，该函数会有两个参数，第一个为context，第二个为dispatch(2)；
 所以执行第1个中间件时的如果调用了next参数相当于在执行第二个中间件，依此类推，
 
 ## 测试compose函数
+
 注意如果想要中间件next函数后面的内容要在后一个中间件执行结束后执行，`disctxtch`函数及中间件函数必须是async函数,中间件函数调用`next`函数时需要添加`await`，入下：
 
 ```javascript
@@ -110,6 +120,7 @@ tt('chen',(ctx)=>{
 ## 其他
 
 源码中compose函数会返回第一个中间件的结果，一般情况下我们如果不需要这个结果，dispatch是不需要返回参数的,所以compose函数可以简化成这样
+
 ```javascript
 function compose(middleware) {
     return function (context, next) {
@@ -134,6 +145,7 @@ function compose(middleware) {
 ```
 
 compose函数不用递归调用的写法
+
 ```javascript
     /**
      * 中间件合并方法，将中间件数组合并为一个中间件

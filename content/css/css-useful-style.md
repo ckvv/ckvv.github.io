@@ -20,5 +20,3 @@ text-overflow: ellipsis;
 ```css
 font-variant-east-asian: traditional;
 ```
-
-

@@ -138,9 +138,11 @@ date: '2021-07-09'
 * `==` 和 `===` 有什么不同？
 * 请解释 JavaScript 的同源策略 (same-origin policy)。
 * 如何实现下列代码：
+
 ```javascript
 [1,2,3,4,5].duplicator(); // [1,2,3,4,5,1,2,3,4,5]
 ```
+
 * 什么是三元表达式 (Ternary expression)？“三元 (Ternary)” 表示什么意思？
 * 什么是 `"use strict";` ? 使用它的好处和坏处分别是什么？
 * 请实现一个遍历至 `100` 的 for loop 循环，在能被 `3` 整除时输出 **"fizz"**，在能被 `5` 整除时输出 **"buzz"**，在能同时被 `3` 和 `5` 整除时输出 **"fizzbuzz"**。
@@ -192,27 +194,32 @@ date: '2021-07-09'
 #### <a name='coding-questions'>代码相关的问题：</a>
 
 *问题：`foo`的值是什么？*
+
 ```javascript
 var foo = 10 + '20';
 ```
 
 *问题：如何实现以下函数？*
+
 ```javascript
 add(2, 5); // 7
 add(2)(5); // 7
 ```
 
 *问题：下面的语句的返回值是什么？*
+
 ```javascript
 "i'm a lasagna hog".split("").reverse().join("");
 ```
 
 *问题：`window.foo`的值是什么？*
+
 ```javascript
 ( window.foo || ( window.foo = "bar" ) );
 ```
 
 *问题：下面两个 alert 的结果是什么？*
+
 ```javascript
 var foo = "Hello";
 (function() {
@@ -223,6 +230,7 @@ alert(foo + bar);
 ```
 
 *问题：`foo.length`的值是什么？*
+
 ```javascript
 var foo = [];
 foo.push(1);
@@ -230,6 +238,7 @@ foo.push(2);
 ```
 
 *问题：`foo.x`的值是什么？*
+
 ```javascript
 var foo = {n: 1};
 var bar = foo;
@@ -237,6 +246,7 @@ foo.x = foo = {n: 2};
 ```
 
 *问题：下面代码的输出是什么？*
+
 ```javascript
 console.log('one');
 setTimeout(function() {
@@ -253,7 +263,6 @@ console.log('three');
 * 你有什么业余项目吗？是哪种类型的？
 * 你最爱的 IE 特性是什么？
 * 你对咖啡有没有什么喜好？
-
 
 #### <a name='contributors'>贡献者：</a>
 

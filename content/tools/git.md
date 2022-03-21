@@ -16,17 +16,19 @@ yum install git
 #更新git
 yum update git
 ```
+
 ## sourceTree修改大小写
 
 sourceTree对文件名称的大小写不敏感，当你修改文件名称的大小写进行提交时，它并不能识别,
+
 ```
 git mv work.js Work.js
 ```
 
 ## sourceTree回滚到历史节点
 
-+ 点击要回滚的历史节点，重置到历史节点，选择硬合并； 
-+ 点击当前节点，重置到当前节点，选择软合并； 
++ 点击要回滚的历史节点，重置到历史节点，选择硬合并；
++ 点击当前节点，重置到当前节点，选择软合并；
 + 提交修改内容；
 
 ```shell
@@ -62,17 +64,14 @@ git push -f
 + perf: 代码重构。没有新功能或修复bug，优化相关，提升性能体验
 + revery 回滚上一个版本
 
-
-
-
 ---写代码---  
-git status （查看文件改变记录） 
+git status （查看文件改变记录）
 git diff (查看代码级改变)  
 git add (1：确认改变).  
-git commit -m 提交注释 (2：提交到当前分支的本地工作区). 
-git push [远程分支：origin] [本地分支的名称]. 
-去git 管理网站创建Merge Request. 
-等待合并. 
+git commit -m 提交注释 (2：提交到当前分支的本地工作区).
+git push [远程分支：origin] [本地分支的名称].
+去git 管理网站创建Merge Request.
+等待合并.
 ----管理员合并所有人的Merge Request----  
 checkout master (切换至Master).  
 git pull (从远程master 更新至 本地master)  
@@ -83,14 +82,11 @@ git rebase master [从本地 master 更新当前分支]
 ----如何解决冲突----  
 1、在VS中操作代码文件并解决冲突.  
 2、git add . 加入待提交.  
-3、git rebase --continue   
-----如果仍然有冲突，重复1/2/3步骤. 
+3、git rebase --continue
+----如果仍然有冲突，重复1/2/3步骤.
 4、git rebase --skip  
 5、git push -f origin [branch] 强推  
 -----去网站重新创建Merge Request-------  
-
-
-
 
 ## 一、新建代码库
 
@@ -392,14 +388,9 @@ Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配�
 > $ git stash
 > $ git stash pop
 > ```
+>
 十、其他
 
 ## 生成一个可供发布的压缩包
+
 $ git archive
-
-
-
-
-
-
-

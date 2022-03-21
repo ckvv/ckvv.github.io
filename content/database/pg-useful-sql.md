@@ -5,6 +5,7 @@ date: '2021-07-09'
 ---
 
 ## 数据库迁移备份
+
 备份：`pg_dump -U postgres -d myDBname -f dump.sql`
 还原：
 
@@ -12,7 +13,6 @@ pg_dump -U postgres -d g-default -f g-default.sql
 
 忽略某些schema
 psql -N data -N public_data -d g-default -U postgres -f g-default.sql
-
 
 将mydb数据库转储到一个 SQL 脚本文件：`pg_dump mydb > db.sql`
 将上述脚本导入一个(新建的)数据库newdb：`psql -d newdb -f db.sql`
@@ -29,14 +29,17 @@ psql -N data -N public_data -d g-default -U postgres -f g-default.sql
 转储所有数据库对象，但是不包括名字以ts_开头的表：`pg_dump -T 'ts_*' mydb > db.sql`
 
 在-t等选项中指定大写字母或大小写混合的名字必须用双引号界定， 否则将被自动转换为小写(参见匹配模式)。 但是因为双引号在 shell 中有特殊含义，所以必须将双引号再放进单引号中。 这样一来，要转储一个大小写混合的表名，你就需要像下面这样：`pg_dump -t "\"MixedCaseName\"" mydb > mytab.sql`
+
 ## 系统
 
 + 拷贝csv到数据库
+
 ```sql
 copy testtable1 from '/1542783012050.CSV'  with delimiter ',' csv header;
 ```
 
 + 查看是否存在索引
+
 ```sql
 select * from pg_indexes where tablename='log';
 
@@ -52,7 +55,7 @@ CREATE OR REPLACE FUNCTION public.__judge_function_exist( funname text )
 RETURNS text
 AS $$
 DECLARE
-	function_result text;
+ function_result text;
 BEGIN
     select proname into function_result
     from pg_proc 
@@ -77,7 +80,7 @@ select distinct st_geometrytype(the_geom_webmercator) from data.t_640fd1e07b9611
 DROP FUNCTION public.__my_del_schema_table(text);
 
  CREATE OR REPLACE FUNCTION public.__my_del_schema_table(
- 	schemaname1 text)
+  schemaname1 text)
     RETURNS record
     LANGUAGE 'plpgsql'
 
@@ -85,13 +88,13 @@ DROP FUNCTION public.__my_del_schema_table(text);
      VOLATILE 
  AS $BODY$
  DECLARE
- 	tabname record;
+  tabname record;
 BEGIN
    FOR tabname IN (SELECT tablename FROM pg_tables WHERE schemaname = schemaname1)
-	LOOP
-		EXECUTE 'DROP TABLE IF EXISTS ' || schemaname1 || '.' || quote_ident(tabname.tablename) || ' CASCADE';
- 	END LOOP;
-	return tabname;
+ LOOP
+  EXECUTE 'DROP TABLE IF EXISTS ' || schemaname1 || '.' || quote_ident(tabname.tablename) || ' CASCADE';
+  END LOOP;
+ return tabname;
 END;
  $BODY$;
 
@@ -105,7 +108,7 @@ returns text
 AS $$
 DECLARE
     alter_content text;
-	v_msg     TEXT;
+ v_msg     TEXT;
 BEGIN
 
     for alter_content in SELECT 'alter table ' || f_table_schema || '.' || f_table_name || ' alter column the_geom_webmercator type geometry(' || type || ',3857) using st_setsrid(the_geom_webmercator,3857);' FROM geometry_columns where f_geometry_column='the_geom_webmercator' and srid>900000
@@ -117,7 +120,7 @@ BEGIN
     RETURN null;
 --以下是对异常的处理
 EXCEPTION
-	WHEN others THEN GET STACKED DIAGNOSTICS
+ WHEN others THEN GET STACKED DIAGNOSTICS
             v_msg     = MESSAGE_TEXT;
             RAISE INFO 'EXCEPTION:%', v_msg;
        return null;
@@ -126,10 +129,13 @@ $$ LANGUAGE plpgsql;
 ```
 
 ## 创建只读的用户
+
 1. 首先，授予连接访问权限：
+
 ```sql
 GRANT CONNECT ON DATABASE table_name TO username;
 ```
+
 2. 然后授予模式使用
 
 ```sql
@@ -139,6 +145,7 @@ GRANT SELECT ON table_name TO username;
 对于多个表
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO username;
 ```
+
 3. 如果您希望将来自动授予对新表的访问权限，则必须更改默认值：
 
 ```sql
@@ -147,9 +154,9 @@ GRANT SELECT ON TABLES TO username;
 ```
 
 ## 时间
+
 显示当前数据库时区
 
 ```sql
 show timezone
 ```
-

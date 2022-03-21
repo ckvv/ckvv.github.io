@@ -40,7 +40,7 @@ date: '2021-07-09'
 - Accept
 - Accept-Language
 - Content-Language
-- Content-Type: 只限于三个值： 
+- Content-Type: 只限于三个值：
   - application/x-www-form-urlencoded
   - multipart/form-data
   - text/plain
@@ -51,35 +51,33 @@ date: '2021-07-09'
 
 ### 例子
 
-对于简单请求，浏览器直接发出CORS请求。具体来说，就是头信息之中，增加一个Origin字段。 
+对于简单请求，浏览器直接发出CORS请求。具体来说，就是头信息之中，增加一个Origin字段。
 
 ![简单请求](https://user-gold-cdn.xitu.io/2019/6/24/16b873283da2fb58?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
  上面这个例子，`post``Content-Type``application/x-www-form-urlencoded``Access-Control-Allow-Origin: http://127.0.0.1:3000``Origin``Origin`
 
-
-
 ### CORS请求相关的字段，都以 `Access-Control-`开头
 
 - Access-Control-Allow-Origin
 
-  ：必选 
+  ：必选
 
   - 请求头`Origin`字段的值
   - `*`：接受任何域名
 
 - Access-Control-Allow-Credentials
 
-  ：可选， 
+  ：可选，
 
   - true: 表示允许发送cookie，此时`Access-Control-Allow-Origin`不能设置为`*`，必须指定明确的，与请求网页一致的域名。
   - 不设置该字段：不需要浏览器发送cookie
 
 - Access-Control-Expose-Headers
 
-  ：可选 
+  ：可选
 
-  - 响应报头指示哪些报头可以公开为通过列出他们的名字的响应的一部分。默认情况下，只显示6个简单的响应标头： 
+  - 响应报头指示哪些报头可以公开为通过列出他们的名字的响应的一部分。默认情况下，只显示6个简单的响应标头：
     - Cache-Control
     - Content-Language
     - Content-Type
@@ -112,11 +110,9 @@ fetch(url, {
 
 ### 1. 预检请求和回应
 
-非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为“预检”请求； 浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段，只有得到肯定答复，浏览器才会发出正式的接口请求，否则就会报错； 
+非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为“预检”请求； 浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段，只有得到肯定答复，浏览器才会发出正式的接口请求，否则就会报错；
 
 ![preflight](https://user-gold-cdn.xitu.io/2019/6/24/16b873283c9ccfc8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-
 
 HTTP请求的方法是POST，请求头`Content-Type`字段为`application/json`。浏览器发现，这是一个非简单请求，就自动发出一个`预检`请求，要求服务器确认可以这样请求。
 
@@ -129,7 +125,7 @@ HTTP请求的方法是POST，请求头`Content-Type`字段为`application/json`�
 
 #### 1.2预检回应
 
-服务器收到`预检`请求以后，检查了`Origin`、`Access-Control-Request-Method`和`Access-Control-Request-Headers`字段以后，确认允许跨域请求，就可以做出回应。 上面的HTTP回应中，关键的是Access-Control-Allow-Origin字段，表示http://127.0.0.1:3000可以请求数据。该字段也可以设为星号，表示同意任意跨源请求。
+服务器收到`预检`请求以后，检查了`Origin`、`Access-Control-Request-Method`和`Access-Control-Request-Headers`字段以后，确认允许跨域请求，就可以做出回应。 上面的HTTP回应中，关键的是Access-Control-Allow-Origin字段，表示<http://127.0.0.1:3000>可以请求数据。该字段也可以设为星号，表示同意任意跨源请求。
 
 如果浏览器否定了“预检”请求，就会返回一个正常的HTTP回应，但是没有任何CORS相关的头信息字段，这时，浏览器就会认定，服务器不同意预检请求，因此触发一个错误，被XMLHttpRequest对象的onerror回调函数捕获h。
 
@@ -144,11 +140,7 @@ HTTP请求的方法是POST，请求头`Content-Type`字段为`application/json`�
 
 一旦服务器通过了`预检`请求，以后每次浏览器正常的CORS请求，就都跟简单请求一样，会有一个`Origin`头信息字段。服务器的回应，也都会有一个`Access-Control-Allow-Origin`头信息字段；
 
-
-
 ![normal](https://user-gold-cdn.xitu.io/2019/6/24/16b873283cd30bd2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-
 
 ## 服务端如何设置CORS
 
@@ -156,7 +148,7 @@ HTTP请求的方法是POST，请求头`Content-Type`字段为`application/json`�
 
 比如一个简单的登录页面，需要给接口接口传入 username和password 两个字段；前端的域名为 localhost:8900，后端的域名为 localhost:3200，构成跨域。
 
-### 1. 如果设置请求头`'Content-Type': 'application/x-www-form-urlencoded'`，这种情况则为简单请求；
+### 1. 如果设置请求头`'Content-Type': 'application/x-www-form-urlencoded'`，这种情况则为简单请求
 
 会有跨域问题，直接设置 响应头 `Access-Control-Allow-Origin`为`*`, 或者具体的域名；注意如果设置响应头`Access-Control-Allow-Credentials`为`true`，表示要发送`cookie`，则此时`Access-Control-Allow-Origin`的值不能设置为星号，必须指定明确的，与请求网页一致的域名。
 
@@ -193,11 +185,7 @@ app.use(route.options('/login', ctx => {
 
 ### 首先了解一下koa中间件的“洋葱圈”模型
 
-
-
 ![洋葱圈](https://user-gold-cdn.xitu.io/2019/6/24/16b873283dddc80b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-
 
 将洋葱的一圈看做是一个中间件，直线型就是从第一个中间件走到最后一个，但是洋葱圈就很特殊了，最早use的中间件在洋葱最外层，开始的时候会按照顺序走到所有中间件，然后按照倒序再走一遍所有的中间件，相当于每个中间件都会进入两次，这就给了我们更多的操作空间。
 

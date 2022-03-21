@@ -16,7 +16,6 @@ Github Copilot 通过使用Github上的公共源代码和自然语言作为训�
 
 GitHub Copilot 可用作 Neovim、JetBrains 和 Visual Studio Code 的扩展。具体安装过程参考<https://github.com/github/copilot-docs>
 
-
 # 使用Github Copilot
 
 安装完插件之后你只需要像平常那样写代码即可，Github Copilot会在合适的时间和位置对代码进行补全,按`tab`键进行确认, 你也可以通过其他按键切换其他提示方案并选择合适的方案使用。
@@ -28,6 +27,7 @@ GitHub Copilot 可用作 Neovim、JetBrains 和 Visual Studio Code 的扩展。�
 # 关于Github Copilot的一些问题
 
 Github Copilot推出后关于它的[质疑](https://www.fsf.org/blogs/licensing/fsf-funded-call-for-white-papers-on-philosophical-and-legal-questions-around-copilot)也很多例如:
+
 + 私有项目代码的安全性
 + Github Copilot是否会引入恶意代码
 + Copilot关于公共存储库的培训是否侵犯版权

@@ -16,6 +16,7 @@ yarn add -D eslint eslint-config-airbnb-base
 ```
 
 .eslintrc.js
+
 ```js
 {
   extends: [
@@ -33,6 +34,7 @@ yarn add -D husky
 ```
 
 package.json
+
 ```json
 {
   "scripts": {
@@ -49,7 +51,9 @@ package.json
 yarn add -D @commitlint/cli @commitlint/config-conventional
 npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 ```
+
 commitlint.config.js
+
 ```js
 module.exports = {
   extends: ['@commitlint/config-conventional'],
@@ -66,6 +70,7 @@ npx husky add .husky/pre-commit "npx --no-install lint-staged"
 ```
 
 package.json
+
 ```json
 {
   "lint-staged": {
@@ -85,6 +90,7 @@ yarn add -D standard-version
 ```
 
 package.json
+
 ```json
 {
   "scripts": {
@@ -92,4 +98,3 @@ package.json
   }
 }
 ```
-

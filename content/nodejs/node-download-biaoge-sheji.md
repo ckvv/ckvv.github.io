@@ -61,6 +61,7 @@ async download() {
 ```js
 ctx.noPaging = true;
 ```
+
 然后我们需要在对应接口中检查`noPaging`参数决定是否分页
 
 ## 压缩

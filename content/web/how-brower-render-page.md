@@ -9,6 +9,7 @@ date: '2022-02-09'
 文章是为了说明浏览器如何将HTML，CSS和JavaScript转换为网站。
 
 ## 首先
+
 浏览器是一个可以从远程服务器或者本地磁盘将文件加载、显示、交互的软件。
 
 浏览器有两个重要部分：
@@ -16,6 +17,7 @@ date: '2022-02-09'
 渲染引擎（Rendering Engine）：一般习惯称为“浏览器内核”，渲染引擎决定了浏览器如何显示网页的内容以及页面的格式信息。不同的浏览器内核对网页编写语法的解释也有不同如Gecko（火狐）、Blink（Chrome）、Webkit（Safari）、Trident（IE）等，因此同一网页在不同的内核的浏览器里的渲染效果也可能不同。
 
 JavaScript引擎：JavaScript由ECMAScript，DOM和BOM三者组成，不同浏览器针对JavaScript语法和语义标准有多种实现如：
+
 + Chrome使用V8引擎，
 + Safari使用JavaScriptCore，
 + Firefox使用SpiderMonkey
@@ -25,11 +27,13 @@ JavaScript引擎：JavaScript由ECMAScript，DOM和BOM三者组成，不同浏�
 数据是通过Internet以[数据包（Packet）](https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%8C%85/489739)为单位按字节形式发送到浏览器。浏览器将从硬盘（或网络）中读取HTML的原始数据字节转换为字符。
 
 ## 从原始字节到DOM
+
 当浏览器接受到扩展名为.html时，会将该文件解释为html对其进行解析，文件中的每个开始和结束html标签会转换为节点如
 
 ```html
 <div></div>
 ```
+
 创建这些节点后，然后将这些节点链接到称为DOM的树数据结构中。DOM建立父子关系，相邻的兄弟关系等。每个节点之间的关系都在此DOM对象中建立。浏览器必须先将html数据的原始字节转换为DOM，然后才能进行任何操作。
 
 当浏览器接收数据的原始字节并启动DOM构造过程时，它还将发出请求以获取链接的样式表。
@@ -56,7 +60,7 @@ DOM和CSSOM树结构是两个**独立的**结构。DOM包含有关页面HTML元�
 
 JavaScript可以更改DOM和CSSOM。
 
-###Javascript执行前将停止整个DOM构造过程
+### Javascript执行前将停止整个DOM构造过程
 
 由于浏览器不确定此特定Javascript会做什么，因此通过停止整个DOM结构来采取预防措施。每当浏览器遇到`script`标签时，在脚本完成执行之前，将停止整个DOM构造过程。
 
@@ -118,11 +122,11 @@ header变量将解析为`null`。
 
 如果网络速度很慢并且获取需要数秒，那么DOM构建也会暂停数秒。
 
-###CSSOM准备就绪前，将停止执行Javascript
+### CSSOM准备就绪前，将停止执行Javascript
 
 解析器遇到`script`标签但CSSOM尚未准备就绪时，将停止执行Javascript。这也是为什么一般将style标签放在网站上面，script标签放网站下面的原因。
 
-###例外
+### 例外
 
 默认情况下，每个脚本都会阻止DOM构建，但是，有一种方法可以更改此默认行为。如果将`async`关键字添加到`script`标签，则不会停止DOM构建。DOM构建将继续进行，并且在完成下载并准备就绪后将执行脚本。
 
@@ -148,8 +152,6 @@ header变量将解析为`null`。
     <div>2</div>
 ```
 
-
-
 ```html
   <div>1</div>
   <div id="matrix">
@@ -157,8 +159,6 @@ header变量将解析为`null`。
   </div>
   <div>2</div>
 ```
-
-
 
 ```html
   <div>1</div>
@@ -174,7 +174,4 @@ header变量将解析为`null`。
   <div>2</div>
 ```
 
-
-
 浏览器接收HTML，CSS和JS字节并将它们转换为屏幕上的渲染像素之间采取的步骤称为**关键渲染路径**。一个经过优化的站点应该进行渐进式渲染，通过优先确定要加载的资源和加载的顺序来尽快加载页面，不会阻塞整个过程。
-

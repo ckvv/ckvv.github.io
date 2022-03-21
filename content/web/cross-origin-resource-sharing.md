@@ -6,7 +6,6 @@ date: '2022-02-09'
 
 转载自 [web.dev](https://web.dev/cross-origin-resource-sharing/?utm_source=devtools)
 
-
 浏览器的同源策略阻止了浏览器读取不同源的资源。这种机制能够阻止恶意网站读取另一个网站的数据，但也会阻碍合法使用。如果您希望获取其他国家的天气数据该怎么办？
 
 在现代网络应用程序中，应用程序通常希望从不同源获取资源。例如，您想要从不同的域读取 JSON 数据或者将另一个网站的图像加载到`<canvas>`元素中。
@@ -31,8 +30,6 @@ HTTP 标头用于协商客户端和服务器之间的消息交换类型，并用
 
 **请求头示例**
 
-
-
 ```text
 Accept: text/html
 Cookie: Version=1
@@ -41,8 +38,6 @@ Cookie: Version=1
 以上内容相当于表示“我希望收到 HTML 的响应。这是我的一个 cookie。”
 
 **响应头示例**
-
-
 
 ```text
 Content-Encoding: gzip
@@ -83,15 +78,11 @@ Cache-Control: no-store
 + Click the **Console** tab.
 + 请尝试以下命令：
 
-
-
 ```js
 fetch('https://cors-demo.glitch.me/', {mode:'cors'})
 ```
 
 您应该会看到一条错误消息：
-
-
 
 ```bash
 请求已被 CORS 策略阻止：所请求的资源上无
@@ -99,8 +90,6 @@ fetch('https://cors-demo.glitch.me/', {mode:'cors'})
 ```
 
 第二个端点（第 13 行）在响应中发送的是相同的文件，但在标头中加入了`Access-Control-Allow-Origin: *`。请在控制台中尝试：
-
-
 
 ```js
 fetch('https://cors-demo.glitch.me/allow-cors', {mode:'cors'})
@@ -116,8 +105,6 @@ fetch('https://cors-demo.glitch.me/allow-cors', {mode:'cors'})
 
 请将`credentials: 'include'`添加到如下所示的获取选项中。该操作将包括请求中的 cookie。
 
-
-
 ```js
 fetch('https://example.com', {
   mode: 'cors',
@@ -128,8 +115,6 @@ fetch('https://example.com', {
 ### 响应 [#](https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#-8)
 
 必须将`Access-Control-Allow-Origin`设置给一个特定的源（没有使用`*`通配符），并且必须将`Access-Control-Allow-Credentials`设置为`true`。
-
-
 
 ```text
 HTTP/1.1 200 OK
@@ -149,8 +134,6 @@ CORS 规范将**复杂请求**定义为
 
 浏览器会根据需要创建预检请求。如下所示，该请求是一个`OPTIONS`请求，会在实际请求消息之前被发送。
 
-
-
 ```text
 OPTIONS /data HTTP/1.1
 Origin: https://example.com
@@ -158,8 +141,6 @@ Access-Control-Request-Method: DELETE
 ```
 
 在服务器端，应用程序在响应预检请求时需要提供程序从该源接受的方法的相关信息。
-
-
 
 ```text
 HTTP/1.1 200 OK

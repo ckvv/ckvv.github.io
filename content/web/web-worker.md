@@ -261,7 +261,6 @@ worker.onmessage = function(e) {
 worker.postMessage('Test');
 ```
 
-
 ## 五、实例：Worker 线程完成轮询
 
 有时，浏览器需要轮询服务器状态，以便第一时间得知状态改变。这个工作可以放在 Worker 里面。
@@ -392,11 +391,11 @@ Worker 线程代码如下。
 
 `Worker()`构造函数返回一个 Worker 线程对象，用来供主线程操作 Worker。Worker 线程对象的属性和方法如下。
 
- - Worker.onerror：指定 error 事件的监听函数。
- - Worker.onmessage：指定 message 事件的监听函数，发送过来的数据在`Event.data`属性中。
- - Worker.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。
- - Worker.postMessage()：向 Worker 线程发送消息。
- - Worker.terminate()：立即终止 Worker 线程。
+- Worker.onerror：指定 error 事件的监听函数。
+- Worker.onmessage：指定 message 事件的监听函数，发送过来的数据在`Event.data`属性中。
+- Worker.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。
+- Worker.postMessage()：向 Worker 线程发送消息。
+- Worker.terminate()：立即终止 Worker 线程。
 
 ### 7.2 Worker 线程
 
@@ -404,11 +403,11 @@ Web Worker 有自己的全局对象，不是主线程的`window`，而是一个�
 
 Worker 线程有一些自己的全局属性和方法。
 
- - self.name： Worker 的名字。该属性只读，由构造函数指定。
- - self.onmessage：指定`message`事件的监听函数。
- - self.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。
- - self.close()：关闭 Worker 线程。
- - self.postMessage()：向产生这个 Worker 线程发送消息。
- - self.importScripts()：加载 JS 脚本。
+- self.name： Worker 的名字。该属性只读，由构造函数指定。
+- self.onmessage：指定`message`事件的监听函数。
+- self.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。
+- self.close()：关闭 Worker 线程。
+- self.postMessage()：向产生这个 Worker 线程发送消息。
+- self.importScripts()：加载 JS 脚本。
 
-http://www.ruanyifeng.com/blog/2018/07/web-worker.html
+<http://www.ruanyifeng.com/blog/2018/07/web-worker.html>

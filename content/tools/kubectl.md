@@ -366,11 +366,8 @@ Kubectl verbosity is controlled with the `-v` or `--v` flags followed by an inte
 | `--v=8`   | Display HTTP request contents.                               |
 | `--v=9`   | Display HTTP request contents without truncation of contents. |
 
-
 ## 设置ingress白名单
+
 ```
 nginx.ingress.kubernetes.io/whitelist-source-range: "36.110.118.82/24,121.69.105.41,121.69.105.42,121.69.105.43,121.69.105.44,121.69.105.45,121.69.105.46,219.238.3.216/29,219.238.3.215,116.228.226.134,112.64.125.48/28,218.70.10.74,121.35.249.161,202.103.151.81,121.69.79.18"
 ```
-
-
-

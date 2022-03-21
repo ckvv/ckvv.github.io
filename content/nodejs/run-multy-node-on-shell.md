@@ -5,6 +5,7 @@ date: '2021-07-09'
 ---
 
 每次开机都需要手动执行一遍所有node程序,很是麻烦，于是找了一个方法可以用脚本的形式批量打开终端tab页，并执行node程序
+
 ## ttab
 
 `ttab`是一种macOS（OS X） CLI，用于以编程方式在标准终端应用程序中打开新的终端选项卡/窗口Terminal，具有执行命令和/或特定标题和特定显示设置。
@@ -32,7 +33,9 @@ Opens a new terminal tab or window in OS X's Terminal application or iTerm2.
  
 Standard options: --help, --man, --version, --home
 ```
+
 + ttab例子
+
 ```
 !/bin/bash
 ## SCRIPTPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )"  pwd )"

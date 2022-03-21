@@ -4,7 +4,7 @@ tags: ['database']
 date: '2021-07-09'
 ---
 
-##  查询坐标系的方式
+## 查询坐标系的方式
 
 如没有显示指定 geometry(${geometryType},3857)
 

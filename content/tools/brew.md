@@ -5,6 +5,7 @@ date: '2021-07-09'
 ---
 
 # 切换到国内源
+
 ```
 ## 替换brew.git:
  cd "$(brew --repo)"
@@ -31,7 +32,9 @@ date: '2021-07-09'
 ## 应用生效:
  brew update
 ```
+
 # 切换到官方源
+
 ```
 ## 重置brew.git:
  cd "$(brew --repo)"
@@ -41,4 +44,3 @@ date: '2021-07-09'
  cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
  git remote set-url origin https://github.com/Homebrew/homebrew-core.git
 ```
-

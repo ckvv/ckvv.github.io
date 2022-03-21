@@ -41,8 +41,6 @@ CentOS-Base.repo 是yum 网络源的配置文件
 
 CentOS-Media.repo 是yum 本地源的配置文件
 
- 
-
  修改CentOS-Media.repo文件
 
 \#cat /etc/yum.repo.d/CentOS-Media.repo
@@ -62,7 +60,7 @@ CentOS-Media.repo
 yum install bind
 ```
 
-###  关于repo的格式[#](https://www.cnblogs.com/zhichaoma/p/7533247.html#3576327658)
+### 关于repo的格式[#](https://www.cnblogs.com/zhichaoma/p/7533247.html#3576327658)
 
 所有repository 服务器设置都应该遵循如下格式：
 
@@ -110,11 +108,11 @@ failovermethod=priority
 
  其中gpgcheck，exclude 的含义和[main] 部分相同，但只对此服务器起作用，failovermethode 有两个选项roundrobin 和priority，意思分别是有多个url可供选择时，yum 选择的次序，roundrobin 是随机选择，如果连 ·接失败则使用下一个，依次循环，priority 则根据url 的次序从第一个开始。如果不指明，默认是roundrobin。
 
-###  配置阿里云YUM源[#](https://www.cnblogs.com/zhichaoma/p/7533247.html#166032900)
+### 配置阿里云YUM源[#](https://www.cnblogs.com/zhichaoma/p/7533247.html#166032900)
 
 阿里云Linux安装镜像源地址：
 　　[http://mirrors.aliyun.com/](http://mirrors.aliyun.com/ )
-　　http://mirrors.aliyun.com/repo/
+　　<http://mirrors.aliyun.com/repo/>
 
 CentOS系统更换软件安装源
 第一步：备份你的原镜像文件，以免出错后可以恢复。
@@ -123,7 +121,7 @@ CentOS系统更换软件安装源
 mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup 
 ```
 
-第二步：下载新的CentOS-Base.repo 到/etc/yum.repos.d/ 
+第二步：下载新的CentOS-Base.repo 到/etc/yum.repos.d/
 
 ```
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo 
@@ -136,7 +134,7 @@ yum clean all　　//清理缓存
 yum makecache　　//更新缓存
 ```
 
-###  yum工具的使用[#](https://www.cnblogs.com/zhichaoma/p/7533247.html#2542095789)
+### yum工具的使用[#](https://www.cnblogs.com/zhichaoma/p/7533247.html#2542095789)
 
 rpm的更新
 
@@ -278,6 +276,6 @@ yum常用的命令
 
 [![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
 
- 搭建内网YUM仓库：http://www.cnblogs.com/zhichaoma/p/7581957.html
+ 搭建内网YUM仓库：<http://www.cnblogs.com/zhichaoma/p/7581957.html>
 
- 更多使用请参考：http://man.linuxde.net/yum
+ 更多使用请参考：<http://man.linuxde.net/yum>

@@ -5,23 +5,27 @@ date: '2022-02-09'
 ---
 
 创建vue的单元测试项目
+
 ### vue-cli 创建项目
 
 ```
 vue create vue-test
 ```
+
 ### Vue CLI 3可以向项目组中直接添加unit-jest
 
 ```
 vue add @vue/unit-jest
 ```
+
 可以发现项目中多了很多文件，并且已经创建了一个测试文件demo，
 
 ### 进行测试
+
 vue在添加单元测试框架时会在`package.json`scripts添加一个test:unit，我们可以允许此命令打开测试
 
-
 ### 在vue版本过低的项目中添加单元测试
+
 我们可以选择以下两种方式
 
 + 升级vue版本及其依赖
@@ -41,11 +45,11 @@ This is based on the `vue-cli` `webpack-simple` template. Test-specific changes 
 
 ### Additional Dependencies
 
-- `vue-test-utils`
-- `jest`
-- `babel-jest` (for ES2015+ features in tests)
-- `vue-jest` (for handling `*.vue` files in tests)
-- `jest-serializer-vue` (for snapshot tests)
++ `vue-test-utils`
++ `jest`
++ `babel-jest` (for ES2015+ features in tests)
++ `vue-jest` (for handling `*.vue` files in tests)
++ `jest-serializer-vue` (for snapshot tests)
 
 ### Additional Configuration
 
@@ -120,4 +124,3 @@ npm test
 ```
 
 For detailed explanation on how things work, consult the [docs for vue-test-utils](https://vue-test-utils.vuejs.org/guides/#testing-single-file-components-with-jest).
-

@@ -32,9 +32,11 @@ declare module 'vue' {
 ```
 
 ## 局部注册
+
 我们可以直接从文件中引入vue组件使用，
 
 在单文件组件中（SFC）
+
 ```vue
 <template>
   <HelloWorld msg="Welcome to Your Vue.js App"/>
@@ -51,7 +53,9 @@ export default {
 }
 </script>
 ```
+
 在JSX中
+
 ```jsx
 import HelloWolrd from './components/HelloWorld.vue'
 export default {
@@ -65,6 +69,7 @@ export default {
 ```
 
 局部注册的组件在其他组件中无法访问，在其父组件或子组件或中均不可用，所以你需要在每个使用该组件的地方重新引入并注册该组件
+
 ```js
 import HelloWolrd from './components/HelloWorld.vue'
 ```
@@ -80,6 +85,7 @@ import HelloWolrd from './components/HelloWorld.vue'
 安装插件
 
 + vite
+
 ```js
 // vite.config.ts
 import Components from 'unplugin-vue-components/vite'
@@ -90,7 +96,9 @@ export default defineConfig({
   ],
 })
 ```
+
 + rollup
+
 ```js
 // rollup.config.js
 import Components from 'unplugin-vue-components/rollup'
@@ -101,6 +109,7 @@ export default {
   ],
 }
 ```
+
 + webpack
 
 ```js
@@ -128,6 +137,7 @@ export default {
 }
 </script>
 ```
+
 转换成
 
 ```vue
@@ -159,9 +169,8 @@ export default {
 | 组件作用域     | 全局                      | 局部           | 局部                          |
 | 使用方法        | 全局注册后使用            | 局部注册后使用 | 添加插件后使用                |
 
-
-
 ## 参考
-+ https://v3.cn.vuejs.org/guide/component-registration.html
-+ https://v3.cn.vuejs.org/guide/typescript-support.html
-+ https://github.com/antfu/unplugin-vue-components
+
++ <https://v3.cn.vuejs.org/guide/component-registration.html>
++ <https://v3.cn.vuejs.org/guide/typescript-support.html>
++ <https://github.com/antfu/unplugin-vue-components>

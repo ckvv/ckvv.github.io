@@ -9,4 +9,3 @@ PostgreSQL中对字段排序时中文并不会按照拼音排序，在不同的�
 PostgreSQL中，中文按拼音排序的编码包括GB18030, EUC_CN, GBK, BIG5, EUC_TW 等。为了得到拼音排序，可以使用编码转换后的值来排序，如`convert_to(name,'GBK')`。
 
 >对于多音字、生僻字排序结果不太准确：如根据[汉字内码扩展规范(GBK)](http://ff.163.com/newflyff/gbk-list/) 在GBK编码10进制`濮`编码为58791，`总`编码为55260,
-

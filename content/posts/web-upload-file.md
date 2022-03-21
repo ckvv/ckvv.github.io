@@ -35,6 +35,7 @@ date: '2021-07-09'
 ```
 
 获取FileSystemEntry包含的FilesEntrys，FileSystemEntry可能代表文件系统中的文件或者目录
+
 ```javascript
   /**
    * 获取drop区域的文件
@@ -92,6 +93,7 @@ date: '2021-07-09'
 ## 通过input选择文件
 
 获取input选择的File对象比较简单通过`evt.target.files`即可拿到文件
+
 ```javascript
   onFileSelected(evt) {
 
@@ -111,7 +113,9 @@ date: '2021-07-09'
     this.handerFiles(files);
   },
 ```
+
 # 计算文件hash
+
 通过File对象计算文件hash值
 
 + 通过`file.slice(start, end).arrayBuffer()`获取制定切片的文件二进制数据
@@ -166,11 +170,7 @@ async getFileInfo(file) {
     },
 ```
 
-
-
 # 数据库设计
-
-
 
 | 字段        | 类型      | 描述       |
 | ----------- | --------- | ---------- |
@@ -182,9 +182,6 @@ async getFileInfo(file) {
 | upload_path | text      | 上传的地址 |
 | type        | text      | 文件类型   |
 | block_list  | jsonb[]   | 切片信息   |
-
-
-
 
 ```sql
 CREATE TABLE core.upload_files
@@ -202,11 +199,10 @@ CREATE TABLE core.upload_files
 )
 ```
 
-
-
 # 接口设计
 
 ## 获取文件信息
+
 主要用于检查filehash值的文件是否已经存在，若干存在则跳过上传，如果不存在，检查有哪些切片已经存在并返回存在的切片
 
 地址
@@ -222,9 +218,7 @@ CREATE TABLE core.upload_files
 | filehash | 文件hash值 |
 | type     | 文件类型   |
 
-
-
-##上传切片文件
+## 上传切片文件
 
 地址
 
@@ -292,7 +286,7 @@ async function writeFileFromFS(filePath, fileStream) {
 }
 ```
 
-##合并切片文件
+## 合并切片文件
 
 地址
 
@@ -303,8 +297,6 @@ async function writeFileFromFS(filePath, fileStream) {
 | 参数     | 描述     |
 | -------- | -------- |
 | filehash | 文件hash |
-
-
 
 ```javascript
 /**
@@ -329,6 +321,3 @@ async function mergeFiles(mergePath, files) {
   return true;
 }
 ```
-
-
-
