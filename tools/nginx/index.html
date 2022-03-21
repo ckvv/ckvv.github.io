@@ -30,7 +30,7 @@ sudo yum install nginx 其他安装方式">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/tools/nginx/"><meta property="article:section" content="tools">
 <meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-02-22T12:18:41+08:00">
+<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
 <title>
 nginx · CK's Blog
 </title>
@@ -146,7 +146,7 @@ module_hotfixes=true
 </code></pre></div><p>To install nginx, run the following command:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>sudo yum install nginx
 </code></pre></div><p>其他安装方式</p>
-<p>参考https://nginx.org/en/linux_packages.html</p>
+<p>参考<a href=https://nginx.org/en/linux_packages.html>https://nginx.org/en/linux_packages.html</a></p>
 <h2 id=nginx命令>
 Nginx命令
 <a class=heading-link href=#nginx%e5%91%bd%e4%bb%a4>
@@ -222,8 +222,8 @@ events <span style=color:#f92672>{</span>
 http <span style=color:#f92672>{</span>
     include       mime.types;   <span style=color:#75715e>#文件扩展名与文件类型映射表</span>
     default_type  application/octet-stream; <span style=color:#75715e>#默认文件类型，默认为text/plain</span>
-		<span style=color:#75715e>#access_log off; #取消服务日志    </span>
-    log_format myFormat <span style=color:#e6db74>&#39;$remote_addr–$remote_user [$time_local] $request $status $body_bytes_sent $http_referer 			$http_user_agent $http_x_forwarded_for&#39;</span>; <span style=color:#75715e>#自定义格式</span>
+  <span style=color:#75715e>#access_log off; #取消服务日志    </span>
+    log_format myFormat <span style=color:#e6db74>&#39;$remote_addr–$remote_user [$time_local] $request $status $body_bytes_sent $http_referer    $http_user_agent $http_x_forwarded_for&#39;</span>; <span style=color:#75715e>#自定义格式</span>
     access_log log/access.log myFormat;  <span style=color:#75715e>#combined为日志格式的默认值</span>
     sendfile on;   <span style=color:#75715e>#允许sendfile方式传输文件，默认为off，可以在http块，server块，location块。</span>
     sendfile_max_chunk 100k;  <span style=color:#75715e>#每个进程每次调用传输数量不能大于设定的值，默认为0，即不设上限。</span>

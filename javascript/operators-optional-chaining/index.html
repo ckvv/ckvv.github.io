@@ -33,7 +33,7 @@ let nestedProp = obj.first?.second; 通过使用 ?. 操作符取代 . 操作符�
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/javascript/operators-optional-chaining/"><meta property="article:section" content="javascript">
 <meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-02-22T12:18:41+08:00">
+<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
 <title>
 JavaScript可选链操作符 · CK's Blog
 </title>
@@ -145,7 +145,7 @@ JavaScript可选链操作符
 </code></pre></div><p>为了避免报错，在访问<code>obj.first.second</code>之前，要保证 <code>obj.first</code> 的值既不是 <code>null</code>，也不是 <code>undefined</code>。如果只是直接访问 <code>obj.first.second</code>，而不对 <code>obj.first</code> 进行校验，则有可能抛出错误。</p>
 <p>有了可选链操作符（<code>?.</code>），在访问 <code>obj.first.second</code> 之前，不再需要明确地校验 <code>obj.first</code> 的状态，再并用短路计算获取最终结果：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>nestedProp</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>first</span><span style=color:#f92672>?</span>.<span style=color:#a6e22e>second</span>;
-</code></pre></div><p>通过使用 <code>?.</code> 操作符取代 <code>.</code> 操作符，JavaScript 会在尝试访问 <code>obj.first.second</code> 之前，先隐式地检查并确定 <code>obj.first</code> 既不是 <code>null</code> 也不是 <code>undefined</code>。如果<code>obj.first </code>是 <code>null</code> 或者 <code>undefined</code>，表达式将会短路计算直接返回 <code>undefined</code>。</p>
+</code></pre></div><p>通过使用 <code>?.</code> 操作符取代 <code>.</code> 操作符，JavaScript 会在尝试访问 <code>obj.first.second</code> 之前，先隐式地检查并确定 <code>obj.first</code> 既不是 <code>null</code> 也不是 <code>undefined</code>。如果<code>obj.first</code>是 <code>null</code> 或者 <code>undefined</code>，表达式将会短路计算直接返回 <code>undefined</code>。</p>
 <p>这等价于以下表达式，但实际上没有创建临时变量：</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>temp</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>obj</span>.<span style=color:#a6e22e>first</span>;
 <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>nestedProp</span> <span style=color:#f92672>=</span> ((<span style=color:#a6e22e>temp</span> <span style=color:#f92672>===</span> <span style=color:#66d9ef>null</span> <span style=color:#f92672>||</span> <span style=color:#a6e22e>temp</span> <span style=color:#f92672>===</span> <span style=color:#66d9ef>undefined</span>) <span style=color:#f92672>?</span> <span style=color:#66d9ef>undefined</span> <span style=color:#f92672>:</span> <span style=color:#a6e22e>temp</span>.<span style=color:#a6e22e>second</span>);

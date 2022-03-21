@@ -33,7 +33,7 @@ const { Script, createContext } = require('vm'); /** * * @param {string} code �
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/javascript/js-sandbox/"><meta property="article:section" content="javascript">
 <meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-02-22T12:18:41+08:00">
+<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
 <title>
 简单谈谈JS中的沙箱 · CK's Blog
 </title>
@@ -129,7 +129,7 @@ JS中沙箱的使用场景
 <ul>
 <li>jsonp：解析服务器所返回的jsonp请求时，如果不信任jsonp中的数据，可以通过创建沙箱的方式来解析获取数据；（TSW中处理jsonp请求时，创建沙箱来处理和解析数据）；</li>
 <li>执行第三方js：当你有必要执行第三方js的时候，而这份js文件又不一定可信的时候；</li>
-<li>在线代码编辑器：相信大家都有使用过一些在线代码编辑器，而这些代码的执行，基本都会放置在沙箱中，防止对页面本身造成影响；（例如：https://codesandbox.io/s/new）</li>
+<li>在线代码编辑器：相信大家都有使用过一些在线代码编辑器，而这些代码的执行，基本都会放置在沙箱中，防止对页面本身造成影响；（例如：<a href=https://codesandbox.io/s/new>https://codesandbox.io/s/new</a>）</li>
 <li>vue模板中表达式计算：vue模板中表达式的计算被放在沙盒中，只能访问全局变量的一个白名单，如 Math 和 Date 。你不能够在模板表达式中试图访问用户定义的全局变量<br>
 总而言之：当你要解析或执行不可信的JS的时候，当你要隔离被执行代码的执行环境的时候，当你要对执行代码中可访问对象进行限制的时候，沙箱就派上用场了</li>
 </ul>

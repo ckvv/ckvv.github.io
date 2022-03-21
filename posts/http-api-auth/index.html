@@ -32,7 +32,7 @@ HTTP BasicDigest AccessApp Secret Key + HMACJWT – JSON Web TokensOAuth 1.0OAut
 HTTP Basic    HTTP Basic 是一个非常传统的API认证技术，也是一个比较简单的技术。这个技术也就是使用 username和 password 来进行登录。整个过程被定义在了 RFC 2617 中，也被描述在了 Wikipedia: Basic Access Authentication 词条中，同时也可以参看 MDN HTTP Authentication">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/posts/http-api-auth/"><meta property="article:section" content="posts">
-<meta property="article:modified_time" content="2022-02-22T12:18:41+08:00">
+<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
 <title>
 HTTP API 认证授权术 · CK's Blog
 </title>
@@ -104,8 +104,8 @@ HTTP API 认证授权术
 <div class=post-meta>
 <div class=date>
 <span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
-<time datetime=2022-02-22T12:18:41+08:00>
-2022-02-22
+<time datetime=2022-03-21T12:31:38+08:00>
+2022-03-21
 </time>
 </span>
 </div>
@@ -131,7 +131,7 @@ HTTP API 认证授权术
 <li>OAuth 2.0 – Authentication Code & Client Credential</li>
 </ul>
 <p>目录</p>
-<p><a href=https://coolshell.cn/articles/19395.html#HTTP_Basic>HTTP Basic</a><a href=https://coolshell.cn/articles/19395.html#Digest_Access>Digest Access</a><a href=https://coolshell.cn/articles/19395.html#App_Secret_Key_HMAC>App Secret Key + HMAC</a><a href=https://coolshell.cn/articles/19395.html#JWT_JSON_Web_Tokens>JWT – JSON Web Tokens</a><a href=https://coolshell.cn/articles/19395.html#OAuth_10>OAuth 1.0</a><a href=https://coolshell.cn/articles/19395.html#OAuth_20>OAuth 2.0</a><a href=https://coolshell.cn/articles/19395.html#Authorization_Code_Flow>Authorization Code Flow</a><a href=https://coolshell.cn/articles/19395.html#_Client_Credential_Flow> Client Credential Flow</a><a href=https://coolshell.cn/articles/19395.html#coolshell>小结</a><a href=https://coolshell.cn/articles/19395.html#coolshell-2>两个概念和三个术语</a><a href=https://coolshell.cn/articles/19395.html#coolshell-3>明白一些初衷</a><a href=https://coolshell.cn/articles/19395.html#coolshell-4>相关的注意事项</a></p>
+<p><a href=https://coolshell.cn/articles/19395.html#HTTP_Basic>HTTP Basic</a><a href=https://coolshell.cn/articles/19395.html#Digest_Access>Digest Access</a><a href=https://coolshell.cn/articles/19395.html#App_Secret_Key_HMAC>App Secret Key + HMAC</a><a href=https://coolshell.cn/articles/19395.html#JWT_JSON_Web_Tokens>JWT – JSON Web Tokens</a><a href=https://coolshell.cn/articles/19395.html#OAuth_10>OAuth 1.0</a><a href=https://coolshell.cn/articles/19395.html#OAuth_20>OAuth 2.0</a><a href=https://coolshell.cn/articles/19395.html#Authorization_Code_Flow>Authorization Code Flow</a><a href=https://coolshell.cn/articles/19395.html#_Client_Credential_Flow>Client Credential Flow</a><a href=https://coolshell.cn/articles/19395.html#coolshell>小结</a><a href=https://coolshell.cn/articles/19395.html#coolshell-2>两个概念和三个术语</a><a href=https://coolshell.cn/articles/19395.html#coolshell-3>明白一些初衷</a><a href=https://coolshell.cn/articles/19395.html#coolshell-4>相关的注意事项</a></p>
 <h4 id=http-basic>
 HTTP Basic
 <a class=heading-link href=#http-basic>
@@ -336,12 +336,12 @@ OAuth 2.0
 <li>
 <ul>
 <li><code>client_id</code>为第三方应用的App ID</li>
+</ul>
+</li>
 <li><code>response_type=code</code>为告诉认证服务器，我要走Authorization Code Flow。</li>
 <li><code>redirect_uri</code>意思是我跳转回第三方应用的URL</li>
 <li><code>scope</code>意是相关的权限</li>
 <li><code>state</code> 是一个随机的字符串，主要用于防CSRF攻击。</li>
-</ul>
-</li>
 </ul>
 <p>2）当Authorization Server收到这个URL请求后，其会通过 <code>client_id</code>来检查 <code>redirect_uri</code>和 <code>scope</code>是否合法，如果合法，则弹出一个页面，让用户授权（如果用户没有登录，则先让用户登录，登录完成后，出现授权访问页面）。</p>
 <p>3）当用户授权同意访问以后，Authorization Server 会跳转回 Client ，并以其中加入一个 Authorization Code。 如下所示：</p>
@@ -353,9 +353,9 @@ OAuth 2.0
 <li>
 <ul>
 <li>请流动的链接是第 1）步中的 <code>redirect_uri</code></li>
-<li>其中的 <code>state</code> 的值也和第 1）步的 <code>state</code>一样。</li>
 </ul>
 </li>
+<li>其中的 <code>state</code> 的值也和第 1）步的 <code>state</code>一样。</li>
 </ul>
 <p>4）接下来，Client 就可以使用 Authorization Code 获得 Access Token。其需要向 Authorization Server 发出如下请求。</p>
 <pre tabindex=0><code>POST /oauth/token HTTP/1.1
@@ -379,10 +379,10 @@ code=Yzk5ZDczMzRlNDEwYlrEqdFSBzjqfTG
 <li>
 <ul>
 <li><code>access_token</code>就是访问请求令牌了</li>
-<li><code>refresh_token</code>用于刷新 <code>access_token</code></li>
-<li><code>id_token</code> 是JWT的token，其中一般会包含用户的OpenID</li>
 </ul>
 </li>
+<li><code>refresh_token</code>用于刷新 <code>access_token</code></li>
+<li><code>id_token</code> 是JWT的token，其中一般会包含用户的OpenID</li>
 </ul>
 <p>6）接下来就是用 Access Token 请求用户的资源了。</p>
 <pre tabindex=0><code>GET /v1/user/pictures

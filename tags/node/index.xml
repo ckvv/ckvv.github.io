@@ -6,7 +6,7 @@ WebContainers 简介：在浏览器中本地运行 Node.js ERIC SIMONS可能2021
 几年前，我们意识到网络正走向一个关键的转折点。 WebAssembly 的出现和新的 功能 API 使编写一个基于 WebAssembly 的操作系统变得可能，它的功能足以运行 Node.js，完全在你的浏览器中。我们设想了一个比本地环境更快、更安全和一致的卓越开发环境，以实现无缝代码协作，而无需设置本地环境。
 这听起来有些牵强。但是，如果网络现在为 平面设计师、视频编辑器 /web.dev/clipchamp/) 和 丰富的文档编辑，我们想知道：开发人员最终有可能*使用*网络来*构建*网络吗？
 我们决定试一试。我们抱有最好的希望，也期待最坏的结果。两年后（时间过得真快😅），结果出乎意料地惊人。
-今天我们很高兴地宣布WebContainers。 WebContainers 允许您创建全栈 Node.js 环境，这些环境在几毫秒内启动并立即在线和链接共享 - 只需单击一下。该环境加载了 VS Code 强大的编辑体验、完整的终端、npm 等。它还完全在您的浏览器内运行，这会产生一些关键优势：
+今天我们很高兴地宣布WebContainers WebContainers 允许您创建全栈 Node.js 环境，这些环境在几毫秒内启动并立即在线和链接共享 - 只需单击一下。该环境加载了 VS Code 强大的编辑体验、完整的终端、npm 等。它还完全在您的浏览器内运行，这会产生一些关键优势：
 比您的本地环境更快。构建完成速度最多可提高 20%，软件包安装完成速度比 yarn/npm 快 &amp;gt;= 5 倍。 Node.</description></item><item><title>eggjs</title><link>https://chenkai.life/nodejs/eggjs/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/nodejs/eggjs/</guid><description>egg初始化设置 const dir = path.join(app.baseDir, '/app/model/'); app.loader.loadToContext(dir, 'model'); //只执行一次 app.once('server', async (server) =&amp;gt; { //设置一个空的上下文 const ctx = app.createAnonymousContext(); //获取设置 var settings = await ctx.model.setting.getAll(); });</description></item><item><title>jsonwebtoken</title><link>https://chenkai.life/nodejs/jsonwebtoken/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/nodejs/jsonwebtoken/</guid><description>什么是JSON Web Token？ JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用SON对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT可以使用加密算法（使用HMAC算法）或使用RSA或ECDSA的公钥/私钥对进行签名。
 什么时候应该使用JSON Web令牌 以下是JSON Web令牌有用的一些场景：
 授权：这是使用JWT的最常见方案。一旦用户登录，每个后续请求将包括JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On是一种现在广泛使用JWT的功能，因为它的开销很小，并且能够在不同的域中轻松使用。

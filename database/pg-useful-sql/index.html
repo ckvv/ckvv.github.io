@@ -30,7 +30,7 @@ pg_dump -U postgres -d g-default -f g-default.sql
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/database/pg-useful-sql/"><meta property="article:section" content="database">
 <meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-02-22T12:18:41+08:00">
+<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
 <title>
 postgres 有用的sql · CK's Blog
 </title>
@@ -163,7 +163,7 @@ psql -N data -N public_data -d g-default -U postgres -f g-default.sql</p>
 <span style=color:#66d9ef>RETURNS</span> text
 <span style=color:#66d9ef>AS</span> <span style=color:#960050;background-color:#1e0010>$$</span>
 <span style=color:#66d9ef>DECLARE</span>
-	function_result text;
+ function_result text;
 <span style=color:#66d9ef>BEGIN</span>
     <span style=color:#66d9ef>select</span> proname <span style=color:#66d9ef>into</span> function_result
     <span style=color:#66d9ef>from</span> pg_proc 
@@ -188,7 +188,7 @@ psql -N data -N public_data -d g-default -U postgres -f g-default.sql</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#66d9ef>DROP</span> <span style=color:#66d9ef>FUNCTION</span> <span style=color:#66d9ef>public</span>.__my_del_schema_table(text);
 
  <span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>OR</span> <span style=color:#66d9ef>REPLACE</span> <span style=color:#66d9ef>FUNCTION</span> <span style=color:#66d9ef>public</span>.__my_del_schema_table(
- 	schemaname1 text)
+  schemaname1 text)
     <span style=color:#66d9ef>RETURNS</span> record
     <span style=color:#66d9ef>LANGUAGE</span> <span style=color:#e6db74>&#39;plpgsql&#39;</span>
 
@@ -196,13 +196,13 @@ psql -N data -N public_data -d g-default -U postgres -f g-default.sql</p>
      <span style=color:#66d9ef>VOLATILE</span> 
  <span style=color:#66d9ef>AS</span> <span style=color:#960050;background-color:#1e0010>$</span>BODY$
  <span style=color:#66d9ef>DECLARE</span>
- 	tabname record;
+  tabname record;
 <span style=color:#66d9ef>BEGIN</span>
    <span style=color:#66d9ef>FOR</span> tabname <span style=color:#66d9ef>IN</span> (<span style=color:#66d9ef>SELECT</span> tablename <span style=color:#66d9ef>FROM</span> pg_tables <span style=color:#66d9ef>WHERE</span> schemaname <span style=color:#f92672>=</span> schemaname1)
-	LOOP
-		<span style=color:#66d9ef>EXECUTE</span> <span style=color:#e6db74>&#39;DROP TABLE IF EXISTS &#39;</span> <span style=color:#f92672>||</span> schemaname1 <span style=color:#f92672>||</span> <span style=color:#e6db74>&#39;.&#39;</span> <span style=color:#f92672>||</span> quote_ident(tabname.tablename) <span style=color:#f92672>||</span> <span style=color:#e6db74>&#39; CASCADE&#39;</span>;
- 	<span style=color:#66d9ef>END</span> LOOP;
-	<span style=color:#66d9ef>return</span> tabname;
+ LOOP
+  <span style=color:#66d9ef>EXECUTE</span> <span style=color:#e6db74>&#39;DROP TABLE IF EXISTS &#39;</span> <span style=color:#f92672>||</span> schemaname1 <span style=color:#f92672>||</span> <span style=color:#e6db74>&#39;.&#39;</span> <span style=color:#f92672>||</span> quote_ident(tabname.tablename) <span style=color:#f92672>||</span> <span style=color:#e6db74>&#39; CASCADE&#39;</span>;
+  <span style=color:#66d9ef>END</span> LOOP;
+ <span style=color:#66d9ef>return</span> tabname;
 <span style=color:#66d9ef>END</span>;
  <span style=color:#960050;background-color:#1e0010>$</span>BODY$;
 
@@ -214,7 +214,7 @@ psql -N data -N public_data -d g-default -U postgres -f g-default.sql</p>
 <span style=color:#66d9ef>AS</span> <span style=color:#960050;background-color:#1e0010>$$</span>
 <span style=color:#66d9ef>DECLARE</span>
     alter_content text;
-	v_msg     TEXT;
+ v_msg     TEXT;
 <span style=color:#66d9ef>BEGIN</span>
 
     <span style=color:#66d9ef>for</span> alter_content <span style=color:#66d9ef>in</span> <span style=color:#66d9ef>SELECT</span> <span style=color:#e6db74>&#39;alter table &#39;</span> <span style=color:#f92672>||</span> f_table_schema <span style=color:#f92672>||</span> <span style=color:#e6db74>&#39;.&#39;</span> <span style=color:#f92672>||</span> f_table_name <span style=color:#f92672>||</span> <span style=color:#e6db74>&#39; alter column the_geom_webmercator type geometry(&#39;</span> <span style=color:#f92672>||</span> <span style=color:#66d9ef>type</span> <span style=color:#f92672>||</span> <span style=color:#e6db74>&#39;,3857) using st_setsrid(the_geom_webmercator,3857);&#39;</span> <span style=color:#66d9ef>FROM</span> geometry_columns <span style=color:#66d9ef>where</span> f_geometry_column<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;the_geom_webmercator&#39;</span> <span style=color:#66d9ef>and</span> srid<span style=color:#f92672>&gt;</span><span style=color:#ae81ff>900000</span>
@@ -226,7 +226,7 @@ psql -N data -N public_data -d g-default -U postgres -f g-default.sql</p>
     <span style=color:#66d9ef>RETURN</span> <span style=color:#66d9ef>null</span>;
 <span style=color:#75715e>--以下是对异常的处理
 </span><span style=color:#75715e></span><span style=color:#66d9ef>EXCEPTION</span>
-	<span style=color:#66d9ef>WHEN</span> others <span style=color:#66d9ef>THEN</span> <span style=color:#66d9ef>GET</span> STACKED <span style=color:#66d9ef>DIAGNOSTICS</span>
+ <span style=color:#66d9ef>WHEN</span> others <span style=color:#66d9ef>THEN</span> <span style=color:#66d9ef>GET</span> STACKED <span style=color:#66d9ef>DIAGNOSTICS</span>
             v_msg     <span style=color:#f92672>=</span> <span style=color:#66d9ef>MESSAGE_TEXT</span>;
             RAISE INFO <span style=color:#e6db74>&#39;EXCEPTION:%&#39;</span>, v_msg;
        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;

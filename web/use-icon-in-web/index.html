@@ -39,7 +39,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/web/use-icon-in-web/"><meta property="article:section" content="web">
 <meta property="article:published_time" content="2022-02-09T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-02-22T12:18:41+08:00">
+<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
 <title>
 谈谈Web项目中图标的方式 · CK's Blog
 </title>
@@ -144,7 +144,7 @@ CK's Blog
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=color:#f92672>&lt;</span><span style=color:#f92672>i</span> <span style=color:#f92672>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;iconfont&#34;</span><span style=color:#f92672>&gt;&amp;</span>#xe64f<span style=color:#f92672>;&lt;/</span><span style=color:#f92672>i</span><span style=color:#f92672>&gt;</span>
 </code></pre></div><p>这样有个明显的缺点就是图标不直观，我们很难根据<code>&amp;#x33;</code>知道它是什么图标，我们可以通过提前定义好对应图标css的<code>::before</code>的content，将其改造成自定义class引用的方式</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css>.<span style=color:#a6e22e>icon-close</span>:<span style=color:#a6e22e>before</span>{
-	<span style=color:#66d9ef>content</span>: <span style=color:#e6db74>&#34;\e64f&#34;</span>
+ <span style=color:#66d9ef>content</span>: <span style=color:#e6db74>&#34;\e64f&#34;</span>
 }
 </code></pre></div><p>然后我们在页面中可以这样使用</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>span</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;iconfont icon-close&#34;</span>&gt;&lt;/<span style=color:#f92672>span</span>&gt;

@@ -38,7 +38,7 @@ hello hello hello hello hello hello hello hello .wrapper { display: -webkit-box;
 zoom,transform缩放字体容器 我们可以通过外层容器宽高和字体容器宽高计算出需要缩放的比例，通过设置zoom、scale来自适应容器宽高,如:</description></item><item><title>常用的一些css样式</title><link>https://chenkai.life/css/css-useful-style/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-useful-style/</guid><description>字体 文字超出后省略
 white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 中文简&amp;gt;繁转换
 font-variant-east-asian: traditional;</description></item><item><title>浅谈css动画</title><link>https://chenkai.life/css/css-animation/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-animation/</guid><description>本文简单介绍如何定义css动画
-transition transitions 可以决定哪些属性发生动画效果transition-property (明确地列出这些属性,如果省略则包含所有属性)，何时开始 transition-delay (设置 delay），持续多久transition-duration (设置 duration) 以及如何动画transition-timing-function (定义timing function，比如匀速地或先快后慢)
+transition transitions 可以决定哪些属性发生动画效果transition-property (明确地列出这些属性,如果省略则包含所有属性)，何时开始transition-delay (设置 delay），持续多久transition-duration (设置 duration) 以及如何动画transition-timing-function (定义timing function，比如匀速地或先快后慢)
 如下面指定字体大小颜色和字体发生动画效果
 .transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } transition的发生需要属性被修改时才会触发，比如hover时我们修改字体大小和颜色，如果没有定义transition这些属性会立即修改，
 .transition-box:hover { font-size: 2rem; color: green; } .transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } .transition-box:hover { font-size: 3rem; color: green; } 把鼠标放上查看效果 CSS 过渡 由简写属性transition 定义是最好的方式，可以避免属性值列表长度不一，节省调试时间。

@@ -18,7 +18,7 @@ glob表达式规则       Matches 0 or more characters in a single path portion 
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://chenkai.life/posts/glob-expression/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-02-22T12:18:41+08:00">
+<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
 <title>
 glob表达式 · CK's Blog
 </title>
@@ -145,7 +145,7 @@ glob表达式例子
 <li>** 能匹配 abc , a/b.js , a/b/c.js , x/y/z , x/y/z/a.b ，能用来匹配所有的目录和文件</li>
 <li>**/*.js 能匹配 foo.js , a/foo.js , a/b/foo.js , a/b/c/foo.js</li>
 <li>a/**/z 能匹配 a/z , a/b/z , a/b/c/z , a/d/g/h/j/k/z</li>
-<li>a/**b/z 能匹配 a/b/z , a/sb/z ，但不能匹配 a/x/sb/z ，因为只有单 ** 单独出现才能匹配多级目录</li>
+<li>a/<strong>b/z 能匹配 a/b/z , a/sb/z ，但不能匹配 a/x/sb/z ，因为只有单</strong> 单独出现才能匹配多级目录</li>
 <li>?.js 能匹配 a.js , b.js , c.js</li>
 <li>a?? 能匹配 a.b , abc ，但不能匹配 ab/ ，因为它不会匹配路径分隔符</li>
 <li>[xyz].js 只能匹配 x.js , y.js , z.js ，不会匹配 xy.js , xyz.js 等，整个中括号只代表一个字符</li>
