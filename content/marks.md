@@ -71,13 +71,21 @@ show: false
 + `prisma`: Prisma 是一个开源的一个ORM框架.
 + `swc`: swc 是一个typescript/javascript 编译器。比`babel`快很多.
 + `vm2`: Node.js 的高级虚拟机/沙箱.
-+ `element-ui、quasar、vuetify、naive-ui、arco-design、tdesign`: vue ui框架  
++ vue ui框架  
+  + element-ui
+  + quasar
+  + vuetify
+  + naive-ui
+  + arco-design
+  + tdesign: 
 + `cube-ui、vant`: vue 移动端 ui框架  
 + `windicss`: 原子化css
-+ `parameter`: 参数校验
-+ `async-validator`: 参数校验 
-+ `ajv`: json校验
-+ `joi`: 参数校验
++ 参数数校验
+  + `superstruct`
+  + `parameter`
+  + `async-validator`
+  + `ajv`
+  + `joi`
 # GIS相关
 
 + `tippecanoe`: Build vector tilesets from large collections of GeoJSON features  
