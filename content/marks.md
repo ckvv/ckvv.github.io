@@ -74,7 +74,10 @@ show: false
 + `element-ui、quasar、vuetify、naive-ui、arco-design、tdesign`: vue ui框架  
 + `cube-ui、vant`: vue 移动端 ui框架  
 + `windicss`: 原子化css
-
++ `parameter`: 参数校验
++ `async-validator`: 参数校验 
++ `ajv`: json校验
++ `joi`: 参数校验
 # GIS相关
 
 + `tippecanoe`: Build vector tilesets from large collections of GeoJSON features  
