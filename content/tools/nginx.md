@@ -170,7 +170,7 @@ http {
 
 ## 常见问题
 
-+ nginx访问时报403
+###  nginx访问时报403
 `ps aux | grep nginx`
 
 ```
@@ -204,4 +204,16 @@ open() "/usr/local/var/run/nginx/proxy_temp/1/04/0000000041" failed (13: Permiss
 
 ```shell
 sudo chown -R youn_name /usr/local/var/run/nginx/proxy_temp
+```
+
+### http 重定向到https
+
+```
+if ($http_x_forwarded_proto = "http") {
+     return 301 https://$hostm$request_uri;
+}
+// 或者
+if ($scheme = "http") {
+  return 301 https://$server_name$request_uri;
+}
 ```
