@@ -86,6 +86,11 @@ show: false
   + `async-validator`
   + `ajv`
   + `joi`
++ 图片相关
+  - sharp: 高性能 Node.js 图像处理，调整 JPEG、PNG、WebP、GIF、AVIF 和 TIFF 图像大小
+  - compressorjs: 利用[canvas.toBlob](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob)对图像压缩
+  - jimp: 一个完全用 JavaScript 为 Node 编写的图像处理库
+  - mapnik: 主要是地图渲染器，但 Mapnik 包含位图图像实用程序。
 # GIS相关
 
 + `tippecanoe`: Build vector tilesets from large collections of GeoJSON features  
