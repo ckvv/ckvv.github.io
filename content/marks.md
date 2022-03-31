@@ -31,6 +31,7 @@ show: false
   + [https://codepen.io/](https://codepen.io/)
   + [jsfiddle](https://jsfiddle.net/) 需要VPN访问
   + [stackblitz](https://stackblitz.com/)
+ + [httpbin](httpbin.org) 一个简单的 HTTP 请求和响应服务
 
 # npm工具库
 
