@@ -31,6 +31,7 @@ show: false
   + [https://codepen.io/](https://codepen.io/)
   + [jsfiddle](https://jsfiddle.net/) 需要VPN访问
   + [stackblitz](https://stackblitz.com/)
+ + [httpbin](https://httpbin.org/) 一个简单的 HTTP 请求和响应服务
 
 # npm工具库
 
@@ -71,10 +72,26 @@ show: false
 + `prisma`: Prisma 是一个开源的一个ORM框架.
 + `swc`: swc 是一个typescript/javascript 编译器。比`babel`快很多.
 + `vm2`: Node.js 的高级虚拟机/沙箱.
-+ `element-ui、quasar、vuetify、naive-ui、arco-design、tdesign`: vue ui框架  
++ vue ui框架  
+  + element-ui
+  + quasar
+  + vuetify
+  + naive-ui
+  + arco-design
+  + tdesign: 
 + `cube-ui、vant`: vue 移动端 ui框架  
 + `windicss`: 原子化css
-
++ 参数数校验
+  + `superstruct`
+  + `parameter`
+  + `async-validator`
+  + `ajv`
+  + `joi`
++ 图片相关
+  - sharp: 高性能 Node.js 图像处理，调整 JPEG、PNG、WebP、GIF、AVIF 和 TIFF 图像大小
+  - compressorjs: 利用[canvas.toBlob](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob)对图像压缩
+  - jimp: 一个完全用 JavaScript 为 Node 编写的图像处理库
+  - mapnik: 主要是地图渲染器，但 Mapnik 包含位图图像实用程序。
 # GIS相关
 
 + `tippecanoe`: Build vector tilesets from large collections of GeoJSON features  
