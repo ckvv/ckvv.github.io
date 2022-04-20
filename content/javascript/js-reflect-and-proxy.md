@@ -147,3 +147,23 @@ observe(print);
 person.name = '李四';
 person.name = 'ck';
 ```
+
+包装原始数据来记录有关函数持续时间的计时数据
+
+```js
+function wrapper(handler, ) {
+  return (...args) => {
+    console.time();
+    try {
+      return new.target ?
+        Reflect.construct(handler, args) :
+        Reflect.apply(handler, this, args);
+    } finally {
+      console.timeEnd();
+    }
+  }
+};
+
+// hello world
+// default: 4.751ms
+```
