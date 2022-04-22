@@ -1,5 +1,6 @@
+{{ if (ne .Params.navigation false) }}
 <nav class="navigation">
-  <section class="container">
+<section class="container">
     <a class="navigation-title" href="{{ .Site.BaseURL | relLangURL }}">
       {{ .Site.Title }}
     </a>
@@ -48,3 +49,4 @@
     {{ end }}
   </section>
 </nav>
+{{ end }}
