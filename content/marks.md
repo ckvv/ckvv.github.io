@@ -35,6 +35,7 @@ show: false
 
 # npm工具库
 
++ `wired-elements`: 手绘外观的基本 UI 元素
 + `nodeppt`: markdown 生成web ppt  
 + `artillery`: 负载接口测试  
 + `jsdoc`,`esdoc`,`documentation`:构建js帮助文档  
