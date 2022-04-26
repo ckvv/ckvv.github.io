@@ -16,6 +16,7 @@ show: false
 + [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)深入研究 JavaScript 语言核心机制的书籍
 + [the-way-to-go](https://github.com/unknwon/the-way-to-go_ZH_CN)Go入门指南
 + [awesome-interview](https://github.com/hzfe/awesome-interview) 剑指前端 Offer
++ [tackling-ts](https://exploringjs.com/tackling-ts/)
 
 # 工具
 
