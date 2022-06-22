@@ -179,3 +179,92 @@ defineExpose({
 const button = ref();
 button.value.button.focus()
 ```
+
+### 类型提示消失
+
+如果我们使用了`Type Script`,我们会发现封装后的组件没有类型提示，解决方法也比较简单，分为以下两种情况
+
+#### 如果原始类型有导出
+
+使用`Options API`
+
+```html
+<script lang="ts">
+import { defineComponent } from "vue";
+import { inputProps, inputEmits, ElInput } from "element-plus";
+
+export default defineComponent({
+  components: { ElInput },
+  props: {
+    ...inputProps,
+    label: String,
+  },
+  emits: inputEmits,
+});
+</script>
+
+<template>
+  <div class="w-input">
+    {{ label }}
+    <ElInput v-bind="$attrs">
+      <template #[slotName]="slotProps" v-for="(slot, slotName) in $slots">
+        <slot :name="slotName" v-bind="slotProps" />
+      </template>
+    </ElInput>
+  </div>
+</template>
+
+```
+
+使用`defineProps`以及`defineEmits`
+```html
+<script setup lang="ts">
+import { ElInput, inputEmits, inputProps } from "element-plus";
+defineProps({
+  ...inputProps,
+  label: String,
+});
+defineEmits(inputEmits);
+</script>
+
+<template>
+  <div class="w-input">
+    {{ label }}
+    <el-input v-bind="$attrs">
+      <template #[slotName]="slotProps" v-for="(slot, slotName) in $slots">
+        <slot :name="slotName" v-bind="slotProps" />
+      </template>
+    </el-input>
+  </div>
+</template>
+```
+
+> 由于目前在`defineEmits` 以及`defineProps`中均不能引用导出的类型定义,所以下面的写法是不能生效的，详情参考<https://github.com/vuejs/core/issues/4294>
+
+```html
+<script setup lang="ts">
+import { ElInput } from "element-plus";
+import type { InputEmits, InputProps } from "element-plus";
+
+defineProps<
+  InputProps & {
+    label?: string;
+  }
+>();
+defineEmits<InputEmits>();
+</script>
+
+<template>
+  <div class="w-input">
+    {{ label }}
+    <el-input v-bind="$attrs">
+      <template #[slotName]="slotProps" v-for="(slot, slotName) in $slots">
+        <slot :name="slotName" v-bind="slotProps" />
+      </template>
+    </el-input>
+  </div>
+</template>
+```
+
+#### 如果原始类型没有导出
+我们可以选择将原始代码中定义`props`和`emits`并拷贝过来，这种方法对`<script setup lang='ts'>`及`<script lang='ts'>` 均适合
