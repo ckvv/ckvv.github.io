@@ -38,9 +38,9 @@ enableGitInfo = true
   weight = 4
   url = "marks/"
 [[menu.main]]
-  name = "RSS"
+  name = "Create"
   weight = 5
-  url  = "/index.xml"
+  url  = "https://github.com/ckvv/ckvv.github.io/new/main/content"
 [[menu.main]]
   name = "About"
   weight = 6
