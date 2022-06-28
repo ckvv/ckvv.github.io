@@ -74,40 +74,6 @@ show: false
 + `prisma`: Prisma 是一个开源的一个ORM框架.
 + `swc`: swc 是一个typescript/javascript 编译器。比`babel`快很多.
 + `vm2`: Node.js 的高级虚拟机/沙箱.
-+ vue ui框架  
-  + 🌟[Agnostic UI](https://agnosticui.com/) setup, vue3
-  + 🌟🌟🌟[Ant Design Vue](https://antdv.com/)
-  + 🌟🌟🌟[Arco Design Vue](https://arco.design/vue/docs/start)
-  + 🌟🌟🌟[BalmUI](https://material.balmjs.com/) SFC Composition API TS👀
-  + [Buefy](https://buefy.org/)
-  + [Bootstrap Vue](https://bootstrap-vue.org/)
-  + [Codex](https://doc.wikimedia.org/codex/main/)
-  + [Chakra UI](https://chakra-ui.com/)
-  + [Cube UI](https://didi.github.io/cube-ui/#/zh-CN) 滴滴
-  + 🌟🌟🌟[Element Plus](https://element-plus.org/) SFC Composition API TS
-  + [Hey UI](https://v2.heyui.top)
-  + 🌟[Idux](https://idux.site/)
-  + 🌟🌟🌟[Mdbootstrap](https://mdbootstrap.com/)
-  + [Mijin](https://lecoueyl.github.io/mijin.web)
-  + 🌟🌟🌟[Mand Mobile](https://mand-mobile.github.io/) 滴滴
-  + 🌟🌟🌟[Naive UI](https://naiveui.com)
-  + 🌟🌟🌟[Nutui](https://nutui.jd.com/#/) 京东
-  + [Oruga](https://oruga.io/)
-  + 🌟🌟🌟[Primevue](https://primefaces.org/primevue/)
-  + 🌟🌟🌟[Quimax](https://quimax.dev/)
-  + 🌟🌟🌟[Quasar](https://quasar.dev/)
-  + 🌟🌟🌟[Tdesign Vue](https://tdesign.tencent.com/vue-next/overview)
-  + 🌟🌟🌟[Vant](https://youzan.github.io/vant/)
-  + 🌟🌟🌟[Vuetify](https://vuetifyjs.com/)
-  + [View UI](https://www.iviewui.com/)
-  + 🌟[Vexip UI](https://www.vexipui.com)
-  + [Vuestic](https://vuestic.dev/)
-  + 🌟🌟🌟[Vue Material](https://www.creative-tim.com/vuematerial)
-  + [Vue Material Adapter](https://pgbross.github.io/vue-material-adapter)
-  + 🌟[Wave UI](https://antoniandre.github.io/wave-ui/)
-  + [Unge UI](https://ungeui.github.io/ungeui/)
-  + 🌟[Qui](https://qvant-lab.github.io/qui/)
-  + [Core UI](https://coreui.io/vue/docs/getting-started/introduction.html)
 + `windicss`: 原子化css
 + 参数数校验
   + `superstruct`
