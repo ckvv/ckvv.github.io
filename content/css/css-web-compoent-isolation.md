@@ -226,6 +226,10 @@ customElements.define('my-button',
 
 原子化 CSS 是一种 CSS 的架构方式，它倾向于预先定义小巧且用途单一的 class，并且会以视觉效果进行命名。然后扫描代码中的 class 按照使用到的 class 样式提取出来，并且把它们放到一个单独的文件中。
 
+```HTML
+<div class="m-0 text-red"></div>
+```
+
 ```css
 .m-0 {
   margin: 0;
