@@ -106,7 +106,7 @@ show: false
 + `bulma`: css框架
 + `sass`: Sass 的纯 JavaScript 实现.
 
-### 参数数校验
+### 参数校验
 
 + `superstruct`
 + `parameter`
