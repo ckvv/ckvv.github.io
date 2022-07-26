@@ -1,178 +1,54 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=content-language content="en">
-<meta name=theme-color content="#ffffff">
-<meta name=color-scheme content="light dark">
-<meta name=description content="前端开发面试题
-前言    只看问题点这里
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=theme-color content="#ffffff"><meta name=color-scheme content="light dark"><meta name=description content="前端开发面试题
+前言 只看问题点这里
 看全部问题和答案点这里
 本文由我收集总结了一些前端面试题，初学者阅后也要用心钻研其中的原理，重要知识需要系统学习、透彻学习，形成自己的知识链。万不可投机取巧，临时抱佛脚只求面试侥幸混过关是错误的！也是不可能的！不可能的！不可能的！
 前端还是一个年轻的行业，新的行业标准， 框架， 库都不断在更新和新增，正如赫门在2015深JS大会上的《前端服务化之路》主题演讲中说的一句话：“每18至24个月，前端都会难一倍”，这些变化使前端的能力更加丰富、创造的应用也会更加完美。所以关注各种前端技术，跟上快速变化的节奏，也是身为一个前端程序员必备的技能之一。
 最近也收到许多微博私信的鼓励和更正题目信息，后面会经常更新题目和答案到github博客。希望前端er达到既能使用也会表达，对理论知识有自己的理解。可根据下面的知识点一个一个去进阶学习，形成自己的职业技能链。
 面试有几点需注意：(来源寒冬winter 老师，github:@wintercn)
-  面试题目： 根据你的等级和职位的变化，入门级到专家级，广度和深度都会有所增加。
-  题目类型： 理论知识、算法、项目细节、技术视野、开放性题、工作案例。
-  细节追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种知识关联是长时期的学习，临时抱佛脚绝对是记不住的。
-  回答问题再棒，面试官（可能是你面试职位的直接领导），会考虑我要不要这个人做我的同事？所以态度很重要、除了能做事，还要会做人。（感觉更像是相亲( •̣̣̣̣̣̥́௰•̣̣̣̣̣̥̀ )）
-  资深的前端开发能把absolute和relative弄混，这样的人不要也罢，因为团队需要的是：你这个人具有可以依靠的才能（靠谱）。
-  前端开发所需掌握知识点概要：
+面试题目： 根据你的等级和职位的变化，入门级到专家级，广度和深度都会有所增加。
+题目类型： 理论知识、算法、项目细节、技术视野、开放性题、工作案例。
+细节追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种知识关联是长时期的学习，临时抱佛脚绝对是记不住的。
+回答问题再棒，面试官（可能是你面试职位的直接领导），会考虑我要不要这个人做我的同事？所以态度很重要、除了能做事，还要会做人。（感觉更像是相亲( •̣̣̣̣̣̥́௰•̣̣̣̣̣̥̀ )）
+资深的前端开发能把absolute和relative弄混，这样的人不要也罢，因为团队需要的是：你这个人具有可以依靠的才能（靠谱）。
+前端开发所需掌握知识点概要：
 HTML&CSS： 对Web标准的理解（结构、表现、行为）、浏览器内核、渲染原理、依赖管理、兼容性、CSS语法、层次关系，常用属性、布局、选择器、权重、盒模型、 Hack、CSS预处理器、CSS3、Flexbox、CSS Modules、Document flow、BFC、HTML5（离线 & 存储、Histoy,多媒体、WebGL\SVG\Canvas）； JavaScript： 数据类型、运算、对象、Function、继承、闭包、作用域、事件、Prototype、RegExp、JSON、Ajax、DOM、BOM、 内存泄漏、跨域、异步请求、模板引擎、模块化、Flux、同构、算法、ECMAScript6、Nodejs、HTTP、 其他： 主流MVVM框架(React\Vue\Angular)、Hybrid App\React Native\Weex、TypeScript、RESTFul、WEB安全、前端工程化、依赖管理、性能优化、 重构、团队协作、可维护、易用性、SEO、UED、前端技术选型、快速学习能力等； 作为一名前端工程师，无论工作年头长短都应该掌握的知识点：
 此条由 王子墨 发表在 攻城师的实验室
- 1、DOM结构 —— 两个节点之间可能存在哪些关系以及如何在节点之间任意移动。 2、DOM操作 —— 如何添加、移除、移动、复制、创建和查找节点等。 3、事件 —— 如何使用事件，以及IE和标准DOM事件模型之间存在的差别。 4、XMLHttpRequest —— 这是什么、怎样完整地执行一次GET请求、怎样检测错误。 5、严格模式与混杂模式 —— 如何触发这两种模式，区分它们有何意义。 6、盒模型 —— 外边距、内边距和边框之间的关系，及IE8以下版本的浏览器中的盒模型 7、块级元素与行内元素 —— 怎么用CSS控制它们、以及如何合理的使用它们 8、浮动元素 —— 怎么使用它们、它们有什么问题以及怎么解决这些问题。 9、HTML与XHTML —— 二者有什么区别，你觉得应该使用哪一个并说出理由。 10、JSON —— 作用、用途、设计结构。 备注：">
-<meta name=keywords content>
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="前端开发面试题及答案">
-<meta name=twitter:description content="前端开发面试题
-前言    只看问题点这里
+1、DOM结构 —— 两个节点之间可能存在哪些关系以及如何在节点之间任意移动。 2、DOM操作 —— 如何添加、移除、移动、复制、创建和查找节点等。 3、事件 —— 如何使用事件，以及IE和标准DOM事件模型之间存在的差别。 4、XMLHttpRequest —— 这是什么、怎样完整地执行一次GET请求、怎样检测错误。 5、严格模式与混杂模式 —— 如何触发这两种模式，区分它们有何意义。 6、盒模型 —— 外边距、内边距和边框之间的关系，及IE8以下版本的浏览器中的盒模型 7、块级元素与行内元素 —— 怎么用CSS控制它们、以及如何合理的使用它们 8、浮动元素 —— 怎么使用它们、它们有什么问题以及怎么解决这些问题。 9、HTML与XHTML —— 二者有什么区别，你觉得应该使用哪一个并说出理由。 10、JSON —— 作用、用途、设计结构。 备注："><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="前端开发面试题及答案"><meta name=twitter:description content="前端开发面试题
+前言 只看问题点这里
 看全部问题和答案点这里
 本文由我收集总结了一些前端面试题，初学者阅后也要用心钻研其中的原理，重要知识需要系统学习、透彻学习，形成自己的知识链。万不可投机取巧，临时抱佛脚只求面试侥幸混过关是错误的！也是不可能的！不可能的！不可能的！
 前端还是一个年轻的行业，新的行业标准， 框架， 库都不断在更新和新增，正如赫门在2015深JS大会上的《前端服务化之路》主题演讲中说的一句话：“每18至24个月，前端都会难一倍”，这些变化使前端的能力更加丰富、创造的应用也会更加完美。所以关注各种前端技术，跟上快速变化的节奏，也是身为一个前端程序员必备的技能之一。
 最近也收到许多微博私信的鼓励和更正题目信息，后面会经常更新题目和答案到github博客。希望前端er达到既能使用也会表达，对理论知识有自己的理解。可根据下面的知识点一个一个去进阶学习，形成自己的职业技能链。
 面试有几点需注意：(来源寒冬winter 老师，github:@wintercn)
-  面试题目： 根据你的等级和职位的变化，入门级到专家级，广度和深度都会有所增加。
-  题目类型： 理论知识、算法、项目细节、技术视野、开放性题、工作案例。
-  细节追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种知识关联是长时期的学习，临时抱佛脚绝对是记不住的。
-  回答问题再棒，面试官（可能是你面试职位的直接领导），会考虑我要不要这个人做我的同事？所以态度很重要、除了能做事，还要会做人。（感觉更像是相亲( •̣̣̣̣̣̥́௰•̣̣̣̣̣̥̀ )）
-  资深的前端开发能把absolute和relative弄混，这样的人不要也罢，因为团队需要的是：你这个人具有可以依靠的才能（靠谱）。
-  前端开发所需掌握知识点概要：
+面试题目： 根据你的等级和职位的变化，入门级到专家级，广度和深度都会有所增加。
+题目类型： 理论知识、算法、项目细节、技术视野、开放性题、工作案例。
+细节追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种知识关联是长时期的学习，临时抱佛脚绝对是记不住的。
+回答问题再棒，面试官（可能是你面试职位的直接领导），会考虑我要不要这个人做我的同事？所以态度很重要、除了能做事，还要会做人。（感觉更像是相亲( •̣̣̣̣̣̥́௰•̣̣̣̣̣̥̀ )）
+资深的前端开发能把absolute和relative弄混，这样的人不要也罢，因为团队需要的是：你这个人具有可以依靠的才能（靠谱）。
+前端开发所需掌握知识点概要：
 HTML&CSS： 对Web标准的理解（结构、表现、行为）、浏览器内核、渲染原理、依赖管理、兼容性、CSS语法、层次关系，常用属性、布局、选择器、权重、盒模型、 Hack、CSS预处理器、CSS3、Flexbox、CSS Modules、Document flow、BFC、HTML5（离线 & 存储、Histoy,多媒体、WebGL\SVG\Canvas）； JavaScript： 数据类型、运算、对象、Function、继承、闭包、作用域、事件、Prototype、RegExp、JSON、Ajax、DOM、BOM、 内存泄漏、跨域、异步请求、模板引擎、模块化、Flux、同构、算法、ECMAScript6、Nodejs、HTTP、 其他： 主流MVVM框架(React\Vue\Angular)、Hybrid App\React Native\Weex、TypeScript、RESTFul、WEB安全、前端工程化、依赖管理、性能优化、 重构、团队协作、可维护、易用性、SEO、UED、前端技术选型、快速学习能力等； 作为一名前端工程师，无论工作年头长短都应该掌握的知识点：
 此条由 王子墨 发表在 攻城师的实验室
- 1、DOM结构 —— 两个节点之间可能存在哪些关系以及如何在节点之间任意移动。 2、DOM操作 —— 如何添加、移除、移动、复制、创建和查找节点等。 3、事件 —— 如何使用事件，以及IE和标准DOM事件模型之间存在的差别。 4、XMLHttpRequest —— 这是什么、怎样完整地执行一次GET请求、怎样检测错误。 5、严格模式与混杂模式 —— 如何触发这两种模式，区分它们有何意义。 6、盒模型 —— 外边距、内边距和边框之间的关系，及IE8以下版本的浏览器中的盒模型 7、块级元素与行内元素 —— 怎么用CSS控制它们、以及如何合理的使用它们 8、浮动元素 —— 怎么使用它们、它们有什么问题以及怎么解决这些问题。 9、HTML与XHTML —— 二者有什么区别，你觉得应该使用哪一个并说出理由。 10、JSON —— 作用、用途、设计结构。 备注：">
-<meta property="og:title" content="前端开发面试题及答案">
-<meta property="og:description" content="前端开发面试题
-前言    只看问题点这里
+1、DOM结构 —— 两个节点之间可能存在哪些关系以及如何在节点之间任意移动。 2、DOM操作 —— 如何添加、移除、移动、复制、创建和查找节点等。 3、事件 —— 如何使用事件，以及IE和标准DOM事件模型之间存在的差别。 4、XMLHttpRequest —— 这是什么、怎样完整地执行一次GET请求、怎样检测错误。 5、严格模式与混杂模式 —— 如何触发这两种模式，区分它们有何意义。 6、盒模型 —— 外边距、内边距和边框之间的关系，及IE8以下版本的浏览器中的盒模型 7、块级元素与行内元素 —— 怎么用CSS控制它们、以及如何合理的使用它们 8、浮动元素 —— 怎么使用它们、它们有什么问题以及怎么解决这些问题。 9、HTML与XHTML —— 二者有什么区别，你觉得应该使用哪一个并说出理由。 10、JSON —— 作用、用途、设计结构。 备注："><meta property="og:title" content="前端开发面试题及答案"><meta property="og:description" content="前端开发面试题
+前言 只看问题点这里
 看全部问题和答案点这里
 本文由我收集总结了一些前端面试题，初学者阅后也要用心钻研其中的原理，重要知识需要系统学习、透彻学习，形成自己的知识链。万不可投机取巧，临时抱佛脚只求面试侥幸混过关是错误的！也是不可能的！不可能的！不可能的！
 前端还是一个年轻的行业，新的行业标准， 框架， 库都不断在更新和新增，正如赫门在2015深JS大会上的《前端服务化之路》主题演讲中说的一句话：“每18至24个月，前端都会难一倍”，这些变化使前端的能力更加丰富、创造的应用也会更加完美。所以关注各种前端技术，跟上快速变化的节奏，也是身为一个前端程序员必备的技能之一。
 最近也收到许多微博私信的鼓励和更正题目信息，后面会经常更新题目和答案到github博客。希望前端er达到既能使用也会表达，对理论知识有自己的理解。可根据下面的知识点一个一个去进阶学习，形成自己的职业技能链。
 面试有几点需注意：(来源寒冬winter 老师，github:@wintercn)
-  面试题目： 根据你的等级和职位的变化，入门级到专家级，广度和深度都会有所增加。
-  题目类型： 理论知识、算法、项目细节、技术视野、开放性题、工作案例。
-  细节追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种知识关联是长时期的学习，临时抱佛脚绝对是记不住的。
-  回答问题再棒，面试官（可能是你面试职位的直接领导），会考虑我要不要这个人做我的同事？所以态度很重要、除了能做事，还要会做人。（感觉更像是相亲( •̣̣̣̣̣̥́௰•̣̣̣̣̣̥̀ )）
-  资深的前端开发能把absolute和relative弄混，这样的人不要也罢，因为团队需要的是：你这个人具有可以依靠的才能（靠谱）。
-  前端开发所需掌握知识点概要：
+面试题目： 根据你的等级和职位的变化，入门级到专家级，广度和深度都会有所增加。
+题目类型： 理论知识、算法、项目细节、技术视野、开放性题、工作案例。
+细节追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种知识关联是长时期的学习，临时抱佛脚绝对是记不住的。
+回答问题再棒，面试官（可能是你面试职位的直接领导），会考虑我要不要这个人做我的同事？所以态度很重要、除了能做事，还要会做人。（感觉更像是相亲( •̣̣̣̣̣̥́௰•̣̣̣̣̣̥̀ )）
+资深的前端开发能把absolute和relative弄混，这样的人不要也罢，因为团队需要的是：你这个人具有可以依靠的才能（靠谱）。
+前端开发所需掌握知识点概要：
 HTML&CSS： 对Web标准的理解（结构、表现、行为）、浏览器内核、渲染原理、依赖管理、兼容性、CSS语法、层次关系，常用属性、布局、选择器、权重、盒模型、 Hack、CSS预处理器、CSS3、Flexbox、CSS Modules、Document flow、BFC、HTML5（离线 & 存储、Histoy,多媒体、WebGL\SVG\Canvas）； JavaScript： 数据类型、运算、对象、Function、继承、闭包、作用域、事件、Prototype、RegExp、JSON、Ajax、DOM、BOM、 内存泄漏、跨域、异步请求、模板引擎、模块化、Flux、同构、算法、ECMAScript6、Nodejs、HTTP、 其他： 主流MVVM框架(React\Vue\Angular)、Hybrid App\React Native\Weex、TypeScript、RESTFul、WEB安全、前端工程化、依赖管理、性能优化、 重构、团队协作、可维护、易用性、SEO、UED、前端技术选型、快速学习能力等； 作为一名前端工程师，无论工作年头长短都应该掌握的知识点：
 此条由 王子墨 发表在 攻城师的实验室
- 1、DOM结构 —— 两个节点之间可能存在哪些关系以及如何在节点之间任意移动。 2、DOM操作 —— 如何添加、移除、移动、复制、创建和查找节点等。 3、事件 —— 如何使用事件，以及IE和标准DOM事件模型之间存在的差别。 4、XMLHttpRequest —— 这是什么、怎样完整地执行一次GET请求、怎样检测错误。 5、严格模式与混杂模式 —— 如何触发这两种模式，区分它们有何意义。 6、盒模型 —— 外边距、内边距和边框之间的关系，及IE8以下版本的浏览器中的盒模型 7、块级元素与行内元素 —— 怎么用CSS控制它们、以及如何合理的使用它们 8、浮动元素 —— 怎么使用它们、它们有什么问题以及怎么解决这些问题。 9、HTML与XHTML —— 二者有什么区别，你觉得应该使用哪一个并说出理由。 10、JSON —— 作用、用途、设计结构。 备注：">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://chenkai.life/hide/web-min-shi-qsan/"><meta property="article:section" content="hide">
-<meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
-<title>
-前端开发面试题及答案 · CK's Blog
-</title>
-<link rel=canonical href=https://chenkai.life/hide/web-min-shi-qsan/>
-<link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen>
-<link rel=icon type=image/svg+xml href=/favicon.ico>
-<link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png>
-<meta name=generator content="Hugo 0.91.2">
-<link rel=manifest href=/manifest.webmanifest>
-</head>
-<body class="preload-transitions colorscheme-auto">
-<div class=float-container>
-<span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg>
-</span>
-</div>
-<details id=table-of-contents-wapper>
-<summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
-</summary>
-</details>
-<main class=wrapper>
-<nav class=navigation>
-<section class=container>
-<a class=navigation-title href=/>
-CK's Blog
-</a>
+1、DOM结构 —— 两个节点之间可能存在哪些关系以及如何在节点之间任意移动。 2、DOM操作 —— 如何添加、移除、移动、复制、创建和查找节点等。 3、事件 —— 如何使用事件，以及IE和标准DOM事件模型之间存在的差别。 4、XMLHttpRequest —— 这是什么、怎样完整地执行一次GET请求、怎样检测错误。 5、严格模式与混杂模式 —— 如何触发这两种模式，区分它们有何意义。 6、盒模型 —— 外边距、内边距和边框之间的关系，及IE8以下版本的浏览器中的盒模型 7、块级元素与行内元素 —— 怎么用CSS控制它们、以及如何合理的使用它们 8、浮动元素 —— 怎么使用它们、它们有什么问题以及怎么解决这些问题。 9、HTML与XHTML —— 二者有什么区别，你觉得应该使用哪一个并说出理由。 10、JSON —— 作用、用途、设计结构。 备注："><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai.life/hide/web-min-shi-qsan/"><meta property="article:section" content="hide"><meta property="article:published_time" content="2021-07-09T00:00:00+00:00"><meta property="article:modified_time" content="2022-07-26T14:58:29+08:00"><title>前端开发面试题及答案 · CK's Blog</title><link rel=canonical href=https://chenkai.life/hide/web-min-shi-qsan/><link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/favicon.ico><link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png><meta name=generator content="Hugo 0.101.0"><link rel=manifest href=/manifest.webmanifest></head><body class="preload-transitions colorscheme-auto"><div class=float-container><span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg></span></div><details id=table-of-contents-wapper><summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></summary></details><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>CK's Blog</a>
 <input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
-</label>
-<ul class=navigation-list>
-<li class=navigation-item>
-<a class=navigation-link href=/>Home</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/tags/>Tags</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/marks/>Marks</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/about/>About</a>
-</li>
-<li class=navigation-item id=search-content>
-<input class=search-int type=text placeholder=Search>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/marks/>Marks</a></li><li class=navigation-item><a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input class=search-int type=text placeholder=Search>
 <button class=search-btn data-type=github>GitHub</button>
-<button class=search-btn data-type=google>Google</button>
-</li>
-</ul>
-</section>
-</nav>
-<div class=content>
-<section class="container page">
-<article>
-<header>
-<h1 class=title>
-<a class=title-link href=https://chenkai.life/hide/web-min-shi-qsan/>
-前端开发面试题及答案
-</a>
-</h1>
-<div class=edit-link style=float:right;color:#0366d6>
-<a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/hide/web-min-shi-qs&an.md>编辑</a>
-</div>
-</header>
-<div class=post-meta>
-<div class=date>
-<span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
-<time datetime=2021-07-09T00:00:00Z>
-2021-07-09
-</time>
-</span>
-</div>
-<div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
-<span class=tag>
-<a href=/tags/%E9%9D%A2%E8%AF%95/>面试</a>
-</span></div>
-</div>
-<p>前端开发面试题</p>
-<h2 id=httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answerse5898de8a880前言>
-<a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%89%8D%E8%A8%80></a>前言
-<a class=heading-link href=#httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answerse5898de8a880%e5%89%8d%e8%a8%80>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p><a href=https://markyun.github.io/2015/Front-end-Developer-Questions/ title=Questions>只看问题点这里</a></p>
-<p><a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers title=Questions-and-Answers>看全部问题和答案点这里</a></p>
-<p>本文由我收集总结了一些前端面试题，初学者阅后也要用心钻研其中的原理，重要知识需要系统学习、透彻学习，形成自己的知识链。万不可投机取巧，临时抱佛脚只求面试侥幸混过关是错误的！也是不可能的！不可能的！不可能的！</p>
-<p>前端还是一个年轻的行业，新的行业标准， 框架， 库都不断在更新和新增，正如赫门在2015深JS大会上的《前端服务化之路》主题演讲中说的一句话：“每18至24个月，前端都会难一倍”，这些变化使前端的能力更加丰富、创造的应用也会更加完美。所以关注各种前端技术，跟上快速变化的节奏，也是身为一个前端程序员必备的技能之一。</p>
-<p>最近也收到许多微博私信的鼓励和更正题目信息，后面会经常更新题目和答案到<a href=http://markyun.github.io/>github博客</a>。希望前端er达到既能使用也会表达，对理论知识有自己的理解。可根据下面的知识点一个一个去进阶学习，形成自己的职业技能链。</p>
-<p><strong>面试有几点需注意：(来源<a href=http://weibo.com/wintercn title=微博：寒冬winter>寒冬winter</a> 老师，github:@wintercn)</strong></p>
-<ol>
-<li>
-<p>面试题目： 根据你的等级和职位的变化，入门级到专家级，广度和深度都会有所增加。</p>
-</li>
-<li>
-<p>题目类型： 理论知识、算法、项目细节、技术视野、开放性题、工作案例。</p>
-</li>
-<li>
-<p>细节追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种知识关联是长时期的学习，临时抱佛脚绝对是记不住的。</p>
-</li>
-<li>
-<p>回答问题再棒，面试官（可能是你面试职位的直接领导），会考虑我要不要这个人做我的同事？所以态度很重要、除了能做事，还要会做人。（感觉更像是相亲( •̣̣̣̣̣̥́௰•̣̣̣̣̣̥̀ )）</p>
-</li>
-<li>
-<p>资深的前端开发能把absolute和relative弄混，这样的人不要也罢，因为团队需要的是：你这个人具有可以依靠的才能（靠谱）。</p>
-</li>
-</ol>
-<p><strong>前端开发所需掌握知识点概要：</strong></p>
-<pre tabindex=0><code>HTML&amp;CSS：
+<button class=search-btn data-type=google>Google</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai.life/hide/web-min-shi-qsan/>前端开发面试题及答案</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/hide/web-min-shi-qs&an.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg><time datetime=2021-07-09T00:00:00Z>2021-07-09</time></span></div></div><p>前端开发面试题</p><h2 id=httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answerse5898de8a880前言><a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%89%8D%E8%A8%80></a>前言
+<a class=heading-link href=#httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answerse5898de8a880%e5%89%8d%e8%a8%80><i class="fa fa-link" aria-hidden=true></i></a></h2><p><a href=https://markyun.github.io/2015/Front-end-Developer-Questions/ title=Questions>只看问题点这里</a></p><p><a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers title=Questions-and-Answers>看全部问题和答案点这里</a></p><p>本文由我收集总结了一些前端面试题，初学者阅后也要用心钻研其中的原理，重要知识需要系统学习、透彻学习，形成自己的知识链。万不可投机取巧，临时抱佛脚只求面试侥幸混过关是错误的！也是不可能的！不可能的！不可能的！</p><p>前端还是一个年轻的行业，新的行业标准， 框架， 库都不断在更新和新增，正如赫门在2015深JS大会上的《前端服务化之路》主题演讲中说的一句话：“每18至24个月，前端都会难一倍”，这些变化使前端的能力更加丰富、创造的应用也会更加完美。所以关注各种前端技术，跟上快速变化的节奏，也是身为一个前端程序员必备的技能之一。</p><p>最近也收到许多微博私信的鼓励和更正题目信息，后面会经常更新题目和答案到<a href=http://markyun.github.io/>github博客</a>。希望前端er达到既能使用也会表达，对理论知识有自己的理解。可根据下面的知识点一个一个去进阶学习，形成自己的职业技能链。</p><p><strong>面试有几点需注意：(来源<a href=http://weibo.com/wintercn title=微博：寒冬winter>寒冬winter</a> 老师，github:@wintercn)</strong></p><ol><li><p>面试题目： 根据你的等级和职位的变化，入门级到专家级，广度和深度都会有所增加。</p></li><li><p>题目类型： 理论知识、算法、项目细节、技术视野、开放性题、工作案例。</p></li><li><p>细节追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种知识关联是长时期的学习，临时抱佛脚绝对是记不住的。</p></li><li><p>回答问题再棒，面试官（可能是你面试职位的直接领导），会考虑我要不要这个人做我的同事？所以态度很重要、除了能做事，还要会做人。（感觉更像是相亲( •̣̣̣̣̣̥́௰•̣̣̣̣̣̥̀ )）</p></li><li><p>资深的前端开发能把absolute和relative弄混，这样的人不要也罢，因为团队需要的是：你这个人具有可以依靠的才能（靠谱）。</p></li></ol><p><strong>前端开发所需掌握知识点概要：</strong></p><pre tabindex=0><code>HTML&amp;CSS：
     对Web标准的理解（结构、表现、行为）、浏览器内核、渲染原理、依赖管理、兼容性、CSS语法、层次关系，常用属性、布局、选择器、权重、盒模型、
     Hack、CSS预处理器、CSS3、Flexbox、CSS Modules、Document flow、BFC、HTML5（离线 &amp; 存储、Histoy,多媒体、WebGL\SVG\Canvas）；        
 JavaScript：
@@ -182,9 +58,7 @@ JavaScript：
 其他：
     主流MVVM框架(React\Vue\Angular)、Hybrid App\React Native\Weex、TypeScript、RESTFul、WEB安全、前端工程化、依赖管理、性能优化、
     重构、团队协作、可维护、易用性、SEO、UED、前端技术选型、快速学习能力等；
-</code></pre><p>作为一名前端工程师，<strong>无论工作年头长短都应该掌握的知识点</strong>：</p>
-<p>此条由 王子墨 发表在 <a href=http://lab.yuanwai.wang/>攻城师的实验室</a></p>
-<pre tabindex=0><code>    1、DOM结构 —— 两个节点之间可能存在哪些关系以及如何在节点之间任意移动。
+</code></pre><p>作为一名前端工程师，<strong>无论工作年头长短都应该掌握的知识点</strong>：</p><p>此条由 王子墨 发表在 <a href=http://lab.yuanwai.wang/>攻城师的实验室</a></p><pre tabindex=0><code>    1、DOM结构 —— 两个节点之间可能存在哪些关系以及如何在节点之间任意移动。
 
     2、DOM操作 —— 如何添加、移除、移动、复制、创建和查找节点等。
 
@@ -203,8 +77,7 @@ JavaScript：
     9、HTML与XHTML —— 二者有什么区别，你觉得应该使用哪一个并说出理由。
 
     10、JSON —— 作用、用途、设计结构。
-</code></pre><p><strong>备注：</strong></p>
-<pre tabindex=0><code>根据自己需要选择性阅读，面试题是对理论知识的总结，让自己学会应该如何表达。
+</code></pre><p><strong>备注：</strong></p><pre tabindex=0><code>根据自己需要选择性阅读，面试题是对理论知识的总结，让自己学会应该如何表达。
 
 资料答案不够正确和全面，欢迎欢迎Star和提交issues。
 
@@ -214,28 +87,14 @@ JavaScript：
 2018-01-14： 公司在招聘前端，使用react技术栈；借此机会更新一波前端框架相关的题目；
 2016-10-20： 更新一些已被发现的问题。
 2016-03-25： 新增ECMAScript6 相关问题
-</code></pre><h2 id=httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answershtmlhtml>
-<a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#html></a>HTML
-<a class=heading-link href=#httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answershtmlhtml>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ul>
-<li>
-<p>Doctype作用？标准模式与兼容模式各有什么区别?</p>
-<pre tabindex=0><code>  （1）、&lt;!DOCTYPE&gt;声明位于HTML文档中的第一行，处于 &lt;html&gt; 标签之前。告知浏览器的解析器用什么文档标准解析这个文档。DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。
+</code></pre><h2 id=httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answershtmlhtml><a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#html></a>HTML
+<a class=heading-link href=#httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answershtmlhtml><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>Doctype作用？标准模式与兼容模式各有什么区别?</p><pre tabindex=0><code>  （1）、&lt;!DOCTYPE&gt;声明位于HTML文档中的第一行，处于 &lt;html&gt; 标签之前。告知浏览器的解析器用什么文档标准解析这个文档。DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。
 
   （2）、标准模式的排版 和JS运作模式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。
-</code></pre></li>
-<li>
-<p>HTML5 为什么只需要写 <code>&lt;!DOCTYPE HTML></code>？</p>
-<pre tabindex=0><code>   HTML5 不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为（让浏览器按照它们应该的方式来运行）；
+</code></pre></li><li><p>HTML5 为什么只需要写 <code>&lt;!DOCTYPE HTML></code>？</p><pre tabindex=0><code>   HTML5 不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为（让浏览器按照它们应该的方式来运行）；
 
    而HTML4.01基于SGML,所以需要对DTD进行引用，才能告知浏览器文档所使用的文档类型。
-</code></pre></li>
-<li>
-<p>行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？</p>
-<pre tabindex=0><code>  首先：CSS规范规定，每个元素都有display属性，确定该元素的类型，每个元素都有默认的display值，如div的display默认值为“block”，则为“块级”元素；span默认display属性值为“inline”，是“行内”元素。
+</code></pre></li><li><p>行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？</p><pre tabindex=0><code>  首先：CSS规范规定，每个元素都有display属性，确定该元素的类型，每个元素都有默认的display值，如div的display默认值为“block”，则为“块级”元素；span默认display属性值为“inline”，是“行内”元素。
 
   （1）行内元素有：a b span img input select strong（强调的语气）
   （2）块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p
@@ -247,38 +106,26 @@ JavaScript：
 
   不同浏览器（版本）、HTML4（5）、CSS2等实际略有差异
   参考: http://stackoverflow.com/questions/6867254/browsers-default-css-for-html-elements
-</code></pre></li>
-<li>
-<p>页面导入样式时，使用link和@import有什么区别？</p>
-<pre tabindex=0><code>  （1）link属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;
+</code></pre></li><li><p>页面导入样式时，使用link和@import有什么区别？</p><pre tabindex=0><code>  （1）link属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;
 
   （2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;
 
   （3）import是CSS2.1 提出的，只在IE5以上才能被识别，而link是XHTML标签，无兼容问题;
 
    (4)link支持使用js控制DOM去改变样式，而@import不支持;
-</code></pre></li>
-<li>
-<p>介绍一下你对浏览器内核的理解？</p>
-<pre tabindex=0><code>  主要分成两部分：渲染引擎(layout engineer或Rendering Engine)和JS引擎。
+</code></pre></li><li><p>介绍一下你对浏览器内核的理解？</p><pre tabindex=0><code>  主要分成两部分：渲染引擎(layout engineer或Rendering Engine)和JS引擎。
   渲染引擎：负责取得网页的内容（HTML、XML、图像等等）、整理讯息（例如加入CSS等），以及计算网页的显示方式，然后会输出至显示器或打印机。浏览器的内核的不同对于网页的语法解释会有不同，所以渲染的效果也不相同。所有网页浏览器、电子邮件客户端以及其它需要编辑、显示网络内容的应用程序都需要内核。
 
   JS引擎则：解析和执行javascript来实现网页的动态效果。
 
   最开始渲染引擎和JS引擎并没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只指渲染引擎。
-</code></pre></li>
-<li>
-<p>常见的浏览器内核有哪些？</p>
-<pre tabindex=0><code>  Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]
+</code></pre></li><li><p>常见的浏览器内核有哪些？</p><pre tabindex=0><code>  Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]
   Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等
   Presto内核：Opera7及以上。      [Opera内核原为：Presto，现为：Blink;]
   Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]
 
 详细文章：[浏览器内核的解析和对比](http://www.cnblogs.com/fullhouse/archive/2011/12/19/2293455.html)
-</code></pre></li>
-<li>
-<p>html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</p>
-<pre tabindex=0><code>  * HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。
+</code></pre></li><li><p>html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？</p><pre tabindex=0><code>  * HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。
         绘画 canvas;
         用于媒介回放的 video 和 audio 元素;
         本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失;
@@ -298,26 +145,18 @@ JavaScript：
 
        当然也可以直接使用成熟的框架、比如html5shim;
        &lt;!--[if lt IE 9]&gt;
-          &lt;script&gt; src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&lt;/script&gt;
+          &lt;script&gt; src=&#34;http://html5shim.googlecode.com/svn/trunk/html5.js&#34;&lt;/script&gt;
        &lt;![endif]--&gt;
 
   * 如何区分HTML5： DOCTYPE声明\新增的结构元素\功能元素
-</code></pre></li>
-<li>
-<p>简述一下你对HTML语义化的理解？</p>
-<pre tabindex=0><code>  用正确的标签做正确的事情。
+</code></pre></li><li><p>简述一下你对HTML语义化的理解？</p><pre tabindex=0><code>  用正确的标签做正确的事情。
   html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;
   即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;
   搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;
   使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。
-</code></pre></li>
-<li>
-<p>HTML5的离线储存怎么使用，工作原理能不能解释一下？</p>
-<pre tabindex=0><code>  在用户没有与因特网连接时，可以正常访问站点或应用，在用户与因特网连接时，更新用户机器上的缓存文件。
+</code></pre></li><li><p>HTML5的离线储存怎么使用，工作原理能不能解释一下？</p><pre tabindex=0><code>  在用户没有与因特网连接时，可以正常访问站点或应用，在用户与因特网连接时，更新用户机器上的缓存文件。
   原理：HTML5的离线存储是基于一个新建的.appcache文件的缓存机制(不是存储技术)，通过这个文件上的解析清单离线存储资源，这些资源就会像cookie一样被存储了下来。之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行页面展示。
-</code></pre></li>
-</ul>
-<pre tabindex=0><code>如何使用：
+</code></pre></li></ul><pre tabindex=0><code>如何使用：
 1、页面头部像下面一样加入一个manifest的属性；
 2、在cache.manifest文件的编写离线存储的资源；
     CACHE MANIFEST
@@ -365,10 +204,10 @@ sessionStorage和localStorage不会自动把数据发给服务器，仅在本地
 </code></pre><pre tabindex=0><code>- Label的作用是什么？是怎么用的？
 </code></pre><pre tabindex=0><code>label标签来定义表单控制间的关系,当用户选择该标签时，浏览器会自动将焦点转到和标签相关的表单控件上。
 
-&lt;label for=&quot;Name&quot;&gt;Number:&lt;/label&gt;
-&lt;input type=“text“name=&quot;Name&quot; id=&quot;Name&quot;/&gt;
+&lt;label for=&#34;Name&#34;&gt;Number:&lt;/label&gt;
+&lt;input type=“text“name=&#34;Name&#34; id=&#34;Name&#34;/&gt;
 
-&lt;label&gt;Date:&lt;input type=&quot;text&quot; name=&quot;B&quot;/&gt;&lt;/label&gt;
+&lt;label&gt;Date:&lt;input type=&#34;text&#34; name=&#34;B&#34;/&gt;&lt;/label&gt;
 </code></pre><pre tabindex=0><code>- HTML5的form如何关闭自动完成功能？
 </code></pre><pre tabindex=0><code>给不想要提示的 form 或某个 input 设置为 autocomplete=off。
 </code></pre><pre tabindex=0><code>- 如何实现浏览器内多个标签页之间的通信? (阿里)
@@ -391,7 +230,7 @@ ActiveX HTMLFile (IE) 、
 2、border-radius
 3、纯js实现 需要求一个点在不在圆上简单算法、获取鼠标坐标等等
 </code></pre><pre tabindex=0><code>- 实现不使用 border 画出1px高的线，在不同浏览器的标准模式与怪异模式下都能保持一致的效果。
-</code></pre><pre tabindex=0><code>&lt;div style=&quot;height:1px;overflow:hidden;background:red&quot;&gt;&lt;/div&gt;
+</code></pre><pre tabindex=0><code>&lt;div style=&#34;height:1px;overflow:hidden;background:red&#34;&gt;&lt;/div&gt;
 </code></pre><pre tabindex=0><code>- 网页验证码是干嘛的，是为了解决什么安全问题。
 </code></pre><pre tabindex=0><code>区分用户是计算机还是人的公共全自动程序。可以防止恶意破解密码、刷票、论坛灌水；
 有效防止黑客对某一个特定注册用户用特定程序暴力破解方式进行不断的登陆尝试。
@@ -421,7 +260,7 @@ strong, em, ins, del, code
     5.子选择器（ul &gt; li）
     6.后代选择器（li a）
     7.通配符选择器（ * ）
-    8.属性选择器（a[rel = &quot;external&quot;]）
+    8.属性选择器（a[rel = &#34;external&#34;]）
     9.伪类选择器（a:hover, li:nth-child）
 
 *   可继承的样式： font-size font-family color, UL LI DL DD DT;
@@ -451,14 +290,11 @@ strong, em, ins, del, code
 </code></pre><pre tabindex=0><code>- 如何居中div？
 
 - 水平居中：给div设置一个宽度，然后添加margin:0 auto属性
-
 </code></pre><p>div{
 width:200px;
 margin:0 auto;
-}</p>
-<pre tabindex=0><code>
+}</p><pre tabindex=0><code>
 - 让绝对定位的div居中
-
 </code></pre><p>div {
 position: absolute;
 width: 300px;
@@ -469,51 +305,38 @@ left: 0;
 bottom: 0;
 right: 0;
 background-color: pink; /<em>方便看效果</em>/
-}</p>
-<pre tabindex=0><code>
+}</p><pre tabindex=0><code>
 - 水平垂直居中一
-
 </code></pre><p>确定容器的宽高 宽500 高 300 的层
-设置层的外边距</p>
-<p>div {
+设置层的外边距</p><p>div {
 position: relative; /<em>相对定位或绝对定位均可</em>/
 width:500px;
 height:300px;
 top: 50%;
 left: 50%;
 margin: -150px 0 0 -250px; /<em>外边距为自身宽高的一半</em>/
-background-color: pink; /<em>方便看效果</em>/</p>
-<pre><code>}
-</code></pre>
-<pre tabindex=0><code>
+background-color: pink; /<em>方便看效果</em>/</p><pre><code>}
+</code></pre><pre tabindex=0><code>
 - 水平垂直居中二
-
-</code></pre><p>未知容器的宽高，利用 <code>transform</code> 属性</p>
-<p>div {
+</code></pre><p>未知容器的宽高，利用 <code>transform</code> 属性</p><p>div {
 position: absolute; /<em>相对定位或绝对定位均可</em>/
 width:500px;
 height:300px;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
-background-color: pink; /<em>方便看效果</em>/</p>
-<p>}</p>
-<pre tabindex=0><code>
+background-color: pink; /<em>方便看效果</em>/</p><p>}</p><pre tabindex=0><code>
 - 水平垂直居中三
-
 </code></pre><p>利用 flex 布局
-实际使用时应考虑兼容性</p>
-<p>.container {
+实际使用时应考虑兼容性</p><p>.container {
 display: flex;
 align-items: center; /<em>垂直居中</em>/
-justify-content: center; /<em>水平居中</em>/</p>
-<p>}
+justify-content: center; /<em>水平居中</em>/</p><p>}
 .container div {
 width: 100px;
 height: 100px;
 background-color: pink; /<em>方便看效果</em>/
-}</p>
-<pre tabindex=0><code>
+}</p><pre tabindex=0><code>
 - display有哪些值？说明他们的作用。
 </code></pre><pre tabindex=0><code>  block           块类型。默认宽度为父元素宽度，可设置宽高，换行显示。
   none            元素不显示，并从文档流中移除。
@@ -547,8 +370,8 @@ background-color: pink; /<em>方便看效果</em>/
 </code></pre><pre tabindex=0><code>- 请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？
 </code></pre><pre tabindex=0><code> 一个用于页面布局的全新CSS3功能，Flexbox可以把列表放在同一个方向（从上到下排列，从左到右），并让列表能延伸到占用可用的空间。
  较为复杂的布局还可以通过嵌套一个伸缩容器（flex container）来实现。
- 采用Flex布局的元素，称为Flex容器（flex container），简称&quot;容器&quot;。
- 它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称&quot;项目&quot;。
+ 采用Flex布局的元素，称为Flex容器（flex container），简称&#34;容器&#34;。
+ 它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称&#34;项目&#34;。
  常规布局是基于块和内联流方向，而Flex布局是基于flex-flow流可以很方便的用来做局中，能对不同屏幕大小自适应。
  在布局上有了比以前更加灵活的空间。
 
@@ -689,7 +512,7 @@ div{
 2、父级div 也一起浮动；
 3、常规的使用一个class；
     .clearfix::before, .clearfix::after {
-        content: &quot; &quot;;
+        content: &#34; &#34;;
         display: table;
     }
     .clearfix::after {
@@ -701,7 +524,7 @@ div{
 
 4、SASS编译的时候，浮动元素的父级div定义伪类:after
     &amp;::after,&amp;::before{
-        content: &quot; &quot;;
+        content: &#34; &#34;;
         visibility: hidden;
         display: block;
         height: 0;
@@ -712,7 +535,7 @@ div{
 1) display:block 使生成的元素以块级元素显示,占满剩余空间;
 2) height:0 避免生成内容破坏原有布局的高度。
 3) visibility:hidden 使生成的内容不可见，并允许可能被生成内容盖住的内容可以进行点击和交互;
-4）通过 content:&quot;.&quot;生成内容作为最后一个元素，至于content里面是点还是其他都是可以的，例如oocss里面就有经典的 content:&quot;.&quot;,有些版本可能content 里面内容为空,一丝冰凉是不推荐这样做的,firefox直到7.0 content:”&quot; 仍然会产生额外的空隙；
+4）通过 content:&#34;.&#34;生成内容作为最后一个元素，至于content里面是点还是其他都是可以的，例如oocss里面就有经典的 content:&#34;.&#34;,有些版本可能content 里面内容为空,一丝冰凉是不推荐这样做的,firefox直到7.0 content:”&#34; 仍然会产生额外的空隙；
 5）zoom：1 触发IE hasLayout。
 
 通过分析发现，除了clear：both用来闭合浮动的，其他代码无非都是为了隐藏掉content生成的内容，这也就是其他版本的闭合浮动为什么会有font-size：0，line-height：0。
@@ -799,7 +622,7 @@ padding用于元素与内容之间的间隔，让内容（文字）与（包裹�
 </code></pre><pre tabindex=0><code>fixed的元素是相对整个页面固定位置的，你在屏幕上滑动只是在移动这个所谓的viewport，
 原来的网页还好好的在那，fixed的内容也没有变过位置，
 所以说并不是iOS不支持fixed，只是fixed的元素不是相对手机屏幕固定的。
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no&quot;/&gt;
+&lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no&#34;/&gt;
 </code></pre><pre tabindex=0><code>- 如果需要手动写动画，你认为最小时间间隔是多久，为什么？（阿里）
 </code></pre><pre tabindex=0><code>多数显示器默认频率是60Hz，即1秒刷新60次，所以理论上最小间隔为1/60＊1000ms ＝ 16.7ms
 </code></pre><pre tabindex=0><code>- display:inline-block 什么时候会显示间隙？(携程)
@@ -836,11 +659,8 @@ padding用于元素与内容之间的间隔，让内容（文字）与（包裹�
 </code></pre><pre tabindex=0><code>Undefined、Null、Boolean、Number、String、
 ECMAScript 2015 新增:Symbol(创建后独一无二且不可变的数据类型 )
 </code></pre><pre tabindex=0><code>- 介绍js有哪些内置对象？
-</code></pre><p>Object 是 JavaScript 中所有对象的父对象</p>
-<p>数据封装类对象：Object、Array、Boolean、Number 和 String
-其他对象：Function、Arguments、Math、Date、RegExp、Error</p>
-<p>参考：<a href=http://www.ibm.com/developerworks/cn/web/wa-objectsinjs-v1b/index.html>http://www.ibm.com/developerworks/cn/web/wa-objectsinjs-v1b/index.html</a></p>
-<pre tabindex=0><code>- 说几条写JavaScript的基本规范？
+</code></pre><p>Object 是 JavaScript 中所有对象的父对象</p><p>数据封装类对象：Object、Array、Boolean、Number 和 String
+其他对象：Function、Arguments、Math、Date、RegExp、Error</p><p>参考：<a href=http://www.ibm.com/developerworks/cn/web/wa-objectsinjs-v1b/index.html>http://www.ibm.com/developerworks/cn/web/wa-objectsinjs-v1b/index.html</a></p><pre tabindex=0><code>- 说几条写JavaScript的基本规范？
 </code></pre><p>1.不要在同一行声明多个变量。
 2.请使用 ===/!==来比较true/false或者数值
 3.使用对象字面量替代new Array这种形式
@@ -849,43 +669,38 @@ ECMAScript 2015 新增:Symbol(创建后独一无二且不可变的数据类型 )
 6.函数不应该有时候有返回值，有时候没有返回值。
 7.For循环必须使用大括号
 8.If语句必须使用大括号
-9.for-in循环中的变量 应该使用var关键字明确限定作用域，从而避免作用域污染。</p>
-<pre tabindex=0><code>- JavaScript原型，原型链 ? 有什么特点？
+9.for-in循环中的变量 应该使用var关键字明确限定作用域，从而避免作用域污染。</p><pre tabindex=0><code>- JavaScript原型，原型链 ? 有什么特点？
 </code></pre><p>每个对象都会在其内部初始化一个属性，就是prototype(原型)，当我们访问一个对象的属性时，
 如果这个对象内部不存在这个属性，那么他就会去prototype里找这个属性，这个prototype又会有自己的prototype，
 于是就这样一直找下去，也就是我们平时所说的原型链的概念。
-关系：instance.constructor.prototype = instance.<strong>proto</strong></p>
-<p>特点：
-JavaScript对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，与之相关的对象也会继承这一改变。</p>
-<pre tabindex=0><code>当我们需要一个属性的时，Javascript引擎会先看当前对象中是否有这个属性， 如果没有的话，
+关系：instance.constructor.prototype = instance.<strong>proto</strong></p><p>特点：
+JavaScript对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，与之相关的对象也会继承这一改变。</p><pre tabindex=0><code>当我们需要一个属性的时，Javascript引擎会先看当前对象中是否有这个属性， 如果没有的话，
 就会查找他的Prototype对象是否有这个属性，如此递推下去，一直检索到 Object 内建对象。
    function Func(){}
-   Func.prototype.name = &quot;Sean&quot;;
+   Func.prototype.name = &#34;Sean&#34;;
    Func.prototype.getInfo = function() {
      return this.name;
    }
    var person = new Func();//现在可以参考var person = Object.create(oldObject);
    console.log(person.getInfo());//它拥有了Func的属性和方法
-   //&quot;Sean&quot;
+   //&#34;Sean&#34;
    console.log(Func.prototype);
-   // Func { name=&quot;Sean&quot;, getInfo=function()}
+   // Func { name=&#34;Sean&#34;, getInfo=function()}
 </code></pre><pre tabindex=0><code>- JavaScript有几种类型的值？，你能画一下他们的内存图吗？
 </code></pre><p>栈：原始数据类型（Undefined，Null，Boolean，Number、String）
-堆：引用数据类型（对象、数组和函数）</p>
-<p>两种类型的区别是：存储位置不同；
+堆：引用数据类型（对象、数组和函数）</p><p>两种类型的区别是：存储位置不同；
 原始数据类型直接存储在栈(stack)中的简单数据段，占据空间小、大小固定，属于被频繁使用数据，所以放入栈中存储；
-引用数据类型存储在堆(heap)中的对象,占据空间大、大小不固定。如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体</p>
-<pre tabindex=0><code>[![Stated Clearly Image](https://camo.githubusercontent.com/8bd71e739041632acf5536846a2d60b284be6edcec0d377e7cccb36e5760f593/687474703a2f2f7777772e77337363686f6f6c2e636f6d2e636e2f692f63745f6a735f76616c75652e676966)](https://camo.githubusercontent.com/8bd71e739041632acf5536846a2d60b284be6edcec0d377e7cccb36e5760f593/687474703a2f2f7777772e77337363686f6f6c2e636f6d2e636e2f692f63745f6a735f76616c75652e676966)
+引用数据类型存储在堆(heap)中的对象,占据空间大、大小不固定。如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体</p><pre tabindex=0><code>[![Stated Clearly Image](https://camo.githubusercontent.com/8bd71e739041632acf5536846a2d60b284be6edcec0d377e7cccb36e5760f593/687474703a2f2f7777772e77337363686f6f6c2e636f6d2e636e2f692f63745f6a735f76616c75652e676966)](https://camo.githubusercontent.com/8bd71e739041632acf5536846a2d60b284be6edcec0d377e7cccb36e5760f593/687474703a2f2f7777772e77337363686f6f6c2e636f6d2e636e2f692f63745f6a735f76616c75652e676966)
 
-- 如何将字符串转化为数字，例如'12.3b'?
-</code></pre><pre tabindex=0><code>* parseFloat('12.3b');
-* 正则表达式，'12.3b'.match(/(\d)+(\.)?(\d)+/g)[0] * 1, 但是这个不太靠谱，提供一种思路而已。
+- 如何将字符串转化为数字，例如&#39;12.3b&#39;?
+</code></pre><pre tabindex=0><code>* parseFloat(&#39;12.3b&#39;);
+* 正则表达式，&#39;12.3b&#39;.match(/(\d)+(\.)?(\d)+/g)[0] * 1, 但是这个不太靠谱，提供一种思路而已。
 </code></pre><pre tabindex=0><code>- 如何将浮点数点左边的数每三位添加一个逗号，如12000000.11转化为『12,000,000.11』?
 </code></pre><pre tabindex=0><code>function commafy(num){
     return num &amp;&amp; num
         .toString()
         .replace(/(\d)(?=(\d{3})+\.)/g, function($1, $2){
-            return $2 + ',';
+            return $2 + &#39;,&#39;;
         });
 }
 </code></pre><pre tabindex=0><code>- 如何实现数组的随机排序？
@@ -925,10 +740,8 @@ JavaScript对象是通过引用来传递的，我们创建的每个新对象实�
 </code></pre><p>1、构造继承
 2、原型继承
 3、实例继承
-4、拷贝继承</p>
-<p>原型prototype机制或apply和call方法去实现较简单，建议使用构造函数与原型混合方式。</p>
-<pre tabindex=0><code>   function Parent(){
-       this.name = 'wang';
+4、拷贝继承</p><p>原型prototype机制或apply和call方法去实现较简单，建议使用构造函数与原型混合方式。</p><pre tabindex=0><code>   function Parent(){
+       this.name = &#39;wang&#39;;
    }
 
    function Child(){
@@ -943,94 +756,76 @@ JavaScript对象是通过引用来传递的，我们创建的每个新对象实�
 
 - 参考：[构造函数的继承](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance.html)，[非构造函数的继承](http://www.ruanyifeng.com/blog/2010/05/object-oriented_javascript_inheritance_continued.html)；
 - javascript创建对象的几种方式？
-</code></pre><p>javascript创建对象简单的说,无非就是使用内置对象或各种自定义对象，当然还可以用JSON；但写法有很多种，也能混合使用。</p>
-<p>1、对象字面量的方式</p>
-<pre tabindex=0><code>   person={firstname:&quot;Mark&quot;,lastname:&quot;Yun&quot;,age:25,eyecolor:&quot;black&quot;};
-</code></pre><p>2、用function来模拟无参的构造函数</p>
-<pre tabindex=0><code>   function Person(){}
-   var person=new Person();//定义一个function，如果使用new&quot;实例化&quot;,该function可以看作是一个Class
-   person.name=&quot;Mark&quot;;
-   person.age=&quot;25&quot;;
+</code></pre><p>javascript创建对象简单的说,无非就是使用内置对象或各种自定义对象，当然还可以用JSON；但写法有很多种，也能混合使用。</p><p>1、对象字面量的方式</p><pre tabindex=0><code>   person={firstname:&#34;Mark&#34;,lastname:&#34;Yun&#34;,age:25,eyecolor:&#34;black&#34;};
+</code></pre><p>2、用function来模拟无参的构造函数</p><pre tabindex=0><code>   function Person(){}
+   var person=new Person();//定义一个function，如果使用new&#34;实例化&#34;,该function可以看作是一个Class
+   person.name=&#34;Mark&#34;;
+   person.age=&#34;25&#34;;
    person.work=function(){
-   alert(person.name+&quot; hello...&quot;);
+   alert(person.name+&#34; hello...&#34;);
    }
    person.work();
-</code></pre><p>3、用function来模拟参构造函数来实现（用this关键字定义构造的上下文属性）</p>
-<pre tabindex=0><code>   function Pet(name,age,hobby){
+</code></pre><p>3、用function来模拟参构造函数来实现（用this关键字定义构造的上下文属性）</p><pre tabindex=0><code>   function Pet(name,age,hobby){
       this.name=name;//this作用域：当前对象
       this.age=age;
       this.hobby=hobby;
       this.eat=function(){
-         alert(&quot;我叫&quot;+this.name+&quot;,我喜欢&quot;+this.hobby+&quot;,是个程序员&quot;);
+         alert(&#34;我叫&#34;+this.name+&#34;,我喜欢&#34;+this.hobby+&#34;,是个程序员&#34;);
       }
    }
-   var maidou =new Pet(&quot;麦兜&quot;,25,&quot;coding&quot;);//实例化、创建对象
+   var maidou =new Pet(&#34;麦兜&#34;,25,&#34;coding&#34;);//实例化、创建对象
    maidou.eat();//调用eat方法
-</code></pre><p>4、用工厂方式来创建（内置对象）</p>
-<pre tabindex=0><code>    var wcDog =new Object();
-    wcDog.name=&quot;旺财&quot;;
+</code></pre><p>4、用工厂方式来创建（内置对象）</p><pre tabindex=0><code>    var wcDog =new Object();
+    wcDog.name=&#34;旺财&#34;;
     wcDog.age=3;
     wcDog.work=function(){
-      alert(&quot;我是&quot;+wcDog.name+&quot;,汪汪汪......&quot;);
+      alert(&#34;我是&#34;+wcDog.name+&#34;,汪汪汪......&#34;);
     }
     wcDog.work();
-</code></pre><p>5、用原型方式来创建</p>
-<pre tabindex=0><code>   function Dog(){
+</code></pre><p>5、用原型方式来创建</p><pre tabindex=0><code>   function Dog(){
 
     }
-    Dog.prototype.name=&quot;旺财&quot;;
+    Dog.prototype.name=&#34;旺财&#34;;
     Dog.prototype.eat=function(){
-    alert(this.name+&quot;是个吃货&quot;);
+    alert(this.name+&#34;是个吃货&#34;);
     }
     var wangcai =new Dog();
     wangcai.eat();
-</code></pre><p>5、用混合方式来创建</p>
-<pre tabindex=0><code>   function Car(name,price){
+</code></pre><p>5、用混合方式来创建</p><pre tabindex=0><code>   function Car(name,price){
      this.name=name;
      this.price=price;
    }
     Car.prototype.sell=function(){
-      alert(&quot;我是&quot;+this.name+&quot;，我现在卖&quot;+this.price+&quot;万元&quot;);
+      alert(&#34;我是&#34;+this.name+&#34;，我现在卖&#34;+this.price+&#34;万元&#34;);
      }
-   var camry =new Car(&quot;凯美瑞&quot;,27);
+   var camry =new Car(&#34;凯美瑞&#34;,27);
    camry.sell();
 </code></pre><pre tabindex=0><code>- Javascript作用链域?
 </code></pre><p>全局函数无法查看局部函数的内部细节，但局部函数可以查看其上层的函数细节，直至全局细节。
 当需要从局部函数查找某一属性或方法时，如果当前作用域没有找到，就会上溯到上层作用域查找，
-直至全局函数，这种组织形式就是作用域链。</p>
-<pre tabindex=0><code>- 谈谈This对象的理解。
+直至全局函数，这种组织形式就是作用域链。</p><pre tabindex=0><code>- 谈谈This对象的理解。
 </code></pre><p>this总是指向函数的直接调用者（而非间接调用者）；
 如果有new关键字，this指向new出来的那个对象；
-在事件中，this指向触发这个事件的对象，特殊的是，IE中的attachEvent中的this总是指向全局对象Window；</p>
-<pre tabindex=0><code>- eval是做什么的？
+在事件中，this指向触发这个事件的对象，特殊的是，IE中的attachEvent中的this总是指向全局对象Window；</p><pre tabindex=0><code>- eval是做什么的？
 </code></pre><p>它的功能是把对应的字符串解析成JS代码并运行；
 应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。
-由JSON字符串转换为JSON对象的时候可以用eval，var obj =eval('('+ str +')');</p>
-<pre tabindex=0><code>- 什么是window对象? 什么是document对象?
+由JSON字符串转换为JSON对象的时候可以用eval，var obj =eval(&rsquo;(&rsquo;+ str +&rsquo;)&rsquo;);</p><pre tabindex=0><code>- 什么是window对象? 什么是document对象?
 </code></pre><p>window对象是指浏览器打开的窗口。
-document对象是Documentd对象（HTML 文档对象）的一个只读引用，window对象的一个属性。</p>
-<pre tabindex=0><code>- null，undefined 的区别？
+document对象是Documentd对象（HTML 文档对象）的一个只读引用，window对象的一个属性。</p><pre tabindex=0><code>- null，undefined 的区别？
 </code></pre><p>null 表示一个对象是“没有值”的值，也就是值为“空”；
-undefined 表示一个变量声明了没有初始化(赋值)；</p>
-<p>undefined不是一个有效的JSON，而null是；
+undefined 表示一个变量声明了没有初始化(赋值)；</p><p>undefined不是一个有效的JSON，而null是；
 undefined的类型(typeof)是undefined；
-null的类型(typeof)是object；</p>
-<p>Javascript将未赋值的变量默认值设为undefined；
-Javascript从来不会将变量设为null。它是用来让程序员表明某个用var声明的变量时没有值的。</p>
-<p>typeof undefined
+null的类型(typeof)是object；</p><p>Javascript将未赋值的变量默认值设为undefined；
+Javascript从来不会将变量设为null。它是用来让程序员表明某个用var声明的变量时没有值的。</p><p>typeof undefined
 //&ldquo;undefined&rdquo;
 undefined :是一个表示"无"的原始值或者说表示"缺少值"，就是此处应该有一个值，但是还没有定义。当尝试读取时会返回 undefined；
-例如变量被声明了，但没有赋值时，就等于undefined</p>
-<p>typeof null
+例如变量被声明了，但没有赋值时，就等于undefined</p><p>typeof null
 //&ldquo;object&rdquo;
 null : 是一个对象(空对象, 没有任何属性和方法)；
-例如作为函数的参数，表示该函数的参数不是对象；</p>
-<p>注意：
+例如作为函数的参数，表示该函数的参数不是对象；</p><p>注意：
 在验证null时，一定要使用　=== ，因为 == 无法分别 null 和　undefined
 null == undefined // true
-null === undefined // false</p>
-<p>再来一个例子：</p>
-<pre tabindex=0><code>   null
+null === undefined // false</p><p>再来一个例子：</p><pre tabindex=0><code>   null
    Q：有张三这个人么？
    A：有！
    Q：张三有房子么？
@@ -1052,7 +847,7 @@ null === undefined // false</p>
                fn=document;
            }
            var oldonload = window.onload;
-           if (typeof window.onload != 'function') {
+           if (typeof window.onload != &#39;function&#39;) {
                window.onload = fn;
            } else {
                window.onload = function() {
@@ -1068,11 +863,11 @@ null === undefined // false</p>
                //事件类型、需要执行的函数、是否捕捉
                element.addEventListener(type, handler, false);
            } else if (element.attachEvent) {
-               element.attachEvent('on' + type, function() {
+               element.attachEvent(&#39;on&#39; + type, function() {
                    handler.call(element);
                });
            } else {
-               element['on' + type] = handler;
+               element[&#39;on&#39; + type] = handler;
            }
        },
        // 移除事件
@@ -1080,9 +875,9 @@ null === undefined // false</p>
            if (element.removeEventListener) {
                element.removeEventListener(type, handler, false);
            } else if (element.datachEvent) {
-               element.detachEvent('on' + type, handler);
+               element.detachEvent(&#39;on&#39; + type, handler);
            } else {
-               element['on' + type] = null;
+               element[&#39;on&#39; + type] = null;
            }
        },
        // 阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)
@@ -1121,39 +916,25 @@ null === undefined // false</p>
            return ev;
        }
    };
-</code></pre><pre tabindex=0><code>- [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;].map(parseInt) 答案是多少？
+</code></pre><pre tabindex=0><code>- [&#34;1&#34;, &#34;2&#34;, &#34;3&#34;].map(parseInt) 答案是多少？
 </code></pre><p>parseInt() 函数能解析一个字符串，并返回一个整数，需要两个参数 (val, radix)，
 其中 radix 表示要解析的数字的基数。【该值介于 2 ~ 36 之间，并且字符串中的数字不能大于radix才能正确返回数字结果值】;
-但此处 map 传了 3 个 (element, index, array),我们重写parseInt函数测试一下是否符合上面的规则。</p>
-<p>function parseInt(str, radix) {
-return str+'-'+radix;
+但此处 map 传了 3 个 (element, index, array),我们重写parseInt函数测试一下是否符合上面的规则。</p><p>function parseInt(str, radix) {
+return str+&rsquo;-&rsquo;+radix;
 };
 var a=[&ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo;];
-a.map(parseInt); // [&ldquo;1-0&rdquo;, &ldquo;2-1&rdquo;, &ldquo;3-2&rdquo;] 不能大于radix</p>
-<p>因为二进制里面，没有数字3,导致出现超范围的radix赋值和不合法的进制解析，才会返回NaN
-所以[&ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo;].map(parseInt) 答案也就是：[1, NaN, NaN]</p>
-<p>详细解析：<a href=http://blog.csdn.net/justjavac/article/details/19473199>http://blog.csdn.net/justjavac/article/details/19473199</a></p>
-<pre tabindex=0><code>- 事件是？IE与火狐的事件机制有什么区别？ 如何阻止冒泡？
+a.map(parseInt); // [&ldquo;1-0&rdquo;, &ldquo;2-1&rdquo;, &ldquo;3-2&rdquo;] 不能大于radix</p><p>因为二进制里面，没有数字3,导致出现超范围的radix赋值和不合法的进制解析，才会返回NaN
+所以[&ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo;].map(parseInt) 答案也就是：[1, NaN, NaN]</p><p>详细解析：<a href=http://blog.csdn.net/justjavac/article/details/19473199>http://blog.csdn.net/justjavac/article/details/19473199</a></p><pre tabindex=0><code>- 事件是？IE与火狐的事件机制有什么区别？ 如何阻止冒泡？
 </code></pre><pre tabindex=0><code>1. 我们在网页中的某个操作（有的操作对应多个事件）。例如：当我们点击一个按钮就会产生一个事件。是可以被 JavaScript 侦测到的行为。
 2. 事件处理机制：IE是事件冒泡、Firefox同时支持两种事件模型，也就是：捕获型事件和冒泡型事件；
 3. ev.stopPropagation();（旧ie的方法 ev.cancelBubble = true;）
 </code></pre><pre tabindex=0><code>- 什么是闭包（closure），为什么要用它？
-</code></pre><p>闭包是指有权访问另一个函数作用域中变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量,利用闭包可以突破作用链域，将函数内部的变量和方法传递到外部。</p>
-<p>闭包的特性：</p>
-<p>1.函数内再嵌套函数
+</code></pre><p>闭包是指有权访问另一个函数作用域中变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量,利用闭包可以突破作用链域，将函数内部的变量和方法传递到外部。</p><p>闭包的特性：</p><p>1.函数内再嵌套函数
 2.内部函数可以引用外层的参数和变量
-3.参数和变量不会被垃圾回收机制回收</p>
-<p>//li节点的onclick事件都能正确的弹出当前被点击的li索引</p>
-<ul id=testUL> <li> index = 0</li>
-<li> index = 1</li>
-<li> index = 2</li>
-<li> index = 3</li> </ul>
-<script type=text/javascript>var nodes=document.getElementsByTagName("li");for(i=0;i<nodes.length;i+=1)nodes[i].onclick=function(a){return function(){console.log(a)}}(i)</script>
-<p>执行say667()后,say667()闭包内部变量会存在,而闭包内部函数的内部变量不会存在
+3.参数和变量不会被垃圾回收机制回收</p><p>//li节点的onclick事件都能正确的弹出当前被点击的li索引</p><ul id=testUL><li>index = 0</li><li>index = 1</li><li>index = 2</li><li>index = 3</li></ul><script type=text/javascript>var nodes=document.getElementsByTagName("li");for(i=0;i<nodes.length;i+=1)nodes[i].onclick=function(e){return function(){console.log(e)}}(i)</script><p>执行say667()后,say667()闭包内部变量会存在,而闭包内部函数的内部变量不会存在
 使得Javascript的垃圾回收机制GC不会收回say667()所占用的资源
 因为say667()的内部函数的执行需要依赖say667()中的变量
-这是对闭包作用的非常直白的描述</p>
-<pre tabindex=0><code> function say667() {
+这是对闭包作用的非常直白的描述</p><pre tabindex=0><code> function say667() {
    // Local variable that ends up within closure
    var num = 666;
    var sayAlert = function() {
@@ -1161,21 +942,17 @@ a.map(parseInt); // [&ldquo;1-0&rdquo;, &ldquo;2-1&rdquo;, &ldquo;3-2&rdquo;] �
    }
    num++;
    return sayAlert;
-</code></pre><p>}</p>
-<pre tabindex=0><code>var sayAlert = say667();
+</code></pre><p>}</p><pre tabindex=0><code>var sayAlert = say667();
 sayAlert()//执行结果应该弹出的667
-</code></pre><pre tabindex=0><code>- javascript 代码中的&quot;use strict&quot;;是什么意思 ? 使用它区别是什么？
-</code></pre><p>use strict是一种ECMAscript 5 添加的（严格）运行模式,这种模式使得 Javascript 在更严格的条件下运行,</p>
-<p>使JS编码更加规范化的模式,消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为。
+</code></pre><pre tabindex=0><code>- javascript 代码中的&#34;use strict&#34;;是什么意思 ? 使用它区别是什么？
+</code></pre><p>use strict是一种ECMAscript 5 添加的（严格）运行模式,这种模式使得 Javascript 在更严格的条件下运行,</p><p>使JS编码更加规范化的模式,消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为。
 默认支持的糟糕特性都会被禁用，比如不能用with，也不能在意外的情况下给全局变量赋值;
 全局变量的显示声明,函数必须声明在顶层，不允许在非函数代码块内声明函数,arguments.callee也不允许使用；
-消除代码运行的一些不安全之处，保证代码运行的安全,限制函数中的arguments修改，严格模式下的eval函数的行为和非严格模式的也不相同;</p>
-<p>提高编译器效率，增加运行速度；
-为未来新版本的Javascript标准化做铺垫。</p>
-<pre tabindex=0><code>- 如何判断一个对象是否属于某个类？
+消除代码运行的一些不安全之处，保证代码运行的安全,限制函数中的arguments修改，严格模式下的eval函数的行为和非严格模式的也不相同;</p><p>提高编译器效率，增加运行速度；
+为未来新版本的Javascript标准化做铺垫。</p><pre tabindex=0><code>- 如何判断一个对象是否属于某个类？
 </code></pre><pre tabindex=0><code> 使用instanceof （待完善）
   if(a instanceof Person){
-      alert('yes');
+      alert(&#39;yes&#39;);
   }
 </code></pre><pre tabindex=0><code>- new操作符具体干了什么呢?
 </code></pre><pre tabindex=0><code>    1、创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。
@@ -1183,49 +960,39 @@ sayAlert()//执行结果应该弹出的667
     3、新创建的对象由 this 所引用，并且最后隐式的返回 this 。
 </code></pre><p>var obj = {};
 obj.<strong>proto</strong> = Base.prototype;
-Base.call(obj);</p>
-<pre tabindex=0><code>- 用原生JavaScript的实现过什么功能吗？
+Base.call(obj);</p><pre tabindex=0><code>- 用原生JavaScript的实现过什么功能吗？
 
 - Javascript中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？
-</code></pre><p>hasOwnProperty</p>
-<p>javaScript中hasOwnProperty函数方法是返回一个布尔值，指出一个对象是否具有指定名称的属性。此方法无法检查该对象的原型链中是否具有该属性；该属性必须是对象本身的一个成员。
+</code></pre><p>hasOwnProperty</p><p>javaScript中hasOwnProperty函数方法是返回一个布尔值，指出一个对象是否具有指定名称的属性。此方法无法检查该对象的原型链中是否具有该属性；该属性必须是对象本身的一个成员。
 使用方法：
 object.hasOwnProperty(proName)
 其中参数object是必选项。一个对象的实例。
-proName是必选项。一个属性名称的字符串值。</p>
-<p>如果 object 具有指定名称的属性，那么JavaScript中hasOwnProperty函数方法返回 true，反之则返回 false。</p>
-<pre tabindex=0><code>- JSON 的了解？
+proName是必选项。一个属性名称的字符串值。</p><p>如果 object 具有指定名称的属性，那么JavaScript中hasOwnProperty函数方法返回 true，反之则返回 false。</p><pre tabindex=0><code>- JSON 的了解？
 </code></pre><p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。
 它是基于JavaScript的一个子集。数据格式简单, 易于读写, 占用带宽小
-如：{&ldquo;age&rdquo;:&ldquo;12&rdquo;, &ldquo;name&rdquo;:&ldquo;back&rdquo;}</p>
-<p>JSON字符串转换为JSON对象:
-var obj =eval('('+ str +')');
+如：{&ldquo;age&rdquo;:&ldquo;12&rdquo;, &ldquo;name&rdquo;:&ldquo;back&rdquo;}</p><p>JSON字符串转换为JSON对象:
+var obj =eval(&rsquo;(&rsquo;+ str +&rsquo;)&rsquo;);
 var obj = str.parseJSON();
-var obj = JSON.parse(str);</p>
-<p>JSON对象转换为JSON字符串：
+var obj = JSON.parse(str);</p><p>JSON对象转换为JSON字符串：
 var last=obj.toJSONString();
-var last=JSON.stringify(obj);</p>
-<pre tabindex=0><code>- `[].forEach.call($$(&quot;*&quot;),function(a){a.style.outline=&quot;1px solid #&quot;+(~~(Math.random()*(1&lt;&lt;24))).toString(16)})` 能解释一下这段代码的意思吗？
+var last=JSON.stringify(obj);</p><pre tabindex=0><code>- `[].forEach.call($$(&#34;*&#34;),function(a){a.style.outline=&#34;1px solid #&#34;+(~~(Math.random()*(1&lt;&lt;24))).toString(16)})` 能解释一下这段代码的意思吗？
 
 - js延迟加载的方式有哪些？
-</code></pre><p>defer和async、动态创建DOM方式（用得最多）、按需异步载入js</p>
-<pre tabindex=0><code>- Ajax 是什么? 如何创建一个Ajax？
+</code></pre><p>defer和async、动态创建DOM方式（用得最多）、按需异步载入js</p><pre tabindex=0><code>- Ajax 是什么? 如何创建一个Ajax？
 </code></pre><p>ajax的全称：Asynchronous Javascript And XML。
 异步传输+js+xml。
-所谓异步，在这里简单地解释就是：向服务器发送请求的时候，我们不必等待结果，而是可以同时做其他的事情，等到有了结果它自己会根据设定进行后续操作，与此同时，页面是不会发生整页刷新的，提高了用户体验。</p>
-<p>(1)创建XMLHttpRequest对象,也就是创建一个异步调用对象
+所谓异步，在这里简单地解释就是：向服务器发送请求的时候，我们不必等待结果，而是可以同时做其他的事情，等到有了结果它自己会根据设定进行后续操作，与此同时，页面是不会发生整页刷新的，提高了用户体验。</p><p>(1)创建XMLHttpRequest对象,也就是创建一个异步调用对象
 (2)创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息
 (3)设置响应HTTP请求状态变化的函数
 (4)发送HTTP请求
 (5)获取异步调用返回的数据
-(6)使用JavaScript和DOM实现局部刷新</p>
-<pre tabindex=0><code>- Ajax 解决浏览器缓存问题？
-</code></pre><pre tabindex=0><code>1、在ajax发送请求前加上 anyAjaxObj.setRequestHeader(&quot;If-Modified-Since&quot;,&quot;0&quot;)。
+(6)使用JavaScript和DOM实现局部刷新</p><pre tabindex=0><code>- Ajax 解决浏览器缓存问题？
+</code></pre><pre tabindex=0><code>1、在ajax发送请求前加上 anyAjaxObj.setRequestHeader(&#34;If-Modified-Since&#34;,&#34;0&#34;)。
 
-2、在ajax发送请求前加上 anyAjaxObj.setRequestHeader(&quot;Cache-Control&quot;,&quot;no-cache&quot;)。
+2、在ajax发送请求前加上 anyAjaxObj.setRequestHeader(&#34;Cache-Control&#34;,&#34;no-cache&#34;)。
 
-3、在URL后面加上一个随机数： &quot;fresh=&quot; + Math.random();。
-</code></pre><pre tabindex=0><code>     4、在URL后面加上时间戳：&quot;nowtime=&quot; + new Date().getTime();。
+3、在URL后面加上一个随机数： &#34;fresh=&#34; + Math.random();。
+</code></pre><pre tabindex=0><code>     4、在URL后面加上时间戳：&#34;nowtime=&#34; + new Date().getTime();。
 </code></pre><pre tabindex=0><code>5、如果是使用jQuery，直接这样就可以了 $.ajaxSetup({cache:false})。这样页面的所有ajax都会执行这条语句就是不需要保存缓存记录。
 </code></pre><pre tabindex=0><code>- 同步和异步的区别?
 
@@ -1238,12 +1005,10 @@ var last=JSON.stringify(obj);</p>
   （待完善）
 
 - 如何解决跨域问题?
-</code></pre><p>jsonp、 iframe、window.name、window.postMessage、服务器上设置代理页面</p>
-<pre tabindex=0><code>- 页面编码和被请求的资源编码如果不一致如何处理？
+</code></pre><p>jsonp、 iframe、window.name、window.postMessage、服务器上设置代理页面</p><pre tabindex=0><code>- 页面编码和被请求的资源编码如果不一致如何处理？
 
 - 服务器代理转发时，该如何处理cookie？
-</code></pre><p>nginx</p>
-<pre tabindex=0><code>- 模块化开发怎么做？
+</code></pre><p>nginx</p><pre tabindex=0><code>- 模块化开发怎么做？
 
 [立即执行函数](http://benalman.com/news/2010/11/immediately-invoked-function-expression/),不暴露私有成员
 </code></pre><pre tabindex=0><code>   var module1 = (function(){
@@ -1266,30 +1031,26 @@ var last=JSON.stringify(obj);</p>
 &gt; AMD 规范在这里：[AMD · amdjs/amdjs-api Wiki · GitHub](https://github.com/amdjs/amdjs-api/wiki/AMD)
 
 &gt; CMD 规范在这里：[seajs/seajs#242](https://github.com/seajs/seajs/issues/242)
-</code></pre><p>Asynchronous Module Definition，异步模块定义，所有的模块将被异步加载，模块加载不影响后面语句运行。所有依赖某些模块的语句均放置在回调函数中。</p>
-<pre tabindex=0><code>区别：
+</code></pre><p>Asynchronous Module Definition，异步模块定义，所有的模块将被异步加载，模块加载不影响后面语句运行。所有依赖某些模块的语句均放置在回调函数中。</p><pre tabindex=0><code>区别：
 
    1. 对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。不过 RequireJS 从 2.0 开始，也改成可以延迟执行（根据写法不同，处理方式不同）。CMD 推崇 as lazy as possible.
    2. CMD 推崇依赖就近，AMD 推崇依赖前置。看代码：
 </code></pre><p>// CMD
 define(function(require, exports, module) {
-var a = require('./a')
+var a = require(&rsquo;./a&rsquo;)
 a.doSomething()
 // 此处略去 100 行
-var b = require('./b') // 依赖可以就近书写
+var b = require(&rsquo;./b&rsquo;) // 依赖可以就近书写
 b.doSomething()
 // &mldr;
-})</p>
-<p>// AMD 默认推荐
-define(['./a', &lsquo;./b&rsquo;], function(a, b) { // 依赖必须一开始就写好
+})</p><p>// AMD 默认推荐
+define([&rsquo;./a&rsquo;, &lsquo;./b&rsquo;], function(a, b) { // 依赖必须一开始就写好
 a.doSomething()
 // 此处略去 100 行
 b.doSomething()
 // &mldr;
-})</p>
-<pre tabindex=0><code>- requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何 缓存的？）
-</code></pre><p>参考：<a href=http://annn.me/how-to-realize-cmd-loader/>http://annn.me/how-to-realize-cmd-loader/</a></p>
-<pre tabindex=0><code>- JS模块加载器的轮子怎么造，也就是如何实现一个模块加载器？
+})</p><pre tabindex=0><code>- requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何 缓存的？）
+</code></pre><p>参考：<a href=http://annn.me/how-to-realize-cmd-loader/>http://annn.me/how-to-realize-cmd-loader/</a></p><pre tabindex=0><code>- JS模块加载器的轮子怎么造，也就是如何实现一个模块加载器？
 
 - 谈一谈你对ECMAScript6的了解？
 
@@ -1354,50 +1115,14 @@ innerHTML可以重绘页面的一部分
 - jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？
 
 - jquery.extend 与 jquery.fn.extend的区别？
-</code></pre><ul>
-<li>
-<p>jquery.extend 为jquery类添加类方法，可以理解为添加静态方法</p>
-</li>
-<li>
-<p>jquery.fn.extend:
+</code></pre><ul><li><p>jquery.extend 为jquery类添加类方法，可以理解为添加静态方法</p></li><li><p>jquery.fn.extend:
 源码中jquery.fn = jquery.prototype，所以对jquery.fn的扩展，就是为jquery类添加成员函数
 使用：
-jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展，所有jquery实例都可以直接调用。</p>
-</li>
-<li>
-<p>jQuery 的队列是如何实现的？队列可以用在哪些地方？</p>
-</li>
-<li>
-<p>谈一下Jquery中的bind(),live(),delegate(),on()的区别？</p>
-</li>
-<li>
-<p>JQuery一个对象可以同时绑定多个事件，这是如何实现的？</p>
-</li>
-<li>
-<p>是否知道自定义事件。jQuery里的fire函数是什么意思，什么时候用？</p>
-</li>
-<li>
-<p>jQuery 是通过哪个方法和 Sizzle 选择器结合的？（jQuery.fn.find()进入Sizzle）</p>
-</li>
-<li>
-<p>针对 jQuery性能的优化方法？</p>
-</li>
-<li>
-<p>Jquery与jQuery UI 有啥区别？</p>
-<pre tabindex=0><code> *jQuery是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。
+jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展，所有jquery实例都可以直接调用。</p></li><li><p>jQuery 的队列是如何实现的？队列可以用在哪些地方？</p></li><li><p>谈一下Jquery中的bind(),live(),delegate(),on()的区别？</p></li><li><p>JQuery一个对象可以同时绑定多个事件，这是如何实现的？</p></li><li><p>是否知道自定义事件。jQuery里的fire函数是什么意思，什么时候用？</p></li><li><p>jQuery 是通过哪个方法和 Sizzle 选择器结合的？（jQuery.fn.find()进入Sizzle）</p></li><li><p>针对 jQuery性能的优化方法？</p></li><li><p>Jquery与jQuery UI 有啥区别？</p><pre tabindex=0><code> *jQuery是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。
 
  *jQuery UI则是在jQuery的基础上，利用jQuery的扩展性，设计的插件。
   提供了一些常用的界面元素，诸如对话框、拖动行为、改变大小行为等等
-</code></pre></li>
-<li>
-<p>JQuery的源码看过吗？能不能简单说一下它的实现原理？</p>
-</li>
-<li>
-<p>jquery 中如何将数组转化为json字符串，然后再转化回来？</p>
-</li>
-</ul>
-<p>jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：</p>
-<pre tabindex=0><code>    $.fn.stringifyArray = function(array) {
+</code></pre></li><li><p>JQuery的源码看过吗？能不能简单说一下它的实现原理？</p></li><li><p>jquery 中如何将数组转化为json字符串，然后再转化回来？</p></li></ul><p>jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：</p><pre tabindex=0><code>    $.fn.stringifyArray = function(array) {
         return JSON.stringify(array)
     }
 
@@ -1406,203 +1131,75 @@ jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展
     }
 
     然后调用：
-    $(&quot;&quot;).stringifyArray(array)
-</code></pre><ul>
-<li>
-<p>jQuery和Zepto的区别？各自的使用场景？</p>
-</li>
-<li>
-<p>针对 jQuery 的优化方法？</p>
-<pre tabindex=0><code> *基于Class的选择性的性能相对于Id选择器开销很大，因为需遍历所有DOM元素。
+    $(&#34;&#34;).stringifyArray(array)
+</code></pre><ul><li><p>jQuery和Zepto的区别？各自的使用场景？</p></li><li><p>针对 jQuery 的优化方法？</p><pre tabindex=0><code> *基于Class的选择性的性能相对于Id选择器开销很大，因为需遍历所有DOM元素。
 
  *频繁操作的DOM，先缓存起来再操作。用Jquery的链式调用更好。
-  比如：var str=$(&quot;a&quot;).attr(&quot;href&quot;);
+  比如：var str=$(&#34;a&#34;).attr(&#34;href&#34;);
 
  *for (var i = size; i &lt; arr.length; i++) {}
   for 循环每一次循环都查找了数组 (arr) 的.length 属性，在开始循环的时候设置一个变量来存储这个数字，可以让循环跑得更快：
   for (var i = size, length = arr.length; i &lt; length; i++) {}
-</code></pre></li>
-<li>
-<p>Zepto的点透问题如何解决？</p>
-</li>
-<li>
-<p>jQueryUI如何自定义组件?</p>
-</li>
-<li>
-<p>需求：实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？</p>
-</li>
-<li>
-<p>如何判断当前脚本运行在浏览器还是node环境中？（阿里）</p>
-<pre tabindex=0><code>  this === window ? 'browser' : 'node';
+</code></pre></li><li><p>Zepto的点透问题如何解决？</p></li><li><p>jQueryUI如何自定义组件?</p></li><li><p>需求：实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？</p></li><li><p>如何判断当前脚本运行在浏览器还是node环境中？（阿里）</p><pre tabindex=0><code>  this === window ? &#39;browser&#39; : &#39;node&#39;;
 
   通过判断Global对象是否为window，如果不为window，当前脚本没有运行在浏览器中
-</code></pre></li>
-<li>
-<p>移动端最小触控区域是多大？</p>
-</li>
-<li>
-<p>jQuery 的 slideUp动画 ，如果目标元素是被外部事件驱动, 当鼠标快速地连续触发外部元素事件, 动画会滞后的反复执行，该如何处理呢?</p>
-<pre tabindex=0><code> jquery stop(): 如：$(&quot;#div&quot;).stop().animate({width:&quot;100px&quot;},100);
-</code></pre></li>
-<li>
-<p>把 Script 标签 放在页面的最底部的body封闭之前 和封闭之后有什么区别？浏览器会如何解析它们？</p>
-</li>
-<li>
-<p>移动端的点击事件的有延迟，时间是多久，为什么会有？ 怎么解决这个延时？（click 有 300ms 延迟,为了实现safari的双击事件的设计，浏览器要知道你是不是要双击操作。）</p>
-</li>
-<li>
-<p>知道各种JS框架(Angular, Backbone, Ember, React, Meteor, Knockout&mldr;)么? 能讲出他们各自的优点和缺点么?</p>
-</li>
-<li>
-<p>Underscore 对哪些 JS 原生对象进行了扩展以及提供了哪些好用的函数方法？</p>
-</li>
-<li>
-<p>解释JavaScript中的作用域与变量声明提升？</p>
-</li>
-<li>
-<p>那些操作会造成内存泄漏？</p>
-<pre tabindex=0><code> 内存泄漏指任何对象在您不再拥有或需要它之后仍然存在。
+</code></pre></li><li><p>移动端最小触控区域是多大？</p></li><li><p>jQuery 的 slideUp动画 ，如果目标元素是被外部事件驱动, 当鼠标快速地连续触发外部元素事件, 动画会滞后的反复执行，该如何处理呢?</p><pre tabindex=0><code> jquery stop(): 如：$(&#34;#div&#34;).stop().animate({width:&#34;100px&#34;},100);
+</code></pre></li><li><p>把 Script 标签 放在页面的最底部的body封闭之前 和封闭之后有什么区别？浏览器会如何解析它们？</p></li><li><p>移动端的点击事件的有延迟，时间是多久，为什么会有？ 怎么解决这个延时？（click 有 300ms 延迟,为了实现safari的双击事件的设计，浏览器要知道你是不是要双击操作。）</p></li><li><p>知道各种JS框架(Angular, Backbone, Ember, React, Meteor, Knockout&mldr;)么? 能讲出他们各自的优点和缺点么?</p></li><li><p>Underscore 对哪些 JS 原生对象进行了扩展以及提供了哪些好用的函数方法？</p></li><li><p>解释JavaScript中的作用域与变量声明提升？</p></li><li><p>那些操作会造成内存泄漏？</p><pre tabindex=0><code> 内存泄漏指任何对象在您不再拥有或需要它之后仍然存在。
  垃圾回收器定期扫描对象，并计算引用了每个对象的其他对象的数量。如果一个对象的引用数量为 0（没有其他对象引用过该对象），或对该对象的惟一引用是循环的，那么该对象的内存即可回收。
 
  setTimeout 的第一个参数使用字符串而非函数的话，会引发内存泄漏。
  闭包、控制台日志、循环（在两个对象彼此引用且彼此保留时，就会产生一个循环）
-</code></pre></li>
-<li>
-<p>JQuery一个对象可以同时绑定多个事件，这是如何实现的？</p>
-<pre tabindex=0><code> * 多个事件同一个函数：
-     $(&quot;div&quot;).on(&quot;click mouseover&quot;, function(){});
+</code></pre></li><li><p>JQuery一个对象可以同时绑定多个事件，这是如何实现的？</p><pre tabindex=0><code> * 多个事件同一个函数：
+     $(&#34;div&#34;).on(&#34;click mouseover&#34;, function(){});
  * 多个事件不同函数
-     $(&quot;div&quot;).on({
+     $(&#34;div&#34;).on({
          click: function(){},
          mouseover: function(){}
      });
-</code></pre></li>
-<li>
-<p>Node.js的适用场景？</p>
-</li>
-<li>
-<p>(如果会用node)知道route, middleware, cluster, nodemon, pm2, server-side rendering么?</p>
-</li>
-<li>
-<p>解释一下 Backbone 的 MVC 实现方式？</p>
-</li>
-<li>
-<p>什么是“前端路由”?什么时候适合使用“前端路由”? “前端路由”有哪些优点和缺点?</p>
-</li>
-<li>
-<p>知道什么是webkit么? 知道怎么用浏览器的各种工具来调试和debug代码么?</p>
-<pre tabindex=0><code>  Chrome,Safari浏览器内核。
-</code></pre></li>
-<li>
-<p>如何测试前端代码么? 知道BDD, TDD, Unit Test么? 知道怎么测试你的前端工程么(mocha, sinon, jasmin, qUnit..)?</p>
-</li>
-<li>
-<p>前端templating(Mustache, underscore, handlebars)是干嘛的, 怎么用?</p>
-</li>
-<li>
-<p>简述一下 Handlebars 的基本用法？</p>
-</li>
-<li>
-<p>简述一下 Handlerbars 的对模板的基本处理流程， 如何编译的？如何缓存的？</p>
-</li>
-<li>
-<p>用js实现千位分隔符?(来源：<a href=http://div.io/topic/744>前端农民工</a>，提示：正则+replace)</p>
-<pre tabindex=0><code>  参考：http://www.tuicool.com/articles/ArQZfui
+</code></pre></li><li><p>Node.js的适用场景？</p></li><li><p>(如果会用node)知道route, middleware, cluster, nodemon, pm2, server-side rendering么?</p></li><li><p>解释一下 Backbone 的 MVC 实现方式？</p></li><li><p>什么是“前端路由”?什么时候适合使用“前端路由”? “前端路由”有哪些优点和缺点?</p></li><li><p>知道什么是webkit么? 知道怎么用浏览器的各种工具来调试和debug代码么?</p><pre tabindex=0><code>  Chrome,Safari浏览器内核。
+</code></pre></li><li><p>如何测试前端代码么? 知道BDD, TDD, Unit Test么? 知道怎么测试你的前端工程么(mocha, sinon, jasmin, qUnit..)?</p></li><li><p>前端templating(Mustache, underscore, handlebars)是干嘛的, 怎么用?</p></li><li><p>简述一下 Handlebars 的基本用法？</p></li><li><p>简述一下 Handlerbars 的对模板的基本处理流程， 如何编译的？如何缓存的？</p></li><li><p>用js实现千位分隔符?(来源：<a href=http://div.io/topic/744>前端农民工</a>，提示：正则+replace)</p><pre tabindex=0><code>  参考：http://www.tuicool.com/articles/ArQZfui
   function commafy(num) {
       return num &amp;&amp; num
           .toString()
           .replace(/(\d)(?=(\d{3})+\.)/g, function($0, $1) {
-              return $1 + &quot;,&quot;;
+              return $1 + &#34;,&#34;;
           });
   }
   console.log(commafy(1234567.90)); //1,234,567.90
-</code></pre></li>
-<li>
-<p>检测浏览器版本版本有哪些方式？</p>
-<pre tabindex=0><code>  功能检测、userAgent特征检测
+</code></pre></li><li><p>检测浏览器版本版本有哪些方式？</p><pre tabindex=0><code>  功能检测、userAgent特征检测
 
   比如：navigator.userAgent
-  //&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36
-    (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36&quot;
-</code></pre></li>
-<li>
-<p>What is a Polyfill?</p>
-<pre tabindex=0><code>  polyfill 是“在旧版浏览器上复制标准 API 的 JavaScript 补充”,可以动态地加载 JavaScript 代码或库，在不支持这些标准 API 的浏览器中模拟它们。
+  //&#34;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36
+    (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36&#34;
+</code></pre></li><li><p>What is a Polyfill?</p><pre tabindex=0><code>  polyfill 是“在旧版浏览器上复制标准 API 的 JavaScript 补充”,可以动态地加载 JavaScript 代码或库，在不支持这些标准 API 的浏览器中模拟它们。
   例如，geolocation（地理位置）polyfill 可以在 navigator 对象上添加全局的 geolocation 对象，还能添加 getCurrentPosition 函数以及“坐标”回调对象，
   所有这些都是 W3C 地理位置 API 定义的对象和函数。因为 polyfill 模拟标准 API，所以能够以一种面向所有浏览器未来的方式针对这些 API 进行开发，
   一旦对这些 API 的支持变成绝对大多数，则可以方便地去掉 polyfill，无需做任何额外工作。
-</code></pre></li>
-<li>
-<p>做的项目中，有没有用过或自己实现一些 polyfill 方案（兼容性处理方案）？</p>
-<pre tabindex=0><code>  比如： html5shiv、Geolocation、Placeholder
-</code></pre></li>
-<li>
-<p>我们给一个dom同时绑定两个点击事件，一个用捕获，一个用冒泡。会执行几次事件，会先执行冒泡还是捕获？</p>
-</li>
-<li>
-<p>使用JS实现获取文件扩展名？</p>
-<pre tabindex=0><code>  function getFileExtension(filename) {
-    return filename.slice((filename.lastIndexOf(&quot;.&quot;) - 1 &gt;&gt;&gt; 0) + 2);
+</code></pre></li><li><p>做的项目中，有没有用过或自己实现一些 polyfill 方案（兼容性处理方案）？</p><pre tabindex=0><code>  比如： html5shiv、Geolocation、Placeholder
+</code></pre></li><li><p>我们给一个dom同时绑定两个点击事件，一个用捕获，一个用冒泡。会执行几次事件，会先执行冒泡还是捕获？</p></li><li><p>使用JS实现获取文件扩展名？</p><pre tabindex=0><code>  function getFileExtension(filename) {
+    return filename.slice((filename.lastIndexOf(&#34;.&#34;) - 1 &gt;&gt;&gt; 0) + 2);
   }
 
-  String.lastIndexOf() 方法返回指定值（本例中的'.'）在调用该方法的字符串中最后出现的位置，如果没找到则返回 -1。
-  对于'filename'和'.hiddenfile'，lastIndexOf的返回值分别为0和-1无符号右移操作符(»&gt;) 将-1转换为4294967295，将-2转换为4294967294，这个方法可以保证边缘情况时文件名不变。
-  String.prototype.slice() 从上面计算的索引处提取文件的扩展名。如果索引比文件名的长度大，结果为&quot;&quot;。
-</code></pre></li>
-<li>
-<p>Webpack热更新实现原理?</p>
-<pre tabindex=0><code>  1. Webpack编译期，为需要热更新的 entry 注入热更新代码(EventSource通信)
+  String.lastIndexOf() 方法返回指定值（本例中的&#39;.&#39;）在调用该方法的字符串中最后出现的位置，如果没找到则返回 -1。
+  对于&#39;filename&#39;和&#39;.hiddenfile&#39;，lastIndexOf的返回值分别为0和-1无符号右移操作符(»&gt;) 将-1转换为4294967295，将-2转换为4294967294，这个方法可以保证边缘情况时文件名不变。
+  String.prototype.slice() 从上面计算的索引处提取文件的扩展名。如果索引比文件名的长度大，结果为&#34;&#34;。
+</code></pre></li><li><p>Webpack热更新实现原理?</p><pre tabindex=0><code>  1. Webpack编译期，为需要热更新的 entry 注入热更新代码(EventSource通信)
   2. 页面首次打开后，服务端与客户端通过 EventSource 建立通信渠道，把下一次的 hash 返回前端
   3. 客户端获取到hash，这个hash将作为下一次请求服务端 hot-update.js 和 hot-update.json的hash
   4. 修改页面代码后，Webpack 监听到文件修改后，开始编译，编译完成后，发送 build 消息给客户端
   5. 客户端获取到hash，成功后客户端构造hot-update.js script链接，然后插入主文档
   6. hot-update.js 插入成功后，执行hotAPI 的 createRecord 和 reload方法，获取到 Vue 组件的 render方法，重新 render 组件， 继而实现 UI 无刷新更新。
-</code></pre></li>
-<li>
-<p>请介绍一下JS之事件节流？</p>
-</li>
-<li>
-<p>什么是JS的函数防抖？</p>
-</li>
-</ul>
-<h4 id=httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answersecmascript6-e79bb8e585b3ecmascript6-相关>
-<a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#ecmascript6-%E7%9B%B8%E5%85%B3></a>ECMAScript6 相关
-<a class=heading-link href=#httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answersecmascript6-e79bb8e585b3ecmascript6-%e7%9b%b8%e5%85%b3>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<ul>
-<li>
-<p>Object.is() 与原来的比较操作符“ ===”、“ ==”的区别？</p>
-<pre tabindex=0><code>  两等号判等，会在比较时进行类型转换；
+</code></pre></li><li><p>请介绍一下JS之事件节流？</p></li><li><p>什么是JS的函数防抖？</p></li></ul><h4 id=httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answersecmascript6-e79bb8e585b3ecmascript6-相关><a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#ecmascript6-%E7%9B%B8%E5%85%B3></a>ECMAScript6 相关
+<a class=heading-link href=#httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answersecmascript6-e79bb8e585b3ecmascript6-%e7%9b%b8%e5%85%b3><i class="fa fa-link" aria-hidden=true></i></a></h4><ul><li><p>Object.is() 与原来的比较操作符“ ===”、“ ==”的区别？</p><pre tabindex=0><code>  两等号判等，会在比较时进行类型转换；
   三等号判等(判断严格)，比较时不进行隐式类型转换,（类型不同则会返回false）；
 
   Object.is 在三等号判等的基础上特别处理了 NaN 、-0 和 +0 ，保证 -0 和 +0 不再相同，
   但 Object.is(NaN, NaN) 会返回 true.
 
   Object.is 应被认为有其特殊的用途，而不能用它认为它比其它的相等对比更宽松或严格。
-</code></pre></li>
-<li>
-<p>ES6是如何实现编译成ES5的？</p>
-</li>
-<li>
-<p>css-loader的原理？</p>
-</li>
-</ul>
-<h2 id=httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answerse5898de7abafe6a186e69eb6前端框架>
-<a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6></a>前端框架
-<a class=heading-link href=#httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answerse5898de7abafe6a186e69eb6%e5%89%8d%e7%ab%af%e6%a1%86%e6%9e%b6>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ul>
-<li>
-<p>React 使用场景？</p>
-<pre tabindex=0><code>      逻辑复杂单页应用，偏中后台管理系统，纯展示性的UI页面不合适、
-</code></pre></li>
-<li>
-<p>描述一下React 生命周期</p>
-<pre tabindex=0><code>      渲染过程调用到的生命周期函数，主要几个要知道；
+</code></pre></li><li><p>ES6是如何实现编译成ES5的？</p></li><li><p>css-loader的原理？</p></li></ul><h2 id=httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answerse5898de7abafe6a186e69eb6前端框架><a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6></a>前端框架
+<a class=heading-link href=#httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answerse5898de7abafe6a186e69eb6%e5%89%8d%e7%ab%af%e6%a1%86%e6%9e%b6><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>React 使用场景？</p><pre tabindex=0><code>      逻辑复杂单页应用，偏中后台管理系统，纯展示性的UI页面不合适、
+</code></pre></li><li><p>描述一下React 生命周期</p><pre tabindex=0><code>      渲染过程调用到的生命周期函数，主要几个要知道；
       * constructor
       * getInitialState
       * getDefaultProps
@@ -1621,106 +1218,24 @@ jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展
       卸载过程
 
       componentWillUnmount
-</code></pre></li>
-<li>
-<p>实现组件有哪些方式？</p>
-<pre tabindex=0><code>  React.createClass 使用API来定义组件
+</code></pre></li><li><p>实现组件有哪些方式？</p><pre tabindex=0><code>  React.createClass 使用API来定义组件
   React ES6 class component 用 ES6 的class 来定义组件
   Functional stateless component 通过函数定义无状态组件
-</code></pre></li>
-<li>
-<p>应该在React生命周期的什么阶段发出ajax请求，为什么？</p>
-<pre tabindex=0><code>          AJAX请求应在 componentDidMount函数 进行请求。
-</code></pre></li>
-<li>
-<p>shouldComponentUpdate函数有什么作用？</p>
-<pre tabindex=0><code>          shouldComponentUpdate是一个允许我们自行决定某些组件（以及他们的子组件）是否进行更新的生命周期函数，reconciliation的最终目的是尽可能以最有效的方式去根据新的state更新UI，
+</code></pre></li><li><p>应该在React生命周期的什么阶段发出ajax请求，为什么？</p><pre tabindex=0><code>          AJAX请求应在 componentDidMount函数 进行请求。
+</code></pre></li><li><p>shouldComponentUpdate函数有什么作用？</p><pre tabindex=0><code>          shouldComponentUpdate是一个允许我们自行决定某些组件（以及他们的子组件）是否进行更新的生命周期函数，reconciliation的最终目的是尽可能以最有效的方式去根据新的state更新UI，
           如果你已经知道UI的哪些状态无需进行改变，就没必要去让React去判断它是否该改变。 让shouldComponentUpdate返回falss, React就会让当前的组件和其子组件保持不变。
-</code></pre></li>
-<li>
-<p>当组件的setState函数被调用之后，发生了什么？</p>
-<pre tabindex=0><code>          React会做的第一件事就是把你传递给setState的参数对象合并到组件原先的state。这个事件会导致一个“reconciliation”（调和）的过程。reconciliation的最终目标就是，
+</code></pre></li><li><p>当组件的setState函数被调用之后，发生了什么？</p><pre tabindex=0><code>          React会做的第一件事就是把你传递给setState的参数对象合并到组件原先的state。这个事件会导致一个“reconciliation”（调和）的过程。reconciliation的最终目标就是，
           尽可能以最高效的方法，去基于新的state来更新UI。为了达到这个目的，React会构建一个React元素树（你可以把这个想象成一个表示UI的一个对象）。一旦这个树构建完毕，
           React为了根据新的state去决定UI要怎么进行改变，它会找出这棵新树和旧树的不同之处。React能够相对精确地找出哪些位置发生了改变以及如何发生了什么变化，
           并且知道如何只通过必要的更新来最小化重渲染。
-</code></pre></li>
-<li>
-<p>为什么循环产生的组件中要利用上key这个特殊的prop？</p>
-<pre tabindex=0><code>          Keys负责帮助React跟踪列表中哪些元素被改变/添加/移除。React利用子元素的key在比较两棵树的时候，快速得知一个元素是新的还是刚刚被移除。没有keys，React也就不知道当前哪一个的item被移除了。
-</code></pre></li>
-<li>
-<p>React-router 路由的实现原理？</p>
-</li>
-<li>
-<p>说说React Native,Weex框架的实现原理？</p>
-</li>
-<li>
-<p>受控组件(Controlled Component)与非受控组件(Uncontrolled Component)的区别</p>
-</li>
-<li>
-<p>refs 是什么?</p>
-<pre tabindex=0><code>      Refs是能访问DOM元素或组件实例的一个函数；
-</code></pre></li>
-<li>
-<p>React为什么自己定义一套事件体系呢，与浏览器原生事件体系有什么关系？</p>
-</li>
-<li>
-<p>什么时候应该选择用class实现一个组件，什么时候用一个函数实现一个组件？</p>
-<pre tabindex=0><code>      组件用到了state或者用了生命周期函数，那么就该使用Class component。其他情况下，应使用Functional component。
-</code></pre></li>
-<li>
-<p>什么是HoC（Higher-Order Component）？适用于什么场景？</p>
-<pre tabindex=0><code>      高阶组件就是一个 React 组件包裹着另外一个 React 组件
-</code></pre></li>
-<li>
-<p>并不是父子关系的组件，如何实现相互的数据通信？</p>
-<pre tabindex=0><code>      使用父组件，通过props将变量传入子组件（如通过refs，父组件获取一个子组件的方法，简单包装后，将包装后的方法通过props传入另一个子组件）
-</code></pre></li>
-<li>
-<p>用过 React 技术栈中哪些数据流管理库？</p>
-<pre tabindex=0><code>      Redux\Dva
-</code></pre></li>
-<li>
-<p>Redux是如何做到可预测呢？</p>
-</li>
-<li>
-<p>Redux将React组件划分为哪两种？</p>
-</li>
-<li>
-<p>Redux是如何将state注入到React组件上的？</p>
-</li>
-<li>
-<p>请描述一次完整的 Redux 数据流</p>
-</li>
-<li>
-<p>React的批量更新机制 BatchUpdates？</p>
-</li>
-<li>
-<p>React与Vue，各自的组件更新进行对比，它们有哪些区别？</p>
-</li>
-</ul>
-<h2 id=httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answerse585b6e4bb96e997aee9a298其他问题>
-<a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98></a>其他问题
-<a class=heading-link href=#httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answerse585b6e4bb96e997aee9a298%e5%85%b6%e4%bb%96%e9%97%ae%e9%a2%98>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ul>
-<li>
-<p>原来公司工作流程是怎么样的，如何与其他人协作的？如何跨部门合作的？</p>
-</li>
-<li>
-<p>你遇到过比较难的技术问题是？你是如何解决的？</p>
-</li>
-<li>
-<p>设计模式 知道什么是singleton, factory, strategy, decrator么?</p>
-</li>
-<li>
-<p>常使用的库有哪些？常用的前端开发工具？开发过什么应用或组件？</p>
-</li>
-<li>
-<p>页面重构怎么操作？</p>
-<pre tabindex=0><code>  网站重构：在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。
+</code></pre></li><li><p>为什么循环产生的组件中要利用上key这个特殊的prop？</p><pre tabindex=0><code>          Keys负责帮助React跟踪列表中哪些元素被改变/添加/移除。React利用子元素的key在比较两棵树的时候，快速得知一个元素是新的还是刚刚被移除。没有keys，React也就不知道当前哪一个的item被移除了。
+</code></pre></li><li><p>React-router 路由的实现原理？</p></li><li><p>说说React Native,Weex框架的实现原理？</p></li><li><p>受控组件(Controlled Component)与非受控组件(Uncontrolled Component)的区别</p></li><li><p>refs 是什么?</p><pre tabindex=0><code>      Refs是能访问DOM元素或组件实例的一个函数；
+</code></pre></li><li><p>React为什么自己定义一套事件体系呢，与浏览器原生事件体系有什么关系？</p></li><li><p>什么时候应该选择用class实现一个组件，什么时候用一个函数实现一个组件？</p><pre tabindex=0><code>      组件用到了state或者用了生命周期函数，那么就该使用Class component。其他情况下，应使用Functional component。
+</code></pre></li><li><p>什么是HoC（Higher-Order Component）？适用于什么场景？</p><pre tabindex=0><code>      高阶组件就是一个 React 组件包裹着另外一个 React 组件
+</code></pre></li><li><p>并不是父子关系的组件，如何实现相互的数据通信？</p><pre tabindex=0><code>      使用父组件，通过props将变量传入子组件（如通过refs，父组件获取一个子组件的方法，简单包装后，将包装后的方法通过props传入另一个子组件）
+</code></pre></li><li><p>用过 React 技术栈中哪些数据流管理库？</p><pre tabindex=0><code>      Redux\Dva
+</code></pre></li><li><p>Redux是如何做到可预测呢？</p></li><li><p>Redux将React组件划分为哪两种？</p></li><li><p>Redux是如何将state注入到React组件上的？</p></li><li><p>请描述一次完整的 Redux 数据流</p></li><li><p>React的批量更新机制 BatchUpdates？</p></li><li><p>React与Vue，各自的组件更新进行对比，它们有哪些区别？</p></li></ul><h2 id=httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answerse585b6e4bb96e997aee9a298其他问题><a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98></a>其他问题
+<a class=heading-link href=#httpsgithubcommarkyunmy-blogtreemasterfront-end-developer-questionsquestions-and-answerse585b6e4bb96e997aee9a298%e5%85%b6%e4%bb%96%e9%97%ae%e9%a2%98><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>原来公司工作流程是怎么样的，如何与其他人协作的？如何跨部门合作的？</p></li><li><p>你遇到过比较难的技术问题是？你是如何解决的？</p></li><li><p>设计模式 知道什么是singleton, factory, strategy, decrator么?</p></li><li><p>常使用的库有哪些？常用的前端开发工具？开发过什么应用或组件？</p></li><li><p>页面重构怎么操作？</p><pre tabindex=0><code>  网站重构：在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。
   也就是说是在不改变UI的情况下，对网站进行优化，在扩展的同时保持一致的UI。
 
   对于传统的网站来说重构通常是：
@@ -1744,10 +1259,7 @@ jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展
   采用CDN来加速资源加载
   对于JS DOM的优化
   HTTP服务器的文件缓存
-</code></pre></li>
-<li>
-<p>列举IE与其他浏览器不一样的特性？</p>
-<pre tabindex=0><code>  1、事件不同之处：
+</code></pre></li><li><p>列举IE与其他浏览器不一样的特性？</p><pre tabindex=0><code>  1、事件不同之处：
 
          触发事件的元素被认为是目标（target）。而在 IE 中，目标包含在 event 对象的 srcElement 属性；
 
@@ -1756,46 +1268,28 @@ jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展
       阻止某个事件的默认行为，IE 中阻止某个事件的默认行为，必须将 returnValue 属性设置为 false，Mozilla 中，需要调用 preventDefault() 方法；
 
       停止事件冒泡，IE 中阻止事件进一步冒泡，需要设置 cancelBubble 为 true，Mozzilla 中，需要调用 stopPropagation()；
-</code></pre></li>
-<li>
-<p>99%的网站都需要被重构是那本书上写的？</p>
-<pre tabindex=0><code>  网站重构：应用web标准进行设计（第2版）
-</code></pre></li>
-<li>
-<p>什么叫优雅降级和渐进增强？</p>
-<pre tabindex=0><code>  优雅降级：Web站点在所有新式浏览器中都能正常工作，如果用户使用的是老式浏览器，则代码会针对旧版本的IE进行降级处理了,使之在旧式浏览器上以某种形式降级体验却不至于完全不能用。
+</code></pre></li><li><p>99%的网站都需要被重构是那本书上写的？</p><pre tabindex=0><code>  网站重构：应用web标准进行设计（第2版）
+</code></pre></li><li><p>什么叫优雅降级和渐进增强？</p><pre tabindex=0><code>  优雅降级：Web站点在所有新式浏览器中都能正常工作，如果用户使用的是老式浏览器，则代码会针对旧版本的IE进行降级处理了,使之在旧式浏览器上以某种形式降级体验却不至于完全不能用。
   如：border-shadow
 
   渐进增强：从被所有浏览器支持的基本功能开始，逐步地添加那些只有新版本浏览器才支持的功能,向页面增加不影响基础浏览器的额外样式和功能的。当浏览器支持时，它们会自动地呈现出来并发挥作用。
   如：默认使用flash上传，但如果浏览器支持 HTML5 的文件上传功能，则使用HTML5实现更好的体验；
-</code></pre></li>
-<li>
-<p>是否了解公钥加密和私钥加密。</p>
-<pre tabindex=0><code>  一般情况下是指私钥用于对数据进行签名，公钥用于对签名进行验证;
+</code></pre></li><li><p>是否了解公钥加密和私钥加密。</p><pre tabindex=0><code>  一般情况下是指私钥用于对数据进行签名，公钥用于对签名进行验证;
   HTTP网站在浏览器端用公钥加密敏感数据，然后在服务器端再用私钥解密。
-</code></pre></li>
-<li>
-<p>WEB应用从服务器主动推送Data到客户端有那些方式？</p>
-<pre tabindex=0><code>  html5提供的Websocket
+</code></pre></li><li><p>WEB应用从服务器主动推送Data到客户端有那些方式？</p><pre tabindex=0><code>  html5提供的Websocket
   不可见的iframe
   WebSocket通过Flash
   XHR长时间连接
   XHR Multipart Streaming
   &lt;script&gt;标签的长时间连接(可跨域)
-</code></pre></li>
-<li>
-<p>对Node的优点和缺点提出了自己的看法？</p>
-<pre tabindex=0><code>  *（优点）因为Node是基于事件驱动和无阻塞的，所以非常适合处理并发请求，
+</code></pre></li><li><p>对Node的优点和缺点提出了自己的看法？</p><pre tabindex=0><code>  *（优点）因为Node是基于事件驱动和无阻塞的，所以非常适合处理并发请求，
     因此构建在Node上的代理服务器相比其他技术实现（如Ruby）的服务器表现要好得多。
     此外，与Node代理服务器交互的客户端代码是由javascript语言编写的，
     因此客户端和服务器端都用同一种语言编写，这是非常美妙的事情。
 
   *（缺点）Node是一个相对新的开源项目，所以不太稳定，它总是一直在变，
     而且缺少足够多的第三方库支持。看起来，就像是Ruby/Rails当年的样子。
-</code></pre></li>
-<li>
-<p>你有用过哪些前端性能优化的方法？</p>
-<pre tabindex=0><code>    （1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。
+</code></pre></li><li><p>你有用过哪些前端性能优化的方法？</p><pre tabindex=0><code>    （1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。
 
     （2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
 
@@ -1811,10 +1305,7 @@ jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展
 
     （8） 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。
     对普通的网站有一个统一的思路，就是尽量向前端优化、减少数据库操作、减少磁盘IO。向前端优化指的是，在不影响功能和体验的情况下，能在浏览器执行的不要在服务端执行，能在缓存服务器上直接返回的不要到应用服务器，程序能直接取得的结果不要到外部取得，本机内能取得的数据不要到远程取，内存能取到的不要到磁盘取，缓存中有的不要去数据库查询。减少数据库操作指减少更新次数、缓存结果减少查询次数、将数据库执行的操作尽可能的让你的程序完成（例如join查询），减少磁盘IO指尽量不使用文件系统作为缓存、减少读写文件次数等。程序优化永远要优化慢的部分，换语言是无法“优化”的。
-</code></pre></li>
-<li>
-<p>http状态码有那些？分别代表是什么意思？</p>
-<pre tabindex=0><code>      简单版
+</code></pre></li><li><p>http状态码有那些？分别代表是什么意思？</p><pre tabindex=0><code>      简单版
       [
           100  Continue    继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息
           200  OK         正常返回信息
@@ -1910,10 +1401,7 @@ jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展
       　　Error 501 - 未实现
     HTTP 502 - 网关错误
     HTTP 503：由于超载或停机维护，服务器目前无法使用，一段时间后可能恢复正常
-</code></pre></li>
-<li>
-<p>一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）</p>
-<pre tabindex=0><code>    注：这题胜在区分度高，知识点覆盖广，再不懂的人，也能答出几句，
+</code></pre></li><li><p>一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）</p><pre tabindex=0><code>    注：这题胜在区分度高，知识点覆盖广，再不懂的人，也能答出几句，
     而高手可以根据自己擅长的领域自由发挥，从URL规范、HTTP协议、DNS、CDN、数据库查询、
     到浏览器流式解析、CSS规则构建、layout、paint、onload/domready、JS执行、JS API绑定等等；
 
@@ -1934,36 +1422,16 @@ jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展
       服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；
       浏览器对加载到的资源（HTML、JS、CSS等）进行语法解析，建立相应的内部数据结构（如HTML的DOM）；
       载入解析到的资源文件，渲染页面，完成。
-</code></pre></li>
-<li>
-<p>部分地区用户反应网站很卡，请问有哪些可能性的原因，以及解决方法？</p>
-</li>
-<li>
-<p>从打开app到刷新出内容，整个过程中都发生了什么，如果感觉慢，怎么定位问题，怎么解决?</p>
-</li>
-<li>
-<p>第一次访问页面中时弹出引导，用户关闭引导，之后再次进入页面时不希望出现引导，如何实现？</p>
-<pre tabindex=0><code>      localStorage
-</code></pre></li>
-<li>
-<p>除了前端以外还了解什么其它技术么？你最最厉害的技能是什么？</p>
-</li>
-<li>
-<p>你用的得心应手用的熟练地编辑器&开发环境是什么样子？</p>
-<pre tabindex=0><code>  Sublime Text 3 + 插件
+</code></pre></li><li><p>部分地区用户反应网站很卡，请问有哪些可能性的原因，以及解决方法？</p></li><li><p>从打开app到刷新出内容，整个过程中都发生了什么，如果感觉慢，怎么定位问题，怎么解决?</p></li><li><p>第一次访问页面中时弹出引导，用户关闭引导，之后再次进入页面时不希望出现引导，如何实现？</p><pre tabindex=0><code>      localStorage
+</code></pre></li><li><p>除了前端以外还了解什么其它技术么？你最最厉害的技能是什么？</p></li><li><p>你用的得心应手用的熟练地编辑器&开发环境是什么样子？</p><pre tabindex=0><code>  Sublime Text 3 + 插件
   Google chrome 查看页面UI、动画效果和交互功能，Firebug 兼容测试和
   Node.js + webpack
   Git 版本控制和Code Review
-</code></pre></li>
-<li>
-<p>对前端工程师这个职位是怎么样理解的？它的前景会怎么样？</p>
-<pre tabindex=0><code>  前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近。
+</code></pre></li><li><p>对前端工程师这个职位是怎么样理解的？它的前景会怎么样？</p><pre tabindex=0><code>  前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近。
   1、实现界面交互
   2、提升用户体验
   3、有了Node.js，前端可以实现服务端的一些事情
-</code></pre></li>
-</ul>
-<pre tabindex=0><code>前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好，
+</code></pre></li></ul><pre tabindex=0><code>前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好，
 
 参与项目，快速高质量完成实现效果图，精确到1px；
 
@@ -2038,41 +1506,10 @@ JS 分文件夹存放 命名以该JS功能为准的英文翻译。
 
 
 ## [](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%BD%91%E7%AB%99%E6%8E%A8%E8%8D%90)前端学习网站推荐
-</code></pre><ol>
-<li>
-<p>极客标签： <a href=http://www.gbtags.com/>http://www.gbtags.com/</a></p>
-</li>
-<li>
-<p>码农周刊： <a href=http://weekly.manong.io/issues/>http://weekly.manong.io/issues/</a></p>
-</li>
-<li>
-<p>前端周刊： <a href=http://www.feweekly.com/issues>http://www.feweekly.com/issues</a></p>
-</li>
-<li>
-<p>慕课网： <a href=http://www.imooc.com/>http://www.imooc.com/</a></p>
-</li>
-<li>
-<p>div.io： <a href=http://div.io>http://div.io</a></p>
-</li>
-<li>
-<p>Hacker News： <a href=https://news.ycombinator.com/news>https://news.ycombinator.com/news</a></p>
-</li>
-<li>
-<p>InfoQ： <a href=http://www.infoq.com/>http://www.infoq.com/</a></p>
-</li>
-<li>
-<p>w3cplus： <a href=http://www.w3cplus.com/>http://www.w3cplus.com/</a></p>
-</li>
-<li>
-<p>Stack Overflow： <a href=http://stackoverflow.com/>http://stackoverflow.com/</a></p>
-</li>
-</ol>
-<p>10.w3school： <a href=http://www.w3school.com.cn/>http://www.w3school.com.cn/</a></p>
-<p>11.mozilla： <a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript>https://developer.mozilla.org/zh-CN/docs/Web/JavaScript</a></p>
-<pre tabindex=0><code>
+</code></pre><ol><li><p>极客标签： <a href=http://www.gbtags.com/>http://www.gbtags.com/</a></p></li><li><p>码农周刊： <a href=http://weekly.manong.io/issues/>http://weekly.manong.io/issues/</a></p></li><li><p>前端周刊： <a href=http://www.feweekly.com/issues>http://www.feweekly.com/issues</a></p></li><li><p>慕课网： <a href=http://www.imooc.com/>http://www.imooc.com/</a></p></li><li><p>div.io： <a href=http://div.io>http://div.io</a></p></li><li><p>Hacker News： <a href=https://news.ycombinator.com/news>https://news.ycombinator.com/news</a></p></li><li><p>InfoQ： <a href=http://www.infoq.com/>http://www.infoq.com/</a></p></li><li><p>w3cplus： <a href=http://www.w3cplus.com/>http://www.w3cplus.com/</a></p></li><li><p>Stack Overflow： <a href=http://stackoverflow.com/>http://stackoverflow.com/</a></p></li></ol><p>10.w3school： <a href=http://www.w3school.com.cn/>http://www.w3school.com.cn/</a></p><p>11.mozilla： <a href=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript>https://developer.mozilla.org/zh-CN/docs/Web/JavaScript</a></p><pre tabindex=0><code>
 ## [](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E6%96%87%E6%A1%A3%E6%8E%A8%E8%8D%90)文档推荐
 
-1. [jQuery 基本原理](http://docs.huihoo.com/jquery/jquery-fundamentals/zh-cn/index.html &quot;jQuery 基本原理&quot;)
+1. [jQuery 基本原理](http://docs.huihoo.com/jquery/jquery-fundamentals/zh-cn/index.html &#34;jQuery 基本原理&#34;)
   
 2. [JavaScript 秘密花园](http://bonsaiden.github.io/JavaScript-Garden/zh/)
   
@@ -2081,15 +1518,6 @@ JS 分文件夹存放 命名以该JS功能为准的英文翻译。
 4. [JavaScript 标准参考教程](http://javascript.ruanyifeng.com/)
   
 5. [ECMAScript 6入门](http://es6.ruanyifeng.com/)
-</code></pre>
-<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=4307b66e9a4681aa07edc08ff7ddde67 data-page-url=https://chenkai.life/hide/web-min-shi-qsan/ data-page-title=前端开发面试题及答案 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
-</article>
-</section>
-</div>
-</main>
-<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+</code></pre><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=4307b66e9a4681aa07edc08ff7ddde67 data-page-url=https://chenkai.life/hide/web-min-shi-qsan/ data-page-title=前端开发面试题及答案 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.cb0c595e02234420f3ad3886bf4a9bd2874d0e1e78e090138a9ef158b35aaf17.js integrity="sha256-ywxZXgIjRCDzrTiGv0qb0odNDh544JATip7xWLNarxc="></script>
 <script src=/js/custom.js></script>
-<script src=/js/font.min.js></script>
-</body>
-<script>'serviceWorker'in navigator&&navigator.serviceWorker.register('/service-worker.js')</script>
-</html>
+<script src=/js/font.min.js></script></body><script>"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js")</script></html>

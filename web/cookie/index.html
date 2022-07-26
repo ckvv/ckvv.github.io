@@ -1,174 +1,34 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=content-language content="en">
-<meta name=theme-color content="#ffffff">
-<meta name=color-scheme content="light dark">
-<meta name=description content="设置cookie    function setCookie(options) { const { name, data } = options; const age = options.age || 24 * 3600000; const domain = options.domain || window.location.hostname; document.cookie = `${name}=${data}; path=/; max-age=${age}; domain=${domain}`; } 获取cookie    function getCookie(cookie_name) { let value = null; let allcookies = document.cookie; let cookie_pos = allcookies.indexOf(cookie_name); if (cookie_pos != -1) { cookie_pos = cookie_pos + cookie_name.length + 1; let cookie_end = allcookies.indexOf(&#34;;&#34;, cookie_pos); if (cookie_end == -1) { cookie_end = allcookies.">
-<meta name=keywords content>
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="浏览器处理cookie">
-<meta name=twitter:description content="设置cookie    function setCookie(options) { const { name, data } = options; const age = options.age || 24 * 3600000; const domain = options.domain || window.location.hostname; document.cookie = `${name}=${data}; path=/; max-age=${age}; domain=${domain}`; } 获取cookie    function getCookie(cookie_name) { let value = null; let allcookies = document.cookie; let cookie_pos = allcookies.indexOf(cookie_name); if (cookie_pos != -1) { cookie_pos = cookie_pos + cookie_name.length + 1; let cookie_end = allcookies.indexOf(&#34;;&#34;, cookie_pos); if (cookie_end == -1) { cookie_end = allcookies.">
-<meta property="og:title" content="浏览器处理cookie">
-<meta property="og:description" content="设置cookie    function setCookie(options) { const { name, data } = options; const age = options.age || 24 * 3600000; const domain = options.domain || window.location.hostname; document.cookie = `${name}=${data}; path=/; max-age=${age}; domain=${domain}`; } 获取cookie    function getCookie(cookie_name) { let value = null; let allcookies = document.cookie; let cookie_pos = allcookies.indexOf(cookie_name); if (cookie_pos != -1) { cookie_pos = cookie_pos + cookie_name.length + 1; let cookie_end = allcookies.indexOf(&#34;;&#34;, cookie_pos); if (cookie_end == -1) { cookie_end = allcookies.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://chenkai.life/web/cookie/"><meta property="article:section" content="web">
-<meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
-<title>
-浏览器处理cookie · CK's Blog
-</title>
-<link rel=canonical href=https://chenkai.life/web/cookie/>
-<link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen>
-<link rel=icon type=image/svg+xml href=/favicon.ico>
-<link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png>
-<meta name=generator content="Hugo 0.91.2">
-<link rel=manifest href=/manifest.webmanifest>
-</head>
-<body class="preload-transitions colorscheme-auto">
-<div class=float-container>
-<span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg>
-</span>
-</div>
-<details id=table-of-contents-wapper>
-<summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
-</summary>
-</details>
-<main class=wrapper>
-<nav class=navigation>
-<section class=container>
-<a class=navigation-title href=/>
-CK's Blog
-</a>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=theme-color content="#ffffff"><meta name=color-scheme content="light dark"><meta name=description content="设置 cookie function setCookie(options) { const { name, data } = options; const age = options.age || 24 * 3600000; const domain = options.domain || window.location.hostname; document.cookie = `${name}=${data}; path=/; max-age=${age}; domain=${domain}`; } 获取 cookie function getCookie(cookie_name) { let value = null; let allcookies = document.cookie; let cookie_pos = allcookies.indexOf(cookie_name); if (cookie_pos != -1) { cookie_pos = cookie_pos + cookie_name.length + 1; let cookie_end = allcookies.indexOf(&#34;;&#34;, cookie_pos); if (cookie_end == -1) { cookie_end = allcookies."><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="浏览器处理cookie"><meta name=twitter:description content="设置 cookie function setCookie(options) { const { name, data } = options; const age = options.age || 24 * 3600000; const domain = options.domain || window.location.hostname; document.cookie = `${name}=${data}; path=/; max-age=${age}; domain=${domain}`; } 获取 cookie function getCookie(cookie_name) { let value = null; let allcookies = document.cookie; let cookie_pos = allcookies.indexOf(cookie_name); if (cookie_pos != -1) { cookie_pos = cookie_pos + cookie_name.length + 1; let cookie_end = allcookies.indexOf(&#34;;&#34;, cookie_pos); if (cookie_end == -1) { cookie_end = allcookies."><meta property="og:title" content="浏览器处理cookie"><meta property="og:description" content="设置 cookie function setCookie(options) { const { name, data } = options; const age = options.age || 24 * 3600000; const domain = options.domain || window.location.hostname; document.cookie = `${name}=${data}; path=/; max-age=${age}; domain=${domain}`; } 获取 cookie function getCookie(cookie_name) { let value = null; let allcookies = document.cookie; let cookie_pos = allcookies.indexOf(cookie_name); if (cookie_pos != -1) { cookie_pos = cookie_pos + cookie_name.length + 1; let cookie_end = allcookies.indexOf(&#34;;&#34;, cookie_pos); if (cookie_end == -1) { cookie_end = allcookies."><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai.life/web/cookie/"><meta property="article:section" content="web"><meta property="article:published_time" content="2021-07-09T00:00:00+00:00"><meta property="article:modified_time" content="2022-07-26T14:58:29+08:00"><title>浏览器处理cookie · CK's Blog</title><link rel=canonical href=https://chenkai.life/web/cookie/><link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/favicon.ico><link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png><meta name=generator content="Hugo 0.101.0"><link rel=manifest href=/manifest.webmanifest></head><body class="preload-transitions colorscheme-auto"><div class=float-container><span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg></span></div><details id=table-of-contents-wapper><summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></summary></details><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>CK's Blog</a>
 <input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
-</label>
-<ul class=navigation-list>
-<li class=navigation-item>
-<a class=navigation-link href=/>Home</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/tags/>Tags</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/marks/>Marks</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/about/>About</a>
-</li>
-<li class=navigation-item id=search-content>
-<input class=search-int type=text placeholder=Search>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/marks/>Marks</a></li><li class=navigation-item><a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input class=search-int type=text placeholder=Search>
 <button class=search-btn data-type=github>GitHub</button>
-<button class=search-btn data-type=google>Google</button>
-</li>
-</ul>
-</section>
-</nav>
-<div class=content>
-<section class="container page">
-<article>
-<header>
-<h1 class=title>
-<a class=title-link href=https://chenkai.life/web/cookie/>
-浏览器处理cookie
-</a>
-</h1>
-<div class=edit-link style=float:right;color:#0366d6>
-<a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/web/cookie.md>编辑</a>
-</div>
-</header>
-<div class=post-meta>
-<div class=date>
-<span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
-<time datetime=2021-07-09T00:00:00Z>
-2021-07-09
-</time>
-</span>
-</div>
-<div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
-<span class=tag>
-<a href=/tags/js/>js</a>
-</span>
+<button class=search-btn data-type=google>Google</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai.life/web/cookie/>浏览器处理cookie</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/web/cookie.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg><time datetime=2021-07-09T00:00:00Z>2021-07-09</time></span></div><div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg><span class=tag><a href=/tags/web/>Web</a></span>
 <span class=separator>•</span>
-<span class=tag>
-<a href=/tags/cookie/>cookie</a>
-</span></div>
-</div>
-<h2 id=设置cookie>
-设置cookie
-<a class=heading-link href=#%e8%ae%be%e7%bd%aecookie>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setCookie</span>(<span style=color:#a6e22e>options</span>) {
-  <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>name</span>, <span style=color:#a6e22e>data</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>options</span>;
-  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>age</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>options</span>.<span style=color:#a6e22e>age</span> <span style=color:#f92672>||</span> <span style=color:#ae81ff>24</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>3600000</span>;
-  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>domain</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>options</span>.<span style=color:#a6e22e>domain</span> <span style=color:#f92672>||</span> window.<span style=color:#a6e22e>location</span>.<span style=color:#a6e22e>hostname</span>;
-  document.<span style=color:#a6e22e>cookie</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>name</span><span style=color:#e6db74>}</span><span style=color:#e6db74>=</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>data</span><span style=color:#e6db74>}</span><span style=color:#e6db74>; path=/; max-age=</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>age</span><span style=color:#e6db74>}</span><span style=color:#e6db74>; domain=</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>domain</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>;
-}
-</code></pre></div><h2 id=获取cookie>
-获取cookie
-<a class=heading-link href=#%e8%8e%b7%e5%8f%96cookie>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>getCookie</span>(<span style=color:#a6e22e>cookie_name</span>) {
-  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>value</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span>;
-  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>allcookies</span> <span style=color:#f92672>=</span> document.<span style=color:#a6e22e>cookie</span>;
-  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>cookie_pos</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>allcookies</span>.<span style=color:#a6e22e>indexOf</span>(<span style=color:#a6e22e>cookie_name</span>);
-  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>cookie_pos</span> <span style=color:#f92672>!=</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) {
-    <span style=color:#a6e22e>cookie_pos</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>cookie_pos</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>cookie_name</span>.<span style=color:#a6e22e>length</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>;
-    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>cookie_end</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>allcookies</span>.<span style=color:#a6e22e>indexOf</span>(<span style=color:#e6db74>&#34;;&#34;</span>, <span style=color:#a6e22e>cookie_pos</span>);
-    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>cookie_end</span> <span style=color:#f92672>==</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) {
-      <span style=color:#a6e22e>cookie_end</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>allcookies</span>.<span style=color:#a6e22e>length</span>;
-    }
-    <span style=color:#a6e22e>value</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>unescape</span>(<span style=color:#a6e22e>allcookies</span>.<span style=color:#a6e22e>substring</span>(<span style=color:#a6e22e>cookie_pos</span>, <span style=color:#a6e22e>cookie_end</span>));
-  }
-  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>value</span>;
-}
-</code></pre></div><h2 id=删除cookie>
-删除cookie
-<a class=heading-link href=#%e5%88%a0%e9%99%a4cookie>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>设置cookie过期时间小于当前时间，那么就会删除该cookie<code>"token=; expire=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=localhost</code></p>
-<h3 id=cookie无法删除>
-cookie无法删除
-<a class=heading-link href=#cookie%e6%97%a0%e6%b3%95%e5%88%a0%e9%99%a4>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>不能删除cookie一般有以下两种情况</p>
-<h2 id=可以获取cookie>
-可以获取cookie
-<a class=heading-link href=#%e5%8f%af%e4%bb%a5%e8%8e%b7%e5%8f%96cookie>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p><code>document.cookie</code>可以拿到cookie，一般是因为path或者domain写错了导致的</p>
-<h2 id=获取到到cookie为空>
-获取到到cookie为空
-<a class=heading-link href=#%e8%8e%b7%e5%8f%96%e5%88%b0%e5%88%b0cookie%e4%b8%ba%e7%a9%ba>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>cookie存在但是<code>document.cookie</code>拿到的cookie为空，可能是因为cookie设置了HttpOnly，如果HTTP响应头中包含HttpOnly标志，只要浏览器支持HttpOnly标志，客户端脚本就无法访问cookie，并且无法设置该cookie。客户端脚本代码尝试读取包含HttpOnly标志的cookie，如果浏览器支持HttpOnly，则返回一个空字符串作为结果。这样能够阻止恶意代码（通常是XSS攻击）将cookie数据发到攻击者网站。
-如果要删除cookie需要通过发一个退出到请求，通过后端达到删除cookie的目的。</p>
-<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=d7b24f4f57550e680adc234ebc52a647 data-page-url=https://chenkai.life/web/cookie/ data-page-title=浏览器处理cookie data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
-</article>
-</section>
-</div>
-</main>
-<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+<span class=tag><a href=/tags/cookie/>Cookie</a></span></div></div><h2 id=设置-cookie>设置 cookie
+<a class=heading-link href=#%e8%ae%be%e7%bd%ae-cookie><i class="fa fa-link" aria-hidden=true></i></a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setCookie</span>(<span style=color:#a6e22e>options</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>name</span>, <span style=color:#a6e22e>data</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>options</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>age</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>options</span>.<span style=color:#a6e22e>age</span> <span style=color:#f92672>||</span> <span style=color:#ae81ff>24</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>3600000</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>domain</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>options</span>.<span style=color:#a6e22e>domain</span> <span style=color:#f92672>||</span> window.<span style=color:#a6e22e>location</span>.<span style=color:#a6e22e>hostname</span>;
+</span></span><span style=display:flex><span>  document.<span style=color:#a6e22e>cookie</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>name</span><span style=color:#e6db74>}</span><span style=color:#e6db74>=</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>data</span><span style=color:#e6db74>}</span><span style=color:#e6db74>; path=/; max-age=</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>age</span><span style=color:#e6db74>}</span><span style=color:#e6db74>; domain=</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>domain</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=获取-cookie>获取 cookie
+<a class=heading-link href=#%e8%8e%b7%e5%8f%96-cookie><i class="fa fa-link" aria-hidden=true></i></a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>getCookie</span>(<span style=color:#a6e22e>cookie_name</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>value</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>allcookies</span> <span style=color:#f92672>=</span> document.<span style=color:#a6e22e>cookie</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>cookie_pos</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>allcookies</span>.<span style=color:#a6e22e>indexOf</span>(<span style=color:#a6e22e>cookie_name</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>cookie_pos</span> <span style=color:#f92672>!=</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>cookie_pos</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>cookie_pos</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>cookie_name</span>.<span style=color:#a6e22e>length</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>cookie_end</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>allcookies</span>.<span style=color:#a6e22e>indexOf</span>(<span style=color:#e6db74>&#34;;&#34;</span>, <span style=color:#a6e22e>cookie_pos</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>cookie_end</span> <span style=color:#f92672>==</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>cookie_end</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>allcookies</span>.<span style=color:#a6e22e>length</span>;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>value</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>unescape</span>(<span style=color:#a6e22e>allcookies</span>.<span style=color:#a6e22e>substring</span>(<span style=color:#a6e22e>cookie_pos</span>, <span style=color:#a6e22e>cookie_end</span>));
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>value</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=删除-cookie>删除 cookie
+<a class=heading-link href=#%e5%88%a0%e9%99%a4-cookie><i class="fa fa-link" aria-hidden=true></i></a></h2><p>设置 cookie 过期时间小于当前时间，那么就会删除该 cookie<code>"token=; expire=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=localhost</code></p><h3 id=cookie-无法删除>cookie 无法删除
+<a class=heading-link href=#cookie-%e6%97%a0%e6%b3%95%e5%88%a0%e9%99%a4><i class="fa fa-link" aria-hidden=true></i></a></h3><p>不能删除 cookie 一般有以下两种情况</p><ul><li>可以获取 cookie</li></ul><p><code>document.cookie</code>可以拿到 cookie，一般是因为 path 或者 domain 写错了导致的</p><ul><li>获取到到 cookie 为空</li></ul><p>cookie 存在但是<code>document.cookie</code>拿到的 cookie 为空，可能是因为 cookie 设置了 HttpOnly，如果 HTTP 响应头中包含 HttpOnly 标志，只要浏览器支持 HttpOnly 标志，客户端脚本就无法访问 cookie，并且无法设置该 cookie。客户端脚本代码尝试读取包含 HttpOnly 标志的 cookie，如果浏览器支持 HttpOnly，则返回一个空字符串作为结果。这样能够阻止恶意代码（通常是 XSS 攻击）将 cookie 数据发到攻击者网站。
+如果要删除 cookie 需要通过发一个退出到请求，通过后端达到删除 cookie 的目的。</p><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=d7b24f4f57550e680adc234ebc52a647 data-page-url=https://chenkai.life/web/cookie/ data-page-title=浏览器处理cookie data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.cb0c595e02234420f3ad3886bf4a9bd2874d0e1e78e090138a9ef158b35aaf17.js integrity="sha256-ywxZXgIjRCDzrTiGv0qb0odNDh544JATip7xWLNarxc="></script>
 <script src=/js/custom.js></script>
-<script src=/js/font.min.js></script>
-</body>
-<script>'serviceWorker'in navigator&&navigator.serviceWorker.register('/service-worker.js')</script>
-</html>
+<script src=/js/font.min.js></script></body><script>"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js")</script></html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Redis on CK's Blog</title><link>https://chenkai.life/tags/redis/</link><description>Recent content in Redis on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 09 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://chenkai.life/tags/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>Redis的五种数据结构及其使用场景</title><link>https://chenkai.life/libs/redis-use-scene/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/libs/redis-use-scene/</guid><description>from https://www.cnblogs.com/ottll/p/9470480.html
+String 常用命令：
+get、set、incr、decr、mget等
+应用场景：
+String是最常用的数据类型，普通的key/value都可以归为此类，value其实不仅是String，也可以是数字。
+比如想知道什么时候封锁一个IP地址(访问超过几次)。INCRBY命令让这些变得很容易，通过原子递增保持计数。
+实现方式：
+m,decr等操作时会转成数值型进行计算，此时redisObject的encoding字段为int。
+2.Hash
+常用命令：
+hget、hset、hgetall等
+应用场景：
+比如我们要存储一个用户的信息，包含以下信息：
+用户ID，为查找的key
+存储的value用户对象包含姓名name，年龄age，生日birthday 等信息
+如果以普通的key/value结构存储，主要有以下两种存储方式：
+第一种方式将用户id作为key，其他信息封装成对象以序列化的方式存储，如
+set u001 &amp;ldquo;李三,18,20010101&amp;rdquo;
+这种方式的缺点，增加了序列化/反序列化的开销；需要修改其中一项信息时，需要把整个对象取回，修改操作需要对并发进行保护，引入CAS等复杂问题。
+第二种方式是这个用户信息有多少成员就存成多少个key-value对，用用户id+对应属性名称作为唯一的标识来取得对应属性的值，如：
+mset user:001:name &amp;ldquo;李三 &amp;ldquo;user:001:age18 user:001:birthday &amp;ldquo;20010101&amp;rdquo;
+虽然省去了序列化开销和并发问题，但是用户ID为重复存储，如果存在大量这样的数据，内存浪费较大。
+redis提供的hash很好的解决了这个问题，redis的hash实际是内部存储的value为一个HashMap，并且提供了直接存取这个map的成员接口。如
+hmset user:001 name &amp;ldquo;李三&amp;rdquo; age 18 birthday &amp;ldquo;20010101&amp;rdquo;
+也就是说，key仍然是用户id，value是一个map，这个map的key是成员的属性名，value是属性值。
+这里同时需要注意，Redis提供了接口(hgetall)可以直接取到全部的属性数据,但是如果内部Map的成员很多，那么涉及到遍历整个内部Map的操作，由于Redis单线程模型的缘故，这个遍历操作可能会比较耗时，而另其它客户端的请求完全不响应，这点需要格外注意。
+实现方式：
+Redis的Hash对应的Value内部实际就是一个HashMap，实际有两种不同的实现，如果成员较少时，Redis为了节省内存会采用类似一维数组方式存储，对应的value RedisObject的encoding为zipmap，当成员数量增大时会自动转成真正的HashMap，此时encoding为ht。
+3.List
+常用命令：
+lpush,rpush,lpop,rpop,lrange,BLPOP(阻塞版)等。
+应用场景：
+最新消息排行。
+消息队列。利用Lists的push的操作，将任务存储在list中，然后工作线程再用pop操作将任务取出进行执行。
+实现方式：
+redis list的实现是一个双向链表，可以支持反向查找和遍历，更方便操作，不过带来了部分额外的内存开销，redis内部的很多实现，包括发送缓冲队列等也都用的是这个数据结构。
+Set 常用命令：
+sadd,srem,spop,sdiff ,smembers,sunion 等。
+应用场景：
+set类似list，特殊之处是set可以自动排重。
+set还提供了某个成员是否在一个set内的接口，这个也是list没有的。
+比如在微博应用中，每个人的好友存在一个集合（set）中，这样求两个人的共同好友的操作，可能就只需要用求交集命令即可。
+Redis还为集合提供了求交集、并集、差集等操作。
+实现方式：
+set内部实现是一个value永远为null的HashMap，实际就是通过hash的方式快速排重的。
+Sort Set 常用命令：</description></item></channel></rss>

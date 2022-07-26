@@ -5,4 +5,4 @@ Hooks API useState 在函数组件中存储内部 state
 const [state, setState] = useState(initialState); 参数:
 initialState: state初始值 返回值:
 state: 当前的 state setState: 更新 state 的方法, 它接收一个新的 state 值并将组件的一次重新渲染加入队列。如果你的更新函数返回值与当前 state 完全相同，则随后的重渲染会被完全跳过 基础用法 这个例子用来显示一个计数器。当你点击按钮，计数器的值就会增加
-function Counter(props) { const [count, setCount] = useState(props.</description></item></channel></rss>
+function Counter(props) { const [count, setCount] = useState(props.initialCount) return ( &amp;lt;button type=&amp;#34;button&amp;#34; onClick={() =&amp;gt; setCount(count + 1)}&amp;gt; count is: {count} &amp;lt;/button&amp;gt; ); } Counter.</description></item></channel></rss>

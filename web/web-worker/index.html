@@ -1,11 +1,4 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=content-language content="en">
-<meta name=theme-color content="#ffffff">
-<meta name=color-scheme content="light dark">
-<meta name=description content="一、概述    JavaScript 语言采用的是单线程模型，也就是说，所有任务只能在一个线程上完成，一次只能做一件事。前面的任务没做完，后面的任务只能等着。随着电脑计算能力的增强，尤其是多核 CPU 的出现，单线程带来很大的不便，无法充分发挥计算机的计算能力。
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=theme-color content="#ffffff"><meta name=color-scheme content="light dark"><meta name=description content="一、概述 JavaScript 语言采用的是单线程模型，也就是说，所有任务只能在一个线程上完成，一次只能做一件事。前面的任务没做完，后面的任务只能等着。随着电脑计算能力的增强，尤其是多核 CPU 的出现，单线程带来很大的不便，无法充分发挥计算机的计算能力。
 Web Worker 的作用，就是为 JavaScript 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给后者运行。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰。等到 Worker 线程完成计算任务，再把结果返回给主线程。这样的好处是，一些计算密集型或高延迟的任务，被 Worker 线程负担了，主线程（通常负责 UI 交互）就会很流畅，不会被阻塞或拖慢。
 Worker 线程一旦新建成功，就会始终运行，不会被主线程上的活动（比如用户点击按钮、提交表单）打断。这样有利于随时响应主线程的通信。但是，这也造成了 Worker 比较耗费资源，不应该过度使用，而且一旦使用完毕，就应该关闭。
 Web Worker 有以下几个使用注意点。
@@ -19,12 +12,8 @@ Worker 线程和主线程不在同一个上下文环境，它们不能直接通�
 Worker 线程不能执行alert()方法和confirm()方法，但可以使用 XMLHttpRequest 对象发出 AJAX 请求。
 （5）文件限制
 Worker 线程无法读取本地文件，即不能打开本机的文件系统（file://），它所加载的脚本，必须来自网络。
-二、基本用法    2.1 主线程    主线程采用new命令，调用Worker()构造函数，新建一个 Worker 线程。
-var worker = new Worker('work.js'); Worker()构造函数的参数是一个脚本文件，该文件就是 Worker 线程所要执行的任务。由于 Worker 不能读取本地文件，所以这个脚本必须来自网络。如果下载没有成功（比如404错误），Worker 就会默默地失败。">
-<meta name=keywords content>
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="WebWorker">
-<meta name=twitter:description content="一、概述    JavaScript 语言采用的是单线程模型，也就是说，所有任务只能在一个线程上完成，一次只能做一件事。前面的任务没做完，后面的任务只能等着。随着电脑计算能力的增强，尤其是多核 CPU 的出现，单线程带来很大的不便，无法充分发挥计算机的计算能力。
+二、基本用法 2.1 主线程 主线程采用new命令，调用Worker()构造函数，新建一个 Worker 线程。
+var worker = new Worker(&#34;work.js&#34;); Worker()构造函数的参数是一个脚本文件，该文件就是 Worker 线程所要执行的任务。由于 Worker 不能读取本地文件，所以这个脚本必须来自网络。如果下载没有成功（比如 404 错误），Worker 就会默默地失败。"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="WebWorker"><meta name=twitter:description content="一、概述 JavaScript 语言采用的是单线程模型，也就是说，所有任务只能在一个线程上完成，一次只能做一件事。前面的任务没做完，后面的任务只能等着。随着电脑计算能力的增强，尤其是多核 CPU 的出现，单线程带来很大的不便，无法充分发挥计算机的计算能力。
 Web Worker 的作用，就是为 JavaScript 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给后者运行。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰。等到 Worker 线程完成计算任务，再把结果返回给主线程。这样的好处是，一些计算密集型或高延迟的任务，被 Worker 线程负担了，主线程（通常负责 UI 交互）就会很流畅，不会被阻塞或拖慢。
 Worker 线程一旦新建成功，就会始终运行，不会被主线程上的活动（比如用户点击按钮、提交表单）打断。这样有利于随时响应主线程的通信。但是，这也造成了 Worker 比较耗费资源，不应该过度使用，而且一旦使用完毕，就应该关闭。
 Web Worker 有以下几个使用注意点。
@@ -38,10 +27,8 @@ Worker 线程和主线程不在同一个上下文环境，它们不能直接通�
 Worker 线程不能执行alert()方法和confirm()方法，但可以使用 XMLHttpRequest 对象发出 AJAX 请求。
 （5）文件限制
 Worker 线程无法读取本地文件，即不能打开本机的文件系统（file://），它所加载的脚本，必须来自网络。
-二、基本用法    2.1 主线程    主线程采用new命令，调用Worker()构造函数，新建一个 Worker 线程。
-var worker = new Worker('work.js'); Worker()构造函数的参数是一个脚本文件，该文件就是 Worker 线程所要执行的任务。由于 Worker 不能读取本地文件，所以这个脚本必须来自网络。如果下载没有成功（比如404错误），Worker 就会默默地失败。">
-<meta property="og:title" content="WebWorker">
-<meta property="og:description" content="一、概述    JavaScript 语言采用的是单线程模型，也就是说，所有任务只能在一个线程上完成，一次只能做一件事。前面的任务没做完，后面的任务只能等着。随着电脑计算能力的增强，尤其是多核 CPU 的出现，单线程带来很大的不便，无法充分发挥计算机的计算能力。
+二、基本用法 2.1 主线程 主线程采用new命令，调用Worker()构造函数，新建一个 Worker 线程。
+var worker = new Worker(&#34;work.js&#34;); Worker()构造函数的参数是一个脚本文件，该文件就是 Worker 线程所要执行的任务。由于 Worker 不能读取本地文件，所以这个脚本必须来自网络。如果下载没有成功（比如 404 错误），Worker 就会默默地失败。"><meta property="og:title" content="WebWorker"><meta property="og:description" content="一、概述 JavaScript 语言采用的是单线程模型，也就是说，所有任务只能在一个线程上完成，一次只能做一件事。前面的任务没做完，后面的任务只能等着。随着电脑计算能力的增强，尤其是多核 CPU 的出现，单线程带来很大的不便，无法充分发挥计算机的计算能力。
 Web Worker 的作用，就是为 JavaScript 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给后者运行。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰。等到 Worker 线程完成计算任务，再把结果返回给主线程。这样的好处是，一些计算密集型或高延迟的任务，被 Worker 线程负担了，主线程（通常负责 UI 交互）就会很流畅，不会被阻塞或拖慢。
 Worker 线程一旦新建成功，就会始终运行，不会被主线程上的活动（比如用户点击按钮、提交表单）打断。这样有利于随时响应主线程的通信。但是，这也造成了 Worker 比较耗费资源，不应该过度使用，而且一旦使用完毕，就应该关闭。
 Web Worker 有以下几个使用注意点。
@@ -55,453 +42,247 @@ Worker 线程和主线程不在同一个上下文环境，它们不能直接通�
 Worker 线程不能执行alert()方法和confirm()方法，但可以使用 XMLHttpRequest 对象发出 AJAX 请求。
 （5）文件限制
 Worker 线程无法读取本地文件，即不能打开本机的文件系统（file://），它所加载的脚本，必须来自网络。
-二、基本用法    2.1 主线程    主线程采用new命令，调用Worker()构造函数，新建一个 Worker 线程。
-var worker = new Worker('work.js'); Worker()构造函数的参数是一个脚本文件，该文件就是 Worker 线程所要执行的任务。由于 Worker 不能读取本地文件，所以这个脚本必须来自网络。如果下载没有成功（比如404错误），Worker 就会默默地失败。">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://chenkai.life/web/web-worker/"><meta property="article:section" content="web">
-<meta property="article:published_time" content="2021-12-29T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
-<title>
-WebWorker · CK's Blog
-</title>
-<link rel=canonical href=https://chenkai.life/web/web-worker/>
-<link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen>
-<link rel=icon type=image/svg+xml href=/favicon.ico>
-<link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png>
-<meta name=generator content="Hugo 0.91.2">
-<link rel=manifest href=/manifest.webmanifest>
-</head>
-<body class="preload-transitions colorscheme-auto">
-<div class=float-container>
-<span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg>
-</span>
-</div>
-<details id=table-of-contents-wapper>
-<summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
-</summary>
-</details>
-<main class=wrapper>
-<nav class=navigation>
-<section class=container>
-<a class=navigation-title href=/>
-CK's Blog
-</a>
+二、基本用法 2.1 主线程 主线程采用new命令，调用Worker()构造函数，新建一个 Worker 线程。
+var worker = new Worker(&#34;work.js&#34;); Worker()构造函数的参数是一个脚本文件，该文件就是 Worker 线程所要执行的任务。由于 Worker 不能读取本地文件，所以这个脚本必须来自网络。如果下载没有成功（比如 404 错误），Worker 就会默默地失败。"><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai.life/web/web-worker/"><meta property="article:section" content="web"><meta property="article:published_time" content="2021-12-29T00:00:00+00:00"><meta property="article:modified_time" content="2022-07-26T14:58:29+08:00"><title>WebWorker · CK's Blog</title><link rel=canonical href=https://chenkai.life/web/web-worker/><link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/favicon.ico><link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png><meta name=generator content="Hugo 0.101.0"><link rel=manifest href=/manifest.webmanifest></head><body class="preload-transitions colorscheme-auto"><div class=float-container><span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg></span></div><details id=table-of-contents-wapper><summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></summary></details><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>CK's Blog</a>
 <input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
-</label>
-<ul class=navigation-list>
-<li class=navigation-item>
-<a class=navigation-link href=/>Home</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/tags/>Tags</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/marks/>Marks</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/about/>About</a>
-</li>
-<li class=navigation-item id=search-content>
-<input class=search-int type=text placeholder=Search>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/marks/>Marks</a></li><li class=navigation-item><a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input class=search-int type=text placeholder=Search>
 <button class=search-btn data-type=github>GitHub</button>
-<button class=search-btn data-type=google>Google</button>
-</li>
-</ul>
-</section>
-</nav>
-<div class=content>
-<section class="container page">
-<article>
-<header>
-<h1 class=title>
-<a class=title-link href=https://chenkai.life/web/web-worker/>
-WebWorker
-</a>
-</h1>
-<div class=edit-link style=float:right;color:#0366d6>
-<a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/web/web-worker.md>编辑</a>
-</div>
-</header>
-<div class=post-meta>
-<div class=date>
-<span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
-<time datetime=2021-12-29T00:00:00Z>
-2021-12-29
-</time>
-</span>
-</div>
-<div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
-<span class=tag>
-<a href=/tags/web/>web</a>
-</span>
+<button class=search-btn data-type=google>Google</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai.life/web/web-worker/>WebWorker</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/web/web-worker.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg><time datetime=2021-12-29T00:00:00Z>2021-12-29</time></span></div><div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg><span class=tag><a href=/tags/web/>Web</a></span>
 <span class=separator>•</span>
-<span class=tag>
-<a href=/tags/webworker/>WebWorker</a>
-</span></div>
-</div>
-<h2 id=一概述>
-一、概述
-<a class=heading-link href=#%e4%b8%80%e6%a6%82%e8%bf%b0>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>JavaScript 语言采用的是单线程模型，也就是说，所有任务只能在一个线程上完成，一次只能做一件事。前面的任务没做完，后面的任务只能等着。随着电脑计算能力的增强，尤其是多核 CPU 的出现，单线程带来很大的不便，无法充分发挥计算机的计算能力。</p>
-<p>Web Worker 的作用，就是为 JavaScript 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给后者运行。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰。等到 Worker 线程完成计算任务，再把结果返回给主线程。这样的好处是，一些计算密集型或高延迟的任务，被 Worker 线程负担了，主线程（通常负责 UI 交互）就会很流畅，不会被阻塞或拖慢。</p>
-<p>Worker 线程一旦新建成功，就会始终运行，不会被主线程上的活动（比如用户点击按钮、提交表单）打断。这样有利于随时响应主线程的通信。但是，这也造成了 Worker 比较耗费资源，不应该过度使用，而且一旦使用完毕，就应该关闭。</p>
-<p>Web Worker 有以下几个使用注意点。</p>
-<p>（1）<strong>同源限制</strong></p>
-<p>分配给 Worker 线程运行的脚本文件，必须与主线程的脚本文件同源。</p>
-<p>（2）<strong>DOM 限制</strong></p>
-<p>Worker 线程所在的全局对象，与主线程不一样，无法读取主线程所在网页的 DOM 对象，也无法使用<code>document</code>、<code>window</code>、<code>parent</code>这些对象。但是，Worker 线程可以<code>navigator</code>对象和<code>location</code>对象。</p>
-<p>（3）<strong>通信联系</strong></p>
-<p>Worker 线程和主线程不在同一个上下文环境，它们不能直接通信，必须通过消息完成。</p>
-<p>（4）<strong>脚本限制</strong></p>
-<p>Worker 线程不能执行<code>alert()</code>方法和<code>confirm()</code>方法，但可以使用 XMLHttpRequest 对象发出 AJAX 请求。</p>
-<p>（5）<strong>文件限制</strong></p>
-<p>Worker 线程无法读取本地文件，即不能打开本机的文件系统（<code>file://</code>），它所加载的脚本，必须来自网络。</p>
-<h2 id=二基本用法>
-二、基本用法
-<a class=heading-link href=#%e4%ba%8c%e5%9f%ba%e6%9c%ac%e7%94%a8%e6%b3%95>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<h3 id=21-主线程>
-2.1 主线程
-<a class=heading-link href=#21-%e4%b8%bb%e7%ba%bf%e7%a8%8b>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>主线程采用<code>new</code>命令，调用<code>Worker()</code>构造函数，新建一个 Worker 线程。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>worker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#e6db74>&#39;work.js&#39;</span>);
-</code></pre></div><p><code>Worker()</code>构造函数的参数是一个脚本文件，该文件就是 Worker 线程所要执行的任务。由于 Worker 不能读取本地文件，所以这个脚本必须来自网络。如果下载没有成功（比如404错误），Worker 就会默默地失败。</p>
-<p>然后，主线程调用<code>worker.postMessage()</code>方法，向 Worker 发消息。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;Hello World&#39;</span>);
-<span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>({<span style=color:#a6e22e>method</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;echo&#39;</span>, <span style=color:#a6e22e>args</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#39;Work&#39;</span>]});
-</code></pre></div><p><code>worker.postMessage()</code>方法的参数，就是主线程传给 Worker 的数据。它可以是各种数据类型，包括二进制数据。</p>
-<p>接着，主线程通过<code>worker.onmessage</code>指定监听函数，接收子线程发回来的消息。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>event</span>) {
-  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;Received message &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>data</span>);
-  <span style=color:#a6e22e>doSomething</span>();
-}
-
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>doSomething</span>() {
-  <span style=color:#75715e>// 执行任务
-</span><span style=color:#75715e></span>  <span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;Work done!&#39;</span>);
-}
-</code></pre></div><p>上面代码中，事件对象的<code>data</code>属性可以获取 Worker 发来的数据。</p>
-<p>Worker 完成任务以后，主线程就可以把它关掉。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>terminate</span>();
-</code></pre></div><h3 id=22-worker-线程>
-2.2 Worker 线程
-<a class=heading-link href=#22-worker-%e7%ba%bf%e7%a8%8b>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>Worker 线程内部需要有一个监听函数，监听<code>message</code>事件。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>addEventListener</span>(<span style=color:#e6db74>&#39;message&#39;</span>, <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
-  <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;You said: &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>data</span>);
-}, <span style=color:#66d9ef>false</span>);
-</code></pre></div><p>上面代码中，<code>self</code>代表子线程自身，即子线程的全局对象。因此，等同于下面两种写法。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#75715e>// 写法一
-</span><span style=color:#75715e></span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>addEventListener</span>(<span style=color:#e6db74>&#39;message&#39;</span>, <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
-  <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;You said: &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>data</span>);
-}, <span style=color:#66d9ef>false</span>);
-
-<span style=color:#75715e>// 写法二
-</span><span style=color:#75715e></span><span style=color:#a6e22e>addEventListener</span>(<span style=color:#e6db74>&#39;message&#39;</span>, <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
-  <span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;You said: &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>data</span>);
-}, <span style=color:#66d9ef>false</span>);
-</code></pre></div><p>除了使用<code>self.addEventListener()</code>指定监听函数，也可以使用<code>self.onmessage</code>指定。监听函数的参数是一个事件对象，它的<code>data</code>属性包含主线程发来的数据。<code>self.postMessage()</code>方法用来向主线程发送消息。</p>
-<p>根据主线程发来的数据，Worker 线程可以调用不同的方法，下面是一个例子。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>addEventListener</span>(<span style=color:#e6db74>&#39;message&#39;</span>, <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
-  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>data</span>;
-  <span style=color:#66d9ef>switch</span> (<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>cmd</span>) {
-    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;start&#39;</span><span style=color:#f92672>:</span>
-      <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;WORKER STARTED: &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>msg</span>);
-      <span style=color:#66d9ef>break</span>;
-    <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#39;stop&#39;</span><span style=color:#f92672>:</span>
-      <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;WORKER STOPPED: &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>msg</span>);
-      <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>close</span>(); <span style=color:#75715e>// Terminates the worker.
-</span><span style=color:#75715e></span>      <span style=color:#66d9ef>break</span>;
-    <span style=color:#66d9ef>default</span><span style=color:#f92672>:</span>
-      <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;Unknown command: &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>msg</span>);
-  };
-}, <span style=color:#66d9ef>false</span>);
-</code></pre></div><p>上面代码中，<code>self.close()</code>用于在 Worker 内部关闭自身。</p>
-<h3 id=23-worker-加载脚本>
-2.3 Worker 加载脚本
-<a class=heading-link href=#23-worker-%e5%8a%a0%e8%bd%bd%e8%84%9a%e6%9c%ac>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>Worker 内部如果要加载其他脚本，有一个专门的方法<code>importScripts()</code>。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>importScripts</span>(<span style=color:#e6db74>&#39;script1.js&#39;</span>);
-</code></pre></div><p>该方法可以同时加载多个脚本。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>importScripts</span>(<span style=color:#e6db74>&#39;script1.js&#39;</span>, <span style=color:#e6db74>&#39;script2.js&#39;</span>);
-</code></pre></div><h3 id=24-错误处理>
-2.4 错误处理
-<a class=heading-link href=#24-%e9%94%99%e8%af%af%e5%a4%84%e7%90%86>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>主线程可以监听 Worker 是否发生错误。如果发生错误，Worker 会触发主线程的<code>error</code>事件。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>onerror</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>event</span>) {
-  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>([
-    <span style=color:#e6db74>&#39;ERROR: Line &#39;</span>, <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>lineno</span>, <span style=color:#e6db74>&#39; in &#39;</span>, <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>filename</span>, <span style=color:#e6db74>&#39;: &#39;</span>, <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>message</span>
-  ].<span style=color:#a6e22e>join</span>(<span style=color:#e6db74>&#39;&#39;</span>));
-});
-
-<span style=color:#75715e>// 或者
-</span><span style=color:#75715e></span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>addEventListener</span>(<span style=color:#e6db74>&#39;error&#39;</span>, <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>event</span>) {
-  <span style=color:#75715e>// ...
-</span><span style=color:#75715e></span>});
-</code></pre></div><p>Worker 内部也可以监听<code>error</code>事件。</p>
-<h3 id=25-关闭-worker>
-2.5 关闭 Worker
-<a class=heading-link href=#25-%e5%85%b3%e9%97%ad-worker>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>使用完毕，为了节省系统资源，必须关闭 Worker。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#75715e>// 主线程
-</span><span style=color:#75715e></span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>terminate</span>();
-
-<span style=color:#75715e>// Worker 线程
-</span><span style=color:#75715e></span><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>close</span>();
-</code></pre></div><h2 id=三数据通信>
-三、数据通信
-<a class=heading-link href=#%e4%b8%89%e6%95%b0%e6%8d%ae%e9%80%9a%e4%bf%a1>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>前面说过，主线程与 Worker 之间的通信内容，可以是文本，也可以是对象。需要注意的是，这种通信是拷贝关系，即是传值而不是传址，Worker 对通信内容的修改，不会影响到主线程。事实上，浏览器内部的运行机制是，先将通信内容串行化，然后把串行化后的字符串发给 Worker，后者再将它还原。</p>
-<p>主线程与 Worker 之间也可以交换二进制数据，比如 File、Blob、ArrayBuffer 等类型，也可以在线程之间发送。下面是一个例子。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#75715e>// 主线程
-</span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>uInt8Array</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Uint8Array</span>(<span style=color:#66d9ef>new</span> <span style=color:#a6e22e>ArrayBuffer</span>(<span style=color:#ae81ff>10</span>));
-<span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>uInt8Array</span>.<span style=color:#a6e22e>length</span>; <span style=color:#f92672>++</span><span style=color:#a6e22e>i</span>) {
-  <span style=color:#a6e22e>uInt8Array</span>[<span style=color:#a6e22e>i</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span>; <span style=color:#75715e>// [0, 2, 4, 6, 8,...]
-</span><span style=color:#75715e></span>}
-<span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>uInt8Array</span>);
-
-<span style=color:#75715e>// Worker 线程
-</span><span style=color:#75715e></span><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
-  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>uInt8Array</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>data</span>;
-  <span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;Inside worker.js: uInt8Array.toString() = &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>uInt8Array</span>.<span style=color:#a6e22e>toString</span>());
-  <span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;Inside worker.js: uInt8Array.byteLength = &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>uInt8Array</span>.<span style=color:#a6e22e>byteLength</span>);
-};
-</code></pre></div><p>但是，拷贝方式发送二进制数据，会造成性能问题。比如，主线程向 Worker 发送一个 500MB 文件，默认情况下浏览器会生成一个原文件的拷贝。为了解决这个问题，JavaScript 允许主线程把二进制数据直接转移给子线程，但是一旦转移，主线程就无法再使用这些二进制数据了，这是为了防止出现多个线程同时修改数据的麻烦局面。这种转移数据的方法，叫做<a href=http://www.w3.org/html/wg/drafts/html/master/infrastructure.html#transferable-objects>Transferable Objects</a>。这使得主线程可以快速把数据交给 Worker，对于影像处理、声音处理、3D 运算等就非常方便了，不会产生性能负担。</p>
-<p>如果要直接转移数据的控制权，就要使用下面的写法。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#75715e>// Transferable Objects 格式
-</span><span style=color:#75715e></span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>arrayBuffer</span>, [<span style=color:#a6e22e>arrayBuffer</span>]);
-
-<span style=color:#75715e>// 例子
-</span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>ab</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>ArrayBuffer</span>(<span style=color:#ae81ff>1</span>);
-<span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>ab</span>, [<span style=color:#a6e22e>ab</span>]);
-</code></pre></div><h2 id=四同页面的-web-worker>
-四、同页面的 Web Worker
-<a class=heading-link href=#%e5%9b%9b%e5%90%8c%e9%a1%b5%e9%9d%a2%e7%9a%84-web-worker>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>通常情况下，Worker 载入的是一个单独的 JavaScript 脚本文件，但是也可以载入与主线程在同一个网页的代码。</p>
-<pre tabindex=0><code class=language-markup data-lang=markup>&lt;!DOCTYPE html
+<span class=tag><a href=/tags/webworker/>WebWorker</a></span></div></div><h2 id=一概述>一、概述
+<a class=heading-link href=#%e4%b8%80%e6%a6%82%e8%bf%b0><i class="fa fa-link" aria-hidden=true></i></a></h2><p>JavaScript 语言采用的是单线程模型，也就是说，所有任务只能在一个线程上完成，一次只能做一件事。前面的任务没做完，后面的任务只能等着。随着电脑计算能力的增强，尤其是多核 CPU 的出现，单线程带来很大的不便，无法充分发挥计算机的计算能力。</p><p>Web Worker 的作用，就是为 JavaScript 创造多线程环境，允许主线程创建 Worker 线程，将一些任务分配给后者运行。在主线程运行的同时，Worker 线程在后台运行，两者互不干扰。等到 Worker 线程完成计算任务，再把结果返回给主线程。这样的好处是，一些计算密集型或高延迟的任务，被 Worker 线程负担了，主线程（通常负责 UI 交互）就会很流畅，不会被阻塞或拖慢。</p><p>Worker 线程一旦新建成功，就会始终运行，不会被主线程上的活动（比如用户点击按钮、提交表单）打断。这样有利于随时响应主线程的通信。但是，这也造成了 Worker 比较耗费资源，不应该过度使用，而且一旦使用完毕，就应该关闭。</p><p>Web Worker 有以下几个使用注意点。</p><p>（1）<strong>同源限制</strong></p><p>分配给 Worker 线程运行的脚本文件，必须与主线程的脚本文件同源。</p><p>（2）<strong>DOM 限制</strong></p><p>Worker 线程所在的全局对象，与主线程不一样，无法读取主线程所在网页的 DOM 对象，也无法使用<code>document</code>、<code>window</code>、<code>parent</code>这些对象。但是，Worker 线程可以<code>navigator</code>对象和<code>location</code>对象。</p><p>（3）<strong>通信联系</strong></p><p>Worker 线程和主线程不在同一个上下文环境，它们不能直接通信，必须通过消息完成。</p><p>（4）<strong>脚本限制</strong></p><p>Worker 线程不能执行<code>alert()</code>方法和<code>confirm()</code>方法，但可以使用 XMLHttpRequest 对象发出 AJAX 请求。</p><p>（5）<strong>文件限制</strong></p><p>Worker 线程无法读取本地文件，即不能打开本机的文件系统（<code>file://</code>），它所加载的脚本，必须来自网络。</p><h2 id=二基本用法>二、基本用法
+<a class=heading-link href=#%e4%ba%8c%e5%9f%ba%e6%9c%ac%e7%94%a8%e6%b3%95><i class="fa fa-link" aria-hidden=true></i></a></h2><h3 id=21-主线程>2.1 主线程
+<a class=heading-link href=#21-%e4%b8%bb%e7%ba%bf%e7%a8%8b><i class="fa fa-link" aria-hidden=true></i></a></h3><p>主线程采用<code>new</code>命令，调用<code>Worker()</code>构造函数，新建一个 Worker 线程。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>worker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#e6db74>&#34;work.js&#34;</span>);
+</span></span></code></pre></div><p><code>Worker()</code>构造函数的参数是一个脚本文件，该文件就是 Worker 线程所要执行的任务。由于 Worker 不能读取本地文件，所以这个脚本必须来自网络。如果下载没有成功（比如 404 错误），Worker 就会默默地失败。</p><p>然后，主线程调用<code>worker.postMessage()</code>方法，向 Worker 发消息。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#34;Hello World&#34;</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>({ <span style=color:#a6e22e>method</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;echo&#34;</span>, <span style=color:#a6e22e>args</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#34;Work&#34;</span>] });
+</span></span></code></pre></div><p><code>worker.postMessage()</code>方法的参数，就是主线程传给 Worker 的数据。它可以是各种数据类型，包括二进制数据。</p><p>接着，主线程通过<code>worker.onmessage</code>指定监听函数，接收子线程发回来的消息。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>event</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Received message &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>data</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>doSomething</span>();
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>doSomething</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 执行任务
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#34;Work done!&#34;</span>);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>上面代码中，事件对象的<code>data</code>属性可以获取 Worker 发来的数据。</p><p>Worker 完成任务以后，主线程就可以把它关掉。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>terminate</span>();
+</span></span></code></pre></div><h3 id=22-worker-线程>2.2 Worker 线程
+<a class=heading-link href=#22-worker-%e7%ba%bf%e7%a8%8b><i class="fa fa-link" aria-hidden=true></i></a></h3><p>Worker 线程内部需要有一个监听函数，监听<code>message</code>事件。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>addEventListener</span>(
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;message&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#34;You said: &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>data</span>);
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>);
+</span></span></code></pre></div><p>上面代码中，<code>self</code>代表子线程自身，即子线程的全局对象。因此，等同于下面两种写法。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// 写法一
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>addEventListener</span>(
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;message&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#34;You said: &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>data</span>);
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 写法二
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>addEventListener</span>(
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;message&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#34;You said: &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>data</span>);
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>);
+</span></span></code></pre></div><p>除了使用<code>self.addEventListener()</code>指定监听函数，也可以使用<code>self.onmessage</code>指定。监听函数的参数是一个事件对象，它的<code>data</code>属性包含主线程发来的数据。<code>self.postMessage()</code>方法用来向主线程发送消息。</p><p>根据主线程发来的数据，Worker 线程可以调用不同的方法，下面是一个例子。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>addEventListener</span>(
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;message&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>data</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>switch</span> (<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>cmd</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#34;start&#34;</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#34;WORKER STARTED: &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>msg</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#34;stop&#34;</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#34;WORKER STOPPED: &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>msg</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>close</span>(); <span style=color:#75715e>// Terminates the worker.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>break</span>;
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>default</span><span style=color:#f92672>:</span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#34;Unknown command: &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>msg</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>);
+</span></span></code></pre></div><p>上面代码中，<code>self.close()</code>用于在 Worker 内部关闭自身。</p><h3 id=23-worker-加载脚本>2.3 Worker 加载脚本
+<a class=heading-link href=#23-worker-%e5%8a%a0%e8%bd%bd%e8%84%9a%e6%9c%ac><i class="fa fa-link" aria-hidden=true></i></a></h3><p>Worker 内部如果要加载其他脚本，有一个专门的方法<code>importScripts()</code>。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>importScripts</span>(<span style=color:#e6db74>&#34;script1.js&#34;</span>);
+</span></span></code></pre></div><p>该方法可以同时加载多个脚本。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>importScripts</span>(<span style=color:#e6db74>&#34;script1.js&#34;</span>, <span style=color:#e6db74>&#34;script2.js&#34;</span>);
+</span></span></code></pre></div><h3 id=24-错误处理>2.4 错误处理
+<a class=heading-link href=#24-%e9%94%99%e8%af%af%e5%a4%84%e7%90%86><i class="fa fa-link" aria-hidden=true></i></a></h3><p>主线程可以监听 Worker 是否发生错误。如果发生错误，Worker 会触发主线程的<code>error</code>事件。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>onerror</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>event</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(
+</span></span><span style=display:flex><span>    [<span style=color:#e6db74>&#34;ERROR: Line &#34;</span>, <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>lineno</span>, <span style=color:#e6db74>&#34; in &#34;</span>, <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>filename</span>, <span style=color:#e6db74>&#34;: &#34;</span>, <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>message</span>].<span style=color:#a6e22e>join</span>(<span style=color:#e6db74>&#34;&#34;</span>)
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 或者
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>addEventListener</span>(<span style=color:#e6db74>&#34;error&#34;</span>, <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>event</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// ...
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>});
+</span></span></code></pre></div><p>Worker 内部也可以监听<code>error</code>事件。</p><h3 id=25-关闭-worker>2.5 关闭 Worker
+<a class=heading-link href=#25-%e5%85%b3%e9%97%ad-worker><i class="fa fa-link" aria-hidden=true></i></a></h3><p>使用完毕，为了节省系统资源，必须关闭 Worker。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// 主线程
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>terminate</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Worker 线程
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>close</span>();
+</span></span></code></pre></div><h2 id=三数据通信>三、数据通信
+<a class=heading-link href=#%e4%b8%89%e6%95%b0%e6%8d%ae%e9%80%9a%e4%bf%a1><i class="fa fa-link" aria-hidden=true></i></a></h2><p>前面说过，主线程与 Worker 之间的通信内容，可以是文本，也可以是对象。需要注意的是，这种通信是拷贝关系，即是传值而不是传址，Worker 对通信内容的修改，不会影响到主线程。事实上，浏览器内部的运行机制是，先将通信内容串行化，然后把串行化后的字符串发给 Worker，后者再将它还原。</p><p>主线程与 Worker 之间也可以交换二进制数据，比如 File、Blob、ArrayBuffer 等类型，也可以在线程之间发送。下面是一个例子。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// 主线程
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>uInt8Array</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Uint8Array</span>(<span style=color:#66d9ef>new</span> <span style=color:#a6e22e>ArrayBuffer</span>(<span style=color:#ae81ff>10</span>));
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>uInt8Array</span>.<span style=color:#a6e22e>length</span>; <span style=color:#f92672>++</span><span style=color:#a6e22e>i</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>uInt8Array</span>[<span style=color:#a6e22e>i</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span>; <span style=color:#75715e>// [0, 2, 4, 6, 8,...]
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>uInt8Array</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Worker 线程
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>uInt8Array</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>data</span>;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>postMessage</span>(
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;Inside worker.js: uInt8Array.toString() = &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>uInt8Array</span>.<span style=color:#a6e22e>toString</span>()
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>postMessage</span>(
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;Inside worker.js: uInt8Array.byteLength = &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>uInt8Array</span>.<span style=color:#a6e22e>byteLength</span>
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>但是，拷贝方式发送二进制数据，会造成性能问题。比如，主线程向 Worker 发送一个 500MB 文件，默认情况下浏览器会生成一个原文件的拷贝。为了解决这个问题，JavaScript 允许主线程把二进制数据直接转移给子线程，但是一旦转移，主线程就无法再使用这些二进制数据了，这是为了防止出现多个线程同时修改数据的麻烦局面。这种转移数据的方法，叫做<a href=http://www.w3.org/html/wg/drafts/html/master/infrastructure.html#transferable-objects>Transferable Objects</a>。这使得主线程可以快速把数据交给 Worker，对于影像处理、声音处理、3D 运算等就非常方便了，不会产生性能负担。</p><p>如果要直接转移数据的控制权，就要使用下面的写法。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// Transferable Objects 格式
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>arrayBuffer</span>, [<span style=color:#a6e22e>arrayBuffer</span>]);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 例子
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>ab</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>ArrayBuffer</span>(<span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>ab</span>, [<span style=color:#a6e22e>ab</span>]);
+</span></span></code></pre></div><h2 id=四同页面的-web-worker>四、同页面的 Web Worker
+<a class=heading-link href=#%e5%9b%9b%e5%90%8c%e9%a1%b5%e9%9d%a2%e7%9a%84-web-worker><i class="fa fa-link" aria-hidden=true></i></a></h2><p>通常情况下，Worker 载入的是一个单独的 JavaScript 脚本文件，但是也可以载入与主线程在同一个网页的代码。</p><pre tabindex=0><code class=language-markup data-lang=markup>&lt;!DOCTYPE html
   &lt;body
-    &lt;script id=&quot;worker&quot; type=&quot;app/worker&quot;
-      addEventListener('message', function () {
-        postMessage('some message');
+    &lt;script id=&#34;worker&#34; type=&#34;app/worker&#34;
+      addEventListener(&#39;message&#39;, function () {
+        postMessage(&#39;some message&#39;);
       }, false);
     &lt;/script
   &lt;/body
 &lt;/html
-</code></pre><p>上面是一段嵌入网页的脚本，注意必须指定``标签的<code>type</code>属性是一个浏览器不认识的值，上例是<code>app/worker</code>。</p>
-<p>然后，读取这一段嵌入页面的脚本，用 Worker 来处理。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>blob</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Blob</span>([document.<span style=color:#a6e22e>querySelector</span>(<span style=color:#e6db74>&#39;#worker&#39;</span>).<span style=color:#a6e22e>textContent</span>]);
-<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>url</span> <span style=color:#f92672>=</span> window.<span style=color:#a6e22e>URL</span>.<span style=color:#a6e22e>createObjectURL</span>(<span style=color:#a6e22e>blob</span>);
-<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>worker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#a6e22e>url</span>);
-
-<span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
-  <span style=color:#75715e>// e.data === &#39;some message&#39;
-</span><span style=color:#75715e></span>};
-</code></pre></div><p>上面代码中，先将嵌入网页的脚本代码，转成一个二进制对象，然后为这个二进制对象生成 URL，再让 Worker 加载这个 URL。这样就做到了，主线程和 Worker 的代码都在同一个网页上面。或者</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// URL.createObjectURL
-</span><span style=color:#75715e></span>window.<span style=color:#a6e22e>URL</span> <span style=color:#f92672>=</span> window.<span style=color:#a6e22e>URL</span> <span style=color:#f92672>||</span> window.<span style=color:#a6e22e>webkitURL</span>;
-
-<span style=color:#75715e>// &#34;Server response&#34;, used in all examples
-</span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>response</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;self.onmessage=function(e){postMessage(&#39;Worker: &#39;+e.data);}&#34;</span>;
-
-<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>blob</span>;
-<span style=color:#66d9ef>try</span> {
-    <span style=color:#a6e22e>blob</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Blob</span>([<span style=color:#a6e22e>response</span>], {<span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;application/javascript&#39;</span>});
-} <span style=color:#66d9ef>catch</span> (<span style=color:#a6e22e>e</span>) { <span style=color:#75715e>// Backwards-compatibility
-</span><span style=color:#75715e></span>    window.<span style=color:#a6e22e>BlobBuilder</span> <span style=color:#f92672>=</span> window.<span style=color:#a6e22e>BlobBuilder</span> <span style=color:#f92672>||</span> window.<span style=color:#a6e22e>WebKitBlobBuilder</span> <span style=color:#f92672>||</span> window.<span style=color:#a6e22e>MozBlobBuilder</span>;
-    <span style=color:#a6e22e>blob</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>BlobBuilder</span>();
-    <span style=color:#a6e22e>blob</span>.<span style=color:#a6e22e>append</span>(<span style=color:#a6e22e>response</span>);
-    <span style=color:#a6e22e>blob</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>blob</span>.<span style=color:#a6e22e>getBlob</span>();
-}
-<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>worker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#a6e22e>URL</span>.<span style=color:#a6e22e>createObjectURL</span>(<span style=color:#a6e22e>blob</span>));
-
-<span style=color:#75715e>// Test, used in all examples:
-</span><span style=color:#75715e></span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span>(<span style=color:#a6e22e>e</span>) {
-    <span style=color:#a6e22e>alert</span>(<span style=color:#e6db74>&#39;Response: &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>data</span>);
-};
-<span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;Test&#39;</span>);
-</code></pre></div><h2 id=五实例worker-线程完成轮询>
-五、实例：Worker 线程完成轮询
-<a class=heading-link href=#%e4%ba%94%e5%ae%9e%e4%be%8bworker-%e7%ba%bf%e7%a8%8b%e5%ae%8c%e6%88%90%e8%bd%ae%e8%af%a2>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>有时，浏览器需要轮询服务器状态，以便第一时间得知状态改变。这个工作可以放在 Worker 里面。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>createWorker</span>(<span style=color:#a6e22e>f</span>) {
-  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>blob</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Blob</span>([<span style=color:#e6db74>&#39;(&#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>f</span>.<span style=color:#a6e22e>toString</span>() <span style=color:#f92672>+</span><span style=color:#e6db74>&#39;)()&#39;</span>]);
-  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>url</span> <span style=color:#f92672>=</span> window.<span style=color:#a6e22e>URL</span>.<span style=color:#a6e22e>createObjectURL</span>(<span style=color:#a6e22e>blob</span>);
-  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>worker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#a6e22e>url</span>);
-  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>worker</span>;
-}
-
-<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>pollingWorker</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createWorker</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
-  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>cache</span>;
-
-  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>compare</span>(<span style=color:#66d9ef>new</span>, <span style=color:#a6e22e>old</span>) { ... };
-
-  <span style=color:#a6e22e>setInterval</span>(<span style=color:#66d9ef>function</span> () {
-    <span style=color:#a6e22e>fetch</span>(<span style=color:#e6db74>&#39;/my-api-endpoint&#39;</span>).<span style=color:#a6e22e>then</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>res</span>) {
-      <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>json</span>();
-
-      <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>compare</span>(<span style=color:#a6e22e>data</span>, <span style=color:#a6e22e>cache</span>)) {
-        <span style=color:#a6e22e>cache</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>;
-        <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>data</span>);
-      }
-    })
-  }, <span style=color:#ae81ff>1000</span>)
-});
-
-<span style=color:#a6e22e>pollingWorker</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
-  <span style=color:#75715e>// render data
-</span><span style=color:#75715e></span>}
-
-<span style=color:#a6e22e>pollingWorker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;init&#39;</span>);
-</code></pre></div><p>上面代码中，Worker 每秒钟轮询一次数据，然后跟缓存做比较。如果不一致，就说明服务端有了新的变化，因此就要通知主线程。</p>
-<h2 id=六实例-worker-新建-worker>
-六、实例： Worker 新建 Worker
-<a class=heading-link href=#%e5%85%ad%e5%ae%9e%e4%be%8b-worker-%e6%96%b0%e5%bb%ba-worker>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>Worker 线程内部还能再新建 Worker 线程（目前只有 Firefox 浏览器支持）。下面的例子是将一个计算密集的任务，分配到10个 Worker。</p>
-<p>主线程代码如下。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>worker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#e6db74>&#39;worker.js&#39;</span>);
-<span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>event</span>) {
-  document.<span style=color:#a6e22e>getElementById</span>(<span style=color:#e6db74>&#39;result&#39;</span>).<span style=color:#a6e22e>textContent</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>data</span>;
-};
-</code></pre></div><p>Worker 线程代码如下。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#75715e>// worker.js
-</span><span style=color:#75715e></span>
-<span style=color:#75715e>// settings
-</span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>num_workers</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>10</span>;
-<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>items_per_worker</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1000000</span>;
-
-<span style=color:#75715e>// start the workers
-</span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>pending_workers</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>num_workers</span>;
-<span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>num_workers</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>) {
-  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>worker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#e6db74>&#39;core.js&#39;</span>);
-  <span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>i</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>items_per_worker</span>);
-  <span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>((<span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>items_per_worker</span>);
-  <span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>storeResult</span>;
-}
-
-<span style=color:#75715e>// handle the results
-</span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>storeResult</span>(<span style=color:#a6e22e>event</span>) {
-  <span style=color:#a6e22e>result</span> <span style=color:#f92672>+=</span> <span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>data</span>;
-  <span style=color:#a6e22e>pending_workers</span> <span style=color:#f92672>-=</span> <span style=color:#ae81ff>1</span>;
-  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>pending_workers</span> <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>0</span>)
-    <span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>result</span>); <span style=color:#75715e>// finished!
-</span><span style=color:#75715e></span>}
-</code></pre></div><p>上面代码中，Worker 线程内部新建了10个 Worker 线程，并且依次向这10个 Worker 发送消息，告知了计算的起点和终点。计算任务脚本的代码如下。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#75715e>// core.js
-</span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>start</span>;
-<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>getStart</span>;
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>getStart</span>(<span style=color:#a6e22e>event</span>) {
-  <span style=color:#a6e22e>start</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>data</span>;
-  <span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>getEnd</span>;
-}
-
-<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>end</span>;
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>getEnd</span>(<span style=color:#a6e22e>event</span>) {
-  <span style=color:#a6e22e>end</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>data</span>;
-  <span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span>;
-  <span style=color:#a6e22e>work</span>();
-}
-
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>work</span>() {
-  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
-  <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>start</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>end</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>) {
-    <span style=color:#75715e>// perform some complex calculation here
-</span><span style=color:#75715e></span>    <span style=color:#a6e22e>result</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>;
-  }
-  <span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>result</span>);
-  <span style=color:#a6e22e>close</span>();
-}
-</code></pre></div><h2 id=七api>
-七、API
-<a class=heading-link href=#%e4%b8%83api>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<h3 id=71-主线程>
-7.1 主线程
-<a class=heading-link href=#71-%e4%b8%bb%e7%ba%bf%e7%a8%8b>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>浏览器原生提供<code>Worker()</code>构造函数，用来供主线程生成 Worker 线程。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>myWorker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#a6e22e>jsUrl</span>, <span style=color:#a6e22e>options</span>);
-</code></pre></div><p><code>Worker()</code>构造函数，可以接受两个参数。第一个参数是脚本的网址（必须遵守同源政策），该参数是必需的，且只能加载 JS 脚本，否则会报错。第二个参数是配置对象，该对象可选。它的一个作用就是指定 Worker 的名称，用来区分多个 Worker 线程。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#75715e>// 主线程
-</span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>myWorker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#e6db74>&#39;worker.js&#39;</span>, { <span style=color:#a6e22e>name</span> <span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;myWorker&#39;</span> });
-
-<span style=color:#75715e>// Worker 线程
-</span><span style=color:#75715e></span><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>name</span> <span style=color:#75715e>// myWorker
-</span></code></pre></div><p><code>Worker()</code>构造函数返回一个 Worker 线程对象，用来供主线程操作 Worker。Worker 线程对象的属性和方法如下。</p>
-<ul>
-<li>Worker.onerror：指定 error 事件的监听函数。</li>
-<li>Worker.onmessage：指定 message 事件的监听函数，发送过来的数据在<code>Event.data</code>属性中。</li>
-<li>Worker.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。</li>
-<li>Worker.postMessage()：向 Worker 线程发送消息。</li>
-<li>Worker.terminate()：立即终止 Worker 线程。</li>
-</ul>
-<h3 id=72-worker-线程>
-7.2 Worker 线程
-<a class=heading-link href=#72-worker-%e7%ba%bf%e7%a8%8b>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>Web Worker 有自己的全局对象，不是主线程的<code>window</code>，而是一个专门为 Worker 定制的全局对象。因此定义在<code>window</code>上面的对象和方法不是全部都可以使用。</p>
-<p>Worker 线程有一些自己的全局属性和方法。</p>
-<ul>
-<li>self.name： Worker 的名字。该属性只读，由构造函数指定。</li>
-<li>self.onmessage：指定<code>message</code>事件的监听函数。</li>
-<li>self.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。</li>
-<li>self.close()：关闭 Worker 线程。</li>
-<li>self.postMessage()：向产生这个 Worker 线程发送消息。</li>
-<li>self.importScripts()：加载 JS 脚本。</li>
-</ul>
-<p><a href=http://www.ruanyifeng.com/blog/2018/07/web-worker.html>http://www.ruanyifeng.com/blog/2018/07/web-worker.html</a></p>
-<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=1c4b2335b378429ca00d74d3635f99db data-page-url=https://chenkai.life/web/web-worker/ data-page-title=WebWorker data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
-</article>
-</section>
-</div>
-</main>
-<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+</code></pre><p>上面是一段嵌入网页的脚本，注意必须指定``标签的<code>type</code>属性是一个浏览器不认识的值，上例是<code>app/worker</code>。</p><p>然后，读取这一段嵌入页面的脚本，用 Worker 来处理。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>blob</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Blob</span>([document.<span style=color:#a6e22e>querySelector</span>(<span style=color:#e6db74>&#34;#worker&#34;</span>).<span style=color:#a6e22e>textContent</span>]);
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>url</span> <span style=color:#f92672>=</span> window.<span style=color:#a6e22e>URL</span>.<span style=color:#a6e22e>createObjectURL</span>(<span style=color:#a6e22e>blob</span>);
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>worker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#a6e22e>url</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// e.data === &#39;some message&#39;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>};
+</span></span></code></pre></div><p>上面代码中，先将嵌入网页的脚本代码，转成一个二进制对象，然后为这个二进制对象生成 URL，再让 Worker 加载这个 URL。这样就做到了，主线程和 Worker 的代码都在同一个网页上面。或者</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#75715e>// URL.createObjectURL
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>window.<span style=color:#a6e22e>URL</span> <span style=color:#f92672>=</span> window.<span style=color:#a6e22e>URL</span> <span style=color:#f92672>||</span> window.<span style=color:#a6e22e>webkitURL</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// &#34;Server response&#34;, used in all examples
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>response</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;self.onmessage=function(e){postMessage(&#39;Worker: &#39;+e.data);}&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>blob</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>blob</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Blob</span>([<span style=color:#a6e22e>response</span>], { <span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;application/javascript&#34;</span> });
+</span></span><span style=display:flex><span>} <span style=color:#66d9ef>catch</span> (<span style=color:#a6e22e>e</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Backwards-compatibility
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  window.<span style=color:#a6e22e>BlobBuilder</span> <span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>    window.<span style=color:#a6e22e>BlobBuilder</span> <span style=color:#f92672>||</span> window.<span style=color:#a6e22e>WebKitBlobBuilder</span> <span style=color:#f92672>||</span> window.<span style=color:#a6e22e>MozBlobBuilder</span>;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>blob</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>BlobBuilder</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>blob</span>.<span style=color:#a6e22e>append</span>(<span style=color:#a6e22e>response</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>blob</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>blob</span>.<span style=color:#a6e22e>getBlob</span>();
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>worker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#a6e22e>URL</span>.<span style=color:#a6e22e>createObjectURL</span>(<span style=color:#a6e22e>blob</span>));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Test, used in all examples:
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>alert</span>(<span style=color:#e6db74>&#34;Response: &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>e</span>.<span style=color:#a6e22e>data</span>);
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#34;Test&#34;</span>);
+</span></span></code></pre></div><h2 id=五实例worker-线程完成轮询>五、实例：Worker 线程完成轮询
+<a class=heading-link href=#%e4%ba%94%e5%ae%9e%e4%be%8bworker-%e7%ba%bf%e7%a8%8b%e5%ae%8c%e6%88%90%e8%bd%ae%e8%af%a2><i class="fa fa-link" aria-hidden=true></i></a></h2><p>有时，浏览器需要轮询服务器状态，以便第一时间得知状态改变。这个工作可以放在 Worker 里面。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>createWorker</span>(<span style=color:#a6e22e>f</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>blob</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Blob</span>([<span style=color:#e6db74>&#39;(&#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>f</span>.<span style=color:#a6e22e>toString</span>() <span style=color:#f92672>+</span><span style=color:#e6db74>&#39;)()&#39;</span>]);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>url</span> <span style=color:#f92672>=</span> window.<span style=color:#a6e22e>URL</span>.<span style=color:#a6e22e>createObjectURL</span>(<span style=color:#a6e22e>blob</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>worker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#a6e22e>url</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>worker</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>pollingWorker</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createWorker</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>e</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>cache</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>compare</span>(<span style=color:#66d9ef>new</span>, <span style=color:#a6e22e>old</span>) { ... };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>setInterval</span>(<span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>fetch</span>(<span style=color:#e6db74>&#39;/my-api-endpoint&#39;</span>).<span style=color:#a6e22e>then</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>res</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>json</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>compare</span>(<span style=color:#a6e22e>data</span>, <span style=color:#a6e22e>cache</span>)) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>cache</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>;
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>data</span>);
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    })
+</span></span><span style=display:flex><span>  }, <span style=color:#ae81ff>1000</span>)
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>pollingWorker</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// render data
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>pollingWorker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#e6db74>&#39;init&#39;</span>);
+</span></span></code></pre></div><p>上面代码中，Worker 每秒钟轮询一次数据，然后跟缓存做比较。如果不一致，就说明服务端有了新的变化，因此就要通知主线程。</p><h2 id=六实例-worker-新建-worker>六、实例： Worker 新建 Worker
+<a class=heading-link href=#%e5%85%ad%e5%ae%9e%e4%be%8b-worker-%e6%96%b0%e5%bb%ba-worker><i class="fa fa-link" aria-hidden=true></i></a></h2><p>Worker 线程内部还能再新建 Worker 线程（目前只有 Firefox 浏览器支持）。下面的例子是将一个计算密集的任务，分配到 10 个 Worker。</p><p>主线程代码如下。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>worker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#e6db74>&#34;worker.js&#34;</span>);
+</span></span><span style=display:flex><span><span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>event</span>) {
+</span></span><span style=display:flex><span>  document.<span style=color:#a6e22e>getElementById</span>(<span style=color:#e6db74>&#34;result&#34;</span>).<span style=color:#a6e22e>textContent</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>data</span>;
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>Worker 线程代码如下。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// worker.js
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// settings
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>num_workers</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>10</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>items_per_worker</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1000000</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// start the workers
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>pending_workers</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>num_workers</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>num_workers</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>worker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#e6db74>&#34;core.js&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>i</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>items_per_worker</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>postMessage</span>((<span style=color:#a6e22e>i</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>items_per_worker</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>worker</span>.<span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>storeResult</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// handle the results
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>storeResult</span>(<span style=color:#a6e22e>event</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>result</span> <span style=color:#f92672>+=</span> <span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>data</span>;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>pending_workers</span> <span style=color:#f92672>-=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>pending_workers</span> <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>0</span>) <span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>result</span>); <span style=color:#75715e>// finished!
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span></code></pre></div><p>上面代码中，Worker 线程内部新建了 10 个 Worker 线程，并且依次向这 10 个 Worker 发送消息，告知了计算的起点和终点。计算任务脚本的代码如下。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// core.js
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>start</span>;
+</span></span><span style=display:flex><span><span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>getStart</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>getStart</span>(<span style=color:#a6e22e>event</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>start</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>data</span>;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>getEnd</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>end</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>getEnd</span>(<span style=color:#a6e22e>event</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>end</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>data</span>;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>onmessage</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span>;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>work</span>();
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>work</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>start</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>end</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// perform some complex calculation here
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>result</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>postMessage</span>(<span style=color:#a6e22e>result</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>close</span>();
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=七api>七、API
+<a class=heading-link href=#%e4%b8%83api><i class="fa fa-link" aria-hidden=true></i></a></h2><h3 id=71-主线程>7.1 主线程
+<a class=heading-link href=#71-%e4%b8%bb%e7%ba%bf%e7%a8%8b><i class="fa fa-link" aria-hidden=true></i></a></h3><p>浏览器原生提供<code>Worker()</code>构造函数，用来供主线程生成 Worker 线程。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>myWorker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#a6e22e>jsUrl</span>, <span style=color:#a6e22e>options</span>);
+</span></span></code></pre></div><p><code>Worker()</code>构造函数，可以接受两个参数。第一个参数是脚本的网址（必须遵守同源政策），该参数是必需的，且只能加载 JS 脚本，否则会报错。第二个参数是配置对象，该对象可选。它的一个作用就是指定 Worker 的名称，用来区分多个 Worker 线程。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// 主线程
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>myWorker</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Worker</span>(<span style=color:#e6db74>&#34;worker.js&#34;</span>, { <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;myWorker&#34;</span> });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Worker 线程
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>self</span>.<span style=color:#a6e22e>name</span>; <span style=color:#75715e>// myWorker
+</span></span></span></code></pre></div><p><code>Worker()</code>构造函数返回一个 Worker 线程对象，用来供主线程操作 Worker。Worker 线程对象的属性和方法如下。</p><ul><li>Worker.onerror：指定 error 事件的监听函数。</li><li>Worker.onmessage：指定 message 事件的监听函数，发送过来的数据在<code>Event.data</code>属性中。</li><li>Worker.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。</li><li>Worker.postMessage()：向 Worker 线程发送消息。</li><li>Worker.terminate()：立即终止 Worker 线程。</li></ul><h3 id=72-worker-线程>7.2 Worker 线程
+<a class=heading-link href=#72-worker-%e7%ba%bf%e7%a8%8b><i class="fa fa-link" aria-hidden=true></i></a></h3><p>Web Worker 有自己的全局对象，不是主线程的<code>window</code>，而是一个专门为 Worker 定制的全局对象。因此定义在<code>window</code>上面的对象和方法不是全部都可以使用。</p><p>Worker 线程有一些自己的全局属性和方法。</p><ul><li>self.name： Worker 的名字。该属性只读，由构造函数指定。</li><li>self.onmessage：指定<code>message</code>事件的监听函数。</li><li>self.onmessageerror：指定 messageerror 事件的监听函数。发送的数据无法序列化成字符串时，会触发这个事件。</li><li>self.close()：关闭 Worker 线程。</li><li>self.postMessage()：向产生这个 Worker 线程发送消息。</li><li>self.importScripts()：加载 JS 脚本。</li></ul><p><a href=http://www.ruanyifeng.com/blog/2018/07/web-worker.html>http://www.ruanyifeng.com/blog/2018/07/web-worker.html</a></p><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=1c4b2335b378429ca00d74d3635f99db data-page-url=https://chenkai.life/web/web-worker/ data-page-title=WebWorker data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.cb0c595e02234420f3ad3886bf4a9bd2874d0e1e78e090138a9ef158b35aaf17.js integrity="sha256-ywxZXgIjRCDzrTiGv0qb0odNDh544JATip7xWLNarxc="></script>
 <script src=/js/custom.js></script>
-<script src=/js/font.min.js></script>
-</body>
-<script>'serviceWorker'in navigator&&navigator.serviceWorker.register('/service-worker.js')</script>
-</html>
+<script src=/js/font.min.js></script></body><script>"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js")</script></html>

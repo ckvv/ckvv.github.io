@@ -1,274 +1,61 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=content-language content="en">
-<meta name=theme-color content="#ffffff">
-<meta name=color-scheme content="light dark">
-<meta name=description content="什么是JSON Web Token？    JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用SON对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT可以使用加密算法（使用HMAC算法）或使用RSA或ECDSA的公钥/私钥对进行签名。
-什么时候应该使用JSON Web令牌    以下是JSON Web令牌有用的一些场景：
-  授权：这是使用JWT的最常见方案。一旦用户登录，每个后续请求将包括JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On是一种现在广泛使用JWT的功能，因为它的开销很小，并且能够在不同的域中轻松使用。
-  信息交换：JSON Web令牌是在各方之间安全传输信息的好方法。因为JWT可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。
-  JSON Web令牌结构    JSON Web Tokens由.分隔的三个部分组成，它们是：
- 头 有效载荷 签名 因此，JWT通常如xxxxx.yyyyy.zzzzz所示.  头    标头通常由两部分组成：令牌的类型，即JWT，以及正在使用的签名算法，例如HMAC SHA256或RSA。
-{ &#34;alg&#34;: &#34;HS256&#34;, &#34;typ&#34;: &#34;JWT&#34; } 然后，这个JSON被编码为Base64Url，形成JWT的第一部分。
-有效载荷    令牌的第二部分是有效负载，其中包含声明。声明是关于实体（通常是用户）和其他数据的声明。有三种类型:registered、public、private claims.
- registered：这些是一组预定义声明，不是强制性的，但建议使用，以提供一组有用的，可互操作的声明。其中一些是： iss（发行人）， exp（到期时间），sub（主题）， aud（观众）等。 public：这些可以由使用JWT的人随意定义。但为避免冲突，应在 IANA JSON Web令牌注册表中定义它们，或者将 其定义为包含防冲突命名空间的URI。 private claims： 这是创建共享使用它们同意并既不是当事人之间的信息自定义声明注册或公众的权利要求  然后，有效负载经过Base64Url编码，形成JSON Web令牌的第二部分。">
-<meta name=keywords content>
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="jsonwebtoken">
-<meta name=twitter:description content="什么是JSON Web Token？    JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用SON对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT可以使用加密算法（使用HMAC算法）或使用RSA或ECDSA的公钥/私钥对进行签名。
-什么时候应该使用JSON Web令牌    以下是JSON Web令牌有用的一些场景：
-  授权：这是使用JWT的最常见方案。一旦用户登录，每个后续请求将包括JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On是一种现在广泛使用JWT的功能，因为它的开销很小，并且能够在不同的域中轻松使用。
-  信息交换：JSON Web令牌是在各方之间安全传输信息的好方法。因为JWT可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。
-  JSON Web令牌结构    JSON Web Tokens由.分隔的三个部分组成，它们是：
- 头 有效载荷 签名 因此，JWT通常如xxxxx.yyyyy.zzzzz所示.  头    标头通常由两部分组成：令牌的类型，即JWT，以及正在使用的签名算法，例如HMAC SHA256或RSA。
-{ &#34;alg&#34;: &#34;HS256&#34;, &#34;typ&#34;: &#34;JWT&#34; } 然后，这个JSON被编码为Base64Url，形成JWT的第一部分。
-有效载荷    令牌的第二部分是有效负载，其中包含声明。声明是关于实体（通常是用户）和其他数据的声明。有三种类型:registered、public、private claims.
- registered：这些是一组预定义声明，不是强制性的，但建议使用，以提供一组有用的，可互操作的声明。其中一些是： iss（发行人）， exp（到期时间），sub（主题）， aud（观众）等。 public：这些可以由使用JWT的人随意定义。但为避免冲突，应在 IANA JSON Web令牌注册表中定义它们，或者将 其定义为包含防冲突命名空间的URI。 private claims： 这是创建共享使用它们同意并既不是当事人之间的信息自定义声明注册或公众的权利要求  然后，有效负载经过Base64Url编码，形成JSON Web令牌的第二部分。">
-<meta property="og:title" content="jsonwebtoken">
-<meta property="og:description" content="什么是JSON Web Token？    JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用SON对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT可以使用加密算法（使用HMAC算法）或使用RSA或ECDSA的公钥/私钥对进行签名。
-什么时候应该使用JSON Web令牌    以下是JSON Web令牌有用的一些场景：
-  授权：这是使用JWT的最常见方案。一旦用户登录，每个后续请求将包括JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On是一种现在广泛使用JWT的功能，因为它的开销很小，并且能够在不同的域中轻松使用。
-  信息交换：JSON Web令牌是在各方之间安全传输信息的好方法。因为JWT可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。
-  JSON Web令牌结构    JSON Web Tokens由.分隔的三个部分组成，它们是：
- 头 有效载荷 签名 因此，JWT通常如xxxxx.yyyyy.zzzzz所示.  头    标头通常由两部分组成：令牌的类型，即JWT，以及正在使用的签名算法，例如HMAC SHA256或RSA。
-{ &#34;alg&#34;: &#34;HS256&#34;, &#34;typ&#34;: &#34;JWT&#34; } 然后，这个JSON被编码为Base64Url，形成JWT的第一部分。
-有效载荷    令牌的第二部分是有效负载，其中包含声明。声明是关于实体（通常是用户）和其他数据的声明。有三种类型:registered、public、private claims.
- registered：这些是一组预定义声明，不是强制性的，但建议使用，以提供一组有用的，可互操作的声明。其中一些是： iss（发行人）， exp（到期时间），sub（主题）， aud（观众）等。 public：这些可以由使用JWT的人随意定义。但为避免冲突，应在 IANA JSON Web令牌注册表中定义它们，或者将 其定义为包含防冲突命名空间的URI。 private claims： 这是创建共享使用它们同意并既不是当事人之间的信息自定义声明注册或公众的权利要求  然后，有效负载经过Base64Url编码，形成JSON Web令牌的第二部分。">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://chenkai.life/nodejs/jsonwebtoken/"><meta property="article:section" content="nodejs">
-<meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
-<title>
-jsonwebtoken · CK's Blog
-</title>
-<link rel=canonical href=https://chenkai.life/nodejs/jsonwebtoken/>
-<link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen>
-<link rel=icon type=image/svg+xml href=/favicon.ico>
-<link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png>
-<meta name=generator content="Hugo 0.91.2">
-<link rel=manifest href=/manifest.webmanifest>
-</head>
-<body class="preload-transitions colorscheme-auto">
-<div class=float-container>
-<span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg>
-</span>
-</div>
-<details id=table-of-contents-wapper>
-<summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
-</summary>
-</details>
-<main class=wrapper>
-<nav class=navigation>
-<section class=container>
-<a class=navigation-title href=/>
-CK's Blog
-</a>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=theme-color content="#ffffff"><meta name=color-scheme content="light dark"><meta name=description content="什么是 JSON Web Token？ JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用 SON 对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT 可以使用加密算法（使用 HMAC 算法）或使用 RSA 或 ECDSA 的公钥/私钥对进行签名。
+什么时候应该使用 JSON Web 令牌 以下是 JSON Web 令牌有用的一些场景：
+授权：这是使用 JWT 的最常见方案。一旦用户登录，每个后续请求将包括 JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On 是一种现在广泛使用 JWT 的功能，因为它的开销很小，并且能够在不同的域中轻松使用。
+信息交换：JSON Web 令牌是在各方之间安全传输信息的好方法。因为 JWT 可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。
+JSON Web 令牌结构 JSON Web Tokens 由.分隔的三个部分组成，它们是：
+头 有效载荷 签名 因此，JWT 通常如xxxxx.yyyyy.zzzzz所示. 头 标头通常由两部分组成：令牌的类型，即 JWT，以及正在使用的签名算法，例如 HMAC SHA256 或 RSA。
+{ &#34;alg&#34;: &#34;HS256&#34;, &#34;typ&#34;: &#34;JWT&#34; } 然后，这个 JSON 被编码为 Base64Url，形成 JWT 的第一部分。"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="JsonWebToken"><meta name=twitter:description content="什么是 JSON Web Token？ JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用 SON 对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT 可以使用加密算法（使用 HMAC 算法）或使用 RSA 或 ECDSA 的公钥/私钥对进行签名。
+什么时候应该使用 JSON Web 令牌 以下是 JSON Web 令牌有用的一些场景：
+授权：这是使用 JWT 的最常见方案。一旦用户登录，每个后续请求将包括 JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On 是一种现在广泛使用 JWT 的功能，因为它的开销很小，并且能够在不同的域中轻松使用。
+信息交换：JSON Web 令牌是在各方之间安全传输信息的好方法。因为 JWT 可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。
+JSON Web 令牌结构 JSON Web Tokens 由.分隔的三个部分组成，它们是：
+头 有效载荷 签名 因此，JWT 通常如xxxxx.yyyyy.zzzzz所示. 头 标头通常由两部分组成：令牌的类型，即 JWT，以及正在使用的签名算法，例如 HMAC SHA256 或 RSA。
+{ &#34;alg&#34;: &#34;HS256&#34;, &#34;typ&#34;: &#34;JWT&#34; } 然后，这个 JSON 被编码为 Base64Url，形成 JWT 的第一部分。"><meta property="og:title" content="JsonWebToken"><meta property="og:description" content="什么是 JSON Web Token？ JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用 SON 对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT 可以使用加密算法（使用 HMAC 算法）或使用 RSA 或 ECDSA 的公钥/私钥对进行签名。
+什么时候应该使用 JSON Web 令牌 以下是 JSON Web 令牌有用的一些场景：
+授权：这是使用 JWT 的最常见方案。一旦用户登录，每个后续请求将包括 JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On 是一种现在广泛使用 JWT 的功能，因为它的开销很小，并且能够在不同的域中轻松使用。
+信息交换：JSON Web 令牌是在各方之间安全传输信息的好方法。因为 JWT 可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。
+JSON Web 令牌结构 JSON Web Tokens 由.分隔的三个部分组成，它们是：
+头 有效载荷 签名 因此，JWT 通常如xxxxx.yyyyy.zzzzz所示. 头 标头通常由两部分组成：令牌的类型，即 JWT，以及正在使用的签名算法，例如 HMAC SHA256 或 RSA。
+{ &#34;alg&#34;: &#34;HS256&#34;, &#34;typ&#34;: &#34;JWT&#34; } 然后，这个 JSON 被编码为 Base64Url，形成 JWT 的第一部分。"><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai.life/nodejs/jsonwebtoken/"><meta property="article:section" content="nodejs"><meta property="article:published_time" content="2021-07-09T00:00:00+00:00"><meta property="article:modified_time" content="2022-07-26T14:58:29+08:00"><title>JsonWebToken · CK's Blog</title><link rel=canonical href=https://chenkai.life/nodejs/jsonwebtoken/><link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/favicon.ico><link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png><meta name=generator content="Hugo 0.101.0"><link rel=manifest href=/manifest.webmanifest></head><body class="preload-transitions colorscheme-auto"><div class=float-container><span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg></span></div><details id=table-of-contents-wapper><summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></summary></details><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>CK's Blog</a>
 <input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
-</label>
-<ul class=navigation-list>
-<li class=navigation-item>
-<a class=navigation-link href=/>Home</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/tags/>Tags</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/marks/>Marks</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/about/>About</a>
-</li>
-<li class=navigation-item id=search-content>
-<input class=search-int type=text placeholder=Search>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/marks/>Marks</a></li><li class=navigation-item><a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input class=search-int type=text placeholder=Search>
 <button class=search-btn data-type=github>GitHub</button>
-<button class=search-btn data-type=google>Google</button>
-</li>
-</ul>
-</section>
-</nav>
-<div class=content>
-<section class="container page">
-<article>
-<header>
-<h1 class=title>
-<a class=title-link href=https://chenkai.life/nodejs/jsonwebtoken/>
-jsonwebtoken
-</a>
-</h1>
-<div class=edit-link style=float:right;color:#0366d6>
-<a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/nodejs/jsonwebtoken.md>编辑</a>
-</div>
-</header>
-<div class=post-meta>
-<div class=date>
-<span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
-<time datetime=2021-07-09T00:00:00Z>
-2021-07-09
-</time>
-</span>
-</div>
-<div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
-<span class=tag>
-<a href=/tags/web/>web</a>
-</span>
+<button class=search-btn data-type=google>Google</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai.life/nodejs/jsonwebtoken/>JsonWebToken</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/nodejs/jsonwebtoken.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg><time datetime=2021-07-09T00:00:00Z>2021-07-09</time></span></div><div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg><span class=tag><a href=/tags/node.js/>Node.js</a></span>
 <span class=separator>•</span>
-<span class=tag>
-<a href=/tags/node/>node</a>
-</span></div>
-</div>
-<h2 id=什么是json-web-token>
-什么是JSON Web Token？
-<a class=heading-link href=#%e4%bb%80%e4%b9%88%e6%98%afjson-web-token>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用SON对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT可以使用加密算法（使用HMAC算法）或使用RSA或ECDSA的公钥/私钥对进行签名。</p>
-<h2 id=什么时候应该使用json-web令牌>
-什么时候应该使用JSON Web令牌
-<a class=heading-link href=#%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e5%ba%94%e8%af%a5%e4%bd%bf%e7%94%a8json-web%e4%bb%a4%e7%89%8c>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>以下是JSON Web令牌有用的一些场景：</p>
-<ul>
-<li>
-<p>授权：这是使用JWT的最常见方案。一旦用户登录，每个后续请求将包括JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On是一种现在广泛使用JWT的功能，因为它的开销很小，并且能够在不同的域中轻松使用。</p>
-</li>
-<li>
-<p>信息交换：JSON Web令牌是在各方之间安全传输信息的好方法。因为JWT可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。</p>
-</li>
-</ul>
-<h2 id=json-web令牌结构>
-JSON Web令牌结构
-<a class=heading-link href=#json-web%e4%bb%a4%e7%89%8c%e7%bb%93%e6%9e%84>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>JSON Web Tokens由<code>.</code>分隔的三个部分组成，它们是：</p>
-<ul>
-<li>头</li>
-<li>有效载荷</li>
-<li>签名
-因此，JWT通常如<code>xxxxx.yyyyy.zzzzz</code>所示.</li>
-</ul>
-<h2 id=头>
-头
-<a class=heading-link href=#%e5%a4%b4>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>标头通常由两部分组成：令牌的类型，即JWT，以及正在使用的签名算法，例如HMAC SHA256或RSA。</p>
-<pre tabindex=0><code>{
-  &quot;alg&quot;: &quot;HS256&quot;,
-  &quot;typ&quot;: &quot;JWT&quot;
+<span class=tag><a href=/tags/jsonwebtoken/>JsonWebToken</a></span></div></div><h2 id=什么是-json-web-token>什么是 JSON Web Token？
+<a class=heading-link href=#%e4%bb%80%e4%b9%88%e6%98%af-json-web-token><i class="fa fa-link" aria-hidden=true></i></a></h2><p>JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用 SON 对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT 可以使用加密算法（使用 HMAC 算法）或使用 RSA 或 ECDSA 的公钥/私钥对进行签名。</p><h2 id=什么时候应该使用-json-web-令牌>什么时候应该使用 JSON Web 令牌
+<a class=heading-link href=#%e4%bb%80%e4%b9%88%e6%97%b6%e5%80%99%e5%ba%94%e8%af%a5%e4%bd%bf%e7%94%a8-json-web-%e4%bb%a4%e7%89%8c><i class="fa fa-link" aria-hidden=true></i></a></h2><p>以下是 JSON Web 令牌有用的一些场景：</p><ul><li><p>授权：这是使用 JWT 的最常见方案。一旦用户登录，每个后续请求将包括 JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On 是一种现在广泛使用 JWT 的功能，因为它的开销很小，并且能够在不同的域中轻松使用。</p></li><li><p>信息交换：JSON Web 令牌是在各方之间安全传输信息的好方法。因为 JWT 可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。</p></li></ul><h2 id=json-web-令牌结构>JSON Web 令牌结构
+<a class=heading-link href=#json-web-%e4%bb%a4%e7%89%8c%e7%bb%93%e6%9e%84><i class="fa fa-link" aria-hidden=true></i></a></h2><p>JSON Web Tokens 由<code>.</code>分隔的三个部分组成，它们是：</p><ul><li>头</li><li>有效载荷</li><li>签名
+因此，JWT 通常如<code>xxxxx.yyyyy.zzzzz</code>所示.</li></ul><h2 id=头>头
+<a class=heading-link href=#%e5%a4%b4><i class="fa fa-link" aria-hidden=true></i></a></h2><p>标头通常由两部分组成：令牌的类型，即 JWT，以及正在使用的签名算法，例如 HMAC SHA256 或 RSA。</p><pre tabindex=0><code>{
+  &#34;alg&#34;: &#34;HS256&#34;,
+  &#34;typ&#34;: &#34;JWT&#34;
 }
-</code></pre><p>然后，这个JSON被编码为Base64Url，形成JWT的第一部分。</p>
-<h2 id=有效载荷>
-有效载荷
-<a class=heading-link href=#%e6%9c%89%e6%95%88%e8%bd%bd%e8%8d%b7>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>令牌的第二部分是有效负载，其中包含声明。声明是关于实体（通常是用户）和其他数据的声明。有三种类型:registered、public、private claims.</p>
-<ul>
-<li>registered：这些是一组预定义声明，不是强制性的，但建议使用，以提供一组有用的，可互操作的声明。其中一些是： iss（发行人）， exp（到期时间），sub（主题）， aud（观众）等。</li>
-<li>public：这些可以由使用JWT的人随意定义。但为避免冲突，应在 IANA JSON Web令牌注册表中定义它们，或者将
-其定义为包含防冲突命名空间的URI。</li>
-<li>private claims： 这是创建共享使用它们同意并既不是当事人之间的信息自定义声明注册或公众的权利要求</li>
-</ul>
-<p>然后，有效负载经过Base64Url编码，形成JSON Web令牌的第二部分。</p>
-<blockquote>
-<p>请注意，对于签名令牌，此信息虽然可以防止被篡改，但任何人都可以读取。除非加密，否则不要将秘密信息放在JWT的有效负载或头元素中。</p>
-</blockquote>
-<h2 id=签名>
-签名
-<a class=heading-link href=#%e7%ad%be%e5%90%8d>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>要创建签名部分，您必须采用编码标头，编码的有效负载，秘密，标头中指定的算法，并对其进行签名。
-例如，如果要使用HMAC SHA256算法，将按以下方式创建签名：</p>
-<pre tabindex=0><code>HMACSHA256(
-  base64UrlEncode(header) + &quot;.&quot; +
+</code></pre><p>然后，这个 JSON 被编码为 Base64Url，形成 JWT 的第一部分。</p><h2 id=有效载荷>有效载荷
+<a class=heading-link href=#%e6%9c%89%e6%95%88%e8%bd%bd%e8%8d%b7><i class="fa fa-link" aria-hidden=true></i></a></h2><p>令牌的第二部分是有效负载，其中包含声明。声明是关于实体（通常是用户）和其他数据的声明。有三种类型:registered、public、private claims.</p><ul><li>registered：这些是一组预定义声明，不是强制性的，但建议使用，以提供一组有用的，可互操作的声明。其中一些是： iss（发行人）， exp（到期时间），sub（主题）， aud（观众）等。</li><li>public：这些可以由使用 JWT 的人随意定义。但为避免冲突，应在 IANA JSON Web 令牌注册表中定义它们，或者将
+其定义为包含防冲突命名空间的 URI。</li><li>private claims： 这是创建共享使用它们同意并既不是当事人之间的信息自定义声明注册或公众的权利要求</li></ul><p>然后，有效负载经过 Base64Url 编码，形成 JSON Web 令牌的第二部分。</p><blockquote><p>请注意，对于签名令牌，此信息虽然可以防止被篡改，但任何人都可以读取。除非加密，否则不要将秘密信息放在 JWT 的有效负载或头元素中。</p></blockquote><h2 id=签名>签名
+<a class=heading-link href=#%e7%ad%be%e5%90%8d><i class="fa fa-link" aria-hidden=true></i></a></h2><p>要创建签名部分，您必须采用编码标头，编码的有效负载，秘密，标头中指定的算法，并对其进行签名。
+例如，如果要使用 HMAC SHA256 算法，将按以下方式创建签名：</p><pre tabindex=0><code>HMACSHA256(
+  base64UrlEncode(header) + &#34;.&#34; +
   base64UrlEncode(payload),
   secret)
-</code></pre><p>签名用于验证消息在此过程中未被更改，并且，在使用私钥签名的令牌的情况下，它还可以验证JWT的发件人是否是它所声称的人。</p>
-<ul>
-<li>结果</li>
-</ul>
-<p>输出是三个由点分隔的Base64-URL字符串，可以在HTML和HTTP环境中轻松传递，而与基于XML的标准（如SAML）相比更加紧凑。</p>
-<pre tabindex=0><code>//原始
+</code></pre><p>签名用于验证消息在此过程中未被更改，并且，在使用私钥签名的令牌的情况下，它还可以验证 JWT 的发件人是否是它所声称的人。</p><ul><li>结果</li></ul><p>输出是三个由点分隔的 Base64-URL 字符串，可以在 HTML 和 HTTP 环境中轻松传递，而与基于 XML 的标准（如 SAML）相比更加紧凑。</p><pre tabindex=0><code>//原始
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE1NjIxMzQ0MDIsImV4cCI6MTU2MjEzNDQ2Mn0.dzH7ogImjrWX8Qc-arXHFFjgF8YcO_KBi7BCgcmQUGk
 
-//Base64 解码后  
-{&quot;alg&quot;:&quot;HS256&quot;,&quot;typ&quot;:&quot;JWT&quot;}{&quot;foo&quot;:&quot;bar&quot;,&quot;iat&quot;:1562134402,&quot;exp&quot;:1562134462}�~耉��e�AϚ�q�8����b��rd
+//Base64 解码后
+{&#34;alg&#34;:&#34;HS256&#34;,&#34;typ&#34;:&#34;JWT&#34;}{&#34;foo&#34;:&#34;bar&#34;,&#34;iat&#34;:1562134402,&#34;exp&#34;:1562134462}�~耉��e�AϚ�q�8����b��rd
+</code></pre><h2 id=使用-jsonwebtoken-登录>使用 jsonwebtoken 登录
+<a class=heading-link href=#%e4%bd%bf%e7%94%a8-jsonwebtoken-%e7%99%bb%e5%bd%95><i class="fa fa-link" aria-hidden=true></i></a></h2><p>在身份验证中，当用户使用其凭据成功登录时，将返回 JSON Web 令牌。由于令牌是凭证，因此必须非常小心以防止出现安全问题。一般情况下，您不应该将令牌保留的时间超过要求。</p><p>每当用户想要访问受保护的路由或资源时，用户代理应该使用承载模式发送 JWT，通常在 Authorization 标头中。标题的内容应如下所示：</p><pre tabindex=0><code>Authorization: Bearer &lt;token&gt;
+</code></pre><p>在某些情况下，这可以是无状态授权机制。服务器的受保护路由将检查 Authorization 标头中的有效 JWT ，如果存在，则允许用户访问受保护资源。如果 JWT 包含必要的数据，则可以减少查询数据库以进行某些操作的需要，尽管可能并非总是如此。</p><p>如果在标 Authorization 头中发送令牌，则跨域资源共享（CORS）将不会成为问题，因为它不使用 cookie。</p><blockquote><p>请注意，使用签名令牌，令牌中包含的所有信息都会向用户或其他方公开，即使他们无法更改。这意味着您不应该在令牌中放置秘密信息。</p></blockquote><h2 id=node-中使用>node 中使用
+<a class=heading-link href=#node-%e4%b8%ad%e4%bd%bf%e7%94%a8><i class="fa fa-link" aria-hidden=true></i></a></h2><h2 id=jwtsignpayload-secretorprivatekey-options-callback>jwt.sign(payload, secretOrPrivateKey, [options, callback])
+<a class=heading-link href=#jwtsignpayload-secretorprivatekey-options-callback><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li>Returns: JsonWebToken 字符串</li><li>payload：应该是表示有效 JSON 的对象文字，缓冲区或字符串。</li><li>secretOrPrivateKey : 是一个字符串，缓冲区或对象，包含 HMAC 算法的秘密或 RSA 和 ECDSA 的 PEM 编码私钥。如果是带密码的私钥，则可以使用对象{key，passphrase}（基于加密文档），在这种情况下，请确保传递算法选项。</li></ul><pre tabindex=0><code>var jwt = require(&#39;jsonwebtoken&#39;);
 
-</code></pre><h2 id=使用-jsonwebtoken-登录>
-使用 jsonwebtoken 登录
-<a class=heading-link href=#%e4%bd%bf%e7%94%a8-jsonwebtoken-%e7%99%bb%e5%bd%95>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>在身份验证中，当用户使用其凭据成功登录时，将返回JSON Web令牌。由于令牌是凭证，因此必须非常小心以防止出现安全问题。一般情况下，您不应该将令牌保留的时间超过要求。</p>
-<p>每当用户想要访问受保护的路由或资源时，用户代理应该使用承载模式发送JWT，通常在Authorization标头中。标题的内容应如下所示：</p>
-<pre tabindex=0><code>Authorization: Bearer &lt;token&gt;
-</code></pre><p>在某些情况下，这可以是无状态授权机制。服务器的受保护路由将检查Authorization标头中的有效JWT ，如果存在，则允许用户访问受保护资源。如果JWT包含必要的数据，则可以减少查询数据库以进行某些操作的需要，尽管可能并非总是如此。</p>
-<p>如果在标Authorization头中发送令牌，则跨域资源共享（CORS）将不会成为问题，因为它不使用cookie。</p>
-<blockquote>
-<p>请注意，使用签名令牌，令牌中包含的所有信息都会向用户或其他方公开，即使他们无法更改。这意味着您不应该在令牌中放置秘密信息。</p>
-</blockquote>
-<h2 id=node-中使用>
-node 中使用
-<a class=heading-link href=#node-%e4%b8%ad%e4%bd%bf%e7%94%a8>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<h2 id=jwtsignpayload-secretorprivatekey-options-callback>
-jwt.sign(payload, secretOrPrivateKey, [options, callback])
-<a class=heading-link href=#jwtsignpayload-secretorprivatekey-options-callback>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ul>
-<li>Returns: JsonWebToken字符串</li>
-<li>payload：应该是表示有效JSON的对象文字，缓冲区或字符串。</li>
-<li>secretOrPrivateKey : 是一个字符串，缓冲区或对象，包含HMAC算法的秘密或RSA和ECDSA的PEM编码私钥。如果是带密码的私钥，则可以使用对象{key，passphrase}（基于加密文档），在这种情况下，请确保传递算法选项。</li>
-</ul>
-<pre tabindex=0><code>var jwt = require('jsonwebtoken');
-
-var token = jwt.sign({ foo: 'bar' }, 'private-key',{ expiresIn: 1 *600000 });
-
-</code></pre><h2 id=jwtverifytoken-secretorprivatekey-options-callback>
-jwt.verify(token, secretOrPrivateKey, [options, callback])
-<a class=heading-link href=#jwtverifytoken-secretorprivatekey-options-callback>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ul>
-<li>token: JsonWebToken string</li>
-<li>secretOrPrivateKey : 是一个字符串，缓冲区或对象，包含HMAC算法的秘密或RSA和ECDSA的PEM编码私钥。如果是带密码的私钥，则可以使用对象{key，passphrase}（基于加密文档），在这种情况下，请确保传递算法选项。</li>
-</ul>
-<pre tabindex=0><code>jwt.verify(token, 'private-key', function(err, decoded) {
-    console.log('err:',err);
-    console.log('decoded:',decoded);
+var token = jwt.sign({ foo: &#39;bar&#39; }, &#39;private-key&#39;,{ expiresIn: 1 *600000 });
+</code></pre><h2 id=jwtverifytoken-secretorprivatekey-options-callback>jwt.verify(token, secretOrPrivateKey, [options, callback])
+<a class=heading-link href=#jwtverifytoken-secretorprivatekey-options-callback><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li>token: JsonWebToken string</li><li>secretOrPrivateKey : 是一个字符串，缓冲区或对象，包含 HMAC 算法的秘密或 RSA 和 ECDSA 的 PEM 编码私钥。如果是带密码的私钥，则可以使用对象{key，passphrase}（基于加密文档），在这种情况下，请确保传递算法选项。</li></ul><pre tabindex=0><code>jwt.verify(token, &#39;private-key&#39;, function(err, decoded) {
+    console.log(&#39;err:&#39;,err);
+    console.log(&#39;decoded:&#39;,decoded);
 });
-</code></pre>
-<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=6a43bf0d73a22d2ba60cbd51bda23bf7 data-page-url=https://chenkai.life/nodejs/jsonwebtoken/ data-page-title=jsonwebtoken data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
-</article>
-</section>
-</div>
-</main>
-<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+</code></pre><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=6a43bf0d73a22d2ba60cbd51bda23bf7 data-page-url=https://chenkai.life/nodejs/jsonwebtoken/ data-page-title=JsonWebToken data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.cb0c595e02234420f3ad3886bf4a9bd2874d0e1e78e090138a9ef158b35aaf17.js integrity="sha256-ywxZXgIjRCDzrTiGv0qb0odNDh544JATip7xWLNarxc="></script>
 <script src=/js/custom.js></script>
-<script src=/js/font.min.js></script>
-</body>
-<script>'serviceWorker'in navigator&&navigator.serviceWorker.register('/service-worker.js')</script>
-</html>
+<script src=/js/font.min.js></script></body><script>"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js")</script></html>

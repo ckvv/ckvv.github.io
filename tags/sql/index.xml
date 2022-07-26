@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>sql on CK's Blog</title><link>https://chenkai.life/tags/sql/</link><description>Recent content in sql on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 09 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://chenkai.life/tags/sql/index.xml" rel="self" type="application/rss+xml"/><item><title>postgres 有用的sql</title><link>https://chenkai.life/database/pg-useful-sql/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/database/pg-useful-sql/</guid><description>数据库迁移备份 备份：pg_dump -U postgres -d myDBname -f dump.sql 还原：
-pg_dump -U postgres -d g-default -f g-default.sql
-忽略某些schema psql -N data -N public_data -d g-default -U postgres -f g-default.sql
-将mydb数据库转储到一个 SQL 脚本文件：pg_dump mydb &amp;gt; db.sql 将上述脚本导入一个(新建的)数据库newdb：psql -d newdb -f db.sql
-将数据库转储为自定义格式的归档文件pg_dump -Fc mydb &amp;gt; db.dump 将数据库转储为目录格式归档：pg_dump -Fd mydb -f dumpdir 将数据库转储为目录格式归档，并行5个worker工作：pg_dump -Fd mydb -j 5 -f dumpdir 将归档文件导入一个(新建的)数据库newdb：pg_restore -d newdb db.dump
-转储一个名为mytab的表：pg_dump -t mytab mydb &amp;gt; db.sql 转储detroit模式中所有以emp开头的表， 但是不包括employee_log表：pg_dump -t 'detroit.</description></item></channel></rss>

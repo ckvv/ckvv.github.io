@@ -1,0 +1,112 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=theme-color content="#ffffff"><meta name=color-scheme content="light dark"><meta name=description content="安装/卸载docker 安装过程参考官网;
+yum update ## 使用以下命令来设置的存储库 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo sudo yum install docker-ce docker-ce-cli containerd.io sudo systemctl start docker 卸载 sudo yum -y remove docker-ee ## 删除所有图像，容器和卷 sudo rm -rf /var/lib/docker ## 删除其他与Docker相关的资源 $ sudo rm -rf /run/docker $ sudo rm -rf /var/run/docker $ sudo rm -rf /etc/docker 安装过程中可能会遇到以下问题 doceker版本和系统内核版本不兼容 升级系统内核或者降低docker版本 yum安装失败 ## 解决依赖冲突 package-cleanup --cleandupes 找不到安装包 添加设置的存储库 容器生命周期管理 docker start :启动一个或多个已经被停止的容器 docker stop :停止一个运行中的容器 docker restart :重启容器 docker-compose 文件启动镜像 docker-compose up -d redis 创建一个新的容器但不启动，用法同docker run 使用docker镜像nginx:latest创建一个容器,并将容器命名为myrunoob docker create --name myrunoob nginx:latest 创建一个新的容器并运行一个命令 使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx。 docker run --name mynginx -d nginx:latest 使用镜像nginx:latest以后台模式启动一个容器,并将容器的80端口映射到主机随机端口。 docker run -P -d nginx:latest 使用镜像 nginx:latest，以后台模式启动一个容器,将主机的 80 端口映射到 容器的 80 端口,主机的目录 /data 映射到容器的 /data。 docker run -p 80:80 -v /data:/data -d nginx:latest 镜像容器管理 给image打标签 docker tag e9cb35287c01 geohey-nlpa-platform:gd 保存为本地文件 docker save -o geohey-nlpa-platform."><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="Docker"><meta name=twitter:description content="安装/卸载docker 安装过程参考官网;
+yum update ## 使用以下命令来设置的存储库 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo sudo yum install docker-ce docker-ce-cli containerd.io sudo systemctl start docker 卸载 sudo yum -y remove docker-ee ## 删除所有图像，容器和卷 sudo rm -rf /var/lib/docker ## 删除其他与Docker相关的资源 $ sudo rm -rf /run/docker $ sudo rm -rf /var/run/docker $ sudo rm -rf /etc/docker 安装过程中可能会遇到以下问题 doceker版本和系统内核版本不兼容 升级系统内核或者降低docker版本 yum安装失败 ## 解决依赖冲突 package-cleanup --cleandupes 找不到安装包 添加设置的存储库 容器生命周期管理 docker start :启动一个或多个已经被停止的容器 docker stop :停止一个运行中的容器 docker restart :重启容器 docker-compose 文件启动镜像 docker-compose up -d redis 创建一个新的容器但不启动，用法同docker run 使用docker镜像nginx:latest创建一个容器,并将容器命名为myrunoob docker create --name myrunoob nginx:latest 创建一个新的容器并运行一个命令 使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx。 docker run --name mynginx -d nginx:latest 使用镜像nginx:latest以后台模式启动一个容器,并将容器的80端口映射到主机随机端口。 docker run -P -d nginx:latest 使用镜像 nginx:latest，以后台模式启动一个容器,将主机的 80 端口映射到 容器的 80 端口,主机的目录 /data 映射到容器的 /data。 docker run -p 80:80 -v /data:/data -d nginx:latest 镜像容器管理 给image打标签 docker tag e9cb35287c01 geohey-nlpa-platform:gd 保存为本地文件 docker save -o geohey-nlpa-platform."><meta property="og:title" content="Docker"><meta property="og:description" content="安装/卸载docker 安装过程参考官网;
+yum update ## 使用以下命令来设置的存储库 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo sudo yum install docker-ce docker-ce-cli containerd.io sudo systemctl start docker 卸载 sudo yum -y remove docker-ee ## 删除所有图像，容器和卷 sudo rm -rf /var/lib/docker ## 删除其他与Docker相关的资源 $ sudo rm -rf /run/docker $ sudo rm -rf /var/run/docker $ sudo rm -rf /etc/docker 安装过程中可能会遇到以下问题 doceker版本和系统内核版本不兼容 升级系统内核或者降低docker版本 yum安装失败 ## 解决依赖冲突 package-cleanup --cleandupes 找不到安装包 添加设置的存储库 容器生命周期管理 docker start :启动一个或多个已经被停止的容器 docker stop :停止一个运行中的容器 docker restart :重启容器 docker-compose 文件启动镜像 docker-compose up -d redis 创建一个新的容器但不启动，用法同docker run 使用docker镜像nginx:latest创建一个容器,并将容器命名为myrunoob docker create --name myrunoob nginx:latest 创建一个新的容器并运行一个命令 使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx。 docker run --name mynginx -d nginx:latest 使用镜像nginx:latest以后台模式启动一个容器,并将容器的80端口映射到主机随机端口。 docker run -P -d nginx:latest 使用镜像 nginx:latest，以后台模式启动一个容器,将主机的 80 端口映射到 容器的 80 端口,主机的目录 /data 映射到容器的 /data。 docker run -p 80:80 -v /data:/data -d nginx:latest 镜像容器管理 给image打标签 docker tag e9cb35287c01 geohey-nlpa-platform:gd 保存为本地文件 docker save -o geohey-nlpa-platform."><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai.life/libs/docker/"><meta property="article:section" content="libs"><meta property="article:published_time" content="2021-07-09T00:00:00+00:00"><meta property="article:modified_time" content="2022-07-26T14:58:29+08:00"><title>Docker · CK's Blog</title><link rel=canonical href=https://chenkai.life/libs/docker/><link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/favicon.ico><link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png><meta name=generator content="Hugo 0.101.0"><link rel=manifest href=/manifest.webmanifest></head><body class="preload-transitions colorscheme-auto"><div class=float-container><span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg></span></div><details id=table-of-contents-wapper><summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></summary></details><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>CK's Blog</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/marks/>Marks</a></li><li class=navigation-item><a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input class=search-int type=text placeholder=Search>
+<button class=search-btn data-type=github>GitHub</button>
+<button class=search-btn data-type=google>Google</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai.life/libs/docker/>Docker</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/libs/docker.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg><time datetime=2021-07-09T00:00:00Z>2021-07-09</time></span></div><div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg><span class=tag><a href=/tags/tool/>Tool</a></span>
+<span class=separator>•</span>
+<span class=tag><a href=/tags/docker/>Docker</a></span></div></div><h2 id=安装卸载docker>安装/卸载docker
+<a class=heading-link href=#%e5%ae%89%e8%a3%85%e5%8d%b8%e8%bd%bddocker><i class="fa fa-link" aria-hidden=true></i></a></h2><p>安装过程参考<a href=https://docs.docker.com/install/linux/docker-ce/centos/>官网</a>;</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>yum update
+</span></span><span style=display:flex><span><span style=color:#75715e>## 使用以下命令来设置的存储库</span>
+</span></span><span style=display:flex><span>sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sudo yum install docker-ce docker-ce-cli containerd.io
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sudo systemctl start docker
+</span></span></code></pre></div><h2 id=卸载>卸载
+<a class=heading-link href=#%e5%8d%b8%e8%bd%bd><i class="fa fa-link" aria-hidden=true></i></a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>sudo yum -y remove docker-ee
+</span></span><span style=display:flex><span><span style=color:#75715e>## 删除所有图像，容器和卷</span>
+</span></span><span style=display:flex><span>sudo rm -rf /var/lib/docker
+</span></span><span style=display:flex><span><span style=color:#75715e>## 删除其他与Docker相关的资源</span>
+</span></span><span style=display:flex><span>$ sudo rm -rf /run/docker
+</span></span><span style=display:flex><span>$ sudo rm -rf /var/run/docker
+</span></span><span style=display:flex><span>$ sudo rm -rf /etc/docker
+</span></span></code></pre></div><h2 id=安装过程中可能会遇到以下问题>安装过程中可能会遇到以下问题
+<a class=heading-link href=#%e5%ae%89%e8%a3%85%e8%bf%87%e7%a8%8b%e4%b8%ad%e5%8f%af%e8%83%bd%e4%bc%9a%e9%81%87%e5%88%b0%e4%bb%a5%e4%b8%8b%e9%97%ae%e9%a2%98><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li>doceker版本和系统内核版本不兼容
+升级系统内核或者降低docker版本</li><li>yum安装失败</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e>## 解决依赖冲突</span>
+</span></span><span style=display:flex><span>package-cleanup --cleandupes
+</span></span></code></pre></div><ul><li>找不到安装包
+添加设置的存储库</li></ul><h2 id=容器生命周期管理>容器生命周期管理
+<a class=heading-link href=#%e5%ae%b9%e5%99%a8%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f%e7%ae%a1%e7%90%86><i class="fa fa-link" aria-hidden=true></i></a></h2><pre tabindex=0><code>docker start :启动一个或多个已经被停止的容器
+docker stop :停止一个运行中的容器
+docker restart :重启容器
+</code></pre><ul><li>docker-compose 文件启动镜像</li></ul><pre tabindex=0><code>docker-compose up -d redis
+</code></pre><ul><li>创建一个新的容器但不启动，用法同docker run</li></ul><pre tabindex=0><code>使用docker镜像nginx:latest创建一个容器,并将容器命名为myrunoob
+docker create  --name myrunoob  nginx:latest   
+</code></pre><ul><li>创建一个新的容器并运行一个命令</li></ul><pre tabindex=0><code>使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx。
+docker run --name mynginx -d nginx:latest
+
+使用镜像nginx:latest以后台模式启动一个容器,并将容器的80端口映射到主机随机端口。
+docker run -P -d nginx:latest
+
+使用镜像 nginx:latest，以后台模式启动一个容器,将主机的 80 端口映射到 容器的 80 端口,主机的目录 /data 映射到容器的 /data。
+docker run -p 80:80 -v /data:/data -d nginx:latest
+</code></pre><h2 id=镜像容器管理>镜像容器管理
+<a class=heading-link href=#%e9%95%9c%e5%83%8f%e5%ae%b9%e5%99%a8%e7%ae%a1%e7%90%86><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li>给image打标签</li></ul><pre tabindex=0><code>docker tag e9cb35287c01 geohey-nlpa-platform:gd
+</code></pre><ul><li>保存为本地文件</li></ul><pre tabindex=0><code>docker save -o geohey-nlpa-platform.tar geohey-nlpa-platform:gd
+</code></pre><ul><li>docker load本地镜像文件</li></ul><pre tabindex=0><code>docker load --input geohey-nlpa-platform.tar
+</code></pre><ul><li>删除镜像</li></ul><pre tabindex=0><code>docker rmi e9cb35287c01
+
+删除 docker 无用镜像
+docker rmi  `docker images | grep none | awk &#39;{print $3}&#39;`
+
+docker rmi  `docker images -a | grep none | awk &#39;{print $3}&#39;`
+
+批量删除容器：
+docker container rm $(docker  container  ls   -a  -q)
+
+批量删除镜像：（慎用）
+docker  image   rm   $(docker  image  ls   -a  -q)
+</code></pre><ul><li>删除容器</li></ul><pre tabindex=0><code>docker rm -f CONTAINERid
+</code></pre><ul><li>从容器创建一个新的镜像</li></ul><pre tabindex=0><code>docker commit CONTAINERid imagename:tag
+</code></pre><ul><li>使用 Dockerfile 创建镜像</li></ul><pre tabindex=0><code></code></pre><ul><li>将指定镜像保存成 tar 归档文件</li></ul><pre tabindex=0><code>将镜像 runoob/ubuntu:v3 生成 my_ubuntu_v3.tar 文档
+docker save -o my_ubuntu_v3.tar runoob/ubuntu:v3
+</code></pre><ul><li>导入使用 docker save 命令导出的镜像</li></ul><pre tabindex=0><code>导入镜像：
+docker load -i ubuntu.tar
+docker load &lt; ubuntu.tar
+</code></pre><ul><li>从归档文件中创建镜像。</li></ul><pre tabindex=0><code>从镜像归档文件my_ubuntu_v3.tar创建镜像，命名为runoob/ubuntu:v4
+docker import  my_ubuntu_v3.tar runoob/ubuntu:v4  
+</code></pre><ul><li>文件与docker文件拷贝</li></ul><pre tabindex=0><code>docker &gt; 系统
+docker cp  96f7f14e99ab:/www /tmp/
+
+系统 &gt; docker
+docker cp /www/runoob 96f7f14e99ab:/www
+</code></pre><h2 id=获取docker信息>获取docker信息
+<a class=heading-link href=#%e8%8e%b7%e5%8f%96docker%e4%bf%a1%e6%81%af><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li>获取容器/镜像的元数据。</li></ul><pre tabindex=0><code>docker inspect CONTAINERid
+</code></pre><ul><li>获取容器的日志</li></ul><pre tabindex=0><code>跟踪日志输出
+docker logs -f mynginx
+
+查看容器mynginx从2016年7月1日后的最新10条日志。
+docker logs --since=&#34;2016-07-01&#34; --tail=10 mynginx
+</code></pre><ul><li>在运行的容器中执行命令</li></ul><pre tabindex=0><code>docker exec -it CONTAINERid sh
+</code></pre><h2 id=镜像仓库>镜像仓库
+<a class=heading-link href=#%e9%95%9c%e5%83%8f%e4%bb%93%e5%ba%93><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li>Docker login/logout 命令
+docker login : 登陆到一个Docker镜像仓库，如果未指定镜像仓库地址，默认为官方仓库 Docker Hub
+docker logout : 登出一个Docker镜像仓库，如果未指定镜像仓库地址，默认为官方仓库 Docker Hub</li></ul><pre tabindex=0><code>docker login -u 用户名 -p 密码
+docker logout -u 用户名 -p 密码
+</code></pre><ul><li>查找镜像</li></ul><pre tabindex=0><code>从Docker Hub查找所有镜像名包含java，并且收藏数大于10的镜像
+docker search - s 10 java
+</code></pre><ul><li>从镜像仓库中拉取或者更新指定镜像</li></ul><pre tabindex=0><code>docker pull path
+</code></pre><ul><li>将本地的镜像上传到镜像仓库,要先登陆到镜像仓库</li></ul><pre tabindex=0><code>上传本地镜像myapache:v1到镜像仓库中
+docker push myapache:v1
+</code></pre><h2 id=常用命令>常用命令
+<a class=heading-link href=#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4><i class="fa fa-link" aria-hidden=true></i></a></h2><p>List all containers (only IDs) <code>docker ps -aq</code>.
+Stop all running containers. <code>docker stop $(docker ps -aq)</code>
+Remove all containers. <code>docker rm -f $(docker ps -aq)</code>
+Remove all images. docker rmi <code>$(docker images -q)</code></p><p>重启docker <code>systemctl restart docker</code></p><h2 id=docker-通过镜像查看镜像内容>docker 通过镜像查看镜像内容
+<a class=heading-link href=#docker-%e9%80%9a%e8%bf%87%e9%95%9c%e5%83%8f%e6%9f%a5%e7%9c%8b%e9%95%9c%e5%83%8f%e5%86%85%e5%ae%b9><i class="fa fa-link" aria-hidden=true></i></a></h2><p>docker run -it registry.cn-beijing.aliyuncs.com/geohey-deploy/g-job-data-analysis:v2.0.0 sh</p><h2 id=每个节点load新镜像>每个节点load新镜像
+<a class=heading-link href=#%e6%af%8f%e4%b8%aa%e8%8a%82%e7%82%b9load%e6%96%b0%e9%95%9c%e5%83%8f><i class="fa fa-link" aria-hidden=true></i></a></h2><p>docker load -i g-job-data-analysis.tar</p><h2 id=修改对应镜像的yaml>修改对应镜像的yaml
+<a class=heading-link href=#%e4%bf%ae%e6%94%b9%e5%af%b9%e5%ba%94%e9%95%9c%e5%83%8f%e7%9a%84yaml><i class="fa fa-link" aria-hidden=true></i></a></h2><p>修改image地址为：registry.cn-beijing.aliyuncs.com/geohey-deploy/g-job-data-analysis:v2.0.0</p><h2 id=用新yaml启动应用>用新yaml启动应用
+<a class=heading-link href=#%e7%94%a8%e6%96%b0yaml%e5%90%af%e5%8a%a8%e5%ba%94%e7%94%a8><i class="fa fa-link" aria-hidden=true></i></a></h2><p>kubectl delete -f g-job-data-analysis.yml && kubectl apply -f g-job-data-analysis.yml</p><h2 id=docker内部跑docker>docker内部跑docker
+<a class=heading-link href=#docker%e5%86%85%e9%83%a8%e8%b7%91docker><i class="fa fa-link" aria-hidden=true></i></a></h2><p>参考文档：<a href=https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/>https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/</a>
+挂载docker.sock和docker安装文件</p><pre tabindex=0><code>docker run --name app-bingo -p &#34;5020:5020&#34; -v /var/run/docker.sock:/var/run/docker.sock -v /usr/local/bin/docker:/usr/local/bin/ -d registry.cn-beijing.aliyuncs.com/geohey-deploy/app-bingo:v1.0.5
+</code></pre><h2 id=问题>问题
+<a class=heading-link href=#%e9%97%ae%e9%a2%98><i class="fa fa-link" aria-hidden=true></i></a></h2><h2 id=进去之后没有root权限>进去之后没有root权限
+<a class=heading-link href=#%e8%bf%9b%e5%8e%bb%e4%b9%8b%e5%90%8e%e6%b2%a1%e6%9c%89root%e6%9d%83%e9%99%90><i class="fa fa-link" aria-hidden=true></i></a></h2><pre tabindex=0><code>docker exec -it --user root &lt;container id&gt; /bin/bash
+</code></pre><h2 id=切换国内镜像源>切换国内镜像源
+<a class=heading-link href=#%e5%88%87%e6%8d%a2%e5%9b%bd%e5%86%85%e9%95%9c%e5%83%8f%e6%ba%90><i class="fa fa-link" aria-hidden=true></i></a></h2><p><a href=https://mirrors.ustc.edu.cn/help/dockerhub.html>参考</a>
+macOS</p><ul><li>打开 “Docker.app”</li><li>打开 “Daemon” 选项卡</li><li>在 “Registry mirrors” 中添加 <a href=https://docker.mirrors.ustc.edu.cn/>https://docker.mirrors.ustc.edu.cn/</a></li><li>点击下方的 “Apply & Restart” 按钮</li></ul><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=55f6e3bc50ff4e18a8fda3680f8f8dfc data-page-url=https://chenkai.life/libs/docker/ data-page-title=Docker data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.cb0c595e02234420f3ad3886bf4a9bd2874d0e1e78e090138a9ef158b35aaf17.js integrity="sha256-ywxZXgIjRCDzrTiGv0qb0odNDh544JATip7xWLNarxc="></script>
+<script src=/js/custom.js></script>
+<script src=/js/font.min.js></script></body><script>"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js")</script></html>

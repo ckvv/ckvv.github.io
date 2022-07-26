@@ -1,931 +1,122 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=content-language content="en">
-<meta name=theme-color content="#ffffff">
-<meta name=color-scheme content="light dark">
-<meta name=description content="前端开发面试题 （题目列表页）    目录     前言 HTML部分 CSS部分 JavaScript部分 其他问题 前端学习网站推荐  前言    前言
-HTML      Doctype作用？严格模式与混杂模式如何区分？它们有何意义?
-  HTML5 为什么只需要写 ？
-  行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
-  页面导入样式时，使用link和@import有什么区别？
-  介绍一下你对浏览器内核的理解？
-  常见的浏览器内核有哪些？
-  html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？
-  简述一下你对HTML语义化的理解？
-  HTML5的离线储存怎么使用，工作原理能不能解释一下？
-  浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
-  请描述一下 cookies，sessionStorage 和 localStorage 的区别？
-  iframe有那些缺点？">
-<meta name=keywords content>
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="前端开发面试题">
-<meta name=twitter:description content="前端开发面试题 （题目列表页）    目录     前言 HTML部分 CSS部分 JavaScript部分 其他问题 前端学习网站推荐  前言    前言
-HTML      Doctype作用？严格模式与混杂模式如何区分？它们有何意义?
-  HTML5 为什么只需要写 ？
-  行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
-  页面导入样式时，使用link和@import有什么区别？
-  介绍一下你对浏览器内核的理解？
-  常见的浏览器内核有哪些？
-  html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？
-  简述一下你对HTML语义化的理解？
-  HTML5的离线储存怎么使用，工作原理能不能解释一下？
-  浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
-  请描述一下 cookies，sessionStorage 和 localStorage 的区别？
-  iframe有那些缺点？">
-<meta property="og:title" content="前端开发面试题">
-<meta property="og:description" content="前端开发面试题 （题目列表页）    目录     前言 HTML部分 CSS部分 JavaScript部分 其他问题 前端学习网站推荐  前言    前言
-HTML      Doctype作用？严格模式与混杂模式如何区分？它们有何意义?
-  HTML5 为什么只需要写 ？
-  行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
-  页面导入样式时，使用link和@import有什么区别？
-  介绍一下你对浏览器内核的理解？
-  常见的浏览器内核有哪些？
-  html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？
-  简述一下你对HTML语义化的理解？
-  HTML5的离线储存怎么使用，工作原理能不能解释一下？
-  浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
-  请描述一下 cookies，sessionStorage 和 localStorage 的区别？
-  iframe有那些缺点？">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://chenkai.life/hide/web-mian-shi-qs1/"><meta property="article:section" content="hide">
-<meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
-<title>
-前端开发面试题 · CK's Blog
-</title>
-<link rel=canonical href=https://chenkai.life/hide/web-mian-shi-qs1/>
-<link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen>
-<link rel=icon type=image/svg+xml href=/favicon.ico>
-<link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png>
-<meta name=generator content="Hugo 0.91.2">
-<link rel=manifest href=/manifest.webmanifest>
-</head>
-<body class="preload-transitions colorscheme-auto">
-<div class=float-container>
-<span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg>
-</span>
-</div>
-<details id=table-of-contents-wapper>
-<summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
-</summary>
-</details>
-<main class=wrapper>
-<nav class=navigation>
-<section class=container>
-<a class=navigation-title href=/>
-CK's Blog
-</a>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=theme-color content="#ffffff"><meta name=color-scheme content="light dark"><meta name=description content="前端开发面试题 （题目列表页） 目录 前言 HTML部分 CSS部分 JavaScript部分 其他问题 前端学习网站推荐 前言 前言
+HTML Doctype作用？严格模式与混杂模式如何区分？它们有何意义?
+HTML5 为什么只需要写 <!DOCTYPE HTML>？
+行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
+页面导入样式时，使用link和@import有什么区别？
+介绍一下你对浏览器内核的理解？
+常见的浏览器内核有哪些？
+html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？
+简述一下你对HTML语义化的理解？
+HTML5的离线储存怎么使用，工作原理能不能解释一下？
+浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
+请描述一下 cookies，sessionStorage 和 localStorage 的区别？
+iframe有那些缺点？
+Label的作用是什么？是怎么用的？（加 for 或 包裹）
+HTML5的form如何关闭自动完成功能？
+如何实现浏览器内多个标签页之间的通信? (阿里)
+webSocket如何兼容低浏览器？(阿里)
+页面可见性（Page Visibility API） 可以有哪些用途？
+如何在页面上实现一个圆形的可点击区域？
+实现不使用 border 画出1px高的线，在不同浏览器的Quirksmode和CSSCompat模式下都能保持同一效果。
+网页验证码是干嘛的，是为了解决什么安全问题？
+title与h1的区别、b与strong的区别、i与em的区别？
+CSS 介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？
+CSS选择符有哪些？哪些属性可以继承？
+CSS优先级算法如何计算？
+CSS3新增伪类有那些？
+如何居中div？如何居中一个浮动元素？如何让绝对定位的div居中？
+display有哪些值？说明他们的作用。
+position的值relative和absolute定位原点是？
+CSS3有哪些新特性？
+请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？
+用纯CSS创建一个三角形的原理是什么？
+css多列等高如何实现？
+一个满屏 品 字布局 如何设计?"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="前端开发面试题"><meta name=twitter:description content="前端开发面试题 （题目列表页） 目录 前言 HTML部分 CSS部分 JavaScript部分 其他问题 前端学习网站推荐 前言 前言
+HTML Doctype作用？严格模式与混杂模式如何区分？它们有何意义?
+HTML5 为什么只需要写 <!DOCTYPE HTML>？
+行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
+页面导入样式时，使用link和@import有什么区别？
+介绍一下你对浏览器内核的理解？
+常见的浏览器内核有哪些？
+html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？
+简述一下你对HTML语义化的理解？
+HTML5的离线储存怎么使用，工作原理能不能解释一下？
+浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
+请描述一下 cookies，sessionStorage 和 localStorage 的区别？
+iframe有那些缺点？
+Label的作用是什么？是怎么用的？（加 for 或 包裹）
+HTML5的form如何关闭自动完成功能？
+如何实现浏览器内多个标签页之间的通信? (阿里)
+webSocket如何兼容低浏览器？(阿里)
+页面可见性（Page Visibility API） 可以有哪些用途？
+如何在页面上实现一个圆形的可点击区域？
+实现不使用 border 画出1px高的线，在不同浏览器的Quirksmode和CSSCompat模式下都能保持同一效果。
+网页验证码是干嘛的，是为了解决什么安全问题？
+title与h1的区别、b与strong的区别、i与em的区别？
+CSS 介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？
+CSS选择符有哪些？哪些属性可以继承？
+CSS优先级算法如何计算？
+CSS3新增伪类有那些？
+如何居中div？如何居中一个浮动元素？如何让绝对定位的div居中？
+display有哪些值？说明他们的作用。
+position的值relative和absolute定位原点是？
+CSS3有哪些新特性？
+请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？
+用纯CSS创建一个三角形的原理是什么？
+css多列等高如何实现？
+一个满屏 品 字布局 如何设计?"><meta property="og:title" content="前端开发面试题"><meta property="og:description" content="前端开发面试题 （题目列表页） 目录 前言 HTML部分 CSS部分 JavaScript部分 其他问题 前端学习网站推荐 前言 前言
+HTML Doctype作用？严格模式与混杂模式如何区分？它们有何意义?
+HTML5 为什么只需要写 <!DOCTYPE HTML>？
+行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
+页面导入样式时，使用link和@import有什么区别？
+介绍一下你对浏览器内核的理解？
+常见的浏览器内核有哪些？
+html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？
+简述一下你对HTML语义化的理解？
+HTML5的离线储存怎么使用，工作原理能不能解释一下？
+浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
+请描述一下 cookies，sessionStorage 和 localStorage 的区别？
+iframe有那些缺点？
+Label的作用是什么？是怎么用的？（加 for 或 包裹）
+HTML5的form如何关闭自动完成功能？
+如何实现浏览器内多个标签页之间的通信? (阿里)
+webSocket如何兼容低浏览器？(阿里)
+页面可见性（Page Visibility API） 可以有哪些用途？
+如何在页面上实现一个圆形的可点击区域？
+实现不使用 border 画出1px高的线，在不同浏览器的Quirksmode和CSSCompat模式下都能保持同一效果。
+网页验证码是干嘛的，是为了解决什么安全问题？
+title与h1的区别、b与strong的区别、i与em的区别？
+CSS 介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？
+CSS选择符有哪些？哪些属性可以继承？
+CSS优先级算法如何计算？
+CSS3新增伪类有那些？
+如何居中div？如何居中一个浮动元素？如何让绝对定位的div居中？
+display有哪些值？说明他们的作用。
+position的值relative和absolute定位原点是？
+CSS3有哪些新特性？
+请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？
+用纯CSS创建一个三角形的原理是什么？
+css多列等高如何实现？
+一个满屏 品 字布局 如何设计?"><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai.life/hide/web-mian-shi-qs1/"><meta property="article:section" content="hide"><meta property="article:published_time" content="2021-07-09T00:00:00+00:00"><meta property="article:modified_time" content="2022-07-26T14:58:29+08:00"><title>前端开发面试题 · CK's Blog</title><link rel=canonical href=https://chenkai.life/hide/web-mian-shi-qs1/><link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/favicon.ico><link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png><meta name=generator content="Hugo 0.101.0"><link rel=manifest href=/manifest.webmanifest></head><body class="preload-transitions colorscheme-auto"><div class=float-container><span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg></span></div><details id=table-of-contents-wapper><summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></summary></details><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>CK's Blog</a>
 <input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
-</label>
-<ul class=navigation-list>
-<li class=navigation-item>
-<a class=navigation-link href=/>Home</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/tags/>Tags</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/marks/>Marks</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/about/>About</a>
-</li>
-<li class=navigation-item id=search-content>
-<input class=search-int type=text placeholder=Search>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/marks/>Marks</a></li><li class=navigation-item><a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input class=search-int type=text placeholder=Search>
 <button class=search-btn data-type=github>GitHub</button>
-<button class=search-btn data-type=google>Google</button>
-</li>
-</ul>
-</section>
-</nav>
-<div class=content>
-<section class="container page">
-<article>
-<header>
-<h1 class=title>
-<a class=title-link href=https://chenkai.life/hide/web-mian-shi-qs1/>
-前端开发面试题
-</a>
-</h1>
-<div class=edit-link style=float:right;color:#0366d6>
-<a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/hide/web-mian-shi-qs1.md>编辑</a>
-</div>
-</header>
-<div class=post-meta>
-<div class=date>
-<span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
-<time datetime=2021-07-09T00:00:00Z>
-2021-07-09
-</time>
-</span>
-</div>
-<div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
-<span class=tag>
-<a href=/tags/%E9%9D%A2%E8%AF%95/>面试</a>
-</span></div>
-</div>
-<h2 id=前端开发面试题-题目列表页>
-前端开发面试题 （题目列表页）
-<a class=heading-link href=#%e5%89%8d%e7%ab%af%e5%bc%80%e5%8f%91%e9%9d%a2%e8%af%95%e9%a2%98-%e9%a2%98%e7%9b%ae%e5%88%97%e8%a1%a8%e9%a1%b5>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<h2 id=a-namelist目录a>
-<a name=list>目录</a>
-<a class=heading-link href=#a-namelist%e7%9b%ae%e5%bd%95a>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ol>
-<li><a href=#preface>前言</a></li>
-<li><a href=#html>HTML部分</a></li>
-<li><a href=#css>CSS部分</a></li>
-<li><a href=#js>JavaScript部分</a></li>
-<li><a href=#other>其他问题</a></li>
-<li><a href=#web>前端学习网站推荐</a></li>
-</ol>
-<h2 id=a-namepreface前言a>
-<a name=preface>前言</a>
-<a class=heading-link href=#a-namepreface%e5%89%8d%e8%a8%80a>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p><a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions title=前言>前言</a></p>
-<h2 id=a-namehtmlhtmla>
-<a name=html>HTML</a>
-<a class=heading-link href=#a-namehtmlhtmla>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ul>
-<li>
-<p>Doctype作用？严格模式与混杂模式如何区分？它们有何意义?</p>
-</li>
-<li>
-<p>HTML5 为什么只需要写 <!doctype html>？</p>
-</li>
-<li>
-<p>行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？</p>
-</li>
-<li>
-<p>页面导入样式时，使用link和@import有什么区别？</p>
-</li>
-<li>
-<p>介绍一下你对浏览器内核的理解？</p>
-</li>
-<li>
-<p>常见的浏览器内核有哪些？</p>
-</li>
-<li>
-<p>html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和
-HTML5？</p>
-</li>
-<li>
-<p>简述一下你对HTML语义化的理解？</p>
-</li>
-<li>
-<p>HTML5的离线储存怎么使用，工作原理能不能解释一下？</p>
-</li>
-<li>
-<p>浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？</p>
-</li>
-<li>
-<p>请描述一下 cookies，sessionStorage 和 localStorage 的区别？</p>
-</li>
-<li>
-<p>iframe有那些缺点？</p>
-</li>
-<li>
-<p>Label的作用是什么？是怎么用的？（加 for 或 包裹）</p>
-</li>
-<li>
-<p>HTML5的form如何关闭自动完成功能？</p>
-</li>
-<li>
-<p>如何实现浏览器内多个标签页之间的通信? (阿里)</p>
-</li>
-<li>
-<p>webSocket如何兼容低浏览器？(阿里)</p>
-</li>
-<li>
-<p>页面可见性（Page Visibility API） 可以有哪些用途？</p>
-</li>
-<li>
-<p>如何在页面上实现一个圆形的可点击区域？</p>
-</li>
-<li>
-<p>实现不使用 border 画出1px高的线，在不同浏览器的Quirksmode和CSSCompat模式下都能保持同一效果。</p>
-</li>
-<li>
-<p>网页验证码是干嘛的，是为了解决什么安全问题？</p>
-</li>
-<li>
-<p>title与h1的区别、b与strong的区别、i与em的区别？</p>
-</li>
-</ul>
-<h2 id=a-namecsscssa>
-<a name=css>CSS</a>
-<a class=heading-link href=#a-namecsscssa>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ul>
-<li>
-<p>介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？</p>
-</li>
-<li>
-<p>CSS选择符有哪些？哪些属性可以继承？</p>
-</li>
-<li>
-<p>CSS优先级算法如何计算？</p>
-</li>
-<li>
-<p>CSS3新增伪类有那些？</p>
-</li>
-<li>
-<p>如何居中div？如何居中一个浮动元素？如何让绝对定位的div居中？</p>
-</li>
-<li>
-<p>display有哪些值？说明他们的作用。</p>
-</li>
-<li>
-<p>position的值relative和absolute定位原点是？</p>
-</li>
-<li>
-<p>CSS3有哪些新特性？</p>
-</li>
-<li>
-<p>请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？</p>
-</li>
-<li>
-<p>用纯CSS创建一个三角形的原理是什么？</p>
-</li>
-<li>
-<p>css多列等高如何实现？</p>
-</li>
-<li>
-<p>一个满屏 品 字布局 如何设计?</p>
-</li>
-<li>
-<p>经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？</p>
-</li>
-<li>
-<p>li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</p>
-</li>
-<li>
-<p>为什么要初始化CSS样式?</p>
-</li>
-<li>
-<p>absolute的containing block计算方式跟正常流有什么不同？</p>
-</li>
-<li>
-<p>CSS里的visibility属性有个collapse属性值是干嘛用的？在不同浏览器下以后什么区别？</p>
-</li>
-<li>
-<p>position跟display、margin collapse、overflow、float这些特性相互叠加后会怎么样？</p>
-</li>
-<li>
-<p>对BFC规范(块级格式化上下文：block formatting context)的理解？</p>
-</li>
-<li>
-<p>CSS权重优先级是如何计算的？</p>
-</li>
-<li>
-<p>请解释一下为什么需要清除浮动？清除浮动的方式</p>
-</li>
-<li>
-<p>zoom:1的清楚浮动原理?</p>
-</li>
-<li>
-<p>移动端的布局用过媒体查询吗？</p>
-</li>
-<li>
-<p>使用 CSS 预处理器吗？喜欢那个？</p>
-</li>
-<li>
-<p>CSS优化、提高性能的方法有哪些？</p>
-</li>
-<li>
-<p>浏览器是怎样解析CSS选择器的？</p>
-</li>
-<li>
-<p>在网页中的应该使用奇数还是偶数的字体？为什么呢？</p>
-</li>
-<li>
-<p>margin和padding分别适合什么场景使用？</p>
-</li>
-<li>
-<p>抽离样式模块怎么写，说出思路，有无实践经验？[阿里航旅的面试题]</p>
-</li>
-<li>
-<p>元素竖向的百分比设定是相对于容器的高度吗？</p>
-</li>
-<li>
-<p>全屏滚动的原理是什么？用到了CSS的那些属性？</p>
-</li>
-<li>
-<p>什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的IE？</p>
-</li>
-<li>
-<p>视差滚动效果，如何给每页做不同的动画？（回到顶部，向下滑动要再次出现，和只出现一次分别怎么做？）</p>
-</li>
-<li>
-<p>::before 和 :after中双冒号和单冒号 有什么区别？解释一下这2个伪元素的作用。</p>
-</li>
-<li>
-<p>如何修改chrome记住密码后自动填充表单的黄色背景 ？</p>
-</li>
-<li>
-<p>你对line-height是如何理解的？</p>
-</li>
-<li>
-<p>设置元素浮动后，该元素的display值是多少？（自动变成display:block）</p>
-</li>
-<li>
-<p>怎么让Chrome支持小于12px 的文字？</p>
-</li>
-<li>
-<p>让页面里的字体变清晰，变细用CSS怎么做？（-webkit-font-smoothing: antialiased;）</p>
-</li>
-<li>
-<p>font-style属性可以让它赋值为“oblique” oblique是什么意思？</p>
-</li>
-<li>
-<p>position:fixed;在android下无效怎么处理？</p>
-</li>
-<li>
-<p>如果需要手动写动画，你认为最小时间间隔是多久，为什么？（阿里）</p>
-</li>
-<li>
-<p>display:inline-block 什么时候会显示间隙？(携程)</p>
-</li>
-<li>
-<p>overflow: scroll时不能平滑滚动的问题怎么处理？</p>
-</li>
-<li>
-<p>有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度。</p>
-</li>
-<li>
-<p>png、jpg、gif 这些图片格式解释一下，分别什么时候用。有没有了解过webp？</p>
-</li>
-<li>
-<p>什么是Cookie 隔离？（或者说：请求资源的时候不要让它带cookie怎么做）</p>
-</li>
-<li>
-<p>style标签写在body后与body前有什么区别？</p>
-</li>
-<li>
-<p>什么是CSS 预处理器 / 后处理器？</p>
-</li>
-</ul>
-<h2 id=a-namejsjavascripta>
-<a name=js>JavaScript</a>
-<a class=heading-link href=#a-namejsjavascripta>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ul>
-<li>
-<p>介绍JavaScript的基本数据类型。</p>
-</li>
-<li>
-<p>说说写JavaScript的基本规范？</p>
-</li>
-<li>
-<p>JavaScript原型，原型链 ? 有什么特点？</p>
-</li>
-<li>
-<p>JavaScript有几种类型的值？（堆：原始数据类型和 栈：引用数据类型），你能画一下他们的内存图吗？</p>
-</li>
-<li>
-<p>Javascript如何实现继承？</p>
-</li>
-<li>
-<p>Javascript创建对象的几种方式？</p>
-</li>
-<li>
-<p>Javascript作用链域?</p>
-</li>
-<li>
-<p>谈谈this对象的理解。</p>
-</li>
-<li>
-<p>eval是做什么的？</p>
-</li>
-<li>
-<p>什么是window对象? 什么是document对象?</p>
-</li>
-<li>
-<p>null，undefined的区别？</p>
-</li>
-<li>
-<p>写一个通用的事件侦听器函数(机试题)。</p>
-</li>
-<li>
-<p>[&ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo;].map(parseInt) 答案是多少？</p>
-</li>
-<li>
-<p>关于事件，IE与火狐的事件机制有什么区别？ 如何阻止冒泡？</p>
-</li>
-<li>
-<p>什么是闭包（closure），为什么要用它？</p>
-</li>
-<li>
-<p>javascript 代码中的"use strict";是什么意思 ? 使用它区别是什么？</p>
-</li>
-<li>
-<p>如何判断一个对象是否属于某个类？</p>
-</li>
-<li>
-<p>new操作符具体干了什么呢?</p>
-</li>
-<li>
-<p>用原生JavaScript的实现过什么功能吗？</p>
-</li>
-<li>
-<p>Javascript中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？</p>
-</li>
-<li>
-<p>对JSON的了解？</p>
-</li>
-<li>
-<p><code>[].forEach.call($$("*"),function(a){ a.style.outline="1px solid #"+(~~(Math.random()*(1&lt;&lt;24))).toString(16) })</code> 能解释一下这段代码的意思吗？</p>
-</li>
-<li>
-<p>js延迟加载的方式有哪些？</p>
-</li>
-<li>
-<p>Ajax 是什么? 如何创建一个Ajax？</p>
-</li>
-<li>
-<p>同步和异步的区别?</p>
-</li>
-<li>
-<p>如何解决跨域问题?</p>
-</li>
-<li>
-<p>页面编码和被请求的资源编码如果不一致如何处理？</p>
-</li>
-<li>
-<p>模块化开发怎么做？</p>
-</li>
-<li>
-<p>AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？</p>
-</li>
-<li>
-<p>requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何
-缓存的？）</p>
-</li>
-<li>
-<p>JS模块加载器的轮子怎么造，也就是如何实现一个模块加载器？</p>
-</li>
-<li>
-<p>谈一谈你对ECMAScript6的了解？</p>
-</li>
-<li>
-<p>ECMAScript6 怎么写class，为什么会出现class这种东西?</p>
-</li>
-<li>
-<p>异步加载的方式有哪些？</p>
-</li>
-<li>
-<p>documen.write和 innerHTML的区别?</p>
-</li>
-<li>
-<p>DOM操作——怎样添加、移除、移动、复制、创建和查找节点?</p>
-</li>
-<li>
-<p>.call() 和 .apply() 的作用和区别？</p>
-</li>
-<li>
-<p>数组和对象有哪些原生方法，列举一下？</p>
-</li>
-<li>
-<p>JS 怎么实现一个类。怎么实例化这个类</p>
-</li>
-<li>
-<p>JavaScript中的作用域与变量声明提升？</p>
-</li>
-<li>
-<p>如何编写高性能的Javascript？</p>
-</li>
-<li>
-<p>那些操作会造成内存泄漏？</p>
-</li>
-<li>
-<p>JQuery的源码看过吗？能不能简单概况一下它的实现原理？</p>
-</li>
-<li>
-<p>jQuery.fn的init方法返回的this指的是什么对象？为什么要返回this？</p>
-</li>
-<li>
-<p>jquery中如何将数组转化为json字符串，然后再转化回来？</p>
-</li>
-<li>
-<p>jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？</p>
-</li>
-<li>
-<p>jquery.extend 与 jquery.fn.extend的区别？</p>
-</li>
-<li>
-<p>jQuery 的队列是如何实现的？队列可以用在哪些地方？</p>
-</li>
-<li>
-<p>谈一下Jquery中的bind(),live(),delegate(),on()的区别？</p>
-</li>
-<li>
-<p>JQuery一个对象可以同时绑定多个事件，这是如何实现的？</p>
-</li>
-<li>
-<p>是否知道自定义事件。jQuery里的fire函数是什么意思，什么时候用？</p>
-</li>
-<li>
-<p>jQuery 是通过哪个方法和 Sizzle 选择器结合的？（jQuery.fn.find()进入Sizzle）</p>
-</li>
-<li>
-<p>针对 jQuery性能的优化方法？</p>
-</li>
-<li>
-<p>Jquery与jQuery UI有啥区别？</p>
-</li>
-<li>
-<p>JQuery的源码看过吗？能不能简单说一下它的实现原理？</p>
-</li>
-<li>
-<p>jquery 中如何将数组转化为json字符串，然后再转化回来？</p>
-</li>
-<li>
-<p>jQuery和Zepto的区别？各自的使用场景？</p>
-</li>
-<li>
-<p>针对 jQuery 的优化方法？</p>
-</li>
-<li>
-<p>Zepto的点透问题如何解决？</p>
-</li>
-<li>
-<p>jQueryUI如何自定义组件?</p>
-</li>
-<li>
-<p>需求：实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？</p>
-</li>
-<li>
-<p>如何判断当前脚本运行在浏览器还是node环境中？（阿里）</p>
-</li>
-<li>
-<p>移动端最小触控区域是多大？</p>
-</li>
-<li>
-<p>jQuery 的 slideUp动画 ，如果目标元素是被外部事件驱动, 当鼠标快速地连续触发外部元素事件, 动画会滞后的反复执行，该如何处理呢?</p>
-</li>
-<li>
-<p>把 Script 标签 放在页面的最底部的body封闭之前 和封闭之后有什么区别？浏览器会如何解析它们？</p>
-</li>
-<li>
-<p>移动端的点击事件的有延迟，时间是多久，为什么会有？ 怎么解决这个延时？（click 有 300ms 延迟,为了实现safari的双击事件的设计，浏览器要知道你是不是要双击操作。）</p>
-</li>
-<li>
-<p>知道各种JS框架(Angular, Backbone, Ember, React, Meteor, Knockout&mldr;)么? 能讲出他们各自的优点和缺点么?</p>
-</li>
-<li>
-<p>Underscore 对哪些 JS 原生对象进行了扩展以及提供了哪些好用的函数方法？</p>
-</li>
-<li>
-<p>解释JavaScript中的作用域与变量声明提升？</p>
-</li>
-<li>
-<p>那些操作会造成内存泄漏？</p>
-</li>
-<li>
-<p>JQuery一个对象可以同时绑定多个事件，这是如何实现的？</p>
-</li>
-<li>
-<p>Node.js的适用场景？</p>
-</li>
-<li>
-<p>(如果会用node)知道route, middleware, cluster, nodemon, pm2, server-side rendering么?</p>
-</li>
-<li>
-<p>解释一下 Backbone 的 MVC 实现方式？</p>
-</li>
-<li>
-<p>什么是“前端路由”?什么时候适合使用“前端路由”? “前端路由”有哪些优点和缺点?</p>
-</li>
-<li>
-<p>知道什么是webkit么? 知道怎么用浏览器的各种工具来调试和debug代码么?</p>
-</li>
-<li>
-<p>如何测试前端代码么? 知道BDD, TDD, Unit Test么? 知道怎么测试你的前端工程么(mocha, sinon, jasmin, qUnit..)?</p>
-</li>
-<li>
-<p>前端templating(Mustache, underscore, handlebars)是干嘛的, 怎么用?</p>
-</li>
-<li>
-<p>简述一下 Handlebars 的基本用法？</p>
-</li>
-<li>
-<p>简述一下 Handlerbars 的对模板的基本处理流程， 如何编译的？如何缓存的？</p>
-</li>
-<li>
-<p>用js实现千位分隔符?(来源：<a href=http://div.io/topic/744>前端农民工</a>，提示：正则+replace)</p>
-</li>
-<li>
-<p>检测浏览器版本版本有哪些方式？</p>
-</li>
-<li>
-<p>What is a Polyfill?</p>
-</li>
-<li>
-<p>做的项目中，有没有用过或自己实现一些 polyfill 方案（兼容性处理方案）？</p>
-</li>
-<li>
-<p>我们给一个dom同时绑定两个点击事件，一个用捕获，一个用冒泡。会执行几次事件，会先执行冒泡还是捕获？</p>
-</li>
-<li>
-<p>使用JS实现获取文件扩展名？</p>
-</li>
-</ul>
-<h4 id=a-nameotherecmascript6-相关a>
-<a name=other>ECMAScript6 相关</a>
-<a class=heading-link href=#a-nameotherecmascript6-%e7%9b%b8%e5%85%b3a>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<ul>
-<li>Object.is() 与原来的比较操作符“ ===”、“ ==”的区别？</li>
-</ul>
-<h4 id=a-nameother前端框架相关a>
-<a name=other>前端框架相关</a>
-<a class=heading-link href=#a-nameother%e5%89%8d%e7%ab%af%e6%a1%86%e6%9e%b6%e7%9b%b8%e5%85%b3a>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<ul>
-<li>
-<p>react-router 路由系统的实现原理？</p>
-</li>
-<li>
-<p>React中如何解决第三方类库的问题?</p>
-</li>
-</ul>
-<h2 id=a-nameother其他问题a>
-<a name=other>其他问题</a>
-<a class=heading-link href=#a-nameother%e5%85%b6%e4%bb%96%e9%97%ae%e9%a2%98a>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ul>
-<li>
-<p>原来公司工作流程是怎么样的，如何与其他人协作的？如何夸部门合作的？</p>
-</li>
-<li>
-<p>你遇到过比较难的技术问题是？你是如何解决的？</p>
-</li>
-<li>
-<p>设计模式 知道什么是singleton, factory, strategy, decrator么?</p>
-</li>
-<li>
-<p>常使用的库有哪些？常用的前端开发工具？开发过什么应用或组件？</p>
-</li>
-<li>
-<p>页面重构怎么操作？</p>
-</li>
-<li>
-<p>列举IE与其他浏览器不一样的特性？</p>
-</li>
-<li>
-<p>99%的网站都需要被重构是那本书上写的？</p>
-</li>
-<li>
-<p>什么叫优雅降级和渐进增强？</p>
-</li>
-<li>
-<p>是否了解公钥加密和私钥加密。</p>
-</li>
-<li>
-<p>WEB应用从服务器主动推送Data到客户端有那些方式？</p>
-</li>
-<li>
-<p>对Node的优点和缺点提出了自己的看法？</p>
-</li>
-<li>
-<p>你有用过哪些前端性能优化的方法？</p>
-</li>
-<li>
-<p>http状态码有那些？分别代表是什么意思？</p>
-</li>
-<li>
-<p>一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）</p>
-</li>
-<li>
-<p>部分地区用户反应网站很卡，请问有哪些可能性的原因，以及解决方法？</p>
-</li>
-<li>
-<p>从打开app到刷新出内容，整个过程中都发生了什么，如果感觉慢，怎么定位问题，怎么解决?</p>
-</li>
-<li>
-<p>除了前端以外还了解什么其它技术么？你最最厉害的技能是什么？</p>
-</li>
-<li>
-<p>你用的得心应手用的熟练地编辑器&开发环境是什么样子？</p>
-</li>
-<li>
-<p>对前端界面工程师这个职位是怎么样理解的？它的前景会怎么样？</p>
-</li>
-<li>
-<p>你怎么看待Web App 、hybrid App、Native App？</p>
-</li>
-<li>
-<p>你移动端前端开发的理解？（和 Web 前端开发的主要区别是什么？）</p>
-</li>
-<li>
-<p>你对加班的看法？</p>
-</li>
-<li>
-<p>平时如何管理你的项目？</p>
-</li>
-<li>
-<p>说说最近最流行的一些东西吧？常去哪些网站？</p>
-</li>
-<li>
-<p>如何设计突发大规模并发架构？</p>
-</li>
-<li>
-<p>说说最近最流行的一些东西吧？常去哪些网站？</p>
-</li>
-<li>
-<p>是否了解开源的工具 bower、npm、yeoman、grunt、gulp，一个 npm 的包里的 package.json 具备的必要的字段都有哪些？（名称、版本号，依赖）</p>
-</li>
-<li>
-<p>每个模块的代码结构都应该比较简单，且每个模块之间的关系也应该非常清晰，随着功能和迭代次数越来越多，你会如何去保持这个状态的？</p>
-</li>
-<li>
-<p>Git知道branch, diff, merge么?</p>
-</li>
-<li>
-<p>如何设计突发大规模并发架构？</p>
-</li>
-<li>
-<p>当团队人手不足，把功能代码写完已经需要加班的情况下，你会做前端代码的测试吗？</p>
-</li>
-<li>
-<p>说说最近最流行的一些东西吧？平时常去哪些网站？</p>
-</li>
-<li>
-<p>知道什么是SEO并且怎么优化么? 知道各种meta data的含义么?</p>
-</li>
-<li>
-<p>移动端（Android IOS）怎么做好用户体验?</p>
-</li>
-<li>
-<p>简单描述一下你做过的移动APP项目研发流程？</p>
-</li>
-<li>
-<p>你在现在的团队处于什么样的角色，起到了什么明显的作用？</p>
-</li>
-<li>
-<p>你认为怎样才是全端工程师（Full Stack developer）？</p>
-</li>
-<li>
-<p>介绍一个你最得意的作品吧？</p>
-</li>
-<li>
-<p>你有自己的技术博客吗，用了哪些技术？</p>
-</li>
-<li>
-<p>对前端安全有什么看法？</p>
-</li>
-<li>
-<p>是否了解Web注入攻击，说下原理，最常见的两种攻击（XSS 和 CSRF）了解到什么程度？</p>
-</li>
-<li>
-<p>项目中遇到国哪些印象深刻的技术难题，具体是什么问题，怎么解决？。</p>
-</li>
-<li>
-<p>最近在学什么东西？</p>
-</li>
-<li>
-<p>你的优点是什么？缺点是什么？</p>
-</li>
-<li>
-<p>如何管理前端团队?</p>
-</li>
-<li>
-<p>最近在学什么？能谈谈你未来3，5年给自己的规划吗？</p>
-</li>
-</ul>
-<h2 id=有趣的问题>
-有趣的问题
-<a class=heading-link href=#%e6%9c%89%e8%b6%a3%e7%9a%84%e9%97%ae%e9%a2%98>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ul>
-<li>
-<p>.A、B两人分别在两座岛上。B生病了，A有B所需要的药。C有一艘小船和一个可以上锁的箱子。C愿意在A和B之间运东西，但东西只能放在箱子里。只要箱子没被上锁，C都会偷走箱子里的东西，不管箱子里有什么。如果A和B各自有一把锁和只能开自己那把锁的钥匙，A应该如何把东西安全递交给B？</p>
-<p>答案：A把药放进箱子，用自己的锁把箱子锁上。B拿到箱子后，再在箱子上加一把自己的锁。
-箱子运回A后，A取下自己的锁。箱子再运到B手中时，B取下自己的锁，获得药物。</p>
-</li>
-<li>
-<p>Amazon主页的左上角有一个商品分类浏览的下拉菜单 没有延迟，而且子菜单也不会在不应该的时候消失。它是怎样做到这一点的呢？</p>
-<p>答案是通过探测鼠标移动的方向和轨迹，具体查看Khan Academy工程师 Ben Kamens 写的 jQuery插件</p>
-</li>
-</ul>
-<p><img src=http://a.36krcnd.com/photo/3f716d75a80cdce23c803fc6f088846e.png alt="这是 Khan Academy工程师 Ben Kamens 写的 jQuery插件"></p>
-<h2 id=a-nameweb前端学习网站推荐a>
-<a name=web>前端学习网站推荐</a>
-<a class=heading-link href=#a-nameweb%e5%89%8d%e7%ab%af%e5%ad%a6%e4%b9%a0%e7%bd%91%e7%ab%99%e6%8e%a8%e8%8d%90a>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ol>
-<li>
-<p>极客标签： <a href=http://www.gbtags.com/>http://www.gbtags.com/</a></p>
-</li>
-<li>
-<p>码农周刊： <a href=http://weekly.manong.io/issues/>http://weekly.manong.io/issues/</a></p>
-</li>
-<li>
-<p>前端周刊： <a href=http://www.feweekly.com/issues>http://www.feweekly.com/issues</a></p>
-</li>
-<li>
-<p>慕课网： <a href=http://www.imooc.com/>http://www.imooc.com/</a></p>
-</li>
-<li>
-<p>div.io： <a href=http://div.io>http://div.io</a></p>
-</li>
-<li>
-<p>Hacker News： <a href=https://news.ycombinator.com/news>https://news.ycombinator.com/news</a></p>
-</li>
-<li>
-<p>InfoQ： <a href=http://www.infoq.com/>http://www.infoq.com/</a></p>
-</li>
-<li>
-<p>w3cplus： <a href=http://www.w3cplus.com/>http://www.w3cplus.com/</a></p>
-</li>
-<li>
-<p>Stack Overflow： <a href=http://stackoverflow.com/>http://stackoverflow.com/</a></p>
-</li>
-</ol>
-<p>10.w3school： <a href=http://www.w3school.com.cn/>http://www.w3school.com.cn/</a></p>
-<p>11.mozilla： <a href=https://developer.mozilla.org/zh-CN/docs/Web/>https://developer.mozilla.org/zh-CN/docs/Web/</a></p>
-<h2 id=a-nameweb文档推荐a>
-<a name=web>文档推荐</a>
-<a class=heading-link href=#a-nameweb%e6%96%87%e6%a1%a3%e6%8e%a8%e8%8d%90a>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ol>
-<li>
-<p><a href=http://docs.huihoo.com/jquery/jquery-fundamentals/zh-cn/index.html title="jQuery 基本原理">jQuery 基本原理</a></p>
-</li>
-<li>
-<p><a href=http://bonsaiden.github.io/JavaScript-Garden/zh/>JavaScript 秘密花园</a></p>
-</li>
-<li>
-<p><a href=http://css.doyoe.com/>CSS参考手册</a></p>
-</li>
-<li>
-<p><a href=http://javascript.ruanyifeng.com/>JavaScript 标准参考教程</a></p>
-</li>
-<li>
-<p><a href=http://es6.ruanyifeng.com/>ECMAScript 6入门</a></p>
-</li>
-</ol>
-<p><strong>备注：</strong></p>
-<p>根据自己需要选择性阅读，面试题是对理论知识的总结，让自己学会应该如何表达。</p>
-<p>资料答案不够正确和全面，欢迎欢迎Star和提交issues。</p>
-<p>格式不断修改更新中。</p>
-<p>在 github 项目的右上角，有三个按钮,分别是 watch、star、fork，新来的同学注意不要用错了，无休止的邮件提醒会给你造成不必要的信息干扰。</p>
-<p>当你选择Watching，表示你以后会关注这个项目的全部动态，以后只要这个项目发生变动，被别人提交了pull request、被发起了issue等情况你都会收到邮件通知。</p>
-<p>star相当于是点赞或收藏，方便以后查找。</p>
-<p>fork表示你想要补充完善这个项目的内容。</p>
-<p>更新记录：</p>
-<p>2016年10月20日:更新一些已被发现的问题。</p>
-<p>2016年3月25日：新增ECMAScript6 相关问题</p>
-<h3 id=更新时间--2016年10月20日>
-更新时间: 2016年10月20日
-<a class=heading-link href=#%e6%9b%b4%e6%96%b0%e6%97%b6%e9%97%b4--2016%e5%b9%b410%e6%9c%8820%e6%97%a5>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>资料答案不够正确和全面，欢迎欢迎Star和提交issues。我的微博：<a href=http://weibo.com/920802999>http://weibo.com/920802999</a></p>
-<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=833de04e1e681474d17b1192da536f3c data-page-url=https://chenkai.life/hide/web-mian-shi-qs1/ data-page-title=前端开发面试题 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
-</article>
-</section>
-</div>
-</main>
-<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+<button class=search-btn data-type=google>Google</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai.life/hide/web-mian-shi-qs1/>前端开发面试题</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/hide/web-mian-shi-qs1.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg><time datetime=2021-07-09T00:00:00Z>2021-07-09</time></span></div></div><h2 id=前端开发面试题-题目列表页>前端开发面试题 （题目列表页）
+<a class=heading-link href=#%e5%89%8d%e7%ab%af%e5%bc%80%e5%8f%91%e9%9d%a2%e8%af%95%e9%a2%98-%e9%a2%98%e7%9b%ae%e5%88%97%e8%a1%a8%e9%a1%b5><i class="fa fa-link" aria-hidden=true></i></a></h2><h2 id=a-namelist目录a><a name=list>目录</a>
+<a class=heading-link href=#a-namelist%e7%9b%ae%e5%bd%95a><i class="fa fa-link" aria-hidden=true></i></a></h2><ol><li><a href=#preface>前言</a></li><li><a href=#html>HTML部分</a></li><li><a href=#css>CSS部分</a></li><li><a href=#js>JavaScript部分</a></li><li><a href=#other>其他问题</a></li><li><a href=#web>前端学习网站推荐</a></li></ol><h2 id=a-namepreface前言a><a name=preface>前言</a>
+<a class=heading-link href=#a-namepreface%e5%89%8d%e8%a8%80a><i class="fa fa-link" aria-hidden=true></i></a></h2><p><a href=https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions title=前言>前言</a></p><h2 id=a-namehtmlhtmla><a name=html>HTML</a>
+<a class=heading-link href=#a-namehtmlhtmla><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>Doctype作用？严格模式与混杂模式如何区分？它们有何意义?</p></li><li><p>HTML5 为什么只需要写 <!doctype html>？</p></li><li><p>行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？</p></li><li><p>页面导入样式时，使用link和@import有什么区别？</p></li><li><p>介绍一下你对浏览器内核的理解？</p></li><li><p>常见的浏览器内核有哪些？</p></li><li><p>html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和
+HTML5？</p></li><li><p>简述一下你对HTML语义化的理解？</p></li><li><p>HTML5的离线储存怎么使用，工作原理能不能解释一下？</p></li><li><p>浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？</p></li><li><p>请描述一下 cookies，sessionStorage 和 localStorage 的区别？</p></li><li><p>iframe有那些缺点？</p></li><li><p>Label的作用是什么？是怎么用的？（加 for 或 包裹）</p></li><li><p>HTML5的form如何关闭自动完成功能？</p></li><li><p>如何实现浏览器内多个标签页之间的通信? (阿里)</p></li><li><p>webSocket如何兼容低浏览器？(阿里)</p></li><li><p>页面可见性（Page Visibility API） 可以有哪些用途？</p></li><li><p>如何在页面上实现一个圆形的可点击区域？</p></li><li><p>实现不使用 border 画出1px高的线，在不同浏览器的Quirksmode和CSSCompat模式下都能保持同一效果。</p></li><li><p>网页验证码是干嘛的，是为了解决什么安全问题？</p></li><li><p>title与h1的区别、b与strong的区别、i与em的区别？</p></li></ul><h2 id=a-namecsscssa><a name=css>CSS</a>
+<a class=heading-link href=#a-namecsscssa><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？</p></li><li><p>CSS选择符有哪些？哪些属性可以继承？</p></li><li><p>CSS优先级算法如何计算？</p></li><li><p>CSS3新增伪类有那些？</p></li><li><p>如何居中div？如何居中一个浮动元素？如何让绝对定位的div居中？</p></li><li><p>display有哪些值？说明他们的作用。</p></li><li><p>position的值relative和absolute定位原点是？</p></li><li><p>CSS3有哪些新特性？</p></li><li><p>请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？</p></li><li><p>用纯CSS创建一个三角形的原理是什么？</p></li><li><p>css多列等高如何实现？</p></li><li><p>一个满屏 品 字布局 如何设计?</p></li><li><p>经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？</p></li><li><p>li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？</p></li><li><p>为什么要初始化CSS样式?</p></li><li><p>absolute的containing block计算方式跟正常流有什么不同？</p></li><li><p>CSS里的visibility属性有个collapse属性值是干嘛用的？在不同浏览器下以后什么区别？</p></li><li><p>position跟display、margin collapse、overflow、float这些特性相互叠加后会怎么样？</p></li><li><p>对BFC规范(块级格式化上下文：block formatting context)的理解？</p></li><li><p>CSS权重优先级是如何计算的？</p></li><li><p>请解释一下为什么需要清除浮动？清除浮动的方式</p></li><li><p>zoom:1的清楚浮动原理?</p></li><li><p>移动端的布局用过媒体查询吗？</p></li><li><p>使用 CSS 预处理器吗？喜欢那个？</p></li><li><p>CSS优化、提高性能的方法有哪些？</p></li><li><p>浏览器是怎样解析CSS选择器的？</p></li><li><p>在网页中的应该使用奇数还是偶数的字体？为什么呢？</p></li><li><p>margin和padding分别适合什么场景使用？</p></li><li><p>抽离样式模块怎么写，说出思路，有无实践经验？[阿里航旅的面试题]</p></li><li><p>元素竖向的百分比设定是相对于容器的高度吗？</p></li><li><p>全屏滚动的原理是什么？用到了CSS的那些属性？</p></li><li><p>什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的IE？</p></li><li><p>视差滚动效果，如何给每页做不同的动画？（回到顶部，向下滑动要再次出现，和只出现一次分别怎么做？）</p></li><li><p>::before 和 :after中双冒号和单冒号 有什么区别？解释一下这2个伪元素的作用。</p></li><li><p>如何修改chrome记住密码后自动填充表单的黄色背景 ？</p></li><li><p>你对line-height是如何理解的？</p></li><li><p>设置元素浮动后，该元素的display值是多少？（自动变成display:block）</p></li><li><p>怎么让Chrome支持小于12px 的文字？</p></li><li><p>让页面里的字体变清晰，变细用CSS怎么做？（-webkit-font-smoothing: antialiased;）</p></li><li><p>font-style属性可以让它赋值为“oblique” oblique是什么意思？</p></li><li><p>position:fixed;在android下无效怎么处理？</p></li><li><p>如果需要手动写动画，你认为最小时间间隔是多久，为什么？（阿里）</p></li><li><p>display:inline-block 什么时候会显示间隙？(携程)</p></li><li><p>overflow: scroll时不能平滑滚动的问题怎么处理？</p></li><li><p>有一个高度自适应的div，里面有两个div，一个高度100px，希望另一个填满剩下的高度。</p></li><li><p>png、jpg、gif 这些图片格式解释一下，分别什么时候用。有没有了解过webp？</p></li><li><p>什么是Cookie 隔离？（或者说：请求资源的时候不要让它带cookie怎么做）</p></li><li><p>style标签写在body后与body前有什么区别？</p></li><li><p>什么是CSS 预处理器 / 后处理器？</p></li></ul><h2 id=javascript>JavaScript
+<a class=heading-link href=#javascript><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>介绍JavaScript的基本数据类型。</p></li><li><p>说说写JavaScript的基本规范？</p></li><li><p>JavaScript原型，原型链 ? 有什么特点？</p></li><li><p>JavaScript有几种类型的值？（堆：原始数据类型和 栈：引用数据类型），你能画一下他们的内存图吗？</p></li><li><p>Javascript如何实现继承？</p></li><li><p>Javascript创建对象的几种方式？</p></li><li><p>Javascript作用链域?</p></li><li><p>谈谈this对象的理解。</p></li><li><p>eval是做什么的？</p></li><li><p>什么是window对象? 什么是document对象?</p></li><li><p>null，undefined的区别？</p></li><li><p>写一个通用的事件侦听器函数(机试题)。</p></li><li><p>[&ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo;].map(parseInt) 答案是多少？</p></li><li><p>关于事件，IE与火狐的事件机制有什么区别？ 如何阻止冒泡？</p></li><li><p>什么是闭包（closure），为什么要用它？</p></li><li><p>javascript 代码中的"use strict";是什么意思 ? 使用它区别是什么？</p></li><li><p>如何判断一个对象是否属于某个类？</p></li><li><p>new操作符具体干了什么呢?</p></li><li><p>用原生JavaScript的实现过什么功能吗？</p></li><li><p>Javascript中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？</p></li><li><p>对JSON的了解？</p></li><li><p><code>[].forEach.call($$("*"),function(a){ a.style.outline="1px solid #"+(~~(Math.random()*(1&lt;&lt;24))).toString(16) })</code> 能解释一下这段代码的意思吗？</p></li><li><p>js延迟加载的方式有哪些？</p></li><li><p>Ajax 是什么? 如何创建一个Ajax？</p></li><li><p>同步和异步的区别?</p></li><li><p>如何解决跨域问题?</p></li><li><p>页面编码和被请求的资源编码如果不一致如何处理？</p></li><li><p>模块化开发怎么做？</p></li><li><p>AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？</p></li><li><p>requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何
+缓存的？）</p></li><li><p>JS模块加载器的轮子怎么造，也就是如何实现一个模块加载器？</p></li><li><p>谈一谈你对ECMAScript6的了解？</p></li><li><p>ECMAScript6 怎么写class，为什么会出现class这种东西?</p></li><li><p>异步加载的方式有哪些？</p></li><li><p>documen.write和 innerHTML的区别?</p></li><li><p>DOM操作——怎样添加、移除、移动、复制、创建和查找节点?</p></li><li><p>.call() 和 .apply() 的作用和区别？</p></li><li><p>数组和对象有哪些原生方法，列举一下？</p></li><li><p>JS 怎么实现一个类。怎么实例化这个类</p></li><li><p>JavaScript中的作用域与变量声明提升？</p></li><li><p>如何编写高性能的Javascript？</p></li><li><p>那些操作会造成内存泄漏？</p></li><li><p>JQuery的源码看过吗？能不能简单概况一下它的实现原理？</p></li><li><p>jQuery.fn的init方法返回的this指的是什么对象？为什么要返回this？</p></li><li><p>jquery中如何将数组转化为json字符串，然后再转化回来？</p></li><li><p>jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？</p></li><li><p>jquery.extend 与 jquery.fn.extend的区别？</p></li><li><p>jQuery 的队列是如何实现的？队列可以用在哪些地方？</p></li><li><p>谈一下Jquery中的bind(),live(),delegate(),on()的区别？</p></li><li><p>JQuery一个对象可以同时绑定多个事件，这是如何实现的？</p></li><li><p>是否知道自定义事件。jQuery里的fire函数是什么意思，什么时候用？</p></li><li><p>jQuery 是通过哪个方法和 Sizzle 选择器结合的？（jQuery.fn.find()进入Sizzle）</p></li><li><p>针对 jQuery性能的优化方法？</p></li><li><p>Jquery与jQuery UI有啥区别？</p></li><li><p>JQuery的源码看过吗？能不能简单说一下它的实现原理？</p></li><li><p>jquery 中如何将数组转化为json字符串，然后再转化回来？</p></li><li><p>jQuery和Zepto的区别？各自的使用场景？</p></li><li><p>针对 jQuery 的优化方法？</p></li><li><p>Zepto的点透问题如何解决？</p></li><li><p>jQueryUI如何自定义组件?</p></li><li><p>需求：实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？</p></li><li><p>如何判断当前脚本运行在浏览器还是node环境中？（阿里）</p></li><li><p>移动端最小触控区域是多大？</p></li><li><p>jQuery 的 slideUp动画 ，如果目标元素是被外部事件驱动, 当鼠标快速地连续触发外部元素事件, 动画会滞后的反复执行，该如何处理呢?</p></li><li><p>把 Script 标签 放在页面的最底部的body封闭之前 和封闭之后有什么区别？浏览器会如何解析它们？</p></li><li><p>移动端的点击事件的有延迟，时间是多久，为什么会有？ 怎么解决这个延时？（click 有 300ms 延迟,为了实现safari的双击事件的设计，浏览器要知道你是不是要双击操作。）</p></li><li><p>知道各种JS框架(Angular, Backbone, Ember, React, Meteor, Knockout&mldr;)么? 能讲出他们各自的优点和缺点么?</p></li><li><p>Underscore 对哪些 JS 原生对象进行了扩展以及提供了哪些好用的函数方法？</p></li><li><p>解释JavaScript中的作用域与变量声明提升？</p></li><li><p>那些操作会造成内存泄漏？</p></li><li><p>JQuery一个对象可以同时绑定多个事件，这是如何实现的？</p></li><li><p>Node.js的适用场景？</p></li><li><p>(如果会用node)知道route, middleware, cluster, nodemon, pm2, server-side rendering么?</p></li><li><p>解释一下 Backbone 的 MVC 实现方式？</p></li><li><p>什么是“前端路由”?什么时候适合使用“前端路由”? “前端路由”有哪些优点和缺点?</p></li><li><p>知道什么是webkit么? 知道怎么用浏览器的各种工具来调试和debug代码么?</p></li><li><p>如何测试前端代码么? 知道BDD, TDD, Unit Test么? 知道怎么测试你的前端工程么(mocha, sinon, jasmin, qUnit..)?</p></li><li><p>前端templating(Mustache, underscore, handlebars)是干嘛的, 怎么用?</p></li><li><p>简述一下 Handlebars 的基本用法？</p></li><li><p>简述一下 Handlerbars 的对模板的基本处理流程， 如何编译的？如何缓存的？</p></li><li><p>用js实现千位分隔符?(来源：<a href=http://div.io/topic/744>前端农民工</a>，提示：正则+replace)</p></li><li><p>检测浏览器版本版本有哪些方式？</p></li><li><p>What is a Polyfill?</p></li><li><p>做的项目中，有没有用过或自己实现一些 polyfill 方案（兼容性处理方案）？</p></li><li><p>我们给一个dom同时绑定两个点击事件，一个用捕获，一个用冒泡。会执行几次事件，会先执行冒泡还是捕获？</p></li><li><p>使用JS实现获取文件扩展名？</p></li></ul><h4 id=a-nameotherecmascript6-相关a><a name=other>ECMAScript6 相关</a>
+<a class=heading-link href=#a-nameotherecmascript6-%e7%9b%b8%e5%85%b3a><i class="fa fa-link" aria-hidden=true></i></a></h4><ul><li>Object.is() 与原来的比较操作符“ ===”、“ ==”的区别？</li></ul><h4 id=a-nameother前端框架相关a><a name=other>前端框架相关</a>
+<a class=heading-link href=#a-nameother%e5%89%8d%e7%ab%af%e6%a1%86%e6%9e%b6%e7%9b%b8%e5%85%b3a><i class="fa fa-link" aria-hidden=true></i></a></h4><ul><li><p>react-router 路由系统的实现原理？</p></li><li><p>React中如何解决第三方类库的问题?</p></li></ul><h2 id=a-nameother其他问题a><a name=other>其他问题</a>
+<a class=heading-link href=#a-nameother%e5%85%b6%e4%bb%96%e9%97%ae%e9%a2%98a><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>原来公司工作流程是怎么样的，如何与其他人协作的？如何夸部门合作的？</p></li><li><p>你遇到过比较难的技术问题是？你是如何解决的？</p></li><li><p>设计模式 知道什么是singleton, factory, strategy, decrator么?</p></li><li><p>常使用的库有哪些？常用的前端开发工具？开发过什么应用或组件？</p></li><li><p>页面重构怎么操作？</p></li><li><p>列举IE与其他浏览器不一样的特性？</p></li><li><p>99%的网站都需要被重构是那本书上写的？</p></li><li><p>什么叫优雅降级和渐进增强？</p></li><li><p>是否了解公钥加密和私钥加密。</p></li><li><p>WEB应用从服务器主动推送Data到客户端有那些方式？</p></li><li><p>对Node的优点和缺点提出了自己的看法？</p></li><li><p>你有用过哪些前端性能优化的方法？</p></li><li><p>http状态码有那些？分别代表是什么意思？</p></li><li><p>一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）</p></li><li><p>部分地区用户反应网站很卡，请问有哪些可能性的原因，以及解决方法？</p></li><li><p>从打开app到刷新出内容，整个过程中都发生了什么，如果感觉慢，怎么定位问题，怎么解决?</p></li><li><p>除了前端以外还了解什么其它技术么？你最最厉害的技能是什么？</p></li><li><p>你用的得心应手用的熟练地编辑器&开发环境是什么样子？</p></li><li><p>对前端界面工程师这个职位是怎么样理解的？它的前景会怎么样？</p></li><li><p>你怎么看待Web App 、hybrid App、Native App？</p></li><li><p>你移动端前端开发的理解？（和 Web 前端开发的主要区别是什么？）</p></li><li><p>你对加班的看法？</p></li><li><p>平时如何管理你的项目？</p></li><li><p>说说最近最流行的一些东西吧？常去哪些网站？</p></li><li><p>如何设计突发大规模并发架构？</p></li><li><p>说说最近最流行的一些东西吧？常去哪些网站？</p></li><li><p>是否了解开源的工具 bower、npm、yeoman、grunt、gulp，一个 npm 的包里的 package.json 具备的必要的字段都有哪些？（名称、版本号，依赖）</p></li><li><p>每个模块的代码结构都应该比较简单，且每个模块之间的关系也应该非常清晰，随着功能和迭代次数越来越多，你会如何去保持这个状态的？</p></li><li><p>Git知道branch, diff, merge么?</p></li><li><p>如何设计突发大规模并发架构？</p></li><li><p>当团队人手不足，把功能代码写完已经需要加班的情况下，你会做前端代码的测试吗？</p></li><li><p>说说最近最流行的一些东西吧？平时常去哪些网站？</p></li><li><p>知道什么是SEO并且怎么优化么? 知道各种meta data的含义么?</p></li><li><p>移动端（Android IOS）怎么做好用户体验?</p></li><li><p>简单描述一下你做过的移动APP项目研发流程？</p></li><li><p>你在现在的团队处于什么样的角色，起到了什么明显的作用？</p></li><li><p>你认为怎样才是全端工程师（Full Stack developer）？</p></li><li><p>介绍一个你最得意的作品吧？</p></li><li><p>你有自己的技术博客吗，用了哪些技术？</p></li><li><p>对前端安全有什么看法？</p></li><li><p>是否了解Web注入攻击，说下原理，最常见的两种攻击（XSS 和 CSRF）了解到什么程度？</p></li><li><p>项目中遇到国哪些印象深刻的技术难题，具体是什么问题，怎么解决？。</p></li><li><p>最近在学什么东西？</p></li><li><p>你的优点是什么？缺点是什么？</p></li><li><p>如何管理前端团队?</p></li><li><p>最近在学什么？能谈谈你未来3，5年给自己的规划吗？</p></li></ul><h2 id=有趣的问题>有趣的问题
+<a class=heading-link href=#%e6%9c%89%e8%b6%a3%e7%9a%84%e9%97%ae%e9%a2%98><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p>.A、B两人分别在两座岛上。B生病了，A有B所需要的药。C有一艘小船和一个可以上锁的箱子。C愿意在A和B之间运东西，但东西只能放在箱子里。只要箱子没被上锁，C都会偷走箱子里的东西，不管箱子里有什么。如果A和B各自有一把锁和只能开自己那把锁的钥匙，A应该如何把东西安全递交给B？</p><p>答案：A把药放进箱子，用自己的锁把箱子锁上。B拿到箱子后，再在箱子上加一把自己的锁。
+箱子运回A后，A取下自己的锁。箱子再运到B手中时，B取下自己的锁，获得药物。</p></li><li><p>Amazon主页的左上角有一个商品分类浏览的下拉菜单 没有延迟，而且子菜单也不会在不应该的时候消失。它是怎样做到这一点的呢？</p><p>答案是通过探测鼠标移动的方向和轨迹，具体查看Khan Academy工程师 Ben Kamens 写的 jQuery插件</p></li></ul><p><img src=http://a.36krcnd.com/photo/3f716d75a80cdce23c803fc6f088846e.png alt="这是 Khan Academy工程师 Ben Kamens 写的 jQuery插件"></p><h2 id=a-nameweb前端学习网站推荐a><a name=web>前端学习网站推荐</a>
+<a class=heading-link href=#a-nameweb%e5%89%8d%e7%ab%af%e5%ad%a6%e4%b9%a0%e7%bd%91%e7%ab%99%e6%8e%a8%e8%8d%90a><i class="fa fa-link" aria-hidden=true></i></a></h2><ol><li><p>极客标签： <a href=http://www.gbtags.com/>http://www.gbtags.com/</a></p></li><li><p>码农周刊： <a href=http://weekly.manong.io/issues/>http://weekly.manong.io/issues/</a></p></li><li><p>前端周刊： <a href=http://www.feweekly.com/issues>http://www.feweekly.com/issues</a></p></li><li><p>慕课网： <a href=http://www.imooc.com/>http://www.imooc.com/</a></p></li><li><p>div.io： <a href=http://div.io>http://div.io</a></p></li><li><p>Hacker News： <a href=https://news.ycombinator.com/news>https://news.ycombinator.com/news</a></p></li><li><p>InfoQ： <a href=http://www.infoq.com/>http://www.infoq.com/</a></p></li><li><p>w3cplus： <a href=http://www.w3cplus.com/>http://www.w3cplus.com/</a></p></li><li><p>Stack Overflow： <a href=http://stackoverflow.com/>http://stackoverflow.com/</a></p></li></ol><p>10.w3school： <a href=http://www.w3school.com.cn/>http://www.w3school.com.cn/</a></p><p>11.mozilla： <a href=https://developer.mozilla.org/zh-CN/docs/Web/>https://developer.mozilla.org/zh-CN/docs/Web/</a></p><h2 id=a-nameweb文档推荐a><a name=web>文档推荐</a>
+<a class=heading-link href=#a-nameweb%e6%96%87%e6%a1%a3%e6%8e%a8%e8%8d%90a><i class="fa fa-link" aria-hidden=true></i></a></h2><ol><li><p><a href=http://docs.huihoo.com/jquery/jquery-fundamentals/zh-cn/index.html title="jQuery 基本原理">jQuery 基本原理</a></p></li><li><p><a href=http://bonsaiden.github.io/JavaScript-Garden/zh/>JavaScript 秘密花园</a></p></li><li><p><a href=http://css.doyoe.com/>CSS参考手册</a></p></li><li><p><a href=http://javascript.ruanyifeng.com/>JavaScript 标准参考教程</a></p></li><li><p><a href=http://es6.ruanyifeng.com/>ECMAScript 6入门</a></p></li></ol><p><strong>备注：</strong></p><p>根据自己需要选择性阅读，面试题是对理论知识的总结，让自己学会应该如何表达。</p><p>资料答案不够正确和全面，欢迎欢迎Star和提交issues。</p><p>格式不断修改更新中。</p><p>在 github 项目的右上角，有三个按钮,分别是 watch、star、fork，新来的同学注意不要用错了，无休止的邮件提醒会给你造成不必要的信息干扰。</p><p>当你选择Watching，表示你以后会关注这个项目的全部动态，以后只要这个项目发生变动，被别人提交了pull request、被发起了issue等情况你都会收到邮件通知。</p><p>star相当于是点赞或收藏，方便以后查找。</p><p>fork表示你想要补充完善这个项目的内容。</p><p>更新记录：</p><p>2016年10月20日:更新一些已被发现的问题。</p><p>2016年3月25日：新增ECMAScript6 相关问题</p><h3 id=更新时间--2016年10月20日>更新时间: 2016年10月20日
+<a class=heading-link href=#%e6%9b%b4%e6%96%b0%e6%97%b6%e9%97%b4--2016%e5%b9%b410%e6%9c%8820%e6%97%a5><i class="fa fa-link" aria-hidden=true></i></a></h3><p>资料答案不够正确和全面，欢迎欢迎Star和提交issues。我的微博：<a href=http://weibo.com/920802999>http://weibo.com/920802999</a></p><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=833de04e1e681474d17b1192da536f3c data-page-url=https://chenkai.life/hide/web-mian-shi-qs1/ data-page-title=前端开发面试题 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.cb0c595e02234420f3ad3886bf4a9bd2874d0e1e78e090138a9ef158b35aaf17.js integrity="sha256-ywxZXgIjRCDzrTiGv0qb0odNDh544JATip7xWLNarxc="></script>
 <script src=/js/custom.js></script>
-<script src=/js/font.min.js></script>
-</body>
-<script>'serviceWorker'in navigator&&navigator.serviceWorker.register('/service-worker.js')</script>
-</html>
+<script src=/js/font.min.js></script></body><script>"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js")</script></html>

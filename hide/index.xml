@@ -24,7 +24,7 @@
 &lt;li>&lt;a href="#fun-questions">趣味问题&lt;/a>&lt;/li>
 &lt;/ol></description></item><item><title>前端开发面试题</title><link>https://chenkai.life/hide/web-mian-shi-qs1/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/hide/web-mian-shi-qs1/</guid><description>前端开发面试题 （题目列表页） 目录 前言 HTML部分 CSS部分 JavaScript部分 其他问题 前端学习网站推荐 前言 前言
 HTML Doctype作用？严格模式与混杂模式如何区分？它们有何意义?
-HTML5 为什么只需要写 ？
+HTML5 为什么只需要写 &lt;!DOCTYPE HTML>？
 行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
 页面导入样式时，使用link和@import有什么区别？
 介绍一下你对浏览器内核的理解？
@@ -34,7 +34,28 @@ html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的�
 HTML5的离线储存怎么使用，工作原理能不能解释一下？
 浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
 请描述一下 cookies，sessionStorage 和 localStorage 的区别？
-iframe有那些缺点？</description></item><item><title>前端开发面试题及答案</title><link>https://chenkai.life/hide/web-min-shi-qsan/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/hide/web-min-shi-qsan/</guid><description>前端开发面试题
+iframe有那些缺点？
+Label的作用是什么？是怎么用的？（加 for 或 包裹）
+HTML5的form如何关闭自动完成功能？
+如何实现浏览器内多个标签页之间的通信? (阿里)
+webSocket如何兼容低浏览器？(阿里)
+页面可见性（Page Visibility API） 可以有哪些用途？
+如何在页面上实现一个圆形的可点击区域？
+实现不使用 border 画出1px高的线，在不同浏览器的Quirksmode和CSSCompat模式下都能保持同一效果。
+网页验证码是干嘛的，是为了解决什么安全问题？
+title与h1的区别、b与strong的区别、i与em的区别？
+CSS 介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？
+CSS选择符有哪些？哪些属性可以继承？
+CSS优先级算法如何计算？
+CSS3新增伪类有那些？
+如何居中div？如何居中一个浮动元素？如何让绝对定位的div居中？
+display有哪些值？说明他们的作用。
+position的值relative和absolute定位原点是？
+CSS3有哪些新特性？
+请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？
+用纯CSS创建一个三角形的原理是什么？
+css多列等高如何实现？
+一个满屏 品 字布局 如何设计?</description></item><item><title>前端开发面试题及答案</title><link>https://chenkai.life/hide/web-min-shi-qsan/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/hide/web-min-shi-qsan/</guid><description>前端开发面试题
 前言 只看问题点这里
 看全部问题和答案点这里
 本文由我收集总结了一些前端面试题，初学者阅后也要用心钻研其中的原理，重要知识需要系统学习、透彻学习，形成自己的知识链。万不可投机取巧，临时抱佛脚只求面试侥幸混过关是错误的！也是不可能的！不可能的！不可能的！
@@ -53,7 +74,9 @@ HTML&amp;amp;CSS： 对Web标准的理解（结构、表现、行为）、浏览
 对公司有什么想要了解的 问答 做过最满意的项目是什么？ 上传、job任务
 可以从以下几方面介绍
 项目背景 为什么要做这件事情？ 最终达到什么效果？ 你处于什么样的角色，起到了什么方面的作用？ 在项目中遇到什么技术问题？具体是如何解决的？ 如果再做这个项目，你会在哪些方面进行改善？ 最近有了解哪些前沿知识 typescritp Vue3.0 WebAssembly worker_threads graphql pwa js 知识点 string array object funcion 原型 异步
-js继承的各种实现以及优缺点 通过prototype指定 Object.setPrototypeOf 用 Object.create实现类继承 ES6的extends javascript 连等赋值问题 var a = {n:1}; var b = a; // 持有a，以回查 a.</description></item><item><title>面试题</title><link>https://chenkai.life/hide/mian-shi/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/hide/mian-shi/</guid><description>晚上面试时发挥的十分差劲，会的题也答的马马虎虎，反思自己存在以下问题
+js继承的各种实现以及优缺点 通过prototype指定 Object.setPrototypeOf 用 Object.create实现类继承 ES6的extends javascript 连等赋值问题 var a = {n:1}; var b = a; // 持有a，以回查 a.x = a = {n:2}; alert(a.x);// --&amp;gt; undefined alert(b.x);// --&amp;gt; {n:2} .运算优先于=赋值运算，因此此处赋值可理解为
+声明a对象中的x属性，用于赋值，此时b指向a，同时拥有未赋值的x属性 对a对象赋值，此时变量名a改变指向到对象{n:2} 对步骤1中x属性，也即a原指向对象的x属性，也即b指向对象的x属性赋值 array reduse 实现map方法 不用reduse实现：
+Array.prototype.map = function (fun) { let mapArr = []; for (let val of this) { mapArr.</description></item><item><title>面试题</title><link>https://chenkai.life/hide/mian-shi/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/hide/mian-shi/</guid><description>反思自己存在以下问题
 相关方法还是掌握的不够熟练，不借助编辑器提示难以下手 遇到相关算法题脑子有些混乱，冷静下来想想还是能写出来 一些至少概念了解但并不十分清楚 缺乏面试经验，脑子有些转不过来 平常没有做相关面试题，面试题还是要刷的 还记起来的面试题大概有以下题目:
 array reduse 实现map方法 做不出来的原因， 对this还是不够熟悉
 不用reduse实现：

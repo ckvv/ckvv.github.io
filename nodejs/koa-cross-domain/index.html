@@ -1,408 +1,134 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=content-language content="en">
-<meta name=theme-color content="#ffffff">
-<meta name=color-scheme content="light dark">
-<meta name=description content="跨域    为什么会有跨域问题？    这是浏览器的同源策略所造成的，同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。
- 一定要注意跨域是浏览器的限制，其实你用抓包工具抓取接口数据，是可以看到接口已经把数据返回回来了，只是浏览器的限制，你获取不到数据。用postman请求接口能够请求到数据。这些再次印证了跨域是浏览器的限制。
- 如何解决跨域?     jsonp: 带有src属性的标签都可以用来， 但是只能处理GET请求 document.domain + iframe跨域 location.hash + iframe window.name + iframe postMessage跨域 Nginx配置反向代理 CORS（跨域资源共享）：支持所有类型的HTTP请求 相信大家对于以上的解决方法都很熟悉，这里不再对每一种方法展开讲解，接下来主要讲一下CORS；  简单请求和非简单请求    浏览器将CORS跨域请求分为简单请求和非简单请求；
- 如果你使用nginx反向代理解决的跨域问题，则不会有跨域请求这个说法了，因为nginx反向代理就使得前后端是同一个域了，就不存在跨域问题了。
- 只要同时满足一下两个条件，就属于简单请求 (1)使用下列方法之一：
- head get post  (2)请求的Heder是
- Accept Accept-Language Content-Language Content-Type: 只限于三个值：  application/x-www-form-urlencoded multipart/form-data text/plain    不同时满足上面的两个条件，就属于非简单请求。 浏览器对这两种的处理，是不一样的。
-简单请求    例子    对于简单请求，浏览器直接发出CORS请求。具体来说，就是头信息之中，增加一个Origin字段。">
-<meta name=keywords content>
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="koa跨域">
-<meta name=twitter:description content="跨域    为什么会有跨域问题？    这是浏览器的同源策略所造成的，同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。
- 一定要注意跨域是浏览器的限制，其实你用抓包工具抓取接口数据，是可以看到接口已经把数据返回回来了，只是浏览器的限制，你获取不到数据。用postman请求接口能够请求到数据。这些再次印证了跨域是浏览器的限制。
- 如何解决跨域?     jsonp: 带有src属性的标签都可以用来， 但是只能处理GET请求 document.domain + iframe跨域 location.hash + iframe window.name + iframe postMessage跨域 Nginx配置反向代理 CORS（跨域资源共享）：支持所有类型的HTTP请求 相信大家对于以上的解决方法都很熟悉，这里不再对每一种方法展开讲解，接下来主要讲一下CORS；  简单请求和非简单请求    浏览器将CORS跨域请求分为简单请求和非简单请求；
- 如果你使用nginx反向代理解决的跨域问题，则不会有跨域请求这个说法了，因为nginx反向代理就使得前后端是同一个域了，就不存在跨域问题了。
- 只要同时满足一下两个条件，就属于简单请求 (1)使用下列方法之一：
- head get post  (2)请求的Heder是
- Accept Accept-Language Content-Language Content-Type: 只限于三个值：  application/x-www-form-urlencoded multipart/form-data text/plain    不同时满足上面的两个条件，就属于非简单请求。 浏览器对这两种的处理，是不一样的。
-简单请求    例子    对于简单请求，浏览器直接发出CORS请求。具体来说，就是头信息之中，增加一个Origin字段。">
-<meta property="og:title" content="koa跨域">
-<meta property="og:description" content="跨域    为什么会有跨域问题？    这是浏览器的同源策略所造成的，同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。
- 一定要注意跨域是浏览器的限制，其实你用抓包工具抓取接口数据，是可以看到接口已经把数据返回回来了，只是浏览器的限制，你获取不到数据。用postman请求接口能够请求到数据。这些再次印证了跨域是浏览器的限制。
- 如何解决跨域?     jsonp: 带有src属性的标签都可以用来， 但是只能处理GET请求 document.domain + iframe跨域 location.hash + iframe window.name + iframe postMessage跨域 Nginx配置反向代理 CORS（跨域资源共享）：支持所有类型的HTTP请求 相信大家对于以上的解决方法都很熟悉，这里不再对每一种方法展开讲解，接下来主要讲一下CORS；  简单请求和非简单请求    浏览器将CORS跨域请求分为简单请求和非简单请求；
- 如果你使用nginx反向代理解决的跨域问题，则不会有跨域请求这个说法了，因为nginx反向代理就使得前后端是同一个域了，就不存在跨域问题了。
- 只要同时满足一下两个条件，就属于简单请求 (1)使用下列方法之一：
- head get post  (2)请求的Heder是
- Accept Accept-Language Content-Language Content-Type: 只限于三个值：  application/x-www-form-urlencoded multipart/form-data text/plain    不同时满足上面的两个条件，就属于非简单请求。 浏览器对这两种的处理，是不一样的。
-简单请求    例子    对于简单请求，浏览器直接发出CORS请求。具体来说，就是头信息之中，增加一个Origin字段。">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://chenkai.life/nodejs/koa-cross-domain/"><meta property="article:section" content="nodejs">
-<meta property="article:published_time" content="2021-07-09T00:00:00+00:00">
-<meta property="article:modified_time" content="2022-03-21T12:31:38+08:00">
-<title>
-koa跨域 · CK's Blog
-</title>
-<link rel=canonical href=https://chenkai.life/nodejs/koa-cross-domain/>
-<link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen>
-<link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen>
-<link rel=icon type=image/svg+xml href=/favicon.ico>
-<link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png>
-<meta name=generator content="Hugo 0.91.2">
-<link rel=manifest href=/manifest.webmanifest>
-</head>
-<body class="preload-transitions colorscheme-auto">
-<div class=float-container>
-<span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg>
-</span>
-</div>
-<details id=table-of-contents-wapper>
-<summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
-</summary>
-</details>
-<main class=wrapper>
-<nav class=navigation>
-<section class=container>
-<a class=navigation-title href=/>
-CK's Blog
-</a>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=theme-color content="#ffffff"><meta name=color-scheme content="light dark"><meta name=description content="跨域 为什么会有跨域问题？ 这是浏览器的同源策略所造成的，同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。
+一定要注意跨域是浏览器的限制，其实你用抓包工具抓取接口数据，是可以看到接口已经把数据返回回来了，只是浏览器的限制，你获取不到数据。用postman请求接口能够请求到数据。这些再次印证了跨域是浏览器的限制。
+如何解决跨域? jsonp: 带有src属性的标签都可以用来， 但是只能处理GET请求 document.domain + iframe跨域 location.hash + iframe window.name + iframe postMessage跨域 Nginx配置反向代理 CORS（跨域资源共享）：支持所有类型的HTTP请求 相信大家对于以上的解决方法都很熟悉，这里不再对每一种方法展开讲解，接下来主要讲一下CORS； 简单请求和非简单请求 浏览器将CORS跨域请求分为简单请求和非简单请求；
+如果你使用nginx反向代理解决的跨域问题，则不会有跨域请求这个说法了，因为nginx反向代理就使得前后端是同一个域了，就不存在跨域问题了。
+只要同时满足一下两个条件，就属于简单请求 (1)使用下列方法之一：
+head get post (2)请求的Heder是
+Accept Accept-Language Content-Language Content-Type: 只限于三个值： application/x-www-form-urlencoded multipart/form-data text/plain 不同时满足上面的两个条件，就属于非简单请求。 浏览器对这两种的处理，是不一样的。
+简单请求 例子 对于简单请求，浏览器直接发出CORS请求。具体来说，就是头信息之中，增加一个Origin字段。
+上面这个例子，post``Content-Type``application/x-www-form-urlencoded``Access-Control-Allow-Origin: http://127.0.0.1:3000``Origin``Origin
+CORS请求相关的字段，都以 Access-Control-开头 Access-Control-Allow-Origin
+：必选
+请求头Origin字段的值 *：接受任何域名 Access-Control-Allow-Credentials
+：可选，
+true: 表示允许发送cookie，此时Access-Control-Allow-Origin不能设置为*，必须指定明确的，与请求网页一致的域名。 不设置该字段：不需要浏览器发送cookie Access-Control-Expose-Headers
+：可选
+响应报头指示哪些报头可以公开为通过列出他们的名字的响应的一部分。默认情况下，只显示6个简单的响应标头： Cache-Control Content-Language Content-Type Expires Last-Modified Pragma 如果想要让客户端可以访问到其他的首部信息，可以将它们在 Access-Control-Expose-Headers 里面列出来。 withCredentials 属性 CORS请求默认不发送Cookie和HTTP认证信息，如果要把Cookie发到服务器，一方面需要服务器同意，设置响应头Access-Control-Allow-Credentials: true,另一方面在客户端发出请求的时候也要进行一些设置;"><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="koa跨域"><meta name=twitter:description content="跨域 为什么会有跨域问题？ 这是浏览器的同源策略所造成的，同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。
+一定要注意跨域是浏览器的限制，其实你用抓包工具抓取接口数据，是可以看到接口已经把数据返回回来了，只是浏览器的限制，你获取不到数据。用postman请求接口能够请求到数据。这些再次印证了跨域是浏览器的限制。
+如何解决跨域? jsonp: 带有src属性的标签都可以用来， 但是只能处理GET请求 document.domain + iframe跨域 location.hash + iframe window.name + iframe postMessage跨域 Nginx配置反向代理 CORS（跨域资源共享）：支持所有类型的HTTP请求 相信大家对于以上的解决方法都很熟悉，这里不再对每一种方法展开讲解，接下来主要讲一下CORS； 简单请求和非简单请求 浏览器将CORS跨域请求分为简单请求和非简单请求；
+如果你使用nginx反向代理解决的跨域问题，则不会有跨域请求这个说法了，因为nginx反向代理就使得前后端是同一个域了，就不存在跨域问题了。
+只要同时满足一下两个条件，就属于简单请求 (1)使用下列方法之一：
+head get post (2)请求的Heder是
+Accept Accept-Language Content-Language Content-Type: 只限于三个值： application/x-www-form-urlencoded multipart/form-data text/plain 不同时满足上面的两个条件，就属于非简单请求。 浏览器对这两种的处理，是不一样的。
+简单请求 例子 对于简单请求，浏览器直接发出CORS请求。具体来说，就是头信息之中，增加一个Origin字段。
+上面这个例子，post``Content-Type``application/x-www-form-urlencoded``Access-Control-Allow-Origin: http://127.0.0.1:3000``Origin``Origin
+CORS请求相关的字段，都以 Access-Control-开头 Access-Control-Allow-Origin
+：必选
+请求头Origin字段的值 *：接受任何域名 Access-Control-Allow-Credentials
+：可选，
+true: 表示允许发送cookie，此时Access-Control-Allow-Origin不能设置为*，必须指定明确的，与请求网页一致的域名。 不设置该字段：不需要浏览器发送cookie Access-Control-Expose-Headers
+：可选
+响应报头指示哪些报头可以公开为通过列出他们的名字的响应的一部分。默认情况下，只显示6个简单的响应标头： Cache-Control Content-Language Content-Type Expires Last-Modified Pragma 如果想要让客户端可以访问到其他的首部信息，可以将它们在 Access-Control-Expose-Headers 里面列出来。 withCredentials 属性 CORS请求默认不发送Cookie和HTTP认证信息，如果要把Cookie发到服务器，一方面需要服务器同意，设置响应头Access-Control-Allow-Credentials: true,另一方面在客户端发出请求的时候也要进行一些设置;"><meta property="og:title" content="koa跨域"><meta property="og:description" content="跨域 为什么会有跨域问题？ 这是浏览器的同源策略所造成的，同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。
+一定要注意跨域是浏览器的限制，其实你用抓包工具抓取接口数据，是可以看到接口已经把数据返回回来了，只是浏览器的限制，你获取不到数据。用postman请求接口能够请求到数据。这些再次印证了跨域是浏览器的限制。
+如何解决跨域? jsonp: 带有src属性的标签都可以用来， 但是只能处理GET请求 document.domain + iframe跨域 location.hash + iframe window.name + iframe postMessage跨域 Nginx配置反向代理 CORS（跨域资源共享）：支持所有类型的HTTP请求 相信大家对于以上的解决方法都很熟悉，这里不再对每一种方法展开讲解，接下来主要讲一下CORS； 简单请求和非简单请求 浏览器将CORS跨域请求分为简单请求和非简单请求；
+如果你使用nginx反向代理解决的跨域问题，则不会有跨域请求这个说法了，因为nginx反向代理就使得前后端是同一个域了，就不存在跨域问题了。
+只要同时满足一下两个条件，就属于简单请求 (1)使用下列方法之一：
+head get post (2)请求的Heder是
+Accept Accept-Language Content-Language Content-Type: 只限于三个值： application/x-www-form-urlencoded multipart/form-data text/plain 不同时满足上面的两个条件，就属于非简单请求。 浏览器对这两种的处理，是不一样的。
+简单请求 例子 对于简单请求，浏览器直接发出CORS请求。具体来说，就是头信息之中，增加一个Origin字段。
+上面这个例子，post``Content-Type``application/x-www-form-urlencoded``Access-Control-Allow-Origin: http://127.0.0.1:3000``Origin``Origin
+CORS请求相关的字段，都以 Access-Control-开头 Access-Control-Allow-Origin
+：必选
+请求头Origin字段的值 *：接受任何域名 Access-Control-Allow-Credentials
+：可选，
+true: 表示允许发送cookie，此时Access-Control-Allow-Origin不能设置为*，必须指定明确的，与请求网页一致的域名。 不设置该字段：不需要浏览器发送cookie Access-Control-Expose-Headers
+：可选
+响应报头指示哪些报头可以公开为通过列出他们的名字的响应的一部分。默认情况下，只显示6个简单的响应标头： Cache-Control Content-Language Content-Type Expires Last-Modified Pragma 如果想要让客户端可以访问到其他的首部信息，可以将它们在 Access-Control-Expose-Headers 里面列出来。 withCredentials 属性 CORS请求默认不发送Cookie和HTTP认证信息，如果要把Cookie发到服务器，一方面需要服务器同意，设置响应头Access-Control-Allow-Credentials: true,另一方面在客户端发出请求的时候也要进行一些设置;"><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai.life/nodejs/koa-cross-domain/"><meta property="article:section" content="nodejs"><meta property="article:published_time" content="2021-07-09T00:00:00+00:00"><meta property="article:modified_time" content="2022-07-26T14:58:29+08:00"><title>koa跨域 · CK's Blog</title><link rel=canonical href=https://chenkai.life/nodejs/koa-cross-domain/><link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/scss/custom.min.56610f8c63ea4ca06cdac03f4fafe3e818c64566f988301b72895eb047082c51.css integrity="sha256-VmEPjGPqTKBs2sA/T6/j6BjGRWb5iDAbcolesEcILFE=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/favicon.ico><link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png><meta name=generator content="Hugo 0.101.0"><link rel=manifest href=/manifest.webmanifest></head><body class="preload-transitions colorscheme-auto"><div class=float-container><span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg></span></div><details id=table-of-contents-wapper><summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></summary></details><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>CK's Blog</a>
 <input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg>
-</label>
-<ul class=navigation-list>
-<li class=navigation-item>
-<a class=navigation-link href=/>Home</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/tags/>Tags</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/marks/>Marks</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/about/>About</a>
-</li>
-<li class=navigation-item id=search-content>
-<input class=search-int type=text placeholder=Search>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/marks/>Marks</a></li><li class=navigation-item><a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/new/main/content>Create</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input class=search-int type=text placeholder=Search>
 <button class=search-btn data-type=github>GitHub</button>
-<button class=search-btn data-type=google>Google</button>
-</li>
-</ul>
-</section>
-</nav>
-<div class=content>
-<section class="container page">
-<article>
-<header>
-<h1 class=title>
-<a class=title-link href=https://chenkai.life/nodejs/koa-cross-domain/>
-koa跨域
-</a>
-</h1>
-<div class=edit-link style=float:right;color:#0366d6>
-<a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/nodejs/koa-cross-domain.md>编辑</a>
-</div>
-</header>
-<div class=post-meta>
-<div class=date>
-<span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg>
-<time datetime=2021-07-09T00:00:00Z>
-2021-07-09
-</time>
-</span>
-</div>
-<div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg>
-<span class=tag>
-<a href=/tags/koa/>koa</a>
-</span></div>
-</div>
-<h2 id=跨域>
-跨域
-<a class=heading-link href=#%e8%b7%a8%e5%9f%9f>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<h2 id=为什么会有跨域问题>
-为什么会有跨域问题？
-<a class=heading-link href=#%e4%b8%ba%e4%bb%80%e4%b9%88%e4%bc%9a%e6%9c%89%e8%b7%a8%e5%9f%9f%e9%97%ae%e9%a2%98>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>这是浏览器的同源策略所造成的，同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。</p>
-<blockquote>
-<p>一定要注意跨域是浏览器的限制，其实你用抓包工具抓取接口数据，是可以看到接口已经把数据返回回来了，只是浏览器的限制，你获取不到数据。用postman请求接口能够请求到数据。这些再次印证了跨域是浏览器的限制。</p>
-</blockquote>
-<h2 id=如何解决跨域>
-如何解决跨域?
-<a class=heading-link href=#%e5%a6%82%e4%bd%95%e8%a7%a3%e5%86%b3%e8%b7%a8%e5%9f%9f>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<ul>
-<li>jsonp: 带有src属性的标签都可以用来， 但是只能处理GET请求</li>
-<li>document.domain + iframe跨域</li>
-<li>location.hash + iframe</li>
-<li>window.name + iframe</li>
-<li>postMessage跨域</li>
-<li>Nginx配置反向代理</li>
-<li>CORS（跨域资源共享）：支持所有类型的HTTP请求 相信大家对于以上的解决方法都很熟悉，这里不再对每一种方法展开讲解，接下来主要讲一下CORS；</li>
-</ul>
-<h2 id=简单请求和非简单请求>
-简单请求和非简单请求
-<a class=heading-link href=#%e7%ae%80%e5%8d%95%e8%af%b7%e6%b1%82%e5%92%8c%e9%9d%9e%e7%ae%80%e5%8d%95%e8%af%b7%e6%b1%82>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>浏览器将<strong>CORS跨域请求</strong>分为简单请求和非简单请求；</p>
-<blockquote>
-<p>如果你使用nginx反向代理解决的跨域问题，则不会有跨域请求这个说法了，因为nginx反向代理就使得前后端是同一个域了，就不存在跨域问题了。</p>
-</blockquote>
-<p>只要同时满足一下两个条件，就属于简单请求 (1)使用下列方法之一：</p>
-<ul>
-<li>head</li>
-<li>get</li>
-<li>post</li>
-</ul>
-<p>(2)请求的Heder是</p>
-<ul>
-<li>Accept</li>
-<li>Accept-Language</li>
-<li>Content-Language</li>
-<li>Content-Type: 只限于三个值：
-<ul>
-<li>application/x-www-form-urlencoded</li>
-<li>multipart/form-data</li>
-<li>text/plain</li>
-</ul>
-</li>
-</ul>
-<p>不同时满足上面的两个条件，就属于非简单请求。 浏览器对这两种的处理，是不一样的。</p>
-<h2 id=简单请求>
-简单请求
-<a class=heading-link href=#%e7%ae%80%e5%8d%95%e8%af%b7%e6%b1%82>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<h3 id=例子>
-例子
-<a class=heading-link href=#%e4%be%8b%e5%ad%90>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>对于简单请求，浏览器直接发出CORS请求。具体来说，就是头信息之中，增加一个Origin字段。</p>
-<p><img src=https://user-gold-cdn.xitu.io/2019/6/24/16b873283da2fb58?imageView2/0/w/1280/h/960/format/webp/ignore-error/1 alt=简单请求></p>
-<p>上面这个例子，<code>post``Content-Type``application/x-www-form-urlencoded``Access-Control-Allow-Origin: http://127.0.0.1:3000``Origin``Origin</code></p>
-<h3 id=cors请求相关的字段都以-access-control-开头>
-CORS请求相关的字段，都以 <code>Access-Control-</code>开头
-<a class=heading-link href=#cors%e8%af%b7%e6%b1%82%e7%9b%b8%e5%85%b3%e7%9a%84%e5%ad%97%e6%ae%b5%e9%83%bd%e4%bb%a5-access-control-%e5%bc%80%e5%a4%b4>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<ul>
-<li>
-<p>Access-Control-Allow-Origin</p>
-<p>：必选</p>
-<ul>
-<li>请求头<code>Origin</code>字段的值</li>
-<li><code>*</code>：接受任何域名</li>
-</ul>
-</li>
-<li>
-<p>Access-Control-Allow-Credentials</p>
-<p>：可选，</p>
-<ul>
-<li>true: 表示允许发送cookie，此时<code>Access-Control-Allow-Origin</code>不能设置为<code>*</code>，必须指定明确的，与请求网页一致的域名。</li>
-<li>不设置该字段：不需要浏览器发送cookie</li>
-</ul>
-</li>
-<li>
-<p>Access-Control-Expose-Headers</p>
-<p>：可选</p>
-<ul>
-<li>响应报头指示哪些报头可以公开为通过列出他们的名字的响应的一部分。默认情况下，只显示6个简单的响应标头：
-<ul>
-<li>Cache-Control</li>
-<li>Content-Language</li>
-<li>Content-Type</li>
-<li>Expires</li>
-<li>Last-Modified</li>
-<li>Pragma</li>
-</ul>
-</li>
-<li>如果想要让客户端可以访问到其他的首部信息，可以将它们在 Access-Control-Expose-Headers 里面列出来。</li>
-</ul>
-</li>
-</ul>
-<h3 id=withcredentials-属性>
-withCredentials 属性
-<a class=heading-link href=#withcredentials-%e5%b1%9e%e6%80%a7>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>CORS请求默认不发送Cookie和HTTP认证信息，如果要把Cookie发到服务器，一方面需要服务器同意，设置响应头<code>Access-Control-Allow-Credentials: true</code>,另一方面在客户端发出请求的时候也要进行一些设置;</p>
-<pre tabindex=0><code>// XHR
+<button class=search-btn data-type=google>Google</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai.life/nodejs/koa-cross-domain/>koa跨域</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/nodejs/koa-cross-domain.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg><time datetime=2021-07-09T00:00:00Z>2021-07-09</time></span></div><div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg><span class=tag><a href=/tags/koa/>Koa</a></span></div></div><h2 id=跨域>跨域
+<a class=heading-link href=#%e8%b7%a8%e5%9f%9f><i class="fa fa-link" aria-hidden=true></i></a></h2><h2 id=为什么会有跨域问题>为什么会有跨域问题？
+<a class=heading-link href=#%e4%b8%ba%e4%bb%80%e4%b9%88%e4%bc%9a%e6%9c%89%e8%b7%a8%e5%9f%9f%e9%97%ae%e9%a2%98><i class="fa fa-link" aria-hidden=true></i></a></h2><p>这是浏览器的同源策略所造成的，同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。</p><blockquote><p>一定要注意跨域是浏览器的限制，其实你用抓包工具抓取接口数据，是可以看到接口已经把数据返回回来了，只是浏览器的限制，你获取不到数据。用postman请求接口能够请求到数据。这些再次印证了跨域是浏览器的限制。</p></blockquote><h2 id=如何解决跨域>如何解决跨域?
+<a class=heading-link href=#%e5%a6%82%e4%bd%95%e8%a7%a3%e5%86%b3%e8%b7%a8%e5%9f%9f><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li>jsonp: 带有src属性的标签都可以用来， 但是只能处理GET请求</li><li>document.domain + iframe跨域</li><li>location.hash + iframe</li><li>window.name + iframe</li><li>postMessage跨域</li><li>Nginx配置反向代理</li><li>CORS（跨域资源共享）：支持所有类型的HTTP请求 相信大家对于以上的解决方法都很熟悉，这里不再对每一种方法展开讲解，接下来主要讲一下CORS；</li></ul><h2 id=简单请求和非简单请求>简单请求和非简单请求
+<a class=heading-link href=#%e7%ae%80%e5%8d%95%e8%af%b7%e6%b1%82%e5%92%8c%e9%9d%9e%e7%ae%80%e5%8d%95%e8%af%b7%e6%b1%82><i class="fa fa-link" aria-hidden=true></i></a></h2><p>浏览器将<strong>CORS跨域请求</strong>分为简单请求和非简单请求；</p><blockquote><p>如果你使用nginx反向代理解决的跨域问题，则不会有跨域请求这个说法了，因为nginx反向代理就使得前后端是同一个域了，就不存在跨域问题了。</p></blockquote><p>只要同时满足一下两个条件，就属于简单请求 (1)使用下列方法之一：</p><ul><li>head</li><li>get</li><li>post</li></ul><p>(2)请求的Heder是</p><ul><li>Accept</li><li>Accept-Language</li><li>Content-Language</li><li>Content-Type: 只限于三个值：<ul><li>application/x-www-form-urlencoded</li><li>multipart/form-data</li><li>text/plain</li></ul></li></ul><p>不同时满足上面的两个条件，就属于非简单请求。 浏览器对这两种的处理，是不一样的。</p><h2 id=简单请求>简单请求
+<a class=heading-link href=#%e7%ae%80%e5%8d%95%e8%af%b7%e6%b1%82><i class="fa fa-link" aria-hidden=true></i></a></h2><h3 id=例子>例子
+<a class=heading-link href=#%e4%be%8b%e5%ad%90><i class="fa fa-link" aria-hidden=true></i></a></h3><p>对于简单请求，浏览器直接发出CORS请求。具体来说，就是头信息之中，增加一个Origin字段。</p><p><img src=https://user-gold-cdn.xitu.io/2019/6/24/16b873283da2fb58?imageView2/0/w/1280/h/960/format/webp/ignore-error/1 alt=简单请求></p><p>上面这个例子，<code>post``Content-Type``application/x-www-form-urlencoded``Access-Control-Allow-Origin: http://127.0.0.1:3000``Origin``Origin</code></p><h3 id=cors请求相关的字段都以-access-control-开头>CORS请求相关的字段，都以 <code>Access-Control-</code>开头
+<a class=heading-link href=#cors%e8%af%b7%e6%b1%82%e7%9b%b8%e5%85%b3%e7%9a%84%e5%ad%97%e6%ae%b5%e9%83%bd%e4%bb%a5-access-control-%e5%bc%80%e5%a4%b4><i class="fa fa-link" aria-hidden=true></i></a></h3><ul><li><p>Access-Control-Allow-Origin</p><p>：必选</p><ul><li>请求头<code>Origin</code>字段的值</li><li><code>*</code>：接受任何域名</li></ul></li><li><p>Access-Control-Allow-Credentials</p><p>：可选，</p><ul><li>true: 表示允许发送cookie，此时<code>Access-Control-Allow-Origin</code>不能设置为<code>*</code>，必须指定明确的，与请求网页一致的域名。</li><li>不设置该字段：不需要浏览器发送cookie</li></ul></li><li><p>Access-Control-Expose-Headers</p><p>：可选</p><ul><li>响应报头指示哪些报头可以公开为通过列出他们的名字的响应的一部分。默认情况下，只显示6个简单的响应标头：<ul><li>Cache-Control</li><li>Content-Language</li><li>Content-Type</li><li>Expires</li><li>Last-Modified</li><li>Pragma</li></ul></li><li>如果想要让客户端可以访问到其他的首部信息，可以将它们在 Access-Control-Expose-Headers 里面列出来。</li></ul></li></ul><h3 id=withcredentials-属性>withCredentials 属性
+<a class=heading-link href=#withcredentials-%e5%b1%9e%e6%80%a7><i class="fa fa-link" aria-hidden=true></i></a></h3><p>CORS请求默认不发送Cookie和HTTP认证信息，如果要把Cookie发到服务器，一方面需要服务器同意，设置响应头<code>Access-Control-Allow-Credentials: true</code>,另一方面在客户端发出请求的时候也要进行一些设置;</p><pre tabindex=0><code>// XHR
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'http://example.com/', true); 
+xhr.open(&#39;GET&#39;, &#39;http://example.com/&#39;, true); 
 xhr.withCredentials = true; 
 xhr.send(null);
 
 // Fetch
 fetch(url, {
-  credentials: 'include'  
+  credentials: &#39;include&#39;  
 })
 复制代码
-</code></pre><h2 id=非简单请求>
-非简单请求
-<a class=heading-link href=#%e9%9d%9e%e7%ae%80%e5%8d%95%e8%af%b7%e6%b1%82>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>非简单请求就是那种对服务器有特殊要求的请求，比如请求方法为<code>PUT</code>或<code>DELETE</code>，或者<code>Content-Type</code>字段为<code>application/json</code>;</p>
-<h3 id=1-预检请求和回应>
-1. 预检请求和回应
-<a class=heading-link href=#1-%e9%a2%84%e6%a3%80%e8%af%b7%e6%b1%82%e5%92%8c%e5%9b%9e%e5%ba%94>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为“预检”请求； 浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段，只有得到肯定答复，浏览器才会发出正式的接口请求，否则就会报错；</p>
-<p><img src=https://user-gold-cdn.xitu.io/2019/6/24/16b873283c9ccfc8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1 alt=preflight></p>
-<p>HTTP请求的方法是POST，请求头<code>Content-Type</code>字段为<code>application/json</code>。浏览器发现，这是一个非简单请求，就自动发出一个<code>预检</code>请求，要求服务器确认可以这样请求。</p>
-<h4 id=11预检请求>
-1.1预检请求
-<a class=heading-link href=#11%e9%a2%84%e6%a3%80%e8%af%b7%e6%b1%82>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<p><code>预检</code>请求用的请求方法是OPTIONS，表示这个请求是用来询问的。头信息里面，关键字段是<code>Origin</code>，表示请求来自哪个域。 除了<code>Origin</code>，<code>预检</code>请求的头信息包括两个特殊字段：</p>
-<ul>
-<li><a href=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Request-Method>Access-Control-Request-Method</a>： 必选，用来列出浏览器的CORS请求会用到哪些HTTP方法，上例是<code>POST</code></li>
-<li><a href=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Request-Headers>Access-Control-Request-Headers</a>：该字段是一个用逗号分割的字符串，执行浏览器CORS请求会额外发送的头信息字段，上例是<code>Content-Type</code>;</li>
-</ul>
-<h4 id=12预检回应>
-1.2预检回应
-<a class=heading-link href=#12%e9%a2%84%e6%a3%80%e5%9b%9e%e5%ba%94>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<p>服务器收到<code>预检</code>请求以后，检查了<code>Origin</code>、<code>Access-Control-Request-Method</code>和<code>Access-Control-Request-Headers</code>字段以后，确认允许跨域请求，就可以做出回应。 上面的HTTP回应中，关键的是Access-Control-Allow-Origin字段，表示<a href=http://127.0.0.1:3000>http://127.0.0.1:3000</a>可以请求数据。该字段也可以设为星号，表示同意任意跨源请求。</p>
-<p>如果浏览器否定了“预检”请求，就会返回一个正常的HTTP回应，但是没有任何CORS相关的头信息字段，这时，浏览器就会认定，服务器不同意预检请求，因此触发一个错误，被XMLHttpRequest对象的onerror回调函数捕获h。</p>
-<p>服务器回应的其他CORS字段</p>
-<ul>
-<li><a href=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Methods>Access-Control-Allow-Methods</a>：必需；它的值是逗号分隔的一个字符串，表明服务器支持的所有跨域请求的方法。注意，返回的是所有支持的方法，而不单是浏览器请求的方法。这是为了避免多次<code>预检</code>请求。</li>
-<li><a href=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers>Access-Control-Allow-Headers</a>：如果浏览器请求头里包括<code>Access-Control-Request-Headers</code>字段，则<code>Access-Control-Allow-Headers</code>字段是必需的。它也是一个逗号分隔的字符串，表明服务器支持的所有头信息字段，不限于浏览器在<code>预检</code>中请求的字段。</li>
-<li><a href=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials>Access-Control-Allow-Credentials</a>：与简单请求时含义相同。</li>
-<li><a href=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Max-Age>Access-Control-Allow-Max-Age</a>: 可选，用来指定本次预检请求的有效期。单位为秒。在有效期内，不用发出另一条预检请求</li>
-</ul>
-<h3 id=2正常请求和回应>
-2.正常请求和回应
-<a class=heading-link href=#2%e6%ad%a3%e5%b8%b8%e8%af%b7%e6%b1%82%e5%92%8c%e5%9b%9e%e5%ba%94>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>一旦服务器通过了<code>预检</code>请求，以后每次浏览器正常的CORS请求，就都跟简单请求一样，会有一个<code>Origin</code>头信息字段。服务器的回应，也都会有一个<code>Access-Control-Allow-Origin</code>头信息字段；</p>
-<p><img src=https://user-gold-cdn.xitu.io/2019/6/24/16b873283cd30bd2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1 alt=normal></p>
-<h2 id=服务端如何设置cors>
-服务端如何设置CORS
-<a class=heading-link href=#%e6%9c%8d%e5%8a%a1%e7%ab%af%e5%a6%82%e4%bd%95%e8%ae%be%e7%bd%aecors>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<h2 id=单独接口单独处理>
-单独接口单独处理
-<a class=heading-link href=#%e5%8d%95%e7%8b%ac%e6%8e%a5%e5%8f%a3%e5%8d%95%e7%8b%ac%e5%a4%84%e7%90%86>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<p>比如一个简单的登录页面，需要给接口接口传入 username和password 两个字段；前端的域名为 localhost:8900，后端的域名为 localhost:3200，构成跨域。</p>
-<h3 id=1-如果设置请求头content-type-applicationx-www-form-urlencoded这种情况则为简单请求>
-1. 如果设置请求头<code>'Content-Type': 'application/x-www-form-urlencoded'</code>，这种情况则为简单请求
-<a class=heading-link href=#1-%e5%a6%82%e6%9e%9c%e8%ae%be%e7%bd%ae%e8%af%b7%e6%b1%82%e5%a4%b4content-type-applicationx-www-form-urlencoded%e8%bf%99%e7%a7%8d%e6%83%85%e5%86%b5%e5%88%99%e4%b8%ba%e7%ae%80%e5%8d%95%e8%af%b7%e6%b1%82>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>会有跨域问题，直接设置 响应头 <code>Access-Control-Allow-Origin</code>为<code>*</code>, 或者具体的域名；注意如果设置响应头<code>Access-Control-Allow-Credentials</code>为<code>true</code>，表示要发送<code>cookie</code>，则此时<code>Access-Control-Allow-Origin</code>的值不能设置为星号，必须指定明确的，与请求网页一致的域名。</p>
-<pre tabindex=0><code>const login = ctx =&gt; {
+</code></pre><h2 id=非简单请求>非简单请求
+<a class=heading-link href=#%e9%9d%9e%e7%ae%80%e5%8d%95%e8%af%b7%e6%b1%82><i class="fa fa-link" aria-hidden=true></i></a></h2><p>非简单请求就是那种对服务器有特殊要求的请求，比如请求方法为<code>PUT</code>或<code>DELETE</code>，或者<code>Content-Type</code>字段为<code>application/json</code>;</p><h3 id=1-预检请求和回应>1. 预检请求和回应
+<a class=heading-link href=#1-%e9%a2%84%e6%a3%80%e8%af%b7%e6%b1%82%e5%92%8c%e5%9b%9e%e5%ba%94><i class="fa fa-link" aria-hidden=true></i></a></h3><p>非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为“预检”请求； 浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段，只有得到肯定答复，浏览器才会发出正式的接口请求，否则就会报错；</p><p><img src=https://user-gold-cdn.xitu.io/2019/6/24/16b873283c9ccfc8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1 alt=preflight></p><p>HTTP请求的方法是POST，请求头<code>Content-Type</code>字段为<code>application/json</code>。浏览器发现，这是一个非简单请求，就自动发出一个<code>预检</code>请求，要求服务器确认可以这样请求。</p><h4 id=11预检请求>1.1预检请求
+<a class=heading-link href=#11%e9%a2%84%e6%a3%80%e8%af%b7%e6%b1%82><i class="fa fa-link" aria-hidden=true></i></a></h4><p><code>预检</code>请求用的请求方法是OPTIONS，表示这个请求是用来询问的。头信息里面，关键字段是<code>Origin</code>，表示请求来自哪个域。 除了<code>Origin</code>，<code>预检</code>请求的头信息包括两个特殊字段：</p><ul><li><a href=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Request-Method>Access-Control-Request-Method</a>： 必选，用来列出浏览器的CORS请求会用到哪些HTTP方法，上例是<code>POST</code></li><li><a href=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Request-Headers>Access-Control-Request-Headers</a>：该字段是一个用逗号分割的字符串，执行浏览器CORS请求会额外发送的头信息字段，上例是<code>Content-Type</code>;</li></ul><h4 id=12预检回应>1.2预检回应
+<a class=heading-link href=#12%e9%a2%84%e6%a3%80%e5%9b%9e%e5%ba%94><i class="fa fa-link" aria-hidden=true></i></a></h4><p>服务器收到<code>预检</code>请求以后，检查了<code>Origin</code>、<code>Access-Control-Request-Method</code>和<code>Access-Control-Request-Headers</code>字段以后，确认允许跨域请求，就可以做出回应。 上面的HTTP回应中，关键的是Access-Control-Allow-Origin字段，表示<a href=http://127.0.0.1:3000>http://127.0.0.1:3000</a>可以请求数据。该字段也可以设为星号，表示同意任意跨源请求。</p><p>如果浏览器否定了“预检”请求，就会返回一个正常的HTTP回应，但是没有任何CORS相关的头信息字段，这时，浏览器就会认定，服务器不同意预检请求，因此触发一个错误，被XMLHttpRequest对象的onerror回调函数捕获h。</p><p>服务器回应的其他CORS字段</p><ul><li><a href=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Methods>Access-Control-Allow-Methods</a>：必需；它的值是逗号分隔的一个字符串，表明服务器支持的所有跨域请求的方法。注意，返回的是所有支持的方法，而不单是浏览器请求的方法。这是为了避免多次<code>预检</code>请求。</li><li><a href=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers>Access-Control-Allow-Headers</a>：如果浏览器请求头里包括<code>Access-Control-Request-Headers</code>字段，则<code>Access-Control-Allow-Headers</code>字段是必需的。它也是一个逗号分隔的字符串，表明服务器支持的所有头信息字段，不限于浏览器在<code>预检</code>中请求的字段。</li><li><a href=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials>Access-Control-Allow-Credentials</a>：与简单请求时含义相同。</li><li><a href=https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Max-Age>Access-Control-Allow-Max-Age</a>: 可选，用来指定本次预检请求的有效期。单位为秒。在有效期内，不用发出另一条预检请求</li></ul><h3 id=2正常请求和回应>2.正常请求和回应
+<a class=heading-link href=#2%e6%ad%a3%e5%b8%b8%e8%af%b7%e6%b1%82%e5%92%8c%e5%9b%9e%e5%ba%94><i class="fa fa-link" aria-hidden=true></i></a></h3><p>一旦服务器通过了<code>预检</code>请求，以后每次浏览器正常的CORS请求，就都跟简单请求一样，会有一个<code>Origin</code>头信息字段。服务器的回应，也都会有一个<code>Access-Control-Allow-Origin</code>头信息字段；</p><p><img src=https://user-gold-cdn.xitu.io/2019/6/24/16b873283cd30bd2?imageView2/0/w/1280/h/960/format/webp/ignore-error/1 alt=normal></p><h2 id=服务端如何设置cors>服务端如何设置CORS
+<a class=heading-link href=#%e6%9c%8d%e5%8a%a1%e7%ab%af%e5%a6%82%e4%bd%95%e8%ae%be%e7%bd%aecors><i class="fa fa-link" aria-hidden=true></i></a></h2><h2 id=单独接口单独处理>单独接口单独处理
+<a class=heading-link href=#%e5%8d%95%e7%8b%ac%e6%8e%a5%e5%8f%a3%e5%8d%95%e7%8b%ac%e5%a4%84%e7%90%86><i class="fa fa-link" aria-hidden=true></i></a></h2><p>比如一个简单的登录页面，需要给接口接口传入 username和password 两个字段；前端的域名为 localhost:8900，后端的域名为 localhost:3200，构成跨域。</p><h3 id=1-如果设置请求头content-type-applicationx-www-form-urlencoded这种情况则为简单请求>1. 如果设置请求头<code>'Content-Type': 'application/x-www-form-urlencoded'</code>，这种情况则为简单请求
+<a class=heading-link href=#1-%e5%a6%82%e6%9e%9c%e8%ae%be%e7%bd%ae%e8%af%b7%e6%b1%82%e5%a4%b4content-type-applicationx-www-form-urlencoded%e8%bf%99%e7%a7%8d%e6%83%85%e5%86%b5%e5%88%99%e4%b8%ba%e7%ae%80%e5%8d%95%e8%af%b7%e6%b1%82><i class="fa fa-link" aria-hidden=true></i></a></h3><p>会有跨域问题，直接设置 响应头 <code>Access-Control-Allow-Origin</code>为<code>*</code>, 或者具体的域名；注意如果设置响应头<code>Access-Control-Allow-Credentials</code>为<code>true</code>，表示要发送<code>cookie</code>，则此时<code>Access-Control-Allow-Origin</code>的值不能设置为星号，必须指定明确的，与请求网页一致的域名。</p><pre tabindex=0><code>const login = ctx =&gt; {
     const req = ctx.request.body;
     const userName = req.userName;
-    ctx.set('Access-Control-Allow-Origin', '*');
+    ctx.set(&#39;Access-Control-Allow-Origin&#39;, &#39;*&#39;);
     ctx.response.body = {
         data: {},
-        msg: '登陆成功'
+        msg: &#39;登陆成功&#39;
     };
 }
 复制代码
-</code></pre><h3 id=2-如果设置请求头content-type-applicationjson这种情况则为非简单请求>
-2. 如果设置请求头<code>'Content-Type': 'application/json'</code>，这种情况则为非简单请求
-<a class=heading-link href=#2-%e5%a6%82%e6%9e%9c%e8%ae%be%e7%bd%ae%e8%af%b7%e6%b1%82%e5%a4%b4content-type-applicationjson%e8%bf%99%e7%a7%8d%e6%83%85%e5%86%b5%e5%88%99%e4%b8%ba%e9%9d%9e%e7%ae%80%e5%8d%95%e8%af%b7%e6%b1%82>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p>处理OPTIONS请求，服务端可以单独写一个路由，来处理<code>login</code>的OPTIONS的请求</p>
-<pre tabindex=0><code>app.use(route.options('/login', ctx =&gt; {
-    ctx.set('Access-Control-Allow-Origin', '*');
-    ctx.set('Access-Control-Allow-Headers', 'Content-Type');
+</code></pre><h3 id=2-如果设置请求头content-type-applicationjson这种情况则为非简单请求>2. 如果设置请求头<code>'Content-Type': 'application/json'</code>，这种情况则为非简单请求
+<a class=heading-link href=#2-%e5%a6%82%e6%9e%9c%e8%ae%be%e7%bd%ae%e8%af%b7%e6%b1%82%e5%a4%b4content-type-applicationjson%e8%bf%99%e7%a7%8d%e6%83%85%e5%86%b5%e5%88%99%e4%b8%ba%e9%9d%9e%e7%ae%80%e5%8d%95%e8%af%b7%e6%b1%82><i class="fa fa-link" aria-hidden=true></i></a></h3><p>处理OPTIONS请求，服务端可以单独写一个路由，来处理<code>login</code>的OPTIONS的请求</p><pre tabindex=0><code>app.use(route.options(&#39;/login&#39;, ctx =&gt; {
+    ctx.set(&#39;Access-Control-Allow-Origin&#39;, &#39;*&#39;);
+    ctx.set(&#39;Access-Control-Allow-Headers&#39;, &#39;Content-Type&#39;);
     ctx.status = 204;
     
 }));
 复制代码
-</code></pre><p>大家都知道前端调用服务端的时候，会调用很多个接口，并且每个接口处理跨域请求的逻辑是完全一样的，我们可以把这部分抽离出来，作为一个中间件；</p>
-<h2 id=写一个中间件进行处理>
-写一个中间件进行处理
-<a class=heading-link href=#%e5%86%99%e4%b8%80%e4%b8%aa%e4%b8%ad%e9%97%b4%e4%bb%b6%e8%bf%9b%e8%a1%8c%e5%a4%84%e7%90%86>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<h3 id=首先了解一下koa中间件的洋葱圈模型>
-首先了解一下koa中间件的“洋葱圈”模型
-<a class=heading-link href=#%e9%a6%96%e5%85%88%e4%ba%86%e8%a7%a3%e4%b8%80%e4%b8%8bkoa%e4%b8%ad%e9%97%b4%e4%bb%b6%e7%9a%84%e6%b4%8b%e8%91%b1%e5%9c%88%e6%a8%a1%e5%9e%8b>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<p><img src=https://user-gold-cdn.xitu.io/2019/6/24/16b873283dddc80b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1 alt=洋葱圈></p>
-<p>将洋葱的一圈看做是一个中间件，直线型就是从第一个中间件走到最后一个，但是洋葱圈就很特殊了，最早use的中间件在洋葱最外层，开始的时候会按照顺序走到所有中间件，然后按照倒序再走一遍所有的中间件，相当于每个中间件都会进入两次，这就给了我们更多的操作空间。</p>
-<pre tabindex=0><code>const Koa = require(&quot;koa&quot;);
+</code></pre><p>大家都知道前端调用服务端的时候，会调用很多个接口，并且每个接口处理跨域请求的逻辑是完全一样的，我们可以把这部分抽离出来，作为一个中间件；</p><h2 id=写一个中间件进行处理>写一个中间件进行处理
+<a class=heading-link href=#%e5%86%99%e4%b8%80%e4%b8%aa%e4%b8%ad%e9%97%b4%e4%bb%b6%e8%bf%9b%e8%a1%8c%e5%a4%84%e7%90%86><i class="fa fa-link" aria-hidden=true></i></a></h2><h3 id=首先了解一下koa中间件的洋葱圈模型>首先了解一下koa中间件的“洋葱圈”模型
+<a class=heading-link href=#%e9%a6%96%e5%85%88%e4%ba%86%e8%a7%a3%e4%b8%80%e4%b8%8bkoa%e4%b8%ad%e9%97%b4%e4%bb%b6%e7%9a%84%e6%b4%8b%e8%91%b1%e5%9c%88%e6%a8%a1%e5%9e%8b><i class="fa fa-link" aria-hidden=true></i></a></h3><p><img src=https://user-gold-cdn.xitu.io/2019/6/24/16b873283dddc80b?imageView2/0/w/1280/h/960/format/webp/ignore-error/1 alt=洋葱圈></p><p>将洋葱的一圈看做是一个中间件，直线型就是从第一个中间件走到最后一个，但是洋葱圈就很特殊了，最早use的中间件在洋葱最外层，开始的时候会按照顺序走到所有中间件，然后按照倒序再走一遍所有的中间件，相当于每个中间件都会进入两次，这就给了我们更多的操作空间。</p><pre tabindex=0><code>const Koa = require(&#34;koa&#34;);
 const app = new Koa();
 app.use((ctx, next) =&gt; {
-    console.log('a - 1');
+    console.log(&#39;a - 1&#39;);
     next();
-    console.log('a - 2');
+    console.log(&#39;a - 2&#39;);
 })
 app.use((ctx, next) =&gt; {
-    console.log('b - 1');
+    console.log(&#39;b - 1&#39;);
     next();
-    console.log('b - 2');
+    console.log(&#39;b - 2&#39;);
 })
 app.use((ctx, next) =&gt; {
-    console.log('c - 1');
+    console.log(&#39;c - 1&#39;);
     next();
-    console.log('c - 2');
+    console.log(&#39;c - 2&#39;);
 })
 
 app.listen(3200, () =&gt; {
-    console.log('启动成功');
+    console.log(&#39;启动成功&#39;);
 });
 
 复制代码
-</code></pre><p>输出</p>
-<pre tabindex=0><code>a - 1
+</code></pre><p>输出</p><pre tabindex=0><code>a - 1
 b - 1
 c - 1
 c - 2
 b - 2
 a - 2
 复制代码
-</code></pre><p>Koa官方文档上把外层的中间件称为“上游”，内层的中间件为“下游”。 一般的中间件都会执行两次，调用<code>next</code>之前为一次，调用<code>next</code>时把控制按顺序传递给下游的中间件。当下游不再有中间件或者中间件没有执行 <code>next</code> 函数时，就将依次恢复上游中间件的行为，让上游中间件执行 <code>next</code>之后的代码；</p>
-<h3 id=处理跨域的中间件简单示例>
-处理跨域的中间件简单示例
-<a class=heading-link href=#%e5%a4%84%e7%90%86%e8%b7%a8%e5%9f%9f%e7%9a%84%e4%b8%ad%e9%97%b4%e4%bb%b6%e7%ae%80%e5%8d%95%e7%a4%ba%e4%be%8b>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h3>
-<pre tabindex=0><code>const Koa = require(&quot;koa&quot;);
+</code></pre><p>Koa官方文档上把外层的中间件称为“上游”，内层的中间件为“下游”。 一般的中间件都会执行两次，调用<code>next</code>之前为一次，调用<code>next</code>时把控制按顺序传递给下游的中间件。当下游不再有中间件或者中间件没有执行 <code>next</code> 函数时，就将依次恢复上游中间件的行为，让上游中间件执行 <code>next</code>之后的代码；</p><h3 id=处理跨域的中间件简单示例>处理跨域的中间件简单示例
+<a class=heading-link href=#%e5%a4%84%e7%90%86%e8%b7%a8%e5%9f%9f%e7%9a%84%e4%b8%ad%e9%97%b4%e4%bb%b6%e7%ae%80%e5%8d%95%e7%a4%ba%e4%be%8b><i class="fa fa-link" aria-hidden=true></i></a></h3><pre tabindex=0><code>const Koa = require(&#34;koa&#34;);
 const app = new Koa();
-const route = require('koa-route');
-var bodyParser = require('koa-bodyparser');
+const route = require(&#39;koa-route&#39;);
+var bodyParser = require(&#39;koa-bodyparser&#39;);
 
 app.use(bodyParser()); // 处理post请求的参数
 
@@ -418,45 +144,39 @@ const login = ctx =&gt; {
     const Token = jwt.encode(payload, secret);
     ctx.response.body = {
         data: Token,
-        msg: '登陆成功'
+        msg: &#39;登陆成功&#39;
     };
 }
 
 // 将公共逻辑方法放到中间件中处理
 app.use((ctx, next)=&gt; {
     const headers = ctx.request.headers;
-    if(ctx.method === 'OPTIONS') {
-        ctx.set('Access-Control-Allow-Origin', '*');
-        ctx.set('Access-Control-Allow-Headers', 'Authorization');
+    if(ctx.method === &#39;OPTIONS&#39;) {
+        ctx.set(&#39;Access-Control-Allow-Origin&#39;, &#39;*&#39;);
+        ctx.set(&#39;Access-Control-Allow-Headers&#39;, &#39;Authorization&#39;);
         ctx.status = 204;
     } else {
         next();
     }
 })
-app.use(route.post('/login', login));
+app.use(route.post(&#39;/login&#39;, login));
 
 app.listen(3200, () =&gt; {
-    console.log('启动成功');
+    console.log(&#39;启动成功&#39;);
 });
 
 复制代码
-</code></pre><p>上述<a href=https://github.com/funnycoderstar/demos/tree/master/koa/koa-cors>示例代码地址</a></p>
-<h2 id=koacors是怎么实现的>
-@koa/cors是怎么实现的
-<a class=heading-link href=#koacors%e6%98%af%e6%80%8e%e4%b9%88%e5%ae%9e%e7%8e%b0%e7%9a%84>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h2>
-<pre tabindex=0><code>'use strict';
+</code></pre><p>上述<a href=https://github.com/funnycoderstar/demos/tree/master/koa/koa-cors>示例代码地址</a></p><h2 id=koacors是怎么实现的>@koa/cors是怎么实现的
+<a class=heading-link href=#koacors%e6%98%af%e6%80%8e%e4%b9%88%e5%ae%9e%e7%8e%b0%e7%9a%84><i class="fa fa-link" aria-hidden=true></i></a></h2><pre tabindex=0><code>&#39;use strict&#39;;
 
-const vary = require('vary');
+const vary = require(&#39;vary&#39;);
 
 /**
  * CORS middleware
  *
  * @param {Object} [options]
  *  - {String|Function(ctx)} origin `Access-Control-Allow-Origin`, default is request Origin header
- *  - {String|Array} allowMethods `Access-Control-Allow-Methods`, default is 'GET,HEAD,PUT,POST,DELETE,PATCH'
+ *  - {String|Array} allowMethods `Access-Control-Allow-Methods`, default is &#39;GET,HEAD,PUT,POST,DELETE,PATCH&#39;
  *  - {String|Array} exposeHeaders `Access-Control-Expose-Headers`
  *  - {String|Array} allowHeaders `Access-Control-Allow-Headers`
  *  - {String|Number} maxAge `Access-Control-Max-Age` in seconds
@@ -467,7 +187,7 @@ const vary = require('vary');
  */
 module.exports = function (options) {
     const defaults = {
-        allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+        allowMethods: &#39;GET,HEAD,PUT,POST,DELETE,PATCH&#39;,
     };
     // 默认的配置项和使用时设置的options进行一个融合
     options = Object.assign({}, defaults, options);
@@ -475,15 +195,15 @@ module.exports = function (options) {
     // 因为函数的一些参数，exposeHeaders，allowMethods，allowHeaders的形式既可以是String,也可以是Array类型，
     // 如果是Array类型,也转换为用逗号分隔的字符串。
     if (Array.isArray(options.exposeHeaders)) {
-        options.exposeHeaders = options.exposeHeaders.join(',');
+        options.exposeHeaders = options.exposeHeaders.join(&#39;,&#39;);
     }
 
     if (Array.isArray(options.allowMethods)) {
-        options.allowMethods = options.allowMethods.join(',');
+        options.allowMethods = options.allowMethods.join(&#39;,&#39;);
     }
 
     if (Array.isArray(options.allowHeaders)) {
-        options.allowHeaders = options.allowHeaders.join(',');
+        options.allowHeaders = options.allowHeaders.join(&#39;,&#39;);
     }
 
     if (options.maxAge) {
@@ -496,17 +216,17 @@ module.exports = function (options) {
     return async function cors(ctx, next) {
         // If the Origin header is not present terminate this set of steps.
         // The request is outside the scope of this specification.
-        const requestOrigin = ctx.get('Origin');
+        const requestOrigin = ctx.get(&#39;Origin&#39;);
 
         // Always set Vary header
         // https://github.com/rs/cors/issues/10
-        ctx.vary('Origin');
+        ctx.vary(&#39;Origin&#39;);
         // 如果请求头不存在 origin，则直接跳出该中间件，执行下一个中间件
         if (!requestOrigin) return await next();
 
         // 对origin参数的不同类型做一个处理
         let origin;
-        if (typeof options.origin === 'function') {
+        if (typeof options.origin === &#39;function&#39;) {
             origin = options.origin(ctx);
             if (origin instanceof Promise) origin = await origin;
             if (!origin) return await next();
@@ -525,16 +245,16 @@ module.exports = function (options) {
         * 
         */
        
-        if (ctx.method !== 'OPTIONS') {
+        if (ctx.method !== &#39;OPTIONS&#39;) {
             // Simple Cross-Origin Request, Actual Request, and Redirects
-            set('Access-Control-Allow-Origin', origin);
+            set(&#39;Access-Control-Allow-Origin&#39;, origin);
 
             if (options.credentials === true) {
-                set('Access-Control-Allow-Credentials', 'true');
+                set(&#39;Access-Control-Allow-Credentials&#39;, &#39;true&#39;);
             }
 
             if (options.exposeHeaders) {
-                set('Access-Control-Expose-Headers', options.exposeHeaders);
+                set(&#39;Access-Control-Expose-Headers&#39;, options.exposeHeaders);
             }
 
             if (!options.keepHeadersOnError) {
@@ -544,7 +264,7 @@ module.exports = function (options) {
                 return await next();
             } catch (err) {
                 const errHeadersSet = err.headers || {};
-                const varyWithOrigin = vary.append(errHeadersSet.vary || errHeadersSet.Vary || '', 'Origin');
+                const varyWithOrigin = vary.append(errHeadersSet.vary || errHeadersSet.Vary || &#39;&#39;, &#39;Origin&#39;);
                 delete errHeadersSet.Vary;
 
                 err.headers = Object.assign({}, errHeadersSet, headersSet, {
@@ -559,31 +279,31 @@ module.exports = function (options) {
             // If there is no Access-Control-Request-Method header or if parsing failed,
             // do not set any additional headers and terminate this set of steps.
             // The request is outside the scope of this specification.
-            if (!ctx.get('Access-Control-Request-Method')) {
+            if (!ctx.get(&#39;Access-Control-Request-Method&#39;)) {
                 // this not preflight request, ignore it
                 return await next();
             }
 
-            ctx.set('Access-Control-Allow-Origin', origin);
+            ctx.set(&#39;Access-Control-Allow-Origin&#39;, origin);
 
             if (options.credentials === true) {
-                ctx.set('Access-Control-Allow-Credentials', 'true');
+                ctx.set(&#39;Access-Control-Allow-Credentials&#39;, &#39;true&#39;);
             }
 
             if (options.maxAge) {
-                ctx.set('Access-Control-Max-Age', options.maxAge);
+                ctx.set(&#39;Access-Control-Max-Age&#39;, options.maxAge);
             }
 
             if (options.allowMethods) {
-                ctx.set('Access-Control-Allow-Methods', options.allowMethods);
+                ctx.set(&#39;Access-Control-Allow-Methods&#39;, options.allowMethods);
             }
 
             let allowHeaders = options.allowHeaders;
             if (!allowHeaders) {
-                allowHeaders = ctx.get('Access-Control-Request-Headers');
+                allowHeaders = ctx.get(&#39;Access-Control-Request-Headers&#39;);
             }
             if (allowHeaders) {
-                ctx.set('Access-Control-Allow-Headers', allowHeaders);
+                ctx.set(&#39;Access-Control-Allow-Headers&#39;, allowHeaders);
             }
 
             ctx.status = 204;
@@ -591,18 +311,6 @@ module.exports = function (options) {
     };
 };
 复制代码
-</code></pre><p>以上是 <a href=https://github.com/koajs/cors/blob/master/index.js>@koa/cors</a> V3.0.0的源码实现，如果你真正理解的CORS，看源码的逻辑就会非常轻松。</p>
-<p>主要是分两个逻辑来处理，有预检请求的和没有预检请求的。</p>
-<p>对于非OPTIONS请求的处理，要根据情况加上 <code>Access-Control-Allow-Origin</code>，<code>Access-Control-Allow-Credentials</code>，<code>Access-Control-Expose-Headers</code>这三个响应头部；</p>
-<p>对于OPTIONS请求（预检请求）的处理，要根据情况加上 <code>Access-Control-Allow-Origin</code>，<code>Access-Control-Allow-Credentials</code>，<code>Access-Control-Max-Age</code>，<code>Access-Control-Allow-Methods</code>，<code>Access-Control-Allow-Headers</code>这几个响应头部；</p>
-<div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=ae4a3654d231ea0e0e5fa87651038811 data-page-url=https://chenkai.life/nodejs/koa-cross-domain/ data-page-title=koa跨域 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div>
-</article>
-</section>
-</div>
-</main>
-<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
+</code></pre><p>以上是 <a href=https://github.com/koajs/cors/blob/master/index.js>@koa/cors</a> V3.0.0的源码实现，如果你真正理解的CORS，看源码的逻辑就会非常轻松。</p><p>主要是分两个逻辑来处理，有预检请求的和没有预检请求的。</p><p>对于非OPTIONS请求的处理，要根据情况加上 <code>Access-Control-Allow-Origin</code>，<code>Access-Control-Allow-Credentials</code>，<code>Access-Control-Expose-Headers</code>这三个响应头部；</p><p>对于OPTIONS请求（预检请求）的处理，要根据情况加上 <code>Access-Control-Allow-Origin</code>，<code>Access-Control-Allow-Credentials</code>，<code>Access-Control-Max-Age</code>，<code>Access-Control-Allow-Methods</code>，<code>Access-Control-Allow-Headers</code>这几个响应头部；</p><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=ae4a3654d231ea0e0e5fa87651038811 data-page-url=https://chenkai.life/nodejs/koa-cross-domain/ data-page-title=koa跨域 data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.cb0c595e02234420f3ad3886bf4a9bd2874d0e1e78e090138a9ef158b35aaf17.js integrity="sha256-ywxZXgIjRCDzrTiGv0qb0odNDh544JATip7xWLNarxc="></script>
 <script src=/js/custom.js></script>
-<script src=/js/font.min.js></script>
-</body>
-<script>'serviceWorker'in navigator&&navigator.serviceWorker.register('/service-worker.js')</script>
-</html>
+<script src=/js/font.min.js></script></body><script>"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js")</script></html>

@@ -6,46 +6,31 @@ text-shadow 与box-shadow不同的是，text-shadow只能用在文本上
 阴影越大越淡，我们可以通过叠加多个shadow加深阴影颜色
 &amp;lt;p style=&amp;#34;font-size: 2em;text-shadow: 0 0 0.4em red, 0 0 0.4em red, 0 0 0.4em red&amp;#34;&amp;gt;HelloWorld&amp;lt;/p&amp;gt; HelloWorld
 drop-shadow 与box-shadow类似
-&amp;lt;p style=&amp;#34;font-size: 2em;filter:drop-shadow(0 0 0.4em red);&amp;#34;&amp;gt;HelloWorld&amp;lt;/p&amp;gt; HelloWorld</description></item><item><title>css元素选择器</title><link>https://chenkai.life/css/css-select/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-select/</guid><description>CSS 选择器规定了 CSS 规则会应用到哪些元素上。
+&amp;lt;p style=&amp;#34;font-size: 2em;filter:drop-shadow(0 0 0.4em red);&amp;#34;&amp;gt;HelloWorld&amp;lt;/p&amp;gt; HelloWorld
+阴影越大越淡，与box-shadow不同的是,随着叠加drop-shadow它的范围会逐渐变大
+&amp;lt;p style=&amp;#34;font-size: 2em;filter:drop-shadow(0 0 0.4em red) drop-shadow(0 0 0.4em red) drop-shadow(0 0 0.</description></item><item><title>css元素选择器</title><link>https://chenkai.life/css/css-select/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-select/</guid><description>CSS 选择器规定了 CSS 规则会应用到哪些元素上。
 基本选择器 节点选择 CSS 类型选择器按节点名称匹配元素。换句话说，它选择文档中给定类型的所有元素。
-/* All &amp;lt;a&amp;gt; elements. */ a { color: red; } 类选择 该CSS 类选择匹配根据他们的内容元素class属性。
-/* All elements with class=&amp;#34;spacious&amp;#34; */ .spacious { margin: 2em; } /* All &amp;lt;li&amp;gt; elements with class=&amp;#34;spacious&amp;#34; */ li.spacious { margin: 2em; } /* All &amp;lt;li&amp;gt; elements with a class list that includes both &amp;#34;spacious&amp;#34; and &amp;#34;elegant&amp;#34; */ /* For example, class=&amp;#34;elegant retro spacious&amp;#34; */ li.</description></item><item><title>css关于浮动的知识</title><link>https://chenkai.life/css/css-float/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-float/</guid><description>float CSS属性指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。 当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移直到碰到了所处的容器的边框，或者碰到另外一个浮动的元素。
-float原始用法 float本意是为了允许文本和内联元素环它如（文字环绕图片）,就像下面一样
-.float { float: left; width: 200px; height: 200px; background-color: red; } &amp;lt;div class=&amp;#34;wrapper&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;float&amp;#34;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div&amp;gt; float本意是为了允许文本和内联元素环它; float本意是为了允许文本和内联元素环它; float本意是为了允许文本和内联元素环它; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 滥用float 带来的问题 我们使用float浮动做了很多其本职工作以外的事情，使用float进行分栏布局、列表排列，但是如果一个元素里只有浮动元素，那它的高度会是0。如果你想要它自适应即包含所有浮动元素，那你需要清除它的子元素。
-清除浮动的几种办法 ::after伪元素 这种方式不会影响任何其他样式，通用性强，覆盖面广，推荐使用
+/* All &amp;lt;a&amp;gt; elements. */ a { color: red; } 类选择 该 CSS 类选择匹配根据他们的内容元素 class 属性。
+/* All elements with class=&amp;#34;spacious&amp;#34; */ .spacious { margin: 2em; } /* All &amp;lt;li&amp;gt; elements with class=&amp;#34;spacious&amp;#34; */ li.spacious { margin: 2em; } /* All &amp;lt;li&amp;gt; elements with a class list that includes both &amp;#34;spacious&amp;#34; and &amp;#34;elegant&amp;#34; */ /* For example, class=&amp;#34;elegant retro spacious&amp;#34; */ li.spacious.elegant { margin: 2em; } ID 选择 CSS ID 选择器会根据该元素的 ID 属性中的内容匹配元素</description></item><item><title>css关于浮动的知识</title><link>https://chenkai.life/css/css-float/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-float/</guid><description>float CSS 属性指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。 当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移直到碰到了所处的容器的边框，或者碰到另外一个浮动的元素。
+float 原始用法 float 本意是为了允许文本和内联元素环它如（文字环绕图片）,就像下面一样
+.float { float: left; width: 200px; height: 200px; background-color: red; } &amp;lt;div class=&amp;#34;wrapper&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;float&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt; float本意是为了允许文本和内联元素环它; float本意是为了允许文本和内联元素环它; float本意是为了允许文本和内联元素环它; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 滥用 float 带来的问题 我们使用 float 浮动做了很多其本职工作以外的事情，使用 float 进行分栏布局、列表排列，但是如果一个元素里只有浮动元素，那它的高度会是 0。如果你想要它自适应即包含所有浮动元素，那你需要清除它的子元素。
+清除浮动的几种办法 ::after 伪元素 这种方式不会影响任何其他样式，通用性强，覆盖面广，推荐使用
 #container::after { content: &amp;#34;&amp;#34;; display: block; clear: both; } 类似的可以在元素后面加一个&amp;lt;div style=&amp;quot;clear:both;&amp;quot; &amp;gt;&amp;lt;/div&amp;gt;空元素
-其他清除浮动方法 IE下清除浮动准则很简单，使元素haslayout就可以了。如宽度值，高度值，绝对定位，zoom，浮动本身都可以让元素haslayout。显然，首选zoom:1;不会干扰任何样式。非IE浏览器常用的是overflow属性
-container也浮动,这种方式治标不治本总不能一直浮动到root
-#container{ float:left; } 使用position: absolute</description></item><item><title>Flex弹性布局</title><link>https://chenkai.life/css/css-flex/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-flex/</guid><description>&lt;h2 id="弹性布局">
-弹性布局
-&lt;a class="heading-link" href="#%e5%bc%b9%e6%80%a7%e5%b8%83%e5%b1%80">
-&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
-&lt;/a>
-&lt;/h2>
-&lt;h3 id="一弹性布局是什么">
-一.弹性布局是什么？
-&lt;a class="heading-link" href="#%e4%b8%80%e5%bc%b9%e6%80%a7%e5%b8%83%e5%b1%80%e6%98%af%e4%bb%80%e4%b9%88">
-&lt;i class="fa fa-link" aria-hidden="true">&lt;/i>
-&lt;/a>
-&lt;/h3>
-&lt;p>任何一个容器都可以指定为 Flex 布局&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
-&lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">flex&lt;/span>;
-}
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>行内元素也可以使用 Flex 布局。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-css" data-lang="css">.&lt;span style="color:#a6e22e">box&lt;/span>{
-&lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">inline-flex&lt;/span>;
-}
-&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>常用的一些css样式</title><link>https://chenkai.life/css/css-useful-style/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-useful-style/</guid><description>字体 文字超出后省略
+其他清除浮动方法 IE 下清除浮动准则很简单，使元素 haslayout 就可以了。如宽度值，高度值，绝对定位，zoom，浮动本身都可以让元素 haslayout。显然，首选 zoom:1;不会干扰任何样式。非 IE 浏览器常用的是 overflow 属性
+container 也浮动,这种方式治标不治本总不能一直浮动到 root
+#container { float: left; } 使用 position: absolute</description></item><item><title>常用的一些css样式</title><link>https://chenkai.life/css/css-useful-style/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-useful-style/</guid><description> 字体 文字超出后省略
 white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 中文简&amp;gt;繁转换
-font-variant-east-asian: traditional;</description></item><item><title>浅谈css动画</title><link>https://chenkai.life/css/css-animation/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-animation/</guid><description>本文简单介绍如何定义css动画
+font-variant-east-asian: traditional;</description></item><item><title>浅谈CSS动画</title><link>https://chenkai.life/css/css-animation/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-animation/</guid><description>本文简单介绍如何定义 css 动画
 transition transitions 可以决定哪些属性发生动画效果transition-property (明确地列出这些属性,如果省略则包含所有属性)，何时开始transition-delay (设置 delay），持续多久transition-duration (设置 duration) 以及如何动画transition-timing-function (定义timing function，比如匀速地或先快后慢)
 如下面指定字体大小颜色和字体发生动画效果
-.transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } transition的发生需要属性被修改时才会触发，比如hover时我们修改字体大小和颜色，如果没有定义transition这些属性会立即修改，
-.transition-box:hover { font-size: 2rem; color: green; } .transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } .transition-box:hover { font-size: 3rem; color: green; } 把鼠标放上查看效果 CSS 过渡 由简写属性transition 定义是最好的方式，可以避免属性值列表长度不一，节省调试时间。
+.transition-box{ font-size: 1rem; color: red; transition: color 2s, font-size 2s; } transition 的发生需要属性被修改时才会触发，比如 hover 时我们修改字体大小和颜色，如果没有定义 transition 这些属性会立即修改，
+.transition-box:hover { font-size: 2rem; color: green; } 把鼠标放上查看效果 CSS 过渡 由简写属性transition 定义是最好的方式，可以避免属性值列表长度不一，节省调试时间。
 也可以用下面子属性来控制过渡的各部分
-transition-property: color, font-size; transition-duration: 4s; transition-timing-function: ease; transition-delay: 0s; transition的特点 只能在css属性变化时被动触发</description></item><item><title>组件间样式隔离的几种方案</title><link>https://chenkai.life/css/css-web-compoent-isolation/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-web-compoent-isolation/</guid><description>CSS即层叠样式表(Cascading Style Sheets）是一种样式表语言，它没有作用域的概念，引入即全局生效的，但一个样式是否起作用由多个因素共同决定，比如：
-重要程度 优先级 样式加载顺序 所以当我们在页面中使用时可能会遇到组件间的样式互相影响的情况，特别是引入了多个组件库或者类名命名不规范时，我们就需要对样式进行隔离，这样就可以避免样式冲突。下面我介绍几种方案： 类名添加特定的前缀 一般来说，我们会在组件内部使用一个特定的前缀，避免组件之间的样式冲突。比如antd的组件内部的样式，都会使用ant-前缀，element-ui的组件内部的样式，都会使用el-前缀。 由于原生css的功能太弱鸡了, 我们在实际开发中一般使用css预处理框架如less, sass等，对于这种我们也可以使用一个类似的功能。
-对于less // button.less @name: v-; .@{name}button { background-color: green; } // 编译为 // .v-button { // background-color: green; // } 重写前缀
-@import 'button.less'; @name: k-; // 编译为 // .k-button { // background-color: green; // } 对于sass sass目前版本支持与less类似的写法，但是Sass 团队不鼓励继续使用@import规则。 并计划在未来几年逐步淘汰它，作为替代方案，他们推荐使用@use规则。详细原因请参考https://sass-lang.com/documentation/at-rules/import。
-/* button.scss */ $name: v-; @mixinconfigure($name: $name) { @if $name { $name: $name !</description></item></channel></rss>
+transition-property: color, font-size; transition-duration: 4s; transition-timing-function: ease; transition-delay: 0s; transition 的特点 只能在 css 属性变化时被动触发
+transition 是一次性的，不能重复发生，除非一再触发
+transition 只能定义开始状态和结束状态，不能定义中间状态
+animation animation 属性用来指定一组或多组动画，每组之间用逗号相隔,是 animation-name，animation-duration, animation-timing-function，animation-delay，animation-iteration-count，animation-direction，animation-fill-mode 和 animation-play-state 属性的一个简写属性形式。</description></item><item><title>组件间样式隔离的几种方案</title><link>https://chenkai.life/css/css-web-compoent-isolation/</link><pubDate>Wed, 09 Feb 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-web-compoent-isolation/</guid><description>CSS 即层叠样式表(Cascading Style Sheets）是一种样式表语言，它没有作用域的概念，引入即全局生效的，但一个样式是否起作用由多个因素共同决定，比如：
+重要程度 优先级 样式加载顺序 所以当我们在页面中使用时可能会遇到组件间的样式互相影响的情况，特别是引入了多个组件库或者类名命名不规范时，我们就需要对样式进行隔离，这样就可以避免样式冲突。下面我介绍几种方案： 类名添加特定的前缀 一般来说，我们会在组件内部使用一个特定的前缀，避免组件之间的样式冲突。比如 antd 的组件内部的样式，都会使用ant-前缀，element-ui 的组件内部的样式，都会使用el-前缀。 由于原生 css 的功能太弱鸡了, 我们在实际开发中一般使用 css 预处理框架如 less, sass 等，对于这种我们也可以使用一个类似的功能。
+对于 less // button.less @name: v-; .@{name}button { background-color: green; } // 编译为 // .v-button { // background-color: green; // } 重写前缀
+@import &amp;#34;button.less&amp;#34;; @name: k-; // 编译为 // .k-button { // background-color: green; // } 对于 sass sass 目前版本支持与 less 类似的写法，但是 Sass 团队不鼓励继续使用@import规则。 并计划在未来几年逐步淘汰它，作为替代方案，他们推荐使用@use规则。详细原因请参考https://sass-lang.com/documentation/at-rules/import。
+/* button.scss */ $name: v-; @mixin configure($name: $name) { @if $name { $name: $name !</description></item></channel></rss>
