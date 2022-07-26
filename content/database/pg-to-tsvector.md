@@ -1,12 +1,12 @@
 ---
 title: "pg 分词"
-tags: ['database']
-date: '2021-07-09'
+tags: ["Database"]
+date: "2021-07-09"
 ---
 
 ## 分词例子
 
-to_tsvector()生成的分词带有位置信息，tsvector没有位置信息
+to_tsvector()生成的分词带有位置信息，tsvector 没有位置信息
 
 ```sql
 select to_tsvector('陈 锴 A S F a a a 1 2 3 4');

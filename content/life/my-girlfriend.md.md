@@ -1,6 +1,6 @@
 ---
 title: ❤️ 宝贝
-tags: ['life']
+tags: ['Life']
 date: "2021-08-13"
 ---
 

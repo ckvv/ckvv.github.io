@@ -1,6 +1,6 @@
 ---
 title: "常用的shell命令总结"
-tags: ['shell']
+tags: ['Shell']
 date: '2021-07-09'
 ---
 

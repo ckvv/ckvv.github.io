@@ -1,26 +1,26 @@
 ---
-title: '浏览器中获取宽、高相关的属性'
-tags: ['css', 'web']
-date: '2022-02-09'
+title: "浏览器中获取宽、高相关的属性"
+tags: ["Web"]
+date: "2022-02-09"
 ---
 
 我们可能需要针对宽屏和高屏编写不同代码，下面我总结一下从浏览器中获取宽、高相关的属性
 
 # css
 
-如果宽高屏不设计具体逻辑代码，我们可以采用css的`@media`媒体查询的方式判断;
+如果宽高屏不设计具体逻辑代码，我们可以采用 css 的`@media`媒体查询的方式判断;
 
 ## orientation
 
 > 宽度和高度相等时会被判断为纵向
 
 ```css
-  /* viewport 处于纵向，即高度大于等于宽度 */
-  @media (orientation: portrait) {
-  }
-  /* viewport 处于横向，即宽度大于高度。 */
-  @media (orientation: landscape) {
-  }
+/* viewport 处于纵向，即高度大于等于宽度 */
+@media (orientation: portrait) {
+}
+/* viewport 处于横向，即宽度大于高度。 */
+@media (orientation: landscape) {
+}
 ```
 
 ## aspect-ratio
@@ -29,14 +29,14 @@ date: '2022-02-09'
 
 ```css
 /* 最大宽高比 */
-  @media (max-aspect-ratio: 1/1){
-  }
+@media (max-aspect-ratio: 1/1) {
+}
 /* 最小宽高比 */
-  @media (min-aspect-ratio: 1/1) {
-  }
+@media (min-aspect-ratio: 1/1) {
+}
 /* 指定宽高比 */
-  @media (aspect-ratio: 1/1) {
-  }
+@media (aspect-ratio: 1/1) {
+}
 ```
 
 # js
@@ -49,9 +49,9 @@ date: '2022-02-09'
 
 ## screen
 
-height: 以像素为单位返回屏幕的高度  
+height: 以像素为单位返回屏幕的高度
 
-width:  以像素为单位返回屏幕的宽度.
+width: 以像素为单位返回屏幕的宽度.
 
 orientation: 返回当前屏幕的转向.
 
@@ -71,7 +71,7 @@ availHeight: 指定屏幕的高度（以像素为单位）减去操作系统显�
 
 ### getClientRects
 
-返回值是ClientRect对象集合，该对象是与该元素相关的CSS边框， 每个ClientRect对象包含一组描述该边框的只读属性——left、top、right和bottom，单位为像素，这些属性值是相对于视口的top-left的， 对于行内元素，元素内部的每一行都会有一个边框；对于块级元素，如果里面没有其他元素，一整块元素只有一个边框
+返回值是 ClientRect 对象集合，该对象是与该元素相关的 CSS 边框， 每个 ClientRect 对象包含一组描述该边框的只读属性——left、top、right 和 bottom，单位为像素，这些属性值是相对于视口的 top-left 的， 对于行内元素，元素内部的每一行都会有一个边框；对于块级元素，如果里面没有其他元素，一整块元素只有一个边框
 
 ### style
 
@@ -79,8 +79,8 @@ availHeight: 指定屏幕的高度（以像素为单位）减去操作系统显�
 
 ### clientHeight、clientWidth
 
-对于没有定义CSS或者内联布局盒子的元素为0，否则，它是元素内部的高度(单位像素)，包含内边距(padding)，但不包括水平滚动条、边框和外边距(margin)。
+对于没有定义 CSS 或者内联布局盒子的元素为 0，否则，它是元素内部的高度(单位像素)，包含内边距(padding)，但不包括水平滚动条、边框和外边距(margin)。
 
 ### scrollHeight、scrollWidth
 
-包括由于溢出导致的视图中不可见内容，等于该元素在不使用滚动条的情况下为了适应视口中所用内容所需的最小高度，没有垂直滚动条的情况下，scrollHeight值与元素视图填充所有内容所需要的最小值[`clientHeight`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientHeight)相同。包括元素的padding，但不包括元素的border和margin。scrollHeight也包括 [`::before`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::before) 和 [`::after`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::after)这样的伪元素。
+包括由于溢出导致的视图中不可见内容，等于该元素在不使用滚动条的情况下为了适应视口中所用内容所需的最小高度，没有垂直滚动条的情况下，scrollHeight 值与元素视图填充所有内容所需要的最小值[`clientHeight`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientHeight)相同。包括元素的 padding，但不包括元素的 border 和 margin。scrollHeight 也包括 [`::before`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::before) 和 [`::after`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::after)这样的伪元素。

@@ -1,6 +1,5 @@
 ---
 title: "前端开发面试题"
-tags: ['面试']
 show: false
 date: '2021-07-09'
 ---
@@ -164,7 +163,7 @@ HTML5？
 
 - 什么是CSS 预处理器 / 后处理器？
 
-## <a name='js'>JavaScript</a>
+## JavaScript
 
 - 介绍JavaScript的基本数据类型。
 

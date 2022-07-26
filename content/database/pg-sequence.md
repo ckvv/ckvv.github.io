@@ -1,11 +1,11 @@
 ---
 title: "postgresql中的sequence"
-tags: ['database']
-date: '2021-07-09'
+tags: ["Database"]
+date: "2021-07-09"
 ---
 
-sequence号是数据库系统按照一定规则自增的数字序列
-sequence操作函数
+sequence 号是数据库系统按照一定规则自增的数字序列
+sequence 操作函数
 
 ```sql
 Function Return Type Description
@@ -16,11 +16,11 @@ setval(regclass, bigint) bigint Set sequence's current value
 setval(regclass, bigint, boolean) bigint Set sequence's current value and is_called flag
 ```
 
-## 创建sequence
+## 创建 sequence
 
 postgre[文档](https://www.postgresql.org/docs/12/sql-createsequence.html)
 
-sequence操作函数定义
+sequence 操作函数定义
 
 ```sql
 CREATE [ TEMPORARY | TEMP ] SEQUENCE [ IF NOT EXISTS ] name
@@ -39,17 +39,17 @@ SELECT nextval（'serial'）;
 
 ## 设置自增列
 
-sequence是postgre10以前对自增列对实现方式，
-数据库表添加一个自增类型我们可以设置类型添加为bigserial，bigserial是一个伪类型，我们直接用修改字段是不可以的，一般我们需要
+sequence 是 postgre10 以前对自增列对实现方式，
+数据库表添加一个自增类型我们可以设置类型添加为 bigserial，bigserial 是一个伪类型，我们直接用修改字段是不可以的，一般我们需要
 
-+ 创建一个sequence：`CREATE SEQUENCE ${sequenceName};`
-+ 设置该字段的默认值为该sequence的下一个：`ALTER TABLE ${table} ALTER COLUMN ${field} SET DEFAULT nextval('${sequenceName}');`
-+ 将该sequence与该表相关联，这样如果该表删除sequence也会被删除：`ALTER SEQUENCE ${sequenceName} OWNED BY ${table}.${field};`
-+ 设置该sequence的起始值：`SELECT setval('${sequenceName}', COALESCE(max(${field}), 0)) FROM ${table};`
+- 创建一个 sequence：`CREATE SEQUENCE ${sequenceName};`
+- 设置该字段的默认值为该 sequence 的下一个：`ALTER TABLE ${table} ALTER COLUMN ${field} SET DEFAULT nextval('${sequenceName}');`
+- 将该 sequence 与该表相关联，这样如果该表删除 sequence 也会被删除：`ALTER SEQUENCE ${sequenceName} OWNED BY ${table}.${field};`
+- 设置该 sequence 的起始值：`SELECT setval('${sequenceName}', COALESCE(max(${field}), 0)) FROM ${table};`
 
-postgre10后引入了identity标识符设置自增列,
-create table语法中，在列的类型后使用如下语法定义identity列。
-ALWAYS，表示优先使用系统列生成的自增值,如果要覆盖系统产生的值，需要使用OVERRIDING SYSTEM VALUE,否则会报错。
+postgre10 后引入了 identity 标识符设置自增列,
+create table 语法中，在列的类型后使用如下语法定义 identity 列。
+ALWAYS，表示优先使用系统列生成的自增值,如果要覆盖系统产生的值，需要使用 OVERRIDING SYSTEM VALUE,否则会报错。
 BY DEFAULT，表示优先使用用户输入的值，可以与自增值重复。
 
 ```sql

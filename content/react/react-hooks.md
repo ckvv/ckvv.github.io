@@ -1,6 +1,6 @@
 ---
 title: "React Hooks 入门"
-tags: ['react', 'hooks']
+tags: ['React']
 date: "2022-02-21"
 ---
 

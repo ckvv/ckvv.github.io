@@ -1,17 +1,15 @@
 ---
 title: "pg中如何取消正在执行的存储过程"
-tags: ['database']
-date: '2021-07-09'
+tags: ["Database"]
+date: "2021-07-09"
 ---
 
 如果存储过程执行过程，需要添加可以取消的功能，这里我们需要用到两个函数。
 
-+ `pg_backend_pid`: 查询当前会话的服务器进程的进程ID，
-+ `pg_cancel_backend(pid int)`: 取消后端的当前查询。如果调用角色是其后端被取消或已授予调用角色的角色的成员，则也允许这样做pg_signal_backend，但是只有超级用户可以取消超级用户后端。
+- `pg_backend_pid`: 查询当前会话的服务器进程的进程 ID，
+- `pg_cancel_backend(pid int)`: 取消后端的当前查询。如果调用角色是其后端被取消或已授予调用角色的角色的成员，则也允许这样做 pg_signal_backend，但是只有超级用户可以取消超级用户后端。
 
-## demo
-
-### 在函数中查询当前的pid
+### 在函数中查询当前的 pid
 
 ```sql
 create or replace function pg_cancel_backend()
@@ -32,7 +30,7 @@ $$ language plpgsql;
 --  2019-07-25 03:47:30.783608+00 : backend_pid: 13677
 ```
 
-### 根据pid取消当前进程
+### 根据 pid 取消当前进程
 
 ```sql
 select pg_cancel_backend(13677);

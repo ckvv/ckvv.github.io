@@ -1,9 +1,8 @@
 ---
 title: "常用的一些css样式"
-tags: ['web', 'css']
-date: '2022-02-09'
+tags: ["CSS"]
+date: "2022-02-09"
 ---
-
 
 # 字体
 

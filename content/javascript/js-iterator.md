@@ -1,6 +1,6 @@
 ---
 title: "js的迭代器"
-tags: ['js']
+tags: ['JavaScript']
 date: '2021-07-09'
 ---
 

@@ -1,14 +1,14 @@
 ---
-title: '拷贝数据到剪贴板'
-tags: ['web']
-date: '2021-07-09'
+title: "拷贝数据到剪贴板"
+tags: ["Web"]
+date: "2021-07-09"
 ---
 
 介绍几种在浏览器中拷贝数据到剪贴板的方法
 
 ## document.execCommand("copy")
 
-拷贝当前选中内容到剪贴板, 该api已经废弃不推荐使用，
+拷贝当前选中内容到剪贴板, 该 api 已经废弃不推荐使用，
 
 ```js
 function fallbackCopyTextToClipboard(text) {
@@ -43,7 +43,7 @@ await navigator.clipboard.writeText(data);
 ## npm package
 
 clipboard, 内部使用的 `document.execCommand()`,
-clipboardy, 该库较重，支持web平台之外的copy
+clipboardy, 该库较重，支持 web 平台之外的 copy
 
 以[clipboard](https://www.npmjs.com/package/clipboard) 为例
 

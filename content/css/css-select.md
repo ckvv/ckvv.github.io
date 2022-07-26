@@ -1,7 +1,7 @@
 ---
 title: "css元素选择器"
-tags: ['web', 'css']
-date: '2022-02-09'
+tags: ["CSS"]
+date: "2022-02-09"
 ---
 
 CSS 选择器规定了 CSS 规则会应用到哪些元素上。
@@ -21,7 +21,7 @@ a {
 
 ## 类选择
 
-该CSS 类选择匹配根据他们的内容元素class属性。
+该 CSS 类选择匹配根据他们的内容元素 class 属性。
 
 ```css
 /* All elements with class="spacious" */
@@ -41,9 +41,9 @@ li.spacious.elegant {
 }
 ```
 
-## ID选择
+## ID 选择
 
-CSS ID 选择器会根据该元素的ID属性中的内容匹配元素
+CSS ID 选择器会根据该元素的 ID 属性中的内容匹配元素
 
 ```css
 /* The element with id="demo" */
@@ -54,10 +54,12 @@ CSS ID 选择器会根据该元素的ID属性中的内容匹配元素
 
 ## 通用选择
 
-(*)就是一个通配选择器.它可以匹配任意类型的HTML元素
+(\*)就是一个通配选择器.它可以匹配任意类型的 HTML 元素
 
 ```css
-*.warning {color:red;}
+*.warning {
+  color: red;
+}
 ```
 
 ## 属性选择
@@ -71,7 +73,8 @@ a[title] {
 }
 
 /* 存在href属性并且属性值匹配"https://example.org"的<a> 元素, 如下选择 */
-a[href="https://example.org"] {
+a[href="https://example.org"]
+{
   color: green;
 }
 
@@ -97,7 +100,7 @@ a[href$=".org"] {
 [attr~=value]
 表示带有以 attr 命名的属性的元素，并且该属性是一个以空格作为分隔的值列表，其中[至少]一个值匹配"value"。
 [attr|=value]
-表示带有以 attr 命名的属性的元素，属性值为“value”或是以“value-”为前缀（"-"为连字符，Unicode编码为U+002D）开头。典型的应用场景是用来来匹配语言简写代码（如zh-CN，zh-TW可以用zh作为value）。
+表示带有以 attr 命名的属性的元素，属性值为“value”或是以“value-”为前缀（"-"为连字符，Unicode 编码为 U+002D）开头。典型的应用场景是用来来匹配语言简写代码（如 zh-CN，zh-TW 可以用 zh 作为 value）。
 [attr^=value]
 表示带有以 attr 命名的属性，且属性值是以"value"开头的元素。
 [attr$=value]
@@ -105,7 +108,7 @@ a[href$=".org"] {
 [attr*=value]
 表示带有以 attr 命名的属性，且属性值包含有"value"的元素。
 [attr operator value i]
-表示带有以 attr 命名的属性, 且属性值匹配"value" [忽略属性值大小] 的元素。在带有属性值的属性选型选择器表达式的右方括号, 前添加用空格间隔开的字母i（或I）可以忽略属性值的大小写（ASCII字符范围内的字母）
+表示带有以 attr 命名的属性, 且属性值匹配"value" [忽略属性值大小] 的元素。在带有属性值的属性选型选择器表达式的右方括号, 前添加用空格间隔开的字母 i（或 I）可以忽略属性值的大小写（ASCII 字符范围内的字母）
 
 ## 组合选择器
 
@@ -118,7 +121,6 @@ a[href$=".org"] {
 img + p {
   font-style: bold;
 }
-
 ```
 
 ## 一般兄弟选择
@@ -147,7 +149,7 @@ ul.my-things > li {
 
 ## 后代选择器
 
-' '  (空格) 操作符将选择第一个元素的子代节点。
+' ' (空格) 操作符将选择第一个元素的子代节点。
 div span 将匹配 <div> 元素内`所有`的 <span> 元素。
 
 ```css
@@ -160,19 +162,19 @@ ul.my-things li {
 ## 伪类
 
 伪类 允许基于未包含在文档树中的状态信息来选择元素，详细参考[mdn:伪类](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)
-a:visited 会匹配所有被访问过的  <a>  元素。
+a:visited 会匹配所有被访问过的 <a> 元素。
 
-```
+```css
 selector：伪类{
   适当的属性;
 }
 
-li.list-wrapper:nth-child(1), li.list-wrapper:nth-child(2) 
+li.list-wrapper:nth-child(1), li.list-wrapper:nth-child(2)
 ```
 
 ## 伪元素
 
-伪元素 表示所有未被包含在HTML的实体。详细参考[mdn:伪元素](<https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements>）
+伪元素 表示所有未被包含在 HTML 的实体。详细参考[mdn:伪元素](<https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements>）
 `按照规范，应该使用双冒号（::）而不是单个冒号（:），以便区分伪类和伪元素。但是，由于旧版本的 W3C 规范并未对此进行特别区分，因此目前绝大多数的浏览器都同时支持使用这两种方式来表示伪元素`
 p::first-line 会匹配所有 <p> 元素的第一行。
 

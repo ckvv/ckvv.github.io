@@ -1,7 +1,7 @@
 ---
 title: 跨域资源共享 (CORS)
-tags: ['web', 'cors']
-date: '2022-02-09'
+tags: ["Web"]
+date: "2022-02-09"
 ---
 
 转载自 [web.dev](https://web.dev/cross-origin-resource-sharing/?utm_source=devtools)
@@ -74,12 +74,12 @@ Cache-Control: no-store
 
 第一个端点（第 8 行）没有设置任何响应头，该端点只会在响应中发送一个文件。
 
-+ Press `Control+Shift+J` (or `Command+Option+J` on Mac) to open DevTools. - Press `Control+Shift+J` (or `Command+Option+J` on Mac) to open DevTools.
-+ Click the **Console** tab.
-+ 请尝试以下命令：
+- Press `Control+Shift+J` (or `Command+Option+J` on Mac) to open DevTools. - Press `Control+Shift+J` (or `Command+Option+J` on Mac) to open DevTools.
+- Click the **Console** tab.
+- 请尝试以下命令：
 
 ```js
-fetch('https://cors-demo.glitch.me/', {mode:'cors'})
+fetch("https://cors-demo.glitch.me/", { mode: "cors" });
 ```
 
 您应该会看到一条错误消息：
@@ -92,7 +92,7 @@ fetch('https://cors-demo.glitch.me/', {mode:'cors'})
 第二个端点（第 13 行）在响应中发送的是相同的文件，但在标头中加入了`Access-Control-Allow-Origin: *`。请在控制台中尝试：
 
 ```js
-fetch('https://cors-demo.glitch.me/allow-cors', {mode:'cors'})
+fetch("https://cors-demo.glitch.me/allow-cors", { mode: "cors" });
 ```
 
 您的此次请求应该不会被阻止。
@@ -106,10 +106,10 @@ fetch('https://cors-demo.glitch.me/allow-cors', {mode:'cors'})
 请将`credentials: 'include'`添加到如下所示的获取选项中。该操作将包括请求中的 cookie。
 
 ```js
-fetch('https://example.com', {
-  mode: 'cors',
-  credentials: 'include'
-})
+fetch("https://example.com", {
+  mode: "cors",
+  credentials: "include",
+});
 ```
 
 ### 响应 [#](https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#-8)
@@ -128,9 +128,9 @@ Access-Control-Allow-Credentials: true
 
 CORS 规范将**复杂请求**定义为
 
-+ 使用除 GET、POST 或 HEAD 以外方法的请求
-+ 包含除`Accept`、`Accept-Language`或`Content-Language`以外标头的请求
-+ 具有除`application/x-www-form-urlencoded`、`multipart/form-data`或`text/plain`以外的`Content-Type`标头的请求
+- 使用除 GET、POST 或 HEAD 以外方法的请求
+- 包含除`Accept`、`Accept-Language`或`Content-Language`以外标头的请求
+- 具有除`application/x-www-form-urlencoded`、`multipart/form-data`或`text/plain`以外的`Content-Type`标头的请求
 
 浏览器会根据需要创建预检请求。如下所示，该请求是一个`OPTIONS`请求，会在实际请求消息之前被发送。
 

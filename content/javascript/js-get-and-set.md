@@ -1,6 +1,6 @@
 ---
 title: "get和set"
-tags: ['js']
+tags: ['JavaScript']
 date: '2021-07-09'
 ---
 

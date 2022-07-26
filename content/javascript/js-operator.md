@@ -1,12 +1,12 @@
 ---
 title: 介绍几个表达式和运算符
-tags: ['js']
-date: '2021-07-09'
+tags: ["JavaScript"]
+date: "2021-07-09"
 ---
 
 ## 空值合并运算符
 
-`??`是一个逻辑操作符，当左侧的表达式结果为 null或者 undefined时，其返回右侧表达式的结果，否则返回左侧表达式的结果。
+`??`是一个逻辑操作符，当左侧的表达式结果为 null 或者 undefined 时，其返回右侧表达式的结果，否则返回左侧表达式的结果。
 
 以前，如果想为一个变量赋默认值，通常的做法是使用逻辑或操作符`||` 然而，由于 `||` 是一个布尔逻辑运算符，左侧的操作数会被强制转换成布尔值用于求值。任何假值（`0`， `''`， `NaN`， `null`， `undefined`）都不会被返回。这导致如果你使用`0`，`''`或`NaN`作为有效值，就会出现不可预料的后果。空值合并操作符可以避免这种陷阱，其只在第一个操作数为`null` 或 `undefined` 时（而不是其它假值）返回第二个操作数
 
@@ -35,14 +35,14 @@ console.log(customerCity); // “暗之城”
 
 ## 可选链式操作
 
-**`?.`** 可以按照操作符之前的属性是否有效，链式读取对象的属性或者使整个对象链返回 `undefined`。`?.` 运算符的作用与 `.` 运算符类似，不同之处在于，如果对象链上的引用是 nullish(null或undefined)操作符会抛出一个错误，而 `?.` 操作符则会按照短路计算的方式进行处理，返回 `undefined`。可选链操作符也可用于函数调用，如果操作符前的函数不存在，也将会返回 `undefined`。
+**`?.`** 可以按照操作符之前的属性是否有效，链式读取对象的属性或者使整个对象链返回 `undefined`。`?.` 运算符的作用与 `.` 运算符类似，不同之处在于，如果对象链上的引用是 nullish(null 或 undefined)操作符会抛出一个错误，而 `?.` 操作符则会按照短路计算的方式进行处理，返回 `undefined`。可选链操作符也可用于函数调用，如果操作符前的函数不存在，也将会返回 `undefined`。
 
 ```javascript
 const adventurer = {
-  name: 'Alice',
+  name: "Alice",
   cat: {
-    name: 'Dinah'
-  }
+    name: "Dinah",
+  },
 };
 
 const dogName = adventurer.dog?.name;
@@ -54,7 +54,7 @@ console.log(adventurer.someNonExistentMethod?.());
 
 ## new.target
 
-检测函数或构造方法是否是通过new运算符被调用的。在通过new运算符被初始化的函数或构造方法中，`new.target`返回一个指向构造方法或函数的引用。在普通的函数调用中，`new.target` 的值是`undefined`
+检测函数或构造方法是否是通过 new 运算符被调用的。在通过 new 运算符被初始化的函数或构造方法中，`new.target`返回一个指向构造方法或函数的引用。在普通的函数调用中，`new.target` 的值是`undefined`
 
 ```javascript
 function Foo() {
@@ -71,7 +71,11 @@ class A {
   }
 }
 
-class B extends A { constructor() { super(); } }
+class B extends A {
+  constructor() {
+    super();
+  }
+}
 
 var a = new A(); // logs "A"
 var b = new B(); // logs "B"
@@ -90,7 +94,6 @@ console.log(x);
 x = (2, 3);
 console.log(x);
 // expected output: 3
-
 ```
 
 ## 管道操作符

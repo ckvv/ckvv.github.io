@@ -1,22 +1,22 @@
 ---
 title: 简单谈谈JS中的沙箱
-tags: ['js', 'sandbox']
-date: '2021-07-09'
+tags: ["JavaScript", "Sandbox"]
+date: "2021-07-09"
 ---
 
 沙箱(sandbox)是一种安全机制， 为运行中的程序提供的隔离环境。通常是作为一些来源不可信、具破坏力或无法判定程序意图的程序提供实验之用。沙盒通常严格控制其中的程序所能访问的资源，比如，沙盒可以提供用后即回收的磁盘及内存空间。
 
-## JS中沙箱的使用场景
+## JS 中沙箱的使用场景
 
-前端JS中也会有应用到沙箱的时候，毕竟有时候你要获取到的是第三方的JS文件或数据？而这数据又是不一定可信的时候，创建沙箱，做好保险工作尤为重要  
+前端 JS 中也会有应用到沙箱的时候，毕竟有时候你要获取到的是第三方的 JS 文件或数据？而这数据又是不一定可信的时候，创建沙箱，做好保险工作尤为重要
 
-+ jsonp：解析服务器所返回的jsonp请求时，如果不信任jsonp中的数据，可以通过创建沙箱的方式来解析获取数据；（TSW中处理jsonp请求时，创建沙箱来处理和解析数据）；
-+ 执行第三方js：当你有必要执行第三方js的时候，而这份js文件又不一定可信的时候；
-+ 在线代码编辑器：相信大家都有使用过一些在线代码编辑器，而这些代码的执行，基本都会放置在沙箱中，防止对页面本身造成影响；（例如：<https://codesandbox.io/s/new>）
-+ vue模板中表达式计算：vue模板中表达式的计算被放在沙盒中，只能访问全局变量的一个白名单，如 Math 和 Date 。你不能够在模板表达式中试图访问用户定义的全局变量  
-总而言之：当你要解析或执行不可信的JS的时候，当你要隔离被执行代码的执行环境的时候，当你要对执行代码中可访问对象进行限制的时候，沙箱就派上用场了
+- jsonp：解析服务器所返回的 jsonp 请求时，如果不信任 jsonp 中的数据，可以通过创建沙箱的方式来解析获取数据；（TSW 中处理 jsonp 请求时，创建沙箱来处理和解析数据）；
+- 执行第三方 js：当你有必要执行第三方 js 的时候，而这份 js 文件又不一定可信的时候；
+- 在线代码编辑器：相信大家都有使用过一些在线代码编辑器，而这些代码的执行，基本都会放置在沙箱中，防止对页面本身造成影响；（例如：<https://codesandbox.io/s/new>）
+- vue 模板中表达式计算：vue 模板中表达式的计算被放在沙盒中，只能访问全局变量的一个白名单，如 Math 和 Date 。你不能够在模板表达式中试图访问用户定义的全局变量  
+  总而言之：当你要解析或执行不可信的 JS 的时候，当你要隔离被执行代码的执行环境的时候，当你要对执行代码中可访问对象进行限制的时候，沙箱就派上用场了
 
-## JS沙箱实现
+## JS 沙箱实现
 
 ### [Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function)
 
@@ -31,10 +31,10 @@ date: '2021-07-09'
 vm 模块支持在 V8 虚拟机上下文中编译和运行代码。 vm 模块不是一种安全机制。不要使用它来运行不受信任的代码。
 
 ```js
-const { Script, createContext } = require('vm');
+const { Script, createContext } = require("vm");
 
 /**
- * 
+ *
  * @param {string} code 需要执行的代码, 执行的代码被包括在一个自执行函数中
  * @param {object} context 设置执行代码的上下文对象，默认包含 resolve: 用于代码返回值, reject: 用于代码抛出异常
  * @param {object} options 可选参数
@@ -44,14 +44,17 @@ async function runScript(code, context = {}, options = {}) {
   return new Promise((resolve, reject) => {
     const { timeout = 120 * 1000, breakOnSigint = true } = options;
     const script = new Script(`(async()=>{${code}})()`);
-    script.runInContext(createContext({
-      ...context,
-      resolve,
-      reject,
-    }), {
-      timeout,
-      breakOnSigint,
-    });
+    script.runInContext(
+      createContext({
+        ...context,
+        resolve,
+        reject,
+      }),
+      {
+        timeout,
+        breakOnSigint,
+      }
+    );
   });
 }
 ```
@@ -62,7 +65,7 @@ vm2 是一个沙箱，可以使用列入白名单的 Node 的内置模块运行�
 
 ## 参考资料
 
-+ [浅析 JavaScript 沙箱](https://mp.weixin.qq.com/s/euHJpS6rcRRqVBIPAnbUHA)
-+ [说说JS中的沙箱](https://juejin.cn/post/6844903954074058760)
-+ [为 Node.js 应用建立一个更安全的沙箱环境](https://cnodejs.org/topic/5adcd8dfba60fcc66b7b875b)
-+ [记一次 Node.js 应用内存暴涨分析](https://fed.taobao.org/blog/taofed/do71ct/nodejs-memory-leak-analyze/)
+- [浅析 JavaScript 沙箱](https://mp.weixin.qq.com/s/euHJpS6rcRRqVBIPAnbUHA)
+- [说说 JS 中的沙箱](https://juejin.cn/post/6844903954074058760)
+- [为 Node.js 应用建立一个更安全的沙箱环境](https://cnodejs.org/topic/5adcd8dfba60fcc66b7b875b)
+- [记一次 Node.js 应用内存暴涨分析](https://fed.taobao.org/blog/taofed/do71ct/nodejs-memory-leak-analyze/)

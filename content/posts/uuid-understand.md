@@ -1,6 +1,6 @@
 ---
 title: 深入理解UUID
-tag: 'uuid'
+tags: ['UUID']
 date: '2021-07-09'
 ---
 

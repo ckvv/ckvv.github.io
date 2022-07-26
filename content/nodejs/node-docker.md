@@ -1,33 +1,33 @@
 ---
 title: "node程序放入docker"
-tags: ['node', 'docker']
-date: '2021-07-09'
+tags: ["Node.js", "Docker"]
+date: "2021-07-09"
 ---
 
-## 准备demo程序
+## 准备 demo 程序
 
-+ index.js
+- index.js
 
 ```javascript
-'use strict';
+"use strict";
 
-const express = require('express');
+const express = require("express");
 
 // Constants
 const PORT = 6677;
-const HOST = '0.0.0.0';
+const HOST = "0.0.0.0";
 
 // App
 const app = express();
-app.get('/', (req, res) => {
-  res.send('<h1>Hello world</h1>');
+app.get("/", (req, res) => {
+  res.send("<h1>Hello world</h1>");
 });
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
 ```
 
-+ 根目录新建`Dockerfile`文件
+- 根目录新建`Dockerfile`文件
 
 ```
 ## 定义我们需要从哪个镜像进行构建
@@ -48,8 +48,8 @@ EXPOSE 8080
 CMD [ "node", "index.js" ]
 ```
 
-+ `.dockerignore` 文件
-这将避免你的本地模块以及调试日志被拷贝进入到你的 Docker 镜像中
+- `.dockerignore` 文件
+  这将避免你的本地模块以及调试日志被拷贝进入到你的 Docker 镜像中
 
 ```
 node_modules
@@ -77,20 +77,20 @@ docker run -p 4444:6677 -d chenkai/node-web-app:v1.0.0
 `docker ps | grep node-web-app`可以看到启动的容器
 `docker logs -f ${CONTAINER ID }`可以看到容器输出的日志
 
-浏览器中输入通过容器暴露出的端口``http://localhost:4444/``即可访问镜像中的node程序
+浏览器中输入通过容器暴露出的端口`http://localhost:4444/`即可访问镜像中的 node 程序
 
 ## 注意事项
 
-## npm包大小写
+## npm 包大小写
 
-一次构建镜像后提示缺少npm包错误，原因是因为mac开发下对文件名大小写不敏感，程序可以正常跑通，打包成镜像后基础镜像基于linux，对文件大小写敏感，找不到对应库
+一次构建镜像后提示缺少 npm 包错误，原因是因为 mac 开发下对文件名大小写不敏感，程序可以正常跑通，打包成镜像后基础镜像基于 linux，对文件大小写敏感，找不到对应库
 
 ## dockerfile
 
-一次运行容器报`sh: app.js,: unknown operand`错误，原因是dockerfile文件里面
+一次运行容器报`sh: app.js,: unknown operand`错误，原因是 dockerfile 文件里面
 
 ```shell
 CMD [ "node", 'app.js' ]
 ```
 
-js养成了引号、双引号的习惯没检查出来，
+js 养成了引号、双引号的习惯没检查出来，

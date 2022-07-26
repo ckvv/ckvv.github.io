@@ -1,18 +1,18 @@
 ---
 title: 在浏览器中本地运行 Node.js - WebContainers
-tags: ['node']
-date: '2021-12-29'
+tags: ["Web", "Node.js"]
+date: "2021-12-29"
 ---
 
 ## 起因
 
-在`nodejs.dev`网站看到了一个在线编辑的程序<https://nodejs.dev/learn/introduction-to-nodejs#an-example-nodejs-application> ,起初我以为这是一个类似`codepen`的在线编辑器，通过关键词`webcontainer`, 我发现这是一个在浏览器中本地运行 Node.js程序， 并找到了下面这篇文章<https://blog.stackblitz.com/posts/introducing-webcontainers/>，
+在`nodejs.dev`网站看到了一个在线编辑的程序<https://nodejs.dev/learn/introduction-to-nodejs#an-example-nodejs-application> ,起初我以为这是一个类似`codepen`的在线编辑器，通过关键词`webcontainer`, 我发现这是一个在浏览器中本地运行 Node.js 程序， 并找到了下面这篇文章<https://blog.stackblitz.com/posts/introducing-webcontainers/>，
 
 > 以下内容为文章翻译：
 
 ## WebContainers 简介：在浏览器中本地运行 Node.js
 
-[![Eric Simons](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0e2877341abd4040b98fab7ea6e977f0~tplv-k3u1fbpfcp-zoom-1.image)**ERIC SIMONS**](https://blog.stackblitz.com/authors/eric-simons)可能2021 年 2 月 20 日[新闻和公告](https://blog.stackblitz.com/categories/news-and-announcements)
+[![Eric Simons](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0e2877341abd4040b98fab7ea6e977f0~tplv-k3u1fbpfcp-zoom-1.image)**ERIC SIMONS**](https://blog.stackblitz.com/authors/eric-simons)可能 2021 年 2 月 20 日[新闻和公告](https://blog.stackblitz.com/categories/news-and-announcements)
 
 你好呀！我们是 StackBlitz，一个专门为 Web 开发量身定制的在线 IDE。在本周的 Google I/O 主题演讲中，您可能已经看到了我们的先睹为快。
 
@@ -22,15 +22,15 @@ date: '2021-12-29'
 
 这听起来有些牵强。但是，如果网络现在为 [平面设计师](https://www.figma.com/blog/webassembly-cut-figmas-load-time-by-3x/)、[视频编辑器](https://www.figma.com/blog/webassembly-cut-figmas-load-time-by-3x/) /web.dev/clipchamp/) 和 [丰富的文档编辑](https://workspaceupdates.googleblog.com/2021/05/Google-Docs-Canvas-Based-Rendering-Update.html)，我们想知道：**开发人员最终有可能\*使用\*网络来\*构建\*网络吗？**
 
-我们决定试一试。我们抱有最好的希望，也期待最坏的结果。两年后（时间过得真快😅），结果出乎意料地惊人。
+我们决定试一试。我们抱有最好的希望，也期待最坏的结果。两年后（时间过得真快 😅），结果出乎意料地惊人。
 
 ### 今天我们很高兴地宣布**WebContainers**
 
 WebContainers 允许您创建全栈 Node.js 环境，这些环境在几毫秒内启动并立即在线和链接共享 - 只需单击一下。该环境加载了 VS Code 强大的编辑体验、完整的终端、npm 等。它还*完全在您的浏览器内*运行，这会产生一些关键优势：
 
-+ **比您的本地环境更快**。构建完成速度最多可提高 20%，软件包安装完成速度比 yarn/npm 快 >= 5 倍。
-+ **Node.js 在浏览器中调试**。与 Chrome DevTools 的无缝集成支持原生后端调试，无需安装或扩展。
-+ **默认安全**。所有代码执行都发生在*内部*浏览器的安全沙箱中，而不是在远程虚拟机或本地二进制文件上。
+- **比您的本地环境更快**。构建完成速度最多可提高 20%，软件包安装完成速度比 yarn/npm 快 >= 5 倍。
+- **Node.js 在浏览器中调试**。与 Chrome DevTools 的无缝集成支持原生后端调试，无需安装或扩展。
+- **默认安全**。所有代码执行都发生在*内部*浏览器的安全沙箱中，而不是在远程虚拟机或本地二进制文件上。
 
 ![即时全栈 Node.js 环境](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f11ed2b5f5254f019150d18d3fc40113~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -42,10 +42,10 @@ WebContainers 允许您创建全栈 Node.js 环境，这些环境在几毫秒内
 
 以毫秒为单位在浏览器中启动 Node.js 项目（不要眨眼！）：
 
-+ [NEXT.JS](https://stackblitz.com/fork/nextjs)
-+ [GRAPHQL](https://stackblitz.com/fork/graphql)
-+ [HTTP 服务器](https://stackblitz.com/fork/http-server)
-+ [NODE.JS STARTER](https://stackblitz.com/fork/node)
+- [NEXT.JS](https://stackblitz.com/fork/nextjs)
+- [GRAPHQL](https://stackblitz.com/fork/graphql)
+- [HTTP 服务器](https://stackblitz.com/fork/http-server)
+- [NODE.JS STARTER](https://stackblitz.com/fork/node)
 
 截至今天发布，WebContainers 现在处于**公开测试阶段**。当前支持包括 Next.js、GraphQL 和 Vanilla Node.js，我们正在与其他开源项目合作以扩展支持。 （如果您想与我们合作，请查看 [我们的 repo](https://github.com/stackblitz/webcontainer-core/blob/main/Supported_frameworks.md)）。
 
@@ -63,7 +63,7 @@ StackBlitz 通过利用浏览器内置的数十年的速度和安全创新解决
 
 > StackBlitz 是第一个计算模型对我有意义的在线 IDE。
 >
-> ![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/947802bb7177435ca4b6aa6457b5f313~tplv-k3u1fbpfcp-zoom-1.image)![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bbd1a6ca28584a86a96a295c510f0acf~tplv-k3u1fbpfcp-zoom-1.image )
+> ![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/947802bb7177435ca4b6aa6457b5f313~tplv-k3u1fbpfcp-zoom-1.image)![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bbd1a6ca28584a86a96a295c510f0acf~tplv-k3u1fbpfcp-zoom-1.image)
 >
 > 汤姆·普雷斯顿-沃纳
 >
@@ -81,7 +81,7 @@ StackBlitz 通过利用浏览器内置的数十年的速度和安全创新解决
 >
 > 我们很高兴与 StackBlitz 团队合作，让开发人员更容易使用 Next.js 和 Vercel。
 >
-> ![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9fad1b48890d4b788cb3b9ffeadd697c~tplv-k3u1fbpfcp-zoom-1.image)![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1bc8deb57d7547df88b4722d67877cec~tplv-k3u1fbpfcp-zoom-1.image )
+> ![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9fad1b48890d4b788cb3b9ffeadd697c~tplv-k3u1fbpfcp-zoom-1.image)![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1bc8deb57d7547df88b4722d67877cec~tplv-k3u1fbpfcp-zoom-1.image)
 >
 > 吉列尔莫·劳赫
 >
@@ -89,7 +89,7 @@ StackBlitz 通过利用浏览器内置的数十年的速度和安全创新解决
 
 ### 运行服务器。在您的浏览器中
 
-是的，实际上。 WebContainers 包括一个映射到浏览器的 ServiceWorker API 的虚拟化 TCP 网络堆栈，使您能够立即按需创建实时 Node.js 服务器，即使您离线也能继续工作。因为它完全在浏览器安全沙箱中运行，所以服务器响应的延迟比 localhost* (!) 少，并保护您的 Web 服务器免受 localhost 抓取攻击：
+是的，实际上。 WebContainers 包括一个映射到浏览器的 ServiceWorker API 的虚拟化 TCP 网络堆栈，使您能够立即按需创建实时 Node.js 服务器，即使您离线也能继续工作。因为它完全在浏览器安全沙箱中运行，所以服务器响应的延迟比 localhost\* (!) 少，并保护您的 Web 服务器免受 localhost 抓取攻击：
 
 ![在浏览器中运行 API 服务器](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d069a6783fe04f23bef24755024c10a6~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -121,7 +121,7 @@ StackBlitz 通过利用浏览器内置的数十年的速度和安全创新解决
 
 > 在 Google I/O 上，我们很高兴展示 StackBlitz 如何使用最新的网络功能来提供一种将网络应用程序和桌面应用程序混淆的体验。
 >
-> ![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc0cb639a6a94e0faf28b3dac50c630c~tplv-k3u1fbpfcp-zoom-1.image)![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99bec72cfd154d0486745bf84ccd560a~tplv-k3u1fbpfcp-zoom-1.image )
+> ![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bc0cb639a6a94e0faf28b3dac50c630c~tplv-k3u1fbpfcp-zoom-1.image)![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99bec72cfd154d0486745bf84ccd560a~tplv-k3u1fbpfcp-zoom-1.image)
 >
 > 迪翁·阿尔玛尔
 >
@@ -141,18 +141,18 @@ Chrome 团队最近发布了 [文件系统访问 API](https://web.dev/file-syste
 
 ![本机文件系统访问](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7f8457436ddc4764a415594809181e24~tplv-k3u1fbpfcp-zoom-1.image)
 
-*技巧问题：其中哪一个是 StackBlitz，哪一个实际上是 VS Code？* 🙃
+_技巧问题：其中哪一个是 StackBlitz，哪一个实际上是 VS Code？_ 🙃
 
 ## 下一步是什么？
 
-我们将在接下来的一两个季度进行测试，因为我们[与开源维护者合作](https://github.com/stackblitz/webcontainer-core/blob/main/Supported_frameworks.md) 为他们的用户群带来完全兼容性并稳定核心WebContainer技术。之后是功能齐全的 StackBlitz v2。
+我们将在接下来的一两个季度进行测试，因为我们[与开源维护者合作](https://github.com/stackblitz/webcontainer-core/blob/main/Supported_frameworks.md) 为他们的用户群带来完全兼容性并稳定核心 WebContainer 技术。之后是功能齐全的 StackBlitz v2。
 
 如果你能：那不是很好吗？
 
-+ 每个 PR 上的开放环境（编辑器 + 实时预览！）。您可以浏览、播放、测试，从而执行真正可靠的代码审查，而无需关闭您正在处理的其他项目。
-+ 同时检查多个分支以并排比较它们。 （你会考虑在本地环境中这样做吗？在 StackBlitz 中，这意味着只是打开一个新选项卡）。
-+ 直接从浏览器更新您的 Docusaurus 文档或 Gatsby 博客。
-+ 从字面上学习任何 JavaScript 前端或后端框架，而无需安装任何东西！
+- 每个 PR 上的开放环境（编辑器 + 实时预览！）。您可以浏览、播放、测试，从而执行真正可靠的代码审查，而无需关闭您正在处理的其他项目。
+- 同时检查多个分支以并排比较它们。 （你会考虑在本地环境中这样做吗？在 StackBlitz 中，这意味着只是打开一个新选项卡）。
+- 直接从浏览器更新您的 Docusaurus 文档或 Gatsby 博客。
+- 从字面上学习任何 JavaScript 前端或后端框架，而无需安装任何东西！
 
 #### 发展。预览。船。 **♾️**
 
@@ -166,7 +166,7 @@ Chrome 团队最近发布了 [文件系统访问 API](https://web.dev/file-syste
 
 这些事情可能看起来有点疯狂。而且还有很多不为人知的未知数。但我们认为这个新的未来值得一试。因为，谁知道呢？它最终可能会**出乎意料的惊人**。
 
-------
+---
 
 谢谢阅读！在 [Twitter](https://twitter.com/stackblitz) 上关注我们，随时了解所有激动人心的更新。我们的核心团队今天和明天（5/20 和 5/21）都会在 Twitter Spaces 上进行现场问答。
 
@@ -176,4 +176,4 @@ Chrome 团队最近发布了 [文件系统访问 API](https://web.dev/file-syste
 
 喜欢您所看到的并希望帮助我们实现 Web 开发未来的愿景吗？转到 [stackblitz.com](https://stackblitz.com/) 并帮助我们完善 Next.js 测试版并[提供反馈](https://github.com/stackblitz/webcontainer-core)。与我们合作[为您最喜欢的开源库带来兼容性](https://github.com/stackblitz/webcontainer-core)。参与帮助 [将世界上的原生二进制文件转换为 WebAssembly](https://github.com/stackblitz/webcontainer-core)。快来加入 [StackBlitz 团队](https://stackblitz.com/careers)。或者，告诉您的朋友有关在浏览器中本机运行的最快、最安全和一致的 Web 开发环境！
 
-最后，我要感谢 StackBlitz 了不起的团队，他们为使这个项目成为现实而不懈努力❤让我们走吧！
+最后，我要感谢 StackBlitz 了不起的团队，他们为使这个项目成为现实而不懈努力 ❤ 让我们走吧！

@@ -1,7 +1,7 @@
 ---
 title: JavaScript可选链操作符
-tags: ['js']
-date: '2021-07-09'
+tags: ["JavaScript"]
+date: "2021-07-09"
 ---
 
 # 可选链操作符
@@ -15,10 +15,10 @@ date: '2021-07-09'
 ## [语法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#语法)
 
 ```js
-obj?.prop
-obj?.[expr]
-arr?.[index]
-func?.(args)
+obj?.prop;
+obj?.[expr];
+arr?.[index];
+func?.(args);
 ```
 
 ## [描述](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#描述)
@@ -45,12 +45,12 @@ let nestedProp = obj.first?.second;
 
 ```js
 let temp = obj.first;
-let nestedProp = ((temp === null || temp === undefined) ? undefined : temp.second);
+let nestedProp = temp === null || temp === undefined ? undefined : temp.second;
 ```
 
 ### [可选链与函数调用](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#可选链与函数调用)
 
-当尝试调用一个可能不存在的方法时也可以使用可选链。这将是很有帮助的，比如，当使用一个API的方法可能不可用时，要么因为实现的版本问题要么因为当前用户的设备不支持该功能。
+当尝试调用一个可能不存在的方法时也可以使用可选链。这将是很有帮助的，比如，当使用一个 API 的方法可能不可用时，要么因为实现的版本问题要么因为当前用户的设备不支持该功能。
 
 函数调用时如果被调用的方法不存在，使用可选链可以使表达式自动返回`undefined`而不是抛出一个异常。
 
@@ -58,7 +58,7 @@ let nestedProp = ((temp === null || temp === undefined) ? undefined : temp.secon
 let result = someInterface.customMethod?.();
 ```
 
-**注意:** 如果存在一个属性名且不是函数, 使用 `?.` 仍然会产生一个 [`TypeError`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError) 异常 (`x.y`` is not a function`).
+**注意:** 如果存在一个属性名且不是函数, 使用 `?.` 仍然会产生一个 [`TypeError`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError) 异常 (` x.y`` is not a function `).
 
 **注意:** 如果 `someInterface` 自身是 `null` 或者 `undefined` ，异常 [`TypeError`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError) 仍会被抛出 `someInterface is null` 如果你希望允许 `someInterface` 也为 `null` 或者 `undefined` ，那么你需要像这样写 `someInterface?.customMethod?.()`
 
@@ -71,9 +71,9 @@ let result = someInterface.customMethod?.();
 function doSomething(onContent, onError) {
   try {
     // ... do something with the data
-  }
-  catch (err) {
-    if (onError) { // 校验onError是否真的存在
+  } catch (err) {
+    if (onError) {
+      // 校验onError是否真的存在
       onError(err.message);
     }
   }
@@ -84,9 +84,8 @@ function doSomething(onContent, onError) {
 // 使用可选链进行函数调用
 function doSomething(onContent, onError) {
   try {
-   // ... do something with the data
-  }
-  catch (err) {
+    // ... do something with the data
+  } catch (err) {
     onError?.(err.message); // 如果onError是undefined也不会有异常
   }
 }
@@ -97,7 +96,7 @@ function doSomething(onContent, onError) {
 当使用[方括号与属性名](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Property_Accessors#方括号表示法)的形式来访问属性时，你也可以使用可选链操作符：
 
 ```js
-let nestedProp = obj?.['prop' + 'Name'];
+let nestedProp = obj?.["prop" + "Name"];
 ```
 
 ### [可选链不能用于赋值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#可选链不能用于赋值)
@@ -121,7 +120,7 @@ let arrayItem = arr?.[42];
 
 ```js
 let myMap = new Map();
-myMap.set("foo", {name: "baz", desc: "inga"});
+myMap.set("foo", { name: "baz", desc: "inga" });
 
 let nameBar = myMap.get("bar")?.name;
 ```
@@ -147,8 +146,8 @@ let customer = {
   name: "Carl",
   details: {
     age: 82,
-    location: "Paradise Falls" // details 的 address 属性未有定义
-  }
+    location: "Paradise Falls", // details 的 address 属性未有定义
+  },
 };
 let customerCity = customer.details?.address?.city;
 
@@ -163,7 +162,7 @@ let duration = vacations.trip?.getTime?.();
 ```js
 let customer = {
   name: "Carl",
-  details: { age: 82 }
+  details: { age: 82 },
 };
 let customerCity = customer?.city ?? "暗之城";
 console.log(customerCity); // “暗之城”
