@@ -36,7 +36,7 @@ date: '2021-07-09'
 + [head](https://github.com/ckvv/shel-command/blob/master/command/head.md)在屏幕上显示指定文件的开头若干行`head -n 10 CHANGELOG`
 + [history](https://github.com/ckvv/shel-command/blob/master/command/history.md)用于显示历史命令`history 100`
 + [host](https://github.com/ckvv/shel-command/blob/master/command/host.md)常用的分析域名查询工具`host chenkai.life`
-+ [htop][https://github.com/ckvv/shel-command/blob/master/command/htop.md](非内部命令)一个互动的进程查看器，可以动态观察系统进程状况
++ [htop](https://github.com/ckvv/shel-command/blob/master/command/htop.md)一个互动的进程查看器，可以动态观察系统进程状况
 + [iconv](https://github.com/ckvv/shel-command/blob/master/command/iconv.md)转换文件的编码方式`iconv file1 -f EUC-JP-MS -t UTF-8 -o file2`
 + [ifconfig](https://github.com/ckvv/shel-command/blob/master/command/ifconfig.md)配置和显示Linux系统网卡的网络参数
 + [kill](https://github.com/ckvv/shel-command/blob/master/command/kill.md)删除执行中的程序或工作
@@ -54,7 +54,7 @@ date: '2021-07-09'
 + [netstat](https://github.com/ckvv/shel-command/blob/master/command/netstat.md)查看Linux中网络系统状态信息`netstat -a`
 + [nslookup](https://github.com/ckvv/shel-command/blob/master/command/nslookup.md)查询域名DNS信息的工具
 + [ping](https://github.com/ckvv/shel-command/blob/master/command/ping.md)测试主机之间网络的连通性
-+ [ps](https://github.com/ckvv/shel-command/blob/master/command/ps.md)报告当前系统的进程状态`ps -aux`
++ [ps](https://github.com/ckvv/shel-command/blob/master/command/ps.md)报告当前系统的进程状态`ps aux`
 + [pwd](https://github.com/ckvv/shel-command/blob/master/command/pwd.md)绝对路径方式显示用户当前工作目录
 + [rm](https://github.com/ckvv/shel-command/blob/master/command/rm.md)用于删除给定的文件和目录`rm -rf testdir`
 + [rsync](https://github.com/ckvv/shel-command/blob/master/command/rsync.md)远程数据同步工具`rsync -avPz --exclude=".*" fileDir user@id:/fileDir`
