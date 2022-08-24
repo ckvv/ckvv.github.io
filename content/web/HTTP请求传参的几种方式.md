@@ -3,7 +3,7 @@ title: 'HTTP请求传参的几种方式'
 date: '2022-08-15'
 ---
 
-前后端通过[HTTP](https://developer.mozilla.org/zh-CN/docs/Web/HTTP)请求穿参的几种方式：
+前后端通过[HTTP](https://developer.mozilla.org/zh-CN/docs/Web/HTTP)请求传参的几种方式：
 
 ## URL传参(params)
 
