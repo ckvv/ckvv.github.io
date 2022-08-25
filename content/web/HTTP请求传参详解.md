@@ -1,15 +1,15 @@
 ---
 title: 'HTTP请求传参详解'
-date: '2022-08-15'
+date: '2022-08-25'
 ---
 
-本篇文章，干货满满
+本篇文章主要介绍了`HTTP`的数据结构, 以及`application/x-www-form-urlencoded`,`multipart/form-data`, `application/json`类型请求的编码方式。
 
-[HTTP](https://developer.mozilla.org/zh-CN/docs/Web/HTTP) 是服务器和客户端之间交换数据的方式。有两种类型的消息︰ 
+## 什么是HTTP
+[HTTP(超文本传输协议)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP) 是服务器和客户端之间交换数据的方式。是为Web浏览器与Web服务器之间的通信而设计的有两种类型的消息︰ 
+
 + 请求（requests）-- 由客户端发送用来触发一个服务器上的动作；
 + 响应（responses）-- 来自服务器的应答。
-
-## HTTP结构
 
 `HTTP`请求和响应具有相似的结构，由以下部分组成︰
 
@@ -21,10 +21,10 @@ date: '2022-08-15'
 起始行和 HTTP 消息中的 HTTP 头统称为请求头，而其有效负载被称为消息正文。
 ![httpmsgstructure](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages/httpmsgstructure2.png)
 
-
 ## HTTP规范
 
 HTTP 定义了一组请求方法，以表明要对给定资源执行的操作。包括
+
 + `GET`: 请求一个指定资源的表示形式，使用 GET 的请求应该只被用于获取数据。
 + `HEAD`: 请求一个与 GET 请求的响应相同的响应，但没有响应体。
 + `POST`: 用于将实体提交到指定的资源，通常导致在服务器上的状态变化或副作用。
@@ -115,7 +115,7 @@ const headers = new Headers();
 headers.append('Content-Type', 'application/json');
 ```
 
-#### 例子
+#### 设置Headers参数的例子
 
 通过`axios`设置`Headers`
 
@@ -146,11 +146,17 @@ fetch('input', {
 
 ### Body传参
 
-[Body](https://greenbytes.de/tech/webdav/draft-ietf-httpbis-p1-messaging-26.html#rfc.section.3.3)表示`HTTP`消息中传输的数据字节，用于携带该请求或响应的有效负载正文。我们需要使用[Content-Type](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type)表示发送数据的[MIME 类型](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
+[Body](https://greenbytes.de/tech/webdav/draft-ietf-httpbis-p1-messaging-26.html#rfc.section.3.3)表示`HTTP`消息中传输的数据字节，用于携带该请求或响应的有效负载正文。我们需要使用[Content-Type](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type)表示发送数据的[MIME](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types)类型
 
-`MIME 类型`通用结构为`type/subtype`, 由类型与子类型两个字符串中间用`/`分隔而组成。不允许空格存在。`type`表示可以被分多个子类的独立类别。`subtype` 表示细分后的每个类型。`MIME`类型对大小写不敏感，但是传统写法都是小写。
+`Content-Type`表示形式为`media-type;charset;boundary;`如：
+```
+Content-Type: text/html; charset=UTF-8
+Content-Type: multipart/form-data; boundary=something
+```
 
-[Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml)类型:
+`MIME`类型通用结构为`type/subtype`, 由类型与子类型两个字符串中间用`/`分隔而组成。不允许空格存在。`type`表示可以被分多个子类的独立类别。`subtype` 表示细分后的每个类型。`MIME`类型对大小写不敏感，但是传统写法都是小写。如果`MIME`类型与实际发送的数据不符服务器会无法识别。
+
+[Media](https://www.iana.org/assignments/media-types/media-types.xhtml)类型:
 + `text`: 表明文件是普通文本，理论上是人类可读, 如`text/plain`,`text/html`,`text/css, text/javascript`
 + `font`: 表明文件是字体文件, 如`font/woff`,`font/ttf`
 + `model`: 表明文件是模型文件, 如`model/gltf-binary`,`model/gltf+json`,`model/obj`
@@ -160,7 +166,7 @@ fetch('input', {
 + `application`: 表明是某种二进制数据 如`application/pdf`,`application/xml`,`application/json`
 + `multipart`: 表明文件是普通文本，理论上是人类可读, 如`multipart/form-data`,`multipart/encrypted`
 
-常见的`Content-Type`类型：
+常见的`MIME`Type说明:
 
 #### application/x-www-form-urlencoded
 
@@ -186,7 +192,7 @@ name=ck&email=ck%40test.com
 {key1: [1,2,3]} // 有的编码方案也会将其编码为 key1%5B0%5D=1&key1%5B1%5D=2&key1%5B2%5D=3 即 key1[0]=1&key1[1]=2&key1[2]=3
 ```
 
-#### 发送`application/x-www-form-urlencoded`类型请求的例子
+##### 发送`application/x-www-form-urlencoded`类型请求的例子
 
 使用表单
 ```html
@@ -262,10 +268,11 @@ ck@test.com
 Content-Disposition: form-data; name="avatar"; filename="c968b3620bc26294fac5626d25ccd72d.jpg"
 Content-Type: image/jpeg
 
-<该文件的二进制数据...>
+<binary content>
 ```
 
-#### 发送`multipart/form-data`类型请求的例子
+##### 发送`multipart/form-data`类型请求的例子
+
 使用表单
 ```html
 <form action="https://test.com" target="target" enctype="multipart/form-data" method="post">
@@ -330,6 +337,7 @@ axios({
 ```
 
 #### text/plain
+
 对于`text`文件类型若没有特定的`subtype`，就使用`text/plain`, (设置`form`表单`enctype`为`text/plain`)。 即它意味着未知的文本文件。
 
 如提交文本数据
@@ -347,8 +355,7 @@ name=ck
 email=ck@test.com
 ```
 
-
-#### 发送`text/plain`类型请求的例子
+##### 发送`text/plain`类型请求的例子
 
 使用表单
 ```html
@@ -414,7 +421,7 @@ Content-Type: text/plain;charset=UTF-8
 {"name":"ck","email":"ck@test.com"}
 ```
 
-#### 发送`application/json`类型请求的例子
+##### 发送`application/json`类型请求的例子
 
 使用Fetch
 
@@ -458,8 +465,10 @@ POST / HTTP/1.1
 Host: test.com
 Content-Type: <对应MIME类型>
 
-<对应Blob数据>
+<binary content>
 ```
+
+##### 发送其他`Content-Type`类型请求的例子
 
 使用Fetch
 
