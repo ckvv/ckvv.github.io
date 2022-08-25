@@ -157,16 +157,18 @@ Content-Type: multipart/form-data; boundary=something
 `MIME`类型通用结构为`type/subtype`, 由类型与子类型两个字符串中间用`/`分隔而组成。不允许空格存在。`type`表示可以被分多个子类的独立类别。`subtype` 表示细分后的每个类型。`MIME`类型对大小写不敏感，但是传统写法都是小写。如果`MIME`类型与实际发送的数据不符服务器会无法识别。
 
 [Media](https://www.iana.org/assignments/media-types/media-types.xhtml)类型:
-+ `text`: 表明文件是普通文本，理论上是人类可读, 如`text/plain`,`text/html`,`text/css, text/javascript`
-+ `font`: 表明文件是字体文件, 如`font/woff`,`font/ttf`
-+ `model`: 表明文件是模型文件, 如`model/gltf-binary`,`model/gltf+json`,`model/obj`
-+ `image`: 表明是某种图像。不包括视频，但是动态图（比如动态 gif）也使用 image 类型, 如`image/gif`,`image/png`,`image/jpeg`,`image/webp`
-+ `audio`: 表明是某种音频文件, 如`audio/webm`, `audio/wav`, `audio/mp4`
-+ `video`: 表明是某种视频文件, 如`video/webm`,`video/wav`,`video/mp4`
-+ `application`: 表明是某种二进制数据 如`application/pdf`,`application/xml`,`application/json`
-+ `multipart`: 表明文件是普通文本，理论上是人类可读, 如`multipart/form-data`,`multipart/encrypted`
++ `text`: 纯文本数据，包括任何人类可读的内容、源代码或文本数据. 如`text/plain`,`text/html`,`text/css, text/javascript`
++ `font`: 字体文件. 如`font/woff`,`font/ttf`
++ `model`: 3D 对象或场景的模型数据. 如`model/gltf-binary`,`model/gltf+json`,`model/obj`
++ `image`: 表明是某种图像。不包括视频，但包括动态图（比如动态 gif. 如`image/gif`,`image/png`,`image/jpeg`,`image/webp`
++ `audio`: 音频文件, 如`audio/webm`, `audio/wav`, `audio/mp4`
++ `video`: 视频文件, 如`video/webm`,`video/wav`,`video/mp4`
++ `application`: 任何不明确归入其他类型之一的二进制数据；将以某种方式执行或解释的数据或需要特定应用程序或应用程序类别才能使用的二进制数据。 如`application/pdf`,`application/xml`,`application/json`
++ `multipart`: 表示被分成几部分的文档类别，通常具有不同的 MIME 类型, 代表一个复合文档。 如`multipart/form-data`,`multipart/encrypted`
 
-常见的`MIME`Type说明:
+`text/plain`表示没有特定子类型的文本文档，同样，`application/octet-stream`表示没有特定或已知子类型的二进制文档。
+
+请求常用的`MIME`Type:
 
 #### application/x-www-form-urlencoded
 
