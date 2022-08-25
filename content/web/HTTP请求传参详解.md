@@ -41,7 +41,7 @@ HTTP 定义了一组请求方法，以表明要对给定资源执行的操作。
 
 ### URL传参(Query String )
 
-[Query String](https://en.wikipedia.org/wiki/Query_string)是URL的一部分，采用[百分比编码](https://en.wikipedia.org/wiki/Percent-encoding)的方式，我们可以通过`?`开头并用`&`符号分隔的键 - 值对，同时以 '=' 分隔键和值, 如`http://test.com?key1=value1&key2=value2`来提供额外参数。为了方便构造查询字符串，我们可以使用[URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)构造
+[Query String](https://en.wikipedia.org/wiki/Query_string)是URL的一部分，采用[百分比编码](https://en.wikipedia.org/wiki/Percent-encoding)的方式，我们可以通过`?`开头并用`&`符号分隔的键-值对，同时以`=`分隔键和值, 如`http://test.com?key1=value1&key2=value2`来提供额外参数。为了方便构造查询字符串，我们可以使用[URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)构造
 
 ```js
 // 传入字符串
