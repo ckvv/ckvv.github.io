@@ -17,6 +17,7 @@ show: false
 + [httpbin](https://httpbin.org/) 一个简单的 HTTP 请求和响应服务
 + [pixabay](https://pixabay.com/) 令人惊叹的免费图片和免版税库存
 + [jsbench](https://jsbench.me/) JS性能优化
++ [https://esm.sh/](https://esm.sh/) 用于ES-Module格式NPM包的快速、全球内容交付网络。
 
 ### 技术网站
 
