@@ -40,7 +40,7 @@ enableGitInfo = true
 [[menu.main]]
   name = "Create"
   weight = 5
-  url  = "https://github.com/ckvv/ckvv.github.io/new/main/content"
+  url  = "https://github.com/ckvv/ckvv.github.io/tree/main/content"
 [[menu.main]]
   name = "About"
   weight = 6
