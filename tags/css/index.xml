@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CSS on CK's Blog</title><link>https://chenkai.life/tags/css/</link><description>Recent content in CSS on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 27 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://chenkai.life/tags/css/index.xml" rel="self" type="application/rss+xml"/><item><title>与滚动条相关的属性</title><link>https://chenkai.life/css/scrollbars/</link><pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/scrollbars/</guid><description>滚动条设置（overflow） 设置当一个元素的内容太大而无法适应 块级格式化上下文 时候该做什么。 可选值: visible, hidden, scroll, auto, overlay
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CSS on CK's Blog</title><link>https://chenkai.life/tags/css/</link><description>Recent content in CSS on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 22 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://chenkai.life/tags/css/index.xml" rel="self" type="application/rss+xml"/><item><title>CSS颜色</title><link>https://chenkai.life/css/css-color/</link><pubDate>Wed, 22 Mar 2023 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/css-color/</guid><description>记录一下CSS颜色的相关概念
+alpha alpha 表示可以在某种程度上看到背景的颜色，不透明度可以被认为是一种后处理操作。从概念上讲，在元素（包括其后代）渲染成 RGBA 离屏图像后，不透明度设置指定如何将离屏渲染混合到当前合成渲染中。
+颜色语法 CSS 提供了几种直接指定sRGB颜色的方法
+color keyword CSS 定义了一大组命名颜色，以便可以更轻松地编写和阅读常用颜色。
+red, blue, green 等等
+LinkText, transparent(透明的黑色), currentColor（代表同一元素上的颜色）
+rgb（red blue green） 通过直接指定红、绿和蓝通道来定义 sRGB 颜色。
+RGB十六进制表示 将通道作为十六进制数字来指定 sRGB 颜色，其值由 3、4、6 或 8 个十六进制数字组
+六位#00ff00，每两位代表一个通道，其中00表示最小值，ff（十进制为 255）表示最大值。即rgb(0 255 0) 八位#00ff00cc，最后一对数字表示alpha 即rgb(0 0 100% / 80%) 三位#Of0 等于 #00ff00 四位#0f0c等于 #00ff00cc hsl (Hue Saturation Lightness) 色调 饱和度 亮度
+hwb（Hue Whiteness Blackness） 色调 白色 黑色 透明度
+lab &amp;amp; oklab （（lightness a b） 亮度 通道a( green / magenta) 通道b(blue / yellow )</description></item><item><title>与滚动条相关的属性</title><link>https://chenkai.life/css/scrollbars/</link><pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate><guid>https://chenkai.life/css/scrollbars/</guid><description>滚动条设置（overflow） 设置当一个元素的内容太大而无法适应 块级格式化上下文 时候该做什么。 可选值: visible, hidden, scroll, auto, overlay
 特别的: overlay: 行为与auto相同，但滚动条绘制在内容之上而不是占用空间。仅在基于 WebKit（例如，Safari）和基于 Blink 的（例如，Chrome 或 Opera）浏览器中受支持。
 滚动行为（scroll-behavior） 为一个滚动框指定滚动行为
 auto: 立即滚动 smoot: 平滑滚动 滚动条样式（伪类选择器） 通过下面几个伪类选择器可以设置滚动条样式
