@@ -66,8 +66,10 @@ CSS 定义了一大组命名颜色，以便可以更轻松地编写和阅读常�
 ### lch & oklch （lightness chroma hue）
 亮度 色度 色调
 
-#### color()
+### color()
 
+函数color()允许在特定的指定颜色空间中指定颜色，而不是大多数其他颜色函数在其中运行的隐式 `sRGB` 颜色空间
+`color(display-p3 1 0.5 0 / 0.5);`
 
 ## 函数语法
 
