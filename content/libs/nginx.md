@@ -200,7 +200,7 @@ open() "/usr/local/var/run/nginx/proxy_temp/1/04/0000000041" failed (13: Permiss
 sudo chown -R youn_name /usr/local/var/run/nginx/proxy_temp
 ```
 
-### http 重定向到https
+### http重定向到https
 
 ```shell
 if ($http_x_forwarded_proto = "http") {
@@ -212,7 +212,7 @@ if ($scheme = "http") {
 }
 ```
 
-### 开启
+### 开启gzip压缩
 
 ```shell
 #gzip  on;
@@ -224,7 +224,7 @@ gzip_min_length 1k;
 gzip_types text/plain text/css text/javascript application/javascript;
 ```
 
-### 静态文件
+### 静态文件服务
 
 ```shell
 location /test {
@@ -238,7 +238,7 @@ location / {
 }
 ```
 
-### 接口
+### 接口转发
 
 ```shell
 location /api/ {
