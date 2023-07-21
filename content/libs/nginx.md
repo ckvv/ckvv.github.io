@@ -4,22 +4,23 @@ tags: ['Tool', 'Nginx']
 date: '2021-07-09'
 ---
 
-## 安装nginx
+## 安装
 
-mac:
+### mac:
 
 ```
 brew install nginx
 ```
 
-centos:
+### CentOS、Oracle Linux、Rocky Linux、AlmaLinux。
 
-Install the prerequisites:
+安装先决条件：
 
 ```shell
 sudo yum install yum-utils
 ```
 
+要设置 yum 存储库，请创建包含 `/etc/yum.repos.d/nginx.repo` 以下内容的文件：
 ```repo
 [nginx-stable]
 name=nginx stable repo
@@ -37,22 +38,15 @@ enabled=0
 gpgkey=https://nginx.org/keys/nginx_signing.key
 module_hotfixes=true
 ```
-
- By default, the repository for stable nginx packages is used. If you would like to use mainline nginx packages, run the following command:
-
-```shell
-sudo yum-config-manager --enable nginx-mainline
-```
-
- To install nginx, run the following command:
-
+要安装 nginx，请运行以下命令：
 ```shell
 sudo yum install nginx
 ```
 
 其他安装方式
 
-参考<https://nginx.org/en/linux_packages.html>
+参考<https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-plus/>
+参考<https://nginx.org/en/linux_packages.html#instructions>
 
 ## Nginx命令
 
@@ -81,7 +75,7 @@ nginx -t
 ps -ax | grep nginx
 ```
 
-## nginx配置文件
+## 配置文件
 
 ```shell
 ...              #全局块
@@ -170,7 +164,7 @@ http {
 
 ## 常见问题
 
-###  nginx访问时报403
+### nginx访问时报403
 `ps aux | grep nginx`
 
 ```
@@ -208,12 +202,46 @@ sudo chown -R youn_name /usr/local/var/run/nginx/proxy_temp
 
 ### http 重定向到https
 
-```
+```shell
 if ($http_x_forwarded_proto = "http") {
      return 301 https://$hostm$request_uri;
 }
 // 或者
 if ($scheme = "http") {
   return 301 https://$server_name$request_uri;
+}
+```
+
+### 开启
+
+```shell
+#gzip  on;
+gzip on;
+gzip_vary on;
+gzip_comp_level 4;
+gzip_buffers 4 16k;
+gzip_min_length 1k;
+gzip_types text/plain text/css text/javascript application/javascript;
+```
+
+### 静态文件
+
+```shell
+location /test {
+    alias   /opt/项目地址/test/dist;
+    index index.html;
+}
+location / {
+    root   /opt/项目地址/dist;
+    index  index.html;
+    try_files $uri $uri/ /index.html;
+}
+```
+
+### 接口
+
+```shell
+location /api/ {
+    proxy_pass http://127.0.0.1:7093/api/;
 }
 ```
