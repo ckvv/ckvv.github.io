@@ -204,7 +204,7 @@ sudo chown -R youn_name /usr/local/var/run/nginx/proxy_temp
 
 ```shell
 if ($http_x_forwarded_proto = "http") {
-     return 301 https://$hostm$request_uri;
+     return 301 https://$host$request_uri;
 }
 // 或者
 if ($scheme = "http") {
@@ -228,11 +228,10 @@ gzip_types text/plain text/css text/javascript application/javascript;
 
 ```shell
 location /test {
-    alias   /opt/项目地址/test/dist;
-    index index.html;
+    alias   /opt/项目地址/test/dist/;
 }
 location / {
-    root   /opt/项目地址/dist;
+    root   /opt/项目地址/dist/;
     index  index.html;
     try_files $uri $uri/ /index.html;
 }
