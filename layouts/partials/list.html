@@ -12,14 +12,12 @@
   {{ .Content }}
   <ul>
     {{ range $elem_index, $elem_val := .Paginator.Pages }}
-      {{ if (and (ne .Title "") (ne .Params.show false)) }}
-        <li>
-          <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
-          <span style="font-size: 12px; padding-left: 8px;">
-            {{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02" ) }}
-          </span>
-        </li>
-      {{ end }}
+      <li>
+        <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+        <span style="font-size: 12px; padding-left: 8px;">
+          {{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02" ) }}
+        </span>
+      </li>
     {{ end }}
   </ul>
   {{ partial "pagination.html" . }}

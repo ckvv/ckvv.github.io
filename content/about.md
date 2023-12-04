@@ -1,6 +1,6 @@
 ---
 title: "关于"
-show: false
+draft: true
 ---
 
 这是我的博客。
