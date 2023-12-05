@@ -141,6 +141,7 @@ $active-color: #1565c0;
   }
 
   #table-of-contents-wapper {
+    opacity: .9;
     summary {
       background-color: $dark-bg-color;
     }
@@ -257,7 +258,7 @@ $active-color: #1565c0;
   #table-of-contents {
     line-height: 1.3;
     width: 19rem;
-    font-size: .8rem;
+    font-size: 1rem;
     padding: .8em;
     border: 1px solid currentColor;
     border-radius: 6px;
