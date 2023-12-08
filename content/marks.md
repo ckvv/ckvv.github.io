@@ -61,6 +61,7 @@ date: '2023-12-05'
 + `fast-xml-parser`: Validate XML or Parse XML to JS/JSON very fast without C/C++ based libraries  
 + `glob`: 使用 shell 使用的模式匹配文件
 + `jsoneditor` 基于 Web 查看、编辑、格式化和验证 JSON 的工具.
++ [pdfmake](https://github.com/bpampuch/pdfmake) 纯 JavaScript 中用于服务器端和客户端的 PDF 文档生成库。
 
 ### 开发工具
 
