@@ -30,7 +30,7 @@ async function streamToBuffer(stream) {
 
 ## asyncIterator
 
-(https://nodejs.org/api/stream.html#readablesymbolasynciterator)[stream]实现了[异步迭代协议](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator)所以
+[stream](https://nodejs.org/api/stream.html#readablesymbolasynciterator)实现了[异步迭代协议](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator)所以
 ```js
 /**
  * 
