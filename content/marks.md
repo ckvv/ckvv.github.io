@@ -79,6 +79,7 @@ date: '2023-12-05'
 + `autocannon` 用 node 编写的 HTTP 基准测试工具.
 + `eslint`:[eslint](https://eslint.bootcss.com/)是一个javascript代码检测工具  
 + [rewire](https://www.npmjs.com/package/rewire) rewire 为模块添加了一个特殊的 setter 和 getter，因此您可以修改它们的行为以进行更好的单元测试
++ [@faker-js/faker](https://github.com/faker-js/faker) 在浏览器和 node.js 中生成大量虚假数据，用于测试和开发
 
 ### ORM
 
