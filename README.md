@@ -2,16 +2,6 @@
 
 My Blog
 
-# Feature
-
-+ Small and concise
-+ Support dark mode
-+ Responsive layou
-+ Tourist comment
-+ Blog contents
-+ Support online editing
-
-
 # Others
 
 + Power by: [hugo](https://gohugo.io/)
