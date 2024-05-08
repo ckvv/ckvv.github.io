@@ -3,7 +3,6 @@ title: "使用 Sequelize 事务读取数据库时的隔离级别"
 tags: ["Database", "Sequelize"]
 date: "2024-05-08"
 ---
-
 `Sequelize` 是一个流行的 Node.js ORM（对象关系映射器），它支持 PostgreSQL、MySQL、MariaDB、SQLite 和 Microsoft SQL Server 等多种数据库。在使用 Sequelize 处理事务时，可以指定事务的隔离级别。事务的隔离级别决定了一个事务可能受到其他并发事务影响的程度。
 
 在数据库管理中，隔离级别主要解决以下四种问题：
@@ -15,6 +14,16 @@ date: "2024-05-08"
 
 Sequelize 支持以下隔离级别：
 
+```js
+import { IsolationLevel } from '@sequelize/core';  
+  
+// The following are valid isolation levels:  
+IsolationLevel.READ_UNCOMMITTED;  
+IsolationLevel.READ_COMMITTED;  
+IsolationLevel.REPEATABLE_READ;  
+IsolationLevel.SERIALIZABLE;
+```
+
 -   `READ UNCOMMITTED`：最低级别的隔离，允许读取尚未提交的数据，可能会遇到脏读问题。
 -   `READ COMMITTED`：保证任何读取的数据至少被提交过一次，解决了脏读问题，但不可重复读和幻读仍可能发生。
 -   `REPEATABLE READ`：确保在一个事务内多次读取同一数据的结果都是一样的，避免了不可重复读，但是可能遭遇幻读。
@@ -22,25 +31,29 @@ Sequelize 支持以下隔离级别：
 
 在 Sequelize 中设置事务的隔离级别通常是在事务开始时进行配置。以下是一个示例，展示了如何在 Sequelize 中启动一个具有特定隔离级别的事务：
 
+```javascript
+import { IsolationLevel } from '@sequelize/core';  
+  
+await sequelize.transaction(  
+{  
+    isolationLevel: IsolationLevel.SERIALIZABLE,  
+},  
+async t => {  
+    // Your code  
+},  
+);
 ```
-javascript
-Copy code
-const { Sequelize, Transaction } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+还可以通过在 Sequelize 构造函数中设置选项来全局更改默认值 `isolationLevel`
 
-(async () => {
-  try {
-    await sequelize.transaction({
-      isolationLevel: Transaction.ISOLATION_LEVELS.REPEATABLE_READ
-    }, async (transaction) => {
-      // 在这里执行你的数据库操作，这些操作将会在指定的隔离级别下运行
-    });
-  } catch (error) {
-    console.error('事务处理失败:', error);
-  }
-})();
+```javascript
+import { Sequelize, IsolationLevel } from '@sequelize/core';
+
+const sequelize = new Sequelize({
+  /* options */
+  isolationLevel: IsolationLevel.SERIALIZABLE,
+});
 ```
 
 在使用隔离级别时，应根据应用程序的具体需求和数据库的性能考虑来平衡一致性需求和性能开销。选择更严格的隔离级别虽然能提高数据一致性，但可能会降低并发性能。
 
-> 参考文档<https://sequelize.org/docs/v7/querying/transactions/>
+> 参考 https://sequelize.org/docs/v7/querying/transactions/
