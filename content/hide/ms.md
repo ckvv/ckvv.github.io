@@ -7,6 +7,7 @@ date: '2024-07-21'
 + https://vue3js.cn/interview/
 + https://juejin.cn/post/7208005892313579576
 + https://juejin.cn/post/7343484473184698405
++ https://juejin.cn/post/7330065707358208010
 
 # Vue 
 
@@ -41,7 +42,7 @@ date: '2024-07-21'
 + mixin、extends
 + 双向数据绑定原理
   - 在访问时跟踪依赖、在变更时触发副作用的
-  - 当Vue实例化时，会遍历data对象中的每个属性，使用Object.defineProperty为每个属性设置getter和setter。
+  - 当Vue实例化时，会遍历data对象中的每个属性，使用`Object.defineProperty`为每个属性设置getter和setter。
   - 在模板中，如果使用了数据绑定（例如{{ message }}），Vue会生成一个Watcher对象，将其与对应的DOM元素关联起来。
   - 当数据发生变化时，setter被调用，通知Watcher对象更新视图。
   - 当用户与视图交互，如输入表单元素时，Vue会监听DOM事件，然后通过setter更新数据，从而实现数据模型到视图的同步更新。
@@ -93,6 +94,10 @@ date: '2024-07-21'
   - 缓存: keep-alive、key、v-memo、v-once、props 尽量保持稳定、
   — 虚拟列表、减少大型不可变数据的响应性开销， 通过使用 shallowRef() 和 shallowReactive() 来绕开深度响应、避免不必要的组件抽象
   - 体验: css 动画、css 替代 JS
++ v-if和v-for的优先级是什么
+  - v-for 优先 v-if 导致每次都会进行一次if判断
+  - 在外层嵌套template（页面渲染不生成dom节点），在这一层进行v-if判断，然后在内部进行v-for循环
+  - 通过计算属性computed提前过滤掉那些不需要显示的项
 # CSS
 + @media、@layer、@scope、@keyframes、@import、@supports
 + 盒子模型：每个HTML元素看作是一个矩形的盒子，这个盒子由四个部分组成：内容区域（content）、内边距（padding）、边框（border）和外边距（margin）
@@ -124,12 +129,11 @@ date: '2024-07-21'
   - 伪元素 `::after { content: ""; display: block; clear: both;}`
   - 设置父容器的 overflow 属性为 auto 或 hidden 也可以清除浮动
   - Flex Grid
-+ 定位: display
 + 动画
-- 触发方式：动画可以自动播放，不需要用户交互，也可以通过添加或移除类来触发。
-- 复杂性：适用于更复杂的动画效果，可以定义多个关键帧。
-- 定义方式：使用 @keyframes 规则定义关键帧序列。
-- 动画属性：animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, + animation-play-state
+  - 触发方式：动画可以自动播放，不需要用户交互，也可以通过添加或移除类来触发。
+  - 复杂性：适用于更复杂的动画效果，可以定义多个关键帧。
+  - 定义方式：使用 @keyframes 规则定义关键帧序列。
+  - 动画属性：animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, + animation-play-state
 ```css
 @keyframes fadeinout {
   0%, 100% { opacity: 0; }
@@ -184,7 +188,6 @@ div {
 </nav>
 ```
 # JS
-+ https://juejin.cn/post/7330065707358208010
 + this: 指一段代码运行的上下文
   - JavaScript 中的值 this 取决于函数的调用方式（运行时绑定），当常规函数作为对象 （ obj.method() ） 的方法被调用时， this 指向该对象
   - 独立函数（未附加到对象： func() ） this 调用时，通常引用全局对象（在非严格模式下）或 undefined （在严格模式下）。
@@ -212,8 +215,14 @@ div {
 # TypeScript
 
 + 泛型
-+ 内置类型函数
-+ interface、type 区别
++ 内置类型函数: Awaited、Partial、Record、Pick、Parameters、ConstructorParameters、ReturnType、InstanceType
++ interface、type 区别: 都可以用来表示接口，即定义对象或者函数
+  - 都可以实现继承: interface 可以 extends type可以通过交叉类型（&）
+  - type 可以声明基本类别名，即可以为原始类型重命名，而 interface 不可以。例如：`type A = number`
+  - type 可以定义元组类型，而 interface 不可以。例如：`type A = [number, string]`
+  - type 可以使用交叉类型和联合类型，而 interface 不可以。例如：`type A = A1 | A2 / type B = B1 & B2`
+  - type 可以通过 typeof 获取实例的类型进行赋值定义，而 interface 不可以。例如：`type A = typeof obj / type A = keyof obj`
+  - interface 可以重复定义会进行声明合并，而 type 不可以。例如：`interface A { name: string }  interface A { get: string }`
 
 # 前端
 + 网络性能优化: 文件最小化（文件压缩、按需加载、路由懒加载、模块化代码）、CDN、缓存
@@ -294,6 +303,12 @@ div {
   - 3xx（重定向状态码）: 301 请求的资源已被永久移动到新位置。 302 请求的资源现在临时从不同的URI响应请求。 304 资源未被修改，可以使用缓存的版本。
   - 4xx（客户端错误状态码）: 400 服务器无法理解请求的语法 401 请求要求用户的身份认证。 403 服务器拒绝请求。 404 请求的资源不存在。
   - 5xx（服务器错误状态码）: 500 : 服务器遇到错误   502  服务器作为网关或代理，从上游服务器收到无效响应  503 服务器目前无法处理请求（过载或维护）。
++ 五层网络模型
+  - 物理层：定义了物理介质上的数据传输方式，如电缆、光纤等
+  - 数据链路层：负责在直接连接的两个设备之间传输数据帧，处理物理层的传输错误。
+  - 网络层：处理数据包在网络中的路由和转发，负责确定数据包的最佳路径到达目的地。主要协议包括 IP（Internet Protocol），用于标识网络中的每个设备及其位置。
+  - 传输层：提供端到端的数据传输服务，包括数据的分段、流量控制和错误恢复。主要协议有 TCP 和 UDP。
+  - 应用层：定义了不同应用程序之间的通信规则和数据交换方式 HTTP HTTPS DNS SSH
 # jQuery
 + JQuery的源码看过吗？能不能简单概况一下它的实现原理？: `简化复杂的DOM操作和跨浏览器兼容性问题`
   - 选择器引擎
@@ -305,7 +320,7 @@ div {
   - 工具函数
   - 链式调用
 # React
-# 设计模式
+# 设计模式: 计模式是对软件设计中普遍存在的各种问题所提出的解决方案
 + 创建型模式
   - 单例模式 (Singleton Pattern)：确保一个类只有一个实例，并提供一个全局访问点。
   - 工厂方法模式 (Factory Method Pattern)：定义一个用于创建对象的接口，让子类决定实例化哪一个类。
@@ -439,6 +454,14 @@ upstream backend {
 + setImmediate: 事件循环的下一次迭代或“滴答”时触发
 # redis
 + 数据结构、用途
+  - String（字符串）: 缓存简单的键值对数据，例如：用户会话信息、页面内容缓存
+  - Hash（哈希）键值对: 存储对象的属性和字段，例如：用户信息（id, name, email）。
+  - List（列表）:使用 LPUSH 和 RPOP 实现简单的队列。
+  - Set（集合）: 去重、存储不重复的元素集合，例如：标签、用户角色。
+  - Sorted Set（有序集合）: 实现排行榜功能，例如：按得分排序的游戏排行榜。
+  - HyperLogLog
+  - Bitmaps
+  - Geospatial index（地理空间索引）: 存储地理位置数据，进行地理位置范围查询。
 + 消息队列
 + 持久化
 # Kafka
