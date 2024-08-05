@@ -311,18 +311,45 @@ div {
   - 网络层：处理数据包在网络中的路由和转发，负责确定数据包的最佳路径到达目的地。主要协议包括 IP（Internet Protocol），用于标识网络中的每个设备及其位置。
   - 传输层：提供端到端的数据传输服务，包括数据的分段、流量控制和错误恢复。主要协议有 TCP 和 UDP。
   - 应用层：定义了不同应用程序之间的通信规则和数据交换方式 HTTP HTTPS DNS SSH
-# jQuery
-+ JQuery的源码看过吗？能不能简单概况一下它的实现原理？: `简化复杂的DOM操作和跨浏览器兼容性问题`
-  - 选择器引擎
-  - DOM操作封装
-  - 事件处理
-  - 动画效果
-  - Ajax请求
-  - 动画效果
-  - 工具函数
-  - 链式调用
+# jQuery 简化复杂的DOM操作和跨浏览器兼容性问题
++ 选择器引擎
++ DOM操作封装
++ 事件处理
++ 动画效果
++ Ajax请求
++ 动画效果
++ 工具函数
++ 链式调用
 # React
+## hooks
++ useState: 向组件添加一个 状态变量
++ useEffect
++ useReducer
++ useRef: 改变 ref 不会触发重新渲染
++ useImperativeHandle: 自定义由 ref 暴露出来的句柄
++ useContext: 组件树深层传递数据
++ useMemo: 
++ useCallback
++ useInsertionEffect
++ useLayoutEffect: 在浏览器重新绘制屏幕之前触发
++ useTransition
++ useSyncExternalStore
++ useId
++ useDebugValue
++ useDeferredValue
+## 组件
++ Suspense
++ StrictMode
++ Profiler
++ Fragment
+## API
++ memo
++ lazy
++ forwardRef: 允许组件使用 ref 将 DOM 节点暴露给父组件
++ createContext: 创建组件能够提供与读取的 上下文
+
 # 设计模式: 计模式是对软件设计中普遍存在的各种问题所提出的解决方案
++ 常用的: `单例模式` `适配器模式` `装饰器模式` `外观模式` `享元模式` `组合模式` `策略模式` `迭代器模式`
 + 创建型模式：用于解决与对象创建情况相关的常见问题
   - 单例模式 (Singleton Pattern)：确保一个类只有一个实例，并提供一个全局访问点。
   - 工厂方法模式 (Factory Method Pattern)：定义一个用于创建对象的接口，让子类决定实例化哪一个类。（如果你只需要创建一类产品的不同变体）
