@@ -5,6 +5,7 @@ date: '2024-08-06'
 ---
 
 Node.js 22.6.0 版本以后可以通过设置实验标志 `--experimental-strip-types` 来执行 TypeScript 文件, Node.js 会将 TypeScript 源代码转译为 JavaScript 源代码(目前使用`@swc/wasm-typescript`)。在转译过程中，不执行类型检查，并且类型将被丢弃。
+
 引入了 `--experimental-strip-types` 标志， 使Node.js能够运行仅包含类型注释的 TypeScript 文件。此类文件不包含需要转换的 TypeScript 功能，例如枚举或命名空间。Node.js将用空格替换内联类型注释，并且不执行类型检查。依赖于 tsconfig.json 中的设置的 TypeScript 功能（例如路径或将较新的 JavaScript 语法转换为较旧的标准）是有意不支持的。
 
 ## 启动功能
