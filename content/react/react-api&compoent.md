@@ -177,7 +177,7 @@ function TabContainer() {
 }
 ```
 
-## 组件
+# 组件
 React 提供了一些内置的组件，你可以在 JSX 中使用它们
 
 ## Fragment
@@ -227,7 +227,7 @@ root.render(
 - 组件将 重新运行 Effect 一次，以查找由于缺少 Effect 清理而引起的错误。
 - 组件将被 检查是否使用了已弃用的 API。
 
-## Suspense
+### Suspense
 允许在子组件完成加载前展示后备方案
 
 ```jsx
