@@ -9,8 +9,13 @@ date: "2024-08-24"
 使用 Context 深层传递参数
 
 ```jsx
-useContext(defaultValue)
+useContext(SomeContext)
 ```
+参数
+- `SomeContext`：用 `createContext` 创建的 context。context 本身不包含信息，它只代表你可以提供或从组件中读取的信息类型。
+
+返回值
+- `useContext` 为调用组件返回 context 的值。它被确定为传递给树中调用组件上方最近的 SomeContext.Provider 的 value。如果没有这样的 provider，那么返回值将会是为创建该 context 传递给 createContext 的 defaultValue。返回的值始终是最新的。如果 context 发生变化，React 会自动重新渲染读取 context 的组件。
 
 接收一个 context 对象（`React.createContext` 的返回值）并返回该 context 的当前值。当前的 context 值由上层组件中距离当前组件最近的 `<MyContext.Provider>` 的 `value` prop 决定。调用了 `useContext` 的组件总会在 context 值变化时重新渲染。如果重渲染组件的开销较大，你可以 [通过使用 memoization 来优化](https://github.com/facebook/react/issues/15156#issuecomment-474590693)。
 

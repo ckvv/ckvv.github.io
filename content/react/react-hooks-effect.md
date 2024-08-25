@@ -12,12 +12,17 @@ date: "2024-08-24"
 
 通过使用这个 Hook，你可以告诉 React 组件需要在渲染后执行某些操作。React 会保存你传递的函数（我们将它称之为 “effect”），并且在执行 DOM 更新之后调用它。同时你也可以使用多个effect hook，React 将按照 effect 声明的顺序依次调用组件中的*每一个* effect。
 
+### 参考
+
 ```jsx
 useEffect(setup, dependencies?)
 ```
 参数
 + `setup`：处理 Effect 的函数。setup 函数选择性返回一个 清理（cleanup） 函数。当组件被添加到 DOM 的时候，React 将运行 setup 函数。在每次依赖项变更重新渲染后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除后，React 将最后一次运行 cleanup 函数。
 + `dependencies`：setup 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 配置了 React，那么它将验证是否每个响应式值都被正确地指定为一个依赖项。依赖项列表的元素数量必须是固定的，并且必须像 [dep1, dep2, dep3] 这样内联编写。React 将使用 `Object.is` 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行 Effect 函数。如果传递空数组则仅在 `初始渲染后` 运行(开发环境下除外)。
+
+返回值
+undefined
 
 ### 基础用法
 
@@ -231,12 +236,71 @@ function ChatRoom({ options }) {
 }
 ```
 
+### 从 Effect 中获取 最新的 props 和 state，而不“响应”它们
+
+```jsx
+function Page({ url, shoppingCart }) {
+  const onVisit = useEffectEvent(visitedUrl => {
+    logVisit(visitedUrl, shoppingCart.length)
+  });
+
+// 仅在 url 更改后记录一次新的页面访问
+  useEffect(() => {
+    onVisit(url);
+  }, [url]); // ✅ 所有声明的依赖项
+}
+```
+
+### 注意事项
+
++ 如果你的一些依赖项是组件内部定义的对象或函数，或者没有指定依赖现时，可能导致 Effect 过多地重新运行
++ Effect 只在客户端上运行，在服务端渲染中不会运行。
+
 ## useLayoutEffect
 
-其函数签名与 `useEffect` 相同，但它会在所有的 DOM 变更之后同步调用 effect。可以使用它来读取 DOM 布局并同步触发重渲染。在浏览器执行绘制之前，`useLayoutEffect` 内部的更新计划将被同步刷新。
+与 `useEffect` 类似，但它会在所有的 DOM 变更之后，在浏览器执行绘制之前，同步调用 effect。可以使用它来读取 DOM 布局并同步触发重渲染，`useLayoutEffect` 内部的更新计划将被同步刷新。尽可能使用标准的 `useEffect` 以避免阻塞视觉更新。
 
-尽可能使用标准的 `useEffect` 以避免阻塞视觉更新。
-
-### 基础用法
+```jsx
+// 在浏览器重新绘制屏幕之前执行布局测量,避免页面闪烁
+  useEffect(() => {
+    const { height } = ref.current.getBoundingClientRect();
+    setTooltipHeight(height);
+  }, []);
+```
 
 ## useInsertionEffect
+
+在布局副作用触发之前将元素插入到 DOM 中, `useInsertionEffect` 比在 `useLayoutEffect` 或 `useEffect` 期间注入样式更好。因为它会确保 `<style>` 标签在其它 Effect 运行前被注入。
+
+```jsx
+useInsertionEffect(setup, dependencies?)
+```
+
+### 从 CSS-in-JS 库中注入动态样式
+
+```jsx
+// 在你的 CSS-in-JS 库中
+let isInserted = new Set();
+function useCSS(rule) {
+  useInsertionEffect(() => {
+    // 同前所述，我们不建议在运行时注入 <style> 标签。
+    // 如果你必须这样做，那么应当在 useInsertionEffect 中进行。
+    if (!isInserted.has(rule)) {
+      isInserted.add(rule);
+      document.head.appendChild(getStyleForRule(rule));
+    }
+  });
+  return rule;
+}
+
+function Button() {
+  const className = useCSS('...');
+  return <div className={className} />;
+}
+```
+
+## useInsertionEffect vs useLayoutEffect vs useEffect 执行时机对比
+
+`useInsertionEffect`：在 React 渲染 DOM 元素之前执行，主要用于注入样式。它的执行时机非常早，在 DOM 还未被插入到页面中时就会被调用。这个钩子函数主要是为了解决在服务器端渲染（SSR）和使用 CSS-in-JS 库时可能出现的闪烁问题。
+`useLayoutEffect`：在浏览器完成对 DOM 的更新后，在浏览器执行绘制之前，但在浏览器进行布局和绘制之前执行。这个阶段可以读取和修改 DOM，但是要小心操作，因为如果执行时间过长可能会导致页面卡顿。
+`useEffect`：在浏览器完成布局和绘制之后执行。通常用于执行一些副作用操作，比如发送网络请求、订阅事件等。这个钩子函数不会阻塞浏览器的绘制，所以对于不影响用户界面立即显示的操作是比较合适的。
