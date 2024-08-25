@@ -1,0 +1,183 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="en"><meta name=theme-color content="#ffffff"><meta name=color-scheme content="light dark"><meta name=description content="useEffect 每当你的组件渲染时，React 将更新屏幕，然后运行 useEffect 中的代码(屏幕更新渲染之后)
+该 Hook 接收一个包含命令式、且可能有副作用代码的函数。在函数组件主体内（这里指在 React 渲染阶段）改变 DOM、添加订阅、设置定时器、记录日志以及执行其他包含副作用的操作都是不被允许的，因为这可能会产生莫名其妙的 bug 并破坏 UI 的一致性。使用 useEffect 完成副作用操作。
+通过使用这个 Hook，你可以告诉 React 组件需要在渲染后执行某些操作。React 会保存你传递的函数（我们将它称之为 “effect”），并且在执行 DOM 更新之后调用它。同时你也可以使用多个effect hook，React 将按照 effect 声明的顺序依次调用组件中的每一个 effect。
+useEffect(setup, dependencies?) 参数
+setup：处理 Effect 的函数。setup 函数选择性返回一个 清理（cleanup） 函数。当组件被添加到 DOM 的时候，React 将运行 setup 函数。在每次依赖项变更重新渲染后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除后，React 将最后一次运行 cleanup 函数。 dependencies：setup 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 配置了 React，那么它将验证是否每个响应式值都被正确地指定为一个依赖项。依赖项列表的元素数量必须是固定的，并且必须像 [dep1, dep2, dep3] 这样内联编写。React 将使用 Object.is 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行 Effect 函数。如果传递空数组则仅在 初始渲染后 运行(开发环境下除外)。 基础用法 function CountButton() { const [count, setCount] = useState(0); useEffect(()=>{ console."><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="React Hook Effect"><meta name=twitter:description content="useEffect 每当你的组件渲染时，React 将更新屏幕，然后运行 useEffect 中的代码(屏幕更新渲染之后)
+该 Hook 接收一个包含命令式、且可能有副作用代码的函数。在函数组件主体内（这里指在 React 渲染阶段）改变 DOM、添加订阅、设置定时器、记录日志以及执行其他包含副作用的操作都是不被允许的，因为这可能会产生莫名其妙的 bug 并破坏 UI 的一致性。使用 useEffect 完成副作用操作。
+通过使用这个 Hook，你可以告诉 React 组件需要在渲染后执行某些操作。React 会保存你传递的函数（我们将它称之为 “effect”），并且在执行 DOM 更新之后调用它。同时你也可以使用多个effect hook，React 将按照 effect 声明的顺序依次调用组件中的每一个 effect。
+useEffect(setup, dependencies?) 参数
+setup：处理 Effect 的函数。setup 函数选择性返回一个 清理（cleanup） 函数。当组件被添加到 DOM 的时候，React 将运行 setup 函数。在每次依赖项变更重新渲染后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除后，React 将最后一次运行 cleanup 函数。 dependencies：setup 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 配置了 React，那么它将验证是否每个响应式值都被正确地指定为一个依赖项。依赖项列表的元素数量必须是固定的，并且必须像 [dep1, dep2, dep3] 这样内联编写。React 将使用 Object.is 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行 Effect 函数。如果传递空数组则仅在 初始渲染后 运行(开发环境下除外)。 基础用法 function CountButton() { const [count, setCount] = useState(0); useEffect(()=>{ console."><meta property="og:title" content="React Hook Effect"><meta property="og:description" content="useEffect 每当你的组件渲染时，React 将更新屏幕，然后运行 useEffect 中的代码(屏幕更新渲染之后)
+该 Hook 接收一个包含命令式、且可能有副作用代码的函数。在函数组件主体内（这里指在 React 渲染阶段）改变 DOM、添加订阅、设置定时器、记录日志以及执行其他包含副作用的操作都是不被允许的，因为这可能会产生莫名其妙的 bug 并破坏 UI 的一致性。使用 useEffect 完成副作用操作。
+通过使用这个 Hook，你可以告诉 React 组件需要在渲染后执行某些操作。React 会保存你传递的函数（我们将它称之为 “effect”），并且在执行 DOM 更新之后调用它。同时你也可以使用多个effect hook，React 将按照 effect 声明的顺序依次调用组件中的每一个 effect。
+useEffect(setup, dependencies?) 参数
+setup：处理 Effect 的函数。setup 函数选择性返回一个 清理（cleanup） 函数。当组件被添加到 DOM 的时候，React 将运行 setup 函数。在每次依赖项变更重新渲染后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除后，React 将最后一次运行 cleanup 函数。 dependencies：setup 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 配置了 React，那么它将验证是否每个响应式值都被正确地指定为一个依赖项。依赖项列表的元素数量必须是固定的，并且必须像 [dep1, dep2, dep3] 这样内联编写。React 将使用 Object.is 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行 Effect 函数。如果传递空数组则仅在 初始渲染后 运行(开发环境下除外)。 基础用法 function CountButton() { const [count, setCount] = useState(0); useEffect(()=>{ console."><meta property="og:type" content="article"><meta property="og:url" content="https://chenkai.life/react/react-hooks-effect/"><meta property="article:section" content="react"><meta property="article:published_time" content="2024-08-24T00:00:00+00:00"><meta property="article:modified_time" content="2024-08-25T10:14:16+08:00"><title>React Hook Effect · CK's Blog</title><link rel=canonical href=https://chenkai.life/react/react-hooks-effect/><link rel=stylesheet href=/css/coder.min.0e0f0ac9929898ae6625ca3789e3f9e2e630ead0a5e0f1fe96c1ba7d8774342c.css integrity="sha256-Dg8KyZKYmK5mJco3ieP54uYw6tCl4PH+lsG6fYd0NCw=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.d8f89ef09509afb63b9b2595ee174e53cc51ce02a6f6a2179e1621f9389e4340.css integrity="sha256-2Pie8JUJr7Y7myWV7hdOU8xRzgKm9qIXnhYh+TieQ0A=" crossorigin=anonymous media=screen><link rel=stylesheet href=/scss/custom.min.d12542c00c198b6a07ca9ea5981102805aecab0f5dfd5e3273d8c179088712c4.css integrity="sha256-0SVCwAwZi2oHyp6lmBECgFrsqw9d/V4yc9jBeQiHEsQ=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/favicon.ico><link rel=apple-touch-icon type=image/png sizes=256x256 href=/images/favicon-512x512.png><meta name=generator content="Hugo 0.119.0"><link rel=manifest href=/manifest.webmanifest></head><body class="preload-transitions colorscheme-auto"><div class=float-container><span id=dark-mode-toggle class=colorscheme-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-anheimoshi"/></svg></span></div><details id=table-of-contents-wapper><summary><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></summary></details><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/>CK's Blog</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><svg class="icon" aria-hidden="true"><use xlink:href="#icon-caidan"/></svg></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/>Home</a></li><li class=navigation-item><a class=navigation-link href=/tags/>Tags</a></li><li class=navigation-item><a class=navigation-link href=/marks/>Marks</a></li><li class=navigation-item><a class=navigation-link href=https://github.com/ckvv/ckvv.github.io/tree/main/content>Create</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item id=search-content><input class=search-int type=text placeholder=Search>
+<button class=search-btn data-type=github>GitHub</button>
+<button class=search-btn data-type=google>Google</button></li></ul></section></nav><div class=content><section class="container page"><article><header><h1 class=title><a class=title-link href=https://chenkai.life/react/react-hooks-effect/>React Hook Effect</a></h1><div class=edit-link style=float:right;color:#0366d6><a class=title rel=noopener target=_blank href=https://github.com/ckvv/ckvv.github.io/edit/main/content/react/react-hooks-effect.md>编辑</a></div></header><div class=post-meta><div class=date><span class=posted-on><svg class="icon" aria-hidden="true"><use xlink:href="#icon-date"/></svg><time datetime=2024-08-24T00:00:00Z>2024-08-24</time></span></div><div class=tags><svg class="icon" aria-hidden="true"><use xlink:href="#icon-biaoqian"/></svg><span class=tag><a href=/tags/react/>React</a></span></div></div><h2 id=useeffect>useEffect
+<a class=heading-link href=#useeffect><i class="fa fa-link" aria-hidden=true></i></a></h2><p>每当你的组件渲染时，React 将更新屏幕，然后运行 useEffect 中的代码(屏幕更新渲染之后)</p><p>该 Hook 接收一个包含命令式、且可能有副作用代码的函数。在函数组件主体内（这里指在 React 渲染阶段）改变 DOM、添加订阅、设置定时器、记录日志以及执行其他包含副作用的操作都是不被允许的，因为这可能会产生莫名其妙的 bug 并破坏 UI 的一致性。使用 <code>useEffect</code> 完成副作用操作。</p><p>通过使用这个 Hook，你可以告诉 React 组件需要在渲染后执行某些操作。React 会保存你传递的函数（我们将它称之为 “effect”），并且在执行 DOM 更新之后调用它。同时你也可以使用多个effect hook，React 将按照 effect 声明的顺序依次调用组件中的<em>每一个</em> effect。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#a6e22e>useEffect</span>(<span style=color:#a6e22e>setup</span>, <span style=color:#a6e22e>dependencies</span><span style=color:#f92672>?</span>)
+</span></span></code></pre></div><p>参数</p><ul><li><code>setup</code>：处理 Effect 的函数。setup 函数选择性返回一个 清理（cleanup） 函数。当组件被添加到 DOM 的时候，React 将运行 setup 函数。在每次依赖项变更重新渲染后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除后，React 将最后一次运行 cleanup 函数。</li><li><code>dependencies</code>：setup 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 配置了 React，那么它将验证是否每个响应式值都被正确地指定为一个依赖项。依赖项列表的元素数量必须是固定的，并且必须像 [dep1, dep2, dep3] 这样内联编写。React 将使用 <code>Object.is</code> 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行 Effect 函数。如果传递空数组则仅在 <code>初始渲染后</code> 运行(开发环境下除外)。</li></ul><h3 id=基础用法>基础用法
+<a class=heading-link href=#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95><i class="fa fa-link" aria-hidden=true></i></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>CountButton</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>useEffect</span>(()=&gt;{
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>count</span>);
+</span></span><span style=display:flex><span>  });
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>type</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;button&#34;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span><span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>)}&gt;
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>count</span> <span style=color:#a6e22e>is</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>}
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#f92672>button</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 挂载时初始count为0，此时打印0
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// 点击button，count + 1, 此时组件更新，useEffect再次执行，此时打印1
+</span></span></span></code></pre></div><h3 id=清除-effect副作用>清除 effect副作用
+<a class=heading-link href=#%e6%b8%85%e9%99%a4-effect%e5%89%af%e4%bd%9c%e7%94%a8><i class="fa fa-link" aria-hidden=true></i></a></h3><p>通常，组件卸载时需要清除 effect 创建的诸如订阅或计时器 ID 等资源。要实现这一点，<code>useEffect</code> 函数需返回一个清除函数。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#75715e>// 每秒更新时间
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>DateLabel</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>date</span>, <span style=color:#a6e22e>setCount</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#66d9ef>new</span> Date().<span style=color:#a6e22e>toLocaleString</span>());
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 在执行 effect 之前会先执行上一个 effect的清除函数
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>useEffect</span>(()=&gt;{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>timeout</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>setTimeout</span>(()=&gt;{
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>setCount</span>(<span style=color:#66d9ef>new</span> Date().<span style=color:#a6e22e>toLocaleString</span>());
+</span></span><span style=display:flex><span>    }, <span style=color:#ae81ff>1000</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 清除函数会在组件卸载前执行
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>return</span> () =&gt; {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>clearTimeout</span>(<span style=color:#a6e22e>timeout</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  });
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#f92672>label</span>&gt;
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>当前时间是</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>date</span>}
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#f92672>label</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>为防止内存泄漏，清除函数会在组件卸载前执行。另外，如果组件多次渲染（通常如此），则<strong>在执行下一个 effect 之前，上一个 effect 就已被清除</strong>。在上述示例中，意味着组件的每一次更新都会创建新的订阅。若想避免每次更新都触发 effect 的执行，请参阅<code>effect 的执行时机</code>。</p><h3 id=effect-的执行时机>effect 的执行时机
+<a class=heading-link href=#effect-%e7%9a%84%e6%89%a7%e8%a1%8c%e6%97%b6%e6%9c%ba><i class="fa fa-link" aria-hidden=true></i></a></h3><p><code>useEffect</code> 会在浏览器绘制后延迟执行，在任何新的渲染前执行。React 将在组件更新前刷新上一轮渲染的 effect。因此不应在函数中执行阻塞浏览器更新屏幕的操作。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>CountBtn</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 在useEffect之前调用
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;函数中;useEffect前&#39;</span>,<span style=color:#a6e22e>count</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>useEffect</span>(()=&gt;{
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Dom 已经变化
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(document.<span style=color:#a6e22e>querySelector</span>(<span style=color:#e6db74>&#39;.count-btn&#39;</span>).<span style=color:#a6e22e>textContent</span>);
+</span></span><span style=display:flex><span>  });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 在useEffect之前调用
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;函数中;useEffect后&#39;</span>,<span style=color:#a6e22e>count</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>className</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;count-btn&#39;</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> =&gt; <span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>)}&gt;
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>当前count</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>}
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#f92672>button</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=effect-的条件执行>effect 的条件执行
+<a class=heading-link href=#effect-%e7%9a%84%e6%9d%a1%e4%bb%b6%e6%89%a7%e8%a1%8c><i class="fa fa-link" aria-hidden=true></i></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#a6e22e>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 这里的代码会在每次渲染后执行
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>});
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 这里的代码只会在组件挂载后执行
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}, []);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>//这里的代码只会在每次渲染后，并且 a 或 b 的值与上次渲染不一致时执行
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}, [<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>]);
+</span></span></code></pre></div><p>默认情况下，effect 会在每轮组件渲染完成后执行。这样的话，一旦 effect 的依赖发生变化，它就会被重新创建。</p><p>如果某些特定值在两次重渲染之间没有发生变化，你可以通知 React <strong>跳过</strong>对 effect 的调用，</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#a6e22e>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>  document.<span style=color:#a6e22e>title</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`You clicked </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>count</span><span style=color:#e6db74>}</span><span style=color:#e6db74> times`</span>;
+</span></span><span style=display:flex><span>}, [<span style=color:#a6e22e>count</span>]); <span style=color:#75715e>// 仅在 count 更改时更新
+</span></span></span></code></pre></div><ul><li><p>请确保数组中包含了<strong>所有外部作用域中会随时间变化并且在 effect 中使用的变量</strong>，否则你的代码会引用到先前渲染中的旧变量。</p></li><li><p>如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组作为第二个参数。effect 内部的 props 和 state 就会一直拥有其初始值。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>Count</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>count</span>, <span style=color:#a6e22e>setCount</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>useEffect</span>(()=&gt;{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>timeout</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>setInterval</span>(()=&gt;{
+</span></span><span style=display:flex><span>      <span style=color:#75715e>// 点击button后虽然count改变但是count依然为0
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>count</span>);
+</span></span><span style=display:flex><span>    }, <span style=color:#ae81ff>1000</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> () =&gt; {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>clearInterval</span>(<span style=color:#a6e22e>timeout</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }, []);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>=</span>{() =&gt; <span style=color:#a6e22e>setCount</span>(<span style=color:#a6e22e>count</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)}&gt;
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>当前count</span><span style=color:#f92672>:</span> {<span style=color:#a6e22e>count</span>}
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#f92672>button</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></li></ul><h3 id=尽量避免对象和函数依赖将它们移到组件外或-effect-内>尽量避免对象和函数依赖。将它们移到组件外或 Effect 内。
+<a class=heading-link href=#%e5%b0%bd%e9%87%8f%e9%81%bf%e5%85%8d%e5%af%b9%e8%b1%a1%e5%92%8c%e5%87%bd%e6%95%b0%e4%be%9d%e8%b5%96%e5%b0%86%e5%ae%83%e4%bb%ac%e7%a7%bb%e5%88%b0%e7%bb%84%e4%bb%b6%e5%a4%96%e6%88%96-effect-%e5%86%85><i class="fa fa-link" aria-hidden=true></i></a></h3><p>如果在渲染过程中创建对象和函数，然后在 Effect 中读取它们，它们将在每次渲染时都不同。这将导致 Effect 每次都重新同步</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#75715e>// 在每次重新渲染 ChatRoom 组件时，都会从头开始创建一个新的 options 对象。React 发现 options 对象与上次渲染期间创建的 options 对象是 不同的对象。这就是为什么它会重新同步 Effect（依赖于 options）
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>ChatRoom</span>({ <span style=color:#a6e22e>roomId</span> }) {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// ...
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>options</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>serverUrl</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>serverUrl</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>roomId</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>roomId</span>
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>connection</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createConnection</span>(<span style=color:#a6e22e>options</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>connect</span>();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> () =&gt; <span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>disconnect</span>();
+</span></span><span style=display:flex><span>  }, [<span style=color:#a6e22e>options</span>]); <span style=color:#75715e>// ✅ 所有依赖已声明
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span></code></pre></div><p>这就是为什么你应该尽可能避免将对象和函数作为 Effect 的依赖。所以，尝试将它们移到组件外部、Effect 内部，或从中提取原始值。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#75715e>// 移到组件外部
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>options</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>serverUrl</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;https://localhost:1234&#39;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>roomId</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;音乐&#39;</span>
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>ChatRoom</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>message</span>, <span style=color:#a6e22e>setMessage</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#e6db74>&#39;&#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>connection</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createConnection</span>(<span style=color:#a6e22e>options</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>connect</span>();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> () =&gt; <span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>disconnect</span>();
+</span></span><span style=display:flex><span>  }, []); <span style=color:#75715e>// ✅ 所有依赖已声明
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// ...
+</span></span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#75715e>// Effect 内部
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>serverUrl</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;https://localhost:1234&#39;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>ChatRoom</span>({ <span style=color:#a6e22e>roomId</span> }) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>message</span>, <span style=color:#a6e22e>setMessage</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#e6db74>&#39;&#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>options</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>serverUrl</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>serverUrl</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>roomId</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>roomId</span>
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>connection</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createConnection</span>(<span style=color:#a6e22e>options</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>connect</span>();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> () =&gt; <span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>disconnect</span>();
+</span></span><span style=display:flex><span>  }, [<span style=color:#a6e22e>roomId</span>]); <span style=color:#75715e>// ✅ 所有依赖已声明
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// ...
+</span></span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#75715e>// 从中提取原始值
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>&lt;<span style=color:#f92672>ChatRoom</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>roomId</span><span style=color:#f92672>=</span>{<span style=color:#a6e22e>roomId</span>}
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>options</span><span style=color:#f92672>=</span>{{
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>serverUrl</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>serverUrl</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>roomId</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>roomId</span>
+</span></span><span style=display:flex><span>  }}
+</span></span><span style=display:flex><span>/&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>ChatRoom</span>({ <span style=color:#a6e22e>options</span> }) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> [<span style=color:#a6e22e>message</span>, <span style=color:#a6e22e>setMessage</span>] <span style=color:#f92672>=</span> <span style=color:#a6e22e>useState</span>(<span style=color:#e6db74>&#39;&#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 避免依赖对象和函数类型
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>roomId</span>, <span style=color:#a6e22e>serverUrl</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>options</span>;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>connection</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createConnection</span>({
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>roomId</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>roomId</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>serverUrl</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>serverUrl</span>
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>connect</span>();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> () =&gt; <span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>disconnect</span>();
+</span></span><span style=display:flex><span>  }, [<span style=color:#a6e22e>roomId</span>, <span style=color:#a6e22e>serverUrl</span>]); <span style=color:#75715e>// ✅ 所有依赖已声明
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span></code></pre></div><h2 id=uselayouteffect>useLayoutEffect
+<a class=heading-link href=#uselayouteffect><i class="fa fa-link" aria-hidden=true></i></a></h2><p>其函数签名与 <code>useEffect</code> 相同，但它会在所有的 DOM 变更之后同步调用 effect。可以使用它来读取 DOM 布局并同步触发重渲染。在浏览器执行绘制之前，<code>useLayoutEffect</code> 内部的更新计划将被同步刷新。</p><p>尽可能使用标准的 <code>useEffect</code> 以避免阻塞视觉更新。</p><h3 id=基础用法-1>基础用法
+<a class=heading-link href=#%e5%9f%ba%e7%a1%80%e7%94%a8%e6%b3%95-1><i class="fa fa-link" aria-hidden=true></i></a></h3><h2 id=useinsertioneffect>useInsertionEffect
+<a class=heading-link href=#useinsertioneffect><i class="fa fa-link" aria-hidden=true></i></a></h2><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=ad8eb77008a048613edfb99507f35171 data-page-url=https://chenkai.life/react/react-hooks-effect/ data-page-title="React Hook Effect" data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.cb0c595e02234420f3ad3886bf4a9bd2874d0e1e78e090138a9ef158b35aaf17.js integrity="sha256-ywxZXgIjRCDzrTiGv0qb0odNDh544JATip7xWLNarxc="></script>
+<script src=/js/custom.js></script>
+<script src=/js/font.min.js></script></body><script>"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js")</script></html>
