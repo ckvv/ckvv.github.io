@@ -67,6 +67,32 @@ var myIterator = {
         return this;
     }
 }
+
+// 生成器
+class People{
+  constructor(index){
+      this.index = index;
+  }
+  *[Symbol.iterator](){
+    do {
+      this.index++;
+      yield this.index;
+    } while (this.index < 10);
+  }
+}
+
+// 异步生成器
+class People{
+  constructor(index){
+      this.index = index;
+  }
+  async *[Symbol.asyncIterator](){
+    do {
+      this.index++;
+      yield Promise.resolve(this.index);
+    } while (this.index < 10);
+  }
+}
 ```
 
 ## 迭代器协议
