@@ -55,7 +55,46 @@ Hooks的原理 React 保持对当前渲染中的组件的追踪。多亏了 Hoo
 <a class=heading-link href=#%e8%87%aa%e5%ae%9a%e4%b9%89-hook-%e5%bf%85%e9%a1%bb%e4%bb%a5-use-%e5%bc%80%e5%a4%b4><i class="fa fa-link" aria-hidden=true></i></a></h4><p>这个约定非常重要。不遵循的话，由于无法判断某个函数是否包含对其内部 Hook 的调用，React 将无法自动检查你的 Hook 是否违反了 <a href=https://zh-hans.reactjs.org/docs/hooks-rules.html>Hook 的规则</a>。</p><h2 id=react-的渲染流程>React 的渲染流程
 <a class=heading-link href=#react-%e7%9a%84%e6%b8%b2%e6%9f%93%e6%b5%81%e7%a8%8b><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li>JSX 转换与函数组件执行<ul><li>当 React 应用启动时，首先会对 JSX 代码进行转换。JSX 看起来像 HTML，但实际上会被编译为 <code>React.createElement</code> 调用，创建虚拟 DOM 节点。</li><li>对于函数组件，React 会调用该组件函数，传入 props 和 context 等参数。函数组件会根据输入的 props 返回描述组件 UI 的虚拟 DOM 结构。</li></ul></li><li>虚拟 DOM 创建与更新<ul><li>组件的渲染结果是一个虚拟 DOM 树，它是对真实 DOM 的抽象表示，包含了元素的类型、属性、子节点等信息，但并不直接操作真实 DOM。</li><li>当组件的 props 或 state 发生变化时，React 会重新调用组件函数，生成新的虚拟 DOM 树。</li><li>React 会通过对比新旧虚拟 DOM 树，找出发生变化的部分，这个过程称为调和（reconciliation）。</li></ul></li><li>调和过程<ul><li>从根节点开始，React 递归地比较新旧虚拟 DOM 树的每个节点。
 如果节点类型相同，React 会继续比较它们的属性和子节点，只更新发生变化的部分。
-如果节点类型不同，React 会销毁旧节点，创建新节点。</li><li>对于列表渲染，React 会使用 key 属性来帮助识别哪些项发生了变化，从而更高效地更新列表。</li></ul></li><li>更新队列与批处理<ul><li>在渲染过程中，当组件的 setState 方法被调用时，React 不会立即更新组件，而是将这些更新放入一个更新队列中。</li><li>React 会进行批处理更新，即在同一事件循环中的多个 setState 调用会被合并为一次更新，以提高性能。</li></ul></li><li>提交阶段<ul><li>一旦调和过程完成，React 进入提交阶段，开始将变化应用到真实 DOM。</li><li>首先，React 会执行所有在 useEffect(浏览器布局和绘制之后) 和 useLayoutEffect(浏览器进行布局和绘制之前) 的回调函数中注册的副作用（side effects）</li><li>React 会根据调和过程中确定的变化，更新真实 DOM。这包括添加、删除或更新 DOM 节点，以及更新节点的属性。</li></ul></li><li>渲染完成与生命周期钩子<ul><li>当 DOM 更新完成后，React 会触发一些生命周期钩子，如 componentDidMount（对于挂载阶段）、componentDidUpdate（对于更新阶段）和 componentWillUnmount（对于卸载阶段）。</li><li>如果有错误发生，React 会捕获并处理这些错误，触发 componentDidCatch 生命周期钩子。</li></ul></li></ul><h2 id=参考文档>参考文档
+如果节点类型不同，React 会销毁旧节点，创建新节点。</li><li>对于列表渲染，React 会使用 key 属性来帮助识别哪些项发生了变化，从而更高效地更新列表。</li></ul></li><li>更新队列与批处理<ul><li>在渲染过程中，当组件的 setState 方法被调用时，React 不会立即更新组件，而是将这些更新放入一个更新队列中。</li><li>React 会进行批处理更新，即在同一事件循环中的多个 setState 调用会被合并为一次更新，以提高性能。</li></ul></li><li>提交阶段<ul><li>一旦调和过程完成，React 进入提交阶段，开始将变化应用到真实 DOM。</li><li>首先，React 会执行所有在 useEffect(浏览器布局和绘制之后) 和 useLayoutEffect(浏览器进行布局和绘制之前) 的回调函数中注册的副作用（side effects）</li><li>React 会根据调和过程中确定的变化，更新真实 DOM。这包括添加、删除或更新 DOM 节点，以及更新节点的属性。</li></ul></li><li>渲染完成与生命周期钩子<ul><li>当 DOM 更新完成后，React 会触发一些生命周期钩子，如 componentDidMount（对于挂载阶段）、componentDidUpdate（对于更新阶段）和 componentWillUnmount（对于卸载阶段）。</li><li>如果有错误发生，React 会捕获并处理这些错误，触发 componentDidCatch 生命周期钩子。</li></ul></li></ul><h3 id=错误边界>错误边界
+<a class=heading-link href=#%e9%94%99%e8%af%af%e8%be%b9%e7%95%8c><i class="fa fa-link" aria-hidden=true></i></a></h3><p>类组件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>React</span>, { <span style=color:#a6e22e>PureComponent</span> } <span style=color:#a6e22e>from</span>  <span style=color:#a6e22e>react</span> ;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>ErrorPage</span> <span style=color:#a6e22e>from</span>  ..<span style=color:#f92672>/</span><span style=color:#a6e22e>ErrorPage</span> ;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ErrorBound</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>PureComponent</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>constructor</span>(<span style=color:#a6e22e>props</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>super</span>(<span style=color:#a6e22e>props</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>state</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>hasError</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span>,
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 这个方法在服务器端渲染期间也被调用，在DOM尚未更新时在“渲染阶段”调用。
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>// 应该是一个纯函数。如果要执行副作用 （例如，调用分析服务） ，则还需要实现 componentDidCatch
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>static</span> <span style=color:#a6e22e>getDerivedStateFromError</span>(<span style=color:#a6e22e>error</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 更新 state 使下一次渲染能够显示降级后的 UI
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>return</span> { <span style=color:#a6e22e>hasError</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>true</span> };
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 这个方法总是在浏览器中调用，当DOM已经更新时，在“提交阶段”调用
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>componentDidCatch</span>(<span style=color:#a6e22e>error</span>, <span style=color:#a6e22e>errorInfo</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 1、错误信息（error）
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>// 2、错误堆栈（errorInfo)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>error</span>, <span style=color:#a6e22e>errorInfo</span>);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>render</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>state</span>.<span style=color:#a6e22e>hasError</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> &lt;<span style=color:#f92672>ErrorPage</span> /&gt;;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>props</span>.<span style=color:#a6e22e>children</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>函数组件
+目前还没有 static getDerivedStateFromError in 函数组件的直接等效项。如果您想避免创建类组件，请编写一个像上面一样的 ErrorBoundary 组件，并在整个应用程序中使用它。或者，使用执行此操作的 <code>react-error-boundary</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>ErrorBoundary</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;react-error-boundary&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>ErrorBoundary</span> <span style=color:#a6e22e>fallback</span><span style=color:#f92672>=</span>{&lt;<span style=color:#f92672>div</span>&gt;<span style=color:#a6e22e>Something</span> <span style=color:#a6e22e>went</span> <span style=color:#a6e22e>wrong</span>&lt;/<span style=color:#f92672>div</span>&gt;}&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#f92672>ExampleApplication</span> /&gt;
+</span></span><span style=display:flex><span>&lt;/<span style=color:#f92672>ErrorBoundary</span>&gt;
+</span></span></code></pre></div><h2 id=参考文档>参考文档
 <a class=heading-link href=#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3><i class="fa fa-link" aria-hidden=true></i></a></h2><ul><li><p><a href=https://react.docschina.org/reference/react>https://react.docschina.org/reference/react</a></p></li><li><p><a href=https://zhuanlan.zhihu.com/p/376914196>https://zhuanlan.zhihu.com/p/376914196</a></p></li></ul><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=106d15ce85116877be553478a926f34c data-page-url=https://chenkai.life/react/react-%E5%9F%BA%E7%A1%80/ data-page-title="React 基础" data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.cb0c595e02234420f3ad3886bf4a9bd2874d0e1e78e090138a9ef158b35aaf17.js integrity="sha256-ywxZXgIjRCDzrTiGv0qb0odNDh544JATip7xWLNarxc="></script>
 <script src=/js/custom.js></script>
 <script src=/js/font.min.js></script></body><script>"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js")</script></html>
