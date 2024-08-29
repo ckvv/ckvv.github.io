@@ -101,6 +101,54 @@ function mountWorkInProgressHook(): Hook {
   - 当 DOM 更新完成后，React 会触发一些生命周期钩子，如 componentDidMount（对于挂载阶段）、componentDidUpdate（对于更新阶段）和 componentWillUnmount（对于卸载阶段）。
   - 如果有错误发生，React 会捕获并处理这些错误，触发 componentDidCatch 生命周期钩子。
 
+### 错误边界
+
+类组件
+```jsx
+import React, { PureComponent } from  react ;
+import ErrorPage from  ../ErrorPage ;
+
+export default class ErrorBound extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasError: false,
+    };
+  }
+
+  // 这个方法在服务器端渲染期间也被调用，在DOM尚未更新时在“渲染阶段”调用。
+  // 应该是一个纯函数。如果要执行副作用 （例如，调用分析服务） ，则还需要实现 componentDidCatch
+  static getDerivedStateFromError(error) {
+    // 更新 state 使下一次渲染能够显示降级后的 UI
+    return { hasError: true };
+  }
+
+  // 这个方法总是在浏览器中调用，当DOM已经更新时，在“提交阶段”调用
+  componentDidCatch(error, errorInfo) {
+    // 1、错误信息（error）
+    // 2、错误堆栈（errorInfo)
+    console.log(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <ErrorPage />;
+    }
+    return this.props.children;
+  }
+}
+```
+
+函数组件
+目前还没有 static getDerivedStateFromError in 函数组件的直接等效项。如果您想避免创建类组件，请编写一个像上面一样的 ErrorBoundary 组件，并在整个应用程序中使用它。或者，使用执行此操作的 `react-error-boundary`
+```jsx
+import { ErrorBoundary } from "react-error-boundary";
+
+<ErrorBoundary fallback={<div>Something went wrong</div>}>
+  <ExampleApplication />
+</ErrorBoundary>
+```
+
 ## 参考文档
 
 - <https://react.docschina.org/reference/react>
