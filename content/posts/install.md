@@ -68,5 +68,9 @@ fnm env --use-on-cd | Out-String | Invoke-Expression
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 ```
 
-
-
+# npm
+```sh
+# 设置镜像源
+npm config set registry http://registry.npmjs.org/
+npm config set registry https://registry.npmmirror.com
+```
