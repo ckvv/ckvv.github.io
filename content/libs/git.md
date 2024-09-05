@@ -73,9 +73,9 @@ git push [远程分支：origin] [本地分支的名称].
 去git 管理网站创建Merge Request.
 等待合并.
 ----管理员合并所有人的Merge Request----  
-checkout master (切换至Master).  
+git checkout master (切换至Master).  
 git pull (从远程master 更新至 本地master)  
-checkout [branch] (切换至本地分支)  
+git checkout [branch] (切换至本地分支)  
 git rebase master [从本地 master 更新当前分支]  
 ----是否有冲突----  
 ----有----  
@@ -393,4 +393,13 @@ Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配�
 
 ## 生成一个可供发布的压缩包
 
+```sh
 $ git archive
+```
+
+
+## 按小时统计提交次数
+
+```sh
+git log  --date=iso | perl -nalE 'if (/^Date:\s+[\d-]{10}\s(\d{2})/) { say $1+0 }' | sort | uniq -c|perl -MList::Util=max -nalE '$h{$F[1]} = $F[0]; }{ $m = max values %h; foreach (0..23) { $h{$_} = 0 if not exists $h{$_} } foreach (sort {$a <=> $b } keys %h) { say sprintf "%02d - %4d %s", $_, $h{$_}, "*"x ($h{$_} / $m * 50); }'
+```
