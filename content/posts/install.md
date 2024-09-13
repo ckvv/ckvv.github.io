@@ -1,7 +1,7 @@
 ---
 title: "安装常用的软件"
 tags: ["CentOS", "Linux", 'Windows']
-date: "2024-09-05"
+date: "2023-09-05"
 ---
 
 # nvm
