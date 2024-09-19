@@ -25,7 +25,7 @@ node --experimental-strip-types index.ts
 
 ## 功能限制
 
-+ 仅支持内联类型注释，不支持`enums`或`namespaces`等功能。
++ ~~仅支持内联类型注释，不支持`enums`或`namespaces`等功能。~~ (> 22.7.0 后支持)
 + 在 `import` 和 `require `语句中需要显式文件扩展名如`.ts` `.mts` `.cts`（注意和`bun` 或 `deno` 不同 目前 `.tsx` 文件不受支持的）
 + 强制使用 type 关键字进行类型导入，以避免运行时错误。
 + 默认情况下，Node.js将拒绝处理 node_modules 路径下的文件夹中的 TypeScript 文件。

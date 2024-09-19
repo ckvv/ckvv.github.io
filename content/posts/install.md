@@ -1,7 +1,7 @@
 ---
 title: "安装常用的软件"
 tags: ["CentOS", "Linux", 'Windows']
-date: "2024-09-05"
+date: "2023-09-05"
 ---
 
 # nvm
@@ -38,6 +38,38 @@ export NVM_DIR="$HOME/.nvm"
 ```
 
 # fnm
+
+```shell
+# 查看 fnm 版本
+fnm --version
+
+# 安装最新的 LTS 版本
+fnm install --lts
+
+# 安装指定版本的 node
+fnm install <版本号>
+
+# 使用国内源安装
+fnm install 16 --node-dist-mirror=https://npmmirror.com/mirrors/node
+
+# 卸载指定版本的 node
+fnm uninstall <版本号>
+
+# 查看已安装的 node 版本
+fnm ls
+
+# 查看官方已发布的所有版本
+fnm ls-remote
+
+# 在当前 shell 使用指定的 node 版本
+fnm use <版本号>
+
+# 设置默认 node 版本
+fnm default <版本号>
+
+# 使用指定版本来执行某个全局命令
+fnm exec --using=18 node -v
+```
 
 ## linux
 
