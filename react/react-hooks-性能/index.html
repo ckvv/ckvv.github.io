@@ -260,6 +260,26 @@ calculateValue：要缓存计算值的函数。它应该是一个没有任何参
 </span></span><span style=display:flex><span>    &lt;/&gt;
 </span></span><span style=display:flex><span>  );
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=537daa7deaa46b337afea23cb184fb5e data-page-url=https://chenkai.life/react/react-hooks-%E6%80%A7%E8%83%BD/ data-page-title="React Hook 性能" data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.cb0c595e02234420f3ad3886bf4a9bd2874d0e1e78e090138a9ef158b35aaf17.js integrity="sha256-ywxZXgIjRCDzrTiGv0qb0odNDh544JATip7xWLNarxc="></script>
+</span></span></code></pre></div><h3 id=react-compiler-react-编译器>React Compiler (React 编译器)
+<a class=heading-link href=#react-compiler-react-%e7%bc%96%e8%af%91%e5%99%a8><i class="fa fa-link" aria-hidden=true></i></a></h3><p>为了优化应用程序，React Compiler 之前 我们需要通过useMemo、useCallback 和 React.memo 等 API 你可以告诉 React 如果它们的输入没有改变，你的应用程序的某些部分就不需要重新计算，从而减少了更新的工作。虽然功能强大，但很容易忘记应用记忆化或错误地应用它们。<br>React Compiler 是一个新的实验性编译器, 编译器利用其 JavaScript 和 React 规则的知识来自动记住组件和 hook 中的值或值组。如果它检测到规则的破坏，它将自动跳过这些组件或 hook，并继续安全地编译其他代码。</p><p>在 Vite 中启用</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>defineConfig</span> } <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;vite&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>react</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#39;@vitejs/plugin-react&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>ReactCompilerConfig</span> <span style=color:#f92672>=</span> { <span style=color:#75715e>/* ... */</span> };
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#a6e22e>defineConfig</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>plugins</span><span style=color:#f92672>:</span> [
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>react</span>({
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>babel</span><span style=color:#f92672>:</span> {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>plugins</span><span style=color:#f92672>:</span> [
+</span></span><span style=display:flex><span>            [<span style=color:#e6db74>&#34;babel-plugin-react-compiler&#34;</span>, <span style=color:#a6e22e>ReactCompilerConfig</span>],
+</span></span><span style=display:flex><span>          ],
+</span></span><span style=display:flex><span>        },
+</span></span><span style=display:flex><span>      }),
+</span></span><span style=display:flex><span>    ],
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>});
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 现在打开 React Devtools （v5.0+） 即可看到组件旁边显示 “Memo ✨ ”
+</span></span></span></code></pre></div><p>其他用法参考官网<a href=https://react.dev/learn/react-compiler>https://react.dev/learn/react-compiler</a></p><div id=cusdis_thread data-host=https://cusdis.com data-app-id=c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd data-page-id=537daa7deaa46b337afea23cb184fb5e data-page-url=https://chenkai.life/react/react-hooks-%E6%80%A7%E8%83%BD/ data-page-title="React Hook 性能" data-iframe=/js/cusdis/iframe.umd.js data-style=/js/cusdis/style.css></div></article></section></div></main><script src=/js/coder.min.cb0c595e02234420f3ad3886bf4a9bd2874d0e1e78e090138a9ef158b35aaf17.js integrity="sha256-ywxZXgIjRCDzrTiGv0qb0odNDh544JATip7xWLNarxc="></script>
 <script src=/js/custom.js></script>
 <script src=/js/font.min.js></script></body><script>"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js")</script></html>
