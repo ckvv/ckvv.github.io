@@ -389,4 +389,32 @@ function App() {
 }
 ```
 
+### React Compiler (React 编译器)
 
+为了优化应用程序，React Compiler 之前 我们需要通过useMemo、useCallback 和 React.memo 等 API 你可以告诉 React 如果它们的输入没有改变，你的应用程序的某些部分就不需要重新计算，从而减少了更新的工作。虽然功能强大，但很容易忘记应用记忆化或错误地应用它们。  
+React Compiler 是一个新的实验性编译器, 编译器利用其 JavaScript 和 React 规则的知识来自动记住组件和 hook 中的值或值组。如果它检测到规则的破坏，它将自动跳过这些组件或 hook，并继续安全地编译其他代码。
+
+在 Vite 中启用
+```ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+const ReactCompilerConfig = { /* ... */ };
+export default defineConfig(() => {
+  return {
+    plugins: [
+      react({
+        babel: {
+          plugins: [
+            ["babel-plugin-react-compiler", ReactCompilerConfig],
+          ],
+        },
+      }),
+    ],
+  };
+});
+
+// 现在打开 React Devtools （v5.0+） 即可看到组件旁边显示 “Memo ✨ ”
+```
+
+其他用法参考官网<https://react.dev/learn/react-compiler>
