@@ -106,3 +106,25 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 npm config set registry http://registry.npmjs.org/
 npm config set registry https://registry.npmmirror.com
 ```
+
+# python
+## mac
+```shell 
+brew install pyenv
+
+# 安装指定版本：
+pyenv install 3.x.y
+#全局版本
+pyenv global 3.x.y
+#本地项目版本（需在项目目录运行）：
+pyenv local 3.x.y
+
+#更新环境变量
+#确保将以下内容添加到 ~/.zshrc
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+#重载终端配置
+source ~/.zshrc
+
+python3 --version
+```
