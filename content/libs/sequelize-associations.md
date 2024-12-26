@@ -22,13 +22,13 @@ The guide will start explaining how to define these four types of associations, 
 The four association types are defined in a very similar way. Let's say we have two models, `A` and `B`. Telling Sequelize that you want an association between the two needs just a function call:
 
 ```js
-const A = sequelize.define("A" /* ... */);
-const B = sequelize.define("B" /* ... */);
+const A = sequelize.define('A' /* ... */);
+const B = sequelize.define('B' /* ... */);
 
 A.hasOne(B); // A HasOne B
 A.belongsTo(B); // A BelongsTo B
 A.hasMany(B); // A HasMany B
-A.belongsToMany(B, { through: "C" }); // A BelongsToMany B through the junction table C
+A.belongsToMany(B, { through: 'C' }); // A BelongsToMany B through the junction table C
 ```
 
 They all accept an options object as a second parameter (optional for the first three, mandatory for `belongsToMany` containing at least the `through` property):
@@ -43,7 +43,7 @@ A.belongsTo(B, {
 A.hasMany(B, {
   /* options */
 });
-A.belongsToMany(B, { through: "C" /* options */ });
+A.belongsToMany(B, { through: 'C' /* options */ });
 ```
 
 The order in which the association is defined is relevant. In other words, the order matters, for the four cases. In all examples above, `A` is called the **source** model and `B` is called the **target** model. This terminology is important.
@@ -134,8 +134,8 @@ For example, to configure the `ON DELETE` and `ON UPDATE` behaviors, you can do:
 
 ```js
 Foo.hasOne(Bar, {
-  onDelete: "RESTRICT",
-  onUpdate: "RESTRICT",
+  onDelete: 'RESTRICT',
+  onUpdate: 'RESTRICT',
 });
 Bar.belongsTo(Foo);
 ```
@@ -151,14 +151,14 @@ Both the `hasOne` and `belongsTo` calls shown above will infer that the foreign 
 ```js
 // Option 1
 Foo.hasOne(Bar, {
-  foreignKey: "myFooId",
+  foreignKey: 'myFooId',
 });
 Bar.belongsTo(Foo);
 
 // Option 2
 Foo.hasOne(Bar, {
   foreignKey: {
-    name: "myFooId",
+    name: 'myFooId',
   },
 });
 Bar.belongsTo(Foo);
@@ -166,14 +166,14 @@ Bar.belongsTo(Foo);
 // Option 3
 Foo.hasOne(Bar);
 Bar.belongsTo(Foo, {
-  foreignKey: "myFooId",
+  foreignKey: 'myFooId',
 });
 
 // Option 4
 Foo.hasOne(Bar);
 Bar.belongsTo(Foo, {
   foreignKey: {
-    name: "myFooId",
+    name: 'myFooId',
   },
 });
 ```
@@ -183,7 +183,7 @@ As shown above, the `foreignKey` option accepts a string or an object. When rece
 For example, to use `UUID` as the foreign key data type instead of the default (`INTEGER`), you can simply do:
 
 ```js
-const { DataTypes } = require("Sequelize");
+const { DataTypes } = require('Sequelize');
 
 Foo.hasOne(Bar, {
   foreignKey: {
@@ -249,7 +249,7 @@ The options to be applied in this case are the same from the One-To-One case. Fo
 
 ```js
 Team.hasMany(Player, {
-  foreignKey: "clubId",
+  foreignKey: 'clubId',
 });
 Player.belongsTo(Team);
 ```
@@ -273,10 +273,10 @@ For this example, we will consider the models `Movie` and `Actor`. One actor may
 The main way to do this in Sequelize is as follows:
 
 ```js
-const Movie = sequelize.define("Movie", { name: DataTypes.STRING });
-const Actor = sequelize.define("Actor", { name: DataTypes.STRING });
-Movie.belongsToMany(Actor, { through: "ActorMovies" });
-Actor.belongsToMany(Movie, { through: "ActorMovies" });
+const Movie = sequelize.define('Movie', { name: DataTypes.STRING });
+const Actor = sequelize.define('Actor', { name: DataTypes.STRING });
+Movie.belongsToMany(Actor, { through: 'ActorMovies' });
+Actor.belongsToMany(Movie, { through: 'ActorMovies' });
 ```
 
 Since a string was given in the `through` option of the `belongsToMany` call, Sequelize will automatically create the `ActorMovies` model which will act as the junction model. For example, in PostgreSQL:
@@ -294,21 +294,21 @@ CREATE TABLE IF NOT EXISTS "ActorMovies" (
 Instead of a string, passing a model directly is also supported, and in that case the given model will be used as the junction model (and no model will be created automatically). For example:
 
 ```js
-const Movie = sequelize.define("Movie", { name: DataTypes.STRING });
-const Actor = sequelize.define("Actor", { name: DataTypes.STRING });
-const ActorMovies = sequelize.define("ActorMovies", {
+const Movie = sequelize.define('Movie', { name: DataTypes.STRING });
+const Actor = sequelize.define('Actor', { name: DataTypes.STRING });
+const ActorMovies = sequelize.define('ActorMovies', {
   MovieId: {
     type: DataTypes.INTEGER,
     references: {
       model: Movie, // 'Movies' would also work
-      key: "id",
+      key: 'id',
     },
   },
   ActorId: {
     type: DataTypes.INTEGER,
     references: {
       model: Actor, // 'Actors' would also work
-      key: "id",
+      key: 'id',
     },
   },
 });
@@ -338,7 +338,7 @@ Belongs-To-Many creates a unique key on through model. This unique key name can 
 ```js
 Project.belongsToMany(User, {
   through: UserProjects,
-  uniqueKey: "my_custom_unique",
+  uniqueKey: 'my_custom_unique',
 });
 ```
 
@@ -351,7 +351,7 @@ In order to study this, we will consider an example in which we have Ships and C
 ```js
 // This is the setup of our models for the examples below
 const Ship = sequelize.define(
-  "ship",
+  'ship',
   {
     name: DataTypes.TEXT,
     crewCapacity: DataTypes.INTEGER,
@@ -360,7 +360,7 @@ const Ship = sequelize.define(
   { timestamps: false }
 );
 const Captain = sequelize.define(
-  "captain",
+  'captain',
   {
     name: DataTypes.TEXT,
     skillLevel: {
@@ -383,17 +383,17 @@ The concepts of Eager Loading and Lazy Loading are fundamental to understand how
 ```js
 const awesomeCaptain = await Captain.findOne({
   where: {
-    name: "Jack Sparrow",
+    name: 'Jack Sparrow',
   },
 });
 // Do stuff with the fetched captain
-console.log("Name:", awesomeCaptain.name);
-console.log("Skill Level:", awesomeCaptain.skillLevel);
+console.log('Name:', awesomeCaptain.name);
+console.log('Skill Level:', awesomeCaptain.skillLevel);
 // Now we want information about his ship!
 const hisShip = await awesomeCaptain.getShip();
 // Do stuff with the ship
-console.log("Ship Name:", hisShip.name);
-console.log("Amount of Sails:", hisShip.amountOfSails);
+console.log('Ship Name:', hisShip.name);
+console.log('Amount of Sails:', hisShip.amountOfSails);
 ```
 
 Observe that in the example above, we made two queries, only fetching the associated ship when we wanted to use it. This can be especially useful if we may or may not need the ship, perhaps we want to fetch it conditionally, only in a few cases; this way we can save time and memory by only fetching it when necessary.
@@ -405,15 +405,15 @@ Note: the `getShip()` instance method used above is one of the methods Sequelize
 ```js
 const awesomeCaptain = await Captain.findOne({
   where: {
-    name: "Jack Sparrow",
+    name: 'Jack Sparrow',
   },
   include: Ship,
 });
 // Now the ship comes with it
-console.log("Name:", awesomeCaptain.name);
-console.log("Skill Level:", awesomeCaptain.skillLevel);
-console.log("Ship Name:", awesomeCaptain.ship.name);
-console.log("Amount of Sails:", awesomeCaptain.ship.amountOfSails);
+console.log('Name:', awesomeCaptain.name);
+console.log('Skill Level:', awesomeCaptain.skillLevel);
+console.log('Ship Name:', awesomeCaptain.ship.name);
+console.log('Amount of Sails:', awesomeCaptain.ship.amountOfSails);
 ```
 
 As shown above, Eager Loading is performed in Sequelize by using the `include` option. Observe that here only one query was performed to the Database (which brings the associated data along with the instance).
@@ -429,7 +429,7 @@ The above showed the basics on queries for fetching data involving associations.
   ```js
   // Example: creating an associated model using the standard methods
   Bar.create({
-    name: "My Bar",
+    name: 'My Bar',
     fooId: 5,
   });
   // This creates a Bar belonging to the Foo of ID 5 (since fooId is
@@ -448,12 +448,12 @@ Let's consider the models Ship and Captain in a simplified form, just to focus o
 
 ```js
 const Ship = sequelize.define(
-  "ship",
+  'ship',
   { name: DataTypes.TEXT },
   { timestamps: false }
 );
 const Captain = sequelize.define(
-  "captain",
+  'captain',
   { name: DataTypes.TEXT },
   { timestamps: false }
 );
@@ -475,7 +475,7 @@ Ship.belongsTo(Captain); // This creates the `captainId` foreign key in Ship.
 // Eager Loading is done by passing the model to `include`:
 console.log((await Ship.findAll({ include: Captain })).toJSON());
 // Or by providing the associated model name:
-console.log((await Ship.findAll({ include: "captain" })).toJSON());
+console.log((await Ship.findAll({ include: 'captain' })).toJSON());
 
 // Also, instances obtain a `getCaptain()` method for Lazy Loading:
 const ship = Ship.findOne();
@@ -487,12 +487,12 @@ console.log((await ship.getCaptain()).toJSON());
 The foreign key name can be provided directly with an option in the association definition, as follows:
 
 ```js
-Ship.belongsTo(Captain, { foreignKey: "bossId" }); // This creates the `bossId` foreign key in Ship.
+Ship.belongsTo(Captain, { foreignKey: 'bossId' }); // This creates the `bossId` foreign key in Ship.
 
 // Eager Loading is done by passing the model to `include`:
 console.log((await Ship.findAll({ include: Captain })).toJSON());
 // Or by providing the associated model name:
-console.log((await Ship.findAll({ include: "Captain" })).toJSON());
+console.log((await Ship.findAll({ include: 'Captain' })).toJSON());
 
 // Also, instances obtain a `getCaptain()` method for Lazy Loading:
 const ship = Ship.findOne();
@@ -504,19 +504,19 @@ console.log((await ship.getCaptain()).toJSON());
 Defining an Alias is more powerful than simply specifying a custom name for the foreign key. This is better understood with an example:
 
 ```js
-Ship.belongsTo(Captain, { as: "leader" }); // This creates the `leaderId` foreign key in Ship.
+Ship.belongsTo(Captain, { as: 'leader' }); // This creates the `leaderId` foreign key in Ship.
 
 // Eager Loading no longer works by passing the model to `include`:
 console.log((await Ship.findAll({ include: Captain })).toJSON()); // Throws an error
 // Instead, you have to pass the alias:
-console.log((await Ship.findAll({ include: "leader" })).toJSON());
+console.log((await Ship.findAll({ include: 'leader' })).toJSON());
 // Or you can pass an object specifying the model and alias:
 console.log(
   (
     await Ship.findAll({
       include: {
         model: Captain,
-        as: "leader",
+        as: 'leader',
       },
     })
   ).toJSON()
@@ -536,19 +536,19 @@ When defining an alias for a `hasOne` or `belongsTo` association, you should use
 We can define and alias and also directly define the foreign key:
 
 ```js
-Ship.belongsTo(Captain, { as: "leader", foreignKey: "bossId" }); // This creates the `bossId` foreign key in Ship.
+Ship.belongsTo(Captain, { as: 'leader', foreignKey: 'bossId' }); // This creates the `bossId` foreign key in Ship.
 
 // Since an alias was defined, eager Loading doesn't work by simply passing the model to `include`:
 console.log((await Ship.findAll({ include: Captain })).toJSON()); // Throws an error
 // Instead, you have to pass the alias:
-console.log((await Ship.findAll({ include: "leader" })).toJSON());
+console.log((await Ship.findAll({ include: 'leader' })).toJSON());
 // Or you can pass an object specifying the model and alias:
 console.log(
   (
     await Ship.findAll({
       include: {
         model: Captain,
-        as: "leader",
+        as: 'leader',
       },
     })
   ).toJSON()
@@ -574,13 +574,13 @@ For example, if we have two models, `Foo` and `Bar`, and they are associated, th
 Example:
 
 ```js
-const foo = await Foo.create({ name: "the-foo" });
-const bar1 = await Bar.create({ name: "some-bar" });
-const bar2 = await Bar.create({ name: "another-bar" });
+const foo = await Foo.create({ name: 'the-foo' });
+const bar1 = await Bar.create({ name: 'some-bar' });
+const bar2 = await Bar.create({ name: 'another-bar' });
 console.log(await foo.getBar()); // null
 await foo.setBar(bar1);
 console.log((await foo.getBar()).name); // 'some-bar'
-await foo.createBar({ name: "yet-another-bar" });
+await foo.createBar({ name: 'yet-another-bar' });
 const newlyAssociatedBar = await foo.getBar();
 console.log(newlyAssociatedBar.name); // 'yet-another-bar'
 await foo.setBar(null); // Un-associate
@@ -611,9 +611,9 @@ The same ones from `Foo.hasOne(Bar)`:
 Example:
 
 ```js
-const foo = await Foo.create({ name: "the-foo" });
-const bar1 = await Bar.create({ name: "some-bar" });
-const bar2 = await Bar.create({ name: "another-bar" });
+const foo = await Foo.create({ name: 'the-foo' });
+const bar1 = await Bar.create({ name: 'some-bar' });
+const bar2 = await Bar.create({ name: 'another-bar' });
 console.log(await foo.getBars()); // []
 console.log(await foo.countBars()); // 0
 console.log(await foo.hasBar(bar1)); // false
@@ -624,7 +624,7 @@ console.log(await foo.countBars()); // 2
 console.log(await foo.hasBar(bar1)); // true
 await foo.removeBar(bar2);
 console.log(await foo.countBars()); // 1
-await foo.createBar({ name: "yet-another-bar" });
+await foo.createBar({ name: 'yet-another-bar' });
 console.log(await foo.countBars()); // 2
 await foo.setBars([]); // Un-associate all previously associated bars
 console.log(await foo.countBars()); // 0
@@ -642,10 +642,10 @@ const easyTasks = await project.getTasks({
 });
 const taskTitles = (
   await project.getTasks({
-    attributes: ["title"],
+    attributes: ['title'],
     raw: true,
   })
-).map((task) => task.title);
+).map(task => task.title);
 ```
 
 ### `Foo.belongsToMany(Bar, { through: Baz })`
@@ -670,7 +670,7 @@ As shown in the examples above, the names Sequelize gives to these special metho
 If an alias was defined, it will be used instead of the model name to form the method names. For example:
 
 ```js
-Task.hasOne(User, { as: "Author" });
+Task.hasOne(User, { as: 'Author' });
 ```
 
 - `taskInstance.getAuthor()`
@@ -719,8 +719,8 @@ Practical demonstration:
 In Sequelize, it is possible to define multiple associations between the same models. You just have to define different aliases for them:
 
 ```js
-Team.hasOne(Game, { as: "HomeTeam", foreignKey: "homeTeamId" });
-Team.hasOne(Game, { as: "AwayTeam", foreignKey: "awayTeamId" });
+Team.hasOne(Game, { as: 'HomeTeam', foreignKey: 'homeTeamId' });
+Team.hasOne(Game, { as: 'AwayTeam', foreignKey: 'awayTeamId' });
 Game.belongsTo(Team);
 ```
 
@@ -738,12 +738,12 @@ Let's again use the example of Ships and Captains. Additionally, we will assume 
 
 ```js
 const Ship = sequelize.define(
-  "ship",
+  'ship',
   { name: DataTypes.TEXT },
   { timestamps: false }
 );
 const Captain = sequelize.define(
-  "captain",
+  'captain',
   {
     name: { type: DataTypes.TEXT, unique: true },
   },
@@ -754,7 +754,7 @@ const Captain = sequelize.define(
 This way, instead of keeping the `captainId` on our Ships, we could keep a `captainName` instead and use it as our association tracker. In other words, instead of referencing the `id` from the target model (Captain), our relationship will reference another column on the target model: the `name` column. To specify this, we have to define a _target key_. We will also have to specify a name for the foreign key itself:
 
 ```js
-Ship.belongsTo(Captain, { targetKey: "name", foreignKey: "captainName" });
+Ship.belongsTo(Captain, { targetKey: 'name', foreignKey: 'captainName' });
 // This creates a foreign key called `captainName` in the source model (Ship)
 // which references the `name` field from the target model (Captain).
 ```
@@ -762,10 +762,10 @@ Ship.belongsTo(Captain, { targetKey: "name", foreignKey: "captainName" });
 Now we can do things like:
 
 ```js
-await Captain.create({ name: "Jack Sparrow" });
+await Captain.create({ name: 'Jack Sparrow' });
 const ship = await Ship.create({
-  name: "Black Pearl",
-  captainName: "Jack Sparrow",
+  name: 'Black Pearl',
+  captainName: 'Jack Sparrow',
 });
 console.log((await ship.getCaptain()).name); // "Jack Sparrow"
 ```
@@ -776,29 +776,29 @@ The exact same idea can be applied to the `hasOne` and `hasMany` associations, b
 
 ```js
 const Foo = sequelize.define(
-  "foo",
+  'foo',
   {
     name: { type: DataTypes.TEXT, unique: true },
   },
   { timestamps: false }
 );
 const Bar = sequelize.define(
-  "bar",
+  'bar',
   {
     title: { type: DataTypes.TEXT, unique: true },
   },
   { timestamps: false }
 );
 const Baz = sequelize.define(
-  "baz",
+  'baz',
   { summary: DataTypes.TEXT },
   { timestamps: false }
 );
-Foo.hasOne(Bar, { sourceKey: "name", foreignKey: "fooName" });
-Bar.hasMany(Baz, { sourceKey: "title", foreignKey: "barTitle" });
+Foo.hasOne(Bar, { sourceKey: 'name', foreignKey: 'fooName' });
+Bar.hasMany(Baz, { sourceKey: 'title', foreignKey: 'barTitle' });
 // [...]
-await Bar.setFoo("Foo's Name Here");
-await Baz.addBar("Bar's Title Here");
+await Bar.setFoo('Foo\'s Name Here');
+await Baz.addBar('Bar\'s Title Here');
 ```
 
 ### For `belongsToMany` relationships
@@ -809,14 +809,14 @@ Consider the following setup:
 
 ```js
 const Foo = sequelize.define(
-  "foo",
+  'foo',
   {
     name: { type: DataTypes.TEXT, unique: true },
   },
   { timestamps: false }
 );
 const Bar = sequelize.define(
-  "bar",
+  'bar',
   {
     title: { type: DataTypes.TEXT, unique: true },
   },
@@ -829,21 +829,21 @@ There are four cases to consider:
 - We might want a many-to-many relationship using the default primary keys for both `Foo` and `Bar`:
 
 ```js
-Foo.belongsToMany(Bar, { through: "foo_bar" });
+Foo.belongsToMany(Bar, { through: 'foo_bar' });
 // This creates a junction table `foo_bar` with fields `fooId` and `barId`
 ```
 
 - We might want a many-to-many relationship using the default primary key for `Foo` but a different field for `Bar`:
 
 ```js
-Foo.belongsToMany(Bar, { through: "foo_bar", targetKey: "title" });
+Foo.belongsToMany(Bar, { through: 'foo_bar', targetKey: 'title' });
 // This creates a junction table `foo_bar` with fields `fooId` and `barTitle`
 ```
 
 - We might want a many-to-many relationship using the a different field for `Foo` and the default primary key for `Bar`:
 
 ```js
-Foo.belongsToMany(Bar, { through: "foo_bar", sourceKey: "name" });
+Foo.belongsToMany(Bar, { through: 'foo_bar', sourceKey: 'name' });
 // This creates a junction table `foo_bar` with fields `fooName` and `barId`
 ```
 
@@ -851,9 +851,9 @@ Foo.belongsToMany(Bar, { through: "foo_bar", sourceKey: "name" });
 
 ```js
 Foo.belongsToMany(Bar, {
-  through: "foo_bar",
-  sourceKey: "name",
-  targetKey: "title",
+  through: 'foo_bar',
+  sourceKey: 'name',
+  targetKey: 'title',
 });
 // This creates a junction table `foo_bar` with fields `fooName` and `barTitle`
 ```

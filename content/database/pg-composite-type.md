@@ -33,7 +33,6 @@ CREATE TABLE on_hand (
 
 INSERT INTO on_hand VALUES (ROW('fuzzy dice', 42, 1.99), 1000);
 
-
 CREATE FUNCTION price_extension(inventory_item, integer) RETURNS numeric
 AS 'SELECT $1.price * $2' LANGUAGE SQL;
 

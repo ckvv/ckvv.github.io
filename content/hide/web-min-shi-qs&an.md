@@ -21,21 +21,21 @@ date: '2021-07-09'
 **面试有几点需注意：(来源[寒冬winter](http://weibo.com/wintercn "微博：寒冬winter") 老师，github:@wintercn)**
 
 1. 面试题目： 根据你的等级和职位的变化，入门级到专家级，广度和深度都会有所增加。
-  
+
 2. 题目类型： 理论知识、算法、项目细节、技术视野、开放性题、工作案例。
-  
+
 3. 细节追问： 可以确保问到你开始不懂或面试官开始不懂为止，这样可以大大延展题目的区分度和深度，知道你的实际能力。因为这种知识关联是长时期的学习，临时抱佛脚绝对是记不住的。
-  
+
 4. 回答问题再棒，面试官（可能是你面试职位的直接领导），会考虑我要不要这个人做我的同事？所以态度很重要、除了能做事，还要会做人。（感觉更像是相亲( •̣̣̣̣̣̥́௰•̣̣̣̣̣̥̀ )）
-  
+
 5. 资深的前端开发能把absolute和relative弄混，这样的人不要也罢，因为团队需要的是：你这个人具有可以依靠的才能（靠谱）。
-  
+
 **前端开发所需掌握知识点概要：**
 
 ```
 HTML&CSS：
     对Web标准的理解（结构、表现、行为）、浏览器内核、渲染原理、依赖管理、兼容性、CSS语法、层次关系，常用属性、布局、选择器、权重、盒模型、
-    Hack、CSS预处理器、CSS3、Flexbox、CSS Modules、Document flow、BFC、HTML5（离线 & 存储、Histoy,多媒体、WebGL\SVG\Canvas）；        
+    Hack、CSS预处理器、CSS3、Flexbox、CSS Modules、Document flow、BFC、HTML5（离线 & 存储、Histoy,多媒体、WebGL\SVG\Canvas）；
 JavaScript：
     数据类型、运算、对象、Function、继承、闭包、作用域、事件、Prototype、RegExp、JSON、Ajax、DOM、BOM、
     内存泄漏、跨域、异步请求、模板引擎、模块化、Flux、同构、算法、ECMAScript6、Nodejs、HTTP、
@@ -89,74 +89,74 @@ JavaScript：
 ## [](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#html)HTML
 
 - Doctype作用？标准模式与兼容模式各有什么区别?
-  
+
   ```
     （1）、<!DOCTYPE>声明位于HTML文档中的第一行，处于 <html> 标签之前。告知浏览器的解析器用什么文档标准解析这个文档。DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。
-  
+
     （2）、标准模式的排版 和JS运作模式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。
   ```
-  
+
 - HTML5 为什么只需要写 `<!DOCTYPE HTML>`？
-  
+
   ```
      HTML5 不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为（让浏览器按照它们应该的方式来运行）；
-  
+
      而HTML4.01基于SGML,所以需要对DTD进行引用，才能告知浏览器文档所使用的文档类型。
   ```
-  
+
 - 行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？
-  
+
   ```
     首先：CSS规范规定，每个元素都有display属性，确定该元素的类型，每个元素都有默认的display值，如div的display默认值为“block”，则为“块级”元素；span默认display属性值为“inline”，是“行内”元素。
-  
+
     （1）行内元素有：a b span img input select strong（强调的语气）
     （2）块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p
-  
+
     （3）常见的空元素：
         <br> <hr> <img> <input> <link> <meta>
         鲜为人知的是：
         <area> <base> <col> <command> <embed> <keygen> <param> <source> <track> <wbr>
-  
+
     不同浏览器（版本）、HTML4（5）、CSS2等实际略有差异
     参考: http://stackoverflow.com/questions/6867254/browsers-default-css-for-html-elements
   ```
-  
+
 - 页面导入样式时，使用link和@import有什么区别？
-  
+
   ```
     （1）link属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;
-  
+
     （2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;
-  
+
     （3）import是CSS2.1 提出的，只在IE5以上才能被识别，而link是XHTML标签，无兼容问题;
-  
+
      (4)link支持使用js控制DOM去改变样式，而@import不支持;
   ```
-  
+
 - 介绍一下你对浏览器内核的理解？
-  
+
   ```
     主要分成两部分：渲染引擎(layout engineer或Rendering Engine)和JS引擎。
     渲染引擎：负责取得网页的内容（HTML、XML、图像等等）、整理讯息（例如加入CSS等），以及计算网页的显示方式，然后会输出至显示器或打印机。浏览器的内核的不同对于网页的语法解释会有不同，所以渲染的效果也不相同。所有网页浏览器、电子邮件客户端以及其它需要编辑、显示网络内容的应用程序都需要内核。
-  
+
     JS引擎则：解析和执行javascript来实现网页的动态效果。
-  
+
     最开始渲染引擎和JS引擎并没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只指渲染引擎。
   ```
-  
+
 - 常见的浏览器内核有哪些？
-  
+
   ```
     Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]
     Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等
     Presto内核：Opera7及以上。      [Opera内核原为：Presto，现为：Blink;]
     Webkit内核：Safari,Chrome等。   [ Chrome的：Blink（WebKit的分支）]
-  
+
   详细文章：[浏览器内核的解析和对比](http://www.cnblogs.com/fullhouse/archive/2011/12/19/2293455.html)
   ```
-  
+
 - html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？
-  
+
   ```
     * HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。
           绘画 canvas;
@@ -166,26 +166,26 @@ JavaScript：
           语意化更好的内容元素，比如 article、footer、header、nav、section;
           表单控件，calendar、date、time、email、url、search;
           新的技术webworker, websocket, Geolocation;
-  
+
       移除的元素：
           纯表现的元素：basefont，big，center，font, s，strike，tt，u;
           对可用性产生负面影响的元素：frame，frameset，noframes；
-  
+
     * 支持HTML5新标签：
          IE8/IE7/IE6支持通过document.createElement方法产生的标签，
            可以利用这一特性让这些浏览器支持HTML5新标签，
            浏览器支持新标签后，还需要添加标签默认的样式。
-  
+
          当然也可以直接使用成熟的框架、比如html5shim;
          <!--[if lt IE 9]>
             <script> src="http://html5shim.googlecode.com/svn/trunk/html5.js"</script>
          <![endif]-->
-  
+
     * 如何区分HTML5： DOCTYPE声明\新增的结构元素\功能元素
   ```
-  
+
 - 简述一下你对HTML语义化的理解？
-  
+
   ```
     用正确的标签做正确的事情。
     html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析;
@@ -193,14 +193,14 @@ JavaScript：
     搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;
     使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。
   ```
-  
+
 - HTML5的离线储存怎么使用，工作原理能不能解释一下？
-  
+
   ```
     在用户没有与因特网连接时，可以正常访问站点或应用，在用户与因特网连接时，更新用户机器上的缓存文件。
     原理：HTML5的离线存储是基于一个新建的.appcache文件的缓存机制(不是存储技术)，通过这个文件上的解析清单离线存储资源，这些资源就会像cookie一样被存储了下来。之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行页面展示。
   ```
-  
+
 ```
 如何使用：
 1、页面头部像下面一样加入一个manifest的属性；
@@ -426,7 +426,7 @@ strong, em, ins, del, code
 
     ::after            在元素之前添加内容,也可以用来做清除浮动。
     ::before            在元素之后添加内容
-    :enabled          
+    :enabled
     :disabled         控制表单控件的禁用状态。
     :checked        单选框或复选框被选中。
 ```
@@ -519,7 +519,7 @@ strong, em, ins, del, code
        width: 100px;
        height: 100px;
        background-color: pink;        /*方便看效果*/
-   }  
+   }
 
   ```
 
@@ -649,7 +649,6 @@ strong, em, ins, del, code
           +background-color:#a200ff;/*IE6、7识别*/
           _background-color:#1e0bd1;/*IE6识别*/
       }
-
 
 *  IE下,可以使用获取常规属性的方法来获取自定义属性,
    也可以使用getAttribute()获取自定义属性;
@@ -1023,7 +1022,6 @@ fixed的元素是相对整个页面固定位置的，你在屏幕上滑动只是
 
 ```
 - rem布局的优缺点
-
 
 ## [](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#javascript)JavaScript
 
@@ -1814,32 +1812,32 @@ innerHTML可以重绘页面的一部分
    源码中jquery.fn = jquery.prototype，所以对jquery.fn的扩展，就是为jquery类添加成员函数
   使用：
   jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展，所有jquery实例都可以直接调用。
-  
+
 - jQuery 的队列是如何实现的？队列可以用在哪些地方？
-  
+
 - 谈一下Jquery中的bind(),live(),delegate(),on()的区别？
-  
+
 - JQuery一个对象可以同时绑定多个事件，这是如何实现的？
-  
+
 - 是否知道自定义事件。jQuery里的fire函数是什么意思，什么时候用？
-  
+
 - jQuery 是通过哪个方法和 Sizzle 选择器结合的？（jQuery.fn.find()进入Sizzle）
-  
+
 - 针对 jQuery性能的优化方法？
-  
+
 - Jquery与jQuery UI 有啥区别？
-  
+
   ```
    *jQuery是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。
-  
+
    *jQuery UI则是在jQuery的基础上，利用jQuery的扩展性，设计的插件。
     提供了一些常用的界面元素，诸如对话框、拖动行为、改变大小行为等等
   ```
-  
+
 - JQuery的源码看过吗？能不能简单说一下它的实现原理？
-  
+
 - jquery 中如何将数组转化为json字符串，然后再转化回来？
-  
+
 jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：
 
 ```
@@ -1856,64 +1854,64 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
 ```
 
 - jQuery和Zepto的区别？各自的使用场景？
-  
+
 - 针对 jQuery 的优化方法？
-  
+
   ```
    *基于Class的选择性的性能相对于Id选择器开销很大，因为需遍历所有DOM元素。
-  
+
    *频繁操作的DOM，先缓存起来再操作。用Jquery的链式调用更好。
     比如：var str=$("a").attr("href");
-  
+
    *for (var i = size; i < arr.length; i++) {}
     for 循环每一次循环都查找了数组 (arr) 的.length 属性，在开始循环的时候设置一个变量来存储这个数字，可以让循环跑得更快：
     for (var i = size, length = arr.length; i < length; i++) {}
   ```
-  
+
 - Zepto的点透问题如何解决？
-  
+
 - jQueryUI如何自定义组件?
-  
+
 - 需求：实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？
-  
+
 - 如何判断当前脚本运行在浏览器还是node环境中？（阿里）
-  
+
   ```
     this === window ? 'browser' : 'node';
-  
+
     通过判断Global对象是否为window，如果不为window，当前脚本没有运行在浏览器中
   ```
-  
+
 - 移动端最小触控区域是多大？
-  
+
 - jQuery 的 slideUp动画 ，如果目标元素是被外部事件驱动, 当鼠标快速地连续触发外部元素事件, 动画会滞后的反复执行，该如何处理呢?
-  
+
   ```
    jquery stop(): 如：$("#div").stop().animate({width:"100px"},100);
   ```
-  
+
 - 把 Script 标签 放在页面的最底部的body封闭之前 和封闭之后有什么区别？浏览器会如何解析它们？
-  
+
 - 移动端的点击事件的有延迟，时间是多久，为什么会有？ 怎么解决这个延时？（click 有 300ms 延迟,为了实现safari的双击事件的设计，浏览器要知道你是不是要双击操作。）
-  
+
 - 知道各种JS框架(Angular, Backbone, Ember, React, Meteor, Knockout...)么? 能讲出他们各自的优点和缺点么?
-  
+
 - Underscore 对哪些 JS 原生对象进行了扩展以及提供了哪些好用的函数方法？
-  
+
 - 解释JavaScript中的作用域与变量声明提升？
-  
+
 - 那些操作会造成内存泄漏？
-  
+
   ```
    内存泄漏指任何对象在您不再拥有或需要它之后仍然存在。
    垃圾回收器定期扫描对象，并计算引用了每个对象的其他对象的数量。如果一个对象的引用数量为 0（没有其他对象引用过该对象），或对该对象的惟一引用是循环的，那么该对象的内存即可回收。
-  
+
    setTimeout 的第一个参数使用字符串而非函数的话，会引发内存泄漏。
    闭包、控制台日志、循环（在两个对象彼此引用且彼此保留时，就会产生一个循环）
   ```
-  
+
 - JQuery一个对象可以同时绑定多个事件，这是如何实现的？
-  
+
   ```
    * 多个事件同一个函数：
        $("div").on("click mouseover", function(){});
@@ -1923,31 +1921,31 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
            mouseover: function(){}
        });
   ```
-  
+
 - Node.js的适用场景？
-  
+
 - (如果会用node)知道route, middleware, cluster, nodemon, pm2, server-side rendering么?
-  
+
 - 解释一下 Backbone 的 MVC 实现方式？
-  
+
 - 什么是“前端路由”?什么时候适合使用“前端路由”? “前端路由”有哪些优点和缺点?
-  
+
 - 知道什么是webkit么? 知道怎么用浏览器的各种工具来调试和debug代码么?
-  
+
   ```
     Chrome,Safari浏览器内核。
   ```
-  
+
 - 如何测试前端代码么? 知道BDD, TDD, Unit Test么? 知道怎么测试你的前端工程么(mocha, sinon, jasmin, qUnit..)?
-  
+
 - 前端templating(Mustache, underscore, handlebars)是干嘛的, 怎么用?
-  
+
 - 简述一下 Handlebars 的基本用法？
-  
+
 - 简述一下 Handlerbars 的对模板的基本处理流程， 如何编译的？如何缓存的？
-  
+
 - 用js实现千位分隔符?(来源：[前端农民工](http://div.io/topic/744)，提示：正则+replace)
-  
+
   ```
     参考：http://www.tuicool.com/articles/ArQZfui
     function commafy(num) {
@@ -1959,48 +1957,48 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
     }
     console.log(commafy(1234567.90)); //1,234,567.90
   ```
-  
+
 - 检测浏览器版本版本有哪些方式？
-  
+
   ```
     功能检测、userAgent特征检测
-  
+
     比如：navigator.userAgent
     //"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36
       (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36"
   ```
-  
+
 - What is a Polyfill?
-  
+
   ```
     polyfill 是“在旧版浏览器上复制标准 API 的 JavaScript 补充”,可以动态地加载 JavaScript 代码或库，在不支持这些标准 API 的浏览器中模拟它们。
     例如，geolocation（地理位置）polyfill 可以在 navigator 对象上添加全局的 geolocation 对象，还能添加 getCurrentPosition 函数以及“坐标”回调对象，
     所有这些都是 W3C 地理位置 API 定义的对象和函数。因为 polyfill 模拟标准 API，所以能够以一种面向所有浏览器未来的方式针对这些 API 进行开发，
     一旦对这些 API 的支持变成绝对大多数，则可以方便地去掉 polyfill，无需做任何额外工作。
   ```
-  
+
 - 做的项目中，有没有用过或自己实现一些 polyfill 方案（兼容性处理方案）？
-  
+
   ```
     比如： html5shiv、Geolocation、Placeholder
   ```
-  
+
 - 我们给一个dom同时绑定两个点击事件，一个用捕获，一个用冒泡。会执行几次事件，会先执行冒泡还是捕获？
-  
+
 - 使用JS实现获取文件扩展名？
-  
+
   ```
     function getFileExtension(filename) {
       return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
     }
-  
+
     String.lastIndexOf() 方法返回指定值（本例中的'.'）在调用该方法的字符串中最后出现的位置，如果没找到则返回 -1。
     对于'filename'和'.hiddenfile'，lastIndexOf的返回值分别为0和-1无符号右移操作符(»>) 将-1转换为4294967295，将-2转换为4294967294，这个方法可以保证边缘情况时文件名不变。
     String.prototype.slice() 从上面计算的索引处提取文件的扩展名。如果索引比文件名的长度大，结果为""。
   ```
-  
+
 - Webpack热更新实现原理?
-  
+
   ```
     1. Webpack编译期，为需要热更新的 entry 注入热更新代码(EventSource通信)
     2. 页面首次打开后，服务端与客户端通过 EventSource 建立通信渠道，把下一次的 hash 返回前端
@@ -2009,39 +2007,39 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
     5. 客户端获取到hash，成功后客户端构造hot-update.js script链接，然后插入主文档
     6. hot-update.js 插入成功后，执行hotAPI 的 createRecord 和 reload方法，获取到 Vue 组件的 render方法，重新 render 组件， 继而实现 UI 无刷新更新。
   ```
-  
+
 - 请介绍一下JS之事件节流？
-  
+
 - 什么是JS的函数防抖？
-  
+
 #### [](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#ecmascript6-%E7%9B%B8%E5%85%B3)ECMAScript6 相关
 
 - Object.is() 与原来的比较操作符“ ===”、“ ==”的区别？
-  
+
   ```
     两等号判等，会在比较时进行类型转换；
     三等号判等(判断严格)，比较时不进行隐式类型转换,（类型不同则会返回false）；
-  
+
     Object.is 在三等号判等的基础上特别处理了 NaN 、-0 和 +0 ，保证 -0 和 +0 不再相同，
     但 Object.is(NaN, NaN) 会返回 true.
-  
+
     Object.is 应被认为有其特殊的用途，而不能用它认为它比其它的相等对比更宽松或严格。
   ```
-  
+
 - ES6是如何实现编译成ES5的？
-  
+
 - css-loader的原理？
-  
+
 ## [](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6)前端框架
 
 - React 使用场景？
-  
+
   ```
         逻辑复杂单页应用，偏中后台管理系统，纯展示性的UI页面不合适、
   ```
-  
+
 - 描述一下React 生命周期
-  
+
   ```
         渲染过程调用到的生命周期函数，主要几个要知道；
         * constructor
@@ -2050,130 +2048,130 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
         * componentWillMount
         * render
         * componentDidMount
-  
+
         更新过程
-  
+
         * componentWillReceiveProps
         * shouldComponentUpdate
         * componentWillUpdate
         * render
         * componentDidUpdate
-  
+
         卸载过程
-  
+
         componentWillUnmount
   ```
-  
+
 - 实现组件有哪些方式？
-  
+
   ```
     React.createClass 使用API来定义组件
     React ES6 class component 用 ES6 的class 来定义组件
     Functional stateless component 通过函数定义无状态组件
   ```
-  
+
 - 应该在React生命周期的什么阶段发出ajax请求，为什么？
-  
+
   ```
             AJAX请求应在 componentDidMount函数 进行请求。
   ```
-  
+
 - shouldComponentUpdate函数有什么作用？
-  
+
   ```
             shouldComponentUpdate是一个允许我们自行决定某些组件（以及他们的子组件）是否进行更新的生命周期函数，reconciliation的最终目的是尽可能以最有效的方式去根据新的state更新UI，
             如果你已经知道UI的哪些状态无需进行改变，就没必要去让React去判断它是否该改变。 让shouldComponentUpdate返回falss, React就会让当前的组件和其子组件保持不变。
   ```
-  
+
 - 当组件的setState函数被调用之后，发生了什么？
-  
+
   ```
             React会做的第一件事就是把你传递给setState的参数对象合并到组件原先的state。这个事件会导致一个“reconciliation”（调和）的过程。reconciliation的最终目标就是，
             尽可能以最高效的方法，去基于新的state来更新UI。为了达到这个目的，React会构建一个React元素树（你可以把这个想象成一个表示UI的一个对象）。一旦这个树构建完毕，
             React为了根据新的state去决定UI要怎么进行改变，它会找出这棵新树和旧树的不同之处。React能够相对精确地找出哪些位置发生了改变以及如何发生了什么变化，
             并且知道如何只通过必要的更新来最小化重渲染。
   ```
-  
+
 - 为什么循环产生的组件中要利用上key这个特殊的prop？
-  
+
   ```
             Keys负责帮助React跟踪列表中哪些元素被改变/添加/移除。React利用子元素的key在比较两棵树的时候，快速得知一个元素是新的还是刚刚被移除。没有keys，React也就不知道当前哪一个的item被移除了。
   ```
-  
+
 - React-router 路由的实现原理？
-  
+
 - 说说React Native,Weex框架的实现原理？
-  
+
 - 受控组件(Controlled Component)与非受控组件(Uncontrolled Component)的区别
-  
+
 - refs 是什么?
-  
+
   ```
         Refs是能访问DOM元素或组件实例的一个函数；
   ```
-  
+
 - React为什么自己定义一套事件体系呢，与浏览器原生事件体系有什么关系？
-  
+
 - 什么时候应该选择用class实现一个组件，什么时候用一个函数实现一个组件？
-  
+
   ```
         组件用到了state或者用了生命周期函数，那么就该使用Class component。其他情况下，应使用Functional component。
   ```
-  
+
 - 什么是HoC（Higher-Order Component）？适用于什么场景？
-  
+
   ```
         高阶组件就是一个 React 组件包裹着另外一个 React 组件
   ```
-  
+
 - 并不是父子关系的组件，如何实现相互的数据通信？
-  
+
   ```
         使用父组件，通过props将变量传入子组件（如通过refs，父组件获取一个子组件的方法，简单包装后，将包装后的方法通过props传入另一个子组件）
   ```
-  
+
 - 用过 React 技术栈中哪些数据流管理库？
-  
+
   ```
         Redux\Dva
   ```
-  
+
 - Redux是如何做到可预测呢？
-  
+
 - Redux将React组件划分为哪两种？
-  
+
 - Redux是如何将state注入到React组件上的？
-  
+
 - 请描述一次完整的 Redux 数据流
-  
+
 - React的批量更新机制 BatchUpdates？
-  
+
 - React与Vue，各自的组件更新进行对比，它们有哪些区别？
-  
+
 ## [](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98)其他问题
 
 - 原来公司工作流程是怎么样的，如何与其他人协作的？如何跨部门合作的？
-  
+
 - 你遇到过比较难的技术问题是？你是如何解决的？
-  
+
 - 设计模式 知道什么是singleton, factory, strategy, decrator么?
-  
+
 - 常使用的库有哪些？常用的前端开发工具？开发过什么应用或组件？
-  
+
 - 页面重构怎么操作？
-  
+
   ```
     网站重构：在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。
     也就是说是在不改变UI的情况下，对网站进行优化，在扩展的同时保持一致的UI。
-  
+
     对于传统的网站来说重构通常是：
-  
+
     表格(table)布局改为DIV+CSS
     使网站前端兼容于现代浏览器(针对于不合规范的CSS、如对IE6有效的)
     对于移动平台的优化
     针对于SEO进行优化
     深层次的网站重构应该考虑的方面
-  
+
     减少代码间的耦合
     让代码保持弹性
     严格按规范编写代码
@@ -2181,53 +2179,53 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
     代替旧有的框架、语言(如VB)
     增强用户体验
     通常来说对于速度的优化也包含在重构中
-  
+
     压缩JS、CSS、image等前端资源(通常是由服务器来解决)
     程序的性能优化(如数据读写)
     采用CDN来加速资源加载
     对于JS DOM的优化
     HTTP服务器的文件缓存
   ```
-  
+
 - 列举IE与其他浏览器不一样的特性？
-  
+
   ```
     1、事件不同之处：
-  
+
            触发事件的元素被认为是目标（target）。而在 IE 中，目标包含在 event 对象的 srcElement 属性；
-  
+
         获取字符代码、如果按键代表一个字符（shift、ctrl、alt除外），IE 的 keyCode 会返回字符代码（Unicode），DOM 中按键的代码和字符是分离的，要获取字符代码，需要使用 charCode 属性；
-  
+
         阻止某个事件的默认行为，IE 中阻止某个事件的默认行为，必须将 returnValue 属性设置为 false，Mozilla 中，需要调用 preventDefault() 方法；
-  
+
         停止事件冒泡，IE 中阻止事件进一步冒泡，需要设置 cancelBubble 为 true，Mozzilla 中，需要调用 stopPropagation()；
   ```
-  
+
 - 99%的网站都需要被重构是那本书上写的？
-  
+
   ```
     网站重构：应用web标准进行设计（第2版）
   ```
-  
+
 - 什么叫优雅降级和渐进增强？
-  
+
   ```
     优雅降级：Web站点在所有新式浏览器中都能正常工作，如果用户使用的是老式浏览器，则代码会针对旧版本的IE进行降级处理了,使之在旧式浏览器上以某种形式降级体验却不至于完全不能用。
     如：border-shadow
-  
+
     渐进增强：从被所有浏览器支持的基本功能开始，逐步地添加那些只有新版本浏览器才支持的功能,向页面增加不影响基础浏览器的额外样式和功能的。当浏览器支持时，它们会自动地呈现出来并发挥作用。
     如：默认使用flash上传，但如果浏览器支持 HTML5 的文件上传功能，则使用HTML5实现更好的体验；
   ```
-  
+
 - 是否了解公钥加密和私钥加密。
-  
+
   ```
     一般情况下是指私钥用于对数据进行签名，公钥用于对签名进行验证;
     HTTP网站在浏览器端用公钥加密敏感数据，然后在服务器端再用私钥解密。
   ```
-  
+
 - WEB应用从服务器主动推送Data到客户端有那些方式？
-  
+
   ```
     html5提供的Websocket
     不可见的iframe
@@ -2236,42 +2234,42 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
     XHR Multipart Streaming
     <script>标签的长时间连接(可跨域)
   ```
-  
+
 - 对Node的优点和缺点提出了自己的看法？
-  
+
   ```
     *（优点）因为Node是基于事件驱动和无阻塞的，所以非常适合处理并发请求，
       因此构建在Node上的代理服务器相比其他技术实现（如Ruby）的服务器表现要好得多。
       此外，与Node代理服务器交互的客户端代码是由javascript语言编写的，
       因此客户端和服务器端都用同一种语言编写，这是非常美妙的事情。
-  
+
     *（缺点）Node是一个相对新的开源项目，所以不太稳定，它总是一直在变，
       而且缺少足够多的第三方库支持。看起来，就像是Ruby/Rails当年的样子。
   ```
-  
+
 - 你有用过哪些前端性能优化的方法？
-  
+
   ```
       （1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。
-  
+
       （2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
-  
+
       （3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。
-  
+
       （4） 当需要设置的样式很多时设置className而不是直接操作style。
-  
+
       （5） 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。
-  
+
       （6） 避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。
-  
+
       （7） 图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。
-  
+
       （8） 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。
       对普通的网站有一个统一的思路，就是尽量向前端优化、减少数据库操作、减少磁盘IO。向前端优化指的是，在不影响功能和体验的情况下，能在浏览器执行的不要在服务端执行，能在缓存服务器上直接返回的不要到应用服务器，程序能直接取得的结果不要到外部取得，本机内能取得的数据不要到远程取，内存能取到的不要到磁盘取，缓存中有的不要去数据库查询。减少数据库操作指减少更新次数、缓存结果减少查询次数、将数据库执行的操作尽可能的让你的程序完成（例如join查询），减少磁盘IO指尽量不使用文件系统作为缓存、减少读写文件次数等。程序优化永远要优化慢的部分，换语言是无法“优化”的。
   ```
-  
+
 - http状态码有那些？分别代表是什么意思？
-  
+
   ```
         简单版
         [
@@ -2283,21 +2281,21 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
             302 Found          临时性重定向。
             303 See Other      临时性重定向，且总是使用 GET 请求新的 URI。
             304  Not Modified 自从上次请求后，请求的网页未修改过。
-  
+
             400 Bad Request  服务器无法理解请求的格式，客户端不应当尝试再次使用相同的内容发起请求。
             401 Unauthorized 请求未授权。
             403 Forbidden      禁止访问。
             404 Not Found      找不到如何与 URI 相匹配的资源。
-  
+
             500 Internal Server Error  最常见的服务器端错误。
             503 Service Unavailable 服务器端暂时无法处理请求（可能是过载或维护）。
         ]
-  
+
       完整版
       1**(信息类)：表示接收到请求并且继续处理
         100——客户必须继续发出请求
         101——客户要求服务器根据请求转换HTTP协议版本
-  
+
       2**(响应成功)：表示动作被成功接收、理解和接受
         200——表明该请求被成功地完成，所请求的资源发送回客户端
         201——提示知道新文件的URL
@@ -2306,7 +2304,7 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
         204——请求收到，但返回信息为空
         205——服务器完成了请求，用户代理必须复位当前已经浏览过的文件
         206——服务器已经完成了部分用户的GET请求
-  
+
       3**(重定向类)：为了完成指定的动作，必须接受进一步处理
         300——请求的资源可在多处得到
         301——本网页被永久性转移到另一个URL
@@ -2316,7 +2314,7 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
         305——请求的资源必须从服务器指定的地址得到
         306——前一版本HTTP中使用的代码，现行版本中不再使用
         307——申明请求的资源临时性删除
-  
+
       4**(客户端错误类)：请求包含错误语法或不能正确执行
         400——客户端请求有语法错误，不能被服务器所理解
         401——请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用
@@ -2357,7 +2355,7 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
         415——请求资源不支持请求项目格式
         416——请求中包含Range请求头字段，在当前请求资源范围内没有range指示值，请求也不包含If-Range请求头字段
         417——服务器不满足请求Expect头字段指定的期望值，如果是代理服务器，可能是下一级服务器不能满足请求长。
-  
+
       5**(服务端错误类)：服务器不能正确执行一个正确的请求
         HTTP 500 - 服务器遇到错误，无法完成请求
         　　HTTP 500.100 - 内部服务器错误 - ASP 错误
@@ -2370,14 +2368,14 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
       HTTP 502 - 网关错误
       HTTP 503：由于超载或停机维护，服务器目前无法使用，一段时间后可能恢复正常
   ```
-  
+
 - 一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）
-  
+
   ```
       注：这题胜在区分度高，知识点覆盖广，再不懂的人，也能答出几句，
       而高手可以根据自己擅长的领域自由发挥，从URL规范、HTTP协议、DNS、CDN、数据库查询、
       到浏览器流式解析、CSS规则构建、layout、paint、onload/domready、JS执行、JS API绑定等等；
-  
+
       详细版：
         1、浏览器会开启一个线程来处理这个请求，对 URL 分析判断如果是 http 协议就按照 Web 方式来处理;
         2、调用浏览器内核中的对应方法，比如 WebView 中的 loadUrl 方法;
@@ -2389,44 +2387,44 @@ jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩�
         8、浏览器开始下载html文档(响应报头，状态码200)，同时使用缓存;
         9、文档树建立，根据标记请求所需指定MIME类型的文件（比如css、js）,同时设置了cookie;
         10、页面开始渲染DOM，JS根据DOM API操作DOM,执行事件绑定等，页面显示完成。
-  
+
       简洁版：
         浏览器根据请求的URL交给DNS域名解析，找到真实IP，向服务器发起请求；
         服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；
         浏览器对加载到的资源（HTML、JS、CSS等）进行语法解析，建立相应的内部数据结构（如HTML的DOM）；
         载入解析到的资源文件，渲染页面，完成。
   ```
-  
+
 - 部分地区用户反应网站很卡，请问有哪些可能性的原因，以及解决方法？
-  
+
 - 从打开app到刷新出内容，整个过程中都发生了什么，如果感觉慢，怎么定位问题，怎么解决?
-  
+
 - 第一次访问页面中时弹出引导，用户关闭引导，之后再次进入页面时不希望出现引导，如何实现？
-  
+
   ```
         localStorage
   ```
-  
+
 - 除了前端以外还了解什么其它技术么？你最最厉害的技能是什么？
-  
+
 - 你用的得心应手用的熟练地编辑器&开发环境是什么样子？
-  
+
   ```
     Sublime Text 3 + 插件
     Google chrome 查看页面UI、动画效果和交互功能，Firebug 兼容测试和
     Node.js + webpack
     Git 版本控制和Code Review
   ```
-  
+
 - 对前端工程师这个职位是怎么样理解的？它的前景会怎么样？
-  
+
   ```
     前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近。
     1、实现界面交互
     2、提升用户体验
     3、有了Node.js，前端可以实现服务端的一些事情
   ```
-  
+
 ```
 前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好，
 
@@ -2534,28 +2532,27 @@ JS 分文件夹存放 命名以该JS功能为准的英文翻译。
 
 - 最近在学什么？能谈谈你未来3，5年给自己的规划吗？
 
-
 ## [](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%BD%91%E7%AB%99%E6%8E%A8%E8%8D%90)前端学习网站推荐
 ```
 
 1. 极客标签： <http://www.gbtags.com/>
-  
+
 2. 码农周刊： <http://weekly.manong.io/issues/>
-  
+
 3. 前端周刊： <http://www.feweekly.com/issues>
-  
+
 4. 慕课网： <http://www.imooc.com/>
-  
+
 5. div.io： <http://div.io>
-  
+
 6. Hacker News： <https://news.ycombinator.com/news>
-  
+
 7. InfoQ： <http://www.infoq.com/>
-  
+
 8. w3cplus： <http://www.w3cplus.com/>
-  
+
 9. Stack Overflow： <http://stackoverflow.com/>
-  
+
 10.w3school： <http://www.w3school.com.cn/>
 
 11.mozilla： <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript>
@@ -2565,11 +2562,11 @@ JS 分文件夹存放 命名以该JS功能为准的英文翻译。
 ## [](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E6%96%87%E6%A1%A3%E6%8E%A8%E8%8D%90)文档推荐
 
 1. [jQuery 基本原理](http://docs.huihoo.com/jquery/jquery-fundamentals/zh-cn/index.html "jQuery 基本原理")
-  
+
 2. [JavaScript 秘密花园](http://bonsaiden.github.io/JavaScript-Garden/zh/)
-  
+
 3. [CSS参考手册](http://css.doyoe.com/)
-  
+
 4. [JavaScript 标准参考教程](http://javascript.ruanyifeng.com/)
-  
+
 5. [ECMAScript 6入门](http://es6.ruanyifeng.com/)

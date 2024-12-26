@@ -11,7 +11,6 @@ date: "2022-02-21"
 
 Hook 是一个特殊的函数，它可以让你“钩入” React 的特性。例如，`useState` 是允许你在 React 函数组件中添加 state 的 Hook。你可以在现有的函数组件中使用 Hook，所以通常来说`hook`使得在组件之间复用状态逻辑变得方便、更容易实现代码的关注点分离。
 
-
 ### Hooks的原理
 
 React 保持对当前渲染中的组件的追踪。多亏了 [Hook 规范](https://zh-hans.reactjs.org/docs/hooks-rules.html)，我们得知 Hook 只会在 React 组件中被调用（或自定义 Hook —— 同样只会在 React 组件中被调用）。
@@ -55,7 +54,7 @@ function mountWorkInProgressHook(): Hook {
 > 如果我们想要有条件地执行一个 effect，可以将判断放到 Hook 的*内部*：
 >
 > ```js
-> useEffect(function persistForm() {
+> useEffect(() => {
 >   // 👍 将条件判断放置在 effect 中
 >   if (name !== '') {
 >     localStorage.setItem('formData', name);
@@ -142,7 +141,7 @@ export default class ErrorBound extends PureComponent {
 函数组件
 目前还没有 static getDerivedStateFromError in 函数组件的直接等效项。如果您想避免创建类组件，请编写一个像上面一样的 ErrorBoundary 组件，并在整个应用程序中使用它。或者，使用执行此操作的 `react-error-boundary`
 ```jsx
-import { ErrorBoundary } from "react-error-boundary";
+import { ErrorBoundary } from 'react-error-boundary'
 
 <ErrorBoundary fallback={<div>Something went wrong</div>}>
   <ExampleApplication />

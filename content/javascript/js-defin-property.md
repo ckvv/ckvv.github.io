@@ -28,8 +28,8 @@ descriptor:将被定义或修改的属性描述符。
 ```js
 // 数组拦截
 /**
- * 
- * @param {array} data 
+ *
+ * @param {array} data
  */
 function observe(data) {
     if (!Array.isArray(data)) {
@@ -51,11 +51,10 @@ function observe(data) {
  });
 };
 
-
 // 对象拦截
 /**
- * 
- * @param {object} data 
+ *
+ * @param {object} data
  */
 function observe(data) {
     if (!data || typeof data !== 'object') {

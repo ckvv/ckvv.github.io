@@ -10,15 +10,17 @@ date: "2021-07-09"
 JS 实现一个带并发限制的异步调度器 Scheduler，保证同时运行的任务最多有两个，一个解法如下：
 
 ```js
-const timeout = (time) =>
-  new Promise((resolve) => {
+function timeout(time) {
+  return new Promise((resolve) => {
     setTimeout(resolve, time);
   });
+}
 class Scheduler {
   constructor() {
     this.awaitArr = [];
     this.count = 0;
   }
+
   async add(promiseCreator) {
     if (this.count >= 2) {
       await new Promise((resolve) => {
@@ -36,13 +38,13 @@ class Scheduler {
   }
 }
 const scheduler = new Scheduler();
-const addTask = (time, order) => {
+function addTask(time, order) {
   scheduler.add(() => timeout(time)).then(() => console.log(order));
-};
-addTask(1000, "1000");
-addTask(500, "500");
-addTask(400, "400");
-addTask(300, "300");
+}
+addTask(1000, '1000');
+addTask(500, '500');
+addTask(400, '400');
+addTask(300, '300');
 // 输出
 // 500
 // 400
@@ -89,7 +91,7 @@ Promise 构造函数执行时立即调用 executor 函数，resolve 和 reject
 
 ```js
 let waitf = null;
-let tAsync = async function () {
+const tAsync = async function () {
   console.log(`----->`);
   await new Promise((resolve) => {
     waitf = resolve;
@@ -99,9 +101,9 @@ let tAsync = async function () {
 tAsync();
 waitf();
 
-//输出
-//----->
-//<-----
+// 输出
+// ----->
+// <-----
 ```
 
 ## 结论

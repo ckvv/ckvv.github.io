@@ -13,23 +13,23 @@ react 包还导出了一些其他的 API，这些 API 对于创建组件非常�
 ## forwardRef
 允许组件将 DOM 节点作为 ref 暴露给父组件。
 
-## lazy 
+## lazy
 
 允许你延迟加载组件，直到该组件需要第一次被渲染。
 
 ```jsx
-lazy(load)
+lazy(load);
 ```
 
-参数 
+参数
 - `load`: 一个返回 Promise 或另一个 thenable（具有 then 方法的类 Promise 对象）的函数。React 不会在你尝试首次渲染返回的组件之前调用 load 函数。在 React 首次调用 load 后，它将等待其解析，然后将解析值的 .default 渲染为 React 组件。返回的 Promise 和 Promise 的解析值都将被缓存，因此 React 不会多次调用 load 函数。如果 Promise 被拒绝，则 React 将抛出拒绝原因给最近的错误边界处理。
 
-返回值 
+返回值
 - lazy 返回一个 React 组件，你可以在 fiber 树中渲染。当懒加载组件的代码仍在加载时，尝试渲染它将会处于 暂停 状态。使用 <Suspense> 可以在其加载时显示一个正在加载的提示。
 
 ```jsx
-import { lazy } from 'react';
-const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
+import { lazy } from 'react'
+const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'))
 // 此代码依赖于 动态 import()，因此可能需要你的打包工具或框架提供支持。使用这种模式要求导入的懒加载组件必须作为 default 导出。
 
 <Suspense fallback={<Loading />}>
@@ -53,7 +53,7 @@ function Editor() {
 }
 ```
 
-## memo 
+## memo
 
 React 通常在其父组件重新渲染时重新渲染一个组件。你可以使用 memo 创建一个组件，当它的父组件重新渲染时，只要它的新 props 与旧 props 相同时，React 就不会重新渲染它。这样的组件被称为 记忆化的（memoized）组件。通常 useMemo 与 useCallback 一起配合使用。
 
@@ -63,24 +63,30 @@ React 通常在其父组件重新渲染时重新渲染一个组件。你可以�
 memo(Component, arePropsEqual?)
 ```
 
-参数 
+参数
 - `Component`：要进行记忆化的组件。memo 不会修改该组件，而是返回一个新的、记忆化的组件。它接受任何有效的 React 组件，包括函数组件和 forwardRef 组件。
 - `arePropsEqual`：一个函数，接受两个参数：组件的前一个 props 和新的 props。如果旧的和新的 props 相等，即组件使用新的 props 渲染的输出和表现与旧的 props 完全相同，则它应该返回 true。否则返回 false。通常情况下，你不需要指定此函数。默认情况下，React 将使用 `Object.is` 比较每个 prop。
 
-返回值 
+返回值
 memo 返回一个新的 React 组件。它的行为与提供给 memo 的组件相同，只是当它的父组件重新渲染时 React 不会总是重新渲染它，除非它的 props 发生了变化。
 
-### 当 props 没有改变时跳过重新渲染 
+### 当 props 没有改变时跳过重新渲染
 
 通过使用 `memo`，只要其 props 没有改变，React 就不需要重新渲染。**即使使用 memo，如果它自己的 state 或正在使用的 context 发生更改，组件也会重新渲染**。
 
 ```jsx
-export const Greeting = memo(function Greeting({ name }) {
-  return <h1>Hello, {name}!</h1>;
+export const Greeting = memo(({ name }) => {
+  return (
+    <h1>
+      Hello,
+      {name}
+      !
+    </h1>
+  );
 });
 ```
 
-### 最小化 props 的变化 
+### 最小化 props 的变化
 
 useMemo 避免父组件每次都重新创建该对象
 ```jsx
@@ -96,7 +102,7 @@ function Page() {
   return <Profile person={person} />;
 }
 
-const Profile = memo(function Profile({ person }) {
+const Profile = memo(({ person }) => {
   // ...
 });
 ```
@@ -109,7 +115,7 @@ function Page() {
   return <Profile name={name} age={age} />;
 }
 
-const Profile = memo(function Profile({ name, age }) {
+const Profile = memo(({ name, age }) => {
   // ...
 });
 ```
@@ -122,7 +128,7 @@ function GroupsLanding({ person }) {
   return <CallToAction hasGroups={hasGroups} />;
 }
 
-const CallToAction = memo(function CallToAction({ hasGroups }) {
+const CallToAction = memo(({ hasGroups }) => {
   // ...
 });
 ```
@@ -130,7 +136,7 @@ const CallToAction = memo(function CallToAction({ hasGroups }) {
 你可以提供一个自定义比较函数，React 将使用它来比较旧的和新的 props，而不是使用浅比较。
 
 ```jsx
-const Chart = memo(function Chart({ dataPoints }) {
+const Chart = memo(({ dataPoints }) => {
   // ...
 }, arePropsEqual);
 
@@ -140,12 +146,12 @@ function arePropsEqual(oldProps, newProps) {
 }
 ```
 
-## startTransition 
+## startTransition
 
 startTransition 可以让你在不阻塞 UI 的情况下更新 state， startTransition 与 useTransition 非常相似，但它不提供 isPending 标志来跟踪一个 transition 是否正在进行。你可以在 useTransition 不可用时调用 startTransition。例如，在组件外部（如从数据库中）使用 startTransition
 
 ```jsx
-startTransition(scope)
+startTransition(scope);
 ```
 
 参数
@@ -187,20 +193,20 @@ React 提供了一些内置的组件，你可以在 JSX 中使用它们
 <>
   <OneChild />
   <AnotherChild />
-</>
+</>;
 ```
 
 ## Profiler
 允许你编程式测量 React 树的渲染性能
 
-参数 
+参数
 - id：字符串，用于标识正在测量的 UI 部分。
 - onRender：onRender 回调函数，当包裹的组件树更新时，React 都会调用它。它接收有关渲染内容和所花费时间的信息。
 
 ```jsx
 <Profiler id="App" onRender={onRender}>
   <App />
-</Profiler>
+</Profiler>;
 
 function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
   // 对渲染时间进行汇总或记录...
@@ -233,7 +239,7 @@ root.render(
 ```jsx
 <Suspense fallback={<Loading />}>
   <SomeComponent />
-</Suspense>
+</Suspense>;
 ```
 
 参数
@@ -244,7 +250,7 @@ root.render(
 - 如果 Suspense 正在展示 React 组件树中的内容，那么当再次被挂起时，除非导致此处更新是由 startTransition 或 useDeferredValue 引起，否则 Suspense 将展示 fallback
 - 只有启用了 Suspense 的数据源才会激活 Suspense 组件， 1.支持 Suspense 的框架如 Relay 和 Next.js， 2.使用 lazy 懒加载组件代码，3.使用 use 读取 Promise 的值。（Suspense 无法 检测在 Effect 或事件处理程序中获取数据的情况）
 
-### 逐步加载内容 
+### 逐步加载内容
 
 ```jsx
 // 调整之后，Biography 不需要“等待” Albums 加载完成就可以展示。
@@ -256,7 +262,7 @@ root.render(
       <Albums />
     </Panel>
   </Suspense>
-</Suspense>
+</Suspense>;
 
 // 1.如果 Biography 没有加载完成，BigSpinner 会显示在整个内容区域的位置。
 // 2.一旦 Biography 加载完成，BigSpinner 会被内容替换。
@@ -269,7 +275,7 @@ root.render(
 延迟值和 transition 都可以让你避免显示 Suspense 后备方案，而是使用内联指示器。transition 将整个更新标记为非紧急的，因此它们通常由框架和路由库用于导航。另一方面，延迟值在你希望将 UI 的一部分标记为非紧急，并让它“落后于” UI 的其余部分时非常有用
 
 ```jsx
-import { Suspense, useState, useDeferredValue } from 'react';
+import { Suspense, useDeferredValue, useState } from 'react';
 import SearchResults from './SearchResults.js';
 
 export default function App() {

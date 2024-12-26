@@ -4,11 +4,10 @@ tag: ['Node.js']
 date: '2023-12-18'
 ---
 
-
 ```js
 /**
- * 
- * @param {ReadableStream} stream 
+ *
+ * @param {ReadableStream} stream
  */
 async function streamToBuffer(stream) {
   return new Promise((resolve, reject) => {
@@ -18,12 +17,12 @@ async function streamToBuffer(stream) {
       buffers.push(chunk);
     });
     stream.on('end', () => {
-      resolve(Buffer.concat(buffers))
-    })
+      resolve(Buffer.concat(buffers));
+    });
 
     stream.on('error', (error) => {
-      reject(error)
-    })
+      reject(error);
+    });
   });
 }
 ```
@@ -33,22 +32,21 @@ async function streamToBuffer(stream) {
 [stream](https://nodejs.org/api/stream.html#readablesymbolasynciterator)实现了[异步迭代协议](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator)所以
 ```js
 /**
- * 
- * @param {ReadableStream} stream 
+ *
+ * @param {ReadableStream} stream
  */
 async function streamToBuffer2(stream) {
   const buffers = [];
   for await (const data of stream) {
     buffers.push(data);
   }
-  
+
   return Buffer.concat(buffers);
 }
 ```
 
-
 或者 `Array.fromAsync`
 
 ```js
-Buffer.concat(await Array.fromAsync(stream))
+Buffer.concat(await Array.fromAsync(stream));
 ```

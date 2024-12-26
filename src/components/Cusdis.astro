@@ -1,0 +1,40 @@
+---
+import { CUSDIS } from "../consts";
+
+interface Props {
+  pageID?: string,
+  pageURL?: string,
+  pageTitle?: string,
+}
+
+const { pageID, pageURL, pageTitle  } = Astro.props;
+---
+
+<div id="cusdis_thread" class="mt-12"
+  {...CUSDIS}
+  data-page-id={pageID}
+  data-page-url={ pageURL }
+  data-page-title={pageTitle}
+  data-iframe="/js/cusdis/iframe.umd.js"
+  data-style="/js/cusdis/style.css"
+></div>
+
+<script is:inline>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script>
+<script is:inline async src="/js/cusdis/cusdis.min.js"></script>

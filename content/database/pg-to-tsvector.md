@@ -15,7 +15,6 @@ select to_tsvector('english', '陈 锴 一个 , A apple 12 F a a a 1 2 3 4');
 
 `'1':8 '12':3 '2':9 '3':10 '4':11 'a':1,5,6,7 'apple':2 'f':4`
 
-
 select '陈 锴 一个 , A apple 12 F a a a 1 2 3 4' :: tsvector;
 
 `',' '1' '12' '2' '3' '4' 'A' 'F' 'a' 'apple' '一个' '锴' '陈'`

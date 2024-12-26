@@ -14,8 +14,8 @@ date: "2021-07-09"
 function frows2XlsxBufferile(formatData) {
   const ws = xlsx.utils.json_to_sheet(formatData);
   const wb = xlsx.utils.book_new();
-  xlsx.utils.book_append_sheet(wb, ws, "SheetJS");
-  return xlsx.write(wb, { type: "buffer", bookType: "xlsx" });
+  xlsx.utils.book_append_sheet(wb, ws, 'SheetJS');
+  return xlsx.write(wb, { type: 'buffer', bookType: 'xlsx' });
 }
 ```
 
@@ -27,10 +27,10 @@ function frows2XlsxBufferile(formatData) {
 function file(name, data) {
   // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition
   // 说明浏览器应该将内容下载到本地；filename 的值预填为下载后的文件名
-  this.response.set("Content-disposition", `attachment;filename="${name}"`);
+  this.response.set('Content-disposition', `attachment;filename="${name}"`);
   // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type
   // 说明返回的是一个二进制流数据
-  this.response.set("Content-Type", "application/octet-stream");
+  this.response.set('Content-Type', 'application/octet-stream');
   return (this.response.body = data);
 }
 ```
@@ -74,7 +74,9 @@ function zipBuffer2Stream(buffer, outputName) {
     zlib: { level: 9 },
   });
   archive.entry(buffer, { name: outputName }, (err) => {
-    if (err) throw err;
+    if (err) {
+      throw err;
+    }
     archive.finish();
   });
   return archive;

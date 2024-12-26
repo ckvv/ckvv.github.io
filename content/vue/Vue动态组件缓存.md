@@ -31,13 +31,13 @@ date: "2023-06-01"
 ```js
 const User = {
   template: '<div>User</div>',
-}
+};
 
 // 这些都会传递给 `createRouter`
 const routes = [
   // 动态字段以冒号开始
   { path: '/users/:id', component: User },
-]
+];
 ```
 
 访问`/users/1`, `/users/2`时缓存的实例将是同一个

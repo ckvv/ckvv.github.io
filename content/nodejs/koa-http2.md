@@ -11,7 +11,7 @@ date: '2021-07-09'
 ```js
 const Koa = require('koa');
 const app = new Koa();
-app.use(async ctx => {
+app.use(async (ctx) => {
   ctx.body = 'Hello World';
 });
 app.listen(3000);
@@ -20,13 +20,13 @@ app.listen(3000);
 其中`app.listen(...)` 方法只是以下内容的糖：
 
 ```js
-const http = require('http');
+const http = require('node:http');
 const Koa = require('koa');
 const app = new Koa();
-app.use(async ctx => {
+app.use(async (ctx) => {
   ctx.body = 'Hello World';
 });
-http.createServer(app.callback()).listen(3000)
+http.createServer(app.callback()).listen(3000);
 ```
 
 # 创建一个http2服务
@@ -34,13 +34,13 @@ http.createServer(app.callback()).listen(3000)
 想当然的我们可能会首先尝试使用一下代码创建一个http2服务
 
 ```js
-const http2 = require('http2');
+const http2 = require('node:http2');
 const Koa = require('koa');
 const app = new Koa();
-app.use(async ctx => {
+app.use(async (ctx) => {
   ctx.body = 'Hello World';
 });
-http2.createServer(app.callback()).listen(3000)
+http2.createServer(app.callback()).listen(3000);
 ```
 
 但是这样的代码会并不支持浏览器访问，没有已知的浏览器支持未加密的 HTTP/2，因此在与浏览器客户端通信时必须使用 `http2.createSecureServer()` ,但是createSecureServer需要证书和密钥，
@@ -55,10 +55,10 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 我们的代码就变成了这样
 
 ```js
-const http2 = require('http2');
+const http2 = require('node:http2');
 const Koa = require('koa');
 const app = new Koa();
-app.use(async ctx => {
+app.use(async (ctx) => {
   ctx.body = 'Hello World';
 });
 http2.createSecureServer({

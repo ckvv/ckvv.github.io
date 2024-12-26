@@ -6,7 +6,7 @@ date: '2022-08-25'
 本篇文章主要介绍了`HTTP`的数据结构, 以及`application/x-www-form-urlencoded`,`multipart/form-data`, `application/json`类型请求的编码方式。
 
 ## 什么是HTTP
-[HTTP(超文本传输协议)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP) 是服务器和客户端之间交换数据的方式。是为Web浏览器与Web服务器之间的通信而设计的有两种类型的消息︰ 
+[HTTP(超文本传输协议)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP) 是服务器和客户端之间交换数据的方式。是为Web浏览器与Web服务器之间的通信而设计的有两种类型的消息︰
 
 + 请求（requests）-- 由客户端发送用来触发一个服务器上的动作；
 + 响应（responses）-- 来自服务器的应答。
@@ -45,30 +45,30 @@ HTTP 定义了一组请求方法，以表明要对给定资源执行的操作。
 
 ```js
 // 传入字符串
-new URLSearchParams(`key1=value1&key2=value2`).toString() // key1=value1&key2=value2
+new URLSearchParams(`key1=value1&key2=value2`).toString(); // key1=value1&key2=value2
 
 // 传入数组
-new URLSearchParams([["key1", "value1"],["key2", "value2"]]); // key1=value1&key2=value2
+new URLSearchParams([['key1', 'value1'], ['key2', 'value2']]); // key1=value1&key2=value2
 
 // 传入对象
-new URLSearchParams({"key1" : "value1", "key2" : "value2"});
+new URLSearchParams({ key1: 'value1', key2: 'value2' });
 
 // 通过URL传入的参数都会被隐式地转译为百分比编码的`字符串`, 如果保护有特殊字符将被转译,非字母或数字的字符会被 percent-encoding<https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding>
-new URLSearchParams(`key1=1,2,3`) // key1=1%2C2%2C3  即 key1=1,2,3
-new URLSearchParams([["key1", [1,2,3]]]); // key1=1%2C2%2C3  即 key1=1,2,3，数组被隐式转换为1,2,3
-new URLSearchParams({"key1" : [1,2,3]}) // key1=1%2C2%2C3  即 key1=1,2,3，数组被隐式转换为1,2,3
-new URLSearchParams({"key1" : { age: 18 }}) // key1=%5Bobject+Object%5D 即 key1=[object+Object]，对象被隐式转换为[object+Object]
+new URLSearchParams(`key1=1,2,3`); // key1=1%2C2%2C3  即 key1=1,2,3
+new URLSearchParams([['key1', [1, 2, 3]]]); // key1=1%2C2%2C3  即 key1=1,2,3，数组被隐式转换为1,2,3
+new URLSearchParams({ key1: [1, 2, 3] }); // key1=1%2C2%2C3  即 key1=1,2,3，数组被隐式转换为1,2,3
+new URLSearchParams({ key1: { age: 18 } }); // key1=%5Bobject+Object%5D 即 key1=[object+Object]，对象被隐式转换为[object+Object]
 
-//对于不支持`URLSearchParams` API 的浏览器可以使用`encodeURIComponent`替代
-const getFormBody = (params) => {
+// 对于不支持`URLSearchParams` API 的浏览器可以使用`encodeURIComponent`替代
+function getFormBody(params) {
   const formBody = [];
   for (const key in params) {
     formBody.push(`${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
   }
-  return formBody.join("&");
+  return formBody.join('&');
 }
 
-getFormBody({"key1" : "value1", "key2": [1,2,3]}) // key1=value1&key2=1%2C2%2C3 即 key1=value1&key2=1,2,3, 数组被隐式转换为1,2,3
+getFormBody({ key1: 'value1', key2: [1, 2, 3] }); // key1=value1&key2=1%2C2%2C3 即 key1=value1&key2=1,2,3, 数组被隐式转换为1,2,3
 ```
 
 `Query String`只能传入`String`类型的字符串，如果我们希望传入复杂类型，前后端需要约定一种序列化参数的编码解码方案，如[qs](https://www.npmjs.com/package/qs)
@@ -95,13 +95,13 @@ const instance = axios.create({
 });
 
 // 或者
-axios(`http://test.com?${Qs.stringify(params)}`)
+axios(`http://test.com?${Qs.stringify(params)}`);
 ```
 
 通过`fetch`设置URL参数
 
 ```js
-fetch(`http://test.com?${Qs.stringify(params)}`)
+fetch(`http://test.com?${Qs.stringify(params)}`);
 ```
 
 ### Headers传参
@@ -130,7 +130,7 @@ const instance = axios.create({
 });
 
 // 或者
-axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.headers.common.Authorization = AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 ```
 
@@ -217,7 +217,7 @@ name=ck&email=ck%40test.com
 
 ```js
 await fetch('https://test.com', {
-  method: "POST",
+  method: 'POST',
   // 当body参数为URLSearchParams类型时，Content-Type被默认设为application/x-www-form-urlencoded
   // headers: {
   //   'Content-Type': 'application/x-www-form-urlencoded',
@@ -226,7 +226,7 @@ await fetch('https://test.com', {
     name: 'ck',
     email: 'ck@test.com',
   })
-})
+});
 ```
 
 使用Axios
@@ -385,13 +385,13 @@ email=ck@test.com
 
 ```js
 await fetch('https://test.com', {
-  method: "POST",
+  method: 'POST',
   // 当body参数为字符串类型时，Content-Type被默认设为text/plain
   // headers: {
   //   'Content-Type': 'text/plain',
   // }
   body: `name=ck\nemail=ck@test.com`
-})
+});
 ```
 
 使用Axios

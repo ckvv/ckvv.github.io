@@ -41,10 +41,10 @@ async function callStat() {
 看传统的例子：
 
 ```js
-const fs = require("fs");
-fs.readFile("./index.js", "utf8", (err, text) => {
+const fs = require('node:fs');
+fs.readFile('./index.js', 'utf8', (err, text) => {
   if (err) {
-    console.log("Error", err);
+    console.log('Error', err);
   } else {
     console.log(text);
   }
@@ -54,15 +54,15 @@ fs.readFile("./index.js", "utf8", (err, text) => {
 现在这个例子可以用 Promises 写成如下：
 
 ```js
-const fs = require("fs");
-const util = require("util");
+const fs = require('node:fs');
+const util = require('node:util');
 const readFile = util.promisify(fs.readFile);
-readFile("./index.js", "utf8")
+readFile('./index.js', 'utf8')
   .then((text) => {
     console.log(text);
   })
   .catch((err) => {
-    console.log("Error", err);
+    console.log('Error', err);
   });
 ```
 
@@ -71,15 +71,15 @@ readFile("./index.js", "utf8")
 结合 async 和 await 关键字，promise 可以更容易处理。链式太长的话也会使程序难于阅读。async 和 await 使它看起来更清洁。以下是 Async＆Await 的上面的例子：
 
 ```js
-const fs = require("fs");
-const util = require("util");
+const fs = require('node:fs');
+const util = require('node:util');
 const readFile = util.promisify(fs.readFile);
 (async function () {
   try {
-    const text = await readFile("./index.js", "utf8");
+    const text = await readFile('./index.js', 'utf8');
     console.log(text);
   } catch (err) {
-    console.log("Error", err);
+    console.log('Error', err);
   }
 })();
 ```
@@ -92,7 +92,6 @@ const readFile = util.promisify(fs.readFile);
 util.callbackify(original)
 original <Function> An async function
 Returns: <Function> a callback style function
-
 
 const util = require('util');
 

@@ -1,0 +1,24 @@
+---
+import '../styles/global.css';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import { LANG } from '../consts';
+
+type Props = Partial<CollectionEntry<'blog'>['data']>;
+
+const { title, description } = Astro.props;
+---
+
+<html lang={LANG}>
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body class="flex flex-col">
+		<Header />
+		<main  class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">
+			<slot />
+		</main>
+	</body>
+</html>
+

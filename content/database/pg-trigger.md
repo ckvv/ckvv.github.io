@@ -48,7 +48,7 @@ date: "2021-07-09"
 
 这个例子触发器保证：任何时候一个行在表中被插入或更新时，当前用户名和时间也会被标记在该行中。并且它会检查给出了一个雇员的姓名以及薪水是一个正值。
 
-```SQL
+```sql
 CREATE TABLE emp (
     empname text,
     salary integer,
@@ -84,7 +84,7 @@ CREATE TRIGGER emp_stamp BEFORE INSERT OR UPDATE ON emp
 
 这个例子触发器保证了在 emp 表上的任何插入、更新或删除一行的动作都被记录（即审计）在 emp_audit 表中。当前时间和用户名会被记录到行中，还有在其上执行的操作类型。
 
-```SQL
+```sql
 CREATE TABLE emp (
     empname           text NOT NULL,
     salary            integer

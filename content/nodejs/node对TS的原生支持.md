@@ -14,13 +14,13 @@ Node.js 22.6.0 版本以后可以通过设置实验标志 `--experimental-strip-
 
 ``` shell
 npx vite-node index.ts
-npx tsx index.ts 
+npx tsx index.ts
 # 或者
-node --import=tsx index.ts 
+node --import=tsx index.ts
 ```
 现在可以像`bun` 或 `deno` 一样直接运行 TypeScript 代码(目前还通过`--experimental-strip-types` 标志启用)
 ```shell
-node --experimental-strip-types index.ts 
+node --experimental-strip-types index.ts
 ```
 
 ## 功能限制
@@ -29,7 +29,6 @@ node --experimental-strip-types index.ts
 + 在 `import` 和 `require `语句中需要显式文件扩展名如`.ts` `.mts` `.cts`（注意和`bun` 或 `deno` 不同 目前 `.tsx` 文件不受支持的）
 + 强制使用 type 关键字进行类型导入，以避免运行时错误。
 + 默认情况下，Node.js将拒绝处理 node_modules 路径下的文件夹中的 TypeScript 文件。
-
 
 ## 参考
 + https://nodejs.org/docs/latest/api/typescript.html

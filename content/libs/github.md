@@ -17,7 +17,7 @@ SSH URL提供通过SSH（一种安全协议）对Git存储库的访问。您必�
 
 ## 生成SSH密钥对
 执行 `ssh-keygen`生成两个文件
-私钥: `/root/.ssh/id_rsa` 
+私钥: `/root/.ssh/id_rsa`
 公钥:`/root/.ssh/id_rsa.pub`
 
 ## 配置RSA 公钥
@@ -28,7 +28,6 @@ https://github.com/settings/ssh/new
 ```shell
 git clone git@github.com:*/*.git
 ```
-
 
 # 参考文献
 + <https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls>

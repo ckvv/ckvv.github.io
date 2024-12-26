@@ -23,40 +23,40 @@ date: '2021-07-09'
 
 ```javascript
 Array.prototype.map = function (fun) {
-    let mapArr = [];
-    for (let val of this) {
-        mapArr.push(fun.call(null, val));
-    }
-    return mapArr;
+  const mapArr = [];
+  for (const val of this) {
+    mapArr.push(fun.call(null, val));
+  }
+  return mapArr;
 }
 
-[1, 2, 3].map((val) => val);
+  [1, 2, 3].map(val => val);
 ```
 
 使用reduse实现：
 
 ```javascript
 Array.prototype.map = function (fun) {
-    let mapArr = [];
-    this.reduce((accumulator, currentValue, index) => {
-        mapArr.push(fun.call(null, this[index]));
-    },null);
-    return mapArr;
-}
+  const mapArr = [];
+  this.reduce((accumulator, currentValue, index) => {
+    mapArr.push(fun.call(null, this[index]));
+  }, null);
+  return mapArr;
+};
 ```
 
 ## koa中间件传参数，允许输入参数限制请求
 
 ```javascript
 function name(methods) {
-    return async function(ctx, next){
-        let startDate = new Date();
+  return async function (ctx, next) {
+    const startDate = new Date();
 
-        if (methods.indexOf(ctx.request.method) !== -1) {
-            await next();
-        }
-        console.log(`time:${new Date() - startDate}`);    
+    if (methods.includes(ctx.request.method)) {
+      await next();
     }
+    console.log(`time:${new Date() - startDate}`);
+  };
 }
 ```
 
@@ -83,11 +83,11 @@ emit：把各个chunk输出到结果文件
 
 使用indexOf和lastIndexOf
 
-```javaScript
-function search(arr,number){
-    let startIndex = arr.indexOf(number);
-    let lastIndex = arr.lastIndexOf(number);
-    return [startIndex,lastIndex]
+```javascript
+function search(arr, number) {
+  const startIndex = arr.indexOf(number);
+  const lastIndex = arr.lastIndexOf(number);
+  return [startIndex, lastIndex];
 }
 ```
 
@@ -95,63 +95,63 @@ function search(arr,number){
 
 ```javascript
 function search(arr, number) {
-    function indexOf(arr, number) {
-        let staIndex = 0;
-        let endIndex = arr.length;
-        let midelIndex = staIndex + Math.floor((endIndex - staIndex)/2);
-        do {
-            if (staIndex+1 >= endIndex) {
-                if (arr[endIndex] === number) {
-                    return endIndex;
-                }
-                if (arr[staIndex] === number) {
-                    return staIndex;
-                }
-                return -1;
-            }
-            if ( arr[midelIndex] < number) {
-                staIndex = midelIndex;
-                midelIndex = staIndex + Math.floor((endIndex - staIndex)/2);
-            } else {
-                endIndex = midelIndex;
-                midelIndex = staIndex + Math.floor((endIndex - staIndex)/2);
-            }
-        } while (true);
-    }
-    
-    function lastIndexOf(arr, number) {
-        let staIndex = 0;
-        let endIndex = arr.length;
-        let midelIndex = staIndex + Math.round((endIndex - staIndex)/2);
-        do {
-            if (staIndex+1 >= endIndex) {
-                if (arr[staIndex] === number) {
-                    return staIndex;
-                }
-                if (arr[endIndex] === number) {
-                    return endIndex;
-                }
-    
-                return -1;
-            }
-            if ( arr[midelIndex] <= number) {
-                staIndex = midelIndex;
-                endIndex = endIndex;
-                midelIndex = staIndex + Math.round((endIndex - staIndex)/2);
-            } else {
-                endIndex = midelIndex;
-                midelIndex = staIndex + Math.round((endIndex - staIndex)/2);
-            }
-        } while (true);
-    }
+  function indexOf(arr, number) {
+    let staIndex = 0;
+    let endIndex = arr.length;
+    let midelIndex = staIndex + Math.floor((endIndex - staIndex) / 2);
+    do {
+      if (staIndex + 1 >= endIndex) {
+        if (arr[endIndex] === number) {
+          return endIndex;
+        }
+        if (arr[staIndex] === number) {
+          return staIndex;
+        }
+        return -1;
+      }
+      if (arr[midelIndex] < number) {
+        staIndex = midelIndex;
+        midelIndex = staIndex + Math.floor((endIndex - staIndex) / 2);
+      } else {
+        endIndex = midelIndex;
+        midelIndex = staIndex + Math.floor((endIndex - staIndex) / 2);
+      }
+    } while (true);
+  }
 
-    let startIndex = indexOf(arr,number);
-    let lastIndex = lastIndexOf(arr,number);
-    return [startIndex,lastIndex]
+  function lastIndexOf(arr, number) {
+    let staIndex = 0;
+    let endIndex = arr.length;
+    let midelIndex = staIndex + Math.round((endIndex - staIndex) / 2);
+    do {
+      if (staIndex + 1 >= endIndex) {
+        if (arr[staIndex] === number) {
+          return staIndex;
+        }
+        if (arr[endIndex] === number) {
+          return endIndex;
+        }
+
+        return -1;
+      }
+      if (arr[midelIndex] <= number) {
+        staIndex = midelIndex;
+        endIndex = endIndex;
+        midelIndex = staIndex + Math.round((endIndex - staIndex) / 2);
+      } else {
+        endIndex = midelIndex;
+        midelIndex = staIndex + Math.round((endIndex - staIndex) / 2);
+      }
+    } while (true);
+  }
+
+  const startIndex = indexOf(arr, number);
+  const lastIndex = lastIndexOf(arr, number);
+  return [startIndex, lastIndex];
 }
 
-let arr = [1, 2, 3, 4,4, 4, 5, 6, 7]
-console.log(search(arr,3))
+const arr = [1, 2, 3, 4, 4, 4, 5, 6, 7];
+console.log(search(arr, 3));
 ```
 
 ## 实现一个查找素数的方法
@@ -160,24 +160,24 @@ console.log(search(arr,3))
 
 ```javascript
 function* getShu() {
-    let num = 1;
-    function isShu(num) {
-        let isShu = true; 
-        for (let i = 2; i <= num / 2; i++){
-            if (num % i === 0) {
-                isShu = false;
-                break;
-            }
-        }
-        return isShu;
+  let num = 1;
+  function isShu(num) {
+    let isShu = true;
+    for (let i = 2; i <= num / 2; i++) {
+      if (num % i === 0) {
+        isShu = false;
+        break;
+      }
     }
+    return isShu;
+  }
 
-    do {
-        if (isShu(num)) {
-            yield num;
-        }
-        num++;
-    } while (true);
+  do {
+    if (isShu(num)) {
+      yield num;
+    }
+    num++;
+  } while (true);
 }
 ```
 
@@ -190,7 +190,7 @@ class genPrime{
         this.num = 0;
     }
     isShu(num) {
-        let isShu = true; 
+        let isShu = true;
         for (let i = 2; i <= num / 2; i++){
             if (num % i === 0) {
                 isShu = false;
@@ -218,7 +218,7 @@ class genPrime{
 let genPrime = {
     num: 0,
     isShu(num) {
-        let isShu = true; 
+        let isShu = true;
         for (let i = 2; i <= num / 2; i++){
             if (num % i === 0) {
                 isShu = false;
@@ -248,27 +248,27 @@ let genPrime = {
 
 ```javascript
 function getShu() {
-    let num = 0;
-    function isShu(num) {
-        let isShu = true; 
-        for (let i = 2; i <= num / 2; i++){
-            if (num % i === 0) {
-                isShu = false;
-                break;
-            }
-        }
-        return isShu;
+  let num = 0;
+  function isShu(num) {
+    let isShu = true;
+    for (let i = 2; i <= num / 2; i++) {
+      if (num % i === 0) {
+        isShu = false;
+        break;
+      }
     }
+    return isShu;
+  }
 
-    return function(){
-        do {
-            num++;
+  return function () {
+    do {
+      num++;
 
-            if (isShu(num)) {
-                return num;
-            }
-        } while (true);
-    }
+      if (isShu(num)) {
+        return num;
+      }
+    } while (true);
+  };
 }
 ```
 

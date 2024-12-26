@@ -13,7 +13,7 @@ date: "2021-07-09"
 ```js
 function polyfillBind(fn, ctx) {
   function boundFn(a) {
-    var l = arguments.length;
+    const l = arguments.length;
     return l
       ? l > 1
         ? fn.apply(ctx, arguments)
@@ -28,7 +28,7 @@ function polyfillBind(fn, ctx) {
 function nativeBind(fn, ctx) {
   return fn.bind(ctx);
 }
-var bind = Function.prototype.bind ? nativeBind : polyfillBind;
+const bind = Function.prototype.bind ? nativeBind : polyfillBind;
 ```
 
 # 常用对 polyfill 方法

@@ -63,7 +63,7 @@ docker-compose up -d redis
 
 ```
 使用docker镜像nginx:latest创建一个容器,并将容器命名为myrunoob
-docker create  --name myrunoob  nginx:latest   
+docker create  --name myrunoob  nginx:latest
 ```
 
 + 创建一个新的容器并运行一个命令
@@ -132,7 +132,6 @@ docker commit CONTAINERid imagename:tag
 
 ```
 
-
 ```
 
 + 将指定镜像保存成 tar 归档文件
@@ -155,7 +154,7 @@ docker load < ubuntu.tar
 
 ```
 从镜像归档文件my_ubuntu_v3.tar创建镜像，命名为runoob/ubuntu:v4
-docker import  my_ubuntu_v3.tar runoob/ubuntu:v4  
+docker import  my_ubuntu_v3.tar runoob/ubuntu:v4
 ```
 
 + 文件与docker文件拷贝

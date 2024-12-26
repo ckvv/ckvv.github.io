@@ -1,0 +1,36 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+import Cusdis from '../../components/Cusdis.astro';
+import Tag from '../../components/Tag.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { render } from 'astro:content';
+import { getPosts } from '../../utils';
+
+export async function getStaticPaths() {
+	const posts = await getPosts();
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: post,
+	}));
+}
+const post = Astro.props;
+const { Content } = await render(post);
+---
+
+<BlogPost {...post.data}>
+	<h1 class="text-4xl leading-[2] font-bold">{ post.data.title }</h1>
+	<div class="my-2 flex justify-between">
+		<div class="flex gap-4">
+			{
+				Array.isArray(post.data.tags) && post.data.tags.map(v => v?.toUpperCase()).map((tag) => (
+					<Tag href={`/tag/${tag}/`}>{tag}</Tag>
+				))
+			}
+		</div>
+		<FormattedDate date={post.data.updatedDate || post.data.pubDate}/>
+	</div>
+	<div class="content">
+		<Content />
+	</div>
+	<Cusdis pageID={post?.filePath} pageURL={post?.filePath} pageTitle={post?.data.title} />
+</BlogPost>

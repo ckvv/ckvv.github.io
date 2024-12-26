@@ -15,10 +15,10 @@ Proxy 对象的所有用法，都是上面这种形式，不同的只是 handler
 - `handler`参数也是一个对象，用来定制拦截行为。
 
 ```js
-var proxy = new Proxy(
+const proxy = new Proxy(
   {},
   {
-    get: function (target, property) {
+    get(target, property) {
       return 35;
     },
   }
@@ -34,12 +34,12 @@ proxy.title; // 35
 如果 handler 没有设置任何拦截，那就等同于直接通向原对象。
 
 ```js
-let peo = {};
+const peo = {};
 
-let proxyP = new Proxy(peo, {});
+const proxyP = new Proxy(peo, {});
 
-proxyP.name = "ck";
-peo.name; //'ck'
+proxyP.name = 'ck';
+peo.name; // 'ck'
 ```
 
 下面是 Proxy 支持的拦截操作一览，一共 13 种。
@@ -90,7 +90,7 @@ Reflect.setPrototypeOf(target, prototype)
   Reflect.get 方法查找并返回 target 对象的 name 属性，如果没有该属性，则返回 undefined。
 
 ```js
-var myObject = {
+const myObject = {
   foo: 1,
   bar: 2,
   get baz() {
@@ -98,9 +98,9 @@ var myObject = {
   },
 };
 
-Reflect.get(myObject, "foo"); // 1
-Reflect.get(myObject, "bar"); // 2
-Reflect.get(myObject, "baz"); // 3
+Reflect.get(myObject, 'foo'); // 1
+Reflect.get(myObject, 'bar'); // 2
+Reflect.get(myObject, 'baz'); // 3
 ```
 
 - `Reflect.getOwnPropertyDescriptor()`类似于 Object.getOwnPropertyDescriptor()。
@@ -119,14 +119,14 @@ Reflect.get(myObject, "baz"); // 3
 ```js
 // 存放修改时触发的行为
 const queuedObservers = new Set();
-const observe = (fn) => {
+function observe(fn) {
   queuedObservers.add(fn);
-};
+}
 
 // 返回一个观察对象
-const observable = (obj) => {
+function observable(obj) {
   return new Proxy(obj, {
-    set: function (target, key, value, receiver) {
+    set(target, key, value, receiver) {
       const result = Reflect.set(target, key, value, receiver);
       queuedObservers.forEach((fn) => {
         fn();
@@ -134,10 +134,10 @@ const observable = (obj) => {
       return result;
     },
   });
-};
+}
 
 const person = observable({
-  name: "张三",
+  name: '张三',
   age: 20,
 });
 
@@ -146,8 +146,8 @@ function print() {
 }
 
 observe(print);
-person.name = "李四";
-person.name = "ck";
+person.name = '李四';
+person.name = 'ck';
 ```
 
 包装原始数据来记录有关函数持续时间的计时数据

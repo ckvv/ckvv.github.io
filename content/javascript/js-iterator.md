@@ -10,12 +10,14 @@ ECMAScript 2015的几个补充，并不是新的内置实现或语法，而是�
 JavaScript 提供了许多迭代集合的方法，从简单的 for 循环到 map() 和 filter()，迭代器和生成器将迭代的概念直接带入核心语言，并提供了一种机制来自定义 for...of 循环的行为
 
 ```js
-var myIterator = {
-    next: function() {
-        // ...
-    },
-    [Symbol.iterator]: function() { return this }
-}
+const myIterator = {
+  next() {
+    // ...
+  },
+  [Symbol.iterator]() {
+    return this;
+  }
+};
 ```
 
 ## 可迭代协议
@@ -27,28 +29,30 @@ var myIterator = {
 当一个对象需要被迭代的时候（比如开始用于一个for..of循环中），它的@@iterator方法被调用并且无参数，然后返回一个用于在迭代中获得值的迭代器。
 
 ```js
-class people{
-    constructor(index){
-        this.index = index;
-    }
-    next(){
-        this.index++;
-        return{
-            done: this.index > 10,
-            value: this.index
-        }
-    }
-    [Symbol.iterator](){
-        return this;
-    }
+class people {
+  constructor(index) {
+    this.index = index;
+  }
+
+  next() {
+    this.index++;
+    return {
+      done: this.index > 10,
+      value: this.index
+    };
+  }
+
+  [Symbol.iterator]() {
+    return this;
+  }
 }
 
-let a = new people(3);
-for (let val of a){
-    console.log(val);
+const a = new people(3);
+for (const val of a) {
+  console.log(val);
 }
 
-//缺失[Symbol.iterator]会报错误a is not iterable
+// 缺失[Symbol.iterator]会报错误a is not iterable
 ```
 
 或者
@@ -110,22 +114,23 @@ value - 迭代器返回的任何 JavaScript 值。done 为 true 时可省略。
 next 方法必须要返回一一个对象，该对象有两个必要的属性： done和value，如果返回一个非对象值（比如false和undefined) 会展示一个 TypeError ("iterator.next() returned a non-object value") 的错误
 
 ```javascript
-class people{
-    constructor(index){
-        this.index = index;
-    }
-    next(){
-        this.index++;
-        return{
-            done: this.index > 10,
-            value: this.index
-        }
-    }
+class people {
+  constructor(index) {
+    this.index = index;
+  }
+
+  next() {
+    this.index++;
+    return {
+      done: this.index > 10,
+      value: this.index
+    };
+  }
 }
 
-let a = new people(3);
-for (let val of a){
-    console.log(val);
+const a = new people(3);
+for (const val of a) {
+  console.log(val);
 }
 ```
 
@@ -148,16 +153,16 @@ m { value: 'e', done: false }
 ## 接受可迭代对象的内置 API
 
 ```javascript
-var myObj = {};
-new Map([[1,"a"],[2,"b"],[3,"c"]]).get(2);               // "b"
-new WeakMap([[{},"a"],[myObj,"b"],[{},"c"]]).get(myObj); // "b"
-new Set([1, 2, 3]).has(3);                               // true
-new Set("123").has("2");                                 // true
+const myObj = {};
+new Map([[1, 'a'], [2, 'b'], [3, 'c']]).get(2); // "b"
+new WeakMap([[{}, 'a'], [myObj, 'b'], [{}, 'c']]).get(myObj); // "b"
+new Set([1, 2, 3]).has(3); // true
+new Set('123').has('2'); // true
 new WeakSet(function*() {
-    yield {};
-    yield myObj;
-    yield {};
-}()).has(myObj); 
+  yield {};
+  yield myObj;
+  yield {};
+}()).has(myObj);
 ```
 
 另外还有 Promise.all(iterable), Promise.race(iterable) 以及 Array.from().
@@ -167,33 +172,33 @@ new WeakSet(function*() {
 一些语句和表达式是预料会用于可迭代对象，比如 for-of 循环，spread operator, yield* 和 destructuring assignment
 
 ```javascript
-for(let value of ["a", "b", "c"]){
-    console.log(value);
+for (const value of ['a', 'b', 'c']) {
+  console.log(value);
 }
 // "a"
 // "b"
 // "c"
 
-[..."abc"]; // ["a", "b", "c"]
+[...'abc']; // ["a", "b", "c"]
 
-function* gen(){
-  yield* ["a", "b", "c"];
+function* gen() {
+  yield * ['a', 'b', 'c'];
 }
 
 gen().next(); // { value:"a", done:false }
 
-[a, b, c] = new Set(["a", "b", "c"]);
-a // "a"
+[a, b, c] = new Set(['a', 'b', 'c']);
+a; // "a"
 ```
 
 ## 自定义迭代器
 
 ```javascript
-var myIterable = {};
+const myIterable = {};
 myIterable[Symbol.iterator] = function* () {
-    yield 1;
-    yield 2;
-    yield 3;
+  yield 1;
+  yield 2;
+  yield 3;
 };
 [...myIterable]; // [1, 2, 3]
 ```
@@ -201,23 +206,23 @@ myIterable[Symbol.iterator] = function* () {
 ## 迭代器示例
 
 ```javascript
-function makeIterator(array){
-    var nextIndex = 0;
-    
-    return {
-       next: function(){
-           return nextIndex < array.length ?
-               {value: array[nextIndex++], done: false} :
-               {done: true};
-       }
-    };
+function makeIterator(array) {
+  let nextIndex = 0;
+
+  return {
+    next() {
+      return nextIndex < array.length
+        ? { value: array[nextIndex++], done: false }
+        : { done: true };
+    }
+  };
 }
 
-var it = makeIterator(['yo', 'ya']);
+const it = makeIterator(['yo', 'ya']);
 
 console.log(it.next().value); // 'yo'
 console.log(it.next().value); // 'ya'
-console.log(it.next().done);  // true
+console.log(it.next().done); // true
 ```
 
 ## 生成器式的迭代器
@@ -231,25 +236,25 @@ function* anotherGenerator(i) {
   yield i + 3;
 }
 
-function* generator(i){
+function* generator(i) {
   yield i;
 
   //   yield* 表达式用于委托给另一个generator 或可迭代对象
-  yield* anotherGenerator(i);
+  yield * anotherGenerator(i);
   yield i + 10;
 }
 
-var gen = generator(10);
+const gen = generator(10);
 ```
 
 生成器对象 既是迭代器也是可迭代对象:就像前面所说的，一个良好的迭代即实现了迭代器协议，又实现了可迭代协议，方式就是可迭代协议返回的是自身
 
 ```javascript
-var aGeneratorObject = function*(){
-    yield 1;
-    yield 2;
-    yield 3;
-}();
+const aGeneratorObject = (function*() {
+  yield 1;
+  yield 2;
+  yield 3;
+}());
 typeof aGeneratorObject.next;
 // "function", because it has a next method, so it's an iterator
 typeof aGeneratorObject[Symbol.iterator];

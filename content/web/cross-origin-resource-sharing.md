@@ -79,7 +79,7 @@ Cache-Control: no-store
 - 请尝试以下命令：
 
 ```js
-fetch("https://cors-demo.glitch.me/", { mode: "cors" });
+fetch('https://cors-demo.glitch.me/', { mode: 'cors' });
 ```
 
 您应该会看到一条错误消息：
@@ -92,7 +92,7 @@ fetch("https://cors-demo.glitch.me/", { mode: "cors" });
 第二个端点（第 13 行）在响应中发送的是相同的文件，但在标头中加入了`Access-Control-Allow-Origin: *`。请在控制台中尝试：
 
 ```js
-fetch("https://cors-demo.glitch.me/allow-cors", { mode: "cors" });
+fetch('https://cors-demo.glitch.me/allow-cors', { mode: 'cors' });
 ```
 
 您的此次请求应该不会被阻止。
@@ -106,9 +106,9 @@ fetch("https://cors-demo.glitch.me/allow-cors", { mode: "cors" });
 请将`credentials: 'include'`添加到如下所示的获取选项中。该操作将包括请求中的 cookie。
 
 ```js
-fetch("https://example.com", {
-  mode: "cors",
-  credentials: "include",
+fetch('https://example.com', {
+  mode: 'cors',
+  credentials: 'include',
 });
 ```
 

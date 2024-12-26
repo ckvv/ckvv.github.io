@@ -15,12 +15,12 @@ date: "2024-05-08"
 Sequelize 支持以下隔离级别：
 
 ```js
-import { IsolationLevel } from '@sequelize/core';  
-  
-// The following are valid isolation levels:  
-IsolationLevel.READ_UNCOMMITTED;  
-IsolationLevel.READ_COMMITTED;  
-IsolationLevel.REPEATABLE_READ;  
+import { IsolationLevel } from '@sequelize/core';
+
+// The following are valid isolation levels:
+IsolationLevel.READ_UNCOMMITTED;
+IsolationLevel.READ_COMMITTED;
+IsolationLevel.REPEATABLE_READ;
 IsolationLevel.SERIALIZABLE;
 ```
 
@@ -32,21 +32,21 @@ IsolationLevel.SERIALIZABLE;
 在 Sequelize 中设置事务的隔离级别通常是在事务开始时进行配置。以下是一个示例，展示了如何在 Sequelize 中启动一个具有特定隔离级别的事务：
 
 ```javascript
-import { IsolationLevel } from '@sequelize/core';  
-  
-await sequelize.transaction(  
-{  
-    isolationLevel: IsolationLevel.SERIALIZABLE,  
-},  
-async t => {  
-    // Your code  
-},  
+import { IsolationLevel } from '@sequelize/core';
+
+await sequelize.transaction(
+  {
+    isolationLevel: IsolationLevel.SERIALIZABLE,
+  },
+  async (t) => {
+    // Your code
+  },
 );
 ```
 还可以通过在 Sequelize 构造函数中设置选项来全局更改默认值 `isolationLevel`
 
 ```javascript
-import { Sequelize, IsolationLevel } from '@sequelize/core';
+import { IsolationLevel, Sequelize } from '@sequelize/core';
 
 const sequelize = new Sequelize({
   /* options */

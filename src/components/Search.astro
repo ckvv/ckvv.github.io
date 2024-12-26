@@ -1,0 +1,38 @@
+<astro-sarch>
+  <div class="flex text-base font-normal">
+    <input class="rounded-tl rounded-bl border border-r-0 px-1 w-36" />
+    <button class="border-y border-r px-2 py-1 hover:text-sky-400 hover:bg-gray-200 rounded-tr rounded-br" data-type="Github">Github</button>
+  </div>
+</astro-sarch>
+
+<script>
+  // 为我们的新 HTML 自定义元素定义行为。
+  class AstroSearch extends HTMLElement {
+    connectedCallback() {
+
+      const searchInput = this.querySelector('input') as HTMLInputElement;
+
+      // 每次单击按钮时，更新计数。
+      this.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if(target.dataset.type) {
+          let searchLink = '';
+          switch (target.dataset.type) {
+            case 'Github':
+              searchLink = `https://github.com/ckvv/ckvv.github.io/search?l=Markdown&q=${searchInput.value}`;
+              break;
+            case 'Google':
+              searchLink = `https://www.google.com/search?q=site:${window.location.host} ${searchInput.value}`;
+              break;
+            default:
+              return;
+          }
+          window.open(searchLink, '_blank')
+        }
+      });
+    }
+  }
+
+  // 告诉浏览器将我们的 AstroHeart 类用于 <astro-heart> 元素。
+  customElements.define('astro-sarch', AstroSearch);
+</script>

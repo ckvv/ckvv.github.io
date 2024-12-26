@@ -25,7 +25,7 @@ function Transportation(name) {
 }
 
 Object.assign(Transportation.prototype, {
-  move: function () {
+  move() {
     console.log(`Transportation: ${this.name} 会移动`);
   },
 });
@@ -69,22 +69,22 @@ Car.prototype.run = function () {
   console.log(`run:${this.name},${this.constructor.name}`);
 };
 
-let car = new Car("car");
-let transportation = new Transportation("Transportation");
+const car = new Car('car');
+const transportation = new Transportation('Transportation');
 
-car.move(); //Transportation: car 会移动
-car.run(); //run:car,Transportation
-transportation.run(); //run:Transportation,Transportation
+car.move(); // Transportation: car 会移动
+car.run(); // run:car,Transportation
+transportation.run(); // run:Transportation,Transportation
 ```
 
 针对第一个问题，我们可以创建一个新对象，等于 Transportation.prototype，把 Car.prototype 指向该对象,这里有很多种方式
 
 ```javascript
-//1
+// 1
 // Object.create()方法使用现有对象作为新创建的对象的原型来创建新对象
 Car.prototype = Object.create(Transportation.prototype);
 
-//2
+// 2
 // 空函数F:
 function F() {}
 // 把F的原型指向Student.prototype:
@@ -95,13 +95,13 @@ Car.prototype = new F();
 // 需要先初始化
 Car.prototype = new Transportation();
 
-//3
-//将指定对象的原型（即内部[[Prototype]]属性）设置为另一个对象或为null。
+// 3
+// 将指定对象的原型（即内部[[Prototype]]属性）设置为另一个对象或为null。
 Object.setPrototypeOf(Car.prototype, Transportation.prototype);
-//或者
+// 或者
 Car.prototype = Object.setPrototypeOf({}, Transportation.prototype);
 
-//4
+// 4
 Car.prototype = {
   __proto__: Transportation.prototype,
 };

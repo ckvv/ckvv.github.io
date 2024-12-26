@@ -9,12 +9,12 @@ date: "2021-07-09"
 展开语法(Spread syntax),只能用于可迭代对象, 可以在函数调用/数组构造时, 将数组表达式或者 string 在语法层面展开；还可以在构造字面量对象时, 将对象表达式按 key-value 的方式展开
 
 ```js
-a = { name: "mdn" };
+a = { name: 'mdn' };
 b = [1, 2, 3];
 console.log({ ...a });
 console.log([...b]);
 
-//函数参数
+// 函数参数
 function sum(x, y, z) {
   return x + y + z;
 }
@@ -22,15 +22,15 @@ const numbers = [1, 2, 3];
 console.log(sum(...numbers));
 console.log(sum.apply(null, numbers));
 
-//构造
-var parts = ["shoulders", "knees"];
-var lyrics = ["head", ...parts, "and", "toes"];
+// 构造
+const parts = ['shoulders', 'knees'];
+const lyrics = ['head', ...parts, 'and', 'toes'];
 // ["head", "shoulders", "knees", "and", "toes"]
 
-var obj1 = { foo: "bar", x: 42 };
-var obj2 = { foo: "baz", y: 13 };
-var clonedObj = { ...obj1 };
-var mergedObj = { ...obj1, ...obj2 };
+const obj1 = { foo: 'bar', x: 42 };
+const obj2 = { foo: 'baz', y: 13 };
+const clonedObj = { ...obj1 };
+const mergedObj = { ...obj1, ...obj2 };
 ```
 
 ## 剩余参数

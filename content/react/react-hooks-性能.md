@@ -8,7 +8,6 @@ date: "2024-08-24"
 
 把“创建”函数和依赖项数组作为参数传入 `useMemo`，它仅会在某个依赖项改变时才重新计算 memoized 值。这种优化有助于避免在每次渲染时都进行高开销的计算。
 
-
 ### 参考
 
 ```jsx
@@ -31,7 +30,7 @@ const cachedValue = useMemo(calculateValue, dependencies?)
 - 在严格模式下，为了 帮你发现意外的错误，React 将会 调用你的计算函数两次
 
 ```jsx
-//当a&b不变时返回memoizedValue（引用不变）
+// 当a&b不变时返回memoizedValue（引用不变）
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
@@ -39,25 +38,29 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
 ```jsx
 function CountButton() {
-  let [ label, setLabel ] = useState('');
-  let [ count, setCount ] = useState(0);
+  const [label, setLabel] = useState('');
+  const [count, setCount] = useState(0);
   // 如果依赖项label不变memoizedValue不会重新计算
-  const memoizedValue = useMemo(()=>{
+  const memoizedValue = useMemo(() => {
     return label.toUpperCase();
   }, [label]);
   return (
     <div>
-      lable: <input type="text" onChange={(e) => setLabel(e.target.value)}/>
+      lable:
+      {' '}
+      <input type="text" onChange={e => setLabel(e.target.value)} />
       {memoizedValue}
       <button type="button" onClick={() => setCount(count + 1)}>
-          count is: {count}
+        count is:
+        {' '}
+        {count}
       </button>
     </div>
   );
 }
 ```
 
-### 跳过组件的重新渲染 
+### 跳过组件的重新渲染
 
 ```jsx
 // 当一个组件重新渲染时，React 会递归地重新渲染它的所有子组件
@@ -109,7 +112,7 @@ export default function TodoList({ todos, tab, theme }) {
 ### 参考
 
 ```jsx
-useCallback(fn, dependencies)
+useCallback(fn, dependencies);
 ```
 
 参数
@@ -127,7 +130,7 @@ useCallback(fn, dependencies)
 function ProductPage({ productId, referrer, theme }) {
   // 在多次渲染中缓存函数
   const handleSubmit = useCallback((orderDetails) => {
-    post('/product/' + productId + '/buy', {
+    post(`/product/${productId}/buy`, {
       referrer,
       orderDetails,
     });
@@ -144,43 +147,51 @@ function ProductPage({ productId, referrer, theme }) {
 
 > 依赖项数组不会作为参数传给回调函数。虽然从概念上来说它表现为：所有回调函数中引用的值都应该出现在依赖项数组中。未来编译器会更加智能，届时自动创建数组将成为可能
 
-### 跳过组件的重新渲染 
+### 跳过组件的重新渲染
 
 下面的例子中如果`const getLabel = () => label.toUpperCase();` 当count改变时会导致CountButton重新渲染，每次都会重新声明`getLabel`函数导致传递给Label组件的引用发生改变，引起不必要的渲染。
 
 ```jsx
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
-function Label({getLabel}) {
-  useEffect(()=>{
-    //如果getLabel引用改变会导致useEffect执行
-    console.log('useEffect: getLabel')
+function Label({ getLabel }) {
+  useEffect(() => {
+    // 如果getLabel引用改变会导致useEffect执行
+    console.log('useEffect: getLabel');
   }, [getLabel]);
-  return(
-    <label> { getLabel() } </label>
-  )
+  return (
+    <label>
+      {' '}
+      { getLabel() }
+      {' '}
+    </label>
+  );
 }
 
 export function CountButton() {
-  let [ label, setLabel ] = useState('');
-  let [ count, setCount ] = useState(0);
+  const [label, setLabel] = useState('');
+  const [count, setCount] = useState(0);
   // 如果label未改变每次重新渲染，返回的getLabel引用值相同
   const getLabel = useCallback(() => {
     return label.toUpperCase();
   }, [label]);
   return (
     <div>
-      lable: <input type="text" onChange={(e) => setLabel(e.target.value)}/>
+      lable:
+      {' '}
+      <input type="text" onChange={e => setLabel(e.target.value)} />
       <button type="button" onClick={() => setCount(count + 1)}>
-          count is: {count}
+        count is:
+        {' '}
+        {count}
       </button>
-      <Label getLabel={ getLabel }/>
+      <Label getLabel={getLabel} />
     </div>
   );
 }
 ```
 
-### 防止频繁触发 Effect 
+### 防止频繁触发 Effect
 
 ```jsx
 function ChatRoom({ roomId }) {
@@ -247,7 +258,7 @@ function useRouter() {
 ### 参考
 
 ```jsx
-const [isPending, startTransition] = useTransition()
+const [isPending, startTransition] = useTransition();
 ```
 
 参数
@@ -272,7 +283,7 @@ console.log(3);
 // 1 2 3
 ```
 
-### 将状态更新标记为非阻塞的 transition 
+### 将状态更新标记为非阻塞的 transition
 
 transition 可以使用户界面的更新在慢速设备上仍保持响应性。通过 transition，UI 仍将在重新渲染过程中保持响应性。例如用户点击一个选项卡，但改变了主意并点击另一个选项卡，他们可以在不等待第一个重新渲染完成的情况下完成操作。
 ```jsx
@@ -298,18 +309,19 @@ import { useTransition } from 'react';
 export default function TabButton({ children, isActive, onClick }) {
   const [isPending, startTransition] = useTransition();
   if (isActive) {
-    return <b>{children}</b>
+    return <b>{children}</b>;
   }
   // isPending 布尔值来向用户表明当前处于 transition 中
   if (isPending) {
-    return <b className="pending" style={{color: 'red'}}>{children}</b>;
+    return <b className="pending" style={{ color: 'red' }}>{children}</b>;
   }
   return (
     <button onClick={() => {
       startTransition(() => {
         onClick();
       });
-    }}>
+    }}
+    >
       {children}
     </button>
   );
@@ -343,7 +355,7 @@ return <input value={text} onChange={handleChange} />;
 ### 参考
 
 ```jsx
-const deferredValue = useDeferredValue(value)
+const deferredValue = useDeferredValue(value);
 ```
 
 参数
@@ -368,7 +380,7 @@ function App() {
   );
 }
 
-const SlowList = memo(function SlowList({ text }) {
+const SlowList = memo(({ text }) => {
   // ...
 });
 ```
@@ -391,13 +403,13 @@ function App() {
 
 ### React Compiler (React 编译器)
 
-为了优化应用程序，React Compiler 之前 我们需要通过useMemo、useCallback 和 React.memo 等 API 你可以告诉 React 如果它们的输入没有改变，你的应用程序的某些部分就不需要重新计算，从而减少了更新的工作。虽然功能强大，但很容易忘记应用记忆化或错误地应用它们。  
+为了优化应用程序，React Compiler 之前 我们需要通过useMemo、useCallback 和 React.memo 等 API 你可以告诉 React 如果它们的输入没有改变，你的应用程序的某些部分就不需要重新计算，从而减少了更新的工作。虽然功能强大，但很容易忘记应用记忆化或错误地应用它们。
 React Compiler 是一个新的实验性编译器, 编译器利用其 JavaScript 和 React 规则的知识来自动记住组件和 hook 中的值或值组。如果它检测到规则的破坏，它将自动跳过这些组件或 hook，并继续安全地编译其他代码。
 
 在 Vite 中启用
 ```ts
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
 const ReactCompilerConfig = { /* ... */ };
 export default defineConfig(() => {
@@ -406,7 +418,7 @@ export default defineConfig(() => {
       react({
         babel: {
           plugins: [
-            ["babel-plugin-react-compiler", ReactCompilerConfig],
+            ['babel-plugin-react-compiler', ReactCompilerConfig],
           ],
         },
       }),

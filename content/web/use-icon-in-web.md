@@ -132,58 +132,58 @@ date: "2022-02-09"
 虽然没有使用 symbol 引用，但多次引用同一图标并不会导致打包后代码增加，在 vue 中字体组件会被编译成下面这张形式。
 
 ```js
-var dj,
-  pj,
-  hj,
-  mj =
-    ((pj = !1),
+let dj;
+let pj;
+let hj;
+const mj
+    = ((pj = !1),
     (hj = function (e) {
       return Ao(
-        "svg",
+        'svg',
         {
           width: e.size,
           height: e.size,
-          viewBox: "0 0 48 48",
-          fill: "none",
+          viewBox: '0 0 48 48',
+          fill: 'none',
         },
         [
           Ao(
-            "path",
+            'path',
             {
-              d: "M9 18V42H39V18L24 6L9 18Z",
+              d: 'M9 18V42H39V18L24 6L9 18Z',
               fill: e.colors[1],
             },
             null
           ),
           Ao(
-            "path",
+            'path',
             {
-              d: "M9 42V18L4 22L24 6L44 22L39 18V42H9Z",
-              stroke: e.colors[0],
-              "stroke-width": e.strokeWidth,
-              "stroke-linecap": e.strokeLinecap,
-              "stroke-linejoin": e.strokeLinejoin,
+              'd': 'M9 42V18L4 22L24 6L44 22L39 18V42H9Z',
+              'stroke': e.colors[0],
+              'stroke-width': e.strokeWidth,
+              'stroke-linecap': e.strokeLinecap,
+              'stroke-linejoin': e.strokeLinejoin,
             },
             null
           ),
           Ao(
-            "path",
+            'path',
             {
-              d: "M19 29V42H29V29H19Z",
-              fill: e.colors[3],
-              stroke: e.colors[2],
-              "stroke-width": e.strokeWidth,
-              "stroke-linejoin": e.strokeLinejoin,
+              'd': 'M19 29V42H29V29H19Z',
+              'fill': e.colors[3],
+              'stroke': e.colors[2],
+              'stroke-width': e.strokeWidth,
+              'stroke-linejoin': e.strokeLinejoin,
             },
             null
           ),
           Ao(
-            "path",
+            'path',
             {
-              d: "M9 42H39",
-              stroke: e.colors[0],
-              "stroke-width": e.strokeWidth,
-              "stroke-linecap": e.strokeLinecap,
+              'd': 'M9 42H39',
+              'stroke': e.colors[0],
+              'stroke-width': e.strokeWidth,
+              'stroke-linecap': e.strokeLinecap,
             },
             null
           ),
@@ -191,17 +191,17 @@ var dj,
       );
     }),
     {
-      name: "icon-" + (dj = "home"),
+      name: `icon-${dj = 'home'}`,
       props: [
-        "size",
-        "strokeWidth",
-        "strokeLinecap",
-        "strokeLinejoin",
-        "theme",
-        "fill",
-        "spin",
+        'size',
+        'strokeWidth',
+        'strokeLinecap',
+        'strokeLinejoin',
+        'theme',
+        'fill',
+        'spin',
       ],
-      setup: function (e) {
+      setup(e) {
         // 。。。
       },
     });
@@ -217,7 +217,7 @@ var dj,
 
 ```js
 P(u, {
-  theme: "filled",
+  theme: 'filled',
 });
 ```
 

@@ -27,17 +27,19 @@ const [state, setState] = useState(initialState);
 
 ```jsx
 function Counter(props) {
-  const [count, setCount] = useState(props.initialCount)
+  const [count, setCount] = useState(props.initialCount);
 
   return (
     <button type="button" onClick={() => setCount(count + 1)}>
-      count is: {count}
+      count is:
+      {' '}
+      {count}
     </button>
   );
 }
 Counter.defaultProps = {
   initialCount: 10,
-}
+};
 ```
 
 值得注意的是，类似class 组件中的`setState`,在我们执行`setCount`时count的值不是立即更新的，而是在下一个重渲染时才会更新，后调用的 `setCount()` 将覆盖同一周期内先调用 setCount 的值。
@@ -73,7 +75,7 @@ setPosition({
 });
 ```
 
-### 使用 Immer 编写简洁的更新逻辑 
+### 使用 Immer 编写简洁的更新逻辑
 
 由 Immer 提供的 draft 是一种特殊类型的对象，被称为 Proxy，它会记录你用它所进行的操作。这就是你能够随心所欲地直接修改对象的原因所在！从原理上说，Immer 会弄清楚 draft 对象的哪些部分被改变了，并会依照你的修改创建出一个全新的对象。
 
@@ -89,7 +91,7 @@ const [person, updatePerson] = useImmer({
   }
 });
 
-updatePerson(draft => {
+updatePerson((draft) => {
   draft.name = e.target.value;
 });
 ```
@@ -99,7 +101,7 @@ updatePerson(draft => {
 如果新的 state 需要通过使用先前的 state 计算得出，那么可以将函数传递给State Hook 的更新函数，该回调函数将接收先前的 state，并返回一个更新后的值。
 
 ```jsx
-setCount((count) => count + 1);
+setCount(count => count + 1);
 ```
 
 ```jsx
@@ -154,19 +156,24 @@ function CountButton() {
   const countObj = {
     value: 18
   };
-  const [count, setCount] = useState(countObj)
+  const [count, setCount] = useState(countObj);
   return (
     <div>
-      <button type="button" onClick={() => {
-          countObj.value ++;
+      <button
+        type="button"
+        onClick={() => {
+          countObj.value++;
           console.log(countObj);
           setCount(countObj);
-            // setCount({...countObj}); 如果想要触发更新可以这样做
-        }}>
-          count is: {count.value}
-        </button>
+          // setCount({...countObj}); 如果想要触发更新可以这样做
+        }}
+      >
+        count is:
+        {' '}
+        {count.value}
+      </button>
     </div>
-  )
+  );
 }
 ```
 
@@ -191,7 +198,7 @@ function Profile({ userId }) {
 }
 ```
 
-### 存储前一次渲染的信息 
+### 存储前一次渲染的信息
 
 当你在渲染期间调用 set 函数时，React 将在你的组件使用 return 语句退出后立即重新渲染该组件，**并在渲染子组件前进行**。这样，子组件就不需要进行两次渲染。你的组件函数的其余部分仍会执行（然后结果将被丢弃）。如果你的条件判断在所有 Hook 调用的下方，可以提前添加一个 return; 以便更早地重新开始渲染。
 
@@ -208,7 +215,12 @@ export default function CountLabel({ count }) {
   return (
     <>
       <h1>{count}</h1>
-      {trend && <p>The count is {trend}</p>}
+      {trend && (
+        <p>
+          The count is
+          {trend}
+        </p>
+      )}
     </>
   );
 }
@@ -260,7 +272,6 @@ useReducer(reducer, initialArg, init?)
 - 当前的 state。初次渲染时，它是 init(initialArg) 或 initialArg （如果没有 init 函数）。
 - dispatch `(action) => void` 函数。用于更新 state 并触发组件的重新渲染
 
-
 在某些场景下，`useReducer` 会比 `useState` 更适用，例如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等。并且，使用 `useReducer` 还能给那些会触发深更新的组件做性能优化，因为你可以向子组件传递 `dispatch` 而不是回调函数 。
 
 > `dispatch` 不会在重新渲染之间变化,所以可以安全地从 `useEffect` 或 `useCallback` 的依赖列表中省略 `dispatch`
@@ -268,14 +279,14 @@ useReducer(reducer, initialArg, init?)
 ### 基础用法
 
 ```jsx
-const initialState = {count: 0};
+const initialState = { count: 0 };
 
 function reducer(state, action) {
   switch (action.type) {
     case 'increment':
-      return {count: state.count + 1};
+      return { count: state.count + 1 };
     case 'decrement':
-      return {count: state.count - 1};
+      return { count: state.count - 1 };
     default:
       throw new Error();
   }
@@ -285,9 +296,11 @@ function Counter() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <>
-      Count: {state.count}
-      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+      Count:
+      {' '}
+      {state.count}
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
     </>
   );
 }
@@ -307,15 +320,15 @@ const [state, dispatch] = useReducer(reducer, initialArg, init);
 与`useState`类似，如果 Reducer Hook 的返回值与当前 state 相同，React 将跳过子组件的渲染及副作用的执行。
 
 ```jsx
-const initialState = {count: 1};
+const initialState = { count: 1 };
 function reducer(state, action) {
   switch (action.type) {
     case 'increment':
       // ❌ Object.is 判断返回state相同，所以将跳过子组件的渲染及副作用的执行
-      state.count ++;
+      state.count++;
       return state;
     case 'decrement':
-      state.count --;
+      state.count--;
       return state;
     default:
       throw new Error();
@@ -326,9 +339,11 @@ function Counter() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <>
-      Count: {state.count}
-      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+      Count:
+      {' '}
+      {state.count}
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
     </>
   );
 }

@@ -10,42 +10,50 @@ date: '2021-07-09'
 koa在`koa-compose`中实现了中间件部分，
 
 ```javascript
-function compose (middleware) {
+function compose(middleware) {
   // compose首先会对middleware进行参数检验，middleware必须是一个函数数组，
 
-  if (!Array.isArray(middleware)) throw new TypeError('Middleware stack must be an array!')
+  if (!Array.isArray(middleware)) {
+    throw new TypeError('Middleware stack must be an array!');
+  }
   for (const fn of middleware) {
-    if (typeof fn !== 'function') throw new TypeError('Middleware must be composed of functions!')
+    if (typeof fn !== 'function') {
+      throw new TypeError('Middleware must be composed of functions!');
+    }
   }
 
   /**
-   * @param {Object} context
+   * @param {object} context
    * @return {Promise}
    * @api public
    */
 
   return function (context, next) {
     // last called middleware #
-    let index = -1
-    return dispatch(0)
-    async function dispatch (i) {
-
+    let index = -1;
+    return dispatch(0);
+    async function dispatch(i) {
       // 多次调用next函数会导致1 <= index
-      if (i <= index) return Promise.reject(new Error('next() called multiple times'))
-      index = i
-      let fn = middleware[i]
-      if (i === middleware.length) fn = next
-      if (!fn) return Promise.resolve()
+      if (i <= index) {
+        return Promise.reject(new Error('next() called multiple times'));
+      }
+      index = i;
+      let fn = middleware[i];
+      if (i === middleware.length) {
+        fn = next;
+      }
+      if (!fn) {
+        return Promise.resolve();
+      }
       try {
         // dispatch.bind 是为了注入参数，我们只需调用next即可
         return Promise.resolve(fn(context, dispatch.bind(null, i + 1)));
       } catch (err) {
-        return Promise.reject(err)
+        return Promise.reject(err);
       }
     }
-  }
+  };
 }
-
 ```
 
 ## 解析
@@ -75,41 +83,41 @@ dispatch函数作用就是执行第i个中间件，并把dispatch(i+1)作为next
 注意如果想要中间件next函数后面的内容要在后一个中间件执行结束后执行，`disctxtch`函数及中间件函数必须是async函数,中间件函数调用`next`函数时需要添加`await`，入下：
 
 ```javascript
-let timeout = async(sec)=>{
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            resolve()
-        },sec);
-    })
+async function timeout(sec) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, sec);
+  });
 }
 async function t1(ctx, next) {
-    console.log('t1:',ctx);
-    await next();
-    console.log('t1!');
+  console.log('t1:', ctx);
+  await next();
+  console.log('t1!');
 }
 async function t2(ctx, next) {
-    console.log('t2:',ctx);
-    timeout(1000)
-    await next()
-    console.log('t2!');
+  console.log('t2:', ctx);
+  timeout(1000);
+  await next();
+  console.log('t2!');
 }
 async function t3(ctx, next) {
-    console.log('t3:',ctx);
-    await next()
-    console.log('t3!');
+  console.log('t3:', ctx);
+  await next();
+  console.log('t3!');
 }
 
-let middleware = [t1,t2,t3];
-let tt= compose(middleware);
-tt('chen',(ctx)=>{
-    console.log('tt',ctx)
+const middleware = [t1, t2, t3];
+const tt = compose(middleware);
+tt('chen', (ctx) => {
+  console.log('tt', ctx);
 });
 
 // 输出
 
 // t1: chen
 // t2: chen
-//// wait 1 秒
+/// / wait 1 秒
 // t3: chen
 // tt chen
 // t3!
@@ -123,24 +131,30 @@ tt('chen',(ctx)=>{
 
 ```javascript
 function compose(middleware) {
-    return function (context, next) {
-        // last called middleware #
-        let index = -1
-        return disctxtch(0)
+  return function (context, next) {
+    // last called middleware #
+    let index = -1;
+    return disctxtch(0);
 
-        async function disctxtch(i) {
-            if (i <= index) throw 'next() called multiple times';
-            index = i
-            let fn = middleware[i]
-            if (i === middleware.length) fn = next
-            if (!fn) return ;
-            try {
-                fn(context, disctxtch.bind(null, i + 1));
-            } catch (err) {
-                throw err
-            }
-        }
+    async function disctxtch(i) {
+      if (i <= index) {
+        throw 'next() called multiple times';
+      }
+      index = i;
+      let fn = middleware[i];
+      if (i === middleware.length) {
+        fn = next;
+      }
+      if (!fn) {
+        return;
+      }
+      try {
+        fn(context, disctxtch.bind(null, i + 1));
+      } catch (err) {
+        throw err;
+      }
     }
+  };
 }
 ```
 

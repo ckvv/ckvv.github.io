@@ -42,7 +42,7 @@ let timerFunc;
 // completely stops working after triggering a few times... so, if native
 // Promise is available, we will use it:
 /* istanbul ignore next, $flow-disable-line */
-if (typeof Promise !== "undefined" && isNative(Promise)) {
+if (typeof Promise !== 'undefined' && isNative(Promise)) {
   const p = Promise.resolve();
   timerFunc = () => {
     p.then(flushCallbacks);
@@ -51,15 +51,17 @@ if (typeof Promise !== "undefined" && isNative(Promise)) {
     // microtask queue but the queue isn't being flushed, until the browser
     // needs to do some other work, e.g. handle a timer. Therefore we can
     // "force" the microtask queue to be flushed by adding an empty timer.
-    if (isIOS) setTimeout(noop);
+    if (isIOS) {
+      setTimeout(noop);
+    }
   };
   isUsingMicroTask = true;
 } else if (
-  !isIE &&
-  typeof MutationObserver !== "undefined" &&
-  (isNative(MutationObserver) ||
+  !isIE
+  && typeof MutationObserver !== 'undefined'
+  && (isNative(MutationObserver)
     // PhantomJS and iOS 7.x
-    MutationObserver.toString() === "[object MutationObserverConstructor]")
+    || MutationObserver.toString() === '[object MutationObserverConstructor]')
 ) {
   // Use MutationObserver where native Promise is not available,
   // e.g. PhantomJS, iOS7, Android 4.4
@@ -75,7 +77,7 @@ if (typeof Promise !== "undefined" && isNative(Promise)) {
     textNode.data = String(counter);
   };
   isUsingMicroTask = true;
-} else if (typeof setImmediate !== "undefined" && isNative(setImmediate)) {
+} else if (typeof setImmediate !== 'undefined' && isNative(setImmediate)) {
   // Fallback to setImmediate.
   // Technically it leverages the (macro) task queue,
   // but it is still a better choice than setTimeout.
@@ -97,14 +99,14 @@ if (typeof Promise !== "undefined" && isNative(Promise)) {
 
 ```js
 // 修改数据
-vm.msg = "Hello";
+vm.msg = 'Hello';
 // DOM 还没有更新
-Vue.nextTick(function () {
+Vue.nextTick(() => {
   // DOM 更新了
 });
 
 // 因为 $nextTick() 返回一个 Promise 对象所以下面这种和上面是等效的
-vm.msg = "Hello";
+vm.msg = 'Hello';
 // DOM 还没有更新
 await Vue.nextTick();
 // DOM 更新了
@@ -146,11 +148,11 @@ export function nextTick(cb?: Function, ctx?: Object) {
 node.js 中也存在一个 nextTick 接口，它是都将在当前操作完成后处理 nextTickQueue， 而不管事件循环的当前阶段如何，任何时候在给定的阶段中调用 process.nextTick()，所有传递到 process.nextTick() 的回调将在事件循环继续之前解析
 
 ```js
-console.log("start");
+console.log('start');
 process.nextTick(() => {
-  console.log("nextTick callback");
+  console.log('nextTick callback');
 });
-console.log("scheduled");
+console.log('scheduled');
 // Output:
 // start
 // scheduled

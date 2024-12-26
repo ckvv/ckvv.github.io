@@ -11,7 +11,7 @@ date: '2024-07-21'
 + https://www.nowcoder.com/exam/interview/81754024/test?paperId=50270010&jobs=%5B11201%5D&order=0
 + https://www.nowcoder.com/exam/interview/81754153/test?paperId=50270066&jobs=%5B11201%5D&order=0
 
-# Vue 
+# Vue
 
 + 响应式原理：track（依赖项跟踪）、trigger更新触发 <https://vuejs.org/guide/extras/reactivity-in-depth.html>
   - 劫持属性的读写, Vue 2 使用 `Object.defineProperty`  Vue 3 中则使用了 `Proxy` 来创建响应式对象，仅将 getter / setter 用于 ref(检测普通变量的访问或修改是行不通的),
@@ -240,7 +240,7 @@ div {
 + 跨域: 同源策略是浏览器的安全机制，它限制了来自不同源的脚本如何与页面进行交互，以防止潜在的安全风险。
   - 协议号-域名-端口 都相同的地址，浏览器才认为是同源， 这意味着，如果一个网页包含的脚本试图跨域请求其他源的资源，浏览器会阻止这个请求。
   - 设置响应头、后端代理、jsonp
-- 服务器通过设置 HTTP 头来明确允许哪些域访问资源`Access-Control-Allow-Origin` `Access-Control-Allow-Methods` 
+- 服务器通过设置 HTTP 头来明确允许哪些域访问资源`Access-Control-Allow-Origin` `Access-Control-Allow-Methods`
 + DOM 操作
 + 那些操作会造成内存泄漏: 忘记释放动态分配的内存、循环引用、未正确关闭资源（事件监听器）、全局变量的滥用、缓存使用不当、
 + 如何解决内存泄漏:
@@ -301,7 +301,7 @@ div {
 + 三次握手（建立链接）和四次挥手（断开链接）:（TCP协议保证可靠传输的重要机制，确保了双方都能安全、有序地建立、关闭连接，并释放资源）
 + http 状态码
   - 1xx（信息性状态码）: 100 客户端应该继续其请求。 101 服务器已理解请求的方法，即将切换到新的协议
-  - 2xx（成功状态码): 200 OK 
+  - 2xx（成功状态码): 200 OK
   - 3xx（重定向状态码）: 301 请求的资源已被永久移动到新位置。 302 请求的资源现在临时从不同的URI响应请求。 304 资源未被修改，可以使用缓存的版本。
   - 4xx（客户端错误状态码）: 400 服务器无法理解请求的语法 401 请求要求用户的身份认证。 403 服务器拒绝请求。 404 请求的资源不存在。
   - 5xx（服务器错误状态码）: 500 : 服务器遇到错误   502  服务器作为网关或代理，从上游服务器收到无效响应  503 服务器目前无法处理请求（过载或维护）。
@@ -328,7 +328,7 @@ div {
 + useRef: 改变 ref 不会触发重新渲染
 + useImperativeHandle: 自定义由 ref 暴露出来的句柄
 + useContext: 组件树深层传递数据
-+ useMemo: 
++ useMemo:
 + useCallback
 + useInsertionEffect
 + useLayoutEffect: 在浏览器重新绘制屏幕之前触发
@@ -377,7 +377,7 @@ div {
   - 访问者模式 (Visitor Pattern)：表示一个作用于某对象结构中的各元素的操作，使得可以在不改变各元素类的前提下定义作用于这些元素的新操作。
 
 # 设计模式是为了解决什么问题
-+ 代码复用: 
++ 代码复用:
   - 经常需要重复实现类似的功能或逻辑，这会导致代码重复，增加维护成本
   - 单例模式: 确保类只有一个实例，并提供全局访问点，避免了重复创建对象的需求
 + 灵活性和扩展性
@@ -437,25 +437,26 @@ div {
 ## 文件上传: 异步调度器、分块上传、断点续传、并行上传、文件 HASH、文件预览(按需加载)
 ```js
 class Scheduler {
-    constructor() {
-        this.awaitArr = [];
-        this.count = 0;
-    }
-    async add(promiseCreator) {
-        if (this.count >= 2) {
-            await new Promise(resolve => {
-                this.awaitArr.push(resolve);
-            });
-        }
-        this.count++;
-        const res = await promiseCreator();
-        this.count--;
+  constructor() {
+    this.awaitArr = [];
+    this.count = 0;
+  }
 
-        if (this.awaitArr.length) {
-            this.awaitArr.shift()();
-        }
-        return res;
+  async add(promiseCreator) {
+    if (this.count >= 2) {
+      await new Promise((resolve) => {
+        this.awaitArr.push(resolve);
+      });
     }
+    this.count++;
+    const res = await promiseCreator();
+    this.count--;
+
+    if (this.awaitArr.length) {
+      this.awaitArr.shift()();
+    }
+    return res;
+  }
 }
 ```
 ## 数据隔离与安全
@@ -517,4 +518,3 @@ upstream backend {
 + 消息队列
 + 持久化
 # Kafka
-

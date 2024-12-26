@@ -1,0 +1,21 @@
+---
+import Link from './Link.astro';
+import { SITE_TITLE, REPOSITORY } from '../consts';
+import Github from '../assets/github.svg';
+---
+
+<header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md">
+	<nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4">
+		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<div class="flex gap-4 md:gap-8">
+			<Link class="px-1" href="/">Home</Link>
+			<Link class="px-1" href="/tag">Tag</Link>
+			<Link class="px-1" href="/about">About</Link>
+		</div>
+		<div class="hidden md:flex gap-4">
+			<a href={REPOSITORY} target="_blank">
+				<Github />
+			</a>
+		</div>
+	</nav>
+</header>

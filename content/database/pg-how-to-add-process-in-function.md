@@ -26,9 +26,9 @@ RAISE INFO 'model_progress:%',json_build_object('job_uid',job_uid,'job_progress'
 ```js
 const pool = new Pg.Pool(Config.db);
 
-pool.on("connect", (cl) => {
-  cl.on("notice", (msg) => {
-    //获取sql抛出的信息
+pool.on('connect', (cl) => {
+  cl.on('notice', (msg) => {
+    // 获取sql抛出的信息
 
     DbNoticeHandler.handle(msg);
   });

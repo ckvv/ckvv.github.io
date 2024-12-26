@@ -21,7 +21,7 @@ sudo yum install yum-utils
 ```
 
 要设置 yum 存储库，请创建包含 `/etc/yum.repos.d/nginx.repo` 以下内容的文件：
-```repo
+```shell
 [nginx-stable]
 name=nginx stable repo
 baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
@@ -65,7 +65,7 @@ Options:
   -c filename   : set configuration file (default: /usr/local/etc/nginx/nginx.conf)
   -g directives : set global directives out of configuration file
 
-## 启动 
+## 启动
 nginx
 ## 重启
 nginx -s reload
@@ -85,11 +85,11 @@ http      #http块
 {
     ...   #http全局块
     server        #server块
-    { 
+    {
         ...       #server全局块
         location [PATTERN]   #location块
         {}
-        location [PATTERN] 
+        location [PATTERN]
         {}
     }
     server
@@ -123,7 +123,7 @@ events {
 http {
     include       mime.types;   #文件扩展名与文件类型映射表
     default_type  application/octet-stream; #默认文件类型，默认为text/plain
-  #access_log off; #取消服务日志    
+  #access_log off; #取消服务日志
     log_format myFormat '$remote_addr–$remote_user [$time_local] $request $status $body_bytes_sent $http_referer    $http_user_agent $http_x_forwarded_for'; #自定义格式
     access_log log/access.log myFormat;  #combined为日志格式的默认值
     sendfile on;   #允许sendfile方式传输文件，默认为off，可以在http块，server块，location块。
@@ -138,26 +138,26 @@ http {
     gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php application/vnd.ms-fontobject font/ttf font/opentype font/x-woff image/svg+xml;
     gzip_vary off;
     gzip_disable "MSIE [1-6]\.";
-    
+
     error_page 404 https://www.baidu.com; #错误页
-        
-    upstream mysvr {   
+
+    upstream mysvr {
       server 127.0.0.1:7878;
       server 192.168.10.121:3333 backup;  #热备
     }
-    
+
     server {
         keepalive_requests 120; #单连接请求上限次数。
         listen       4545;   #监听端口
-        server_name  127.0.0.1;   #监听地址       
+        server_name  127.0.0.1;   #监听地址
         location  ~*^.+$ {       #请求的url过滤，正则匹配，~为区分大小写，~*为不区分大小写。
            #root path;  #根目录
            #alias
            #index vv.txt;  #设置默认页
            #proxy_pass  http://mysvr;  #请求转向mysvr 定义的服务器列表
            #deny 127.0.0.1;  #拒绝的ip
-           #allow 172.18.5.54; #允许的ip           
-        } 
+           #allow 172.18.5.54; #允许的ip
+        }
     }
 }
 ```

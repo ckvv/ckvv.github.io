@@ -11,16 +11,16 @@ javascript 是单线程的并且只在一个进程中跑，
 child_process 模块提供了衍生子进程的能力，此功能主要由 child_process.spawn() 函数提供：
 
 ```javascript
-const { spawn } = require("child_process");
-const ls = spawn("ls", ["-lh", "/usr"]);
+const { spawn } = require('node:child_process');
+const ls = spawn('ls', ['-lh', '/usr']);
 
-ls.stdout.on("data", (data) => {
+ls.stdout.on('data', (data) => {
   console.log(`stdout: ${data}`);
 });
-ls.stderr.on("data", (data) => {
+ls.stderr.on('data', (data) => {
   console.error(`stderr: ${data}`);
 });
-ls.on("close", (code) => {
+ls.on('close', (code) => {
   console.log(`子进程退出，使用退出码 ${code}`);
 });
 ```
@@ -38,31 +38,32 @@ fork 执行程序的示例：
 
 ```javascript
 // compute.js
-const longComputation = (count) => {
+function longComputation(count) {
   let sum = 0;
   for (let i = 0; i < count; i++) {
     sum += i;
   }
   return sum;
-};
+}
 
-process.on("message", (message) => {
+process.on('message', (message) => {
   // 需要先进行序列号
-  let count = Number(message);
+  const count = Number(message);
   const result = longComputation(count);
   process.send(result);
 });
 
 // app.js
-const compute = fork(path.join(__dirname, "./compute.js"));
-compute.send("start");
-let asfun = () =>
-  new Promise((resolve) => {
-    compute.on("message", (result) => {
+const compute = fork(path.join(__dirname, './compute.js'));
+compute.send('start');
+function asfun() {
+  return new Promise((resolve) => {
+    compute.on('message', (result) => {
       resolve(result);
     });
   });
-let result = await asfun();
+}
+const result = await asfun();
 ```
 
 ## **TIPS**
@@ -76,16 +77,16 @@ worker_threads 模块允许使用并行执行 JavaScript 的线程,worker_thread
 
 ```javascript
 // compute.js
-const { parentPort } = require("worker_threads");
+const { parentPort } = require('node:worker_threads');
 
-const longComputation = (count) => {
+function longComputation(count) {
   let sum = 0;
   for (let i = 0; i < count; i++) {
     sum += i;
   }
   return sum;
-};
-parentPort.on("message", (msg) => {
+}
+parentPort.on('message', (msg) => {
   // 不需要先进行序列号
   const result = longComputation(msg);
   parentPort.postMessage({
@@ -94,32 +95,33 @@ parentPort.on("message", (msg) => {
 });
 
 // app.js
-const worker = new Worker(path.join(__dirname, "./fork/com_worker.js"), {
+const worker = new Worker(path.join(__dirname, './fork/com_worker.js'), {
   workerData: null,
 });
-worker.postMessage("msg");
-let asfun = () =>
-  new Promise((resolve) => {
-    worker.on("message", (result) => {
+worker.postMessage('msg');
+function asfun() {
+  return new Promise((resolve) => {
+    worker.on('message', (result) => {
       resolve(result);
     });
   });
-let result = await asfun();
+}
+const result = await asfun();
 ```
 
 上面生成了一个 Worker 线程，通常我们需要创建一个工作者池。否则，创建 Workers 的开销可能会超出其收益
 
 ```javascript
-const workerpool = require("workerpool");
+const workerpool = require('workerpool');
 const pool = workerpool.pool();
 
-const longComputation = (count) => {
+function longComputation(count) {
   let sum = 0;
   for (let i = 0; i < count; i++) {
     sum += i;
   }
   return sum;
-};
+}
 
 pool.exec(longComputation, [count]);
 ```

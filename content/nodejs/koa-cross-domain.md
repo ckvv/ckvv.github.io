@@ -2,7 +2,6 @@
 title: koa跨域
 tags: ['Koa']
 date: '2021-07-09'
-date: '2021-07-09'
 ---
 
 ## 跨域
@@ -93,13 +92,13 @@ CORS请求默认不发送Cookie和HTTP认证信息，如果要把Cookie发到服
 ```
 // XHR
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'http://example.com/', true); 
-xhr.withCredentials = true; 
+xhr.open('GET', 'http://example.com/', true);
+xhr.withCredentials = true;
 xhr.send(null);
 
 // Fetch
 fetch(url, {
-  credentials: 'include'  
+  credentials: 'include'
 })
 复制代码
 ```
@@ -174,7 +173,7 @@ app.use(route.options('/login', ctx => {
     ctx.set('Access-Control-Allow-Origin', '*');
     ctx.set('Access-Control-Allow-Headers', 'Content-Type');
     ctx.status = 204;
-    
+
 }));
 复制代码
 ```
@@ -243,8 +242,8 @@ const login = ctx => {
     const req = ctx.request.body;
     const userName = req.userName;
     const expires = Date.now() + 3600000; // 设置超时时间为一小时后
-    
-    var payload = { 
+
+    var payload = {
         iss: userName,
         exp: expires
     };
@@ -355,9 +354,9 @@ module.exports = function (options) {
         }
         /**
         * 非OPTIONS请求的处理
-        * 
+        *
         */
-       
+
         if (ctx.method !== 'OPTIONS') {
             // Simple Cross-Origin Request, Actual Request, and Redirects
             set('Access-Control-Allow-Origin', origin);

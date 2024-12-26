@@ -12,19 +12,19 @@ date: "2021-07-09"
 
 ```js
 function fallbackCopyTextToClipboard(text) {
-  const textArea = document.createElement("textarea");
+  const textArea = document.createElement('textarea');
   textArea.value = text;
-  textArea.style.top = "0";
-  textArea.style.left = "0";
-  textArea.style.position = "fixed";
+  textArea.style.top = '0';
+  textArea.style.left = '0';
+  textArea.style.position = 'fixed';
   document.body.appendChild(textArea);
   textArea.focus();
   textArea.select();
 
   try {
-    let msg = document.execCommand("copy");
+    const msg = document.execCommand('copy');
     if (!msg) {
-      throw new Error("Copy filed");
+      throw new Error('Copy filed');
     }
   } finally {
     document.body.removeChild(textArea);
@@ -49,17 +49,17 @@ clipboardy, 该库较重，支持 web 平台之外的 copy
 
 ```js
 function copyData(data) {
-  const btn = document.createElement("BUTTON");
+  const btn = document.createElement('BUTTON');
   const clipboard = new ClipboardJS(btn, {
     text: () => {
       return data;
     },
   });
-  clipboard.on("success", (e) => {
+  clipboard.on('success', (e) => {
     e.clearSelection();
     clipboard.destroy();
   });
-  clipboard.on("error", (e) => {
+  clipboard.on('error', (e) => {
     e.clearSelection();
     clipboard.destroy();
   });

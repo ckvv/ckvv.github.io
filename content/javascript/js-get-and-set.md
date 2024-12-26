@@ -22,7 +22,7 @@ get语法将对象属性绑定到查询该属性时将被调用的函数,有时�
 这会为obj创建一个伪属性latest，它会返回log数组的最后一个元素,注意，尝试为latest分配一个值不会改变它。
 
 ```js
-var obj = {
+const obj = {
   log: ['a', 'b', 'c'],
   get latest() {
     if (this.log.length == 0) {
@@ -30,7 +30,7 @@ var obj = {
     }
     return this.log[this.log.length - 1];
   }
-}
+};
 obj.latest = 'test';
 console.log(obj.latest);
 // expected output: "c"
@@ -45,9 +45,11 @@ delete obj.latest;
 ## 使用计算属性名
 
 ```js
-var expr = 'foo';
-var obj = {
-  get [expr]() { return 'bar'; }
+const expr = 'foo';
+const obj = {
+  get [expr]() {
+    return 'bar';
+  }
 };
 console.log(obj.foo); // "bar"
 ```
@@ -57,12 +59,12 @@ console.log(obj.foo); // "bar"
 Getters 给你一种方法来定义一个对象的属性，但是在访问它们之前不会计算属性的值。 getter 延续计算值的成本，直到需要值，如果不需要，您就不用支付成本。
 
 ```js
-var obj = {
+const obj = {
   get divs() {
-      delete this.divs;
-      return this.divs = document.getElementsByTagName('div');
+    delete this.divs;
+    return this.divs = document.getElementsByTagName('div');
   }
-}
+};
 console.log(obj.divs);
 ```
 
@@ -89,12 +91,12 @@ delete peo.name
 这将定义一个对象 language 的伪属性current，当分配一个值时，将使用该值更新log：
 
 ```js
-var language = {
+const language = {
   set current(name) {
     this.log.push(name);
   },
   log: []
-}
+};
 
 language.current = 'EN';
 console.log(language.log); // ['EN']
@@ -102,14 +104,14 @@ console.log(language.log); // ['EN']
 language.current = 'FA';
 console.log(language.log); // ['EN', 'FA']
 
-let peo = {
-    set name(val){
-        console.log(`set name: ${val}`)
-    },
-    set age(val){
-        console.log(`set age: ${val}`)
-    }
-}
+const peo = {
+  set name(val) {
+    console.log(`set name: ${val}`);
+  },
+  set age(val) {
+    console.log(`set age: ${val}`);
+  }
+};
 peo.name = 'hello';
 peo.name = 'world';
 peo.age = 16;
@@ -118,25 +120,29 @@ peo.age = 16;
 ## 使用 defineProperty 为当前对象定义 setter
 
 ```js
-var o = { a:0 };
+const o = { a: 0 };
 
-Object.defineProperty(o, "b", { set: function (x) { this.a = x / 2; } });
+Object.defineProperty(o, 'b', { set(x) {
+  this.a = x / 2;
+} });
 
 o.b = 10; // Runs the setter, which assigns 10 / 2 (5) to the 'a' property
-console.log(o.a) // 5
+console.log(o.a); // 5
 ```
 
 ## 使用计算属性名
 
 ```js
-var expr = "foo";
+const expr = 'foo';
 
-var obj = {
-  baz: "bar",
-  set [expr](v) { this.baz = v; }
+const obj = {
+  baz: 'bar',
+  set [expr](v) {
+    this.baz = v;
+  }
 };
 
 console.log(obj.baz); // "bar"
-obj.foo = "baz";      // run the setter
+obj.foo = 'baz'; // run the setter
 console.log(obj.baz); // "baz"
 ```

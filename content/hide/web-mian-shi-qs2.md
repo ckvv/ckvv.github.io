@@ -20,7 +20,7 @@ date: '2021-07-09'
   1. [网络相关问题](#network-questions)
   1. [代码相关问题](#coding-questions)
   1. [趣味问题](#fun-questions)
-  
+
 <!--more-->
 
 ## 参与协作
@@ -28,7 +28,7 @@ date: '2021-07-09'
   1. [贡献者](#contributors)
   1. [如何参与贡献](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/CONTRIBUTING.md)
   1. [许可协议](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/LICENSE.md)
-  
+
 #### <a name='general-questions'>常见问题：</a>
 
 * 你在昨天/本周学到了什么？
@@ -139,7 +139,7 @@ date: '2021-07-09'
 * 如何实现下列代码：
 
 ```javascript
-[1,2,3,4,5].duplicator(); // [1,2,3,4,5,1,2,3,4,5]
+[1, 2, 3, 4, 5].duplicator(); // [1,2,3,4,5,1,2,3,4,5]
 ```
 
 * 什么是三元表达式 (Ternary expression)？“三元 (Ternary)” 表示什么意思？
@@ -195,7 +195,7 @@ date: '2021-07-09'
 *问题：`foo`的值是什么？*
 
 ```javascript
-var foo = 10 + '20';
+const foo = `${10}20`;
 ```
 
 *问题：如何实现以下函数？*
@@ -208,21 +208,21 @@ add(2)(5); // 7
 *问题：下面的语句的返回值是什么？*
 
 ```javascript
-"i'm a lasagna hog".split("").reverse().join("");
+'i\'m a lasagna hog'.split('').reverse().join('');
 ```
 
 *问题：`window.foo`的值是什么？*
 
 ```javascript
-( window.foo || ( window.foo = "bar" ) );
+(window.foo || (window.foo = 'bar'));
 ```
 
 *问题：下面两个 alert 的结果是什么？*
 
 ```javascript
-var foo = "Hello";
-(function() {
-  var bar = " World";
+const foo = 'Hello';
+(function () {
+  const bar = ' World';
   alert(foo + bar);
 })();
 alert(foo + bar);
@@ -231,7 +231,7 @@ alert(foo + bar);
 *问题：`foo.length`的值是什么？*
 
 ```javascript
-var foo = [];
+const foo = [];
 foo.push(1);
 foo.push(2);
 ```
@@ -239,16 +239,16 @@ foo.push(2);
 *问题：`foo.x`的值是什么？*
 
 ```javascript
-var foo = {n: 1};
-var bar = foo;
-foo.x = foo = {n: 2};
+let foo = { n: 1 };
+const bar = foo;
+foo.x = foo = { n: 2 };
 ```
 
 *问题：下面代码的输出是什么？*
 
 ```javascript
 console.log('one');
-setTimeout(function() {
+setTimeout(() => {
   console.log('two');
 }, 0);
 console.log('three');

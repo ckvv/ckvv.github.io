@@ -9,7 +9,7 @@ date: "2024-08-24"
 使用 Context 深层传递参数
 
 ```jsx
-useContext(SomeContext)
+useContext(SomeContext);
 ```
 参数
 - `SomeContext`：用 `createContext` 创建的 context。context 本身不包含信息，它只代表你可以提供或从组件中读取的信息类型。
@@ -25,16 +25,16 @@ useContext(SomeContext)
 
 ```jsx
 // ThemeContext.js
-import { useState, createContext, useContext } from "react";
+import { createContext, useContext, useState } from 'react';
 
 const themes = {
   light: {
-    color: "#000000",
-    background: "#eeeeee"
+    color: '#000000',
+    background: '#eeeeee'
   },
   dark: {
-    color: "#ffffff",
-    background: "#222222"
+    color: '#ffffff',
+    background: '#222222'
   }
 };
 
@@ -62,8 +62,8 @@ function Toolbar() {
 }
 
 function ThemedButton() {
-  //useContext(MyContext) 只是让你能够读取 context 的值以及订阅 context 的变化。你仍然需要在上层组件树中使用 <Provider> 来为下层组件提供 context
-  //调用了 useContext 的组件总会在 context 值变化时重新渲染 
+  // useContext(MyContext) 只是让你能够读取 context 的值以及订阅 context 的变化。你仍然需要在上层组件树中使用 <Provider> 来为下层组件提供 context
+  // 调用了 useContext 的组件总会在 context 值变化时重新渲染
   const theme = useContext(ThemeContext);
   return (
     <button style={{ ...theme }}>
@@ -138,7 +138,6 @@ function TodosApp() {
   );
 }
 ```
-
 
 ### 将相关逻辑迁移到一个文件当中
 

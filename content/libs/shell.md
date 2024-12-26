@@ -160,7 +160,7 @@ ps命令将某个进程显示出来`ps -ef`
 ## 上传下载
 
 + linux文件下载到mac
-scp  root@192.168.0.187:/usr/local/nginx-1.14.0.tar  /Users/luo-mac/Downloads/nginx-1.14.0.tar　　
+scp  root@192.168.0.187:/usr/local/nginx-1.14.0.tar  /Users/luo-mac/Downloads/nginx-1.14.0.tar
 将linux服务器/usr/local/中的nginx-1.14.0.tar文件下载到本地 /Users/luo-mac/Downloads/目录中
 + mac文件上传到linux
 scp /Users/luo-mac/Downloads/nginx-1.14.0.tar root@192.168.31.42:/usr/local/nginx-1.14.0.tar

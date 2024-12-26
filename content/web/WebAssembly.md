@@ -64,7 +64,7 @@ npx asinit .
 ```js
 /**
  * 判断一个数是否是素数
- * @param x 
+ * @param x
  */
 function isPrime(x: u32): bool {
   if (x < 2) {
@@ -82,7 +82,7 @@ function isPrime(x: u32): bool {
 
 /**
  * 获取第n个素数
- * @param x 
+ * @param x
  */
 export function getPrime(x: u32): number {
   let index: u32 = 0;
@@ -105,38 +105,36 @@ export function getPrime(x: u32): number {
 ```js
 /**
  * 判断一个数是否是素数
- * @param x 
+ * @param x
  */
 function isPrime(x) {
-    if (x < 2) {
-        return false;
+  if (x < 2) {
+    return false;
+  }
+  for (let i = 2; i < x; i++) {
+    if (x % i === 0) {
+      return false;
     }
-    for (let i = 2; i < x; i++) {
-        if (x % i === 0) {
-            return false;
-        }
-    }
-    return true;
+  }
+  return true;
 }
-
 
 /**
  * 获取第n个素数
- * @param x 
+ * @param x
  */
 function getPrime(x) {
-    let index = 0;
-    let i = 2;
-    do {
-        if (isPrime(i)) {
-            ++index;
-        }
-        ++i;
-        env.console.log('hello')
-    } while (index !== x);
-    return i - 1;
+  let index = 0;
+  let i = 2;
+  do {
+    if (isPrime(i)) {
+      ++index;
+    }
+    ++i;
+    env.console.log('hello');
+  } while (index !== x);
+  return i - 1;
 }
-
 ```
 
 编译成WebAssembly
@@ -161,25 +159,23 @@ asc assembly/index.ts -b build/optimized.wasm
 
 ```js
 (async () => {
-    
-    //包含一些想要导入到新创建Instance中值的对象，导入外部api供内部调用
-    const importObject = {
-        env: {
-            abort(_msg, _file, line, column) {
-                console.error("abort called at index.ts:" + line + ":" + column);
-            },
-            console: console
-        },
-    };
-    const module = await WebAssembly.instantiateStreaming(
-        fetch("./build/optimized.wasm"),
-        importObject
-    );
-    
-    //获取导出的模块
-    module.instance.export.getPrime
-})();
+  // 包含一些想要导入到新创建Instance中值的对象，导入外部api供内部调用
+  const importObject = {
+    env: {
+      abort(_msg, _file, line, column) {
+        console.error(`abort called at index.ts:${line}:${column}`);
+      },
+      console
+    },
+  };
+  const module = await WebAssembly.instantiateStreaming(
+    fetch('./build/optimized.wasm'),
+    importObject
+  );
 
+  // 获取导出的模块
+  module.instance.export.getPrime;
+})();
 ```
 
 浏览器中js和webassembly计算素数效率对比，横轴是第n个素数，纵轴是计算所需时间（ms），从结果中我们可以看出可以看出webassembly的销量是明显高于js的,
@@ -201,10 +197,9 @@ WebAssembly 作为一种底层字节码，除了能在浏览器中运行外，�
 目前 V8 JS 引擎已经添加了对 WebAssembly 的支持，V8 JS 引擎在运行 WebAssembly 时，WebAssembly 和 JS 是在同一个虚拟机中执行，而不是 WebAssembly 在一个单独的虚拟机中运行，这样方便实现 JS 和 WebAssembly 之间的相互调用，在 Nodejs 环境中运行 WebAssembly 的意义其实不大，原因在于 Nodejs 支持运行原生模块，而原生模块的性能比 WebAssembly 要好。 如果你是通过 C、Rust 去编写 WebAssembly，你可以直接编译成 Nodejs 可以调用的原生模块。
 
 ```js
-const fs = require("fs");
-const loader = require("@assemblyscript/loader");
-module.exports = loader.instantiateSync(fs.readFileSync(__dirname + "/build/optimized.wasm"), { /* imports */ })
-
+const fs = require('node:fs');
+const loader = require('@assemblyscript/loader');
+module.exports = loader.instantiateSync(fs.readFileSync(`${__dirname}/build/optimized.wasm`), { /* imports */ });
 ```
 
 WebAssembly的设计初衷之一是为了解决JavaScript的性能问题，使得Web网页应用有接近本机原生应用的性能。作为一个通用、开放、高效的底层虚拟机抽象，众多编程语言（如C/C++,Rust,等）可以将现有应用编译成为WASM的目标代码，运行在浏览器中。这让应用开发技术与运行时技术解耦，极大促进了代码复用。

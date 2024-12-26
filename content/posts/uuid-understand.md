@@ -53,22 +53,22 @@ UUID的编码有很多种下面我只介绍Version 4 (random)，
 ```js
 const {
   getRandomValues
-} = require('crypto').webcrypto
+} = require('node:crypto').webcrypto;
 
 // 缓存数据
 const _data = new Uint8Array(16);
-const _hex = [...new Array(256)].map((val, index) => index.toString(16).padStart(2, '0'));
+const _hex = [...Array.from({ length: 256 })].map((val, index) => index.toString(16).padStart(2, '0'));
 
 function uuidv4() {
   // 给定的 typedArray 填充随机值
   getRandomValues(data);
   // set version bits
-  data[6] = (data[6] & 0x0f) | 0x40;
-  data[8] = (data[8] & 0x3f) | 0x80;
+  data[6] = (data[6] & 0x0F) | 0x40;
+  data[8] = (data[8] & 0x3F) | 0x80;
   return `${hex[data[0]]}${hex[data[1]]}${hex[data[2]]}${hex[data[3]]}`
-  + `-${hex[data[4]]}${hex[data[5]]}`
-  + `-${hex[data[6]]}${hex[data[7]]}`
-  + `-${hex[data[8]]}${hex[data[9]]}`
-  + `-${hex[data[10]]}${hex[data[11]]}${hex[data[12]]}${hex[data[13]]}${hex[data[14]]}${hex[data[15]]}`;
+    + `-${hex[data[4]]}${hex[data[5]]}`
+    + `-${hex[data[6]]}${hex[data[7]]}`
+    + `-${hex[data[8]]}${hex[data[9]]}`
+    + `-${hex[data[10]]}${hex[data[11]]}${hex[data[12]]}${hex[data[13]]}${hex[data[14]]}${hex[data[15]]}`;
 }
 ```

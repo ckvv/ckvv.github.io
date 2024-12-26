@@ -148,13 +148,13 @@ defineProps({
 // 调用BaseButton的组件父组件
 // <BaseButton ref="button">
 const button = ref();
-button.value.focus()
+button.value.focus();
 ```
 
 对于封装后的组件，由于此时`button`指向我们的`MyButton`,并不指向`BaseButton`的实例，所以我们需要在包装的组件中声明并暴露`BaseButton`事例
 
 ```js
-//我们封装的组件
+// 我们封装的组件
 // MyButton.Vue
 // <BaseButton ref="button">
 const button = ref();
@@ -178,7 +178,7 @@ defineExpose({
 ```js
 // <MyButton ref="button">
 const button = ref();
-button.value.button.focus()
+button.value.button.focus();
 ```
 
 ### 类型提示消失

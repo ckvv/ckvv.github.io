@@ -9,18 +9,18 @@ date: "2021-07-09"
 - index.js
 
 ```javascript
-"use strict";
+'use strict';
 
-const express = require("express");
+const express = require('express');
 
 // Constants
 const PORT = 6677;
-const HOST = "0.0.0.0";
+const HOST = '0.0.0.0';
 
 // App
 const app = express();
-app.get("/", (req, res) => {
-  res.send("<h1>Hello world</h1>");
+app.get('/', (req, res) => {
+  res.send('<h1>Hello world</h1>');
 });
 
 app.listen(PORT, HOST);
@@ -35,7 +35,6 @@ FROM node:8
 
 ## 在镜像中创建一个文件夹存放应用程序代码，这将是你的应用程序工作目录
 WORKDIR /usr/src/app
-
 
 COPY package*.json ./
 

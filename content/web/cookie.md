@@ -20,11 +20,11 @@ function setCookie(options) {
 ```js
 function getCookie(cookie_name) {
   let value = null;
-  let allcookies = document.cookie;
+  const allcookies = document.cookie;
   let cookie_pos = allcookies.indexOf(cookie_name);
   if (cookie_pos != -1) {
     cookie_pos = cookie_pos + cookie_name.length + 1;
-    let cookie_end = allcookies.indexOf(";", cookie_pos);
+    let cookie_end = allcookies.indexOf(';', cookie_pos);
     if (cookie_end == -1) {
       cookie_end = allcookies.length;
     }

@@ -38,7 +38,7 @@ date: '2021-07-09'
 
 ## 知识点
 
-`string` `array` `object` `funcion` `原型` `异步`  
+`string` `array` `object` `funcion` `原型` `异步`
 
 ## js继承的各种实现以及优缺点
 
@@ -50,10 +50,10 @@ date: '2021-07-09'
 ## javascript 连等赋值问题
 
 ```javascript
-var a = {n:1};  
-var b = a; // 持有a，以回查  
-a.x = a = {n:2};  
-alert(a.x);// --> undefined  
+let a = { n: 1 };
+const b = a; // 持有a，以回查
+a.x = a = { n: 2 };
+alert(a.x);// --> undefined
 alert(b.x);// --> {n:2}
 ```
 
@@ -69,26 +69,26 @@ alert(b.x);// --> {n:2}
 
 ```javascript
 Array.prototype.map = function (fun) {
-    let mapArr = [];
-    for (let val of this) {
-        mapArr.push(fun.call(null, val));
-    }
-    return mapArr;
+  const mapArr = [];
+  for (const val of this) {
+    mapArr.push(fun.call(null, val));
+  }
+  return mapArr;
 }
 
-[1, 2, 3].map((val) => val);
+  [1, 2, 3].map(val => val);
 ```
 
 使用reduse实现：
 
 ```javascript
 Array.prototype.map = function (fun) {
-    let mapArr = [];
-    this.reduce((accumulator, currentValue, index) => {
-        mapArr.push(fun.call(null, this[index]));
-    },null);
-    return mapArr;
-}
+  const mapArr = [];
+  this.reduce((accumulator, currentValue, index) => {
+    mapArr.push(fun.call(null, this[index]));
+  }, null);
+  return mapArr;
+};
 ```
 
 ## 实现一个无限查找素数的方法
@@ -97,24 +97,24 @@ Array.prototype.map = function (fun) {
 
 ```javascript
 function* getShu() {
-    let num = 1;
-    function isShu(num) {
-        let isShu = true; 
-        for (let i = 2; i <= num / 2; i++){
-            if (num % i === 0) {
-                isShu = false;
-                break;
-            }
-        }
-        return isShu;
+  let num = 1;
+  function isShu(num) {
+    let isShu = true;
+    for (let i = 2; i <= num / 2; i++) {
+      if (num % i === 0) {
+        isShu = false;
+        break;
+      }
     }
+    return isShu;
+  }
 
-    do {
-        if (isShu(num)) {
-            yield num;
-        }
-        num++;
-    } while (true);
+  do {
+    if (isShu(num)) {
+      yield num;
+    }
+    num++;
+  } while (true);
 }
 ```
 
@@ -127,7 +127,7 @@ class genPrime{
         this.num = 0;
     }
     isShu(num) {
-        let isShu = true; 
+        let isShu = true;
         for (let i = 2; i <= num / 2; i++){
             if (num % i === 0) {
                 isShu = false;
@@ -155,7 +155,7 @@ class genPrime{
 let genPrime = {
     num: 0,
     isShu(num) {
-        let isShu = true; 
+        let isShu = true;
         for (let i = 2; i <= num / 2; i++){
             if (num % i === 0) {
                 isShu = false;
@@ -185,27 +185,27 @@ let genPrime = {
 
 ```javascript
 function getShu() {
-    let num = 0;
-    function isShu(num) {
-        let isShu = true; 
-        for (let i = 2; i <= num / 2; i++){
-            if (num % i === 0) {
-                isShu = false;
-                break;
-            }
-        }
-        return isShu;
+  let num = 0;
+  function isShu(num) {
+    let isShu = true;
+    for (let i = 2; i <= num / 2; i++) {
+      if (num % i === 0) {
+        isShu = false;
+        break;
+      }
     }
+    return isShu;
+  }
 
-    return function(){
-        do {
-            num++;
+  return function () {
+    do {
+      num++;
 
-            if (isShu(num)) {
-                return num;
-            }
-        } while (true);
-    }
+      if (isShu(num)) {
+        return num;
+      }
+    } while (true);
+  };
 }
 ```
 
@@ -213,142 +213,146 @@ function getShu() {
 
 ```js
 [1, 2, [3, 4], [[5, 6]], 7].flat(Infinity).reduce((accumulator, currentValue) => {
-    return accumulator + currentValue;
-},null)
+  return accumulator + currentValue;
+}, null);
 ```
 
 ## 请写一个function，输入为arr，输出为arr1 ?
 
 ```javascript
-let arr = [
+const arr = [
   {
     id: 1,
     source: [
-      {name: 'hello1', text: 'word1'},
-      {name: 'hello2', text: 'word2'},
-      {name: 'hello3', text: 'word3'}
+      { name: 'hello1', text: 'word1' },
+      { name: 'hello2', text: 'word2' },
+      { name: 'hello3', text: 'word3' }
     ]
   },
   {
     id: 2,
     source: [
-      {name: 'name1', text: '11'},
-      {name: 'name2', text: '22'},
+      { name: 'name1', text: '11' },
+      { name: 'name2', text: '22' },
     ]
   }
-]
-let arr1 = [
-  {id: 1, source: {name: 'hello1/hello2/hello3', text: 'word1/word2/word3'}},
-  {id: 2, source: {name: 'name1/name2', text: '11/22'}}
-]
+];
+const arr1 = [
+  { id: 1, source: { name: 'hello1/hello2/hello3', text: 'word1/word2/word3' } },
+  { id: 2, source: { name: 'name1/name2', text: '11/22' } }
+];
 ```
 
 ```javascript
 function formatArr(arr) {
-    return arr.map((val) => {
-        // console.log(val)
+  return arr.map((val) => {
+    // console.log(val)
+    return {
+      id: val.id,
+      source: val.source.reduce((accumulator, currentValue) => {
         return {
-            id: val.id,
-            source: val.source.reduce((accumulator, currentValue) => {
-                return {
-                    name: `${accumulator.name}/${currentValue.name}`,
-                    text:`${accumulator.text}/${currentValue.text}`
-                }
-            }, {
-                name: '',
-                text:''
-            })
-        }
-    });
+          name: `${accumulator.name}/${currentValue.name}`,
+          text: `${accumulator.text}/${currentValue.text}`
+        };
+      }, {
+        name: '',
+        text: ''
+      })
+    };
+  });
 }
 ```
 
 ## class URLSearchParams {} 语法实现一个该接口 ? polyfill，需实现下面列举的要求
 
 ```javascript
-// 构造函数支持传 ? URL 参数 ? 
-searchParams = new URLSearchParams("foo=1&bar=2") 
+// 构造函数支持传 ? URL 参数 ?
+searchParams = new URLSearchParams('foo=1&bar=2');
 
-// 构造函数也支持传入一个包含参数键值对的对 ? 
-searchParams = new URLSearchParams({foo: "1", bar: "2"}) 
+// 构造函数也支持传入一个包含参数键值对的对 ?
+searchParams = new URLSearchParams({ foo: '1', bar: '2' });
 
-// 实例支持 get()、set()、has()、append() 四个方法 
-console.log(searchParams.get("foo")) // "1" 
-searchParams.set("foo", "10") 
-console.log(searchParams.has("bar")) // true 
-searchParams.append("foo", "100") 
+// 实例支持 get()、set()、has()、append() 四个方法
+console.log(searchParams.get('foo')); // "1"
+searchParams.set('foo', '10');
+console.log(searchParams.has('bar')); // true
+searchParams.append('foo', '100');
 
-// 实例支持 toString() 方法 
-console.log(searchParams.toString()) // "foo=10&bar=2&foo=100" 
-// 实例支持 for-of 迭代 
-for(const [key, value] of searchParams) { 
-  console.log([key, value]) 
-  // ["foo", "10"] 
-  // ["bar", "2"] 
-  // ["foo", "100"] 
-} 
-
+// 实例支持 toString() 方法
+console.log(searchParams.toString()); // "foo=10&bar=2&foo=100"
+// 实例支持 for-of 迭代
+for (const [key, value] of searchParams) {
+  console.log([key, value]);
+  // ["foo", "10"]
+  // ["bar", "2"]
+  // ["foo", "100"]
+}
 ```
 
 ```javascript
 class URLSearchParams {
-    constructor(params) {
-        this.params = this.formatParams(params);
-    };
-    formatParams(params = {}) {
-        if (typeof params === 'string') {
-            let objParams = {};
-            params.split('&').forEach((val) => {
-                if (val) {
-                    let [key, value] = val.split('=');
+  constructor(params) {
+    this.params = this.formatParams(params);
+  };
 
-                    if (key in objParams) {
-                        objParams[key].push(value);
-                    } else {
-                        objParams[key] = [value];
-                    }
-                }
-            });
-            return objParams;
-        }
-        return params;
-    }
-    get(key) {
-        return this.params[key];
-    }
-    set(key, value) {
-        this.params[key] = [value];
-    }
-    has(key) {
-        return key in this.params;
-    }
-    append(key, value) {
-        if (this.has(key)) {
-            this.params[key].push(value);
-        } else {
-            this.set(key, value);
-        }
-    }
-    toString() {
-        let strParams = '';
-        for (const key in this.params) {
+  formatParams(params = {}) {
+    if (typeof params === 'string') {
+      const objParams = {};
+      params.split('&').forEach((val) => {
+        if (val) {
+          const [key, value] = val.split('=');
 
-            if (this.params[key]) {
-                this.params[key].forEach((val) => {
-                    strParams += `${key}=${val}&`
-                });
-            }
+          if (key in objParams) {
+            objParams[key].push(value);
+          } else {
+            objParams[key] = [value];
+          }
         }
-        return strParams.substring(0, strParams.length - 1);
+      });
+      return objParams;
     }
+    return params;
+  }
 
-    *[Symbol.iterator]() {
-        for (const key in this.params) {
-            for (const val of this.params[key]) {
-                yield [key, val];
-            }
-        }
+  get(key) {
+    return this.params[key];
+  }
+
+  set(key, value) {
+    this.params[key] = [value];
+  }
+
+  has(key) {
+    return key in this.params;
+  }
+
+  append(key, value) {
+    if (this.has(key)) {
+      this.params[key].push(value);
+    } else {
+      this.set(key, value);
     }
+  }
+
+  toString() {
+    let strParams = '';
+    for (const key in this.params) {
+      if (this.params[key]) {
+        this.params[key].forEach((val) => {
+          strParams += `${key}=${val}&`;
+        });
+      }
+    }
+    return strParams.substring(0, strParams.length - 1);
+  }
+
+  *[Symbol.iterator]() {
+    for (const key in this.params) {
+      for (const val of this.params[key]) {
+        yield [key, val];
+      }
+    }
+  }
 }
 ```
 
@@ -441,7 +445,7 @@ class URLSearchParams {
             isAuto = true,
             data,
         } = {}) {
-            
+
             this.container = document.getElementById(container);
             if (!this.container) {
                 throw `找不到容器:${container}`;
@@ -489,7 +493,6 @@ class URLSearchParams {
                     swiperOption.className = 'swiper-option';
                 }
                 swiperOption.dataset.index = index;
-
 
                 swiperListContainer.appendChild(swiperItem);
                 swiperOptionContainer.appendChild(swiperOption);
@@ -718,15 +721,14 @@ let a = {
 
 ```javascript
 function getFibonacci(n) {
-    
-    if (n < 3) {
-        return 1;
-    }
-    let resArr = [1, 1].concat(new Array(n - 2));
-    for (let i = 2; i < n; i++) {
-        resArr[i] = resArr[i - 1] + resArr[i - 2];
-    }
-    return resArr[n - 1];
+  if (n < 3) {
+    return 1;
+  }
+  const resArr = [1, 1].concat(Array.from({ length: n - 2 }));
+  for (let i = 2; i < n; i++) {
+    resArr[i] = resArr[i - 1] + resArr[i - 2];
+  }
+  return resArr[n - 1];
 }
 ```
 
@@ -741,15 +743,16 @@ test().add().log()
 
 ```javascript
 function test() {
-    class test{
-        add() {
-            return this;
-        }
-        log() {
-            return this;
-        }
+  class test {
+    add() {
+      return this;
     }
-    return new test();
+
+    log() {
+      return this;
+    }
+  }
+  return new test();
 }
 ```
 
@@ -757,11 +760,11 @@ function test() {
 
 使用indexOf和lastIndexOf
 
-```javaScript
-function search(arr,number){
-    let startIndex = arr.indexOf(number);
-    let lastIndex = arr.lastIndexOf(number);
-    return [startIndex,lastIndex]
+```javascript
+function search(arr, number) {
+  const startIndex = arr.indexOf(number);
+  const lastIndex = arr.lastIndexOf(number);
+  return [startIndex, lastIndex];
 }
 ```
 
@@ -769,63 +772,63 @@ function search(arr,number){
 
 ```javascript
 function search(arr, number) {
-    function indexOf(arr, number) {
-        let staIndex = 0;
-        let endIndex = arr.length;
-        let midelIndex = staIndex + Math.floor((endIndex - staIndex)/2);
-        do {
-            if (staIndex+1 >= endIndex) {
-                if (arr[endIndex] === number) {
-                    return endIndex;
-                }
-                if (arr[staIndex] === number) {
-                    return staIndex;
-                }
-                return -1;
-            }
-            if ( arr[midelIndex] < number) {
-                staIndex = midelIndex;
-                midelIndex = staIndex + Math.floor((endIndex - staIndex)/2);
-            } else {
-                endIndex = midelIndex;
-                midelIndex = staIndex + Math.floor((endIndex - staIndex)/2);
-            }
-        } while (true);
-    }
-    
-    function lastIndexOf(arr, number) {
-        let staIndex = 0;
-        let endIndex = arr.length;
-        let midelIndex = staIndex + Math.round((endIndex - staIndex)/2);
-        do {
-            if (staIndex+1 >= endIndex) {
-                if (arr[staIndex] === number) {
-                    return staIndex;
-                }
-                if (arr[endIndex] === number) {
-                    return endIndex;
-                }
-    
-                return -1;
-            }
-            if ( arr[midelIndex] <= number) {
-                staIndex = midelIndex;
-                endIndex = endIndex;
-                midelIndex = staIndex + Math.round((endIndex - staIndex)/2);
-            } else {
-                endIndex = midelIndex;
-                midelIndex = staIndex + Math.round((endIndex - staIndex)/2);
-            }
-        } while (true);
-    }
+  function indexOf(arr, number) {
+    let staIndex = 0;
+    let endIndex = arr.length;
+    let midelIndex = staIndex + Math.floor((endIndex - staIndex) / 2);
+    do {
+      if (staIndex + 1 >= endIndex) {
+        if (arr[endIndex] === number) {
+          return endIndex;
+        }
+        if (arr[staIndex] === number) {
+          return staIndex;
+        }
+        return -1;
+      }
+      if (arr[midelIndex] < number) {
+        staIndex = midelIndex;
+        midelIndex = staIndex + Math.floor((endIndex - staIndex) / 2);
+      } else {
+        endIndex = midelIndex;
+        midelIndex = staIndex + Math.floor((endIndex - staIndex) / 2);
+      }
+    } while (true);
+  }
 
-    let startIndex = indexOf(arr,number);
-    let lastIndex = lastIndexOf(arr,number);
-    return [startIndex,lastIndex]
+  function lastIndexOf(arr, number) {
+    let staIndex = 0;
+    let endIndex = arr.length;
+    let midelIndex = staIndex + Math.round((endIndex - staIndex) / 2);
+    do {
+      if (staIndex + 1 >= endIndex) {
+        if (arr[staIndex] === number) {
+          return staIndex;
+        }
+        if (arr[endIndex] === number) {
+          return endIndex;
+        }
+
+        return -1;
+      }
+      if (arr[midelIndex] <= number) {
+        staIndex = midelIndex;
+        endIndex = endIndex;
+        midelIndex = staIndex + Math.round((endIndex - staIndex) / 2);
+      } else {
+        endIndex = midelIndex;
+        midelIndex = staIndex + Math.round((endIndex - staIndex) / 2);
+      }
+    } while (true);
+  }
+
+  const startIndex = indexOf(arr, number);
+  const lastIndex = lastIndexOf(arr, number);
+  return [startIndex, lastIndex];
 }
 
-let arr = [1, 2, 3, 4,4, 4, 5, 6, 7]
-console.log(search(arr,3))
+const arr = [1, 2, 3, 4, 4, 4, 5, 6, 7];
+console.log(search(arr, 3));
 ```
 
 ## 实现继承的方式
@@ -843,7 +846,7 @@ console.log(search(arr,3))
 函数声明
 
 ```javascript
-function say(){
+function say() {
   console.log('函数声明');
 }
 ```
@@ -851,9 +854,9 @@ function say(){
 函数表达式
 
 ```javascript
-var say = function(){
-console.log('函数表达式');
-}
+const say = function () {
+  console.log('函数表达式');
+};
 ```
 
 javascript解释器中存在一种变量声明被提升的机制，也就是说**函数声明**会被提升到作用域的最前面，
@@ -862,42 +865,43 @@ javascript解释器中存在一种变量声明被提升的机制，也就是说*
 ## 不能使用任何循环控制语句和迭代器实现一个0到1000的数组赋值
 
 ```javascript
-Array.from(new Array(1000), (val, index) => {
-    return index;
+Array.from(Array.from({ length: 1000 }), (val, index) => {
+  return index;
 });
-//或者
+// 或者
 function getFillingArr(length) {
-    class iteratorCla{
-        constructor(length){
-            this.start = 0;
-            this.end = length;
-        }
-        next(){
-            this.start++;
-            return{
-                done: this.start > this.end,
-                value: this.start -1
-            }
-        }
-        [Symbol.iterator](){
-            return this;
-        }
+  class iteratorCla {
+    constructor(length) {
+      this.start = 0;
+      this.end = length;
     }
-    return new Array(...new iteratorCla(length));
+
+    next() {
+      this.start++;
+      return {
+        done: this.start > this.end,
+        value: this.start - 1
+      };
+    }
+
+    [Symbol.iterator]() {
+      return this;
+    }
+  }
+  return new Array(...new iteratorCla(length));
 }
 ```
 
 ## “get1_install2_app3_list4_by5_android6”（每个单词后面总会携带一个数字，只有偶数才删掉），我不用循环只用正则怎么实现输出”get1InstallApp3ListBy5Android”？
 
 ```javascript
-let str = 'get1_install2_app3_list4_by5_android6'
+const str = 'get1_install2_app3_list4_by5_android6';
 
-const res = str.replace(/(\d)_?([a-z]){0,1}/g, (match, p1, p2) => {
-    return `${p1 % 2 === 0 ? '' : p1}${p2 ? p2.toUpperCase() : ''}`;
+const res = str.replace(/(\d)_?([a-z])?/g, (match, p1, p2) => {
+  return `${p1 % 2 === 0 ? '' : p1}${p2 ? p2.toUpperCase() : ''}`;
 });
-//output： get1InstallApp3ListBy5Android
-console.log(res)
-
+// output： get1InstallApp3ListBy5Android
+console.log(res);
 ```
 
 ## 深拷贝
@@ -906,34 +910,33 @@ console.log(res)
 
 ```javascript
 function deepCopy(p, c) {
-    var c = c || {};
-    for (var i in p) {
-        if (typeof p[i] === 'object') {
-            c[i] = Array.isArray(p[i]) ? [] : {};
-            deepCopy(p[i], c[i]);
-        } else {
-            c[i] = p[i];
-        }
+  var c = c || {};
+  for (const i in p) {
+    if (typeof p[i] === 'object') {
+      c[i] = Array.isArray(p[i]) ? [] : {};
+      deepCopy(p[i], c[i]);
+    } else {
+      c[i] = p[i];
     }
-    return c;
+  }
+  return c;
 }
 ```
 
 ## 动态规划求斐波那契数
 
-动态规划背后的基本思想非常简单。大致上，若要解一个给定问题，我们需要解其不同部分（即子问题），再根据子问题的解以得出原问题的解。通常许多子问题非常相似，为此动态规划法试图仅仅解决每个子问题一次，从而减少计算量：一旦某个给定子问题的解已经算出，则将其记忆化存储，因此，下一次出现相同的子问题时，无需重新计算其解决方案，只需查找先前计算的解决方案即可，从而节省了计算时间。这种做法在重复子问题的数目关于输入的规模呈指数增长时特别有用。  
+动态规划背后的基本思想非常简单。大致上，若要解一个给定问题，我们需要解其不同部分（即子问题），再根据子问题的解以得出原问题的解。通常许多子问题非常相似，为此动态规划法试图仅仅解决每个子问题一次，从而减少计算量：一旦某个给定子问题的解已经算出，则将其记忆化存储，因此，下一次出现相同的子问题时，无需重新计算其解决方案，只需查找先前计算的解决方案即可，从而节省了计算时间。这种做法在重复子问题的数目关于输入的规模呈指数增长时特别有用。
 
 ```javascript
 function fibnacci2(n, memo = []) {
-
-    if (n == 0 || n == 1) {
-        return 1
-    }
-    if(memo[n]){
-        return memo[n];
-    }
-    memo[n] = fibnacci2(n - 1,memo) + fibnacci2(n - 2,memo);
+  if (n == 0 || n == 1) {
+    return 1;
+  }
+  if (memo[n]) {
     return memo[n];
+  }
+  memo[n] = fibnacci2(n - 1, memo) + fibnacci2(n - 2, memo);
+  return memo[n];
 }
 ```
 
@@ -942,22 +945,21 @@ function fibnacci2(n, memo = []) {
 选一基准元素，依次将剩余元素中小于该基准元素的值放置其左侧，大于等于该基准元素的值放置其右侧；然后，取基准元素的前半部分和后半部分分别进行同样的处理；以此类推，直至各子序列剩余一个元素时，即排序完成
 
 ```javascript
-function kuaipai(data){
-    if(!data || data.length ==1){
-        return;
+function kuaipai(data) {
+  if (!data || data.length == 1) {
+    return;
+  }
+  const iData = data[0];
+  const leftData = [];
+  const rightData = [];
+  for (let i = 0; i < length; i++) {
+    if (data[i] > iData) {
+      rightData.push(data[i]);
+    } else {
+      leftData.push(data[i]);
     }
-    let iData = data[0];
-    let leftData=[];
-    let rightData=[];
-    for(let i=0;i<length;i++){
-        if(data[i] > iData){
-            rightData.push(data[i]);
-        }else{
-            leftData.push(data[i]);
-        }
-    }
-    data = leftData.concat(rightData);
-
+  }
+  data = leftData.concat(rightData);
 }
 ```
 
@@ -966,20 +968,20 @@ function kuaipai(data){
 依次比较相邻两元素，若前一元素大于后一元素则交换之，直至最后一个元素即为最大；然后重新从首元素开始重复同样的操作，直至倒数第二个元素即为次大元素；依次类推。如同水中的气泡，依次将最大或最小元素气泡浮出水面。
 
 ```javascript
-function maopao(data){
-    let isLoop = true;
-    let length = data.length;
-    do{
-        isLoop = false;
-        for(let i=0;i<length;i++){
-            if(data[i] > data[i+1]){
-                let iData=data[i];
-                data[i]= data[i+1];
-                data[i+1] =iData;
-                isLoop = true;
-            }
-        }
-    }while(isLoop)
+function maopao(data) {
+  let isLoop = true;
+  const length = data.length;
+  do {
+    isLoop = false;
+    for (let i = 0; i < length; i++) {
+      if (data[i] > data[i + 1]) {
+        const iData = data[i];
+        data[i] = data[i + 1];
+        data[i + 1] = iData;
+        isLoop = true;
+      }
+    }
+  } while (isLoop);
 }
 ```
 
@@ -989,13 +991,13 @@ function maopao(data){
 
 ```javascript
 // 深度优先算法，不断地沿着顶点的深度方向遍历
-function foreachTreeS(treeData){
-    if(treeData && treeData.left){
-        foreachTreeS(treeData.left);
-    }
-    if(treeData && treeData.right){
-        foreachTreeS(treeData.right);
-    }  
+function foreachTreeS(treeData) {
+  if (treeData && treeData.left) {
+    foreachTreeS(treeData.left);
+  }
+  if (treeData && treeData.right) {
+    foreachTreeS(treeData.right);
+  }
 }
 ```
 
@@ -1005,18 +1007,18 @@ function foreachTreeS(treeData){
 
 ```javascript
 // 广度优先
-function foreachTreeG(treeData){
-    let my_queue=[treeData];
-    while (my_queue.length){
-        let node = my_queue.shift();
-        console.log(node.name);
-        if(node.left){
-            my_queue.push(node.left);
-        }
-        if(node.right){
-            my_queue.push(node.right);
-        }
+function foreachTreeG(treeData) {
+  const my_queue = [treeData];
+  while (my_queue.length) {
+    const node = my_queue.shift();
+    console.log(node.name);
+    if (node.left) {
+      my_queue.push(node.left);
     }
+    if (node.right) {
+      my_queue.push(node.right);
+    }
+  }
 }
 ```
 
@@ -1030,96 +1032,94 @@ const isArr = arr => Array.isArray(arr);
 const isNaN = Number.isNaN;
 
 function compare(val1, val2) {
+  let diff = '';
 
-    let diff = '';
-    
-    if (isArr(val1) && isArr(val2)) {
-        if (val1.length === val2.length) {
-            for (let index = 0; index < val1.length; index++) {
-                diff = compare(val1[index], val2[index]);
-                if (diff) {
-                    return `数组下标${index}-${diff}`;
-                }
-            }
-            return;
-        } else {
-            return `数组长度不一致`;
+  if (isArr(val1) && isArr(val2)) {
+    if (val1.length === val2.length) {
+      for (let index = 0; index < val1.length; index++) {
+        diff = compare(val1[index], val2[index]);
+        if (diff) {
+          return `数组下标${index}-${diff}`;
         }
+      }
+      return;
+    } else {
+      return `数组长度不一致`;
     }
+  }
 
-    if (isNaN(val1) && isNaN(val2)) {
-        return;
+  if (isNaN(val1) && isNaN(val2)) {
+    return;
+  }
+
+  if ((typeof val1 === 'function' && typeof val2 === 'function')
+    || (val1 instanceof Date && val2 instanceof Date)
+    || (val1 instanceof RegExp && val2 instanceof RegExp)
+    || (val1 instanceof String && val2 instanceof String)
+    || (val1 instanceof Number && val2 instanceof Number)) {
+    if (val1.toString() !== val2.toString()) {
+      return `不一致的变量${val1}和${val2}`;
     }
+    return;
+  }
 
-    if ((typeof val1 === 'function' && typeof val2 === 'function') ||
-        (val1 instanceof Date && val2 instanceof Date) ||
-        (val1 instanceof RegExp && val2 instanceof RegExp) ||
-        (val1 instanceof String && val2 instanceof String) ||
-        (val1 instanceof Number && val2 instanceof Number)) {
-        if (val1.toString() !== val2.toString()) {
-            return `不一致的变量${val1}和${val2}`;
+  if (typeof val1 === 'object' && typeof val2 === 'object') {
+    // mixin两个对象的key
+    const mixinKeys = new Set([...Object.keys(val1), ...Object.keys(val2)]);
+    for (const key of mixinKeys) {
+      if (key in val1 && key in val2) {
+        // console.log(val1[key])
+        diff = compare(val1[key], val2[key]);
+        if (diff) {
+          return `${key}-${diff}`;
         }
-        return;
+      } else {
+        return `包含不同的key:${key}`;
+      }
     }
+    return;
+  }
 
-    if (typeof val1 === 'object' && typeof val2 === 'object') {
-        // mixin两个对象的key
-        let mixinKeys = new Set([...Object.keys(val1), ...Object.keys(val2)]);
-        for (let key of mixinKeys) {
-            if (key in val1 && key in val2) {
-
-                // console.log(val1[key])
-                diff = compare(val1[key], val2[key]);
-                if (diff) {
-                    return `${key}-${diff}`;
-                }
-            } else {
-                return `包含不同的key:${key}`;
-            }
-        }
-        return;
-    }
-
-    if (val1 !== val2) {
-        return `不一致的变量${val1}和${val2}`;
-    }
+  if (val1 !== val2) {
+    return `不一致的变量${val1}和${val2}`;
+  }
 }
 
-let obj1 = {
+const obj1 = {
+  name: 'ck',
+  age: 18,
+  arr: [1, 2, {
+    ob: '3'
+  }],
+  child: {
     name: 'ck',
-    age: 18,
-    arr: [1, 2, {
-        ob: '3'
+    age: '18',
+    n: Number.NaN,
+    ch: [1, 'yyy', {
+      date1: new Date(0),
+      date2: new Date(0)
     }],
-    child: {
-        name: 'ck',
-        age: '18',
-        n: NaN,
-        ch: [1, 'yyy', {
-            date1: new Date(0),
-            date2: new Date(0)
-        }],
-    },
-}
-let obj2 = {
+  },
+};
+const obj2 = {
+  name: 'ck',
+  age: 18,
+  arr: [1, 2, {
+    ob: '3'
+  }],
+  child: {
     name: 'ck',
-    age: 18,
-    arr: [1, 2, {
-        ob: '3'
-    }],
-    child: {
-        name: 'ck',
-        age: '18',
-        n: NaN,
-        ch: [1, 'yyy', {
-            date1: new Date(0),
-            date2: new Date(1995, 5, 20)
-        }]
-    },
+    age: '18',
+    n: Number.NaN,
+    ch: [1, 'yyy', {
+      date1: new Date(0),
+      date2: new Date(1995, 5, 20)
+    }]
+  },
 
-}
+};
 
-//output： child-ch-数组下标2-date2-不一致的变量Thu Jan 01 1970 08:00:00 GMT+0800 (CST)和Tue Jun 20 1995 00:00:00 GMT+0800 (CST)
+// output： child-ch-数组下标2-date2-不一致的变量Thu Jan 01 1970 08:00:00 GMT+0800 (CST)和Tue Jun 20 1995 00:00:00 GMT+0800 (CST)
 console.log(compare(obj1, obj2));
 ```
 
@@ -1136,116 +1136,123 @@ console.log(compare(obj1, obj2));
 4，a不执行，b和c每间隔3秒执行一次，d不执行；
 
 ```javascript
+class Scheduler {
+  constructor() {
+    this.intervalLoop = [];
+    this.intervalLoopOrder = [];
+  }
 
-class Scheduler{
-    constructor(){
-        this.intervalLoop = [];
-        this.intervalLoopOrder = [];
+  async delaytime(time) {
+    return new Promise((res) => {
+      setTimeout(() => {
+        res();
+      }, time);
+    });
+  }
+
+  /**
+   * 添加间隔某个时间进行循环调度
+   * @param {Function} fun 调度的函数
+   * @param {Array} args 调度的函数的参数
+   * @param {object} options interval:间隔时间(ms)
+   */
+  add(fun, args, options = {}) {
+    if (!Array.isArray(args)) {
+      args = undefined;
     }
-    async delaytime(time){
-        return new Promise((res)=>{
-            setTimeout(()=>{
-                res();
-            },time);
-        });
+
+    this.intervalLoop.push({
+      fun,
+      args,
+      interval: options.interval,
+    });
+  }
+
+  /**
+   * 添加间隔某个时间顺序调用
+   * @param {Array} handlers 包含顺序调用的函数、参数、延迟调用的时间 如 [{funL console.log,args:['hello', 'world'], delay: 1000 }]
+   * @param {object} options interval:间隔时间(ms)
+   */
+  adds(handlers, options = {}) {
+    this.intervalLoopOrder.push({
+      handlers,
+      interval: options.interval,
+    });
+  }
+
+  /**
+   * 触发调度器
+   */
+  start() {
+    this.runIntervalLoop();
+    this.runIntervalLoopOrder();
+  }
+
+  /**
+   * 触发间隔某个时间进行循环调度
+   */
+  runIntervalLoop() {
+    if (!this.intervalLoop.length) {
+      return;
     }
+    for (const val of this.intervalLoop) {
+      if (!val.interval) {
+        return;
+      }
 
-    /**
-     * 添加间隔某个时间进行循环调度
-     * @param {function} fun 调度的函数
-     * @param {array} args 调度的函数的参数
-     * @param {object} options interval:间隔时间(ms)
-     */
-    add(fun,args,options={}){
-
-        if(!Array.isArray(args)){
-            args =  undefined;
+      setInterval(() => {
+        if (!Array.isArray(val.args)) {
+          val.args = undefined;
         }
+        val.fun.apply(null, val.args);
+      }, val.interval);
+    }
+  }
 
-        this.intervalLoop.push({
-            fun: fun,
-            args: args,
-            interval: options.interval,
-        });
+  async emitHandlersIntervalInOrder(options = {}) {
+    const { handlers, interval } = options;
+    if (!Array.isArray(handlers) || !handlers.length) {
+      return;
     }
 
-    /**
-     * 添加间隔某个时间顺序调用
-     * @param {array} handlers 包含顺序调用的函数、参数、延迟调用的时间 如 [{funL console.log,args:['hello', 'world'], delay: 1000 }]
-     * @param {object} options interval:间隔时间(ms)
-     */
-    adds(handlers,options={}){
-        this.intervalLoopOrder.push({
-            handlers: handlers,
-            interval: options.interval,
-        });
-    }
+    let timeout = setTimeout(() => {
+      clearTimeout(timeout);
+      timeout = null;
+      // 重置
+      this.emitHandlersIntervalInOrder(options);
+    }, interval);
 
-    /**
-     * 触发调度器
-     */
-    start(){
-        this.runIntervalLoop();
-        this.runIntervalLoopOrder();
-    }
-
-    /**
-     * 触发间隔某个时间进行循环调度
-     */
-    runIntervalLoop(){
-        if(!this.intervalLoop.length) return;
-        for (const val of this.intervalLoop) {
-
-            if(!val.interval) return;
-            
-            setInterval(()=>{
-                if(!Array.isArray(val.args)){
-                    val.args = undefined;
-                }
-                val.fun.apply(null, val.args);
-            },val.interval);
+    const handlerFuns = async (handlers) => {
+      for (const handler of handlers) {
+        if (!Array.isArray(handler.args)) {
+          handler.args = undefined;
         }
+        // 保证按顺序调用
+        await this.delaytime(handler.delay);
+        await handler.fun.apply(null, handler.args);
+      }
+    };
+
+    do {
+      await handlerFuns(handlers);
+    } while (timeout);
+  }
+
+  /**
+   * 触发间隔某个时间顺序调用
+   */
+  runIntervalLoopOrder() {
+    if (!this.intervalLoopOrder.length) {
+      return;
     }
-    async emitHandlersIntervalInOrder(options = {}){
-        let { handlers,interval } = options;
-        if(!Array.isArray(handlers) || !handlers.length) return;
-
-        let timeout = setTimeout(()=>{
-            clearTimeout(timeout);
-            timeout = null;
-            // 重置
-            this.emitHandlersIntervalInOrder(options);
-        },interval);
-
-        let handlerFuns = async (handlers)=>{
-            for (const handler of handlers) {
-                if(!Array.isArray(handler.args)){
-                    handler.args = undefined;
-                }
-                // 保证按顺序调用
-                await this.delaytime(handler.delay);
-                await handler.fun.apply(null, handler.args);
-            }
-        }
-
-        do {
-            await handlerFuns(handlers);
-        } while (timeout);
-
+    for (const val of this.intervalLoopOrder) {
+      this.emitHandlersIntervalInOrder(val);
     }
-    /**
-     * 触发间隔某个时间顺序调用
-     */
-    runIntervalLoopOrder(){
-        if(!this.intervalLoopOrder.length) return;
-        for (const val of this.intervalLoopOrder) {
-            this.emitHandlersIntervalInOrder(val);
-        }
-    }
+  }
 }
 
 /**
- 
+
 let sche = new Scheduler();
 
 function a (val){
@@ -1310,9 +1317,8 @@ sche.add(c,null,{
 });
 sche.start();
 
-* 
+ *
  */
-
 ```
 
 # node
@@ -1321,14 +1327,14 @@ sche.start();
 
 ```javascript
 function name(methods) {
-    return async function(ctx, next){
-        let startDate = new Date();
+  return async function (ctx, next) {
+    const startDate = new Date();
 
-        if (methods.indexOf(ctx.request.method) !== -1) {
-            await next();
-        }
-        console.log(`time:${new Date() - startDate}`);    
+    if (methods.includes(ctx.request.method)) {
+      await next();
     }
+    console.log(`time:${new Date() - startDate}`);
+  };
 }
 ```
 
@@ -1638,22 +1644,22 @@ Vue **不能检测**数组和对象的变化。
 Vue 无法检测 property 的添加或移除。由于 Vue 会在初始化实例时对 property 执行 getter/setter 转化，所以 property 必须在 `data` 对象上存在才能让 Vue 将它转换为响应式的。
 
 ```javascript
-var vm = new Vue({
-  data:{
-    a:1
+const vm = new Vue({
+  data: {
+    a: 1
   }
-})
+});
 
 // `vm.a` 是响应式的
 
-vm.b = 2
+vm.b = 2;
 // `vm.b` 是非响应式的
 ```
 
 对于已经创建的实例，Vue 不允许动态添加根级别的响应式 property。但是，可以使用 `Vue.set(object, propertyName, value)` 方法向嵌套对象添加响应式 property。
 
 ```javascript
-Vue.set(vm.someObject, 'b', 2)
+Vue.set(vm.someObject, 'b', 2);
 ```
 
 有时你可能需要为已有对象赋值多个新 property在这种情况下，你应该用原对象与要混合进去的对象的 property 一起创建一个新的对象。
@@ -1693,21 +1699,21 @@ vm.items.splice(indexOfItem, 1, newValue)
 MyPlugin.install = function (Vue, options) {
   // 1. 添加全局方法或属性
   Vue.myGlobalMethod = function () {
-  }
+  };
   // 2. 添加全局资源
   Vue.directive('my-directive', {
-    bind (el, binding, vnode, oldVnode) {
+    bind(el, binding, vnode, oldVnode) {
     }
-  })
+  });
   // 3. 注入组件选项
   Vue.mixin({
-    created: function () {
+    created() {
     }
-  })
+  });
   // 4. 添加实例方法
   Vue.prototype.$myMethod = function (methodOptions) {
-  }
-}
+  };
+};
 ```
 
 一个库，提供自己的 API，同时提供上面提到的一个或多个功能。如 vue-router
@@ -1747,7 +1753,7 @@ MyPlugin.install = function (Vue, options) {
 + `oldVnode`：上一个虚拟节点，仅在 `update` 和 `componentUpdated` 钩子中可用。
 
 ```javascript
-<input v-focus="isFocus" />   
+<input v-focus="isFocus" />
 
 directives: {
   focus: {
@@ -1782,7 +1788,7 @@ Vue.component('base-checkbox', {
   `
 })
 
-//现在在这个组件上使用 v-model 
+//现在在这个组件上使用 v-model
 <base-checkbox v-model="lovingVue"></base-checkbox>
 ```
 
@@ -1857,7 +1863,7 @@ this.$emit('update:title', newTitle)
 
   <p>A paragraph for the main content.</p>
   <p>And another one.</p>
-  
+
   <!--等同于
   <template v-slot:default>
     <p>A paragraph for the main content.</p>

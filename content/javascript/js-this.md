@@ -15,7 +15,7 @@ js 中 this 指当前执行代码的环境对象，this 不能在执行期间被
 console.log(this === window); // true
 a = 37;
 console.log(window.a); // 37
-this.b = "MDN";
+this.b = 'MDN';
 console.log(window.b); // "MDN"
 console.log(b); // "MDN"
 ```
@@ -36,17 +36,17 @@ console.log(this); //  {}
 function f1() {
   return this;
 }
-//在浏览器中：
-f1() === window; //在浏览器中，全局对象是window
+// 在浏览器中：
+f1() === window; // 在浏览器中，全局对象是window
 
-//在Node中：
+// 在Node中：
 f1() === global;
 ```
 
 严格模式下，如果 this 没有被执行环境（execution context）定义，那它将保持为 undefined
 
 ```javascript
-"use strict"; // 这里是严格模式
+'use strict'; // 这里是严格模式
 function f2() {
   return this;
 }
@@ -60,10 +60,10 @@ window.f2(); //  window
 
 ```javascript
 // 将一个对象作为call和apply的第一个参数，this会被绑定到这个对象。
-var obj = { a: "Custom" };
+const obj = { a: 'Custom' };
 
 // 这个属性是在global对象定义的。
-var a = "Global";
+const a = 'Global';
 
 function whatsThis(arg) {
   return this.a; // this的值取决于函数的调用方式
@@ -81,7 +81,7 @@ function add(c, d) {
   return this.a + this.b + c + d;
 }
 
-var o = { a: 1, b: 3 };
+const o = { a: 1, b: 3 };
 
 // 第一个参数是作为‘this’使用的对象
 // 后续参数作为参数传递给函数调用
@@ -98,7 +98,7 @@ add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
 function bar() {
   console.log(this);
 }
-//原始值 7 被隐式转换为对象
+// 原始值 7 被隐式转换为对象
 bar.call(7); // Number {7}
 ```
 
@@ -109,21 +109,21 @@ function f() {
   return this.a;
 }
 
-var g = f.bind({
-  a: "azerty",
+const g = f.bind({
+  a: 'azerty',
 });
 console.log(g()); // azerty
 
-var h = g.bind({
-  a: "yoo",
+const h = g.bind({
+  a: 'yoo',
 }); // bind只生效一次！
 console.log(h()); // azerty
 
-var o = {
+const o = {
   a: 37,
-  f: f,
-  g: g,
-  h: h,
+  f,
+  g,
+  h,
 };
 console.log(o.f(), o.g(), o.h()); // 37, azerty, azerty
 ```
@@ -133,15 +133,15 @@ console.log(o.f(), o.g(), o.h()); // 37, azerty, azerty
 在箭头函数中，this 与封闭词法环境的 this 保持一致。在全局代码中，它将被设置为全局对象,无论如何，foo 的 this 被设置为他被创建时的环境
 
 ```javascript
-var globalObject = this;
-var foo = () => this;
+const globalObject = this;
+const foo = () => this;
 console.log(foo() === globalObject); // true
 ```
 
 如果将 this 传递给 call、bind、或者 apply，它将被忽略。不过你仍然可以为调用添加参数，不过第一个参数（thisArg）应该设置为 null。
 
 ```javascript
-var obj = { foo: foo };
+const obj = { foo };
 console.log(obj.foo() === globalObject); // true
 
 // 尝试使用call来设定this
@@ -161,16 +161,16 @@ console.log(foo() === globalObject); // true
 // 这个返回的函数是以箭头函数创建的，
 // 所以它的this被永久绑定到了它外层函数的this。
 // bar的值可以在调用中设置，这反过来又设置了返回函数的值。
-var obj = {
-  bar: function () {
-    var x = () => this;
+const obj = {
+  bar() {
+    const x = () => this;
     return x;
   },
 };
 
 // 作为obj对象的一个方法来调用bar，把它的this绑定到obj。
 // 将返回的函数的引用赋值给fn。
-var fn = obj.bar();
+const fn = obj.bar();
 
 // 直接调用fn而不设置this，
 // 通常(即不使用箭头函数的情况)默认为全局对象
@@ -179,7 +179,7 @@ console.log(fn() === obj); // true
 
 // 但是注意，如果你只是引用obj的方法，
 // 而没有调用它
-var fn2 = obj.bar;
+const fn2 = obj.bar;
 // 那么调用箭头函数后，this指向window，因为它从 bar 继承了this。
 console.log(fn2()() == window); // true
 ```
@@ -190,9 +190,9 @@ console.log(fn2()() == window); // true
 当 o.f()被调用时，函数内的 this 将绑定到 o 对象
 
 ```javascript
-var o = {
+const o = {
   prop: 37,
-  f: function () {
+  f() {
     return this.prop;
   },
 };
@@ -201,14 +201,14 @@ console.log(o.f()); // logs 37
 
 window.prop = 3;
 a = o.f;
-a(); //3
+a(); // 3
 ```
 
 **注意**
 这样的行为，根本不受函数定义方式或位置的影响。在前面的例子中，我们在定义对象 o 的同时，将函数内联定义为成员 f 。但是，我们也可以先定义函数，然后再将其附属到 o.f。这样做会导致相同的行为：
 
 ```javascript
-var o = { prop: 37 };
+const o = { prop: 37 };
 
 function independent() {
   return this.prop;
@@ -233,12 +233,12 @@ console.log(o.b.g()); // 42
 如果该方法存在于一个对象的原型链上，那么 this 指向的是调用这个方法的对象，就像该方法在对象上一样
 
 ```javascript
-var o = {
-  f: function () {
+const o = {
+  f() {
     return this.a + this.b;
   },
 };
-var p = Object.create(o);
+const p = Object.create(o);
 p.a = 1;
 p.b = 4;
 
@@ -256,7 +256,7 @@ function sum() {
   return this.a + this.b + this.c;
 }
 
-var o = {
+const o = {
   a: 1,
   b: 2,
   c: 3,
@@ -265,7 +265,7 @@ var o = {
   },
 };
 
-Object.defineProperty(o, "sum", {
+Object.defineProperty(o, 'sum', {
   get: sum,
   enumerable: true,
   configurable: true,
@@ -298,7 +298,7 @@ function C() {
   this.a = 37;
 }
 
-var o = new C();
+let o = new C();
 console.log(o.a); // logs 37
 
 function C2() {
@@ -321,15 +321,15 @@ function bluify(e) {
 
   // 当 currentTarget 和 target 是同一个对象时为 true
   console.log(this === e.target);
-  this.style.backgroundColor = "#A5D9F3";
+  this.style.backgroundColor = '#A5D9F3';
 }
 
 // 获取文档中的所有元素的列表
-var elements = document.getElementsByTagName("*");
+const elements = document.getElementsByTagName('*');
 
 // 将bluify作为元素的点击监听函数，当元素被点击时，就会变成蓝色
-for (var i = 0; i < elements.length; i++) {
-  elements[i].addEventListener("click", bluify, false);
+for (let i = 0; i < elements.length; i++) {
+  elements[i].addEventListener('click', bluify, false);
 }
 ```
 

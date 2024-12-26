@@ -183,18 +183,18 @@ VUE 3 原生支持了`CSS Modules`,通过在你的 `<style>` 上添加 module �
 
 ```js
 customElements.define(
-  "my-button",
+  'my-button',
   class extends HTMLElement {
     constructor() {
       super();
 
       const shadow = this.attachShadow({
-        mode: "open",
+        mode: 'open',
       });
 
-      const wrapper = document.createElement("button");
-      wrapper.innerText = "Button";
-      const style = document.createElement("style");
+      const wrapper = document.createElement('button');
+      wrapper.innerText = 'Button';
+      const style = document.createElement('style');
       style.textContent = `
       button {
         color: #0B8BF4;
@@ -212,7 +212,7 @@ customElements.define(
 
 原子化 CSS 是一种 CSS 的架构方式，它倾向于预先定义小巧且用途单一的 class，并且会以视觉效果进行命名。然后扫描代码中的 class 按照使用到的 class 样式提取出来，并且把它们放到一个单独的文件中。
 
-```HTML
+```html
 <div class="m-0 text-red"></div>
 ```
 

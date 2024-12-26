@@ -9,7 +9,7 @@ date: "2024-09-19"
 对于传统的`File API` 当需要用户提供文件时，Web 应用程序可以使用文件 `<input>` 元素打开文件选择对话框来访问文件或者文件夹
 
 ```js
-fileInput.addEventListener("change", async () => {
+fileInput.addEventListener('change', async () => {
   const [file] = fileInput.files;
 });
 ```
@@ -25,7 +25,7 @@ fileInput.addEventListener("change", async () => {
 ```js
 async function openFile() {
   const [fileHandle] = await window.showOpenFilePicker();
-    // 对文件进行处理
+  // 对文件进行处理
 }
 
 async function openFolder() {
@@ -63,9 +63,8 @@ async function getDB(DB_NAME, STORE_NAME) {
     get,
     set,
     del,
-  }
+  };
 }
-
 
 export async function getDirHandler(DB_DIR_KEY = 'dir_handler') {
   if (!DB) {
@@ -74,7 +73,6 @@ export async function getDirHandler(DB_DIR_KEY = 'dir_handler') {
   /** @type { FileSystemDirectoryHandle } */
   let dirHandler = await DB.get(DB_DIR_KEY);
   if (!dirHandler) {
-
     try {
       dirHandler = await window.showDirectoryPicker({
         mode: 'readwrite',
@@ -84,7 +82,7 @@ export async function getDirHandler(DB_DIR_KEY = 'dir_handler') {
       console.log(error);
     }
 
-    await DB.set(DB_DIR_KEY, dirHandler)
+    await DB.set(DB_DIR_KEY, dirHandler);
   }
 
   // 由于权限并非总是在会话之间持久保留，因此您应验证用户是否 已使用 queryPermission() 授予对文件或目录的权限。否则，请调用 requestPermission() 来（重新）请求该请求。这对文件和目录句柄是相同的。您 需要运行 fileOrDirectoryHandle.requestPermission(descriptor) 或 fileOrDirectoryHandle.queryPermission(descriptor)

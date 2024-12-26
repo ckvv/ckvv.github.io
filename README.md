@@ -4,6 +4,5 @@ My Blog
 
 # Others
 
-+ Power by: [hugo](https://gohugo.io/)
-+ Theme: [hugo-coder](https://github.com/luizdepra/hugo-coder)
++ Power by: [astro](https://astro.build/)
 + Comment: [cusdis](https://cusdis.com)

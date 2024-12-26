@@ -1,0 +1,45 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Link from '../../components/Link.astro';
+import { getPosts } from '../../utils';
+
+
+export async function getStaticPaths() {
+	const posts = await getPosts();
+
+	const tags: Record<string, any[]> = {};
+	for (const post of posts) {
+		if(Array.isArray(post.data.tags)) {
+			for (const _tag of post.data.tags) {
+				const tag = _tag.toUpperCase();
+				tags[tag] = tags[tag] || [];
+				tags[tag].push(post);
+			}
+		}
+	}
+	return Object.keys(tags).map(v => {
+		return {
+      params: { slug: v },
+      props: { posts: tags[v] },
+    }
+	});
+}
+
+const { posts } = Astro.props;
+---
+
+<BlogPost>
+	<div class="text-lg flex flex-col gap-2">
+		{
+			posts.map((post) => (
+				<Link href={`/blog/${post.id}/`} class="flex gap-4 hover:text-sky-600">
+					<h4 class="flex-grow">{post.data.title}</h4>
+					<p class="date">
+						<FormattedDate date={post.data.updatedDate || post.data.pubDate} />
+					</p>
+				</Link>
+			))
+		}
+	</div>
+</BlogPost>

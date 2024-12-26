@@ -63,8 +63,8 @@ npm deprecate @ckpack/vue-color@">=1.0.0 <=1.1.3" "Critical bug fixed in v1.1.4
 ```json
 {
   "dependencies": {
-    "@ckpack/vue-color": "^1.1.3",
-  },
+    "@ckpack/vue-color": "^1.1.3"
+  }
 }
 ```
 
@@ -73,8 +73,8 @@ npm deprecate @ckpack/vue-color@">=1.0.0 <=1.1.3" "Critical bug fixed in v1.1.4
 ```json
 {
   "dependencies": {
-    "@ckpack/vue-color": "1.1.3",
-  },
+    "@ckpack/vue-color": "1.1.3"
+  }
 }
 ```
 

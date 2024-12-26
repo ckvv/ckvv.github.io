@@ -19,11 +19,9 @@ console.log(notFalsyText); // Hello world
 let preservingFalsy = myText ?? 'Hi neighborhood';
 console.log(preservingFalsy); // '' (as myText is neither undefined nor null)
 
-
 //因为空值合并操作符和其他逻辑操作符之间的运算优先级/运算顺序是未定义的
 null || undefined ?? "foo"; // 抛出 SyntaxError
 (null || undefined ) ?? "foo"; // 返回 "foo"
-
 
 let customer = {
   name: "Carl",
@@ -39,9 +37,9 @@ console.log(customerCity); // “暗之城”
 
 ```javascript
 const adventurer = {
-  name: "Alice",
+  name: 'Alice',
   cat: {
-    name: "Dinah",
+    name: 'Dinah',
   },
 };
 
@@ -58,8 +56,10 @@ console.log(adventurer.someNonExistentMethod?.());
 
 ```javascript
 function Foo() {
-  if (!new.target) throw "Foo() must be called with new";
-  console.log("Foo instantiated with new");
+  if (!new.target) {
+    throw 'Foo() must be called with new';
+  }
+  console.log('Foo instantiated with new');
 }
 
 Foo(); // throws "Foo() must be called with new"
@@ -77,8 +77,8 @@ class B extends A {
   }
 }
 
-var a = new A(); // logs "A"
-var b = new B(); // logs "B"
+const a = new A(); // logs "A"
+const b = new B(); // logs "B"
 ```
 
 ## 逗号操作符

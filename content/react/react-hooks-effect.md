@@ -30,12 +30,14 @@ undefined
 function CountButton() {
   const [count, setCount] = useState(0);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(count);
   });
   return (
-    <button type="button" onClick={() => setCount(count+1)}>
-        count is: {count}
+    <button type="button" onClick={() => setCount(count + 1)}>
+      count is:
+      {' '}
+      {count}
     </button>
   );
 }
@@ -54,18 +56,20 @@ function DateLabel() {
   const [date, setCount] = useState(new Date().toLocaleString());
 
   // 在执行 effect 之前会先执行上一个 effect的清除函数
-  useEffect(()=>{
-    const timeout = setTimeout(()=>{
+  useEffect(() => {
+    const timeout = setTimeout(() => {
       setCount(new Date().toLocaleString());
     }, 1000);
     // 清除函数会在组件卸载前执行
     return () => {
       clearTimeout(timeout);
-    }
+    };
   });
   return (
     <label>
-      当前时间是: {date}
+      当前时间是:
+      {' '}
+      {date}
     </label>
   );
 }
@@ -80,20 +84,22 @@ function DateLabel() {
 ```jsx
 function CountBtn() {
   const [count, setCount] = useState(0);
-    // 在useEffect之前调用
-  console.log('函数中;useEffect前',count);
+  // 在useEffect之前调用
+  console.log('函数中;useEffect前', count);
 
-  useEffect(()=>{
+  useEffect(() => {
     // Dom 已经变化
     console.log(document.querySelector('.count-btn').textContent);
   });
 
   // 在useEffect之前调用
-  console.log('函数中;useEffect后',count);
+  console.log('函数中;useEffect后', count);
 
   return (
-    <button className='count-btn' onClick={() => setCount(count => count +1)}>
-      当前count: {count}
+    <button className="count-btn" onClick={() => setCount(count => count + 1)}>
+      当前count:
+      {' '}
+      {count}
     </button>
   );
 }
@@ -111,9 +117,8 @@ useEffect(() => {
 }, []);
 
 useEffect(() => {
-  //这里的代码只会在每次渲染后，并且 a 或 b 的值与上次渲染不一致时执行
+  // 这里的代码只会在每次渲染后，并且 a 或 b 的值与上次渲染不一致时执行
 }, [a, b]);
-
 ```
 
 默认情况下，effect 会在每轮组件渲染完成后执行。这样的话，一旦 effect 的依赖发生变化，它就会被重新创建。
@@ -129,23 +134,25 @@ useEffect(() => {
 - 请确保数组中包含了**所有外部作用域中会随时间变化并且在 effect 中使用的变量**，否则你的代码会引用到先前渲染中的旧变量。
 
 - 如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组作为第二个参数。effect 内部的 props 和 state 就会一直拥有其初始值。
-  
+
   ```jsx
   function Count() {
     const [count, setCount] = useState(0);
-  
-    useEffect(()=>{
-      const timeout = setInterval(()=>{
+
+    useEffect(() => {
+      const timeout = setInterval(() => {
         // 点击button后虽然count改变但是count依然为0
         console.log(count);
       }, 1000);
       return () => {
         clearInterval(timeout);
-      }
+      };
     }, []);
     return (
       <button onClick={() => setCount(count + 1)}>
-        当前count: {count}
+        当前count:
+        {' '}
+        {count}
       </button>
     );
   }
@@ -159,8 +166,8 @@ useEffect(() => {
 function ChatRoom({ roomId }) {
   // ...
   const options = {
-    serverUrl: serverUrl,
-    roomId: roomId
+    serverUrl,
+    roomId
   };
 
   useEffect(() => {
@@ -215,10 +222,10 @@ function ChatRoom({ roomId }) {
 <ChatRoom
   roomId={roomId}
   options={{
-    serverUrl: serverUrl,
-    roomId: roomId
+    serverUrl,
+    roomId
   }}
-/>
+/>;
 
 function ChatRoom({ options }) {
   const [message, setMessage] = useState('');
@@ -227,8 +234,8 @@ function ChatRoom({ options }) {
   const { roomId, serverUrl } = options;
   useEffect(() => {
     const connection = createConnection({
-      roomId: roomId,
-      serverUrl: serverUrl
+      roomId,
+      serverUrl
     });
     connection.connect();
     return () => connection.disconnect();
@@ -240,11 +247,11 @@ function ChatRoom({ options }) {
 
 ```jsx
 function Page({ url, shoppingCart }) {
-  const onVisit = useEffectEvent(visitedUrl => {
-    logVisit(visitedUrl, shoppingCart.length)
+  const onVisit = useEffectEvent((visitedUrl) => {
+    logVisit(visitedUrl, shoppingCart.length);
   });
 
-// 仅在 url 更改后记录一次新的页面访问
+  // 仅在 url 更改后记录一次新的页面访问
   useEffect(() => {
     onVisit(url);
   }, [url]); // ✅ 所有声明的依赖项
@@ -262,10 +269,10 @@ function Page({ url, shoppingCart }) {
 
 ```jsx
 // 在浏览器重新绘制屏幕之前执行布局测量,避免页面闪烁
-  useEffect(() => {
-    const { height } = ref.current.getBoundingClientRect();
-    setTooltipHeight(height);
-  }, []);
+useEffect(() => {
+  const { height } = ref.current.getBoundingClientRect();
+  setTooltipHeight(height);
+}, []);
 ```
 
 ## useInsertionEffect
@@ -280,7 +287,7 @@ useInsertionEffect(setup, dependencies?)
 
 ```jsx
 // 在你的 CSS-in-JS 库中
-let isInserted = new Set();
+const isInserted = new Set();
 function useCSS(rule) {
   useInsertionEffect(() => {
     // 同前所述，我们不建议在运行时注入 <style> 标签。

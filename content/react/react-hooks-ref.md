@@ -11,7 +11,7 @@ date: "2024-08-24"
 ### 参考
 
 ```jsx
-const ref = useRef(initialValue)
+const ref = useRef(initialValue);
 ```
 参数
 - `initialValue`: ref 对象的 current 属性的初始值。可以是任意类型的值。这个参数在首次渲染后被忽略
@@ -26,7 +26,7 @@ const ref = useRef(initialValue)
 - 除了 初始化 外不要在渲染期间写入或者读取 ref.current
 - 在严格模式下，React 将会 调用两次组件方法
 
-### 通过 ref 操作 DOM 
+### 通过 ref 操作 DOM
 
 一个常见的用例便是命令式地访问子组件
 
@@ -62,7 +62,10 @@ function TextInputWithFocusButton() {
       <button onClick={() => {
         console.log(countRes.current);
         countRes.current = countRes.current + 1;
-      }}>Focus the input</button>
+      }}
+      >
+        Focus the input
+      </button>
       {countRes.current}
     </>
   );
@@ -85,7 +88,12 @@ function Counter() {
   const prevCount = usePrevious(count);
   return (
     <>
-      <h1>Now: {count}, before: {prevCount}</h1>
+      <h1>
+        Now:
+        {count}
+        , before:
+        {prevCount}
+      </h1>
       <button onClick={() => setCount(count + 1)}>Add</button>
     </>
   );
@@ -100,20 +108,25 @@ function Counter() {
 function TextInput() {
   let textInput = null;
   // 不需要使用useRef
-  const inputRef = (ele)=>{
+  const inputRef = (ele) => {
     console.log(ele);
     textInput = ele;
   };
   return (
     <>
       <input ref={inputRef} type="text" />
-      <button onClick={() => {console.log(textInput)}}>Focus the input</button>
+      <button onClick={() => {
+        console.log(textInput);
+      }}
+      >
+        Focus the input
+      </button>
     </>
   );
 }
 ```
 
-使用 ref 回调管理 ref 列表 
+使用 ref 回调管理 ref 列表
 ```jsx
 const itemsRef = useRef(null);
 function getMap() {
@@ -164,12 +177,12 @@ return (
 ```jsx
 //  flushSync 中的代码执行后，立即同步更新 DOM
 flushSync(() => {
-  setTodos([ ...todos, newTodo]);
+  setTodos([...todos, newTodo]);
 });
 listRef.current.lastChild.scrollIntoView();
 ```
 
-### 访问另一个组件的 DOM 节点 
+### 访问另一个组件的 DOM 节点
 默认情况下，React 不允许组件访问其他组件的 DOM 节点。甚至自己的子组件也不行，想要 暴露其 DOM 节点的组件必须选择该行为。
 
 ```jsx
@@ -182,7 +195,7 @@ const MyInput = forwardRef((props, ref) => {
 ```
 
 ```jsx
-<MyInput ref={inputRef} />
+<MyInput ref={inputRef} />;
 ```
 
 ### 不要在渲染期间读取、写入 ref
@@ -266,14 +279,13 @@ useImperativeHandle(ref, createHandle, dependencies?)
 返回值
 undefined
 
-
 ### 基础用法
 
 父组件可以调用 `inputRef.current.focus()`。
 
 ```jsx
-//该渲染函数会将 ref 传递给 <input ref={ref}> 元素。
-const FancyInput = forwardRef(function FancyInput(props, ref) {
+// 该渲染函数会将 ref 传递给 <input ref={ref}> 元素。
+const FancyInput = forwardRef((props, ref) => {
   const inputRef = useRef();
   useImperativeHandle(ref, () => ({
     focus: () => {
@@ -281,9 +293,9 @@ const FancyInput = forwardRef(function FancyInput(props, ref) {
     }
   }));
   return <input ref={inputRef} />;
-})
+});
 
-function Wrapper(){
+function Wrapper() {
   const inputRef = useRef();
   // React 会将 <FancyButton ref={ref}> 元素的 ref 作为第二个参数传递给 React.forwardRef 函数中的渲染函数。
 

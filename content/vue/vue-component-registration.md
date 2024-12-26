@@ -11,16 +11,16 @@ date: '2021-07-09'
 通过`app.component`来创建全局组件
 
 ```js
-import { createApp } from 'vue'
-import HelloWorld from './components/HelloWorld'
+import { createApp } from 'vue';
+import HelloWorld from './components/HelloWorld';
 
-const app = createApp({})
+const app = createApp({});
 
 // 全局注册一个名为hello-wolrd的组件
 app.component('hello-wolrd', HelloWorld);
 ```
 
-一旦我们全局注册了组件，我们就可以在任何地方使用这个组件：`<hello-wolrd/>`  
+一旦我们全局注册了组件，我们就可以在任何地方使用这个组件：`<hello-wolrd/>`
 >值得注意的是全局注册会使Vue失去`TypeScript`的支持, Vue 3 有一个 [PR](https://github.com/vuejs/vue-next/pull/3399) 扩展了全局组件的接口。目前，[Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) 已经支持这种用法，我们可以通过在根目录添加`components.d.ts`文件的方式来添加全对局组件的`TypeScript`的支持
 
 ```ts
@@ -57,21 +57,21 @@ export default {
 在JSX中
 
 ```jsx
-import HelloWolrd from './components/HelloWorld.vue'
+import HelloWolrd from './components/HelloWorld.vue';
 export default {
-  name: "item",
-  render(){
+  name: 'item',
+  render() {
     return (
-      <HelloWolrd msg="Welcome to Your Vue.js App"/>
-    )
+      <HelloWolrd msg="Welcome to Your Vue.js App" />
+    );
   }
-}
+};
 ```
 
 局部注册的组件在其他组件中无法访问，在其父组件或子组件或中均不可用，所以你需要在每个使用该组件的地方重新引入并注册该组件
 
 ```js
-import HelloWolrd from './components/HelloWorld.vue'
+import HelloWolrd from './components/HelloWorld.vue';
 ```
 
 但是这种直接导入组件的方式还有一个好处，如果我们导入的组件使用了`typescript`，我们无需任何插件就可以在组件中获得智能提示和类型检查的功能
@@ -88,26 +88,26 @@ import HelloWolrd from './components/HelloWorld.vue'
 
 ```js
 // vite.config.ts
-import Components from 'unplugin-vue-components/vite'
+import Components from 'unplugin-vue-components/vite';
 
 export default defineConfig({
   plugins: [
     Components({ /* options */ }),
   ],
-})
+});
 ```
 
 + rollup
 
 ```js
 // rollup.config.js
-import Components from 'unplugin-vue-components/rollup'
+import Components from 'unplugin-vue-components/rollup';
 
 export default {
   plugins: [
     Components({ /* options */ }),
   ],
-}
+};
 ```
 
 + webpack
@@ -119,7 +119,7 @@ module.exports = {
   plugins: [
     require('unplugin-vue-components/webpack')({ /* options */ })
   ]
-}
+};
 ```
 
 然后我们可以像往常一样在模板中使用组件，它会自动进行下面的转换

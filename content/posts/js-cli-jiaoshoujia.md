@@ -75,37 +75,35 @@ Node.js命令行
 ```js
 #!/usr/bin/env node
 
-const program = require('commander')
-const chalk = require('chalk')
-const downLoad = require('../utils/download')
+const chalk = require('chalk');
+const program = require('commander');
+const downLoad = require('../utils/download');
 
-if(!process.argv || process.argv.length <= 2){
-    console.log(chalk.yellow(`\nOptions: \n   -h, --help for a list of available commands.`));
-    process.exit(1);
+if (!process.argv || process.argv.length <= 2) {
+  console.log(chalk.yellow(`\nOptions: \n   -h, --help for a list of available commands.`));
+  process.exit(1);
 }
 
 const gitPath = 'ckvv/cli_koa';
 program
-    .version(require('../package').version)
+  .version(require('../package').version);
 
 program
-    .command('init')
-    .description('初始化一个koa项目')
-    .arguments('<project_name> [env]')
-    .action(async (args) => {
-        downLoad(gitPath, `./${args}`);
-    });
-
+  .command('init')
+  .description('初始化一个koa项目')
+  .arguments('<project_name> [env]')
+  .action(async (args) => {
+    downLoad(gitPath, `./${args}`);
+  });
 
 program.on('option:verbose', function () {
-    process.env.VERBOSE = this.verbose;
+  process.env.VERBOSE = this.verbose;
 });
 
-
 // 未知命令会报错
-program.on('command:*', function () {
-    console.log(chalk.red(`Invalid command: ${program.args.join(' ')}\nSee --help for a list of available commands.`));
-    process.exit(1);
+program.on('command:*', () => {
+  console.log(chalk.red(`Invalid command: ${program.args.join(' ')}\nSee --help for a list of available commands.`));
+  process.exit(1);
 });
 program.parse(process.argv);
 ```
@@ -115,28 +113,28 @@ program.parse(process.argv);
 从git仓库下载文件
 
 ```js
-const downLoad = require('download-git-repo')
-const ora = require('ora')
+const downLoad = require('download-git-repo');
+const ora = require('ora');
 
-let clone = false;
-let downGit = (url, name) => {
-    if (!url || !name) {
-        console.log(`缺少参数:url-${url},name-${name}`);
-        process.exit(1);
-        return;
-    }
-    const spinner = ora(`正在拉取git模板:${url}...`)
-    spinner.start();
-    downLoad(url, name, {
-        clone
-    }, err => {
-        spinner.stop()
-        console.log(err ? err : `拉取git模板:${url}完成`);
-        process.exit(1)
-    })
+const clone = false;
+function downGit(url, name) {
+  if (!url || !name) {
+    console.log(`缺少参数:url-${url},name-${name}`);
+    process.exit(1);
+    return;
+  }
+  const spinner = ora(`正在拉取git模板:${url}...`);
+  spinner.start();
+  downLoad(url, name, {
+    clone
+  }, (err) => {
+    spinner.stop();
+    console.log(err || `拉取git模板:${url}完成`);
+    process.exit(1);
+  });
 }
 
-module.exports = downGit
+module.exports = downGit;
 ```
 
 ## package.json

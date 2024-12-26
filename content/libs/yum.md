@@ -118,13 +118,13 @@ CentOS系统更换软件安装源
 第一步：备份你的原镜像文件，以免出错后可以恢复。
 
 ```
-mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup 
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
 ```
 
 第二步：下载新的CentOS-Base.repo 到/etc/yum.repos.d/
 
 ```
-wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo 
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
 ```
 
 第三步：运行yum makecache生成缓存
@@ -230,7 +230,7 @@ rpm包信息显示(info参数同list)
 #yum search mozilla
 注:在rpm包名,包描述等中搜索
 搜索有包含特定文件名的rpm包
-#yum provides realplay 
+#yum provides realplay
 ```
 
 增加资源库

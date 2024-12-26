@@ -33,112 +33,171 @@ base64编码过程逆向即为解码
 
 ```javascript
 Base64 = {
-    _table: [
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-        'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
-        'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-        'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'
-    ],
-    _getReg: function () {
-        return RegExp(`^[${this._table.join('')}]+={0,2}$`);
-    },
-    encode: function (bin) {
-       let codes = [];
-        let binLength = bin.length;
-        un = binLength % 3;
+  _table: [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '+',
+    '/'
+  ],
+  _getReg() {
+    return new RegExp(`^[${this._table.join('')}]+={0,2}$`);
+  },
+  encode(bin) {
+    const codes = [];
+    const binLength = bin.length;
+    un = binLength % 3;
 
-        for (let i = 2; i < binLength; i += 3) {
-            let c = bin[i - 2] << 16;
-            c |= bin[i - 1] << 8;
-            c |= bin[i];
+    for (let i = 2; i < binLength; i += 3) {
+      let c = bin[i - 2] << 16;
+      c |= bin[i - 1] << 8;
+      c |= bin[i];
 
-            //0x3f代表16进制数3F即0011 1111
-            codes.push(this._table[c >> 18 & 0x3f]);
-            codes.push(this._table[c >> 12 & 0x3f]);
-            codes.push(this._table[c >> 6 & 0x3f]);
-            codes.push(this._table[c & 0x3f]);
-        }
-
-        if (un == 1) {
-            let c = bin[binLength - 1] << 16;
-            codes.push(this._table[c >> 18 & 0x3f]);
-            codes.push(this._table[c >> 12 & 0x3f]);
-            codes.push('=');
-            codes.push('=');
-        }
-        if (un == 2) {
-            let c = bin[binLength - 2] << 16;
-            c |= bin[binLength - 1] << 8;
-            codes.push(this._table[c >> 18 & 0x3f]);
-            codes.push(this._table[c >> 12 & 0x3f]);
-            codes.push(this._table[c >> 6 & 0x3f]);
-            codes.push('=');
-        }
-
-        return codes.join("");
-    },
-    decode: function (base64Str) {
-        let bin = [];
-        let base64StrLen = base64Str.length;
-
-        if (!this._getReg().test(base64Str)) {
-            throw "Base64编码格式错误";
-        }
-        if (base64StrLen % 4 !== 0) {
-            throw "Base64编码长度错误";
-        }
-
-        let eqCount = base64StrLen - base64Str.indexOf('=');
-
-        for (let i = 3; i < base64StrLen; i += 4) {
-            let code = 0;
-
-            let [c1, c2, c3, c4] = [base64Str.charAt(i - 3), base64Str.charAt(i - 2), base64Str.charAt(i - 1), base64Str.charAt(i)];
-
-            code = code << 6 | this._table.indexOf(c1);
-            code = code << 6 | this._table.indexOf(c2);
-
-            if (c3 !== '=' && c4 !== '=') {
-                code = code << 6 | this._table.indexOf(c3);
-                code = code << 6 | this._table.indexOf(c4);
-            }
-            if (c3 !== '=' && c4 === '=') {
-                code = code << 6 | this._table.indexOf(c3);
-                code = code << 6 | 0;
-            }
-            if (c3 === '=') {
-                code = code << 6 | 0;
-                code = code << 6 | 0;
-            }
-
-            //0xff即11111111
-            bin.push(code >> 16);
-            //取得低八位
-            bin.push(code >> 8 & 0xff);
-            bin.push(code & 0xff)
-        }
-
-        switch (eqCount) {
-            case 1:
-                bin.pop();
-                break;
-            case 2:
-                bin.pop();
-                bin.pop();
-                break;
-            default:
-                break;
-        }
-
-        return bin;
+      // 0x3f代表16进制数3F即0011 1111
+      codes.push(this._table[c >> 18 & 0x3F]);
+      codes.push(this._table[c >> 12 & 0x3F]);
+      codes.push(this._table[c >> 6 & 0x3F]);
+      codes.push(this._table[c & 0x3F]);
     }
+
+    if (un == 1) {
+      const c = bin[binLength - 1] << 16;
+      codes.push(this._table[c >> 18 & 0x3F]);
+      codes.push(this._table[c >> 12 & 0x3F]);
+      codes.push('=');
+      codes.push('=');
+    }
+    if (un == 2) {
+      let c = bin[binLength - 2] << 16;
+      c |= bin[binLength - 1] << 8;
+      codes.push(this._table[c >> 18 & 0x3F]);
+      codes.push(this._table[c >> 12 & 0x3F]);
+      codes.push(this._table[c >> 6 & 0x3F]);
+      codes.push('=');
+    }
+
+    return codes.join('');
+  },
+  decode(base64Str) {
+    const bin = [];
+    const base64StrLen = base64Str.length;
+
+    if (!this._getReg().test(base64Str)) {
+      throw 'Base64编码格式错误';
+    }
+    if (base64StrLen % 4 !== 0) {
+      throw 'Base64编码长度错误';
+    }
+
+    const eqCount = base64StrLen - base64Str.indexOf('=');
+
+    for (let i = 3; i < base64StrLen; i += 4) {
+      let code = 0;
+
+      const [c1, c2, c3, c4] = [base64Str.charAt(i - 3), base64Str.charAt(i - 2), base64Str.charAt(i - 1), base64Str.charAt(i)];
+
+      code = code << 6 | this._table.indexOf(c1);
+      code = code << 6 | this._table.indexOf(c2);
+
+      if (c3 !== '=' && c4 !== '=') {
+        code = code << 6 | this._table.indexOf(c3);
+        code = code << 6 | this._table.indexOf(c4);
+      }
+      if (c3 !== '=' && c4 === '=') {
+        code = code << 6 | this._table.indexOf(c3);
+        code = code << 6 | 0;
+      }
+      if (c3 === '=') {
+        code = code << 6 | 0;
+        code = code << 6 | 0;
+      }
+
+      // 0xff即11111111
+      bin.push(code >> 16);
+      // 取得低八位
+      bin.push(code >> 8 & 0xFF);
+      bin.push(code & 0xFF);
+    }
+
+    switch (eqCount) {
+      case 1:
+        bin.pop();
+        break;
+      case 2:
+        bin.pop();
+        bin.pop();
+        break;
+      default:
+        break;
+    }
+
+    return bin;
+  }
 };
 
+const str = `1!@#$%^ghghna三个卡就能`;
+const ba = Base64.encode(Buffer.from(str));
 
-let str = `1!@#$%^ghghna三个卡就能`;
-let ba = Base64.encode(Buffer.from(str));
-
-console.log(`编码前:${str}`); //1!@#$%^ghghna三个卡就能
-console.log(`编码后:${ba}`); //MSFAIyQlXmdoZ2huYeS4ieS4quWNoeWwseiDvQ==
-console.log(`解码:${Buffer.from(Base64.decode(ba)).toString()}`); //1!@#$%^ghghna三个卡就能
+console.log(`编码前:${str}`); // 1!@#$%^ghghna三个卡就能
+console.log(`编码后:${ba}`); // MSFAIyQlXmdoZ2huYeS4ieS4quWNoeWwseiDvQ==
+console.log(`解码:${Buffer.from(Base64.decode(ba)).toString()}`); // 1!@#$%^ghghna三个卡就能
 ```

@@ -29,7 +29,7 @@ date: '2021-07-09'
       dropFilesEntrys.push(...filesEntrys);
     }
     let files = await this.transformFilesEntrys(dropFilesEntrys);
-    
+
     this.handerFiles(files);
   },
 ```
@@ -109,7 +109,7 @@ date: '2021-07-09'
       }
       return val;
     });
-    
+
     this.handerFiles(files);
   },
 ```
@@ -240,25 +240,23 @@ CREATE TABLE core.upload_files
 ```javascript
 /**
  * 获取表单文件
- * @param {*} req 
+ * @param {*} req
  */
 async function getAsyncBusboy(req) {
   return new Promise((resolve, reject) => {
     asyncBusboy(req, {
-      onFile: function (fieldname, file, filename, encoding, mimetype) {
+      onFile(fieldname, file, filename, encoding, mimetype) {
         resolve({
           fieldname,
           file,
           filename,
           encoding,
           mimetype
-        })
+        });
       }
-    })
+    });
   });
 }
-
-
 ```
 
 从fileStream中生成文件
@@ -266,23 +264,23 @@ async function getAsyncBusboy(req) {
 ```javascript
 /**
  * 从fileStream中生成文件
- * @param {*} filePath 
- * @param {*} fileStream 
+ * @param {*} filePath
+ * @param {*} fileStream
  */
 async function writeFileFromFS(filePath, fileStream) {
   return new Promise((resolve, reject) => {
-    let writeStream = fs.createWriteStream(filePath, {
+    const writeStream = fs.createWriteStream(filePath, {
       emitClose: true,
     });
     fileStream.pipe(writeStream);
 
-    writeStream.on('close', function (error) {
+    writeStream.on('close', (error) => {
       resolve(true);
     });
-    writeStream.on('error', function (error) {
+    writeStream.on('error', (error) => {
       reject(false);
     });
-  })
+  });
 }
 ```
 
@@ -301,12 +299,14 @@ async function writeFileFromFS(filePath, fileStream) {
 ```javascript
 /**
  * 按照files顺序合并文件覆盖mergePath
- * @param {path} mergePath 
- * @param {path} files 
+ * @param {path} mergePath
+ * @param {path} files
  */
 async function mergeFiles(mergePath, files) {
   try {
-    if (!Array.isArray(files) || files.length === 0) return;
+    if (!Array.isArray(files) || files.length === 0) {
+      return;
+    }
 
     await fsPromises.mkdir(path.parse(mergePath).dir, {
       recursive: true

@@ -19,8 +19,8 @@ date: "2022-02-09"
 原因猜测：不正常的样式显示的还是组件原始的样式，由此猜测 router 加载时会加载组件样式，将样式文件在 router 后引用会将 router 加载时渲染的样式覆盖掉，所以建议将 router 的引用放在最后面。在每个组件的样式中记得添加 ‘scoped’.
 
 ```js
-import "element-ui/lib/theme-chalk/index.css"; //element样式文件
-import App from "./App";
+import App from './App';
+import 'element-ui/lib/theme-chalk/index.css'; // element样式文件
 ```
 
 如果相反，那么 element-ui 的样式会覆盖自定义的样式，所以会出现你修改的样式不生效问题！！

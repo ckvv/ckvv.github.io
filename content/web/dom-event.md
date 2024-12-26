@@ -16,9 +16,9 @@ Event 接口表示在 DOM 中发生的任何事件; 一些是用户生成的（�
 ```js
 // Assuming myButton is a button element
 myButton.addEventListener(
-  "click",
-  function () {
-    alert("Hello world");
+  'click',
+  () => {
+    alert('Hello world');
   },
   false
 );
@@ -44,12 +44,12 @@ myButton.onclick = function(event){alert('Hello world');};
 可以使用事件构造函数创建事件
 
 ```javascript
-var event = new Event("build");
-let eventEle = document.createElement("event");
+const event = new Event('build');
+const eventEle = document.createElement('event');
 // Listen for the event.
 eventEle.addEventListener(
-  "build",
-  function (event) {
+  'build',
+  (event) => {
     console.log(event);
   },
   false
@@ -63,14 +63,14 @@ eventEle.dispatchEvent(event);
 例如，可以如下创建事件：
 
 ```javascript
-var event = new CustomEvent("build", {
-  detail: "text",
+const event = new CustomEvent('build', {
+  detail: 'text',
 });
-let eventEle = document.createElement("event");
+const eventEle = document.createElement('event');
 // Listen for the event.
 eventEle.addEventListener(
-  "build",
-  function (event) {
+  'build',
+  (event) => {
     console.log(event);
   },
   false

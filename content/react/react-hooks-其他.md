@@ -11,18 +11,18 @@ date: "2024-08-24"
 ```js
 useDebugValue(value, format?)
 ```
-参数 
+参数
 - `value`：在 React 开发工具中显示的值。可以是任何类型。
 - `format`：它接受一个格式化函数。当组件被检查时，React 开发工具将用 value 作为参数来调用格式化函数，然后显示返回的格式化值（可以是任何类型）。如果不指定格式化函数，则会显示 value。
 
-返回值 
+返回值
 - `useDebugValue` 没有返回值。
 
 ### 基础用法
 
 ```js
 function testHook(initialCount) {
-  const [count, setCount] = useState(initialCount)
+  const [count, setCount] = useState(initialCount);
   // 在开发者工具中的这个 Hook 旁边显示标签
   // e.g. "testHook: 好好学习"
   useDebugValue('好好学习');
@@ -33,7 +33,9 @@ function Counter(props) {
   const [count, setCount] = testHook(props.initialCount);
   return (
     <button type="button" onClick={() => setCount(count + 1)}>
-      count is: {count}
+      count is:
+      {' '}
+      {count}
     </button>
   );
 }
@@ -48,7 +50,7 @@ function Counter(props) {
 例如，一个返回 `Date` 值的自定义 Hook 可以通过格式化函数来避免不必要的 `toDateString` 函数调用：
 
 ```js
-//只有在 Hook 被检查时才会被调用
+// 只有在 Hook 被检查时才会被调用
 useDebugValue(date, date => date.toDateString());
 ```
 
@@ -91,17 +93,17 @@ export default function Form() {
   const id = useId();
   return (
     <form>
-      <label htmlFor={id + '-firstName'}>名字：</label>
-      <input id={id + '-firstName'} type="text" />
+      <label htmlFor={`${id}-firstName`}>名字：</label>
+      <input id={`${id}-firstName`} type="text" />
       <hr />
-      <label htmlFor={id + '-lastName'}>姓氏：</label>
-      <input id={id + '-lastName'} type="text" />
+      <label htmlFor={`${id}-lastName`}>姓氏：</label>
+      <input id={`${id}-lastName`} type="text" />
     </form>
   );
 }
 ```
 
-### 为所有生成的 ID 指定共享前缀 
+### 为所有生成的 ID 指定共享前缀
 
 如果你在单个页面上渲染多个独立的 React 应用程序，请在 `createRoot` 或 `hydrateRoot` 调用中将 identifierPrefix 作为选项传递。这确保了由两个不同应用程序生成的 ID 永远不会冲突
 
@@ -125,7 +127,6 @@ useId 的主要好处是 React 确保它能够与 服务端渲染一起工作。
 使用递增计数器很难保证这一点，因为客户端组件被 hydrate 处理后的顺序可能与服务器 HTML 的顺序不匹配。调用 useId 可以确保 hydration 正常工作，以及服务器和客户端之间的输出相匹配。
 
 在 React 内部，调用组件的“父路径”生成 useId。这就是为什么如果客户端和服务器的树相同，不管渲染顺序如何，“父路径”始终都匹配。
-
 
 ## useSyncExternalStore
 
@@ -166,7 +167,7 @@ function subscribe(callback) {
 }
 ```
 
-### 服务端渲染支持 
+### 服务端渲染支持
 如果你连接到一个浏览器特有的 API，因为它在服务端不存在，所以是不可行的， 你需要传一个 `getServerSnapshot` 函数作为第三个参数给 `useSyncExternalStore`
 
 ```jsx
@@ -182,8 +183,6 @@ function getServerSnapshot() {
 }
 // 确保客户端初始渲染与服务端渲染时 getServerSnapshot 返回完全相同的数据。例如，如果在服务端 getServerSnapshot 返回一些预先载入的 store 内容，你就需要把这些内容也传给客户端。一种方法是在服务端渲染时，生成 <script> 标签来设置像 window.MY_STORE_DATA 这样的全局变量，并在客户端 getServerSnapshot 内读取此全局变量。
 ```
-
-
 
 ### 注意事项
 
@@ -201,7 +200,7 @@ function getSnapshot() {
 ```jsx
 function ChatIndicator() {
   const isOnline = useSyncExternalStore(subscribe, getSnapshot);
-  
+
   // 🔴 总是不同的函数，所以 React 每次重新渲染都会重新订阅
   // ✅ 你可以把subscribe 提到组件外部 或者包在 useCallback 里面
   function subscribe() {

@@ -10,10 +10,10 @@ draft: true
 不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
 
 ```js
-let removeDuplicates = function(nums) {
-  for(let i = 0; i<nums.length; i++){
-    while (nums[i] === nums[i+1]) {
-      nums.splice(i+1,1);
+const removeDuplicates = function (nums) {
+  for (let i = 0; i < nums.length; i++) {
+    while (nums[i] === nums[i + 1]) {
+      nums.splice(i + 1, 1);
     }
   }
 };
@@ -26,12 +26,12 @@ let removeDuplicates = function(nums) {
 注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）
 
 ```js
-var maxProfit = function(prices) {
-    let ans = 0;
-    for(let i = 1, len = prices.length; i < len; i++){
-        ans += Math.max(0, prices[i] - prices[i - 1]);
-    }
-    return ans;
+const maxProfit = function (prices) {
+  let ans = 0;
+  for (let i = 1, len = prices.length; i < len; i++) {
+    ans += Math.max(0, prices[i] - prices[i - 1]);
+  }
+  return ans;
 };
 ```
 
@@ -40,9 +40,9 @@ var maxProfit = function(prices) {
 给定一个数组，将数组中的元素向右移动 k 个位置，其中 k 是非负数。
 
 ```js
-var rotate = function(nums, k) {
+const rotate = function (nums, k) {
   const afnum = nums.splice(nums.length - k % nums.length);
-  nums.splice(0,0,...afnum);
+  nums.splice(0, 0, ...afnum);
 };
 ```
 
@@ -51,8 +51,8 @@ var rotate = function(nums, k) {
 给定一个整数数组，判断是否存在重复元素。如果存在一值在数组中出现至少两次，函数返回 true 。如果数组中每个元素都不相同，则返回 false 。
 
 ```js
-var containsDuplicate = function(nums) {
-    return nums.length !== Array.from(new Set(nums)).length;
+const containsDuplicate = function (nums) {
+  return nums.length !== Array.from(new Set(nums)).length;
 };
 ```
 
@@ -61,10 +61,10 @@ var containsDuplicate = function(nums) {
 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
 
 ```js
-var singleNumber = function(nums) {
-  return nums.reduce((pre, cur)=>{
-    return pre^cur;
-  })
+const singleNumber = function (nums) {
+  return nums.reduce((pre, cur) => {
+    return pre ^ cur;
+  });
 };
 ```
 
@@ -73,28 +73,29 @@ var singleNumber = function(nums) {
 给定两个数组，编写一个函数来计算它们的交集。
 
 ```js
-```
+``
 
 ### [加一](https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2cv1c/)
 
 ```js
-```
+``
 
 ### [移动零](https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2ba4i/)
 
 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
 
 ```js
-var moveZeroes = function(nums) {
-  let end = nums.length;
+let moveZeroes = function (nums) {
+  let end = nums.length
   for (let index = 0; index < end;) {
-    if(nums[index] === 0){
-      nums.splice(index, 1);
-      nums.push(0);
+    if (nums[index] === 0) {
+      nums.splice(index, 1)
+      nums.push(0)
       end--;
-    } else {
-      index ++;
+    }
+ else {
+      index++;
     }
   }
-};
+}
 ```

@@ -28,7 +28,7 @@ func?.(args);
 比如，思考一个存在嵌套结构的对象 `obj`。不使用可选链的话，查找一个深度嵌套的子属性时，需要验证之间的引用，例如：
 
 ```js
-let nestedProp = obj.first && obj.first.second;
+const nestedProp = obj.first && obj.first.second;
 ```
 
 为了避免报错，在访问`obj.first.second`之前，要保证 `obj.first` 的值既不是 `null`，也不是 `undefined`。如果只是直接访问 `obj.first.second`，而不对 `obj.first` 进行校验，则有可能抛出错误。
@@ -36,7 +36,7 @@ let nestedProp = obj.first && obj.first.second;
 有了可选链操作符（`?.`），在访问 `obj.first.second` 之前，不再需要明确地校验 `obj.first` 的状态，再并用短路计算获取最终结果：
 
 ```js
-let nestedProp = obj.first?.second;
+const nestedProp = obj.first?.second;
 ```
 
 通过使用 `?.` 操作符取代 `.` 操作符，JavaScript 会在尝试访问 `obj.first.second` 之前，先隐式地检查并确定 `obj.first` 既不是 `null` 也不是 `undefined`。如果`obj.first`是 `null` 或者 `undefined`，表达式将会短路计算直接返回 `undefined`。
@@ -44,8 +44,8 @@ let nestedProp = obj.first?.second;
 这等价于以下表达式，但实际上没有创建临时变量：
 
 ```js
-let temp = obj.first;
-let nestedProp = temp === null || temp === undefined ? undefined : temp.second;
+const temp = obj.first;
+const nestedProp = temp === null || temp === undefined ? undefined : temp.second;
 ```
 
 ### [可选链与函数调用](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#可选链与函数调用)
@@ -55,7 +55,7 @@ let nestedProp = temp === null || temp === undefined ? undefined : temp.second;
 函数调用时如果被调用的方法不存在，使用可选链可以使表达式自动返回`undefined`而不是抛出一个异常。
 
 ```js
-let result = someInterface.customMethod?.();
+const result = someInterface.customMethod?.();
 ```
 
 **注意:** 如果存在一个属性名且不是函数, 使用 `?.` 仍然会产生一个 [`TypeError`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypeError) 异常 (` x.y`` is not a function `).
@@ -96,7 +96,7 @@ function doSomething(onContent, onError) {
 当使用[方括号与属性名](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Property_Accessors#方括号表示法)的形式来访问属性时，你也可以使用可选链操作符：
 
 ```js
-let nestedProp = obj?.["prop" + "Name"];
+const nestedProp = obj?.['prop' + 'Name'];
 ```
 
 ### [可选链不能用于赋值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#可选链不能用于赋值)
@@ -109,7 +109,7 @@ object?.property = 1; // Uncaught SyntaxError: Invalid left-hand side in assignm
 ### [可选链访问数组元素](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#可选链访问数组元素)
 
 ```js
-let arrayItem = arr?.[42];
+const arrayItem = arr?.[42];
 ```
 
 ## [例子](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#例子)
@@ -119,10 +119,10 @@ let arrayItem = arr?.[42];
 如下的例子在一个不含 `bar` 成员的 Map 中查找 `bar` 成员的 `name` 属性，因此结果是 `undefined`。
 
 ```js
-let myMap = new Map();
-myMap.set("foo", { name: "baz", desc: "inga" });
+const myMap = new Map();
+myMap.set('foo', { name: 'baz', desc: 'inga' });
 
-let nameBar = myMap.get("bar")?.name;
+const nameBar = myMap.get('bar')?.name;
 ```
 
 ### [短路计算](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#短路计算)
@@ -130,9 +130,9 @@ let nameBar = myMap.get("bar")?.name;
 当在表达式中使用可选链时，如果左操作数是 `null` 或 `undefined`，表达式将不会被计算，例如：
 
 ```js
-let potentiallyNullObj = null;
+const potentiallyNullObj = null;
 let x = 0;
-let prop = potentiallyNullObj?.[x++];
+const prop = potentiallyNullObj?.[x++];
 
 console.log(x); // x 将不会被递增，依旧输出 0
 ```
@@ -142,17 +142,17 @@ console.log(x); // x 将不会被递增，依旧输出 0
 可以连续使用可选链读取多层嵌套结构：
 
 ```js
-let customer = {
-  name: "Carl",
+const customer = {
+  name: 'Carl',
   details: {
     age: 82,
-    location: "Paradise Falls", // details 的 address 属性未有定义
+    location: 'Paradise Falls', // details 的 address 属性未有定义
   },
 };
-let customerCity = customer.details?.address?.city;
+const customerCity = customer.details?.address?.city;
 
 // … 可选链也可以和函数调用一起使用
-let duration = vacations.trip?.getTime?.();
+const duration = vacations.trip?.getTime?.();
 ```
 
 ### [使用空值合并操作符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining#使用空值合并操作符)
@@ -160,10 +160,10 @@ let duration = vacations.trip?.getTime?.();
 [`空值合并操作符`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator)可以在使用可选链时设置一个默认值：
 
 ```js
-let customer = {
-  name: "Carl",
+const customer = {
+  name: 'Carl',
   details: { age: 82 },
 };
-let customerCity = customer?.city ?? "暗之城";
+const customerCity = customer?.city ?? '暗之城';
 console.log(customerCity); // “暗之城”
 ```
