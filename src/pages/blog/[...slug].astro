@@ -22,7 +22,7 @@ const { Content } = await render(post);
 	<div class="my-2 flex justify-between">
 		<div class="flex gap-4">
 			{
-				Array.isArray(post.data.tags) && post.data.tags.map(v => v?.toUpperCase()).map((tag) => (
+				Array.isArray(post.data.tags) && post.data.tags.map((tag) => (
 					<Tag href={`/tag/${tag}/`}>{tag}</Tag>
 				))
 			}

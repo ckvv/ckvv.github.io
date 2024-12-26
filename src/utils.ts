@@ -1,4 +1,9 @@
 import { getCollection } from 'astro:content';
+import { parse } from 'node:path';
+
+function formatName(name: string) {
+  return name.split(/[_-]/).join(' ');
+}
 
 export async function getPosts() {
   const posts = await getCollection('blog')
@@ -7,7 +12,8 @@ export async function getPosts() {
 	)
   .filter((v => v.data.draft !== true))
   .map(v => {
-    v.data.tags = Array.isArray(v.data.tags) ? v.data.tags.map(v => v.toUpperCase()) : []
+    v.data.title ||= formatName(parse(`${v.filePath}`).name);
+    v.data.tags = Array.isArray(v.data.tags) ? v.data.tags.map(v => v.toLocaleLowerCase()) : [];
     v.data.pubDate ||= v.data?.date;
     return v;
   });

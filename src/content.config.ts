@@ -6,7 +6,7 @@ const blog = defineCollection({
   loader: glob({ base: './content', pattern: ['**/*.{md,mdx}', '*.{md,mdx}'] }),
   // Type-check frontmatter using a schema
   schema: z.object({
-    title: z.string(),
+    title: z.string().optional(),
     description: z.string().optional(),
     date: z.coerce.date().optional(),
     pubDate: z.coerce.date().optional(),

@@ -4,12 +4,11 @@ html, body, article, .content {
   margin: 0;
   padding: 0;
 }
-
 * {
   box-sizing: border-box;
 }
-
 body {
+  font-variant-numeric: tabular-nums;
 	display: flex;
 	flex-direction: column;
 }

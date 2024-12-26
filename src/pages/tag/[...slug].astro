@@ -11,9 +11,8 @@ export async function getStaticPaths() {
 	const tags: Record<string, any[]> = {};
 	for (const post of posts) {
 		if(Array.isArray(post.data.tags)) {
-			for (const _tag of post.data.tags) {
-				const tag = _tag.toUpperCase();
-				tags[tag] = tags[tag] || [];
+			for (const tag of post.data.tags) {
+				tags[tag] ||= [];
 				tags[tag].push(post);
 			}
 		}
