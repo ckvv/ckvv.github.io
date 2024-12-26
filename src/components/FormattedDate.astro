@@ -3,7 +3,7 @@ interface Props {
 	date?: Date;
 }
 
-const { date= new Date() } = Astro.props;
+const { date } = Astro.props;
 
 export function formatDate(date: Date) {
 	const [year, month, day] = [date.getFullYear(), date.getMonth(), date.getDay()];
@@ -17,6 +17,6 @@ export function formatDate(date: Date) {
 
 <span>
 	{
-		formatDate(date)
+		date ? formatDate(date) : '-'
 	}
 </span>
