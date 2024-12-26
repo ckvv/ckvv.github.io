@@ -1,0 +1,378 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/web/web-upload-file/"><!-- Primary Meta Tags --><title>前后端通过切片上传文件</title><meta name="title" content="前后端通过切片上传文件"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/web/web-upload-file/"><meta property="og:title" content="前后端通过切片上传文件"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/web/web-upload-file/"><meta property="twitter:title" content="前后端通过切片上传文件"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">前后端通过切片上传文件</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/WEB/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> WEB </a> </div> <span> 2021/07/06 </span> </div> <div class="content"> <p>最近在做前端上传文件，主要包括选择单个｜多个文件、单个｜多个文件夹、拖拽文件｜文件夹方式上传文件，上传时通过分片计算文件hash值实现断点续传、秒传功能，简要介绍下具体实行思路</p>
+<h1 id="获取用户选择文件">获取用户选择文件</h1>
+<blockquote>
+<p>注意这种方式用到的部分特性是非标准的</p>
+</blockquote>
+<h2 id="拖拽上传">拖拽上传</h2>
+<p>从可拖拽区域中获取过滤获取拖拽的文件的FileSystemEntry</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">  async </span><span style="color:#B392F0">drop</span><span style="color:#E1E4E8">(e) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    e.</span><span style="color:#B392F0">stopPropagation</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    e.</span><span style="color:#B392F0">preventDefault</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> items </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> e.dataTransfer.items;</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> dropFilesEntrys </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">let</span><span style="color:#E1E4E8"> item </span><span style="color:#F97583">of</span><span style="color:#E1E4E8"> items) {</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">item </span><span style="color:#F97583">||</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">item.webkitGetAsEntry) </span><span style="color:#F97583">continue</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">      item </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> item.</span><span style="color:#B392F0">webkitGetAsEntry</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">item) </span><span style="color:#F97583">continue</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">      let</span><span style="color:#E1E4E8"> filesEntrys </span><span style="color:#F97583">=</span><span style="color:#F97583"> await</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">getFilesEntrys</span><span style="color:#E1E4E8">(item);</span></span>
+<span class="line"><span style="color:#E1E4E8">      dropFilesEntrys.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">filesEntrys);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> files </span><span style="color:#F97583">=</span><span style="color:#F97583"> await</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">transformFilesEntrys</span><span style="color:#E1E4E8">(dropFilesEntrys);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">handerFiles</span><span style="color:#E1E4E8">(files);</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span></code></pre>
+<p>获取FileSystemEntry包含的FilesEntrys，FileSystemEntry可能代表文件系统中的文件或者目录</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">  /**</span></span>
+<span class="line"><span style="color:#6A737D">   * 获取drop区域的文件</span></span>
+<span class="line"><span style="color:#6A737D">   * </span><span style="color:#F97583">@returns</span><span style="color:#6A737D"> FilesEntrys</span></span>
+<span class="line"><span style="color:#6A737D">   */</span></span>
+<span class="line"><span style="color:#E1E4E8">  async </span><span style="color:#B392F0">getFilesEntrys</span><span style="color:#E1E4E8">(item) {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> filesEntrys </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#B392F0"> scanFiles</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">        if</span><span style="color:#E1E4E8"> (item.isDirectory) {</span></span>
+<span class="line"><span style="color:#F97583">          let</span><span style="color:#E1E4E8"> directoryReader </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> item.</span><span style="color:#B392F0">createReader</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">          directoryReader.</span><span style="color:#B392F0">readEntries</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">entries</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">            for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> entrie</span><span style="color:#F97583"> of</span><span style="color:#E1E4E8"> entries) {</span></span>
+<span class="line"><span style="color:#F97583">              await</span><span style="color:#B392F0"> scanFiles</span><span style="color:#E1E4E8">(entrie);</span></span>
+<span class="line"><span style="color:#E1E4E8">            }</span></span>
+<span class="line"><span style="color:#B392F0">            resolve</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">          });</span></span>
+<span class="line"><span style="color:#E1E4E8">        } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">          filesEntrys.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(item);</span></span>
+<span class="line"><span style="color:#B392F0">          resolve</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">      });</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#B392F0"> scanFiles</span><span style="color:#E1E4E8">(item);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> filesEntrys;</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span></code></pre>
+<p>获取FilesEntrys中的Files,FilesEntry的file方法返回一个File对象，该对象可用于从文件中读取数据</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">  /**</span></span>
+<span class="line"><span style="color:#6A737D">   * FilesEntrys转为Files</span></span>
+<span class="line"><span style="color:#6A737D">   */</span></span>
+<span class="line"><span style="color:#E1E4E8">  async </span><span style="color:#B392F0">transformFilesEntrys</span><span style="color:#E1E4E8">(filesEntrys) {</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> files </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#B392F0"> fileEntry2File</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">fileEntry</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        fileEntry.</span><span style="color:#B392F0">file</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">file</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">          // 附加文件路径</span></span>
+<span class="line"><span style="color:#E1E4E8">          file._webkitRelativePath </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> fileEntry.fullPath;</span></span>
+<span class="line"><span style="color:#B392F0">          resolve</span><span style="color:#E1E4E8">(file);</span></span>
+<span class="line"><span style="color:#E1E4E8">        });</span></span>
+<span class="line"><span style="color:#E1E4E8">      });</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> filesEntry</span><span style="color:#F97583"> of</span><span style="color:#E1E4E8"> filesEntrys) {</span></span>
+<span class="line"><span style="color:#E1E4E8">      files.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">await</span><span style="color:#B392F0"> fileEntry2File</span><span style="color:#E1E4E8">(filesEntry));</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> files;</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span></code></pre>
+<p>至此我们已经拿到可以用于上传的File对象</p>
+<h2 id="通过input选择文件">通过input选择文件</h2>
+<p>获取input选择的File对象比较简单通过<code>evt.target.files</code>即可拿到文件</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#B392F0">  onFileSelected</span><span style="color:#E1E4E8">(evt) {</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">evt.target </span><span style="color:#F97583">||</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">evt.target.files </span><span style="color:#F97583">||</span><span style="color:#E1E4E8"> evt.target.files.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> &#x3C;=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    let</span><span style="color:#E1E4E8"> files </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Array.</span><span style="color:#B392F0">from</span><span style="color:#E1E4E8">(evt.target.files).</span><span style="color:#B392F0">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">val</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (val.webkitRelativePath) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        val._webkitRelativePath </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> val.webkitRelativePath;</span></span>
+<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        val._webkitRelativePath </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> val.name;</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> val;</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">handerFiles</span><span style="color:#E1E4E8">(files);</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span></code></pre>
+<h1 id="计算文件hash">计算文件hash</h1>
+<p>通过File对象计算文件hash值</p>
+<ul>
+<li>通过<code>file.slice(start, end).arrayBuffer()</code>获取制定切片的文件二进制数据</li>
+<li>通过<code>SparkMD5.ArrayBuffer.hash(buffer)</code>计算二进制hash</li>
+</ul>
+<p>此处需要用到<a href="https://www.npmjs.com/package/spark-md5">SparkMD5</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">async </span><span style="color:#B392F0">getFileInfo</span><span style="color:#E1E4E8">(file) {</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">async</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">          try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">            let</span><span style="color:#E1E4E8"> spark </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#E1E4E8"> SparkMD5.</span><span style="color:#B392F0">ArrayBuffer</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">            let</span><span style="color:#E1E4E8"> blockList </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#F97583">            let</span><span style="color:#E1E4E8"> hash </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">            let</span><span style="color:#E1E4E8"> fileSize </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> file.size;</span></span>
+<span class="line"><span style="color:#F97583">            let</span><span style="color:#E1E4E8"> order </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">            let</span><span style="color:#E1E4E8"> fileName </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> file.name;</span></span>
+<span class="line"><span style="color:#F97583">            let</span><span style="color:#E1E4E8"> fileTyle </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">getFilesTypeByName</span><span style="color:#E1E4E8">(fileName);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">            let</span><span style="color:#E1E4E8"> blockListLength </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">ceil</span><span style="color:#E1E4E8">(fileSize </span><span style="color:#F97583">/</span><span style="color:#E1E4E8"> splitFileAize);</span></span>
+<span class="line"><span style="color:#F97583">            for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">let</span><span style="color:#E1E4E8"> start </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; start </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> fileSize; start </span><span style="color:#F97583">+=</span><span style="color:#E1E4E8"> splitFileAize) {</span></span>
+<span class="line"><span style="color:#F97583">              let</span><span style="color:#E1E4E8"> end </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (start </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> splitFileAize) </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> fileSize </span><span style="color:#F97583">?</span><span style="color:#E1E4E8"> fileSize </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> start </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> splitFileAize;</span></span>
+<span class="line"><span style="color:#F97583">              let</span><span style="color:#E1E4E8"> buffer </span><span style="color:#F97583">=</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> file.</span><span style="color:#B392F0">slice</span><span style="color:#E1E4E8">(start, end).</span><span style="color:#B392F0">arrayBuffer</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">              spark.</span><span style="color:#B392F0">append</span><span style="color:#E1E4E8">(buffer);</span></span>
+<span class="line"><span style="color:#E1E4E8">              blockList.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">                order: order</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">                start: start,</span></span>
+<span class="line"><span style="color:#E1E4E8">                end: end,</span></span>
+<span class="line"><span style="color:#E1E4E8">                hash: SparkMD5.ArrayBuffer.</span><span style="color:#B392F0">hash</span><span style="color:#E1E4E8">(buffer)</span></span>
+<span class="line"><span style="color:#E1E4E8">              });</span></span>
+<span class="line"><span style="color:#E1E4E8">            }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">            hash </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> spark.</span><span style="color:#B392F0">end</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">            spark.</span><span style="color:#B392F0">destroy</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">            resolve</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">              name: fileName,</span></span>
+<span class="line"><span style="color:#E1E4E8">              type: fileTyle,</span></span>
+<span class="line"><span style="color:#E1E4E8">              size: fileSize,</span></span>
+<span class="line"><span style="color:#E1E4E8">              _webkitRelativePath: file._webkitRelativePath,</span></span>
+<span class="line"><span style="color:#E1E4E8">              hash,</span></span>
+<span class="line"><span style="color:#E1E4E8">              block: {</span></span>
+<span class="line"><span style="color:#E1E4E8">                list: blockList,</span></span>
+<span class="line"><span style="color:#E1E4E8">                size: splitFileAize,</span></span>
+<span class="line"><span style="color:#E1E4E8">                length: blockList.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">              }</span></span>
+<span class="line"><span style="color:#E1E4E8">            });</span></span>
+<span class="line"><span style="color:#E1E4E8">          } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (error) {</span></span>
+<span class="line"><span style="color:#B392F0">            reject</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#E1E4E8">          }</span></span>
+<span class="line"><span style="color:#E1E4E8">        });</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span></code></pre>
+<h1 id="数据库设计">数据库设计</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>字段</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td>hash</td><td>text</td><td>文件hash值</td></tr><tr><td>name</td><td>text</td><td>文件名称</td></tr><tr><td>size</td><td>bigint</td><td>文件大小</td></tr><tr><td>block_size</td><td>bigint</td><td>切片大小</td></tr><tr><td>created_at</td><td>timestamp</td><td>创建时间</td></tr><tr><td>upload_path</td><td>text</td><td>上传的地址</td></tr><tr><td>type</td><td>text</td><td>文件类型</td></tr><tr><td>block_list</td><td>jsonb[]</td><td>切片信息</td></tr></tbody></table>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> TABLE</span><span style="color:#B392F0"> core</span><span style="color:#E1E4E8">.upload_files</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#F97583">    hash</span><span style="color:#F97583"> text</span><span style="color:#F97583"> COLLATE</span><span style="color:#E1E4E8"> pg_catalog.</span><span style="color:#9ECBFF">"default"</span><span style="color:#F97583"> NOT NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#F97583">    name</span><span style="color:#F97583"> text</span><span style="color:#F97583"> COLLATE</span><span style="color:#E1E4E8"> pg_catalog.</span><span style="color:#9ECBFF">"default"</span><span style="color:#F97583"> NOT NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#F97583">    size</span><span style="color:#F97583"> bigint</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    block_size </span><span style="color:#F97583">bigint</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    created_at </span><span style="color:#F97583">timestamp without time zone</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    upload_path </span><span style="color:#F97583">text</span><span style="color:#F97583"> COLLATE</span><span style="color:#E1E4E8"> pg_catalog.</span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#F97583">    type</span><span style="color:#F97583"> text</span><span style="color:#F97583"> COLLATE</span><span style="color:#E1E4E8"> pg_catalog.</span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    block_list jsonb[],</span></span>
+<span class="line"><span style="color:#E1E4E8">    rename </span><span style="color:#F97583">text</span><span style="color:#F97583"> COLLATE</span><span style="color:#E1E4E8"> pg_catalog.</span><span style="color:#9ECBFF">"default"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#F97583">    CONSTRAINT</span><span style="color:#E1E4E8"> upload_files_pkey </span><span style="color:#F97583">PRIMARY KEY</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">hash</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span></code></pre>
+<h1 id="接口设计">接口设计</h1>
+<h2 id="获取文件信息">获取文件信息</h2>
+<p>主要用于检查filehash值的文件是否已经存在，若干存在则跳过上传，如果不存在，检查有哪些切片已经存在并返回存在的切片</p>
+<p>地址</p>
+<blockquote>
+<p>/upload/file/:filehash/precreate</p>
+</blockquote>
+<p>参数</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>参数</th><th>描述</th></tr></thead><tbody><tr><td>name</td><td>文件名称</td></tr><tr><td>size</td><td>文件大小</td></tr><tr><td>filehash</td><td>文件hash值</td></tr><tr><td>type</td><td>文件类型</td></tr></tbody></table>
+<h2 id="上传切片文件">上传切片文件</h2>
+<p>地址</p>
+<blockquote>
+<p>/upload/file/:filehash/block?order=0&#x26;hash=:blockhash</p>
+</blockquote>
+<p>参数</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>参数</th><th>描述</th></tr></thead><tbody><tr><td>order</td><td>切片order</td></tr><tr><td>hash</td><td>切片hash值</td></tr><tr><td>filehash</td><td>文件hash值</td></tr><tr><td>file</td><td>切片二进制数据</td></tr></tbody></table>
+<p>主要代码</p>
+<p>解析表单中的文件,此处我有用到<a href="https://www.npmjs.com/package/async-busboy">async-busboy</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">/**</span></span>
+<span class="line"><span style="color:#6A737D"> * 获取表单文件</span></span>
+<span class="line"><span style="color:#6A737D"> * </span><span style="color:#F97583">@param</span><span style="color:#B392F0"> {*}</span><span style="color:#E1E4E8"> req</span></span>
+<span class="line"><span style="color:#6A737D"> */</span></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> getAsyncBusboy</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">req</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    asyncBusboy</span><span style="color:#E1E4E8">(req, {</span></span>
+<span class="line"><span style="color:#B392F0">      onFile</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">fieldname</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">file</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">filename</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">encoding</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">mimetype</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">        resolve</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">          fieldname,</span></span>
+<span class="line"><span style="color:#E1E4E8">          file,</span></span>
+<span class="line"><span style="color:#E1E4E8">          filename,</span></span>
+<span class="line"><span style="color:#E1E4E8">          encoding,</span></span>
+<span class="line"><span style="color:#E1E4E8">          mimetype</span></span>
+<span class="line"><span style="color:#E1E4E8">        });</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>从fileStream中生成文件</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">/**</span></span>
+<span class="line"><span style="color:#6A737D"> * 从fileStream中生成文件</span></span>
+<span class="line"><span style="color:#6A737D"> * </span><span style="color:#F97583">@param</span><span style="color:#B392F0"> {*}</span><span style="color:#E1E4E8"> filePath</span></span>
+<span class="line"><span style="color:#6A737D"> * </span><span style="color:#F97583">@param</span><span style="color:#B392F0"> {*}</span><span style="color:#E1E4E8"> fileStream</span></span>
+<span class="line"><span style="color:#6A737D"> */</span></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> writeFileFromFS</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">filePath</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">fileStream</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reject</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> writeStream</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fs.</span><span style="color:#B392F0">createWriteStream</span><span style="color:#E1E4E8">(filePath, {</span></span>
+<span class="line"><span style="color:#E1E4E8">      emitClose: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">    fileStream.</span><span style="color:#B392F0">pipe</span><span style="color:#E1E4E8">(writeStream);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    writeStream.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'close'</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">      resolve</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">    writeStream.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'error'</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">      reject</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="合并切片文件">合并切片文件</h2>
+<p>地址</p>
+<blockquote>
+<p>/upload/file/:filehash/create</p>
+</blockquote>
+<p>参数</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>参数</th><th>描述</th></tr></thead><tbody><tr><td>filehash</td><td>文件hash</td></tr></tbody></table>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#6A737D">/**</span></span>
+<span class="line"><span style="color:#6A737D"> * 按照files顺序合并文件覆盖mergePath</span></span>
+<span class="line"><span style="color:#6A737D"> * </span><span style="color:#F97583">@param</span><span style="color:#B392F0"> {path}</span><span style="color:#E1E4E8"> mergePath</span></span>
+<span class="line"><span style="color:#6A737D"> * </span><span style="color:#F97583">@param</span><span style="color:#B392F0"> {path}</span><span style="color:#E1E4E8"> files</span></span>
+<span class="line"><span style="color:#6A737D"> */</span></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> mergeFiles</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">mergePath</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">files</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">Array.</span><span style="color:#B392F0">isArray</span><span style="color:#E1E4E8">(files) </span><span style="color:#F97583">||</span><span style="color:#E1E4E8"> files.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> ===</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> fsPromises.</span><span style="color:#B392F0">mkdir</span><span style="color:#E1E4E8">(path.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(mergePath).dir, {</span></span>
+<span class="line"><span style="color:#E1E4E8">      recursive: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> fsPromises.</span><span style="color:#B392F0">copyFile</span><span style="color:#E1E4E8">(files.</span><span style="color:#B392F0">shift</span><span style="color:#E1E4E8">(), mergePath);</span></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> file</span><span style="color:#F97583"> of</span><span style="color:#E1E4E8"> files) {</span></span>
+<span class="line"><span style="color:#F97583">      await</span><span style="color:#E1E4E8"> fsPromises.</span><span style="color:#B392F0">appendFile</span><span style="color:#E1E4E8">(mergePath, </span><span style="color:#F97583">await</span><span style="color:#E1E4E8"> fsPromises.</span><span style="color:#B392F0">readFile</span><span style="color:#E1E4E8">(file));</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (error) {</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#E1E4E8"> error;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/web/web-upload-file.md" data-page-url="content/web/web-upload-file.md" data-page-title="前后端通过切片上传文件" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

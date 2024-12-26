@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/web/cross-origin-resource-sharing/"><!-- Primary Meta Tags --><title>跨域资源共享 (CORS)</title><meta name="title" content="跨域资源共享 (CORS)"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/web/cross-origin-resource-sharing/"><meta property="og:title" content="跨域资源共享 (CORS)"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/web/cross-origin-resource-sharing/"><meta property="twitter:title" content="跨域资源共享 (CORS)"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">跨域资源共享 (CORS)</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/WEB/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> WEB </a> </div> <span> 2022/02/04 </span> </div> <div class="content"> <p>转载自 <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools">web.dev</a></p>
+<p>浏览器的同源策略阻止了浏览器读取不同源的资源。这种机制能够阻止恶意网站读取另一个网站的数据，但也会阻碍合法使用。如果您希望获取其他国家的天气数据该怎么办？</p>
+<p>在现代网络应用程序中，应用程序通常希望从不同源获取资源。例如，您想要从不同的域读取 JSON 数据或者将另一个网站的图像加载到<code>&#x3C;canvas></code>元素中。</p>
+<p>换句话说，部分<strong>公共资源</strong>应该可以供任何人读取，但同源策略会阻碍这一点。开发者使用过诸如 <a href="https://stackoverflow.com/questions/2067472/what-is-jsonp-all-about">JSONP</a> 之类的变通方法，但<strong>跨域资源共享 (CORS)</strong> 能够通过标准方式修复此问题。</p>
+<p>启用 <strong>CORS</strong> 可以让服务器告知浏览器自己已获许使用其他源。</p>
+<h2 id="资源请求在网络上是如何运作的">资源请求在网络上是如何运作的？ <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#">#</a></h2>
+<p><img src="https://web-dev.imgix.net/image/tcFciHGuF3MxnTr1y5ue01OGLBn2/8J6A0Bk5YXdvyoj8HVzs.png?auto=format" alt="请求和响应">图：客户端请求和服务器响应图示</p>
+<p>浏览器和服务器可以使用<strong>超文本传输协议</strong> (HTTP) 来通过网络交换数据。HTTP 定义了请求者和响应者之间的通信规则，其中包括获取资源所需的信息。</p>
+<p>HTTP 标头用于协商客户端和服务器之间的消息交换类型，并用于确定访问权限。浏览器的请求和服务器的响应消息都分为两部分：<strong>标头</strong>和<strong>主体</strong>：</p>
+<h3 id="标头">标头 <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#-2">#</a></h3>
+<p>包含消息的相关信息，例如消息类型或消息编码。标头可以包括<a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">各种信息</a>，这些信息通过键值对表示。请求头和响应头包含不同的信息。</p>
+<p>请务必注意，标头不能包含评论。</p>
+<p><strong>请求头示例</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>Accept: text/html</span></span>
+<span class="line"><span>Cookie: Version=1</span></span></code></pre>
+<p>以上内容相当于表示“我希望收到 HTML 的响应。这是我的一个 cookie。”</p>
+<p><strong>响应头示例</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>Content-Encoding: gzip</span></span>
+<span class="line"><span>Cache-Control: no-store</span></span></code></pre>
+<p>以上内容相当于表示“数据是用 gzip 编码的。请不要将其缓存。”</p>
+<h3 id="主体">主体 <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#-3">#</a></h3>
+<p>消息本身。主体可以是纯文本、二进制图像、JSON、HTML 等。</p>
+<h2 id="cors-是如何运作的">CORS 是如何运作的？ <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#cors">#</a></h2>
+<p>请记住，同源策略会让浏览器阻止跨域请求。当您想从不同的源获取公共资源时，提供资源的服务器需要告知浏览器“发出该请求的这个源可以访问我的资源”。浏览器会记住这一点，并允许跨域资源共享。</p>
+<h3 id="第一步客户端浏览器请求">第一步：客户端（浏览器）请求 <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#-4">#</a></h3>
+<p>当浏览器发出跨域请求时，该浏览器会添加一个包含当前源（协议、主机和端口）的<code>Origin</code>标头。</p>
+<h3 id="第二步服务器响应">第二步：服务器响应 <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#-5">#</a></h3>
+<p>在服务器端，当服务器看到该标头并想要允许访问时，就需要在响应中加入一个<code>Access-Control-Allow-Origin</code>标头来指定请求源（或加入<code>*</code>来允许任何源。）</p>
+<h3 id="第三步浏览器接收响应">第三步：浏览器接收响应 <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#-6">#</a></h3>
+<p>当浏览器看到带有相应<code>Access-Control-Allow-Origin</code>标头的响应时，即允许与客户端网站共享响应数据。</p>
+<h2 id="查看-cors-的实际应用">查看 CORS 的实际应用 <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#cors-2">#</a></h2>
+<p>这是一个使用 Express 的小型网络服务器。</p>
+<iframe allow="camera; clipboard-read; clipboard-write; encrypted-media; geolocation; microphone; midi" loading="lazy" src="https://glitch.com/embed/#!/embed/cors-demo?attributionHidden=true&#x26;sidebarCollapsed=true&#x26;path=server.js&#x26;previewSize=100" title="cors-demo on Glitch" style="box-sizing: border-box; border: 0px; height: 480px; width: 736px;"></iframe>
+<p>第一个端点（第 8 行）没有设置任何响应头，该端点只会在响应中发送一个文件。</p>
+<ul>
+<li>Press <code>Control+Shift+J</code> (or <code>Command+Option+J</code> on Mac) to open DevTools. - Press <code>Control+Shift+J</code> (or <code>Command+Option+J</code> on Mac) to open DevTools.</li>
+<li>Click the <strong>Console</strong> tab.</li>
+<li>请尝试以下命令：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://cors-demo.glitch.me/'</span><span style="color:#E1E4E8">, { mode: </span><span style="color:#9ECBFF">'cors'</span><span style="color:#E1E4E8"> });</span></span></code></pre>
+<p>您应该会看到一条错误消息：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">请求已被</span><span style="color:#9ECBFF"> CORS</span><span style="color:#9ECBFF"> 策略阻止：所请求的资源上无</span></span>
+<span class="line"><span style="color:#B392F0">'Access-Control-Allow-Origin'</span><span style="color:#B392F0">标头。</span></span></code></pre>
+<p>第二个端点（第 13 行）在响应中发送的是相同的文件，但在标头中加入了<code>Access-Control-Allow-Origin: *</code>。请在控制台中尝试：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://cors-demo.glitch.me/allow-cors'</span><span style="color:#E1E4E8">, { mode: </span><span style="color:#9ECBFF">'cors'</span><span style="color:#E1E4E8"> });</span></span></code></pre>
+<p>您的此次请求应该不会被阻止。</p>
+<h2 id="通过-cors-共享凭据">通过 CORS 共享凭据 <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#cors-3">#</a></h2>
+<p>出于隐私原因，CORS 通常用于“匿名请求”，即不识别请求方的请求。如果您想在使用 CORS 时发送 cookie（这样会识别发送者），就需要在请求和响应中添加额外的标头。</p>
+<h3 id="请求">请求 <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#-7">#</a></h3>
+<p>请将<code>credentials: 'include'</code>添加到如下所示的获取选项中。该操作将包括请求中的 cookie。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://example.com'</span><span style="color:#E1E4E8">, {</span></span>
+<span class="line"><span style="color:#E1E4E8">  mode: </span><span style="color:#9ECBFF">'cors'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  credentials: </span><span style="color:#9ECBFF">'include'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="响应">响应 <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#-8">#</a></h3>
+<p>必须将<code>Access-Control-Allow-Origin</code>设置给一个特定的源（没有使用<code>*</code>通配符），并且必须将<code>Access-Control-Allow-Credentials</code>设置为<code>true</code>。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>HTTP/1.1 200 OK</span></span>
+<span class="line"><span>Access-Control-Allow-Origin: https://example.com</span></span>
+<span class="line"><span>Access-Control-Allow-Credentials: true</span></span></code></pre>
+<h2 id="复杂-http-调用的预检请求">复杂 HTTP 调用的预检请求 <a href="https://web.dev/cross-origin-resource-sharing/?utm_source=devtools#http">#</a></h2>
+<p>如果某个网络应用程序需要复杂的 HTTP 请求，那么浏览器会在请求链的前端添加一个**<a href="https://developer.mozilla.org/docs/Web/HTTP/CORS#preflighted_requests">预检请求</a>**。</p>
+<p>CORS 规范将<strong>复杂请求</strong>定义为</p>
+<ul>
+<li>使用除 GET、POST 或 HEAD 以外方法的请求</li>
+<li>包含除<code>Accept</code>、<code>Accept-Language</code>或<code>Content-Language</code>以外标头的请求</li>
+<li>具有除<code>application/x-www-form-urlencoded</code>、<code>multipart/form-data</code>或<code>text/plain</code>以外的<code>Content-Type</code>标头的请求</li>
+</ul>
+<p>浏览器会根据需要创建预检请求。如下所示，该请求是一个<code>OPTIONS</code>请求，会在实际请求消息之前被发送。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>OPTIONS /data HTTP/1.1</span></span>
+<span class="line"><span>Origin: https://example.com</span></span>
+<span class="line"><span>Access-Control-Request-Method: DELETE</span></span></code></pre>
+<p>在服务器端，应用程序在响应预检请求时需要提供程序从该源接受的方法的相关信息。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>HTTP/1.1 200 OK</span></span>
+<span class="line"><span>Access-Control-Allow-Origin: https://example.com</span></span>
+<span class="line"><span>Access-Control-Allow-Methods: GET, DELETE, HEAD, OPTIONS</span></span></code></pre>
+<p>服务器响应还可以包含一个<code>Access-Control-Max-Age</code>标头，用于指定缓存预检结果的持续时间（以秒为单位），这样客户端就无需在每次发送复杂请求时都发出预检请求了。</p> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/web/cross-origin-resource-sharing.md" data-page-url="content/web/cross-origin-resource-sharing.md" data-page-title="跨域资源共享 (CORS)" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

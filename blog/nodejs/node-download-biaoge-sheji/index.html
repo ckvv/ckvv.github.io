@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/nodejs/node-download-biaoge-sheji/"><!-- Primary Meta Tags --><title>node复用原始接口下载表格</title><meta name="title" content="node复用原始接口下载表格"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/nodejs/node-download-biaoge-sheji/"><meta property="og:title" content="node复用原始接口下载表格"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/nodejs/node-download-biaoge-sheji/"><meta property="twitter:title" content="node复用原始接口下载表格"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">node复用原始接口下载表格</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/NODE.JS/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> NODE.JS </a> </div> <span> 2021/07/06 </span> </div> <div class="content"> <p>我们在做后台开发时可能有很多接口的数据需要下载下来,如果从头开发无疑会有很多重复代码如参数校验、权限验证等，接下来我谈谈我是如何利用现有的 node 接口下载表格</p>
+<h1 id="json-数组转表格">json 数组转表格</h1>
+<p>一般我们的接口返回的是 json 数组,我们很容易想到只需要把返回数据的 json 转为表格下载就可以了其他逻辑都是一样的，node 有很多现成的库可以处理如<code>xlsx</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> frows2XlsxBufferile</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">formatData</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> ws</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> xlsx.utils.</span><span style="color:#B392F0">json_to_sheet</span><span style="color:#E1E4E8">(formatData);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> wb</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> xlsx.utils.</span><span style="color:#B392F0">book_new</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  xlsx.utils.</span><span style="color:#B392F0">book_append_sheet</span><span style="color:#E1E4E8">(wb, ws, </span><span style="color:#9ECBFF">'SheetJS'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> xlsx.</span><span style="color:#B392F0">write</span><span style="color:#E1E4E8">(wb, { type: </span><span style="color:#9ECBFF">'buffer'</span><span style="color:#E1E4E8">, bookType: </span><span style="color:#9ECBFF">'xlsx'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h1 id="在-ctx-上下文添加下载文件的方法">在 ctx 上下文添加下载文件的方法</h1>
+<p>默认情况下返回的是文本数据这里需要处理,我这里需要在<code>header</code>中声明返回的内容是一个需要下载的文件</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> file</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">data</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition</span></span>
+<span class="line"><span style="color:#6A737D">  // 说明浏览器应该将内容下载到本地；filename 的值预填为下载后的文件名</span></span>
+<span class="line"><span style="color:#79B8FF">  this</span><span style="color:#E1E4E8">.response.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Content-disposition'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">`attachment;filename="${</span><span style="color:#E1E4E8">name</span><span style="color:#9ECBFF">}"`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type</span></span>
+<span class="line"><span style="color:#6A737D">  // 说明返回的是一个二进制流数据</span></span>
+<span class="line"><span style="color:#79B8FF">  this</span><span style="color:#E1E4E8">.response.</span><span style="color:#B392F0">set</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Content-Type'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'application/octet-stream'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.response.body </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> data);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h1 id="返回表格">返回表格</h1>
+<p>我们将上面封装下，方便调用,</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">async </span><span style="color:#B392F0">download</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">ctx</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">index</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">  // 如果返回接口返回信息，如果失败将原始信息返回</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">result </span><span style="color:#F97583">||</span><span style="color:#E1E4E8"> result.code </span><span style="color:#F97583">!==</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> ctx.</span><span style="color:#B392F0">error</span><span style="color:#E1E4E8">(result);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> ctx.</span><span style="color:#B392F0">file</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'offer.xlsx'</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">rows2XlsxBuffer</span><span style="color:#E1E4E8">(result.data.rows));</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h1 id="其他问题">其他问题</h1>
+<h2 id="分页">分页</h2>
+<p>一般情况下我们下载的表格是不需要分页的,而我们调用的原始接口如上面的<code>this.index</code>可能默认是有分页信息的，这里我们需要特殊处理告诉它，本次请求不需要分页</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">ctx.noPaging </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>然后我们需要在对应接口中检查<code>noPaging</code>参数决定是否分页</p>
+<h2 id="压缩">压缩</h2>
+<p>有时如果返回的表格较大我们可能需要对表压缩，这里我用<a href="https://github.com/archiverjs/node-zip-stream">zip-stream</a>直接对 buffer 压缩并返回对应压缩流</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> zipBuffer2Stream</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">buffer</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">outputName</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> archive</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> ZipStream</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    zlib: { level: </span><span style="color:#79B8FF">9</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">  archive.</span><span style="color:#B392F0">entry</span><span style="color:#E1E4E8">(buffer, { name: outputName }, (</span><span style="color:#FFAB70">err</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (err) {</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#E1E4E8"> err;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">    archive.</span><span style="color:#B392F0">finish</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> archive;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/nodejs/node-download-biaoge-sheji.md" data-page-url="content/nodejs/node-download-biaoge-sheji.md" data-page-title="node复用原始接口下载表格" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

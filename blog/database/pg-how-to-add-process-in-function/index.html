@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/database/pg-how-to-add-process-in-function/"><!-- Primary Meta Tags --><title>pg中为存储过程添加进度</title><meta name="title" content="pg中为存储过程添加进度"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/database/pg-how-to-add-process-in-function/"><meta property="og:title" content="pg中为存储过程添加进度"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/database/pg-how-to-add-process-in-function/"><meta property="twitter:title" content="pg中为存储过程添加进度"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">pg中为存储过程添加进度</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/DATABASE/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> DATABASE </a> </div> <span> 2021/07/06 </span> </div> <div class="content"> <p>有时我们可能需要知道长时间调用存储过程的进度。</p>
+<h3 id="通过外部表">通过外部表</h3>
+<p>首先我想到通过修改一张外部表更新存储过程的进度，后来发现这样是不行的。存储过程执行中对数据库的改变在外部是获取不到的，它只有在执行完毕提交后，我们才能获取结果，所以这种方式我们获取到的进度可能全都是 100%。</p>
+<h3 id="raise">raise</h3>
+<p><code>RAISE</code>语句可以在 sql 运行过程中向程序抛出消息或错误，<a href="https://www.postgresql.org/docs/11/plpgsql-errors-and-messages.html">文档</a></p>
+<p>用法如下所示：
+sql</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#E1E4E8">RAISE INFO </span><span style="color:#9ECBFF">'model_progress:%'</span><span style="color:#E1E4E8">,json_build_object(</span><span style="color:#9ECBFF">'job_uid'</span><span style="color:#E1E4E8">,job_uid,</span><span style="color:#9ECBFF">'job_progress'</span><span style="color:#E1E4E8">,progress);</span></span></code></pre>
+<p>程序中我们还可以获取到存储过程抛出的消息：如 node 实现所示</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> pool</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#E1E4E8"> Pg.</span><span style="color:#B392F0">Pool</span><span style="color:#E1E4E8">(Config.db);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">pool.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'connect'</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">cl</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  cl.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'notice'</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">msg</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // 获取sql抛出的信息</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    DbNoticeHandler.</span><span style="color:#B392F0">handle</span><span style="color:#E1E4E8">(msg);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/database/pg-how-to-add-process-in-function.md" data-page-url="content/database/pg-how-to-add-process-in-function.md" data-page-title="pg中为存储过程添加进度" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

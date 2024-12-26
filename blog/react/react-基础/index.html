@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/react/react-%E5%9F%BA%E7%A1%80/"><!-- Primary Meta Tags --><title>React 基础</title><meta name="title" content="React 基础"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/react/react-%E5%9F%BA%E7%A1%80/"><meta property="og:title" content="React 基础"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/react/react-%E5%9F%BA%E7%A1%80/"><meta property="twitter:title" content="React 基础"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">React 基础</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/REACT/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> REACT </a> </div> <span> 2022/02/02 </span> </div> <div class="content"> <h2 id="hooks-基础">Hooks 基础</h2>
+<p>在React中，如果在编写函数组件并需要向其添加一些 state，以前的做法是必须将其它转化为 class。通过一个实例化的<code>class</code>，保存组件的<code>state</code>等状态，对于每一次更新只需要调用<code>render</code>方法就可以。但是 <a href="https://reactjs.org/docs/react-component.html">Class组件</a>在变得复杂之后会变得难以维护。</p>
+<p>在<code>function</code>组件中，没有一个状态去保存这些信息，每一次函数上下文执行，所有变量，常量都重新声明，执行完毕，再被垃圾机制回收。为了保存一些状态,执行一些副作用钩子,React 16.8新增了<code>React Hooks</code>，去帮助记录组件的状态，处理一些额外的副作用。通过<code>React Hook</code> 可以让你在不编写 <code>class</code> 的情况下使用 <code>state</code> 以及其他的 React 特性。</p>
+<p>Hook 是一个特殊的函数，它可以让你“钩入” React 的特性。例如，<code>useState</code> 是允许你在 React 函数组件中添加 state 的 Hook。你可以在现有的函数组件中使用 Hook，所以通常来说<code>hook</code>使得在组件之间复用状态逻辑变得方便、更容易实现代码的关注点分离。</p>
+<h3 id="hooks的原理">Hooks的原理</h3>
+<p>React 保持对当前渲染中的组件的追踪。多亏了 <a href="https://zh-hans.reactjs.org/docs/hooks-rules.html">Hook 规范</a>，我们得知 Hook 只会在 React 组件中被调用（或自定义 Hook —— 同样只会在 React 组件中被调用）。</p>
+<p>每个组件内部都有一个「记忆单元格」列表。它们只不过是我们用来存储一些数据的 JavaScript 对象。当你用 <code>useState()</code> 调用一个 Hook 的时候，它会读取当前的单元格（或在首次渲染时将其初始化），然后把指针移动到下一个。这就是多个 <code>useState()</code> 调用会得到各自独立的本地 state 的原因。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// 每次执行一个`hooks`函数，都产生一个`hook`对象，里面保存了当前`hook`信息,</span></span>
+<span class="line"><span style="color:#6A737D">// 然后将每个`hooks`以链表形式串联起来，并赋值给`workInProgress`的`memoizedState`。</span></span>
+<span class="line"><span style="color:#6A737D">// 也就证实了上述所说的，函数组件用`memoizedState`存放`hooks`链表。</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> mountWorkInProgressHook</span><span style="color:#E1E4E8">()</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Hook</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> hook</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Hook</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    memoizedState: </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    baseState: </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    baseQueue: </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    queue: </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    next: </span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (workInProgressHook </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">    // This is the first hook in the list</span></span>
+<span class="line"><span style="color:#E1E4E8">    currentlyRenderingFiber.memoizedState </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> workInProgressHook </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> hook;</span></span>
+<span class="line"><span style="color:#E1E4E8">  } </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // Append to the end of the list</span></span>
+<span class="line"><span style="color:#E1E4E8">    workInProgressHook </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> workInProgressHook.next </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> hook;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> workInProgressHook;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>所以一旦在条件语句中声明<code>hooks</code>，在下一次函数组件更新，<code>hooks</code>链表结构，将会被破坏，<code>current</code>树的<code>memoizedState</code>缓存<code>hooks</code>信息，和当前<code>workInProgress</code>不一致，如果涉及到读取<code>state</code>等操作，就会发生异常</p>
+<h3 id="hooks的使用限制">Hooks的使用限制</h3>
+<h4 id="只在最顶层使用-hook">只在最顶层使用 Hook</h4>
+<p><strong>不要在循环，条件或嵌套函数中调用 Hook，</strong> 确保总是在你的 React 函数的最顶层调用他们。遵守这条规则，你就能确保 Hook 在每一次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 <code>useState</code> 和 <code>useEffect</code> 调用之间保持 hook 状态的正确。参考<code>Hooks的原理</code></p>
+<blockquote>
+<p>如果我们想要有条件地执行一个 effect，可以将判断放到 Hook 的<em>内部</em>：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // 👍 将条件判断放置在 effect 中</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (name </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    localStorage.</span><span style="color:#B392F0">setItem</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'formData'</span><span style="color:#E1E4E8">, name);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+</blockquote>
+<h4 id="只在-react-函数中调用-hook">只在 React 函数中调用 Hook</h4>
+<p><strong>不要在普通的 JavaScript 函数中调用 Hook</strong>你可以：</p>
+<ul>
+<li>✅ 在 React 的函数组件中调用 Hook</li>
+<li>✅ 在自定义 Hook 中调用其他 Hook</li>
+</ul>
+<p>遵循此规则，确保组件的状态逻辑在代码中清晰可见。</p>
+<h4 id="自定义-hook-必须以-use-开头">自定义 Hook 必须以 “<code>use</code>” 开头</h4>
+<p>这个约定非常重要。不遵循的话，由于无法判断某个函数是否包含对其内部 Hook 的调用，React 将无法自动检查你的 Hook 是否违反了 <a href="https://zh-hans.reactjs.org/docs/hooks-rules.html">Hook 的规则</a>。</p>
+<h2 id="react-的渲染流程">React 的渲染流程</h2>
+<ul>
+<li>JSX 转换与函数组件执行
+<ul>
+<li>当 React 应用启动时，首先会对 JSX 代码进行转换。JSX 看起来像 HTML，但实际上会被编译为 <code>React.createElement</code> 调用，创建虚拟 DOM 节点。</li>
+<li>对于函数组件，React 会调用该组件函数，传入 props 和 context 等参数。函数组件会根据输入的 props 返回描述组件 UI 的虚拟 DOM 结构。</li>
+</ul>
+</li>
+<li>虚拟 DOM 创建与更新
+<ul>
+<li>组件的渲染结果是一个虚拟 DOM 树，它是对真实 DOM 的抽象表示，包含了元素的类型、属性、子节点等信息，但并不直接操作真实 DOM。</li>
+<li>当组件的 props 或 state 发生变化时，React 会重新调用组件函数，生成新的虚拟 DOM 树。</li>
+<li>React 会通过对比新旧虚拟 DOM 树，找出发生变化的部分，这个过程称为调和（reconciliation）。</li>
+</ul>
+</li>
+<li>调和过程
+<ul>
+<li>从根节点开始，React 递归地比较新旧虚拟 DOM 树的每个节点。
+如果节点类型相同，React 会继续比较它们的属性和子节点，只更新发生变化的部分。
+如果节点类型不同，React 会销毁旧节点，创建新节点。</li>
+<li>对于列表渲染，React 会使用 key 属性来帮助识别哪些项发生了变化，从而更高效地更新列表。</li>
+</ul>
+</li>
+<li>更新队列与批处理
+<ul>
+<li>在渲染过程中，当组件的 setState 方法被调用时，React 不会立即更新组件，而是将这些更新放入一个更新队列中。</li>
+<li>React 会进行批处理更新，即在同一事件循环中的多个 setState 调用会被合并为一次更新，以提高性能。</li>
+</ul>
+</li>
+<li>提交阶段
+<ul>
+<li>一旦调和过程完成，React 进入提交阶段，开始将变化应用到真实 DOM。</li>
+<li>首先，React 会执行所有在 useEffect(浏览器布局和绘制之后) 和 useLayoutEffect(浏览器进行布局和绘制之前) 的回调函数中注册的副作用（side effects）</li>
+<li>React 会根据调和过程中确定的变化，更新真实 DOM。这包括添加、删除或更新 DOM 节点，以及更新节点的属性。</li>
+</ul>
+</li>
+<li>渲染完成与生命周期钩子
+<ul>
+<li>当 DOM 更新完成后，React 会触发一些生命周期钩子，如 componentDidMount（对于挂载阶段）、componentDidUpdate（对于更新阶段）和 componentWillUnmount（对于卸载阶段）。</li>
+<li>如果有错误发生，React 会捕获并处理这些错误，触发 componentDidCatch 生命周期钩子。</li>
+</ul>
+</li>
+</ul>
+<h3 id="错误边界">错误边界</h3>
+<p>类组件</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> React, { PureComponent } </span><span style="color:#F97583">from</span><span style="color:#E1E4E8">  react ;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> ErrorPage </span><span style="color:#F97583">from</span><span style="color:#E1E4E8">  ../ErrorPage ;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> class</span><span style="color:#B392F0"> ErrorBound</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> PureComponent</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  constructor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">props</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">    super</span><span style="color:#E1E4E8">(props);</span></span>
+<span class="line"><span style="color:#79B8FF">    this</span><span style="color:#E1E4E8">.state </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      hasError: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // 这个方法在服务器端渲染期间也被调用，在DOM尚未更新时在“渲染阶段”调用。</span></span>
+<span class="line"><span style="color:#6A737D">  // 应该是一个纯函数。如果要执行副作用 （例如，调用分析服务） ，则还需要实现 componentDidCatch</span></span>
+<span class="line"><span style="color:#F97583">  static</span><span style="color:#B392F0"> getDerivedStateFromError</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">    // 更新 state 使下一次渲染能够显示降级后的 UI</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> { hasError: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // 这个方法总是在浏览器中调用，当DOM已经更新时，在“提交阶段”调用</span></span>
+<span class="line"><span style="color:#B392F0">  componentDidCatch</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">errorInfo</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">    // 1、错误信息（error）</span></span>
+<span class="line"><span style="color:#6A737D">    // 2、错误堆栈（errorInfo)</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(error, errorInfo);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  render</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.state.hasError) {</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">ErrorPage</span><span style="color:#E1E4E8"> />;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">.props.children;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>函数组件
+目前还没有 static getDerivedStateFromError in 函数组件的直接等效项。如果您想避免创建类组件，请编写一个像上面一样的 ErrorBoundary 组件，并在整个应用程序中使用它。或者，使用执行此操作的 <code>react-error-boundary</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { ErrorBoundary } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react-error-boundary'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">ErrorBoundary</span><span style="color:#B392F0"> fallback</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>Something went wrong&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>}></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">ExampleApplication</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#79B8FF">ErrorBoundary</span><span style="color:#E1E4E8">></span></span></code></pre>
+<h2 id="参考文档">参考文档</h2>
+<ul>
+<li>
+<p><a href="https://react.docschina.org/reference/react">https://react.docschina.org/reference/react</a></p>
+</li>
+<li>
+<p><a href="https://zhuanlan.zhihu.com/p/376914196">https://zhuanlan.zhihu.com/p/376914196</a></p>
+</li>
+</ul> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/react/react-基础.md" data-page-url="content/react/react-基础.md" data-page-title="React 基础" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/web/how-brower-render-page/"><!-- Primary Meta Tags --><title>浏览器如何渲染页面</title><meta name="title" content="浏览器如何渲染页面"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/web/how-brower-render-page/"><meta property="og:title" content="浏览器如何渲染页面"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/web/how-brower-render-page/"><meta property="twitter:title" content="浏览器如何渲染页面"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">浏览器如何渲染页面</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/WEB/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> WEB </a> </div> <span> 2022/02/04 </span> </div> <div class="content"> <blockquote>
+<p>参考<a href="https://coolshell.cn/articles/9666.html">https://coolshell.cn/articles/9666.html</a></p>
+</blockquote>
+<p>文章是为了说明浏览器如何将 HTML，CSS 和 JavaScript 转换为网站。</p>
+<h2 id="首先">首先</h2>
+<p>浏览器是一个可以从远程服务器或者本地磁盘将文件加载、显示、交互的软件。</p>
+<p>浏览器有两个重要部分：</p>
+<p>渲染引擎（Rendering Engine）：一般习惯称为“浏览器内核”，渲染引擎决定了浏览器如何显示网页的内容以及页面的格式信息。不同的浏览器内核对网页编写语法的解释也有不同如 Gecko（火狐）、Blink（Chrome）、Webkit（Safari）、Trident（IE）等，因此同一网页在不同的内核的浏览器里的渲染效果也可能不同。</p>
+<p>JavaScript 引擎：JavaScript 由 ECMAScript，DOM 和 BOM 三者组成，不同浏览器针对 JavaScript 语法和语义标准有多种实现如：</p>
+<ul>
+<li>Chrome 使用 V8 引擎，</li>
+<li>Safari 使用 JavaScriptCore，</li>
+<li>Firefox 使用 SpiderMonkey</li>
+</ul>
+<h2 id="浏览器接收数据">浏览器接收数据</h2>
+<p>数据是通过 Internet 以<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E5%8C%85/489739">数据包（Packet）</a>为单位按字节形式发送到浏览器。浏览器将从硬盘（或网络）中读取 HTML 的原始数据字节转换为字符。</p>
+<h2 id="从原始字节到-dom">从原始字节到 DOM</h2>
+<p>当浏览器接受到扩展名为.html 时，会将该文件解释为 html 对其进行解析，文件中的每个开始和结束 html 标签会转换为节点如</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>创建这些节点后，然后将这些节点链接到称为 DOM 的树数据结构中。DOM 建立父子关系，相邻的兄弟关系等。每个节点之间的关系都在此 DOM 对象中建立。浏览器必须先将 html 数据的原始字节转换为 DOM，然后才能进行任何操作。</p>
+<p>当浏览器接收数据的原始字节并启动 DOM 构造过程时，它还将发出请求以获取链接的样式表。
+一旦浏览器开始解析 html，一旦找到文件的 link 标签，浏览器 css 就会同时发出获取请求的请求。</p>
+<h2 id="从原始字节到-cssom">从原始字节到 CSSOM</h2>
+<p>当浏览器收到 CSS 的原始字节时，也会启动 HTML 原始字节的类似过程。将数据的原始字节转换为字符，然后标记化节点，最后还形成 CSS 树结构，称为 CSS 对象模型，简称 CSSOM。
+CSS 有一个叫做<a href="https://blog.logrocket.com/how-css-works-understanding-the-cascade-d181cd89a4d8/">Cascade</a>的东西。级联是浏览器如何确定将哪些样式应用于元素的方式。</p>
+<p>由于影响元素的样式可能来自父元素（即通过继承），或者已设置在元素本身上，因此 CSSOM 树结构变得很重要。浏览器必须递归地遍历 CSS 树结构并确定影响特定元素的样式。</p>
+<h2 id="渲染树">渲染树</h2>
+<p>DOM 和 CSSOM 树结构是两个<strong>独立的</strong>结构。DOM 包含有关页面 HTML 元素的关系的所有信息，而 CSSOM 包含有关元素样式的信息。浏览器现在将 DOM 和 CSSOM 树合并为一个称为渲染树(render tree)的东西。渲染树包含有关页面上所有可见 DOM 内容的信息，以及不同节点所需的所有 CSSOM 信息。</p>
+<blockquote>
+<p>如果一个元素被 CSS 隐藏，<code>display; none</code>例如使用，则该节点将不会在渲染树中表示。隐藏的元素将出现在 DOM 中，但不会出现在渲染树中。原因是渲染树结合了来自 DOM 和 CSSOM 的信息，因此它知道在树中不包括隐藏元素。</p>
+</blockquote>
+<p>构建了渲染树后，浏览器将继续进行下一步，即 布局！</p>
+<p>现在，我们在屏幕上拥有所有可见内容的内容和样式信息，但实际上并没有在屏幕上呈现任何内容,浏览器必须计算页面上每个对象的确切大小和位置。此布局步骤对从 DOM 和 CSSOM 接收到的内容和样式，进行了必要的布局计算，并绘制到屏幕上。DOM 和 CSSOM 必须在成功绘制之前构建，所以优化网站的第一条规则是尽快将最重要的 HTML 和 CSS 交付给客户端。</p>
+<h2 id="javascript">JavaScript</h2>
+<p>JavaScript 可以更改 DOM 和 CSSOM。</p>
+<h3 id="javascript-执行前将停止整个-dom-构造过程">Javascript 执行前将停止整个 DOM 构造过程</h3>
+<p>由于浏览器不确定此特定 Javascript 会做什么，因此通过停止整个 DOM 结构来采取预防措施。每当浏览器遇到<code>script</code>标签时，在脚本完成执行之前，将停止整个 DOM 构造过程。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;!</span><span style="color:#85E89D">DOCTYPE</span><span style="color:#B392F0"> html</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">meta</span><span style="color:#B392F0"> name</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"viewport"</span><span style="color:#B392F0"> content</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"width=device-width,initial-scale=1"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">>Medium Article Demo&#x3C;/</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"stylesheet"</span><span style="color:#B392F0"> href</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"style.css"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">p</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"header"</span><span style="color:#E1E4E8">>How Browser Rendering Works&#x3C;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>&#x3C;</span><span style="color:#85E89D">img</span><span style="color:#B392F0"> src</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"https://i.imgur.com/jDq3k3r.jpg"</span><span style="color:#E1E4E8"> />&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#F97583">      let</span><span style="color:#E1E4E8"> header </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> document.</span><span style="color:#B392F0">getElementById</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"header"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"header is: "</span><span style="color:#E1E4E8">, header);</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>在<code>script</code>标签中，我使用来访问节点的 DOM <code>id</code>，<code>header</code>然后将其输出到控制台。</p>
+<p>让我们将其放在头部，</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;!</span><span style="color:#85E89D">DOCTYPE</span><span style="color:#B392F0"> html</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">meta</span><span style="color:#B392F0"> name</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"viewport"</span><span style="color:#B392F0"> content</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"width=device-width,initial-scale=1"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">>Medium Article Demo&#x3C;/</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"stylesheet"</span><span style="color:#B392F0"> href</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"style.css"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#F97583">      let</span><span style="color:#E1E4E8"> header </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> document.</span><span style="color:#B392F0">getElementById</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"header"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"header is: "</span><span style="color:#E1E4E8">, header);</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">p</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"header"</span><span style="color:#E1E4E8">>How Browser Rendering Works&#x3C;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>&#x3C;</span><span style="color:#85E89D">img</span><span style="color:#B392F0"> src</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"https://i.imgur.com/jDq3k3r.jpg"</span><span style="color:#E1E4E8"> />&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>header 变量将解析为<code>null</code>。</p>
+<p>在 HTML 解析器正在构造 DOM 的过程中，找到了一个<code>script</code>标签。在脚本执行完成之前，将停止 DOM 构建：在<code>script</code>尝试使用<code>id</code>of 访问 DOM 节点时，该节点<code>header</code>不存在，因为<code>body</code>尚未解析标签及其所有内容。<strong>所以脚本的位置很重要</strong></p>
+<p>这还不是重点</p>
+<p>如果将内联提取<code>script</code>到外部<code>app.js</code>文件，则行为是相同的。DOM 构造仍然停止</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">script</span><span style="color:#B392F0"> src</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"app.js"</span><span style="color:#E1E4E8">>&#x3C;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>如果网络速度很慢并且获取需要数秒，那么 DOM 构建也会暂停数秒。</p>
+<h3 id="cssom-准备就绪前将停止执行-javascript">CSSOM 准备就绪前，将停止执行 Javascript</h3>
+<p>解析器遇到<code>script</code>标签但 CSSOM 尚未准备就绪时，将停止执行 Javascript。这也是为什么一般将 style 标签放在网站上面，script 标签放网站下面的原因。</p>
+<h3 id="例外">例外</h3>
+<p>默认情况下，每个脚本都会阻止 DOM 构建，但是，有一种方法可以更改此默认行为。如果将<code>async</code>关键字添加到<code>script</code>标签，则不会停止 DOM 构建。DOM 构建将继续进行，并且在完成下载并准备就绪后将执行脚本。</p>
+<p>尝试下面三种情况页面的渲染有什么不同</p>
+<blockquote>
+<p>Index.js</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">i </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">do</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">while</span><span style="color:#E1E4E8"> (i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 1000000000</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">matrix.innerText </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> i;</span></span></code></pre>
+<blockquote>
+<p>Index.html</p>
+</blockquote>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>1&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"matrix"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">script</span><span style="color:#B392F0"> src</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"./1.js"</span><span style="color:#E1E4E8">>&#x3C;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>2&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>1&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"matrix"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">script</span><span style="color:#B392F0"> src</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"./1.js"</span><span style="color:#B392F0"> async</span><span style="color:#E1E4E8">>&#x3C;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>2&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>1&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"matrix"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    i </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    do</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    } </span><span style="color:#F97583">while</span><span style="color:#E1E4E8"> (i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 1000000000</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    matrix.innerText </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> i;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">>2&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>浏览器接收 HTML，CSS 和 JS 字节并将它们转换为屏幕上的渲染像素之间采取的步骤称为<strong>关键渲染路径</strong>。一个经过优化的站点应该进行渐进式渲染，通过优先确定要加载的资源和加载的顺序来尽快加载页面，不会阻塞整个过程。</p> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/web/how-brower-render-page.md" data-page-url="content/web/how-brower-render-page.md" data-page-title="浏览器如何渲染页面" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/web/handling-fonts-in-the-web/"><!-- Primary Meta Tags --><title>处理浏览器中的字体常见问题</title><meta name="title" content="处理浏览器中的字体常见问题"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/web/handling-fonts-in-the-web/"><meta property="og:title" content="处理浏览器中的字体常见问题"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/web/handling-fonts-in-the-web/"><meta property="twitter:title" content="处理浏览器中的字体常见问题"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">处理浏览器中的字体常见问题</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/WEB/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> WEB </a><a href="/tag/CSS/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> CSS </a> </div> <span> 2022/02/04 </span> </div> <div class="content"> <p>当页面中的标题字数是不定的，并且需要适应各种机型屏幕宽度，可能会遇到下面的需求,</p>
+<h2 id="字体末尾如何显示省略号">字体末尾如何显示省略号</h2>
+<p>如果显示区域很小，我们可以只设置为单行显示，对于单行文本末尾显示省略号很简单</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">.wrapper</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  white-space</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">nowrap</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  overflow</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">hidden</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  text-overflow</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">ellipsis</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>但是如果是显示区域很大,我们需要设置多行的最后一行显示省略号，对于多行文本，常用的方法如下</p>
+<p>移动端兼容较好，适用于 webkit 内核浏览器, 另外对于超出部分的字体仍会显示出来，如下图所示</p>
+<div style="width: 100px; height:120px;">
+  <div style="width: 100px; height:60px; display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical; ">
+    hello
+    hello
+    hello
+    hello
+    hello
+    hello
+    hello
+    hello
+  </div>
+</div>
+<p>所以我们一般需要搭配固定高度及<code>overflow: hidden;</code>, <code>line-height</code>或者<code>font-size</code>使用</p>
+<div style="width: 100px; height:120px;">
+  <div style="width: 100px; height:60px; line-height: 20px; overflow: hidden; display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical; ">
+    hello
+    hello
+    hello
+    hello
+    hello
+    hello
+    hello
+    hello
+  </div>
+</div>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">.wrapper</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  display</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">-webkit-box</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  -webkit-line-clamp</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  -webkit-box-orient</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">vertical</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="解决多行文字时最后一排文字可能超出边框显示不全问题">解决多行文字时最后一排文字可能超出边框显示不全问题</h2>
+<p>对于多行文字，最后一排文字可能超出边框显示不全的情况，对于这种情况我们需要设置外部容器高度为字体高度的整数倍如对于一个高<code>6em</code>的容器,我们可以设置他的<code>line-height</code>为<code>3em</code>, 或者我们设置他的<code>font-size</code>为 <code>2.5em</code>,并且把<code>line-height</code>设置为<code>1.2</code>,</p>
+<h2 id="如何文字大小自适应容器">如何文字大小自适应容器</h2>
+<h3 id="动态修改字体大小">动态修改字体大小</h3>
+<p>根据不同的字体长度, 设置不同的字体大小； 或者逐渐修改初始字体大小，直到字体容器宽度和高度小于外层包裹的容器宽, 但是由于字体大小有最小值，这种办法对太对的文本也无能为力</p>
+<h3 id="zoomtransform-缩放字体容器">zoom,transform 缩放字体容器</h3>
+<p>我们可以通过外层容器宽高和字体容器宽高计算出需要缩放的比例，通过设置 zoom、scale 来自适应容器宽高,如:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span></span>
+<span class="line"><span style="color:#B392F0">  class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"auto-size"</span></span>
+<span class="line"><span style="color:#B392F0">  contenteditable</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"true"</span></span>
+<span class="line"><span style="color:#B392F0">  style</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"border: 1px solid gray; width: 120px; height: 120px;resize: both; overflow: scroll;"</span></span>
+<span class="line"><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">span</span><span style="color:#E1E4E8">> 通过拖动右下角,或者增加删除文字查看字体缩放。 &#x3C;/</span><span style="color:#85E89D">span</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#F97583">  function</span><span style="color:#B392F0"> autoFit</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">ele</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> wrapperSty</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> ele.</span><span style="color:#B392F0">getBoundingClientRect</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> inner</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> ele.children[</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> innerSty</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> inner.</span><span style="color:#B392F0">getBoundingClientRect</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> scale</span><span style="color:#F97583"> =</span></span>
+<span class="line"><span style="color:#E1E4E8">      Math.</span><span style="color:#B392F0">floor</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">        Math.</span><span style="color:#B392F0">min</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">          wrapperSty.width </span><span style="color:#F97583">/</span><span style="color:#E1E4E8"> innerSty.width,</span></span>
+<span class="line"><span style="color:#E1E4E8">          wrapperSty.height </span><span style="color:#F97583">/</span><span style="color:#E1E4E8"> innerSty.height</span></span>
+<span class="line"><span style="color:#E1E4E8">        ) </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 100</span></span>
+<span class="line"><span style="color:#E1E4E8">      ) </span><span style="color:#F97583">/</span><span style="color:#79B8FF"> 100</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    inner.style.zoom </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> scale;</span></span>
+<span class="line"><span style="color:#6A737D">    // inner.style.display="inline-block"</span></span>
+<span class="line"><span style="color:#6A737D">    // const translate = (1 / scale - 1) / 2 * 100;</span></span>
+<span class="line"><span style="color:#6A737D">    // inner.style.transform = `scale(${scale}) translate(-${translate}%, -${translate}%)`;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">  document.</span><span style="color:#B392F0">querySelectorAll</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">".auto-size"</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">forEach</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">ele</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    new</span><span style="color:#B392F0"> ResizeObserver</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">      autoFit</span><span style="color:#E1E4E8">(ele);</span></span>
+<span class="line"><span style="color:#E1E4E8">      ele.</span><span style="color:#B392F0">oninput</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">        autoFit</span><span style="color:#E1E4E8">(ele);</span></span>
+<span class="line"><span style="color:#E1E4E8">      };</span></span>
+<span class="line"><span style="color:#E1E4E8">    }).</span><span style="color:#B392F0">observe</span><span style="color:#E1E4E8">(ele);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span></code></pre>
+<div class="auto-size" contenteditable="true" style="border: 1px solid gray; width: 120px; height: 120px;resize: both; overflow: scroll; line-height: 1.2">
+  <span>
+    通过拖动右下角,或者增加删除文字查看字体缩放。
+  </span>
+</div>
+<script>
+function autoFit(ele) {
+    const wrapperSty = ele.getBoundingClientRect();
+    const inner = ele.children[0];
+    const innerSty = inner.getBoundingClientRect();
+    const scale = Math.floor(Math.min(wrapperSty.width / innerSty.width, wrapperSty.height / innerSty.height) * 100) / 100;
+    inner.style.zoom = scale;
+}
+document.querySelectorAll('.auto-size').forEach(ele => {
+  new ResizeObserver(() => {
+    autoFit(ele)
+    ele.oninput = () => {
+      autoFit(ele)
+    };
+  }).observe(ele);
+});
+</script>
+<h2 id="svg-的-viewbox">svg 的 viewBox</h2>
+<p>svg 的 viewBox 属性允许指定一个给定的一组图形伸展以适应特定的容器元素。但是 svg 并不能很好地处理文本换行，这种方法比较适合单行文本</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">svg</span></span>
+<span class="line"><span style="color:#B392F0">  class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"hd"</span></span>
+<span class="line"><span style="color:#B392F0">  width</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"100%"</span></span>
+<span class="line"><span style="color:#B392F0">  height</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"50"</span></span>
+<span class="line"><span style="color:#B392F0">  viewBox</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0 0 900 50"</span></span>
+<span class="line"><span style="color:#B392F0">  xmlns</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"http://www.w3.org/2000/svg"</span></span>
+<span class="line"><span style="color:#B392F0">  xmlns:xlink</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"http://www.w3.org/1999/xlink"</span></span>
+<span class="line"><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">text</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"svg-text"</span><span style="color:#B392F0"> x</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"0"</span><span style="color:#B392F0"> y</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"20"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    这个标题很长哦可能一行放不下的怎么办呢这个标题很长哦可能一行放不下的怎么办呢这个标题很长哦可能一行放不下的怎么办呢</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">text</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">svg</span><span style="color:#E1E4E8">></span></span></code></pre>
+<svg style="width: 100%;" class="hd" width="100%" height="50" viewBox="0 0 900 50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <text class="svg-text" x="0" y="20">这个标题很长哦可能一行放不下的怎么办呢这个标题很长哦可能一行放不下的怎么办呢这个标题很长哦可能一行放不下的怎么办呢</text>
+</svg> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/web/handling-fonts-in-the-web.md" data-page-url="content/web/handling-fonts-in-the-web.md" data-page-title="处理浏览器中的字体常见问题" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

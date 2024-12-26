@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/libs/docker/"><!-- Primary Meta Tags --><title>Docker</title><meta name="title" content="Docker"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/libs/docker/"><meta property="og:title" content="Docker"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/libs/docker/"><meta property="twitter:title" content="Docker"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">Docker</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/TOOL/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> TOOL </a><a href="/tag/DOCKER/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> DOCKER </a> </div> <span> 2021/07/06 </span> </div> <div class="content"> <h2 id="安装卸载docker">安装/卸载docker</h2>
+<p>安装过程参考<a href="https://docs.docker.com/install/linux/docker-ce/centos/">官网</a>;</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">yum</span><span style="color:#9ECBFF"> update</span></span>
+<span class="line"><span style="color:#6A737D">## 使用以下命令来设置的存储库</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> yum-config-manager</span><span style="color:#79B8FF"> --add-repo</span><span style="color:#9ECBFF"> https://download.docker.com/linux/centos/docker-ce.repo</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> yum</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> docker-ce</span><span style="color:#9ECBFF"> docker-ce-cli</span><span style="color:#9ECBFF"> containerd.io</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> systemctl</span><span style="color:#9ECBFF"> start</span><span style="color:#9ECBFF"> docker</span></span></code></pre>
+<h2 id="卸载">卸载</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> yum</span><span style="color:#79B8FF"> -y</span><span style="color:#9ECBFF"> remove</span><span style="color:#9ECBFF"> docker-ee</span></span>
+<span class="line"><span style="color:#6A737D">## 删除所有图像，容器和卷</span></span>
+<span class="line"><span style="color:#B392F0">sudo</span><span style="color:#9ECBFF"> rm</span><span style="color:#79B8FF"> -rf</span><span style="color:#9ECBFF"> /var/lib/docker</span></span>
+<span class="line"><span style="color:#6A737D">## 删除其他与Docker相关的资源</span></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> sudo</span><span style="color:#9ECBFF"> rm</span><span style="color:#79B8FF"> -rf</span><span style="color:#9ECBFF"> /run/docker</span></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> sudo</span><span style="color:#9ECBFF"> rm</span><span style="color:#79B8FF"> -rf</span><span style="color:#9ECBFF"> /var/run/docker</span></span>
+<span class="line"><span style="color:#B392F0">$</span><span style="color:#9ECBFF"> sudo</span><span style="color:#9ECBFF"> rm</span><span style="color:#79B8FF"> -rf</span><span style="color:#9ECBFF"> /etc/docker</span></span>
+<span class="line"></span></code></pre>
+<h2 id="安装过程中可能会遇到以下问题">安装过程中可能会遇到以下问题</h2>
+<ul>
+<li>doceker版本和系统内核版本不兼容
+升级系统内核或者降低docker版本</li>
+<li>yum安装失败</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="shell"><code><span class="line"><span style="color:#6A737D">## 解决依赖冲突</span></span>
+<span class="line"><span style="color:#B392F0">package-cleanup</span><span style="color:#79B8FF"> --cleandupes</span></span></code></pre>
+<ul>
+<li>找不到安装包
+添加设置的存储库</li>
+</ul>
+<h2 id="容器生命周期管理">容器生命周期管理</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker start :启动一个或多个已经被停止的容器</span></span>
+<span class="line"><span>docker stop :停止一个运行中的容器</span></span>
+<span class="line"><span>docker restart :重启容器</span></span></code></pre>
+<ul>
+<li>docker-compose 文件启动镜像</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker-compose up -d redis</span></span></code></pre>
+<ul>
+<li>创建一个新的容器但不启动，用法同docker run</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>使用docker镜像nginx:latest创建一个容器,并将容器命名为myrunoob</span></span>
+<span class="line"><span>docker create  --name myrunoob  nginx:latest</span></span></code></pre>
+<ul>
+<li>创建一个新的容器并运行一个命令</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx。</span></span>
+<span class="line"><span>docker run --name mynginx -d nginx:latest</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>使用镜像nginx:latest以后台模式启动一个容器,并将容器的80端口映射到主机随机端口。</span></span>
+<span class="line"><span>docker run -P -d nginx:latest</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>使用镜像 nginx:latest，以后台模式启动一个容器,将主机的 80 端口映射到 容器的 80 端口,主机的目录 /data 映射到容器的 /data。</span></span>
+<span class="line"><span>docker run -p 80:80 -v /data:/data -d nginx:latest</span></span></code></pre>
+<h2 id="镜像容器管理">镜像容器管理</h2>
+<ul>
+<li>给image打标签</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker tag e9cb35287c01 geohey-nlpa-platform:gd</span></span></code></pre>
+<ul>
+<li>保存为本地文件</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker save -o geohey-nlpa-platform.tar geohey-nlpa-platform:gd</span></span></code></pre>
+<ul>
+<li>docker load本地镜像文件</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker load --input geohey-nlpa-platform.tar</span></span></code></pre>
+<ul>
+<li>删除镜像</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker rmi e9cb35287c01</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>删除 docker 无用镜像</span></span>
+<span class="line"><span>docker rmi  `docker images | grep none | awk '{print $3}'`</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>docker rmi  `docker images -a | grep none | awk '{print $3}'`</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>批量删除容器：</span></span>
+<span class="line"><span>docker container rm $(docker  container  ls   -a  -q)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>批量删除镜像：（慎用）</span></span>
+<span class="line"><span>docker  image   rm   $(docker  image  ls   -a  -q)</span></span></code></pre>
+<ul>
+<li>删除容器</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker rm -f CONTAINERid</span></span></code></pre>
+<ul>
+<li>从容器创建一个新的镜像</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker commit CONTAINERid imagename:tag</span></span></code></pre>
+<ul>
+<li>使用 Dockerfile 创建镜像</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span></span></span></code></pre>
+<ul>
+<li>将指定镜像保存成 tar 归档文件</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>将镜像 runoob/ubuntu:v3 生成 my_ubuntu_v3.tar 文档</span></span>
+<span class="line"><span>docker save -o my_ubuntu_v3.tar runoob/ubuntu:v3</span></span>
+<span class="line"><span></span></span></code></pre>
+<ul>
+<li>导入使用 docker save 命令导出的镜像</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>导入镜像：</span></span>
+<span class="line"><span>docker load -i ubuntu.tar</span></span>
+<span class="line"><span>docker load &#x3C; ubuntu.tar</span></span></code></pre>
+<ul>
+<li>从归档文件中创建镜像。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>从镜像归档文件my_ubuntu_v3.tar创建镜像，命名为runoob/ubuntu:v4</span></span>
+<span class="line"><span>docker import  my_ubuntu_v3.tar runoob/ubuntu:v4</span></span></code></pre>
+<ul>
+<li>文件与docker文件拷贝</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker > 系统</span></span>
+<span class="line"><span>docker cp  96f7f14e99ab:/www /tmp/</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>系统 > docker</span></span>
+<span class="line"><span>docker cp /www/runoob 96f7f14e99ab:/www</span></span></code></pre>
+<h2 id="获取docker信息">获取docker信息</h2>
+<ul>
+<li>获取容器/镜像的元数据。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker inspect CONTAINERid</span></span></code></pre>
+<ul>
+<li>获取容器的日志</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>跟踪日志输出</span></span>
+<span class="line"><span>docker logs -f mynginx</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>查看容器mynginx从2016年7月1日后的最新10条日志。</span></span>
+<span class="line"><span>docker logs --since="2016-07-01" --tail=10 mynginx</span></span></code></pre>
+<ul>
+<li>在运行的容器中执行命令</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker exec -it CONTAINERid sh</span></span></code></pre>
+<h2 id="镜像仓库">镜像仓库</h2>
+<ul>
+<li>Docker login/logout 命令
+docker login : 登陆到一个Docker镜像仓库，如果未指定镜像仓库地址，默认为官方仓库 Docker Hub
+docker logout : 登出一个Docker镜像仓库，如果未指定镜像仓库地址，默认为官方仓库 Docker Hub</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker login -u 用户名 -p 密码</span></span>
+<span class="line"><span>docker logout -u 用户名 -p 密码</span></span></code></pre>
+<ul>
+<li>查找镜像</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>从Docker Hub查找所有镜像名包含java，并且收藏数大于10的镜像</span></span>
+<span class="line"><span>docker search - s 10 java</span></span></code></pre>
+<ul>
+<li>从镜像仓库中拉取或者更新指定镜像</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker pull path</span></span></code></pre>
+<ul>
+<li>将本地的镜像上传到镜像仓库,要先登陆到镜像仓库</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>上传本地镜像myapache:v1到镜像仓库中</span></span>
+<span class="line"><span>docker push myapache:v1</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="常用命令">常用命令</h2>
+<p>List all containers (only IDs) <code>docker ps -aq</code>.
+Stop all running containers. <code>docker stop $(docker ps -aq)</code>
+Remove all containers. <code>docker rm -f $(docker ps -aq)</code>
+Remove all images. docker rmi <code>$(docker images -q)</code></p>
+<p>重启docker <code>systemctl restart docker</code></p>
+<h2 id="docker-通过镜像查看镜像内容">docker 通过镜像查看镜像内容</h2>
+<p>docker run -it registry.cn-beijing.aliyuncs.com/geohey-deploy/g-job-data-analysis:v2.0.0 sh</p>
+<h2 id="每个节点load新镜像">每个节点load新镜像</h2>
+<p>docker load -i g-job-data-analysis.tar</p>
+<h2 id="修改对应镜像的yaml">修改对应镜像的yaml</h2>
+<p>修改image地址为：registry.cn-beijing.aliyuncs.com/geohey-deploy/g-job-data-analysis:v2.0.0</p>
+<h2 id="用新yaml启动应用">用新yaml启动应用</h2>
+<p>kubectl delete -f g-job-data-analysis.yml &#x26;&#x26; kubectl apply -f g-job-data-analysis.yml</p>
+<h2 id="docker内部跑docker">docker内部跑docker</h2>
+<p>参考文档：<a href="https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/">https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/</a>
+挂载docker.sock和docker安装文件</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker run --name app-bingo -p "5020:5020" -v /var/run/docker.sock:/var/run/docker.sock -v /usr/local/bin/docker:/usr/local/bin/ -d registry.cn-beijing.aliyuncs.com/geohey-deploy/app-bingo:v1.0.5</span></span></code></pre>
+<h2 id="问题">问题</h2>
+<h2 id="进去之后没有root权限">进去之后没有root权限</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docker exec -it --user root &#x3C;container id> /bin/bash</span></span></code></pre>
+<h2 id="切换国内镜像源">切换国内镜像源</h2>
+<p><a href="https://mirrors.ustc.edu.cn/help/dockerhub.html">参考</a>
+macOS</p>
+<ul>
+<li>打开 “Docker.app”</li>
+<li>打开 “Daemon” 选项卡</li>
+<li>在 “Registry mirrors” 中添加 <a href="https://docker.mirrors.ustc.edu.cn/">https://docker.mirrors.ustc.edu.cn/</a></li>
+<li>点击下方的 “Apply &#x26; Restart” 按钮</li>
+</ul> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/libs/docker.md" data-page-url="content/libs/docker.md" data-page-title="Docker" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

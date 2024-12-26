@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/vue/vue-nex-tick/"><!-- Primary Meta Tags --><title>vue nextTick的原理</title><meta name="title" content="vue nextTick的原理"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/vue/vue-nex-tick/"><meta property="og:title" content="vue nextTick的原理"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/vue/vue-nex-tick/"><meta property="twitter:title" content="vue nextTick的原理"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">vue nextTick的原理</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/VUE/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> VUE </a> </div> <span> 2022/02/04 </span> </div> <div class="content"> <p><a href="https://cn.vuejs.org/v2/api/#Vue-nextTick">nextTick</a>是 vue 的一个全局 API，
+作用是在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。</p>
+<p>Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> callbacks</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> pending </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> flushCallbacks</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">  pending </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> copies</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> callbacks.</span><span style="color:#B392F0">slice</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  callbacks.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">let</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> copies.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    copies[i]();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Here we have async deferring wrappers using microtasks.</span></span>
+<span class="line"><span style="color:#6A737D">// In 2.5 we used (macro) tasks (in combination with microtasks).</span></span>
+<span class="line"><span style="color:#6A737D">// However, it has subtle problems when state is changed right before repaint</span></span>
+<span class="line"><span style="color:#6A737D">// (e.g. #6813, out-in transitions).</span></span>
+<span class="line"><span style="color:#6A737D">// Also, using (macro) tasks in event handler would cause some weird behaviors</span></span>
+<span class="line"><span style="color:#6A737D">// that cannot be circumvented (e.g. #7109, #7153, #7546, #7834, #8109).</span></span>
+<span class="line"><span style="color:#6A737D">// So we now use microtasks everywhere, again.</span></span>
+<span class="line"><span style="color:#6A737D">// A major drawback of this tradeoff is that there are some scenarios</span></span>
+<span class="line"><span style="color:#6A737D">// where microtasks have too high a priority and fire in between supposedly</span></span>
+<span class="line"><span style="color:#6A737D">// sequential events (e.g. #4521, #6690, which have workarounds)</span></span>
+<span class="line"><span style="color:#6A737D">// or even between bubbling of the same event (#6566).</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> timerFunc;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// The nextTick behavior leverages the microtask queue, which can be accessed</span></span>
+<span class="line"><span style="color:#6A737D">// via either native Promise.then or MutationObserver.</span></span>
+<span class="line"><span style="color:#6A737D">// MutationObserver has wider support, however it is seriously bugged in</span></span>
+<span class="line"><span style="color:#6A737D">// UIWebView in iOS >= 9.3.3 when triggered in touch event handlers. It</span></span>
+<span class="line"><span style="color:#6A737D">// completely stops working after triggering a few times... so, if native</span></span>
+<span class="line"><span style="color:#6A737D">// Promise is available, we will use it:</span></span>
+<span class="line"><span style="color:#6A737D">/* istanbul ignore next, $flow-disable-line */</span></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">typeof</span><span style="color:#79B8FF"> Promise</span><span style="color:#F97583"> !==</span><span style="color:#9ECBFF"> 'undefined'</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#B392F0"> isNative</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">Promise</span><span style="color:#E1E4E8">)) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> p</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  timerFunc</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    p.</span><span style="color:#B392F0">then</span><span style="color:#E1E4E8">(flushCallbacks);</span></span>
+<span class="line"><span style="color:#6A737D">    // In problematic UIWebViews, Promise.then doesn't completely break, but</span></span>
+<span class="line"><span style="color:#6A737D">    // it can get stuck in a weird state where callbacks are pushed into the</span></span>
+<span class="line"><span style="color:#6A737D">    // microtask queue but the queue isn't being flushed, until the browser</span></span>
+<span class="line"><span style="color:#6A737D">    // needs to do some other work, e.g. handle a timer. Therefore we can</span></span>
+<span class="line"><span style="color:#6A737D">    // "force" the microtask queue to be flushed by adding an empty timer.</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (isIOS) {</span></span>
+<span class="line"><span style="color:#B392F0">      setTimeout</span><span style="color:#E1E4E8">(noop);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">  isUsingMicroTask </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#F97583">  !</span><span style="color:#E1E4E8">isIE</span></span>
+<span class="line"><span style="color:#F97583">  &#x26;&#x26;</span><span style="color:#F97583"> typeof</span><span style="color:#E1E4E8"> MutationObserver </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> 'undefined'</span></span>
+<span class="line"><span style="color:#F97583">  &#x26;&#x26;</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">isNative</span><span style="color:#E1E4E8">(MutationObserver)</span></span>
+<span class="line"><span style="color:#6A737D">    // PhantomJS and iOS 7.x</span></span>
+<span class="line"><span style="color:#F97583">    ||</span><span style="color:#E1E4E8"> MutationObserver.</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> '[object MutationObserverConstructor]'</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // Use MutationObserver where native Promise is not available,</span></span>
+<span class="line"><span style="color:#6A737D">  // e.g. PhantomJS, iOS7, Android 4.4</span></span>
+<span class="line"><span style="color:#6A737D">  // (#6466 MutationObserver is unreliable in IE11)</span></span>
+<span class="line"><span style="color:#F97583">  let</span><span style="color:#E1E4E8"> counter </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> observer</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> MutationObserver</span><span style="color:#E1E4E8">(flushCallbacks);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> textNode</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> document.</span><span style="color:#B392F0">createTextNode</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">String</span><span style="color:#E1E4E8">(counter));</span></span>
+<span class="line"><span style="color:#E1E4E8">  observer.</span><span style="color:#B392F0">observe</span><span style="color:#E1E4E8">(textNode, {</span></span>
+<span class="line"><span style="color:#E1E4E8">    characterData: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#B392F0">  timerFunc</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    counter </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (counter </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">%</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    textNode.data </span><span style="color:#F97583">=</span><span style="color:#B392F0"> String</span><span style="color:#E1E4E8">(counter);</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">  isUsingMicroTask </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">typeof</span><span style="color:#E1E4E8"> setImmediate </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> 'undefined'</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#B392F0"> isNative</span><span style="color:#E1E4E8">(setImmediate)) {</span></span>
+<span class="line"><span style="color:#6A737D">  // Fallback to setImmediate.</span></span>
+<span class="line"><span style="color:#6A737D">  // Technically it leverages the (macro) task queue,</span></span>
+<span class="line"><span style="color:#6A737D">  // but it is still a better choice than setTimeout.</span></span>
+<span class="line"><span style="color:#B392F0">  timerFunc</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    setImmediate</span><span style="color:#E1E4E8">(flushCallbacks);</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">} </span><span style="color:#F97583">else</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // Fallback to setTimeout.</span></span>
+<span class="line"><span style="color:#B392F0">  timerFunc</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    setTimeout</span><span style="color:#E1E4E8">(flushCallbacks, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>例如，当你设置 vm.someData = ‘new value’，该组件不会立即重新渲染。当刷新队列时，组件会在下一个事件循环“tick”中更新。
+为了在数据变化之后等待 Vue 完成更新 DOM，可以在数据变化之后立即使用 Vue.nextTick(callback),这样回调函数将在 DOM 更新完成后被调用。</p>
+<p>使用方法</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// 修改数据</span></span>
+<span class="line"><span style="color:#E1E4E8">vm.msg </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'Hello'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// DOM 还没有更新</span></span>
+<span class="line"><span style="color:#E1E4E8">Vue.</span><span style="color:#B392F0">nextTick</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // DOM 更新了</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 因为 $nextTick() 返回一个 Promise 对象所以下面这种和上面是等效的</span></span>
+<span class="line"><span style="color:#E1E4E8">vm.msg </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'Hello'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// DOM 还没有更新</span></span>
+<span class="line"><span style="color:#F97583">await</span><span style="color:#E1E4E8"> Vue.</span><span style="color:#B392F0">nextTick</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">// DOM 更新了</span></span></code></pre>
+<p>Vue.js 中的 nextTick 函数，会传入一个 cb ，这个 cb 会被存储到一个队列中，在下一个 tick 时触发队列中的所有 cb 事件</p>
+<p>nextTick 方法</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> nextTick</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">cb</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> Function</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">ctx</span><span style="color:#F97583">?:</span><span style="color:#B392F0"> Object</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  let</span><span style="color:#E1E4E8"> _resolve;</span></span>
+<span class="line"><span style="color:#E1E4E8">  callbacks.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (cb) {</span></span>
+<span class="line"><span style="color:#F97583">      try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        cb.</span><span style="color:#B392F0">call</span><span style="color:#E1E4E8">(ctx);</span></span>
+<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (e) {</span></span>
+<span class="line"><span style="color:#B392F0">        handleError</span><span style="color:#E1E4E8">(e, ctx, </span><span style="color:#9ECBFF">"nextTick"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    } </span><span style="color:#F97583">else</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (_resolve) {</span></span>
+<span class="line"><span style="color:#B392F0">      _resolve</span><span style="color:#E1E4E8">(ctx);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">pending) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    pending </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">    timerFunc</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#6A737D">  // $flow-disable-line</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">cb </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#F97583"> typeof</span><span style="color:#79B8FF"> Promise</span><span style="color:#F97583"> !==</span><span style="color:#9ECBFF"> "undefined"</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> Promise</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">resolve</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      _resolve </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> resolve;</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="node-中的-nexttick">node 中的 nextTick</h2>
+<p>node.js 中也存在一个 nextTick 接口，它是都将在当前操作完成后处理 nextTickQueue， 而不管事件循环的当前阶段如何，任何时候在给定的阶段中调用 process.nextTick()，所有传递到 process.nextTick() 的回调将在事件循环继续之前解析</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'start'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">process.</span><span style="color:#B392F0">nextTick</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'nextTick callback'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'scheduled'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">// Output:</span></span>
+<span class="line"><span style="color:#6A737D">// start</span></span>
+<span class="line"><span style="color:#6A737D">// scheduled</span></span>
+<span class="line"><span style="color:#6A737D">// nextTick callback</span></span></code></pre> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/vue/vue-nex-tick.md" data-page-url="content/vue/vue-nex-tick.md" data-page-title="vue nextTick的原理" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

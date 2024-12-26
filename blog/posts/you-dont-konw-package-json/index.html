@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/posts/you-dont-konw-package-json/"><!-- Primary Meta Tags --><title>你不知道的package.json</title><meta name="title" content="你不知道的package.json"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/posts/you-dont-konw-package-json/"><meta property="og:title" content="你不知道的package.json"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/posts/you-dont-konw-package-json/"><meta property="twitter:title" content="你不知道的package.json"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">你不知道的package.json</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/NPM/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> NPM </a> </div> <span> 2021/07/06 </span> </div> <div class="content"> <h2 id="engines">engines</h2>
+<p>描述模块的兼容性如:</p>
+<p>指定模块运行的 node 版本</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "engines"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "Node.js"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">">=0.10.3 &#x3C;15"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>指定模块运行的 npm 版本</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "engines"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "npm"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"~1.0.20"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>禁止使用 yarn</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "engines"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "yarn"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"please use npm"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="files">files</h2>
+<p>指定发布到 npm 中的文件,默认是所有文件<code>["*"]</code>
+你也可以通过<code>.npmignore</code>防止某些文件被包含在内，它不会覆盖<code>files</code>字段，但会覆盖其子目录。 如果不存在<code>.npmignore</code>将使用<code>.gitignore</code>替代</p>
+<blockquote>
+<p>一般来说<code>npm</code>上我们只需要发布打包好的文件，对于<code>git</code>则恰好相反我们只需要提交源代码</p>
+</blockquote>
+<h2 id="bin">bin</h2>
+<p>安装可执行文件
+如果你的包都有一个或多个想要安装到 PATH 中的可执行文件，请在<code>package.json</code>中提供一个<code>bin</code>字段，它是命令名到本地文件名的映射。当这个包被全局安装时，该文件将被链接到全局<code>bin</code>所在的位置，因此它可以按名称运行。当这个包作为另一个包的依赖项安装时，该文件将被链接到该包可以直接通过 npm exec 或通过 npm run-script 调用它们时在其他脚本中的名称,
+以<code>typescript</code>举例，在<a href="https://github.com/microsoft/TypeScript/blob/315b807489b8ff3a892179488fb0c00398d9b2c3/package.json#L24-L27"><code>package.json</code></a>文件中存在</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "bin"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "tsc"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"./bin/tsc"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "tsserver"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"./bin/tsserver"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="全局安装">全局安装</h3>
+<p>所以通过全局安装<code>npm install -g typescript</code> 我们可以在命令行中使用<code>tsc</code>命令,
+通过<code>which tsc</code> 我们可以查看可执行文件在<code>/Users/chenkai/.nvm/versions/node/v14.17.1/bin/tsc</code>
+<code>$PATH</code>中定义了<code>/Users/chenkai/.nvm/versions/node/v14.17.1/bin</code>目录，所以我们可以直接运行<code>tsc</code>命令</p>
+<h3 id="作为另一个包的依赖项安装">作为另一个包的依赖项安装</h3>
+<p>此时我们不能作为全局命令使用<code>tsc</code>, 但是在<code>node_modules/.bin</code>中多了<code>tsc</code>文件指向<code>node_modules/typescript/bin/tsc</code>,我们可以在<code>scripts</code>中调用<code>tsc</code> 如</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "scripts"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "build"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"tsc index.ts"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="dependencies">dependencies</h2>
+<p>设置包的依赖项,<code>dependencies</code>设置的依赖包也会被默认安装到<code>node_modules</code>。 一般用来存放代码运行中实际依赖的包。</p>
+<h2 id="devdependencies">devDependencies</h2>
+<p>设置包的依赖项,和<code>dependencies</code>不同的是，只有在该包根目录执行<code>npm link</code>或者<code>npm install</code>时才会被安装到<code>node_modules</code>。当你把该包作为一个依赖时，<code>devDependencies</code>设置的依赖包***不会**被安装到<code>node_modules</code>。 一般用来存放打包（rollup、esbuild、webpack）、构建（typescript）、测试（jest）等只有在开发环境依赖的包。</p>
+<h2 id="peerdependencies">peerdependencies</h2>
+<p>设置包的依赖项, <code>peerdependencies</code>设置的依赖包表达您的包与主机工具或库的兼容性，
+如你开发了一个 vue 组件库需要指定在<code>vue 3.x</code>版本中使用，可以这样设置</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "peerdependencies"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "vue"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^3.0"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>如果用户安装了该组件库，并且安装<code>peerdependencies</code>设置的依赖包与用户安装的依赖包指定的版本不一致时，npm 会提示 vue 版本不兼容的信息</p>
+<blockquote>
+<p><code>npm v7</code>开始如果用户没有安装<code>peerdependencies</code>设置的依赖包, <code>peerdependencies</code>设置的依赖包会被默认安装到<code>node_modules</code>，</p>
+</blockquote>
+<h2 id="workspaces">workspaces</h2>
+<p>它支持从单个顶级根包中管理本地文件系统中的多个包,避免手动使用 npm link 来添加对应符号链接到当前 node_modules 文件夹的包的引用。如
+当前工作目录中，包含一个名为 workspace-a 的文件夹，其中本身包含一个 package.json</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.</span></span>
+<span class="line"><span>+-- package.json</span></span>
+<span class="line"><span>`-- workspace-a</span></span>
+<span class="line"><span>   `-- package.json</span></span></code></pre>
+<p>在当前工作目录中运行 npm install 后, 文件夹 workspace-a 将符号链接到当前工作目录的 node_modules 文件夹</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.</span></span>
+<span class="line"><span>+-- node_modules</span></span>
+<span class="line"><span>|  `-- workspace-a -> ../workspace-a</span></span>
+<span class="line"><span>+-- package-lock.json</span></span>
+<span class="line"><span>+-- package.json</span></span>
+<span class="line"><span>`-- workspace-a</span></span>
+<span class="line"><span>   `-- package.json</span></span></code></pre>
+<h2 id="其他">其他</h2>
+<h3 id="module">module</h3>
+<p>指定模块入口文件，不同于<code>main</code>字段，将指向一个具有 ES2015 模块语法的模块入口文件，你可以与<code>main</code>字段同时命名，当你用<code>es6</code>语法导入时，打包工具（<code>rollup</code>,<code>webpack</code>）会优先使用该字段对应的入口文件，</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"my-package"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "version"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"0.1.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "main"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"dist/my-package.umd.js"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "module"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"dist/my-package.esm.js"</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="type">type</h3>
+<p><a href="https://nodejs.org/dist/latest-v16.x/docs/api/packages.html#packages_type"><code>type</code></a>字段定义了 Node.js 用于所有以 package.json 文件作为其最近父级的 .js 文件的模块格式。 当最近的父 package.json 文件包含值为“module”的顶级字段<code>type</code>时，以 .js 结尾的文件将作为 ES 模块加载。</p>
+<h3 id="exports">exports</h3>
+<p><a href="https://nodejs.org/dist/latest-v16.x/docs/api/packages.html#packages_exports"><code>exports</code></a> 字段允许定义包的入口点，当通过 node_modules 查找或对其自身名称的自引用加载的名称导入时。 Node.js 12+ 支持它作为“main”的替代方案，</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"a-package"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "exports"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "."</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"./main.mjs"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "./foo"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"./foo.js"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>并且<code>exports</code>还支持按条件导出</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "type"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"module"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "main"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"./index.cjs"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "exports"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "import"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"./wrapper.mjs"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "require"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"./index.cjs"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/posts/you-dont-konw-package-json.md" data-page-url="content/posts/you-dont-konw-package-json.md" data-page-title="你不知道的package.json" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

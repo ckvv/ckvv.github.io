@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/database/pg/"><!-- Primary Meta Tags --><title>PostgreSQL</title><meta name="title" content="PostgreSQL"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/database/pg/"><meta property="og:title" content="PostgreSQL"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/database/pg/"><meta property="twitter:title" content="PostgreSQL"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">PostgreSQL</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/DATABASE/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> DATABASE </a> </div> <span> 2023/06/04 </span> </div> <div class="content"> <h2 id="排序"><a href="https://www.postgresql.org/docs/current/queries-order.html">排序</a></h2>
+<p><code>order by</code>用于对表进行排序</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">SELECT</span><span style="color:#E1E4E8"> select_list</span></span>
+<span class="line"><span style="color:#F97583">    FROM</span><span style="color:#E1E4E8"> table_expression</span></span>
+<span class="line"><span style="color:#F97583">    ORDER BY</span><span style="color:#E1E4E8"> sort_expression1 [ASC | DESC] [NULLS { FIRST | LAST }]</span></span>
+<span class="line"><span style="color:#E1E4E8">             [, sort_expression2 [ASC | DESC] [NULLS { FIRST | LAST }] ...]</span></span></code></pre>
+<p>当指定了多个表达式时，后面的值用于根据前面的值对<strong>相等的行</strong>进行排序。</p>
+<ul>
+<li>每个表达式后面都可以跟一个可选的<code>ASC</code>或<code>DESC</code>关键字，以将排序方向设置为升序或降序。</li>
+<li>可选参数<code>NULLS FIRST</code>可<code>NULLS LAST</code>用于确定空值是出现在排序顺序中的非空值之前还是之后。默认(NULLS FIRST)</li>
+</ul>
+<p>其中<code>sort_expression</code>可以是任何有效的表达式如</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">SELECT</span><span style="color:#E1E4E8"> a, b </span><span style="color:#F97583">FROM</span><span style="color:#E1E4E8"> table1 </span><span style="color:#F97583">ORDER BY</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> b, c;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">SELECT</span><span style="color:#E1E4E8"> a, b </span><span style="color:#F97583">FROM</span><span style="color:#E1E4E8"> table1 </span><span style="color:#F97583">ORDER BY</span><span style="color:#F97583"> CASE</span><span style="color:#F97583"> WHEN</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">>=</span><span style="color:#79B8FF"> 0</span><span style="color:#F97583"> and</span><span style="color:#E1E4E8"> b </span><span style="color:#F97583">THEN</span><span style="color:#E1E4E8"> a </span><span style="color:#F97583">ELSE</span><span style="color:#F97583"> -</span><span style="color:#79B8FF">1</span><span style="color:#F97583"> END</span><span style="color:#E1E4E8">, c;</span></span>
+<span class="line"></span></code></pre>
+<h3 id="中文字段的排序">中文字段的排序</h3>
+<p>PostgreSQL 中的 ORDER BY 默认使用的是基于当前数据库的默认排序规则进行排序。在不同的字符集中，汉字的编码可能不一样，比如 UTF8 和 GBK，其中 GBK 大致是按拼音的顺序进行编码的，而 UTF8 则不是。所以如果你的数据库使用了 UTF8 编码，对中文字段进行排序时，得到的并不是按拼音排序的结果。
+PostgreSQL 中，中文按拼音排序的编码包括 GB18030, EUC_CN, GBK, BIG5 等。
+为了得到拼音排序，</p>
+<ul>
+<li>可以使用编码转换后的值来排序，如<code>convert_to(name,'GBK')</code>。</li>
+<li>在 ORDER BY 子句中指定 COLLATE 子句来指定相应的排序规则。如使用类似语句：</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#6A737D">-- 在这里，"zh_CN.utf8_pinyin" 是一个指定拼音排序规则的语言环境名称。您可以根据需要选择不同的排序规则。</span></span>
+<span class="line"><span style="color:#F97583">SELECT</span><span style="color:#F97583"> *</span><span style="color:#F97583"> FROM</span><span style="color:#E1E4E8"> table_name </span><span style="color:#F97583">ORDER BY</span><span style="color:#E1E4E8"> column_name </span><span style="color:#F97583">COLLATE</span><span style="color:#9ECBFF"> "zh_CN.utf8_pinyin"</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<h2 id="唯一索引"><a href="https://www.postgresql.org/docs/current/indexes-unique.html">唯一索引</a></h2>
+<p>唯一索引索引还可用于强制列值的唯一性，或多个列的组合值的唯一性。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> UNIQUE INDEX</span><span style="color:#B392F0"> name</span><span style="color:#F97583"> ON</span><span style="color:#F97583"> table</span><span style="color:#E1E4E8"> (column [, ...]) [ NULLS [ NOT ] </span><span style="color:#F97583">DISTINCT</span><span style="color:#E1E4E8"> ];</span></span></code></pre>
+<p>目前，只有 B 树索引可以声明为唯一索引。</p>
+<p>当索引被声明为唯一时，不允许多个表行具有相同的索引值。默认情况下，唯一列中的空值不被视为相等，允许列中有多个空值。该NULLS NOT DISTINCT选项修改它并使索引将空值视为相等。多列唯一索引只会拒绝所有索引列在多行中都相等的情况。</p>
+<p>当一个索引被声明为唯一时，不允许有多个具有相等索引值的表行。默认情况下，唯一列中的空值被视为不相等，允许在该列中存在多个空值。使用<code>NULLS NOT DISTINCT</code>选项可以修改此行为，并使索引将空值视为相等。多列唯一索引只会拒绝在多行中所有索引列都相等的情况。</p>
+<blockquote>
+<p>当为表定义唯一约束或主键时，PostgreSQL自动创建唯一索引, 无需在唯一列上手动创建索引；这样做只会复制自动创建的索引。</p>
+</blockquote> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/database/pg.md" data-page-url="content/database/pg.md" data-page-title="PostgreSQL" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

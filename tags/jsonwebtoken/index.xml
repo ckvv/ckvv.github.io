@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JsonWebToken on CK's Blog</title><link>https://chenkai.life/tags/jsonwebtoken/</link><description>Recent content in JsonWebToken on CK's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 09 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://chenkai.life/tags/jsonwebtoken/index.xml" rel="self" type="application/rss+xml"/><item><title>JsonWebToken</title><link>https://chenkai.life/nodejs/jsonwebtoken/</link><pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate><guid>https://chenkai.life/nodejs/jsonwebtoken/</guid><description>什么是 JSON Web Token？ JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用 SON 对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT 可以使用加密算法（使用 HMAC 算法）或使用 RSA 或 ECDSA 的公钥/私钥对进行签名。
-什么时候应该使用 JSON Web 令牌 以下是 JSON Web 令牌有用的一些场景：
-授权：这是使用 JWT 的最常见方案。一旦用户登录，每个后续请求将包括 JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On 是一种现在广泛使用 JWT 的功能，因为它的开销很小，并且能够在不同的域中轻松使用。
-信息交换：JSON Web 令牌是在各方之间安全传输信息的好方法。因为 JWT 可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。
-JSON Web 令牌结构 JSON Web Tokens 由.分隔的三个部分组成，它们是：
-头 有效载荷 签名 因此，JWT 通常如xxxxx.yyyyy.zzzzz所示. 头 标头通常由两部分组成：令牌的类型，即 JWT，以及正在使用的签名算法，例如 HMAC SHA256 或 RSA。
-{ &amp;#34;alg&amp;#34;: &amp;#34;HS256&amp;#34;, &amp;#34;typ&amp;#34;: &amp;#34;JWT&amp;#34; } 然后，这个 JSON 被编码为 Base64Url，形成 JWT 的第一部分。</description></item></channel></rss>

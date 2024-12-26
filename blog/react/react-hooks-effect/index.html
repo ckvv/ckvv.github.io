@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/react/react-hooks-effect/"><!-- Primary Meta Tags --><title>React Hook Effect</title><meta name="title" content="React Hook Effect"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/react/react-hooks-effect/"><meta property="og:title" content="React Hook Effect"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/react/react-hooks-effect/"><meta property="twitter:title" content="React Hook Effect"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">React Hook Effect</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/REACT/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> REACT </a> </div> <span> 2024/08/07 </span> </div> <div class="content"> <h2 id="useeffect">useEffect</h2>
+<p>每当你的组件渲染时，React 将更新屏幕，然后运行 useEffect 中的代码(屏幕更新渲染之后)</p>
+<p>该 Hook 接收一个包含命令式、且可能有副作用代码的函数。在函数组件主体内（这里指在 React 渲染阶段）改变 DOM、添加订阅、设置定时器、记录日志以及执行其他包含副作用的操作都是不被允许的，因为这可能会产生莫名其妙的 bug 并破坏 UI 的一致性。使用 <code>useEffect</code> 完成副作用操作。</p>
+<p>通过使用这个 Hook，你可以告诉 React 组件需要在渲染后执行某些操作。React 会保存你传递的函数（我们将它称之为 “effect”），并且在执行 DOM 更新之后调用它。同时你也可以使用多个effect hook，React 将按照 effect 声明的顺序依次调用组件中的<em>每一个</em> effect。</p>
+<h3 id="参考">参考</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#B392F0">useEffect</span><span style="color:#E1E4E8">(setup, dependencies</span><span style="color:#F97583">?</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>参数</p>
+<ul>
+<li><code>setup</code>：处理 Effect 的函数。setup 函数选择性返回一个 清理（cleanup） 函数。当组件被添加到 DOM 的时候，React 将运行 setup 函数。在每次依赖项变更重新渲染后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除后，React 将最后一次运行 cleanup 函数。</li>
+<li><code>dependencies</code>：setup 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 配置了 React，那么它将验证是否每个响应式值都被正确地指定为一个依赖项。依赖项列表的元素数量必须是固定的，并且必须像 [dep1, dep2, dep3] 这样内联编写。React 将使用 <code>Object.is</code> 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行 Effect 函数。如果传递空数组则仅在 <code>初始渲染后</code> 运行(开发环境下除外)。</li>
+</ul>
+<p>返回值
+undefined</p>
+<h3 id="基础用法">基础用法</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> CountButton</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">count</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setCount</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(count);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">button</span><span style="color:#B392F0"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"button"</span><span style="color:#B392F0"> onClick</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> setCount</span><span style="color:#E1E4E8">(count </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">)}></span></span>
+<span class="line"><span style="color:#E1E4E8">      count is:</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span><span style="color:#9ECBFF">' '</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      {count}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 挂载时初始count为0，此时打印0</span></span>
+<span class="line"><span style="color:#6A737D">// 点击button，count + 1, 此时组件更新，useEffect再次执行，此时打印1</span></span></code></pre>
+<h3 id="清除-effect副作用">清除 effect副作用</h3>
+<p>通常，组件卸载时需要清除 effect 创建的诸如订阅或计时器 ID 等资源。要实现这一点，<code>useEffect</code> 函数需返回一个清除函数。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6A737D">// 每秒更新时间</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> DateLabel</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">date</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setCount</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#B392F0"> Date</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">toLocaleString</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // 在执行 effect 之前会先执行上一个 effect的清除函数</span></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> timeout</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">      setCount</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#B392F0"> Date</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">toLocaleString</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"><span style="color:#E1E4E8">    }, </span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // 清除函数会在组件卸载前执行</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">      clearTimeout</span><span style="color:#E1E4E8">(timeout);</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      当前时间是:</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span><span style="color:#9ECBFF">' '</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      {date}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>为防止内存泄漏，清除函数会在组件卸载前执行。另外，如果组件多次渲染（通常如此），则<strong>在执行下一个 effect 之前，上一个 effect 就已被清除</strong>。在上述示例中，意味着组件的每一次更新都会创建新的订阅。若想避免每次更新都触发 effect 的执行，请参阅<code>effect 的执行时机</code>。</p>
+<h3 id="effect-的执行时机">effect 的执行时机</h3>
+<p><code>useEffect</code> 会在浏览器绘制后延迟执行，在任何新的渲染前执行。React 将在组件更新前刷新上一轮渲染的 effect。因此不应在函数中执行阻塞浏览器更新屏幕的操作。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> CountBtn</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">count</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setCount</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">  // 在useEffect之前调用</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'函数中;useEffect前'</span><span style="color:#E1E4E8">, count);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // Dom 已经变化</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(document.</span><span style="color:#B392F0">querySelector</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'.count-btn'</span><span style="color:#E1E4E8">).textContent);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // 在useEffect之前调用</span></span>
+<span class="line"><span style="color:#E1E4E8">  console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'函数中;useEffect后'</span><span style="color:#E1E4E8">, count);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">button</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"count-btn"</span><span style="color:#B392F0"> onClick</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> setCount</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">count</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> count </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">)}></span></span>
+<span class="line"><span style="color:#E1E4E8">      当前count:</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span><span style="color:#9ECBFF">' '</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      {count}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="effect-的条件执行">effect 的条件执行</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#B392F0">useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // 这里的代码会在每次渲染后执行</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // 这里的代码只会在组件挂载后执行</span></span>
+<span class="line"><span style="color:#E1E4E8">}, []);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // 这里的代码只会在每次渲染后，并且 a 或 b 的值与上次渲染不一致时执行</span></span>
+<span class="line"><span style="color:#E1E4E8">}, [a, b]);</span></span></code></pre>
+<p>默认情况下，effect 会在每轮组件渲染完成后执行。这样的话，一旦 effect 的依赖发生变化，它就会被重新创建。</p>
+<p>如果某些特定值在两次重渲染之间没有发生变化，你可以通知 React <strong>跳过</strong>对 effect 的调用，</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#B392F0">useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  document.title </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> `You clicked ${</span><span style="color:#E1E4E8">count</span><span style="color:#9ECBFF">} times`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}, [count]); </span><span style="color:#6A737D">// 仅在 count 更改时更新</span></span></code></pre>
+<ul>
+<li>
+<p>请确保数组中包含了<strong>所有外部作用域中会随时间变化并且在 effect 中使用的变量</strong>，否则你的代码会引用到先前渲染中的旧变量。</p>
+</li>
+<li>
+<p>如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组作为第二个参数。effect 内部的 props 和 state 就会一直拥有其初始值。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Count</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">count</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setCount</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> timeout</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> setInterval</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">      // 点击button后虽然count改变但是count依然为0</span></span>
+<span class="line"><span style="color:#E1E4E8">      console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(count);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }, </span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">      clearInterval</span><span style="color:#E1E4E8">(timeout);</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, []);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">button</span><span style="color:#B392F0"> onClick</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> setCount</span><span style="color:#E1E4E8">(count </span><span style="color:#F97583">+</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">)}></span></span>
+<span class="line"><span style="color:#E1E4E8">      当前count:</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span><span style="color:#9ECBFF">' '</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      {count}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+</li>
+</ul>
+<h3 id="尽量避免对象和函数依赖将它们移到组件外或-effect-内">尽量避免对象和函数依赖。将它们移到组件外或 Effect 内。</h3>
+<p>如果在渲染过程中创建对象和函数，然后在 Effect 中读取它们，它们将在每次渲染时都不同。这将导致 Effect 每次都重新同步</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6A737D">// 在每次重新渲染 ChatRoom 组件时，都会从头开始创建一个新的 options 对象。React 发现 options 对象与上次渲染期间创建的 options 对象是 不同的对象。这就是为什么它会重新同步 Effect（依赖于 options）</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> ChatRoom</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">roomId</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    serverUrl,</span></span>
+<span class="line"><span style="color:#E1E4E8">    roomId</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> connection</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createConnection</span><span style="color:#E1E4E8">(options);</span></span>
+<span class="line"><span style="color:#E1E4E8">    connection.</span><span style="color:#B392F0">connect</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> connection.</span><span style="color:#B392F0">disconnect</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, [options]); </span><span style="color:#6A737D">// ✅ 所有依赖已声明</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>这就是为什么你应该尽可能避免将对象和函数作为 Effect 的依赖。所以，尝试将它们移到组件外部、Effect 内部，或从中提取原始值。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6A737D">// 移到组件外部</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  serverUrl: </span><span style="color:#9ECBFF">'https://localhost:1234'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  roomId: </span><span style="color:#9ECBFF">'音乐'</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> ChatRoom</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">message</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setMessage</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> connection</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createConnection</span><span style="color:#E1E4E8">(options);</span></span>
+<span class="line"><span style="color:#E1E4E8">    connection.</span><span style="color:#B392F0">connect</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> connection.</span><span style="color:#B392F0">disconnect</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, []); </span><span style="color:#6A737D">// ✅ 所有依赖已声明</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6A737D">// Effect 内部</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> serverUrl</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> 'https://localhost:1234'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> ChatRoom</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">roomId</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">message</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setMessage</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> options</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      serverUrl: serverUrl,</span></span>
+<span class="line"><span style="color:#E1E4E8">      roomId: roomId</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> connection</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createConnection</span><span style="color:#E1E4E8">(options);</span></span>
+<span class="line"><span style="color:#E1E4E8">    connection.</span><span style="color:#B392F0">connect</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> connection.</span><span style="color:#B392F0">disconnect</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, [roomId]); </span><span style="color:#6A737D">// ✅ 所有依赖已声明</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6A737D">// 从中提取原始值</span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">ChatRoom</span></span>
+<span class="line"><span style="color:#B392F0">  roomId</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{roomId}</span></span>
+<span class="line"><span style="color:#B392F0">  options</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{{</span></span>
+<span class="line"><span style="color:#E1E4E8">    serverUrl,</span></span>
+<span class="line"><span style="color:#E1E4E8">    roomId</span></span>
+<span class="line"><span style="color:#E1E4E8">  }}</span></span>
+<span class="line"><span style="color:#E1E4E8">/>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> ChatRoom</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">options</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">message</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setMessage</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // 避免依赖对象和函数类型</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">roomId</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">serverUrl</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> options;</span></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> connection</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createConnection</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">      roomId,</span></span>
+<span class="line"><span style="color:#E1E4E8">      serverUrl</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">    connection.</span><span style="color:#B392F0">connect</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> connection.</span><span style="color:#B392F0">disconnect</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, [roomId, serverUrl]); </span><span style="color:#6A737D">// ✅ 所有依赖已声明</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="从-effect-中获取-最新的-props-和-state而不响应它们">从 Effect 中获取 最新的 props 和 state，而不“响应”它们</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Page</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">url</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">shoppingCart</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> onVisit</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useEffectEvent</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">visitedUrl</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    logVisit</span><span style="color:#E1E4E8">(visitedUrl, shoppingCart.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // 仅在 url 更改后记录一次新的页面访问</span></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    onVisit</span><span style="color:#E1E4E8">(url);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, [url]); </span><span style="color:#6A737D">// ✅ 所有声明的依赖项</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="注意事项">注意事项</h3>
+<ul>
+<li>如果你的一些依赖项是组件内部定义的对象或函数，或者没有指定依赖现时，可能导致 Effect 过多地重新运行</li>
+<li>Effect 只在客户端上运行，在服务端渲染中不会运行。</li>
+</ul>
+<h2 id="uselayouteffect">useLayoutEffect</h2>
+<p>与 <code>useEffect</code> 类似，但它会在所有的 DOM 变更之后，在浏览器执行绘制之前，同步调用 effect。可以使用它来读取 DOM 布局并同步触发重渲染，<code>useLayoutEffect</code> 内部的更新计划将被同步刷新。尽可能使用标准的 <code>useEffect</code> 以避免阻塞视觉更新。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6A737D">// 在浏览器重新绘制屏幕之前执行布局测量,避免页面闪烁</span></span>
+<span class="line"><span style="color:#B392F0">useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">height</span><span style="color:#E1E4E8"> } </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> ref.current.</span><span style="color:#B392F0">getBoundingClientRect</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#B392F0">  setTooltipHeight</span><span style="color:#E1E4E8">(height);</span></span>
+<span class="line"><span style="color:#E1E4E8">}, []);</span></span></code></pre>
+<h2 id="useinsertioneffect">useInsertionEffect</h2>
+<p>在布局副作用触发之前将元素插入到 DOM 中, <code>useInsertionEffect</code> 比在 <code>useLayoutEffect</code> 或 <code>useEffect</code> 期间注入样式更好。因为它会确保 <code>&#x3C;style></code> 标签在其它 Effect 运行前被注入。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#B392F0">useInsertionEffect</span><span style="color:#E1E4E8">(setup, dependencies</span><span style="color:#F97583">?</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<h3 id="从-css-in-js-库中注入动态样式">从 CSS-in-JS 库中注入动态样式</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6A737D">// 在你的 CSS-in-JS 库中</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> isInserted</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Set</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> useCSS</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">rule</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">  useInsertionEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    // 同前所述，我们不建议在运行时注入 &#x3C;style> 标签。</span></span>
+<span class="line"><span style="color:#6A737D">    // 如果你必须这样做，那么应当在 useInsertionEffect 中进行。</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">isInserted.</span><span style="color:#B392F0">has</span><span style="color:#E1E4E8">(rule)) {</span></span>
+<span class="line"><span style="color:#E1E4E8">      isInserted.</span><span style="color:#B392F0">add</span><span style="color:#E1E4E8">(rule);</span></span>
+<span class="line"><span style="color:#E1E4E8">      document.head.</span><span style="color:#B392F0">appendChild</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">getStyleForRule</span><span style="color:#E1E4E8">(rule));</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> rule;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Button</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> className</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useCSS</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'...'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{className} />;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="useinsertioneffect-vs-uselayouteffect-vs-useeffect-执行时机对比">useInsertionEffect vs useLayoutEffect vs useEffect 执行时机对比</h2>
+<p><code>useInsertionEffect</code>：在 React 渲染 DOM 元素之前执行，主要用于注入样式。它的执行时机非常早，在 DOM 还未被插入到页面中时就会被调用。这个钩子函数主要是为了解决在服务器端渲染（SSR）和使用 CSS-in-JS 库时可能出现的闪烁问题。
+<code>useLayoutEffect</code>：在浏览器完成对 DOM 的更新后，在浏览器执行绘制之前，但在浏览器进行布局和绘制之前执行。这个阶段可以读取和修改 DOM，但是要小心操作，因为如果执行时间过长可能会导致页面卡顿。
+<code>useEffect</code>：在浏览器完成布局和绘制之后执行。通常用于执行一些副作用操作，比如发送网络请求、订阅事件等。这个钩子函数不会阻塞浏览器的绘制，所以对于不影响用户界面立即显示的操作是比较合适的。</p> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/react/react-hooks-effect.md" data-page-url="content/react/react-hooks-effect.md" data-page-title="React Hook Effect" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

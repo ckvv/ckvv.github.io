@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/react/react-%E7%B1%BB%E7%BB%84%E4%BB%B6/"><!-- Primary Meta Tags --><title>React 类组件</title><meta name="title" content="React 类组件"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/react/react-%E7%B1%BB%E7%BB%84%E4%BB%B6/"><meta property="og:title" content="React 类组件"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/react/react-%E7%B1%BB%E7%BB%84%E4%BB%B6/"><meta property="twitter:title" content="React 类组件"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">React 类组件</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/REACT/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> REACT </a> </div> <span> 2024/08/04 </span> </div> <div class="content"> <h1 id="生命周期">生命周期</h1>
+<p>类组件有一系列的生命周期方法，主要分为三个阶段：挂载阶段、更新阶段和卸载阶段</p>
+<h2 id="挂载阶段">挂载阶段</h2>
+<h3 id="constructor">constructor()：</h3>
+<p>最早被调用的生命周期方法
+通常用于初始化组件的 state 和绑定事件处理方法。
+在这个方法中，可以通过将方法绑定到当前组件实例来确保在回调中this指向正确的组件实例。例如：this.handleClick = this.handleClick.bind(this);。</p>
+<h3 id="static-getderivedstatefrompropsnextprops-prevstate">static getDerivedStateFromProps(nextProps, prevState)：</h3>
+<p>是一个静态方法，在组件实例被创建以及每次接收到新的 props 时被调用。
+此方法接收新的 props 和当前的 state 作为参数，并返回一个对象来更新 state，或者返回 null 表示不需要更新 state。
+主要用于根据 props 来同步 state，可以用于将 props 的值同步到 state 中，确保组件状态的一致性。</p>
+<h3 id="render">render()：</h3>
+<p>是 React 类组件中必须定义的方法。
+用于返回一个 React 元素，描述组件的 UI 结构。
+在这个方法中，不能进行任何有副作用的操作，如直接修改 state、进行异步请求等。它应该是一个纯函数，仅根据输入的 props 和 state 来确定输出的 UI。</p>
+<h3 id="componentdidmount">componentDidMount()：</h3>
+<p>在组件挂载到 DOM 后立即被调用。
+通常用于在这个阶段进行一些副作用操作，比如发起异步请求获取数据、添加事件监听器等。
+因为此时组件已经在 DOM 中渲染完成，可以确保 DOM 操作的安全性。</p>
+<h2 id="更新阶段">更新阶段</h2>
+<h3 id="static-getderivedstatefrompropsnextprops-prevstate-1">static getDerivedStateFromProps(nextProps, prevState)：</h3>
+<p>同样在组件更新时（由于 props 变化或 state 变化导致的重新渲染）会被调用。</p>
+<h3 id="shouldcomponentupdatenextprops-nextstate">shouldComponentUpdate(nextProps, nextState)：</h3>
+<p>此方法接收新的 props 和新的 state 作为参数。
+返回一个布尔值，决定组件是否应该重新渲染。如果返回 false，则组件不会重新渲染，这可以用于性能优化，避免不必要的渲染。</p>
+<h3 id="render-1">render()：</h3>
+<p>当组件的 props 或 state 发生变化时，会再次调用render方法来重新生成组件的 UI 结构。</p>
+<h3 id="getsnapshotbeforeupdateprevprops-prevstate">getSnapshotBeforeUpdate(prevProps, prevState)：</h3>
+<p>在更新发生之前被调用，就在组件即将更新但 DOM 还未更新时触发。
+这个方法可以返回一个值，这个值会作为参数传递给componentDidUpdate。
+通常用于获取更新前的某些 DOM 状态，比如滚动位置等。</p>
+<h3 id="componentdidupdateprevprops-prevstate-snapshot">componentDidUpdate(prevProps, prevState, snapshot)：</h3>
+<p>在组件更新完成后立即被调用。
+接收先前的 props、先前的 state 和来自getSnapshotBeforeUpdate的 snapshot 参数。
+通常用于处理更新后的副作用，比如根据新的数据再次发起异步请求、更新 DOM 元素的位置等。</p>
+<h2 id="卸载阶段">卸载阶段</h2>
+<h3 id="componentwillunmount">componentWillUnmount()</h3>
+<p>在组件从 DOM 中卸载之前被调用。
+用于清理在组件生命周期中创建的副作用，比如取消定时器、移除事件监听器、取消网络请求等，以避免内存泄漏</p>
+<h3 id="错误边界">错误边界</h3>
+<h3 id="getderivedstatefromerrorerror">‌getDerivedStateFromError‌(error)</h3>
+<p>这个方法在服务器端渲染期间也被调用，在DOM尚未更新时在“渲染阶段”调用。</p>
+<h1 id=""></h1> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/react/react-类组件.md" data-page-url="content/react/react-类组件.md" data-page-title="React 类组件" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

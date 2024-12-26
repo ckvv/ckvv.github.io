@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/css/css-color/"><!-- Primary Meta Tags --><title>CSS颜色</title><meta name="title" content="CSS颜色"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/css/css-color/"><meta property="og:title" content="CSS颜色"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/css/css-color/"><meta property="twitter:title" content="CSS颜色"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">CSS颜色</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/CSS/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> CSS </a> </div> <span> 2023/03/04 </span> </div> <div class="content"> <p>记录一下CSS颜色的相关概念</p>
+<h2 id="alpha">alpha</h2>
+<p><code>alpha </code>表示可以在某种程度上看到背景的颜色，不透明度可以被认为是一种后处理操作。从概念上讲，在元素（包括其后代）渲染成 RGBA 离屏图像后，不透明度设置指定如何将离屏渲染混合到当前合成渲染中。</p>
+<h2 id="颜色格式">颜色格式</h2>
+<p>CSS 提供了几种直接指定<a href="https://w3c.github.io/csswg-drafts/css-color/#numeric-srgb"><code>sRGB</code></a>颜色的方法</p>
+<h3 id="color-keyword">color keyword</h3>
+<p>CSS 定义了一大组命名颜色，以便可以更轻松地编写和阅读常用颜色。</p>
+<p><code>red</code>, <code>blue</code>, <code>green</code> 等等</p>
+<p><code>LinkText</code>, <code>transparent(透明的黑色)</code>, <code>currentColor（代表同一元素上的颜色）</code></p>
+<h3 id="rgbred-blue-green">rgb（red blue green）</h3>
+<p>通过调节红、绿、蓝三原色的亮度和色彩来表示颜色。在RGB模型中，每种颜色的取值范围为0-255。</p>
+<h3 id="rgb十六进制表示">RGB十六进制表示</h3>
+<p>将通道作为十六进制数字来指定 <code>sRGB</code> 颜色，其值由 3、4、6 或 8 个十六进制数字组</p>
+<ul>
+<li>六位<code>#00ff00</code>，每两位代表一个通道，其中<code>00</code>表示最小值，<code>ff</code>（十进制为 255）表示最大值。即<code>rgb(0 255 0)</code></li>
+<li>八位<code>#00ff00cc</code>，最后一对数字表示<code>alpha</code> 即<code>rgb(0 0 100% / 80%)</code></li>
+<li>三位<code>#Of0</code> 等于 <code>#00ff00</code></li>
+<li>四位<code>#0f0c</code>等于 <code>#00ff00cc</code></li>
+</ul>
+<p>优点</p>
+<ul>
+<li>兼容性好</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>人类难以直观地判断颜色。例如，很难说出如何改变 RGB 颜色以产生相同色调的较亮变体</li>
+</ul>
+<h3 id="hsl-hue-saturation-lightness">hsl (Hue Saturation Lightness)</h3>
+<p>模型是一种圆锥模型，通过色调、饱和度和亮度三个参数来描述颜色。在HSL模型中，色相的取值范围为0-360度，饱和度和亮度的取值范围为0-100%。
+如: <code>hsl(50 80% 40%)</code>  <code>hsl(50 80% 40% / 25%)</code></p>
+<p>优点</p>
+<ul>
+<li>直观，人们可以猜测他们想要的颜色，然后进行调整。</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>HSL 相对于 LCH 的缺点是色调操作会改变视觉亮度</li>
+<li>色调之间的间隔不均匀（色调角度在感知上并不均匀；颜色在某些区域看起来聚集在一起，而在其他区域则间隔很宽）</li>
+</ul>
+<h3 id="hwbhue-whiteness-blackness">hwb（Hue Whiteness Blackness）</h3>
+<p>类似于HSL模型的圆锥模型，但是它使用白色和黑色的比例来描述颜色。在HWB模型中，色调的取值范围为0-360度，白色和黑色的取值范围为0-100%</p>
+<h3 id="lab--oklab-lightness-a-b">lab &#x26; oklab （（lightness a b）</h3>
+<p>亮度 通道a( green / magenta) 通道b(blue / yellow )</p>
+<h3 id="lch--oklch-lightness-chroma-hue">lch &#x26; oklch （lightness chroma hue）</h3>
+<p>亮度 色度 色调</p>
+<h3 id="color">color()</h3>
+<p>函数color()允许在特定的指定颜色空间中指定颜色，而不是大多数其他颜色函数在其中运行的隐式 <code>sRGB</code> 颜色空间
+<code>color(display-p3 1 0.5 0 / 0.5);</code></p>
+<h2 id="函数语法">函数语法</h2>
+<h3 id="旧版函数语法"><a href="https://w3c.github.io/csswg-drafts/css-color/#color-syntax-legacy">旧版函数语法</a></h3>
+<p><code>rgb()</code>、<code>rgba()</code>、<code>hsl()</code>和<code>hsla()</code>为了兼容性也支持旧版函数语法</p>
+<ul>
+<li>变量由<code>,</code>分隔</li>
+<li>不允许使用none值</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#6A737D">/* 以下表示 50% 不透明的饱和 sRGB 红色： */</span></span>
+<span class="line"><span style="color:#E1E4E8">rgba(100%, 0%, 0%, 0</span><span style="color:#B392F0">.5</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<h3 id="新版函数语法"><a href="https://w3c.github.io/csswg-drafts/css-color/#color-syntax-modern">新版函数语法</a></h3>
+<ul>
+<li>变量由<code> </code>分隔</li>
+<li>可选项由<code>/</code>分隔</li>
+<li>允许使用<code>none</code>值</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#6A737D">/* 以下表示 50% 不透明的饱和 sRGB 红色： */</span></span>
+<span class="line"><span style="color:#E1E4E8">rgba(100% 0% 0% /0</span><span style="color:#B392F0">.5</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<blockquote>
+<p>参考<a href="https://w3c.github.io/csswg-drafts/css-color/#introduction">https://w3c.github.io/csswg-drafts/css-color/#introduction</a></p>
+</blockquote> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/css/css-color.md" data-page-url="content/css/css-color.md" data-page-title="CSS颜色" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

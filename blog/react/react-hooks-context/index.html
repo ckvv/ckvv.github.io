@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/react/react-hooks-context/"><!-- Primary Meta Tags --><title>React Hook Context</title><meta name="title" content="React Hook Context"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/react/react-hooks-context/"><meta property="og:title" content="React Hook Context"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/react/react-hooks-context/"><meta property="twitter:title" content="React Hook Context"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">React Hook Context</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/REACT/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> REACT </a> </div> <span> 2024/08/07 </span> </div> <div class="content"> <h2 id="usecontext">useContext</h2>
+<p>使用 Context 深层传递参数</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#B392F0">useContext</span><span style="color:#E1E4E8">(SomeContext);</span></span></code></pre>
+<p>参数</p>
+<ul>
+<li><code>SomeContext</code>：用 <code>createContext</code> 创建的 context。context 本身不包含信息，它只代表你可以提供或从组件中读取的信息类型。</li>
+</ul>
+<p>返回值</p>
+<ul>
+<li><code>useContext</code> 为调用组件返回 context 的值。它被确定为传递给树中调用组件上方最近的 SomeContext.Provider 的 value。如果没有这样的 provider，那么返回值将会是为创建该 context 传递给 createContext 的 defaultValue。返回的值始终是最新的。如果 context 发生变化，React 会自动重新渲染读取 context 的组件。</li>
+</ul>
+<p>接收一个 context 对象（<code>React.createContext</code> 的返回值）并返回该 context 的当前值。当前的 context 值由上层组件中距离当前组件最近的 <code>&#x3C;MyContext.Provider></code> 的 <code>value</code> prop 决定。调用了 <code>useContext</code> 的组件总会在 context 值变化时重新渲染。如果重渲染组件的开销较大，你可以 <a href="https://github.com/facebook/react/issues/15156#issuecomment-474590693">通过使用 memoization 来优化</a>。</p>
+<p>当组件上层最近的 <code>&#x3C;MyContext.Provider></code> 更新时，该 Hook 会触发重渲染，并使用最新传递给 <code>MyContext</code> provider 的 context <code>value</code> 值。即使祖先使用 <a href="https://react.docschina.org/reference/react/memo"><code>React.memo</code></a> 或 <a href="https://react.docschina.org/reference/react/Component#shouldcomponentupdate"><code>shouldComponentUpdate</code></a>，也会在组件本身使用 <code>useContext</code> 时重新渲染。</p>
+<h3 id="基础用法">基础用法</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6A737D">// ThemeContext.js</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { createContext, useContext, useState } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> themes</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  light: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    color: </span><span style="color:#9ECBFF">'#000000'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    background: </span><span style="color:#9ECBFF">'#eeeeee'</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  dark: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    color: </span><span style="color:#9ECBFF">'#ffffff'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    background: </span><span style="color:#9ECBFF">'#222222'</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 设置Context 默认值</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> ThemeContext</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createContext</span><span style="color:#E1E4E8">(themes.light);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// App.js</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> App</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">model</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setModel</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'light'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#6A737D">    // 当value 变化时，调用了 useContext的组件重新渲染</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">ThemeContext.Provider</span><span style="color:#B392F0"> value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{themes[model]}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">Toolbar</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">button</span><span style="color:#B392F0"> onClick</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> setModel</span><span style="color:#E1E4E8">(model </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'light'</span><span style="color:#F97583"> ?</span><span style="color:#9ECBFF"> 'dark'</span><span style="color:#F97583"> :</span><span style="color:#9ECBFF"> 'light'</span><span style="color:#E1E4E8">)}>Change Theme&#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">ThemeContext.Provider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Toolbar</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">ThemedButton</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> ThemedButton</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">  // useContext(MyContext) 只是让你能够读取 context 的值以及订阅 context 的变化。你仍然需要在上层组件树中使用 &#x3C;Provider> 来为下层组件提供 context</span></span>
+<span class="line"><span style="color:#6A737D">  // 调用了 useContext 的组件总会在 context 值变化时重新渲染</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> theme</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useContext</span><span style="color:#E1E4E8">(ThemeContext);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">button</span><span style="color:#B392F0"> style</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{{ </span><span style="color:#F97583">...</span><span style="color:#E1E4E8">theme }}></span></span>
+<span class="line"><span style="color:#E1E4E8">      I am styled by theme context!</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="在传递对象和函数时优化重新渲染">在传递对象和函数时优化重新渲染</h3>
+<p>你可以通过 context 传递任何值，包括对象和函数。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> MyApp</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">currentUser</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setCurrentUser</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  function</span><span style="color:#B392F0"> login</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">response</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">    storeCredentials</span><span style="color:#E1E4E8">(response.credentials);</span></span>
+<span class="line"><span style="color:#B392F0">    setCurrentUser</span><span style="color:#E1E4E8">(response.user);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#6A737D">  // 每当 MyApp 出现重新渲染（例如，路由更新）时，这里将会是一个 不同的 对象指向 不同的 函数，因此 React 还必须重新渲染树中调用 useContext(AuthContext) 的所有组件</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">AuthContext.Provider</span><span style="color:#B392F0"> value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{{ currentUser, login }}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">Page</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">AuthContext.Provider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>你可以使用 <code>useCallback</code> 包装 login 函数，并将对象创建包装到 <code>useMemo</code> 中</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { useCallback, useMemo } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> MyApp</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">currentUser</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setCurrentUser</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> login</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useCallback</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">response</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    storeCredentials</span><span style="color:#E1E4E8">(response.credentials);</span></span>
+<span class="line"><span style="color:#B392F0">    setCurrentUser</span><span style="color:#E1E4E8">(response.user);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, []);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> contextValue</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useMemo</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> ({</span></span>
+<span class="line"><span style="color:#E1E4E8">    currentUser,</span></span>
+<span class="line"><span style="color:#E1E4E8">    login</span></span>
+<span class="line"><span style="color:#E1E4E8">  }), [currentUser, login]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // 即使 MyApp 需要重新渲染，调用 useContext(AuthContext) 的组件也不需要重新渲染，除非 currentUser 发生了变化。</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">AuthContext.Provider</span><span style="color:#B392F0"> value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{contextValue}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">Page</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">AuthContext.Provider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="传递hooks">传递hooks</h3>
+<p>context 对象可以是任意值, 所以你也可以通过 <code>context</code> 往下传一个 <code>dispatch</code> 或 <code>hooks</code> 函数</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> TodosDispatch</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> React.</span><span style="color:#B392F0">createContext</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> TodosApp</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">  // 提示：`dispatch` 不会在重新渲染之间变化</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">todos</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">dispatch</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useReducer</span><span style="color:#E1E4E8">(todosReducer);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">TodosDispatch.Provider</span><span style="color:#B392F0"> value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{dispatch}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">DeepTree</span><span style="color:#B392F0"> todos</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{todos} /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">TodosDispatch.Provider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="将相关逻辑迁移到一个文件当中">将相关逻辑迁移到一个文件当中</h3>
+<p>你可以选择将 <code>context</code> 逻辑迁移到一个单独的文件当中, 然后在需要使用的组件中导入它</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { createContext, useReducer } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> TasksContext</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createContext</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> TasksDispatchContext</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createContext</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> TasksProvider</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">children</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">tasks</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">dispatch</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useReducer</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">    tasksReducer,</span></span>
+<span class="line"><span style="color:#E1E4E8">    initialTasks</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">TasksContext.Provider</span><span style="color:#B392F0"> value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{tasks}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">TasksDispatchContext.Provider</span><span style="color:#B392F0"> value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{dispatch}></span></span>
+<span class="line"><span style="color:#E1E4E8">        {children}</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#79B8FF">TasksDispatchContext.Provider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">TasksContext.Provider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/react/react-hooks-context.md" data-page-url="content/react/react-hooks-context.md" data-page-title="React Hook Context" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

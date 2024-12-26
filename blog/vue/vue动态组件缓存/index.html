@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.1"><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/vue/vue%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6%E7%BC%93%E5%AD%98/"><!-- Primary Meta Tags --><title>Vue动态组件缓存</title><meta name="title" content="Vue动态组件缓存"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/vue/vue%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6%E7%BC%93%E5%AD%98/"><meta property="og:title" content="Vue动态组件缓存"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/vue/vue%E5%8A%A8%E6%80%81%E7%BB%84%E4%BB%B6%E7%BC%93%E5%AD%98/"><meta property="twitter:title" content="Vue动态组件缓存"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CZwSVy9W.css">
+<style>[data-astro-image]{width:100%;height:auto;-o-object-fit:var(--fit);object-fit:var(--fit);-o-object-position:var(--pos);object-position:var(--pos);aspect-ratio:var(--w) / var(--h)}[data-astro-image=responsive]{max-width:calc(var(--w) * 1px);max-height:calc(var(--h) * 1px)}[data-astro-image=fixed]{width:calc(var(--w) * 1px);height:calc(var(--h) * 1px)}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <h2><a href="/">CK&#39;s Blog</a></h2> <div class="flex gap-4 md:gap-8"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> </div> <div class="hidden md:flex gap-4"> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl leading-[2] font-bold">Vue动态组件缓存</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/VUE/" class="bg-gray-100 hover:bg-gray-300 text-sky-400 px-2 py-1 rounded cursor-pointer"> VUE </a> </div> <span> 2023/06/05 </span> </div> <div class="content"> <h2 id="使用keepalive缓存组件实例">使用KeepAlive缓存组件实例</h2>
+<p>我们可以通过<code>&#x3C;KeepAlive></code>实现多个组件间动态切换时缓存被移除的组件实例。
+<a href="https://play.vuejs.org/#eNqtUsFOwzAM/RWrl4IGC+cqq2h3RFw495K12YhIk6hJi1DVf8dJSllBaAJxi+2XZz8/j0lhzHboeZIl1NadMA4sd73JKyVaozsHI9hnJqV+feJHmODY6RZS/JEuiL1uTTEXtiREnnINKFeAcgZUqtbKOqj7ruPKwe6s2VVguq4UJXEynAkDx1sjmeMYAdBGDFBLZu2uShre6ioJeaxIduAyp0KZ3oF7MxwRHWsEQmC4bXXDJWbmxpjLBiZ7DwptMUFyKCiJNP/BWUbO8gvnA+emkGKIgkKqRrRWfh+Z8MIWwpySpfbxn6wJKMGV4IuSs0UlN1HVJae7bxYvBuk+2IOIq7sLnph8P9u5DJv5VfpWWLaGqTzwZTCOM/M0IaMvBMihd04ruK+lqF/8Ajxms8EFbCiJxR8khsP6ncQosLWnWV6a/kUf2nqu75Fby04chA0iPftaYryhz6NBRLjdtajpHZTWPio=">https://play.vuejs.org</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="vue"><code><span class="line"><span style="color:#6A737D">&#x3C;!-- 非活跃的组件将会被缓存！ --></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">KeepAlive</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;component :is="activeComponent" /></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">KeepAlive</span><span style="color:#E1E4E8">></span></span></code></pre>
+<h2 id="单一组件多实例缓存">单一组件多实例缓存</h2>
+<p>但是这种实现无法针对同一组件生效，例如针对动态路由，由于渲染的组件实际未发生变更缓存的实例将是同一个</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">router-view</span><span style="color:#B392F0"> v-slot</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"{ Component }"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">keep-alive</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#FDAEB7;font-style:italic">component</span><span style="color:#B392F0"> :is</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"Component"</span><span style="color:#E1E4E8">/></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">keep-alive</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">router-view</span><span style="color:#E1E4E8">></span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> User</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  template: </span><span style="color:#9ECBFF">'&#x3C;div>User&#x3C;/div>'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 这些都会传递给 `createRouter`</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> routes</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#6A737D">  // 动态字段以冒号开始</span></span>
+<span class="line"><span style="color:#E1E4E8">  { path: </span><span style="color:#9ECBFF">'/users/:id'</span><span style="color:#E1E4E8">, component: User },</span></span>
+<span class="line"><span style="color:#E1E4E8">];</span></span></code></pre>
+<p>访问<code>/users/1</code>, <code>/users/2</code>时缓存的实例将是同一个</p>
+<p>针对上面的问题有以下解决办法</p>
+<h3 id="设置component的key">设置component的key</h3>
+<p>keep-alive内部把组件对象的key或者或者组件对象当作key缓存<a href="https://github.com/vuejs/core/blob/a95e612b252ae59eaf56e0b8ddba66948d4ac20e/packages/runtime-core/src/components/KeepAlive.ts#L291-L292">https://github.com/vuejs/core/blob/a95e612b252ae59eaf56e0b8ddba66948d4ac20e/packages/runtime-core/src/components/KeepAlive.ts#L291-L292</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">router-view</span><span style="color:#B392F0"> v-slot</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"{ Component, route }"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">keep-alive</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#FDAEB7;font-style:italic">component</span><span style="color:#B392F0"> :is</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"Component"</span><span style="color:#B392F0"> :key</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"route.path"</span><span style="color:#E1E4E8">/></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">keep-alive</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">router-view</span><span style="color:#E1E4E8">></span></span></code></pre>
+<!-- ### 修改Component的name
+
+```html
+<router-view v-slot="{ Component, route }">
+  <keep-alive>
+    <component :is="getComponentInstance(Component,route)"/>
+  </keep-alive>
+</router-view>
+```
+```js
+// 用来存已经创建的组件
+const wrapperMap = new Map();
+// 将router传个我们的组件重新换一个新的组件，原组件包里面
+function getComponentInstance(component, route) {
+  let wrapper;
+  if (component) {
+    const wrapperName = route.path;
+    if (wrapperMap.has(wrapperName)) {
+      wrapper = wrapperMap.get(wrapperName);
+    } else {
+      wrapper = {
+        name: wrapperName,
+        render() {
+          return h(component);
+        },
+      };
+      wrapperMap.set(wrapperName, wrapper);
+    }
+    return h(wrapper);
+  }
+}
+``` --> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/vue/Vue动态组件缓存.md" data-page-url="content/vue/Vue动态组件缓存.md" data-page-title="Vue动态组件缓存" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>
