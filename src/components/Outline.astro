@@ -1,0 +1,57 @@
+---
+import { type MarkdownHeading } from 'astro'
+type Props = {
+  headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props;
+---
+
+<div class="sticky top-20 float-right translate-x-full px-8 flex flex-col" style="max-width: calc(50vw - 500px);">
+  { headings.map((v) => {
+    return (<a class="outline-lint border-sky-800" href={`#${v.slug}`} style={`margin-left: ${v.depth - 1}em`}>{ v.text }</a>)
+  })}
+</div>
+
+<style>
+.outline-lint-active {
+  border-left: 2px solid #075985;
+  padding-left: .5em;
+}
+</style>
+
+<script is:inline>
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelector(".content").querySelectorAll('h1, h2, h3'); // 替换为你的锚点元素
+  const navLinks = document.querySelectorAll(".outline-lint"); // 替换为你的导航链接
+
+  const observerOptions = {
+    root: null, // viewport
+    rootMargin: "0px",
+    threshold: 0.6, // 60%可见时触发
+  };
+
+  const observerCallback = (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        console.log(entry)
+
+        const id = entry.target.getAttribute("id");
+        navLinks.forEach((link) => {
+          link.classList.remove("outline-lint-active");
+          if (link.getAttribute("href").includes(id)) {
+            link.classList.add("outline-lint-active");
+          }
+        });
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+});
+</script>
+
