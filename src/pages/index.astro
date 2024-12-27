@@ -4,14 +4,16 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Link from '../components/Link.astro';
 import { getPosts } from '../utils';
 
-const posts = await getPosts();
+const posts = await getPosts(({data}) => {
+	return data.blog !== false;
+});
 ---
 <BlogPost>
 	<div class="text-lg flex flex-col gap-2">
 		{
 			posts.map((post) => (
 				<Link href={`/blog/${post.id}/`} class="flex gap-4 hover:text-sky-700">
-					<h4 class="flex-grow">{post.data.title}</h4>
+					<span class="flex-grow whitespace-nowrap overflow-hidden text-ellipsis">{post.data.title}</span>
 					<p class="date">
 						<FormattedDate date={post.data.updatedDate || post.data.pubDate} />
 					</p>

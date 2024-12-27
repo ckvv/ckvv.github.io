@@ -1,12 +1,12 @@
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import { parse } from 'node:path';
 
 function formatName(name: string) {
   return name.split(/[_-]/).join(' ');
 }
 
-export async function getPosts() {
-  const posts = await getCollection('blog')
+export async function getPosts(filter?: (entry: CollectionEntry<'blog'>) => boolean) {
+  const posts = await getCollection('blog', filter)
   return posts.filter((v => v.data.draft !== true))
     .map(v => {
       v.data.title ||= formatName(parse(`${v.filePath}`).name);

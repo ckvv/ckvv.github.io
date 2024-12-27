@@ -33,7 +33,7 @@ const { posts } = Astro.props;
 		{
 			posts.map((post) => (
 				<Link href={`/blog/${post.id}/`} class="flex gap-4 hover:text-sky-700">
-					<h4 class="flex-grow">{post.data.title}</h4>
+					<span class="flex-grow whitespace-nowrap overflow-hidden text-ellipsis">{post.data.title}</span>
 					<p class="date">
 						<FormattedDate date={post.data.updatedDate || post.data.pubDate} />
 					</p>
