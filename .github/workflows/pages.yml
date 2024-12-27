@@ -3,7 +3,10 @@
 
 name: github pages
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
 
@@ -12,14 +15,26 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Setup Node.js
       - uses: actions/setup-node@v4
         with:
           node-version: current
           registry-url: https://registry.npmjs.org/
-      - run: npm install --production
-      - run: npm run build
-      - name: Deploy
+          cache: pnpm
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
