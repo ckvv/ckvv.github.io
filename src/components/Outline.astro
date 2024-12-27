@@ -7,23 +7,43 @@ type Props = {
 const { headings } = Astro.props;
 ---
 
-<div class="sticky top-20 float-right translate-x-full px-8 flex flex-col" style="max-width: calc(50vw - 500px);">
+<div class="outline-list sticky top-20 float-right translate-x-full px-8 flex-col hidden xl:flex" style="max-width: calc(50vw - 500px);">
   { headings.map((v) => {
-    return (<a class="outline-lint border-sky-800" href={`#${v.slug}`} style={`margin-left: ${v.depth - 1}em`}>{ v.text }</a>)
+    return <a class="outline-item" href={`#${v.slug}`}>{ v.text }</a>
   })}
 </div>
 
 <style>
-.outline-lint-active {
-  border-left: 2px solid #075985;
-  padding-left: .5em;
+.outline-item-active {
+  font-weight: bold;
+  color: #075985;
 }
 </style>
 
 <script is:inline>
+function throttle(func, limit) {
+  let lastFunc;
+  let lastRan;
+  return function () {
+    const context = this;
+    const args = arguments;
+    if (!lastRan) {
+      func.apply(context, args);
+      lastRan = Date.now();
+    } else {
+      clearTimeout(lastFunc);
+      lastFunc = setTimeout(() => {
+        if (Date.now() - lastRan >= limit) {
+          func.apply(context, args);
+          lastRan = Date.now();
+        }
+      }, limit - (Date.now() - lastRan));
+    }
+  };
+}
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelector(".content").querySelectorAll('h1, h2, h3'); // 替换为你的锚点元素
-  const navLinks = document.querySelectorAll(".outline-lint"); // 替换为你的导航链接
+  const navLinks = document.querySelectorAll(".outline-item"); // 替换为你的导航链接
 
   const observerOptions = {
     root: null, // viewport
@@ -31,21 +51,22 @@ document.addEventListener("DOMContentLoaded", () => {
     threshold: 0.6, // 60%可见时触发
   };
 
-  const observerCallback = (entries) => {
+  const observerCallback = throttle((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        console.log(entry)
-
         const id = entry.target.getAttribute("id");
         navLinks.forEach((link) => {
-          link.classList.remove("outline-lint-active");
-          if (link.getAttribute("href").includes(id)) {
-            link.classList.add("outline-lint-active");
+          const activeHash = `#${id}`;
+          link.classList.remove("outline-item-active");
+          console.log(link.getAttribute("href"))
+          if (link.getAttribute("href") === activeHash) {
+            link.classList.add("outline-item-active");
+            history.replaceState(null, "", activeHash);
           }
         });
       }
     });
-  };
+  }, 200);
 
   const observer = new IntersectionObserver(observerCallback, observerOptions);
 

@@ -1,7 +1,11 @@
+---
+import SearchSVG from '../assets/search.svg';
+---
+
 <astro-sarch>
-  <div class="flex text-base font-normal">
-    <input class="rounded-tl rounded-bl border border-r-0 px-1 w-36" />
-    <button class="border-y border-r px-2 py-1 hover:text-sky-700 hover:bg-gray-200 rounded-tr rounded-br" data-type="Github">Github</button>
+  <div class="flex items-center text-base font-normal relative">
+    <input class="rounded-tl rounded border px-1 w-32 h-8 focus:w-48" />
+    <SearchSVG class="absolute right-1 text-2xl" />
   </div>
 </astro-sarch>
 
@@ -12,22 +16,10 @@
 
       const searchInput = this.querySelector('input') as HTMLInputElement;
 
-      // 每次单击按钮时，更新计数。
-      this.addEventListener('click', (e) => {
-        const target = e.target as HTMLElement;
-        if(target.dataset.type) {
-          let searchLink = '';
-          switch (target.dataset.type) {
-            case 'Github':
-              searchLink = `https://github.com/ckvv/ckvv.github.io/search?l=Markdown&q=${searchInput.value}`;
-              break;
-            case 'Google':
-              searchLink = `https://www.google.com/search?q=site:${window.location.host} ${searchInput.value}`;
-              break;
-            default:
-              return;
-          }
-          window.open(searchLink, '_blank')
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          // `https://www.google.com/search?q=site:${window.location.host} ${searchInput.value}`
+          window.open(`https://github.com/ckvv/ckvv.github.io/search?l=Markdown&q=${searchInput.value}`, '_blank')
         }
       });
     }
