@@ -8,6 +8,7 @@ blog: false
 
 ## 其他
 
++ [RSS订阅链接](/rss.xml)
 + [我的GitHub](https://github.com/ckvv)
 + [博客存储库](https://github.com/ckvv/ckvv.github.io)
 
