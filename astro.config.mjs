@@ -7,7 +7,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ckvv.github.io',
+  site: 'https://chenkai.life',
   integrations: [mdx(), sitemap(), vue(), tailwind()],
   devToolbar: {
     enabled: false,
