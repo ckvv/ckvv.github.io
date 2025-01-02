@@ -50,17 +50,20 @@ async function search() {
   }
 }
 
-async function handlerDel(e: Event, file: any, index: number) {
+async function handlerDel(e: Event, file: any, index: number, tip?: string) {
   e.preventDefault();
   try {
     // eslint-disable-next-line no-alert
-    const password = prompt('请输入密码');
+    const password = prompt(tip || '请输入密码');
 
     if (!password) {
       return;
     }
 
-    await fileAPI.del(file.key, password);
+    const result = await fileAPI.del(file.key, password);
+    if (result?.success === false) {
+      return handlerDel(e, file, index, '密码错误, 请重新输入密码');
+    }
     files.value.splice(index, 1);
   } catch (error) {
 
