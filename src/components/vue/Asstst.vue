@@ -50,6 +50,21 @@ async function search() {
   }
 }
 
+async function handlerDel(e: Event, file: any, index: number) {
+  e.preventDefault();
+  try {
+    // eslint-disable-next-line no-alert
+    const result = window.confirm('你确定要继续吗？');
+    if (!result) {
+      return;
+    }
+    await fileAPI.del(file.key);
+    files.value.splice(index, 1);
+  } catch (error) {
+
+  }
+}
+
 onMounted(async () => {
   search();
 });
@@ -64,11 +79,12 @@ onMounted(async () => {
     </Upload>
 
     <div class="flex flex-wrap justify-center items-center gap-6">
-      <a v-for="file in files" :key="file.key" :href="`https://files.ckpavv.workers.dev/${file.key}`" target="_blank" class="w-52 h-52 p-2 hover:shadow-md cursor-pointer flex justify-center items-center !bg-gray-100 rounded">
+      <a v-for="(file, index) in files" :key="file.key" :href="`https://files.ckpavv.workers.dev/${file.key}`" target="_blank" class="group w-52 h-52 p-2 hover:shadow-md cursor-pointer flex justify-center items-center !bg-gray-100 rounded relative">
         <img v-if="isPicture(file.key)" class="max-w-full max-h-full" :src="`https://files.ckpavv.workers.dev/${file.key}`" :alt="`.${file.key.split('.').pop()}(${formatFileSize(file.size)})`">
         <div v-else class="">
           {{ `.${file.key.split('.').pop()}` }}({{ formatFileSize(file.size) }})
         </div>
+        <div class="w-8 h-8 justify-center items-center text-red-500 absolute top-0 right-0 hidden group-hover:flex text-xl hover:text-2xl" @click.stop="(e) => handlerDel(e, file, index)">x</div>
       </a>
       <div v-for="i in 4" :key="i" class="w-52 h-0" />
     </div>

@@ -34,4 +34,10 @@ export const file = {
     const response = await request(`https://files.ckpavv.workers.dev?${new URLSearchParams(params)}`);
     return response.json();
   },
+  async del(key?: any) {
+    const response = await request(`https://files.ckpavv.workers.dev/${key}`, {
+      method: 'DELETE',
+    });
+    return response.json();
+  },
 };
