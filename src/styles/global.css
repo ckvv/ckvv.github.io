@@ -459,9 +459,9 @@ main {
 
 .content blockquote {
   margin: 0;
-  /* padding: 0 1em; */
+  padding: 0 1em;
   color: var(--fgColor-muted);
-  /* border-left: .25em solid var(--borderColor-default); */
+  border-left: .25em solid var(--borderColor-default);
 }
 
 .content ul,
