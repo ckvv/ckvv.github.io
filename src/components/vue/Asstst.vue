@@ -54,11 +54,13 @@ async function handlerDel(e: Event, file: any, index: number) {
   e.preventDefault();
   try {
     // eslint-disable-next-line no-alert
-    const result = window.confirm('你确定要继续吗？');
-    if (!result) {
+    const password = prompt('请输入密码');
+
+    if (!password) {
       return;
     }
-    await fileAPI.del(file.key);
+
+    await fileAPI.del(file.key, password);
     files.value.splice(index, 1);
   } catch (error) {
 
