@@ -1,0 +1,10 @@
+---
+import BlogPost from '../layouts/BlogPost.astro';
+import Asstst from '../components/vue/Asstst.vue';
+---
+
+<BlogPost>
+	<div class="content">
+		<Asstst client:only="vue" />
+	</div>
+</BlogPost>
