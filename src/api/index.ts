@@ -1,5 +1,22 @@
 import { getFileHash } from '../shared.ts';
 
+async function request(url: string, options?: RequestInit, timeout = 6000) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+  return fetch(url, { ...options, signal: controller.signal })
+    .then((response) => {
+      clearTimeout(timeoutId);
+      return response;
+    })
+    .catch((error) => {
+      if (error.name === 'AbortError') {
+        throw new Error('Request timed out');
+      }
+      throw error;
+    });
+}
+
 export const file = {
   async upload(params: File) {
     const type = (params.name.split('.').pop() || '').toLowerCase();
@@ -7,14 +24,14 @@ export const file = {
 
     const data = new FormData();
     data.append('file', params);
-    const response = await fetch(`https://files.ckpavv.workers.dev/${hash}.${type}`, {
+    const response = await request(`https://files.ckpavv.workers.dev/${hash}.${type}`, {
       method: 'POST',
       body: data,
     });
     return response.json();
   },
   async list(params?: any) {
-    const response = await fetch(`https://files.ckpavv.workers.dev?${new URLSearchParams(params)}`);
+    const response = await request(`https://files.ckpavv.workers.dev?${new URLSearchParams(params)}`);
     return response.json();
   },
 };

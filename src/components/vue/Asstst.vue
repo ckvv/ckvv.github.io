@@ -77,7 +77,7 @@ onMounted(async () => {
         加载中...
       </div>
       <div v-if="isHaveError" @click="search">
-        加载失败, 点击重试
+        加载失败(需要 VPN 访问), 点击重试
       </div>
       <div v-if="isHaveMore" @click="search">
         加载更多
