@@ -4,6 +4,15 @@ tags: ['astro']
 date: "2024/12/06"
 ---
 
+## 变更内容
+
++ `域名变更`: 为了和 github 用户名保持一致, 域名从 `chenkai.life` 迁移到了 `ckvv.net`, 旧域名将重定向到`ckvv.net`, 旧的域名到期后将不再续费
++ `资源页面`: 新增了资源页面, 用于管理博客中引用的静态文件, 文件存储在 cloudflare 对象存储(感谢 cloudflare 大方的额度, 免费的 10 G 对我来说足够使用了), 另外我将后台代码也开源出来了, 感兴趣可以移至该项目 [ckvv/cloudflare-worker](https://github.com/ckvv/cloudflare-worker)
++ 博客页面基本没什么变化
++ 博客路径, 对于博客内容统一添加了`/blog`前缀, 
++ 评论内容原封不动保留
+
+
 ## 为什么从 Hugo 迁移到 Astro
 
 由于 hugo 处理复杂交互以及扩展 markdown 能力较弱, 最近博客从 Hugo 迁移到了 Astro, Astro 支持在项目以及 markdown 中集成像 React、Vue、Svelte 这类流行的前端框架组件  
