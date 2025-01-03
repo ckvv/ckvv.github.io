@@ -24,18 +24,18 @@ export const file = {
 
     const data = new FormData();
     data.append('file', params);
-    const response = await request(`https://files.mapplat.com/${hash}.${type}`, {
+    const response = await request(`https://files.ckvv.net/${hash}.${type}`, {
       method: 'POST',
       body: data,
     });
     return response.json();
   },
   async list(params?: any) {
-    const response = await request(`https://files.mapplat.com?${new URLSearchParams(params)}`);
+    const response = await request(`https://files.ckvv.net?${new URLSearchParams(params)}`);
     return response.json();
   },
   async del(key: any, password: string) {
-    const response = await request(`https://files.mapplat.com/${key}`, {
+    const response = await request(`https://files.ckvv.net/${key}`, {
       headers: new Headers({
         Authorization: password,
       }),
