@@ -1,4 +1,4 @@
-# [CK'S BLOG](https://chenkai.life)
+# [CK'S BLOG](https://ckvv.net)
 
 My Blog
 

@@ -35,7 +35,7 @@ date: '2021-07-09'
 + [gzip](https://github.com/ckvv/shel-command/blob/master/command/gzip.md)用来压缩文件`gzip -9v ./1.html`
 + [head](https://github.com/ckvv/shel-command/blob/master/command/head.md)在屏幕上显示指定文件的开头若干行`head -n 10 CHANGELOG`
 + [history](https://github.com/ckvv/shel-command/blob/master/command/history.md)用于显示历史命令`history 100`
-+ [host](https://github.com/ckvv/shel-command/blob/master/command/host.md)常用的分析域名查询工具`host chenkai.life`
++ [host](https://github.com/ckvv/shel-command/blob/master/command/host.md)常用的分析域名查询工具`host ckvv.net`
 + [htop](https://github.com/ckvv/shel-command/blob/master/command/htop.md)一个互动的进程查看器，可以动态观察系统进程状况
 + [iconv](https://github.com/ckvv/shel-command/blob/master/command/iconv.md)转换文件的编码方式`iconv file1 -f EUC-JP-MS -t UTF-8 -o file2`
 + [ifconfig](https://github.com/ckvv/shel-command/blob/master/command/ifconfig.md)配置和显示Linux系统网卡的网络参数
