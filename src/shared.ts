@@ -43,7 +43,7 @@ export async function stringToKey(str: string) {
 }
 
 // 加密
-export async function encrypt(data: string, skey: string = import.meta.env.KEY) {
+export async function encrypt(data: string, skey: string) {
   const encoder = new TextEncoder();
   const encodedData = encoder.encode(data);
 

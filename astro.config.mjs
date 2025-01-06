@@ -1,7 +1,7 @@
 import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
 import vue from '@astrojs/vue';
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,5 +12,10 @@ export default defineConfig({
   },
   experimental: {
     svg: true,
+  },
+  env: {
+    schema: {
+      KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+    },
   },
 });
