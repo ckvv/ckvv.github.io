@@ -1,0 +1,1 @@
+import{d as c}from"./shared.C2hNlEjk.js";async function e(t,n){try{const r=prompt(n||"请输入密码");return r?await c(t,r):void 0}catch{return e(t,"密码错误, 请重新输入密码")}}document.getElementById("button-decrypt")?.addEventListener("click",async function(){const t=await e(`${this.dataset.data}`);t&&(this.outerHTML=t)});
