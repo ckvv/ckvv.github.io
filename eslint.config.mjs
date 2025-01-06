@@ -16,6 +16,7 @@ export default antfu({
     'import/no-duplicates': 'off',
     'unused-imports/no-unused-vars': 'off',
     'style/brace-style': ['error', '1tbs'],
+    'style/no-tabs': 'off',
     'ts/consistent-type-imports': ['off'],
     'ts/no-unsafe-function-type': 'off',
   },

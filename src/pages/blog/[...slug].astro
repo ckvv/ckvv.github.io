@@ -38,7 +38,7 @@ const { Content } = await render(post);
 	</div>
 	<div class="content">
 		{
-			post.data.encrypt ? <Decrypt data={post.rendered?.html}>解密</Decrypt> : <Content />
+			post.data.encrypt ? <Decrypt data={post.rendered?.html} /> : <Content />
 		}
 	</div>
 	<Cusdis pageID={post?.filePath} pageURL={post?.filePath} pageTitle={post?.data.title} />

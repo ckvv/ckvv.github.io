@@ -6,8 +6,9 @@ type Props = {
 const { data } = Astro.props;
 ---
 
-<div id="button-decrypt" data-data={data}>
-  <slot />
+<div class="text-center">
+  <div class="text-center m-4">该篇文章已经过加密</div>
+  <button id="button-decrypt" class="text-center text-4xl font-bold hover:text-sky-700 m-6" data-data={data}>点击查看</button>
 </div>
 
 <script>
@@ -28,8 +29,8 @@ const { data } = Astro.props;
   }
   document.getElementById('button-decrypt')?.addEventListener('click', async function () {
     const result = await decryptData(`${this.dataset.data}`);
-    if (result) {
-      this.outerHTML = result;
+    if (result && this.parentElement) {
+      this.parentElement.outerHTML = result;
     }
   });
   </script>

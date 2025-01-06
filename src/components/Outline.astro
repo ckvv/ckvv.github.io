@@ -25,17 +25,15 @@ const { headings } = Astro.props;
 function throttle(func, limit) {
   let lastFunc;
   let lastRan;
-  return function () {
-    const context = this;
-    const args = arguments;
+  return function (...args) {
     if (!lastRan) {
-      func.apply(context, args);
+      func.apply(this, args);
       lastRan = Date.now();
     } else {
       clearTimeout(lastFunc);
       lastFunc = setTimeout(() => {
         if (Date.now() - lastRan >= limit) {
-          func.apply(context, args);
+          func.apply(this, args);
           lastRan = Date.now();
         }
       }, limit - (Date.now() - lastRan));
