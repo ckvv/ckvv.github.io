@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
         navLinks.forEach((link) => {
           const activeHash = `#${id}`;
           link.classList.remove("outline-item-active");
-          console.log(link.getAttribute("href"))
           if (link.getAttribute("href") === activeHash) {
             link.classList.add("outline-item-active");
             history.replaceState(null, "", activeHash);
