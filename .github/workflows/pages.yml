@@ -32,6 +32,8 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build project
+        env:
+          KEY: ${{ secrets.KEY }}
         run: pnpm run build
 
       - name: Deploy to GitHub Pages
