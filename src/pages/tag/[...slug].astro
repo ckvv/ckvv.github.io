@@ -1,7 +1,7 @@
 ---
-import BlogPost from '../../layouts/BlogPost.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Link from '../../components/Link.astro';
+import BlogPost from '../../layouts/BlogPost.astro';
 import { getPosts } from '../../utils';
 
 
@@ -10,18 +10,18 @@ export async function getStaticPaths() {
 
 	const tags: Record<string, any[]> = {};
 	for (const post of posts) {
-		if(Array.isArray(post.data.tags)) {
+		if (Array.isArray(post.data.tags)) {
 			for (const tag of post.data.tags) {
 				tags[tag] ||= [];
 				tags[tag].push(post);
 			}
 		}
 	}
-	return Object.keys(tags).map(v => {
+	return Object.keys(tags).map((v) => {
 		return {
       params: { slug: v },
       props: { posts: tags[v] },
-    }
+    };
 	});
 }
 
@@ -31,7 +31,7 @@ const { posts } = Astro.props;
 <BlogPost>
 	<div class="text-lg flex flex-col gap-2">
 		{
-			posts.map((post) => (
+			posts.map(post => (
 				<Link href={`/blog/${post.id}/`} class="flex gap-4 hover:text-sky-700">
 					<span class="flex-grow whitespace-nowrap overflow-hidden text-ellipsis">{post.data.title}</span>
 					<p class="date">

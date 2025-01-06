@@ -9,9 +9,9 @@ export function formatDate(date: Date) {
 	const [year, month, day] = [date.getFullYear(), date.getMonth(), date.getDay()];
 	return {
 		toString() {
-			return `${year}/${`${month+1}`.padStart(2, '0')}/${`${day+1}`.padStart(2, '0')}`;
-		}
-	}
+			return `${year}/${`${month + 1}`.padStart(2, '0')}/${`${day + 1}`.padStart(2, '0')}`;
+		},
+	};
 }
 ---
 

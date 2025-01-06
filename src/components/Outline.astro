@@ -1,15 +1,16 @@
 ---
-import { type MarkdownHeading } from 'astro'
+import { type MarkdownHeading } from 'astro';
+
 type Props = {
-  headings: MarkdownHeading[]
-}
+  headings: MarkdownHeading[];
+};
 
 const { headings } = Astro.props;
 ---
 
 <div class="outline-list sticky top-20 float-right translate-x-full px-8 flex-col hidden xl:flex" style="max-width: calc(50vw - 500px);">
   { headings.map((v) => {
-    return <a class="outline-item" href={`#${v.slug}`}>{ v.text }</a>
+    return <a class="outline-item" href={`#${v.slug}`}>{ v.text }</a>;
   })}
 </div>
 
@@ -41,26 +42,26 @@ function throttle(func, limit) {
     }
   };
 }
-document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelector(".content").querySelectorAll('h1, h2, h3'); // 替换为你的锚点元素
-  const navLinks = document.querySelectorAll(".outline-item"); // 替换为你的导航链接
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelector('.content').querySelectorAll('h1, h2, h3'); // 替换为你的锚点元素
+  const navLinks = document.querySelectorAll('.outline-item'); // 替换为你的导航链接
 
   const observerOptions = {
     root: null, // viewport
-    rootMargin: "0px",
+    rootMargin: '0px',
     threshold: 0.6, // 60%可见时触发
   };
 
   const observerCallback = throttle((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const id = entry.target.getAttribute("id");
+        const id = entry.target.getAttribute('id');
         navLinks.forEach((link) => {
           const activeHash = `#${id}`;
-          link.classList.remove("outline-item-active");
-          if (link.getAttribute("href") === activeHash) {
-            link.classList.add("outline-item-active");
-            history.replaceState(null, "", activeHash);
+          link.classList.remove('outline-item-active');
+          if (link.getAttribute('href') === activeHash) {
+            link.classList.add('outline-item-active');
+            history.replaceState(null, '', activeHash);
           }
         });
       }

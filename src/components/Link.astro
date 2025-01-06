@@ -5,12 +5,12 @@ type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+const subpath = pathname.match(/[^/]+/g);
+const isActive = href === pathname || href === `/${subpath?.[0] || ''}`;
 ---
 
 <a class="group clink cursor-pointer shrink-0 select-none relative flex items-center" href={href} class:list={[className, { active: isActive }]} {...props}>
 	<slot />
-	<div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style={{width: isActive? '100%' : ''}} />
+	<div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style={{ width: isActive ? '100%' : '' }} />
 </a>
 

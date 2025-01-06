@@ -1,19 +1,21 @@
 ---
-import { CUSDIS } from "../consts";
+import { CUSDIS } from '../consts';
 
 interface Props {
-  pageID?: string,
-  pageURL?: string,
-  pageTitle?: string,
+  pageID?: string;
+  pageURL?: string;
+  pageTitle?: string;
 }
 
-const { pageID, pageURL, pageTitle  } = Astro.props;
+const { pageID, pageURL, pageTitle } = Astro.props;
 ---
 
-<div id="cusdis_thread" class="mt-12"
+<div
+  id="cusdis_thread"
+  class="mt-12"
   {...CUSDIS}
   data-page-id={pageID}
-  data-page-url={ pageURL }
+  data-page-url={pageURL}
   data-page-title={pageTitle}
   data-iframe="/js/cusdis/iframe.umd.js"
   data-style="/js/cusdis/style.css"

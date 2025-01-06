@@ -1,9 +1,9 @@
 ---
-import BlogPost from '../../layouts/BlogPost.astro';
 import Tag from '../../components/Tag.astro';
+import BlogPost from '../../layouts/BlogPost.astro';
 import { getPosts } from '../../utils';
 
-const tags: any =  Array.from((await getPosts()).map(v => v.data.tags).flat(1)).filter(v => !!v).reduce((pre, cur: any) => {
+const tags: any = Array.from((await getPosts()).map(v => v.data.tags).flat(1)).filter(v => !!v).reduce((pre, cur: any) => {
   pre[cur] = cur in pre ? pre[cur] + 1 : 1;
   return pre;
 }, {} as Record<string, number>);
@@ -11,7 +11,7 @@ const tags: any =  Array.from((await getPosts()).map(v => v.data.tags).flat(1)).
 <BlogPost>
 	<div class="text-lg tags flex flex-wrap gap-4 justify-center py-8 md:my-24 select-none">
 		{
-			Object.keys(tags).map((tag) => (
+			Object.keys(tags).map(tag => (
 				<Tag href={`/tag/${tag}/`}>
 					{tag}<sup class="pl-1">{tags[tag]}</sup>
 				</Tag>

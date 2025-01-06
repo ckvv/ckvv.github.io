@@ -1,18 +1,18 @@
 ---
 type Props = {
-  data: string
+  data?: string;
 };
 
 const { data } = Astro.props;
 ---
 
 <div id="button-decrypt" data-data={data}>
-  <slot/>
+  <slot />
 </div>
 
 <script>
   import { decrypt } from '../shared';
-  
+
   async function decryptData(data: string, tip?: string) {
     try {
       // eslint-disable-next-line no-alert
@@ -26,9 +26,9 @@ const { data } = Astro.props;
       return decryptData(data, '密码错误, 请重新输入密码');
     }
   }
-  document.getElementById("button-decrypt")?.addEventListener("click", async function () {
+  document.getElementById('button-decrypt')?.addEventListener('click', async function () {
     const result = await decryptData(`${this.dataset.data}`);
-    if(result) {
+    if (result) {
       this.outerHTML = result;
     }
   });

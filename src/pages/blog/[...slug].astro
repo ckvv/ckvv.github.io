@@ -1,23 +1,24 @@
 ---
-import BlogPost from '../../layouts/BlogPost.astro';
-import Cusdis from '../../components/Cusdis.astro';
-import Tag from '../../components/Tag.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
 import { render } from 'astro:content';
-import { getPosts } from '../../utils';
+import Cusdis from '../../components/Cusdis.astro';
+import Decrypt from '../../components/Decrypt.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Tag from '../../components/Tag.astro';
+import BlogPost from '../../layouts/BlogPost.astro';
 import { encrypt } from '../../shared';
+import { getPosts } from '../../utils';
 
 export async function getStaticPaths() {
 	const posts = await getPosts();
-	return posts.map((post) => ({
+	return posts.map(post => ({
 		params: { slug: post.id },
 		props: post,
 	}));
 }
 const post = Astro.props;
 
-if(post.data.encrypt && post.rendered?.html) {
-	post.rendered.html =  await encrypt(`${post.rendered?.html}`);
+if (post.data.encrypt && post.rendered?.html) {
+	post.rendered.html = await encrypt(`${post.rendered?.html}`);
 }
 
 const { Content } = await render(post);
@@ -28,42 +29,18 @@ const { Content } = await render(post);
 	<div class="my-2 flex justify-between">
 		<div class="flex gap-4">
 			{
-				Array.isArray(post.data.tags) && post.data.tags.map((tag) => (
+				Array.isArray(post.data.tags) && post.data.tags.map(tag => (
 					<Tag href={`/tag/${tag}/`}>{tag}</Tag>
 				))
 			}
 		</div>
-		<FormattedDate date={post.data.updatedDate || post.data.pubDate}/>
+		<FormattedDate date={post.data.updatedDate || post.data.pubDate} />
 	</div>
 	<div class="content">
 		{
-			post.data.encrypt ? <button id="button" data-data={post.rendered?.html}>解密</button> : <Content />
+			post.data.encrypt ? <Decrypt data={post.rendered?.html}>解密</Decrypt> : <Content />
 		}
 	</div>
 	<Cusdis pageID={post?.filePath} pageURL={post?.filePath} pageTitle={post?.data.title} />
 </BlogPost>
 
-
-<script>
-import { decrypt } from '../../shared';
-
-async function decryptData(data: string, tip?: string) {
-  try {
-    // eslint-disable-next-line no-alert
-    const password = prompt(tip || '请输入密码');
-    if (!password) {
-      return;
-    }
-    const result = await decrypt(data, password);
-		return result;
-  } catch (error) {
-		return decryptData(data, '密码错误, 请重新输入密码');
-  }
-}
-document.getElementById("button")?.addEventListener("click", async function () {
-	const result = await decryptData(`${this.dataset.data}`);
-	if(result) {
-		this.outerHTML = result;
-	}
-});
-</script>

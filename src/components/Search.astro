@@ -13,13 +13,12 @@ import SearchSVG from '../assets/search.svg';
   // 为我们的新 HTML 自定义元素定义行为。
   class AstroSearch extends HTMLElement {
     connectedCallback() {
-
       const searchInput = this.querySelector('input') as HTMLInputElement;
 
       searchInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           // `https://www.google.com/search?q=site:${window.location.host} ${searchInput.value}`
-          window.open(`https://github.com/ckvv/ckvv.github.io/search?l=Markdown&q=${searchInput.value}`, '_blank')
+          window.open(`https://github.com/ckvv/ckvv.github.io/search?l=Markdown&q=${searchInput.value}`, '_blank');
         }
       });
     }
