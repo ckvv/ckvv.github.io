@@ -6,5 +6,5 @@ export const CUSDIS = {
   'data-app-id': 'c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd',
 };
 export const LANG = 'en';
-export const SITE_TITLE = `CK's Blog`;
+export const SITE_TITLE = `CK Blog`;
 export const SITE_DESCRIPTION = 'Welcome to my website!';
