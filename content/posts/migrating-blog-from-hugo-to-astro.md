@@ -36,5 +36,5 @@ GitHub Action 可通过缓存待依赖库优化打包时间, 具体参考 <https
 ![](https://r2.ckvv.net/2cf026f7b956322510a83c475862304ab00ca85f6497e2595459169ad13eff86.png)
 
 
-> GitHub Action 过程时间是仅供参考的约数
+> GitHub Action 过程时间是仅供参考
 

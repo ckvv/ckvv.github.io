@@ -24,18 +24,18 @@ export const file = {
 
     const data = new FormData();
     data.append('file', params);
-    const response = await request(`https://files.ckvv.net/${hash}.${type}`, {
+    const response = await request(`https://api.ckvv.net/r2/${hash}.${type}`, {
       method: 'POST',
       body: data,
     });
     return response.json();
   },
   async list(params?: any) {
-    const response = await request(`https://files.ckvv.net?${new URLSearchParams(params)}`);
+    const response = await request(`https://api.ckvv.net/r2?${new URLSearchParams(params)}`);
     return response.json();
   },
   async del(key: any, password: string) {
-    const response = await request(`https://files.ckvv.net/${key}`, {
+    const response = await request(`https://api.ckvv.net/r2/${key}`, {
       headers: new Headers({
         Authorization: password,
       }),
