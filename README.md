@@ -9,7 +9,6 @@ My Blog
 + [Mdx support](https://docs.astro.build/en/guides/integrations-guide/mdx/)
 + Blog encryption support
 + Comment
-+ 
 
 # Others
 
