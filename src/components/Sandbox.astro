@@ -1,0 +1,9 @@
+---
+interface Props {
+  srcdoc: string;
+}
+
+const { srcdoc } = Astro.props;
+---
+
+<iframe srcdoc={srcdoc} />
