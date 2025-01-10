@@ -84,7 +84,7 @@ onMounted(async () => {
     </Upload>
 
     <div class="flex flex-wrap justify-center items-center gap-6">
-      <a v-for="(file, index) in files" :key="file.key" :href="`https://r2.ckvv.net/${file.key}`" target="_blank" class="group w-full md:w-52 md:h-52 p-2 hover:shadow-md cursor-pointer flex justify-center items-center !bg-gray-100 rounded relative">
+      <a v-for="(file, index) in files" :key="file.key" :href="`https://r2.ckvv.net/${file.key}`" target="_blank" class="group w-full min-h-24 md:w-52 md:h-52 p-2 hover:shadow-md cursor-pointer flex justify-center items-center !bg-gray-100 rounded relative">
         <img v-if="isPicture(file.key)" class="max-w-full max-h-full" :src="`https://r2.ckvv.net/${file.key}`" :alt="`.${file.key.split('.').pop()}(${formatFileSize(file.size)})`">
         <div v-else class="">
           {{ `.${file.key.split('.').pop()}` }}({{ formatFileSize(file.size) }})
