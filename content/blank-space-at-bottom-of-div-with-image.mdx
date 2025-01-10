@@ -7,14 +7,14 @@ date: "2025/01/10"
 在 HTML 和 CSS 布局中，当你在一个容器内使用了 img 标签时，图片底部会留出一定的空白区域
 
 ```html
-<!-- all:unset 用于重置样式 -->
-<div class="item" style="all:unset; background-color: red;">
-  <img style="all:unset;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11" />
+<!-- all:initial 用于重置样式 -->
+<div class="item" style="all:initial; background-color: red;">
+  <img style="all:initial;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11" />
 </div>
 ```
 
-<div style="all:unset; background-color: red;">
-  <img style="all:unset;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11" />
+<div style="all:initial; background-color: red;">
+  <img style="all:initial;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11" />
 </div>
 
 这是因为 图片是一个 行内块级元素`nline-block `，它会受到父容器的字体基线`baseline`的影响。因此，图片底部会留出一定的空白区域，以容纳可能存在的文字下划线或字母的“下延”
@@ -29,8 +29,8 @@ img {
   display: block;
 }
 ```
-<div style="all:unset; background-color: red;">
-  <img style="all:unset; display: block;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11" />
+<div style="all:initial; background-color: red;">
+  <img style="all:initial; display: block;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11" />
 </div>
 
 ## 调整容器的字体对齐方式
@@ -42,8 +42,8 @@ img {
 ```
 将父容器的字体大小设置为 0，可以消除基线的影响。不过，这会影响子元素的文字内容显示
 
-<div style="all:unset; background-color: red; font-size: 0;">
-  <img style="all:unset;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11" />
+<div style="all:initial; background-color: red; font-size: 0;">
+  <img style="all:initial;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11" />
 </div>
 
 ## 设置图片的垂直对齐方式
@@ -54,8 +54,8 @@ img {
 }
 ```
 
-<div style="all:unset; background-color: red;">
-  <img style="all:unset; vertical-align: bottom;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11" />
+<div style="all:initial; background-color: red;">
+  <img style="all:initial; vertical-align: bottom;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11" />
 </div>
 
 # 其他受行内基线影响的元素
@@ -68,7 +68,7 @@ img {
 - **行内块级元素**：如 `inline-block` 和嵌套布局。
 - **表格单元格**：如 `<td>`、`<th>`。
 
-<div style="all:unset; background-color: red;">
+<div style="all:initial; background-color: red;">
   <textarea />
 </div>
 
