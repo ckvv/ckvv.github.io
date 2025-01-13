@@ -17,8 +17,13 @@ date: "2025/01/10"
   <img style="all:initial;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11" />
 </div>
 
-这是因为 图片是一个 行内块级元素`nline-block `，它会受到父容器的字体基线`baseline`的影响。因此，图片底部会留出一定的空白区域，以容纳可能存在的文字下划线或字母的“下延”
+这是因为 图片是一个 行内块级元素`inline-block `，它会受到父容器的字体基线`baseline`的影响。因此，图片底部会留出一定的空白区域，以容纳可能存在的文字下划线或字母的“下延”
 
+# 什么是基线
+
+基线是大多数字母所在的线  
+
+![](https://r2.ckvv.net/eca48659f18494129563eaa620d33b452ae670602aa426975222313fc55cdbc1.png)
 
 # 解决方案
 
@@ -50,7 +55,7 @@ img {
 
 ```css
 img {
-  vertical-align: bottom; /* 或 top, middle */
+  vertical-align: bottom; /* 或 top, middle */ vertical-align CSS 属性设置 inline inline-block  table-cell 的垂直对齐方式。
 }
 ```
 
@@ -76,5 +81,7 @@ img {
 
 # 参考
 
-> https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Typography
-> https://github.com/jensimmons/cssremedy/issues/14
++ https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Typography
++ https://github.com/jensimmons/cssremedy/issues/14
++ https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align
++ https://www.zhihu.com/collection/974901721
