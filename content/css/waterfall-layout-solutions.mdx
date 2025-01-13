@@ -1,0 +1,91 @@
+---
+title: "瀑布流实现的几种方案"
+tags: ['css']
+date: "2025/01/13"
+---
+
+瀑布流布局是一种网页设计方式，将内容垂直排列，根据空间自适应调整，形成类似瀑布的流动效果。元素宽度固定，高度随内容变化，垂直紧密堆叠，填满空间。当一列满时，自动排至空间较少的列，实现均衡布局。
+
+# 常见的瀑布流实现技术
+
+```jsx
+export const images = Array.from({ length: 12 }).map((v, index) => ({
+  id: index,
+  src: `https://api.ckvv.net/photos/random?id=${index}`
+}));
+```
+
+export const images = Array.from({ length: 12 }).map((v, index) => ({
+  id: index,
+  src: `https://api.ckvv.net/photos/random?id=${index}`
+}));
+
+## columns 多列布局
+
+```jsx
+<div class="gap-x-4 columns-3 md:columns-4">
+{ images.map(v => {
+  return (<div class="mb-4"><img src={v.src} class="w-full"/></div>)
+}) }
+</div>
+```
+
+<div class="gap-x-4 columns-3 md:columns-4">
+{ images.map(v => {
+  return (<div class="mb-4"><img src={v.src} class="w-full"/></div>)
+}) }
+</div>
+
+## grid 布局
+
++ 使用 grid-template-columns 创建一个多列网格布局。
++ 使用 grid-auto-rows 设置行的高度，并结合 grid-row 属性控制项目的跨行跨度，动态调整项目的高度
+
+## flex 布局
+
+将页面分为若干列，每列是一个独立的容器，动态分配内容到最短列。
+
+## JavaScript 动态计算
+
+动态计算每列的高度，将内容分配到高度最小的列。
+
+## 使用现成的库 比如 masonry.js
+
+```html
+<div class="grid">
+{ images.map(v => {
+  return (<div class="grid-item w-56 h-max mb-4"><img src={v.src} class="w-full"/></div>)
+}) }
+</div>
+
+<script type="module">
+import 'https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js';
+
+window.addEventListener('load', () => {
+  new Masonry( '.grid', {
+    "itemSelector": ".grid-item",
+    "columnWidth": 224,
+    "gutter": 16,
+  });
+});
+</script>
+```
+
+<div class="grid">
+{ images.map(v => {
+  return (<div class="grid-item w-56 h-max mb-4"><img src={v.src} class="w-full"/></div>)
+}) }
+</div>
+
+<script type="module">{`
+import 'https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js';
+
+window.addEventListener('load', () => {
+  new Masonry( '.grid', {
+    "itemSelector": ".grid-item",
+    "columnWidth": 224,
+    "gutter": 16,
+  });
+});
+`}</script>
+

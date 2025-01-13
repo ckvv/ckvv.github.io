@@ -31,10 +31,10 @@ async function isExist(file) {
 }
 
 function formatDate(date) {
-  const [year, month, day] = [date.getFullYear(), date.getMonth(), date.getDay()];
+  const [year, month, day] = [date.getFullYear(), date.getMonth(), date.getDate()];
   return {
     toString() {
-      return `${year}/${`${month + 1}`.padStart(2, '0')}/${`${day + 1}`.padStart(2, '0')}`;
+      return `${year}/${`${month + 1}`.padStart(2, '0')}/${`${day}`.padStart(2, '0')}`;
     },
   };
 }
