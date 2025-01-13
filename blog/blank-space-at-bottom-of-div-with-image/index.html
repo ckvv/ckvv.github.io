@@ -8,7 +8,10 @@
 <span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">img</span><span style="color:#B392F0"> style</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">&quot;all:initial;&quot;</span><span style="color:#B392F0"> src</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">&quot;https://api.ckvv.net/photos/100/100?r=11&amp;g=101&amp;b=11&quot;</span><span style="color:#E1E4E8"> /&gt;</span></span>
 <span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">&gt;</span></span></code></pre>
 <div style="all:initial; background-color: red;"><img style="all:initial;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11"/></div>
-<p>这是因为 图片是一个 行内块级元素<code>nline-block </code>，它会受到父容器的字体基线<code>baseline</code>的影响。因此，图片底部会留出一定的空白区域，以容纳可能存在的文字下划线或字母的“下延”</p>
+<p>这是因为 图片是一个 行内块级元素<code>inline-block </code>，它会受到父容器的字体基线<code>baseline</code>的影响。因此，图片底部会留出一定的空白区域，以容纳可能存在的文字下划线或字母的“下延”</p>
+<h1 id="什么是基线">什么是基线</h1>
+<p>基线是大多数字母所在的线</p>
+<p><img src="https://r2.ckvv.net/eca48659f18494129563eaa620d33b452ae670602aa426975222313fc55cdbc1.png" alt/></p>
 <h1 id="解决方案">解决方案</h1>
 <h2 id="设置-img-的-display-为-block-flex-等">设置 <code>img</code> 的 <code>display</code> 为 <code>block</code> <code>flex</code> 等</h2>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">img</span><span style="color:#E1E4E8"> {</span></span>
@@ -24,7 +27,7 @@
 <div style="all:initial; background-color: red; font-size: 0;"><img style="all:initial;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11"/></div>
 <h2 id="设置图片的垂直对齐方式">设置图片的垂直对齐方式</h2>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#85E89D">img</span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#79B8FF">  vertical-align</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">bottom</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">/* 或 top, middle */</span></span>
+<span class="line"><span style="color:#79B8FF">  vertical-align</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">bottom</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">/* 或 top, middle */</span><span style="color:#79B8FF"> vertical-align</span><span style="color:#79B8FF"> CSS</span><span style="color:#E1E4E8"> 属性设置 </span><span style="color:#79B8FF">inline</span><span style="color:#79B8FF"> inline-block</span><span style="color:#79B8FF">  table-cell</span><span style="color:#E1E4E8"> 的垂直对齐方式。</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
 <div style="all:initial; background-color: red;"><img style="all:initial; vertical-align: bottom;" src="https://api.ckvv.net/photos/100/100?r=11&g=101&b=11"/></div>
 <h1 id="其他受行内基线影响的元素">其他受行内基线影响的元素</h1>
@@ -39,10 +42,12 @@
 <div style="all:initial; background-color: red;"><textarea></textarea></div>
 <p>基线影响范围广泛，但可以通过 vertical-align、display、line-height 等属性来调整布局效果。</p>
 <h1 id="参考">参考</h1>
-<blockquote>
-<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Typography">https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Typography</a>
-<a href="https://github.com/jensimmons/cssremedy/issues/14">https://github.com/jensimmons/cssremedy/issues/14</a></p>
-</blockquote> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/blank-space-at-bottom-of-div-with-image.mdx" data-page-url="content/blank-space-at-bottom-of-div-with-image.mdx" data-page-title="div 中 image 底部留白问题" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Typography">https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Typography</a></li>
+<li><a href="https://github.com/jensimmons/cssremedy/issues/14">https://github.com/jensimmons/cssremedy/issues/14</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align">https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align</a></li>
+<li><a href="https://www.zhihu.com/collection/974901721">https://www.zhihu.com/collection/974901721</a></li>
+</ul> </div> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="content/blank-space-at-bottom-of-div-with-image.mdx" data-page-url="content/blank-space-at-bottom-of-div-with-image.mdx" data-page-title="div 中 image 底部留白问题" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
 window.CUSDIS_LOCALE = {
   powered_by: '',
   post_comment: '发送',
