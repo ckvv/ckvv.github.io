@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import { file as fileAPI } from '../../api';
 import { formatFileSize, isPicture } from '../../shared.ts';
 import Upload from './Upload.vue';
@@ -11,7 +11,7 @@ const isLoading = ref(true);
 const isUploading = ref(false);
 const files = ref<{ key: string; size: number }[]>([]);
 
-async function onChange(file: any) {
+async function onUpload(file: any) {
   try {
     isUploading.value = true;
     const result = await fileAPI.upload(file);
@@ -70,14 +70,36 @@ async function handlerDel(e: Event, file: any, index: number, tip?: string) {
   }
 }
 
+async function handlerPaste(event: ClipboardEvent) {
+  event.preventDefault();
+  // 从粘贴板中获取数据
+  const clipboardData = event.clipboardData;
+  if (clipboardData && clipboardData.items) {
+    for (let i = 0; i < clipboardData.items.length; i++) {
+      const item = clipboardData.items[i];
+      // 检查是否为文件
+      if (item.kind !== 'file') {
+        continue;
+      }
+      const file = item.getAsFile();
+      await onUpload(file);
+    }
+  }
+}
+
 onMounted(async () => {
   search();
+  document.addEventListener('paste', handlerPaste);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('paste', handlerPaste);
 });
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
-    <Upload class="self-end" @change="onChange">
+    <Upload class="self-end" @change="onUpload">
       <button class="px-4 py-2 text-blue-500 bg-gray-100 rounded hover:text-blue-600">
         {{ isUploading ? "正在上传..." : '上传' }}
       </button>
