@@ -45,19 +45,19 @@ const { headings } = Astro.props;
 }
 </style>
 
-<script is:inline>
-function throttle(func, limit) {
-  let lastFunc;
-  let lastRan;
-  return function (...args) {
+<script>
+function throttle(func: any, limit: number) {
+  let lastFunc: any;
+  let lastRan: any;
+  return (...args: any[]) => {
     if (!lastRan) {
-      func.apply(this, args);
+      func(...args);
       lastRan = Date.now();
     } else {
       clearTimeout(lastFunc);
       lastFunc = setTimeout(() => {
         if (Date.now() - lastRan >= limit) {
-          func.apply(this, args);
+          func(...args);
           lastRan = Date.now();
         }
       }, limit - (Date.now() - lastRan));
@@ -66,27 +66,27 @@ function throttle(func, limit) {
 }
 
 function toggleMenu() {
-  const button = document.getElementById('menu-button');
-  const menu = document.getElementById('md-outline-content');
+  const button = document.getElementById('menu-button')!;
+  const menu = document.getElementById('md-outline-content')!;
   const isExpanded = button.getAttribute('aria-expanded') === 'true';
 
   // 切换状态
-  button.setAttribute('aria-expanded', !isExpanded);
+  button.setAttribute('aria-expanded', `${!isExpanded}`);
   menu.style.display = isExpanded ? 'none' : 'block';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const menuButton = document.getElementById('menu-button');
+  const menuButton = document.getElementById('menu-button')!;
   menuButton.onclick = toggleMenu;
 
-  document.onclick = (event) => {
-    const menu = document.getElementById('md-outline-content');
+  document.onclick = (event: any) => {
+    const menu = document.getElementById('md-outline-content')!;
     if (event.target.id !== 'menu-button' && !menu.contains(event.target) && menuButton.getAttribute('aria-expanded') === 'true') {
       toggleMenu();
     }
   };
 
-  const sections = document.querySelector('.content').querySelectorAll('h1, h2, h3'); // 替换为你的锚点元素
+  const sections = document.querySelector('.content')!.querySelectorAll('h1, h2, h3'); // 替换为你的锚点元素
   const navLinks = document.querySelectorAll('.outline-item'); // 替换为你的导航链接
 
   const observerOptions = {
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     threshold: 0.6, // 60%可见时触发
   };
 
-  const observerCallback = throttle((entries) => {
+  const observerCallback = throttle((entries: any[]) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
