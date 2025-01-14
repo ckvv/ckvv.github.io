@@ -4,6 +4,7 @@ import { KEY } from 'astro:env/server';
 import Cusdis from '../../components/Cusdis.astro';
 import Decrypt from '../../components/Decrypt.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import Outline from '../../components/Outline.astro';
 import Tag from '../../components/Tag.astro';
 import BlogPost from '../../layouts/BlogPost.astro';
 import { encrypt } from '../../shared';
@@ -22,7 +23,7 @@ if (post.data.encrypt && post.rendered?.html) {
 	post.rendered.html = await encrypt(`${post.rendered?.html}`, `${KEY}`);
 }
 
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 ---
 
 <BlogPost {...post.data}>
@@ -38,6 +39,7 @@ const { Content } = await render(post);
 		<FormattedDate date={post.data.updatedDate || post.data.pubDate} />
 	</div>
 	<div class="content">
+		<Outline headings={headings} />
 		{
 			post.data.encrypt ? <Decrypt data={post.rendered?.html} /> : <Content />
 		}

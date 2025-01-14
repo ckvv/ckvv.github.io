@@ -8,7 +8,25 @@ type Props = {
 const { headings } = Astro.props;
 ---
 
-<div class="outline-list sticky top-20 float-right translate-x-full px-8 flex-col hidden xl:flex" style="max-width: calc(50vw - 500px);">
+<div class="2xl:hidden sticky top-20 inline-block text-left w-full">
+  <div class="flex justify-end">
+    <button type="button" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-haspopup="true">
+      On this page
+      <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+        <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="md-outline-content" class="hidden absolute right-0 z-10 mt-2 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+    { headings.map((v) => {
+      return <a class="outline-item block px-4 py-1 text-sm" href={`#${v.slug}`}>{ v.text }</a>;
+    })}
+  </div>
+</div>
+
+<div class="hidden 2xl:flex outline-list sticky flex-col 2xl:top-20 2xl:float-right 2xl:translate-x-full 2xl:px-8 2xl:max-w-[calc(50vw-500px)]">
+  <h4>On this page</h4>
   { headings.map((v) => {
     return <a class="outline-item" href={`#${v.slug}`}>{ v.text }</a>;
   })}
@@ -40,7 +58,28 @@ function throttle(func, limit) {
     }
   };
 }
+
+function toggleMenu() {
+  const button = document.getElementById('menu-button');
+  const menu = document.getElementById('md-outline-content');
+  const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+  // 切换状态
+  button.setAttribute('aria-expanded', !isExpanded);
+  menu.style.display = isExpanded ? 'none' : 'block';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  const menuButton = document.getElementById('menu-button');
+  menuButton.onclick = toggleMenu;
+
+  document.onclick = (event) => {
+    const menu = document.getElementById('md-outline-content');
+    if (event.target.id !== 'menu-button' && !menu.contains(event.target) && menuButton.getAttribute('aria-expanded') === 'true') {
+      toggleMenu();
+    }
+  };
+
   const sections = document.querySelector('.content').querySelectorAll('h1, h2, h3'); // 替换为你的锚点元素
   const navLinks = document.querySelectorAll('.outline-item'); // 替换为你的导航链接
 
