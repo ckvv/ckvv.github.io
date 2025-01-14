@@ -1,6 +1,82 @@
-<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.5"><!-- Canonical URL --><link rel="canonical" href="https://ckvv.net/blog/web/web-containers/"><!-- Primary Meta Tags --><title>在浏览器中本地运行 Node.js - WebContainers</title><meta name="title" content="在浏览器中本地运行 Node.js - WebContainers"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://ckvv.net/blog/web/web-containers/"><meta property="og:title" content="在浏览器中本地运行 Node.js - WebContainers"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://ckvv.net/blog/web/web-containers/"><meta property="twitter:title" content="在浏览器中本地运行 Node.js - WebContainers"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.Cxrb6FJY.css"></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <div class="flex gap-2 md:gap-4 items-center font-bold"> <h2><a href="/">CK Blog</a></h2> </div> <div class="flex gap-2 md:gap-4"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/assets/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center hidden md:inline"> Assets <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank" aria-label="GitHub" class="hidden md:inline"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.5"><!-- Canonical URL --><link rel="canonical" href="https://ckvv.net/blog/web/web-containers/"><!-- Primary Meta Tags --><title>在浏览器中本地运行 Node.js - WebContainers</title><meta name="title" content="在浏览器中本地运行 Node.js - WebContainers"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://ckvv.net/blog/web/web-containers/"><meta property="og:title" content="在浏览器中本地运行 Node.js - WebContainers"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://ckvv.net/blog/web/web-containers/"><meta property="twitter:title" content="在浏览器中本地运行 Node.js - WebContainers"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.DFhfNKfr.css">
+<style>.outline-item-active[data-astro-cid-v2nb7cev]{font-weight:700;color:#075985}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <div class="flex gap-2 md:gap-4 items-center font-bold"> <h2><a href="/">CK Blog</a></h2> </div> <div class="flex gap-2 md:gap-4"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/assets/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center hidden md:inline"> Assets <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank" aria-label="GitHub" class="hidden md:inline"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
-</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl font-bold my-4">在浏览器中本地运行 Node.js - WebContainers</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/web/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> web </a><a href="/tag/node.js/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> node.js </a> </div> <span> 2021/12/29 </span> </div> <div class="content"> <h2 id="起因">起因</h2>
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl font-bold my-4">在浏览器中本地运行 Node.js - WebContainers</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/web/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> web </a><a href="/tag/node.js/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> node.js </a> </div> <span> 2021/12/29 </span> </div> <div class="content"> <div class="2xl:hidden sticky top-20 inline-block text-left w-full" data-astro-cid-v2nb7cev> <div class="flex justify-end" data-astro-cid-v2nb7cev> <button type="button" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-haspopup="true" data-astro-cid-v2nb7cev>
+On this page
+<svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon" data-astro-cid-v2nb7cev> <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" data-astro-cid-v2nb7cev></path> </svg> </button> </div> <div id="md-outline-content" class="hidden absolute right-0 z-10 mt-2 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" data-astro-cid-v2nb7cev> <a class="outline-item block px-4 py-1 text-sm" href="#起因" data-astro-cid-v2nb7cev>起因</a><a class="outline-item block px-4 py-1 text-sm" href="#webcontainers-简介在浏览器中本地运行-nodejs" data-astro-cid-v2nb7cev>WebContainers 简介：在浏览器中本地运行 Node.js</a><a class="outline-item block px-4 py-1 text-sm" href="#今天我们很高兴地宣布webcontainers" data-astro-cid-v2nb7cev>今天我们很高兴地宣布WebContainers</a><a class="outline-item block px-4 py-1 text-sm" href="#为什么" data-astro-cid-v2nb7cev>为什么？</a><a class="outline-item block px-4 py-1 text-sm" href="#代码空间沙盒repls怎么样" data-astro-cid-v2nb7cev>代码空间/沙盒/Repls/…怎么样？</a><a class="outline-item block px-4 py-1 text-sm" href="#释放浏览器的力量" data-astro-cid-v2nb7cev>释放浏览器的力量</a><a class="outline-item block px-4 py-1 text-sm" href="#使用-chrome-devtools-进行无缝-nodejs-调试" data-astro-cid-v2nb7cev>使用 Chrome DevTools 进行无缝 Node.js 调试</a><a class="outline-item block px-4 py-1 text-sm" href="#运行服务器在您的浏览器中" data-astro-cid-v2nb7cev>运行服务器。在您的浏览器中</a><a class="outline-item block px-4 py-1 text-sm" href="#零足迹以毫秒为单位启动" data-astro-cid-v2nb7cev>零足迹。以毫秒为单位启动</a><a class="outline-item block px-4 py-1 text-sm" href="#每个页面加载的新鲜环境" data-astro-cid-v2nb7cev>每个页面加载的新鲜环境</a><a class="outline-item block px-4 py-1 text-sm" href="#零延迟离线工作" data-astro-cid-v2nb7cev>零延迟。离线工作</a><a class="outline-item block px-4 py-1 text-sm" href="#默认安全" data-astro-cid-v2nb7cev>默认安全</a><a class="outline-item block px-4 py-1 text-sm" href="#让我们暂停一下" data-astro-cid-v2nb7cev>让我们暂停一下</a><a class="outline-item block px-4 py-1 text-sm" href="#因为这是故事真正令人费解的地方" data-astro-cid-v2nb7cev>因为这是故事真正令人费解的地方</a><a class="outline-item block px-4 py-1 text-sm" href="#桌面级编辑即时桌面应用安装" data-astro-cid-v2nb7cev>桌面级编辑。即时桌面应用安装</a><a class="outline-item block px-4 py-1 text-sm" href="#从本地文件系统读取和写入" data-astro-cid-v2nb7cev>从本地文件系统读取和写入</a><a class="outline-item block px-4 py-1 text-sm" href="#下一步是什么" data-astro-cid-v2nb7cev>下一步是什么？</a><a class="outline-item block px-4 py-1 text-sm" href="#发展预览船-️" data-astro-cid-v2nb7cev>发展。预览。船。 ♾️</a><a class="outline-item block px-4 py-1 text-sm" href="#软件开发的未来是光明的" data-astro-cid-v2nb7cev>软件开发的未来是光明的</a> </div> </div> <div class="hidden 2xl:flex outline-list sticky flex-col 2xl:top-20 2xl:float-right 2xl:translate-x-full 2xl:px-8 2xl:max-w-[calc(50vw-500px)]" data-astro-cid-v2nb7cev> <h4 data-astro-cid-v2nb7cev>On this page</h4> <a class="outline-item" href="#起因" data-astro-cid-v2nb7cev>起因</a><a class="outline-item" href="#webcontainers-简介在浏览器中本地运行-nodejs" data-astro-cid-v2nb7cev>WebContainers 简介：在浏览器中本地运行 Node.js</a><a class="outline-item" href="#今天我们很高兴地宣布webcontainers" data-astro-cid-v2nb7cev>今天我们很高兴地宣布WebContainers</a><a class="outline-item" href="#为什么" data-astro-cid-v2nb7cev>为什么？</a><a class="outline-item" href="#代码空间沙盒repls怎么样" data-astro-cid-v2nb7cev>代码空间/沙盒/Repls/…怎么样？</a><a class="outline-item" href="#释放浏览器的力量" data-astro-cid-v2nb7cev>释放浏览器的力量</a><a class="outline-item" href="#使用-chrome-devtools-进行无缝-nodejs-调试" data-astro-cid-v2nb7cev>使用 Chrome DevTools 进行无缝 Node.js 调试</a><a class="outline-item" href="#运行服务器在您的浏览器中" data-astro-cid-v2nb7cev>运行服务器。在您的浏览器中</a><a class="outline-item" href="#零足迹以毫秒为单位启动" data-astro-cid-v2nb7cev>零足迹。以毫秒为单位启动</a><a class="outline-item" href="#每个页面加载的新鲜环境" data-astro-cid-v2nb7cev>每个页面加载的新鲜环境</a><a class="outline-item" href="#零延迟离线工作" data-astro-cid-v2nb7cev>零延迟。离线工作</a><a class="outline-item" href="#默认安全" data-astro-cid-v2nb7cev>默认安全</a><a class="outline-item" href="#让我们暂停一下" data-astro-cid-v2nb7cev>让我们暂停一下</a><a class="outline-item" href="#因为这是故事真正令人费解的地方" data-astro-cid-v2nb7cev>因为这是故事真正令人费解的地方</a><a class="outline-item" href="#桌面级编辑即时桌面应用安装" data-astro-cid-v2nb7cev>桌面级编辑。即时桌面应用安装</a><a class="outline-item" href="#从本地文件系统读取和写入" data-astro-cid-v2nb7cev>从本地文件系统读取和写入</a><a class="outline-item" href="#下一步是什么" data-astro-cid-v2nb7cev>下一步是什么？</a><a class="outline-item" href="#发展预览船-️" data-astro-cid-v2nb7cev>发展。预览。船。 ♾️</a><a class="outline-item" href="#软件开发的未来是光明的" data-astro-cid-v2nb7cev>软件开发的未来是光明的</a> </div>  <script>
+function throttle(func, limit) {
+  let lastFunc;
+  let lastRan;
+  return function (...args) {
+    if (!lastRan) {
+      func.apply(this, args);
+      lastRan = Date.now();
+    } else {
+      clearTimeout(lastFunc);
+      lastFunc = setTimeout(() => {
+        if (Date.now() - lastRan >= limit) {
+          func.apply(this, args);
+          lastRan = Date.now();
+        }
+      }, limit - (Date.now() - lastRan));
+    }
+  };
+}
+
+function toggleMenu() {
+  const button = document.getElementById('menu-button');
+  const menu = document.getElementById('md-outline-content');
+  const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+  // 切换状态
+  button.setAttribute('aria-expanded', !isExpanded);
+  menu.style.display = isExpanded ? 'none' : 'block';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const menuButton = document.getElementById('menu-button');
+  menuButton.onclick = toggleMenu;
+
+  document.onclick = (event) => {
+    const menu = document.getElementById('md-outline-content');
+    if (event.target.id !== 'menu-button' && !menu.contains(event.target) && menuButton.getAttribute('aria-expanded') === 'true') {
+      toggleMenu();
+    }
+  };
+
+  const sections = document.querySelector('.content').querySelectorAll('h1, h2, h3'); // 替换为你的锚点元素
+  const navLinks = document.querySelectorAll('.outline-item'); // 替换为你的导航链接
+
+  const observerOptions = {
+    root: null, // viewport
+    rootMargin: '0px',
+    threshold: 0.6, // 60%可见时触发
+  };
+
+  const observerCallback = throttle((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach((link) => {
+          const activeHash = `#${id}`;
+          link.classList.remove('outline-item-active');
+          if (link.getAttribute('href') === activeHash) {
+            link.classList.add('outline-item-active');
+            history.replaceState(null, '', activeHash);
+          }
+        });
+      }
+    });
+  }, 200);
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+});
+</script> <h2 id="起因">起因</h2>
 <p>在<code>nodejs.dev</code>网站看到了一个在线编辑的程序<a href="https://nodejs.dev/learn/introduction-to-nodejs#an-example-nodejs-application">https://nodejs.dev/learn/introduction-to-nodejs#an-example-nodejs-application</a> ,起初我以为这是一个类似<code>codepen</code>的在线编辑器，通过关键词<code>webcontainer</code>, 我发现这是一个在浏览器中本地运行 Node.js 程序， 并找到了下面这篇文章<a href="https://blog.stackblitz.com/posts/introducing-webcontainers/">https://blog.stackblitz.com/posts/introducing-webcontainers/</a>，</p>
 <blockquote>
 <p>以下内容为文章翻译：</p>

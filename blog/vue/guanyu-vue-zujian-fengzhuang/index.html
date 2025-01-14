@@ -1,6 +1,82 @@
-<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.5"><!-- Canonical URL --><link rel="canonical" href="https://ckvv.net/blog/vue/guanyu-vue-zujian-fengzhuang/"><!-- Primary Meta Tags --><title>关于Vue组件二次封装的技巧总结</title><meta name="title" content="关于Vue组件二次封装的技巧总结"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://ckvv.net/blog/vue/guanyu-vue-zujian-fengzhuang/"><meta property="og:title" content="关于Vue组件二次封装的技巧总结"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://ckvv.net/blog/vue/guanyu-vue-zujian-fengzhuang/"><meta property="twitter:title" content="关于Vue组件二次封装的技巧总结"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.Cxrb6FJY.css"></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <div class="flex gap-2 md:gap-4 items-center font-bold"> <h2><a href="/">CK Blog</a></h2> </div> <div class="flex gap-2 md:gap-4"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/assets/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center hidden md:inline"> Assets <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank" aria-label="GitHub" class="hidden md:inline"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.1.5"><!-- Canonical URL --><link rel="canonical" href="https://ckvv.net/blog/vue/guanyu-vue-zujian-fengzhuang/"><!-- Primary Meta Tags --><title>关于Vue组件二次封装的技巧总结</title><meta name="title" content="关于Vue组件二次封装的技巧总结"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://ckvv.net/blog/vue/guanyu-vue-zujian-fengzhuang/"><meta property="og:title" content="关于Vue组件二次封装的技巧总结"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://ckvv.net/blog/vue/guanyu-vue-zujian-fengzhuang/"><meta property="twitter:title" content="关于Vue组件二次封装的技巧总结"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.DFhfNKfr.css">
+<style>.outline-item-active[data-astro-cid-v2nb7cev]{font-weight:700;color:#075985}
+</style></head> <body class="flex flex-col"> <header class="sticky top-0 px-4 bg-white opacity-1 z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <div class="flex gap-2 md:gap-4 items-center font-bold"> <h2><a href="/">CK Blog</a></h2> </div> <div class="flex gap-2 md:gap-4"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/assets/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center hidden md:inline"> Assets <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank" aria-label="GitHub" class="hidden md:inline"> <svg viewBox="0 0 32 32" role="img" width="32" height="32" fill="none">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
-</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl font-bold my-4">关于Vue组件二次封装的技巧总结</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/vue/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> vue </a> </div> <span> 2022/04/06 </span> </div> <div class="content"> <p>在开发Vue项目我们一般使用第三方UI组件库进行开发，如<code>element-plus</code>, <code>@arco-design/web-Vue</code>, <code>naive-ui</code>等, 但是这些组件提供的接口并不一定满足我们的需求，这时我们可以通过对组件库组件的二次封装，来满足我们特殊的需求。
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">  <h1 class="text-4xl font-bold my-4">关于Vue组件二次封装的技巧总结</h1> <div class="my-2 flex justify-between"> <div class="flex gap-4"> <a href="/tag/vue/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> vue </a> </div> <span> 2022/04/06 </span> </div> <div class="content"> <div class="2xl:hidden sticky top-20 inline-block text-left w-full" data-astro-cid-v2nb7cev> <div class="flex justify-end" data-astro-cid-v2nb7cev> <button type="button" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-haspopup="true" data-astro-cid-v2nb7cev>
+On this page
+<svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon" data-astro-cid-v2nb7cev> <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" data-astro-cid-v2nb7cev></path> </svg> </button> </div> <div id="md-outline-content" class="hidden absolute right-0 z-10 mt-2 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" data-astro-cid-v2nb7cev> <a class="outline-item block px-4 py-1 text-sm" href="#透传-attribute" data-astro-cid-v2nb7cev>透传 Attribute</a><a class="outline-item block px-4 py-1 text-sm" href="#透传-slot" data-astro-cid-v2nb7cev>透传 slot</a><a class="outline-item block px-4 py-1 text-sm" href="#普通slot" data-astro-cid-v2nb7cev>普通slot</a><a class="outline-item block px-4 py-1 text-sm" href="#动态插槽名" data-astro-cid-v2nb7cev>动态插槽名</a><a class="outline-item block px-4 py-1 text-sm" href="#作用域插槽" data-astro-cid-v2nb7cev>作用域插槽</a><a class="outline-item block px-4 py-1 text-sm" href="#封装组件存在的问题" data-astro-cid-v2nb7cev>封装组件存在的问题</a><a class="outline-item block px-4 py-1 text-sm" href="#组件实例属性和方法的调用" data-astro-cid-v2nb7cev>组件实例属性和方法的调用</a><a class="outline-item block px-4 py-1 text-sm" href="#类型提示消失" data-astro-cid-v2nb7cev>类型提示消失</a><a class="outline-item block px-4 py-1 text-sm" href="#如果原始类型有导出" data-astro-cid-v2nb7cev>如果原始类型有导出</a><a class="outline-item block px-4 py-1 text-sm" href="#如果原始类型没有导出" data-astro-cid-v2nb7cev>如果原始类型没有导出</a> </div> </div> <div class="hidden 2xl:flex outline-list sticky flex-col 2xl:top-20 2xl:float-right 2xl:translate-x-full 2xl:px-8 2xl:max-w-[calc(50vw-500px)]" data-astro-cid-v2nb7cev> <h4 data-astro-cid-v2nb7cev>On this page</h4> <a class="outline-item" href="#透传-attribute" data-astro-cid-v2nb7cev>透传 Attribute</a><a class="outline-item" href="#透传-slot" data-astro-cid-v2nb7cev>透传 slot</a><a class="outline-item" href="#普通slot" data-astro-cid-v2nb7cev>普通slot</a><a class="outline-item" href="#动态插槽名" data-astro-cid-v2nb7cev>动态插槽名</a><a class="outline-item" href="#作用域插槽" data-astro-cid-v2nb7cev>作用域插槽</a><a class="outline-item" href="#封装组件存在的问题" data-astro-cid-v2nb7cev>封装组件存在的问题</a><a class="outline-item" href="#组件实例属性和方法的调用" data-astro-cid-v2nb7cev>组件实例属性和方法的调用</a><a class="outline-item" href="#类型提示消失" data-astro-cid-v2nb7cev>类型提示消失</a><a class="outline-item" href="#如果原始类型有导出" data-astro-cid-v2nb7cev>如果原始类型有导出</a><a class="outline-item" href="#如果原始类型没有导出" data-astro-cid-v2nb7cev>如果原始类型没有导出</a> </div>  <script>
+function throttle(func, limit) {
+  let lastFunc;
+  let lastRan;
+  return function (...args) {
+    if (!lastRan) {
+      func.apply(this, args);
+      lastRan = Date.now();
+    } else {
+      clearTimeout(lastFunc);
+      lastFunc = setTimeout(() => {
+        if (Date.now() - lastRan >= limit) {
+          func.apply(this, args);
+          lastRan = Date.now();
+        }
+      }, limit - (Date.now() - lastRan));
+    }
+  };
+}
+
+function toggleMenu() {
+  const button = document.getElementById('menu-button');
+  const menu = document.getElementById('md-outline-content');
+  const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+  // 切换状态
+  button.setAttribute('aria-expanded', !isExpanded);
+  menu.style.display = isExpanded ? 'none' : 'block';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const menuButton = document.getElementById('menu-button');
+  menuButton.onclick = toggleMenu;
+
+  document.onclick = (event) => {
+    const menu = document.getElementById('md-outline-content');
+    if (event.target.id !== 'menu-button' && !menu.contains(event.target) && menuButton.getAttribute('aria-expanded') === 'true') {
+      toggleMenu();
+    }
+  };
+
+  const sections = document.querySelector('.content').querySelectorAll('h1, h2, h3'); // 替换为你的锚点元素
+  const navLinks = document.querySelectorAll('.outline-item'); // 替换为你的导航链接
+
+  const observerOptions = {
+    root: null, // viewport
+    rootMargin: '0px',
+    threshold: 0.6, // 60%可见时触发
+  };
+
+  const observerCallback = throttle((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach((link) => {
+          const activeHash = `#${id}`;
+          link.classList.remove('outline-item-active');
+          if (link.getAttribute('href') === activeHash) {
+            link.classList.add('outline-item-active');
+            history.replaceState(null, '', activeHash);
+          }
+        });
+      }
+    });
+  }, 200);
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+});
+</script> <p>在开发Vue项目我们一般使用第三方UI组件库进行开发，如<code>element-plus</code>, <code>@arco-design/web-Vue</code>, <code>naive-ui</code>等, 但是这些组件提供的接口并不一定满足我们的需求，这时我们可以通过对组件库组件的二次封装，来满足我们特殊的需求。
 对于封装组件有一个大原则就是我们应该尽量保持原有组件的接口，除了我们需要封装的功能外，我们不应该改变原有组件的接口，即保持原有组件提供的接口如<code>props</code>,<code>events</code>,<code>slots</code>等不变。
 为了实现这一原则我们就需要将新组件的接口与旧组件的接口一一对应, 当然我们可以通过在新组件中一一声明对应的接口来实现（或者只实现我们目前需要用到的接口）但这种办法虽然简单但看起来却极其很繁琐, 有没有一种方法可以实现<code>props</code>,<code>events</code>,<code>slots</code>的自动透传呢？</p>
 <h2 id="透传-attribute">透传 Attribute</h2>
