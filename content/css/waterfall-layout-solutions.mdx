@@ -54,7 +54,7 @@ export const images = Array.from({ length: 12 }).map((v, index) => ({
 ```html
 <div class="grid">
 { images.map(v => {
-  return (<div class="grid-item w-56 h-max mb-4"><img src={v.src} class="w-full"/></div>)
+  return (<div class="grid-item w-[calc(33.3%-10.6px)] md:w-[calc(25%-12px)] h-max mb-4"><img src={v.src} class="w-full"/></div>)
 }) }
 </div>
 
@@ -64,7 +64,7 @@ import 'https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js';
 window.addEventListener('load', () => {
   new Masonry( '.grid', {
     "itemSelector": ".grid-item",
-    "columnWidth": 224,
+    "columnWidth": ".grid-item",
     "gutter": 16,
   });
 });
@@ -73,7 +73,7 @@ window.addEventListener('load', () => {
 
 <div class="grid">
 { images.map(v => {
-  return (<div class="grid-item w-56 h-max mb-4"><img src={v.src} class="w-full"/></div>)
+  return (<div class="grid-item w-[calc(33%-10.6px)] md:w-[calc(25%-12px)] h-max mb-4"><img src={v.src} class="w-full"/></div>)
 }) }
 </div>
 
@@ -83,7 +83,7 @@ import 'https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js';
 window.addEventListener('load', () => {
   new Masonry( '.grid', {
     "itemSelector": ".grid-item",
-    "columnWidth": 224,
+    "columnWidth": ".grid-item",
     "gutter": 16,
   });
 });
