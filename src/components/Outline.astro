@@ -11,8 +11,8 @@ const { headings } = Astro.props;
 {
   headings?.length
 ? (
-  <div class="2xl:hidden sticky z-10 top-20 inline-block text-left w-full">
-    <div class="flex justify-end">
+  <div class="sticky z-10 top-20 inline-block text-left w-full">
+    <div class="2xl:hidden flex justify-end">
       <button type="button" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-haspopup="true">
         On this page
         <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
@@ -21,18 +21,11 @@ const { headings } = Astro.props;
       </button>
     </div>
 
-    <div id="md-outline-content" class="hidden absolute right-0 z-10 mt-2 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+    <div id="md-outline-content" class="hidden absolute right-0 mt-2 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden 2xl:-right-12 2xl:float-right 2xl:translate-x-full 2xl:max-w-[min(calc(50vw-580px),320px)]" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
       { headings.map((v) => {
-        return <a class="outline-item block px-4 py-1 text-sm" href={`#${v.slug}`}>{ v.text }</a>;
+        return <a class="outline-item block px-4 py-1 text-sm !text-gray-600" href={`#${v.slug}`}>{ v.text }</a>;
       })}
     </div>
-  </div>
-
-  <div class="hidden 2xl:flex outline-list sticky flex-col 2xl:top-20 2xl:float-right 2xl:translate-x-full 2xl:px-8 2xl:max-w-[calc(50vw-500px)]">
-    <h4>On this page</h4>
-    { headings.map((v) => {
-      return <a class="outline-item" href={`#${v.slug}`}>{ v.text }</a>;
-    })}
   </div>
   )
 : null
@@ -40,8 +33,7 @@ const { headings } = Astro.props;
 
 <style>
 .outline-item-active {
-  font-weight: bold;
-  color: #075985;
+  color: #0284c7 !important;
 }
 </style>
 
@@ -76,10 +68,28 @@ function toggleMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const is2xl = window.innerWidth >= 1536;
+  if (is2xl) {
+    toggleMenu();
+  }
+  const menu = document.getElementById('md-outline-content')!;
+  menu.onclick = (e: any) => {
+    e.preventDefault();
+    const target = document.querySelector(e.target.getAttribute('href'));
+    if (target) {
+      window.scrollTo({
+        top: target.offsetTop - 64,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   const menuButton = document.getElementById('menu-button')!;
   menuButton.onclick = toggleMenu;
-
   document.onclick = (event: any) => {
+    if (is2xl) {
+      return;
+    }
     const menu = document.getElementById('md-outline-content')!;
     if (event.target.id !== 'menu-button' && !menu.contains(event.target) && menuButton.getAttribute('aria-expanded') === 'true') {
       toggleMenu();

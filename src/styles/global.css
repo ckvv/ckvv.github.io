@@ -6,6 +6,7 @@ html, body, article, .content {
 }
 * {
   box-sizing: border-box;
+  word-break: break-all;
 }
 body {
   font-variant-numeric: tabular-nums;
