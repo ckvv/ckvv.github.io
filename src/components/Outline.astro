@@ -57,21 +57,26 @@ function throttle(func: any, limit: number) {
   };
 }
 
-function toggleMenu() {
+function toggleMenu(status?: boolean) {
   const button = document.getElementById('menu-button')!;
   const menu = document.getElementById('md-outline-content')!;
-  const isExpanded = button.getAttribute('aria-expanded') === 'true';
+  const isExpanded = status === undefined ? button.getAttribute('aria-expanded') === 'true' : !status;
 
   // 切换状态
   button.setAttribute('aria-expanded', `${!isExpanded}`);
   menu.style.display = isExpanded ? 'none' : 'block';
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function onResize() {
   const is2xl = window.innerWidth >= 1536;
   if (is2xl) {
-    toggleMenu();
+    toggleMenu(true);
   }
+}
+
+window.addEventListener('resize', onResize);
+document.addEventListener('DOMContentLoaded', () => {
+  onResize();
   const menu = document.getElementById('md-outline-content')!;
   menu.onclick = (e: any) => {
     e.preventDefault();
@@ -85,9 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const menuButton = document.getElementById('menu-button')!;
-  menuButton.onclick = toggleMenu;
+  menuButton.onclick = () => toggleMenu();
   document.onclick = (event: any) => {
-    if (is2xl) {
+    if (window.innerWidth >= 1536) {
       return;
     }
     const menu = document.getElementById('md-outline-content')!;
