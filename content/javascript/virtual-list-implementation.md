@@ -1,5 +1,5 @@
 ---
-title: "virtual-list-implementation.mdx"
+title: "虚拟列表解决方案"
 tags: ['JavaScript']
 date: "2025/01/21"
 ---
@@ -95,8 +95,18 @@ const items = computed(() => {
 ```
 
 ## 你可以打开下方的链接中查看效果  
+
 https://ckvv.github.io/vue-project/#/virtualscroller
 
+## 虚拟列表库
+
++ [vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller)
++ [react-virtualized](https://github.com/bvaughn/react-virtualized)
+
+大部分开源组件库也都有提供虚拟列表的组件
+
+- https://vuetifyjs.com/zh-Hans/components/virtual-scroller/#section-4f7f7528
+- https://www.naiveui.com/zh-CN/os-theme/components/virtual-list
 
 
 
