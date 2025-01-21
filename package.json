@@ -2,7 +2,7 @@
   "name": "astro-latest",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@9.15.1+sha512.1acb565e6193efbebda772702950469150cf12bcc764262e7587e71d19dc98a423dff9536e57ea44c49bdf790ff694e83c27be5faa23d67e0c033b583be4bfcf",
+  "packageManager": "pnpm@10.0.0+sha512.b8fef5494bd3fe4cbd4edabd0745df2ee5be3e4b0b8b08fa643aa3e4c6702ccc0f00d68fa8a8c9858a735a0032485a44990ed2810526c875e416f001b17df12b",
   "repository": "https://github.com/ckvv/ckvv.github.io",
   "scripts": {
     "gen": "node ./scripts/gen.js",
@@ -13,11 +13,11 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.0.5",
+    "@astrojs/mdx": "^4.0.7",
     "@astrojs/rss": "^4.0.11",
-    "@astrojs/tailwind": "^5.1.4",
-    "@astrojs/vue": "^5.0.4",
-    "astro": "^5.1.5",
+    "@astrojs/tailwind": "^5.1.5",
+    "@astrojs/vue": "^5.0.6",
+    "astro": "^5.1.8",
     "tailwindcss": "^3.4.17",
     "vue": "^3.5.13"
   },
