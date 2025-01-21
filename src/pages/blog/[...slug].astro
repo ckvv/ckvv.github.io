@@ -1,10 +1,13 @@
 ---
 import { render } from 'astro:content';
 import { KEY } from 'astro:env/server';
+import Edit from '../../assets/edit.svg';
 import Cusdis from '../../components/Cusdis.astro';
 import Decrypt from '../../components/Decrypt.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
+import Outline from '../../components/Outline.astro';
 import Tag from '../../components/Tag.astro';
+import { REPOSITORY } from '../../consts';
 import BlogPost from '../../layouts/BlogPost.astro';
 import { encrypt } from '../../shared';
 import { getPosts } from '../../utils';
@@ -22,12 +25,12 @@ if (post.data.encrypt && post.rendered?.html) {
 	post.rendered.html = await encrypt(`${post.rendered?.html}`, `${KEY}`);
 }
 
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 ---
 
 <BlogPost {...post.data}>
 	<h1 class="text-4xl font-bold my-4">{ post.data.title }</h1>
-	<div class="my-2 flex justify-between">
+	<div class="my-2 flex justify-between items-center">
 		<div class="flex gap-4">
 			{
 				Array.isArray(post.data.tags) && post.data.tags.map(tag => (
@@ -38,10 +41,15 @@ const { Content } = await render(post);
 		<FormattedDate date={post.data.updatedDate || post.data.pubDate} />
 	</div>
 	<div class="content">
+		<Outline headings={headings} />
 		{
 			post.data.encrypt ? <Decrypt data={post.rendered?.html} /> : <Content />
 		}
 	</div>
+	<a class="flex gap-1 my-4 text-blue-600 cursor-pointer select-none" href={`${REPOSITORY}/tree/main/${post.filePath}`}>
+			<Edit class="w-4" />
+			Edit this page on GitHub
+	</a>
 	<Cusdis pageID={post?.filePath} pageURL={post?.filePath} pageTitle={post?.data.title} />
 </BlogPost>
 

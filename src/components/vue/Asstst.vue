@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import { file as fileAPI } from '../../api';
 import { formatFileSize, isPicture } from '../../shared.ts';
 import Upload from './Upload.vue';
@@ -11,7 +11,7 @@ const isLoading = ref(true);
 const isUploading = ref(false);
 const files = ref<{ key: string; size: number }[]>([]);
 
-async function onChange(file: any) {
+async function onUpload(file: any) {
   try {
     isUploading.value = true;
     const result = await fileAPI.upload(file);
@@ -70,21 +70,43 @@ async function handlerDel(e: Event, file: any, index: number, tip?: string) {
   }
 }
 
+async function handlerPaste(event: ClipboardEvent) {
+  event.preventDefault();
+  // 从粘贴板中获取数据
+  const clipboardData = event.clipboardData;
+  if (clipboardData && clipboardData.items) {
+    for (let i = 0; i < clipboardData.items.length; i++) {
+      const item = clipboardData.items[i];
+      // 检查是否为文件
+      if (item.kind !== 'file') {
+        continue;
+      }
+      const file = item.getAsFile();
+      await onUpload(file);
+    }
+  }
+}
+
 onMounted(async () => {
   search();
+  document.addEventListener('paste', handlerPaste);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('paste', handlerPaste);
 });
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
-    <Upload class="self-end" @change="onChange">
+    <Upload class="self-end" @change="onUpload">
       <button class="px-4 py-2 text-blue-500 bg-gray-100 rounded hover:text-blue-600">
         {{ isUploading ? "正在上传..." : '上传' }}
       </button>
     </Upload>
 
     <div class="flex flex-wrap justify-center items-center gap-6">
-      <a v-for="(file, index) in files" :key="file.key" :href="`https://r2.ckvv.net/${file.key}`" target="_blank" class="group w-full md:w-52 md:h-52 p-2 hover:shadow-md cursor-pointer flex justify-center items-center !bg-gray-100 rounded relative">
+      <a v-for="(file, index) in files" :key="file.key" :href="`https://r2.ckvv.net/${file.key}`" target="_blank" class="group w-full min-h-24 md:w-52 md:h-52 p-2 hover:shadow-md cursor-pointer flex justify-center items-center !bg-gray-100 rounded relative">
         <img v-if="isPicture(file.key)" class="max-w-full max-h-full" :src="`https://r2.ckvv.net/${file.key}`" :alt="`.${file.key.split('.').pop()}(${formatFileSize(file.size)})`">
         <div v-else class="">
           {{ `.${file.key.split('.').pop()}` }}({{ formatFileSize(file.size) }})

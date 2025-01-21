@@ -4,9 +4,7 @@ import type { HTMLAttributes } from 'astro/types';
 type Props = HTMLAttributes<'a'>;
 
 const { href, class: className, ...props } = Astro.props;
-const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-const subpath = pathname.match(/[^/]+/g);
-const isActive = href === pathname || href === `/${subpath?.[0] || ''}`;
+const isActive = Astro.url.pathname.toLowerCase() === `${href}`.toLowerCase();
 ---
 
 <a class="group clink cursor-pointer shrink-0 select-none relative flex items-center" href={href} class:list={[className, { active: isActive }]} {...props}>
