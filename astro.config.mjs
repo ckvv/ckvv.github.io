@@ -18,7 +18,7 @@ export default defineConfig({
     injectRegister: 'inline',
     manifest: {
       name: 'CK Blog',
-      short_name: `CK's Blog`,
+      short_name: `CK Blog`,
       description: `Websites for sharing my thoughts, experiences or knowledge`,
       theme_color: '#212129',
       background_color: '#ffffff',
