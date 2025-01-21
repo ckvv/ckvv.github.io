@@ -14,4 +14,4 @@ My Blog
 
 + Power by: [astro](https://astro.build/)
 + Comment: [cusdis](https://cusdis.com)
-+ Image Hosting: [ckvv/cloudflare-worker](https://github.com/ckvv/cloudflare-worker)
++ File Hosting: [ckvv/cloudflare-worker](https://github.com/ckvv/cloudflare-worker)
