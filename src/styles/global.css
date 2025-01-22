@@ -15,6 +15,13 @@ body {
 main {
 	flex-grow: 1;
 }
+.content ul{
+  list-style: disc;
+}
+
+.content ol{
+  list-style: decimal;
+}
 
 .content {
   --base-size-4: 0.25rem;
