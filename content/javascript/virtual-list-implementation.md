@@ -15,45 +15,47 @@ date: "2025/01/21"
 + 计算元素的高度/宽度：虚拟滚动需要了解每个元素的高度或宽度，通常会采用“预占位”技术，即为不可见的元素分配空间，保持页面的布局
 + 滚动事件监听：监听滚动条位置，根据视口的位置决定加载哪些数据并更新 DOM 结构。
 
-
 ## 虚拟滚动组件代码
 
 下方是一个简单的虚拟滚动组件代码实现
 
 ```vue
 <script setup lang="ts">
+import { useThrottleFn } from '@vueuse/core';
 import { computed, ref } from 'vue';
 
-const props = defineProps<{
+const { items, itemSize, buffer = 0 } = defineProps<{
   items: any[];
   itemSize: number;
-  buffer: number;
+  buffer?: number;
 }>();
 
 const startIndex = ref(0);
 
 const pool = computed(() => {
-  return props.items.slice(startIndex.value, startIndex.value + props.buffer);
+  return items.slice(startIndex.value, startIndex.value + buffer);
 });
 
 const computedTotalHeight = computed(() => {
-  return props.items.length * props.itemSize;
+  return items.length * itemSize;
 });
 
 const computedTop = computed(() => {
-  return startIndex.value * props.itemSize;
+  return startIndex.value * itemSize;
 });
 
 function handleScroll(e: Event) {
-  const target = e.target as HTMLElement
+  const target = e.target as HTMLElement;
   if (target) {
-    startIndex.value = target.scrollTop / props.itemSize;
+    startIndex.value = Math.floor(target.scrollTop / itemSize);
   }
 }
+
+const throttledHandleScroll = useThrottleFn(handleScroll, 200, true);
 </script>
 
 <template>
-  <div class="recycle-scroller" @scroll="handleScroll">
+  <div class="recycle-scroller" @scroll.passive="throttledHandleScroll">
     <div :style="{ height: `${computedTotalHeight}px` }">
       <div :style="{ transform: `translateY(${computedTop}px)` }">
         <template v-for="item in pool">
@@ -91,6 +93,95 @@ const items = computed(() => {
       </span>
     </div>
   </RecycleScroller>
+</template>
+```
+
+## 动态高度的虚拟列表
+
++ 在首次渲染时，给每个列表项设置一个默认高度。
++ 使用这个默认高度来计算滚动容器的占位布局。
++ 随着渲染的发生，逐渐替换默认高度为真实高度
+
+```vue
+<script setup lang="ts">
+import { useThrottleFn } from '@vueuse/core';
+import { computed, ref, useTemplateRef, watch } from 'vue';
+
+const { items, itemSize = 24, buffer = 0 } = defineProps<{
+  items: any[];
+  itemSize?: number;
+  buffer?: number;
+}>();
+
+const contentRef = useTemplateRef('content');
+const heightCache = ref(new Map());
+
+function measureHeight() {
+  if (!contentRef.value) {
+    return;
+  }
+  for (let i = 0; i < contentRef.value.children.length; i++) {
+    const child = contentRef.value.children[i] as HTMLElement;
+    const key = child.dataset.key;
+    if (!heightCache.value.has(key)) {
+      heightCache.value.set(key, child.getBoundingClientRect().height);
+    }
+  }
+}
+
+const startIndex = ref(0);
+
+const pool = computed(() => {
+  return items.slice(startIndex.value, startIndex.value + buffer);
+});
+
+function computerHeight(start?: number, end?: number) {
+  return items.slice(start, end).reduce((acc, item) => {
+    const key = `${item.key}`;
+    if (heightCache.value.has(key)) {
+      return acc + heightCache.value.get(key);
+    }
+    return acc + itemSize;
+  }, 0);
+}
+
+const computedTotalHeight = computed(() => {
+  return computerHeight();
+});
+
+const computedTop = computed(() => {
+  return computerHeight(0, startIndex.value);
+});
+
+function handleScroll(e: Event) {
+  measureHeight();
+  const target = e.target as HTMLElement;
+  if (target) {
+    const scrollTop = target.scrollTop;
+    let top = 0;
+    for (let i = 0; i < items.length; i++) {
+      top += heightCache.value.get(`${items[i].key}`) || itemSize;
+      if (top > scrollTop || i === items.length - 1) {
+        startIndex.value = i;
+        break;
+      }
+    }
+  }
+}
+
+const throttledHandleScroll = useThrottleFn(handleScroll, 200, true);
+</script>
+
+<template>
+  <div class="recycle-scroller" @scroll.passive="throttledHandleScroll">
+    <div :style="{ height: `${computedTotalHeight}px` }">
+      <div ref="content" :style="{ transform: `translateY(${computedTop}px)` }">
+        <div v-for="(item, index) in pool" :key="item.key || index" class="recycle-scroller-item" :data-key="item.key || index">
+          <slot :item="item" />
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 ```
 
