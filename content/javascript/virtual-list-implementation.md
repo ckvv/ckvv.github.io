@@ -160,7 +160,7 @@ const throttledHandleScroll = useThrottleFn(handleScroll, 200, true);
 </template>
 ```
 
-## 你可以打开下方的链接中查看效果  
+你可以打开下方的链接中查看效果  
 
 https://ckvv.github.io/vue-project/#/virtualscroller
 
@@ -173,6 +173,16 @@ https://ckvv.github.io/vue-project/#/virtualscroller
 
 - https://vuetifyjs.com/zh-Hans/components/virtual-scroller/#section-4f7f7528
 - https://www.naiveui.com/zh-CN/os-theme/components/virtual-list
+
+
+## 虚拟列表的限制
+
+1. 虚拟列表并不是万能的, 它也有一些限制和注意事项
+1. 动态高度支持的复杂性: 对于动态高度的列表，虚拟列表需要计算并维护列表高度信息的，这可能会导致性能问题
+1. 交互性限制: 在虚拟列表中添加复杂交互 如拖拽时，可能需要额外的逻辑来保持状态的正确性
+1. 滚动白屏: 虚拟列表的实现方式是通过渲染可视区域内的元素，而不是渲染所有元素。这意味着当用户滚动列表时，新的元素可能还未被渲染，这会导致滚动过程中出现短暂的白屏
+1. 列表的高度的限制: 浏览器低于 Dom 元素其实是有最大限制的, 不同浏览器的限制是不一样的, 对于谷歌浏览器大概是`33445500px`, 当然对于这个量级的虚拟列表, 你或许更应该考虑分页其他方案
+1. SEO限制: 虚拟列表的实现方式是通过渲染可视区域内的元素，而不是渲染所有元素。这意味着会导致搜索引擎无法正确地索引页面内容
 
 
 
