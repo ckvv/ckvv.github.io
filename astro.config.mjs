@@ -8,6 +8,11 @@ export default defineConfig({
   site: 'https://ckvv.net',
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      hmr: {
+        overlay: false,
+      },
+    },
   },
   integrations: [mdx(), vue()],
   devToolbar: {
