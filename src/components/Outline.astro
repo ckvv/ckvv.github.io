@@ -21,9 +21,9 @@ const { headings } = Astro.props;
       </button>
     </div>
 
-    <div id="md-outline-content" class="hidden absolute right-0 mt-2 min-w-48 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden 2xl:-right-12 2xl:float-right 2xl:translate-x-full 2xl:max-w-[min(calc(50vw-580px),320px)]" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+    <div id="md-outline-content" class="hidden absolute right-0 py-2 mt-2 min-w-48 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden 2xl:-right-12 2xl:float-right 2xl:translate-x-full 2xl:max-w-[min(calc(50vw-580px),320px)]" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
       { headings.map((v) => {
-        return <a class="outline-item block px-4 py-1 text-sm !text-gray-600 break-all" href={`#${v.slug}`}>{ v.text }</a>;
+        return <a class="outline-item block px-4 py-1 text-sm break-all" href={`#${v.slug}`}>{ v.text }</a>;
       })}
     </div>
   </div>
@@ -33,7 +33,7 @@ const { headings } = Astro.props;
 
 <style>
 .outline-item-active {
-  color: #0284c7 !important;
+  color: var(--color-sky-700);
 }
 </style>
 

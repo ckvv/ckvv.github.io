@@ -40,8 +40,8 @@ const { Content, headings } = await render(post);
 		</div>
 		<FormattedDate date={post.data.updatedDate || post.data.pubDate} />
 	</div>
+	<Outline headings={headings} />
 	<div class="content">
-		<Outline headings={headings} />
 		{
 			post.data.encrypt ? <Decrypt data={post.rendered?.html} /> : <Content />
 		}

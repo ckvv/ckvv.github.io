@@ -1,7 +1,6 @@
 import mdx from '@astrojs/mdx';
 import vue from '@astrojs/vue';
 import tailwindcss from '@tailwindcss/vite';
-import AstroPWA from '@vite-pwa/astro';
 import { defineConfig, envField } from 'astro/config';
 
 // https://astro.build/config
@@ -10,46 +9,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [mdx(), vue(), AstroPWA({
-    workbox: {
-      globPatterns: ['**/*.{js,css,ico,png}'],
-    },
-    injectManifest: {
-      globPatterns: ['**/*.{js,css,ico,png}'],
-    },
-    registerType: 'autoUpdate',
-    injectRegister: 'inline',
-    manifest: {
-      name: 'CK Blog',
-      short_name: `CK Blog`,
-      description: `Websites for sharing my thoughts, experiences or knowledge`,
-      theme_color: '#212129',
-      background_color: '#ffffff',
-      icons: [
-        {
-          src: 'favicon-192x192.png',
-          sizes: '192x192',
-          type: 'image/png',
-        },
-        {
-          src: 'favicon-512x512.png',
-          sizes: '512x512',
-          type: 'image/png',
-        },
-        {
-          src: 'favicon-32x32.svg',
-          sizes: '32x32',
-          type: 'image/svg',
-        },
-      ],
-    },
-    client: {
-      installPrompt: true,
-    },
-    devOptions: {
-      enabled: true,
-    },
-  })],
+  integrations: [mdx(), vue()],
   devToolbar: {
     enabled: false,
   },

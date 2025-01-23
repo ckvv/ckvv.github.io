@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { pwaInfo } from 'virtual:pwa-info';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import { LANG } from '../consts';
@@ -14,8 +13,6 @@ const { title, description } = Astro.props;
 <html lang={LANG}>
 	<head>
 		<BaseHead title={title} description={description} />
-		{ pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} /> }
-    { import.meta.env.PROD && pwaInfo && <Fragment set:html={pwaInfo.registerSW.scriptTag} /> }
 	</head>
 	<body class="flex flex-col">
 		<Header />

@@ -1,15 +1,18 @@
 ---
 import { getEntry, render } from 'astro:content';
+import { type CollectionEntry } from 'astro:content';
+
 import Cusdis from '../components/Cusdis.astro';
 import BlogPost from '../layouts/BlogPost.astro';
 
-const post = await getEntry('blog', 'about');
-const { Content } = await render(post as any);
+const post: CollectionEntry<'blog'> = await getEntry('blog', 'about');
+
+const { Content } = await render(post);
 ---
 
 <BlogPost>
 	<div class="content">
 		<Content />
-		<Cusdis pageID="6083a88ee3411b0d17ce02d738f69d47" pageURL={post?.filePath} pageTitle={post?.data.title} />
 	</div>
+	<Cusdis pageID="6083a88ee3411b0d17ce02d738f69d47" pageURL={post?.filePath} pageTitle={post?.data.title} />
 </BlogPost>
