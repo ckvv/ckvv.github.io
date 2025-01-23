@@ -1,13 +1,16 @@
 import mdx from '@astrojs/mdx';
-import tailwind from '@astrojs/tailwind';
 import vue from '@astrojs/vue';
+import tailwindcss from '@tailwindcss/vite';
 import AstroPWA from '@vite-pwa/astro';
 import { defineConfig, envField } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ckvv.net',
-  integrations: [mdx(), vue(), tailwind(), AstroPWA({
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  integrations: [mdx(), vue(), AstroPWA({
     workbox: {
       globPatterns: ['**/*.{js,css,ico,png}'],
     },
