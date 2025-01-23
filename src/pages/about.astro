@@ -1,13 +1,12 @@
 ---
 import { getEntry, render } from 'astro:content';
-import { type CollectionEntry } from 'astro:content';
 
 import Cusdis from '../components/Cusdis.astro';
 import BlogPost from '../layouts/BlogPost.astro';
 
-const post: CollectionEntry<'blog'> = await getEntry('blog', 'about');
+const post = await getEntry('blog', 'about');
 
-const { Content } = await render(post);
+const { Content } = await render(post!);
 ---
 
 <BlogPost>
