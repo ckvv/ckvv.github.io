@@ -1,10 +1,8 @@
 ---
 import Asstst from '../components/vue/Asstst.vue';
-import BlogPost from '../layouts/BlogPost.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BlogPost>
-	<div class="content">
-		<Asstst client:only="vue" />
-	</div>
-</BlogPost>
+<BaseLayout>
+	<Asstst client:only="vue" />
+</BaseLayout>

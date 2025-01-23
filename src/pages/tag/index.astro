@@ -1,6 +1,6 @@
 ---
 import Tag from '../../components/Tag.astro';
-import BlogPost from '../../layouts/BlogPost.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getPosts } from '../../utils';
 
 const tags: any = Array.from((await getPosts()).map(v => v.data.tags).flat(1)).filter(v => !!v).reduce((pre, cur: any) => {
@@ -8,7 +8,7 @@ const tags: any = Array.from((await getPosts()).map(v => v.data.tags).flat(1)).f
   return pre;
 }, {} as Record<string, number>);
 ---
-<BlogPost>
+<BaseLayout>
 	<div class="text-lg tags flex flex-wrap gap-4 justify-center py-8 md:my-24 select-none">
 		{
 			Object.keys(tags).map(tag => (
@@ -18,4 +18,4 @@ const tags: any = Array.from((await getPosts()).map(v => v.data.tags).flat(1)).f
 			))
 		}
 	</div>
-</BlogPost>
+</BaseLayout>

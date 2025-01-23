@@ -1,7 +1,7 @@
 ---
 import FormattedDate from '../../components/FormattedDate.astro';
 import Link from '../../components/Link.astro';
-import BlogPost from '../../layouts/BlogPost.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getPosts } from '../../utils';
 
 
@@ -28,7 +28,7 @@ export async function getStaticPaths() {
 const { posts } = Astro.props;
 ---
 
-<BlogPost>
+<BaseLayout>
 	<div class="text-lg flex flex-col gap-2">
 		{
 			posts.map(post => (
@@ -41,4 +41,4 @@ const { posts } = Astro.props;
 			))
 		}
 	</div>
-</BlogPost>
+</BaseLayout>

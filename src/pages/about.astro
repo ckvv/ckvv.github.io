@@ -1,17 +1,11 @@
 ---
-import { getEntry, render } from 'astro:content';
+import { getEntry } from 'astro:content';
+import BaseContent from '../components/BaseContent.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
-import Cusdis from '../components/Cusdis.astro';
-import BlogPost from '../layouts/BlogPost.astro';
-
-const post = await getEntry('blog', 'about');
-
-const { Content } = await render(post!);
+const post = await getEntry('blog', 'about')!;
 ---
 
-<BlogPost>
-	<div class="content">
-		<Content />
-	</div>
-	<Cusdis pageID="6083a88ee3411b0d17ce02d738f69d47" pageURL={post?.filePath} pageTitle={post?.data.title} />
-</BlogPost>
+<BaseLayout>
+	<BaseContent post={post} metadata={false} edit={false} />
+</BaseLayout>

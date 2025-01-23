@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, render } from 'astro:content';
 import { KEY } from 'astro:env/server';
-import Edit from '../../assets/edit.svg';
+import Edit from '../assets/edit.svg';
 import { REPOSITORY } from '../consts';
 import { encrypt } from '../shared';
 import Cusdis from './Cusdis.astro';
@@ -14,9 +14,10 @@ import Tag from './Tag.astro';
 type Props = {
   post: CollectionEntry<'blog'>;
 	metadata?: boolean;
+	edit?: boolean;
 };
 
-const { post, metadata = true } = Astro.props;
+const { post, metadata = true, edit = true } = Astro.props;
 
 if (post.data.encrypt && post.rendered?.html) {
 	post.rendered.html = await encrypt(`${post.rendered?.html}`, `${KEY}`);
@@ -25,8 +26,7 @@ if (post.data.encrypt && post.rendered?.html) {
 const { headings, Content } = await render(post);
 ---
 
-<div class="content">
-	{ metadata && (<h1 class="text-4xl font-bold my-4">{post.data.title}</h1>
+{ metadata && (<h1 class="text-4xl font-bold my-4">{post.data.title}</h1>
   <div class="my-2 flex justify-between items-center">
     <div class="flex gap-4">
       {
@@ -36,18 +36,23 @@ const { headings, Content } = await render(post);
     </div>
     <FormattedDate date={post.data.updatedDate || post.data.pubDate} />
   </div>
-  <Outline headings={headings} />)}
+  <Outline headings={headings} />
+)}
+<div class="content">
   {post.data.encrypt ? <Decrypt data={post.rendered?.html} /> : <Content />}
-  <a
-    class="flex gap-1 my-4 text-blue-600 cursor-pointer select-none"
-    href={`${REPOSITORY}/tree/main/${post.filePath}`}
-  >
+</div>
+{edit && (
+<a
+  class="flex gap-1 my-4 text-blue-600 cursor-pointer select-none"
+  href={`${REPOSITORY}/tree/main/${post.filePath}`}
+>
     <Edit class="w-4" />
     Edit this page on GitHub
   </a>
-  <Cusdis
-    pageID={post?.filePath}
-    pageURL={post?.filePath}
-    pageTitle={post?.data.title}
-  />
-</div>
+)}
+
+<Cusdis
+  pageID={post?.filePath}
+  pageURL={post?.filePath}
+  pageTitle={post?.data.title}
+/>
