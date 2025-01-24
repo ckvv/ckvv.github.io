@@ -1,24 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-html, body, article, .content {
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-}
-* {
-  box-sizing: border-box;
-}
-body {
-  font-variant-numeric: tabular-nums;
-	display: flex;
-	flex-direction: column;
-}
-main {
-	flex-grow: 1;
-}
 .content ul{
   list-style: disc;
 }

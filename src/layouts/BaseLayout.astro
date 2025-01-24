@@ -10,13 +10,13 @@ type Props = Partial<CollectionEntry<'blog'>['data']>;
 const { title, description } = Astro.props;
 ---
 
-<html lang={LANG}>
+<html lang={LANG} class="h-full">
 	<head>
 		<BaseHead title={title} description={description} />
 	</head>
-	<body class="flex flex-col">
+	<body class="flex flex-col h-full">
 		<Header />
-		<main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow">
+		<main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow font-tabular-nums">
 			<slot />
 		</main>
 	</body>
