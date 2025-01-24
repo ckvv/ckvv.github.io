@@ -15,6 +15,7 @@ const blog = defineCollection({
     draft: z.boolean().optional(),
     blog: z.boolean().optional(),
     encrypt: z.boolean().optional(),
+    id: z.string().optional(),
   }),
 });
 

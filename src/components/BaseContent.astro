@@ -52,7 +52,7 @@ const { headings, Content } = await render(post);
 )}
 
 <Cusdis
-  pageID={post?.filePath}
+  pageID={post.data.id || post?.filePath}
   pageURL={post?.filePath}
   pageTitle={post?.data.title}
 />
