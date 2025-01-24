@@ -52,7 +52,7 @@ const { headings, Content } = await render(post);
 )}
 
 <Cusdis
-  pageID={post.data.id || post?.filePath}
+  pageID={post.data.id || Astro.url.pathname}
   pageURL={post?.filePath}
   pageTitle={post?.data.title}
 />
