@@ -1,8 +1,7 @@
 ---
-title: '算法-array'
+title: '初级算法-array'
 tags: ['算法']
 date: '2021-09-11'
-draft: true
 ---
 ### [删除排序数组中的重复项](https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2gy9m/)
 
@@ -73,19 +72,65 @@ const singleNumber = function (nums) {
 给定两个数组，编写一个函数来计算它们的交集。
 
 ```js
-``
+const intersect = function(nums1, nums2) {
+    const sn1 = nums1.sort((a, b) => a-b);
+    const sn2 = nums2.sort((a, b) => a-b);
+    let index1 = 0;
+    let index2 = 0;
+
+    const result = [];
+    while (index1 < sn1.length && index2 < sn2.length) {
+      const n1 = sn1[index1]
+      const n2 = sn2[index2]
+      if(n1 === n2) {
+        result.push(n1);
+        index1 ++
+        index2 ++
+        continue
+      }
+      n1 < n2 ? index1 ++ : index2++;
+    }
+    return result;
+};
+```
 
 ### [加一](https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2cv1c/)
+给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一。
+最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。
+你可以假设除了整数 0 之外，这个整数不会以零开头。
 
 ```js
-``
+const plusOne = function(digits) {
+  let len = digits.length;
+  let index = len-1;
+  digits[index] +=1;
+
+  while (digits[index] > 9) {
+    digits[index] = 0;
+    --index;
+    if( index < 0) {
+      digits.unshift(1);
+    } else {
+      digits[index] +=1;
+    }
+  }
+
+  return digits;
+};
+```
+通过 Bigint 实现
+```js
+function plusOne(digits) {
+  return Array.from(new Bi)
+}
+```
 
 ### [移动零](https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/x2ba4i/)
 
 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
 
 ```js
-let moveZeroes = function (nums) {
+const moveZeroes = function (nums) {
   let end = nums.length
   for (let index = 0; index < end;) {
     if (nums[index] === 0) {
@@ -93,9 +138,50 @@ let moveZeroes = function (nums) {
       nums.push(0)
       end--;
     }
- else {
+  else {
       index++;
     }
   }
 }
+```
+
+### [两数之和](https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2jrse/)
+给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。
+你可以按任意顺序返回答案。
+
+```js
+function twoSum(nums, target) {
+  const len = nums.length;
+  for (let index = 0; index < len; index++) {
+    for (let index2 = index + 1; index2 < len; index2++) {
+      if(nums[index] + nums[index2] === target) {
+        return [index, index2]
+      }
+    }
+  }
+}
+```
+
+```js
+// Map 的取值、插入和查找的时间复杂度是 O(1)
+function twoSum(nums, target) {
+  const len = nums.length;
+  const map = new  Map();
+  for (let index = 0; index < len; index++) {
+    if(map.has(target - nums[index])) {
+      return [map.get(target - nums[index]), index]
+    }
+    map.set(nums[index], index);
+  }
+}
+```
+
+### [有效的数独](https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2f9gg/)
+请你判断一个 9 x 9 的数独是否有效。只需要 根据以下规则 ，验证已经填入的数字是否有效即可。
+数字 1-9 在每一行只能出现一次。
+数字 1-9 在每一列只能出现一次。
+数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。（请参考示例图）
+
+```js
 ```
