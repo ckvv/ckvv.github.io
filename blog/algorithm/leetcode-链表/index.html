@@ -45,6 +45,19 @@ On this page
 <span class="line"><span style="color:#E1E4E8">    cur </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> next;</span></span>
 <span class="line"><span style="color:#E1E4E8">  }</span></span>
 <span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> pre;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> reverseList</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">head</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">head </span><span style="color:#F97583">||</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">head.next) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> head;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> next</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> head.next;</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> reverse</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> reverseList</span><span style="color:#E1E4E8">(next);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  next.next </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> head;</span></span>
+<span class="line"><span style="color:#E1E4E8">  head.next </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> null</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> reverse;</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
 <h1 id="合并两个有序链表">[合并两个有序链表]</h1>
 <h1 id="回文链表">[回文链表]</h1>
