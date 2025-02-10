@@ -47,6 +47,19 @@ function reverseList(head) {
   }
   return pre;
 }
+
+function reverseList(head) {
+  if(!head || !head.next) {
+    return head;
+  }
+
+  const next = head.next;
+  const reverse = reverseList(next);
+
+  next.next = head;
+  head.next = null
+  return reverse;
+}
 ```
 
 # [合并两个有序链表]
