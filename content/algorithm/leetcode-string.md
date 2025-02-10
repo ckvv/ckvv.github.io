@@ -1,7 +1,7 @@
 ---
 title: '初级算法-string'
 tags: ['算法']
-date: '2025-02-09'
+date: '2023-02-09'
 ---
 
 # [反转字符串](https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnhbqj/)
