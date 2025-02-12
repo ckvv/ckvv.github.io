@@ -4,6 +4,6 @@ const count = defineModel('count', { default: 0 });
 
 <template>
   <button class="v-button text-green-500 bg-green-200 px-2 py-1 whitespace-nowrap rounded-lg" @click="count++ ">
-    Click: {{ count }}
+    <slot />{{ count }}
   </button>
 </template>

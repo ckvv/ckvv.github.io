@@ -1,31 +1,37 @@
 ---
+title: 'MDX 支持'
 date: 'Jun 01 2024'
+tags: ["md"]
 ---
 
-This theme comes with the [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/) integration installed and configured in your `astro.config.mjs` config file. If you prefer not to use MDX, you can disable support by removing the integration from your config file.
+MDX 赋予你在 markdown 内容当中使用 JSX 的能力。 你可以导入组件，例如交互式图标或警告框，并将它们嵌入到书写的markdown内容当中。
 
-## Why MDX?
 
-MDX is a special flavor of Markdown that supports embedded JavaScript & JSX syntax. This unlocks the ability to [mix JavaScript and UI Components into your Markdown content](https://docs.astro.build/en/guides/markdown-content/#mdx-features) for things like interactive charts or alerts.
+## 使用例子
 
-If you have existing content authored in MDX, this integration will hopefully make migrating to Astro a breeze.
+以下是在 MDX 中导入和使用 UI 组件的方法。
 
-## Example
-
-Here is how you import and use a UI component inside of MDX.  
-When you open this page in the browser, you should see the clickable button below.
-
-import Link from '@/components/Link.astro';
+```jsx
+import AButton from '@/components/astro/AButton.astro'
 import VButton from '@/components/vue/VButton.vue'
+import RButton from '@/components/react/RButton.jsx'
 export const count = 10;
 
-<Link href="#" onclick="alert('clicked!')">
-	Embedded component in MDX
-</Link>
+<AButton>Astro:</AButton>
+<VButton client:only="vue" count={count}>Vue:</VButton>
+<RButton client:only="react" count={count}>React:</RButton>
+```
 
-<VButton client:only="vue" count={count} />
+import AButton from '@/components/astro/AButton.astro'
+import VButton from '@/components/vue/VButton.vue'
+import RButton from '@/components/react/RButton.jsx'
+export const count = 10;
 
-## More Links
+<AButton>Astro:</AButton>
+<VButton client:only="vue" count={count}>Vue:</VButton>
+<RButton client:only="react" count={count}>React:</RButton>
+
+## 其他
 
 - [MDX Syntax Documentation](https://mdxjs.com/docs/what-is-mdx)
 - [Astro Usage Documentation](https://docs.astro.build/en/guides/markdown-content/#markdown-and-mdx-pages)

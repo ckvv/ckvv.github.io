@@ -1,4 +1,5 @@
 import mdx from '@astrojs/mdx';
+import react from '@astrojs/react';
 import vue from '@astrojs/vue';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, envField } from 'astro/config';
@@ -14,7 +15,15 @@ export default defineConfig({
       },
     },
   },
-  integrations: [mdx(), vue()],
+  integrations: [
+    mdx(),
+    vue({
+      include: ['**/components/vue/*'],
+    }),
+    react({
+      include: ['**/components/react/*'],
+    }),
+  ],
   devToolbar: {
     enabled: false,
   },
