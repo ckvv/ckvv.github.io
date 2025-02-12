@@ -1,5 +1,6 @@
+import type { CollectionEntry } from 'astro:content';
 import { parse } from 'node:path';
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 function formatName(name: string) {
   return name.split(/[_-]/).join(' ');
