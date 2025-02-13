@@ -13,7 +13,7 @@ const posts = await getPosts(({ data }) => {
 		{
 			posts.map(post => (
 				<Link href={`/blog/${post.id}/`} class="flex gap-4 hover:text-sky-700">
-					<span class="flex-grow whitespace-nowrap overflow-hidden text-ellipsis">{post.data.title}</span>
+					<span class="flex-grow whitespace-nowrap overflow-hidden text-ellipsis">{post.data.title} {post.data.encrypt && '🔒'}</span>
 					<p class="date">
 						<FormattedDate date={post.data.updatedDate || post.data.pubDate} />
 					</p>
