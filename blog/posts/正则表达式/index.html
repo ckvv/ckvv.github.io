@@ -107,6 +107,9 @@ On this page
 <h1 id="性能问题">性能问题</h1>
 <p>当正则表达式包含大量的可选分支、嵌套的分组、重复字符（如 *、+、? 等）以及复杂的字符类时，其匹配过程会变得非常复杂，从而导致性能下降。回溯是正则表达式匹配过程中的一种机制，当匹配失败时，正则引擎会回溯到之前的状态，尝试其他可能的匹配路径。</p>
 <p>例如过多的回溯会导致性能急剧下降。例如，正则表达式 <code>/.+(\d+)+/</code> 匹配字符串 <code>abc123def456</code> 时，<code>(.+)</code> 会尽可能多地匹配字符，然后 <code>(\d+)+</code> 尝试匹配数字。如果匹配失败，正则引擎会回溯 <code>(.+)</code> 匹配的字符，重新尝试 <code>(\d+)+</code> 的匹配，这个过程可能会重复多次，消耗大量时间。这种情况下，可以考虑使用其他更高效的数据处理方法，如基于字符串分割。</p>
+<p><code>/\s*,\s*/.test('\t'.repeat(N) + '\x00,')</code> 执行时间变化图</p>
+<p><img src="https://r2.ckvv.net/6e280ffae09f546898d2fad7d24319580b751a55791359d376be52c317405108.png" alt=""></p>
+<p>你可以在<a href="https://devina.io/redos-checker">https://devina.io/redos-checker</a> 检查正则表达式是否存在潜在的拒绝服务漏洞</p>
 <h1 id="参考文档">参考文档</h1>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp</a></li>
