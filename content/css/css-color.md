@@ -7,7 +7,11 @@ date: "2023-03-22"
 记录一下CSS颜色的相关概念
 
 ## alpha
+
 `alpha `表示可以在某种程度上看到背景的颜色，不透明度可以被认为是一种后处理操作。从概念上讲，在元素（包括其后代）渲染成 RGBA 离屏图像后，不透明度设置指定如何将离屏渲染混合到当前合成渲染中。
+
+### 透明度变化 rgb(255 0 0 / 1),rgb(255 0 0 / 0))
+<div class="w-full h-4" style="background-image:linear-gradient(90deg, rgb(255 0 0 / 1),rgb(255 0 0 / 0))"></div>
 
 ## 颜色格式
 
@@ -24,6 +28,8 @@ CSS 定义了一大组命名颜色，以便可以更轻松地编写和阅读常�
 ### rgb（red blue green）
 
 通过调节红、绿、蓝三原色的亮度和色彩来表示颜色。在RGB模型中，每种颜色的取值范围为0-255。
+
+<div class="w-full h-4" style="background-image:linear-gradient(90deg, rgb(0,0,0),rgb(255,0,0))"></div>
 
 ### RGB十六进制表示
 
@@ -43,8 +49,18 @@ CSS 定义了一大组命名颜色，以便可以更轻松地编写和阅读常�
 + 人类难以直观地判断颜色。例如，很难说出如何改变 RGB 颜色以产生相同色调的较亮变体
 
 ### hsl (Hue Saturation Lightness)
+
 模型是一种圆锥模型，通过色调、饱和度和亮度三个参数来描述颜色。在HSL模型中，色相的取值范围为0-360度，饱和度和亮度的取值范围为0-100%。
-如: `hsl(50 80% 40%)`  `hsl(50 80% 40% / 25%)`
+如: `hsl(50 0% 40%)`  `hsl(50 80% 40% / 25%)`
+
+#### 色调变化`hsl(0 100% 50%), hsl(360 100% 50%)`
+<div class="w-full h-4" style="background-image:linear-gradient(90deg in hsl longer hue, hsl(0 100% 50%), hsl(360 100% 50%))"></div>
+
+#### 饱和度变化`hsl(0 0% 50%), hsl(0 100% 50%)`
+<div class="w-full h-4" style="background-image:linear-gradient(90deg in hsl shorter hue, hsl(0 0% 50%), hsl(0 100% 50%))"></div>
+
+#### 亮度变化`hsl(0 100% 0%), hsl(0 100% 100%)`
+<div class="w-full h-4" style="background-image:linear-gradient(90deg in hsl shorter hue, hsl(0 100% 0%), hsl(0 100% 100%))"></div>
 
 优点
 
@@ -58,6 +74,17 @@ CSS 定义了一大组命名颜色，以便可以更轻松地编写和阅读常�
 ### hwb（Hue Whiteness Blackness）
 
 类似于HSL模型的圆锥模型，但是它使用白色和黑色的比例来描述颜色。在HWB模型中，色调的取值范围为0-360度，白色和黑色的取值范围为0-100%
+
+#### 色调变化`hwb(0 0% 0%), hwb(360 0% 0%)`
+<div class="w-full h-4" style="background-image:linear-gradient(90deg in hsl longer hue, hwb(0 0% 0%), hwb(360 0% 0%))"></div>
+
+#### 白度变化`hwb(0 0% 0%), hwb(0 100% 0%)`
+<div class="w-full h-4" style="background-image:linear-gradient(90deg, hwb(0 0% 0%), hwb(0 100% 0%))"></div>
+
+#### 黑度变化`hwb(0 0% 0%), hwb(0 0% 100%)`
+
+<div class="w-full h-4" style="background-image:linear-gradient(90deg, hwb(0 0% 0%), hwb(0 0% 100%))"></div>
+
 
 ### lab & oklab （（lightness a b）
 亮度 通道a( green / magenta) 通道b(blue / yellow )
