@@ -87,9 +87,44 @@ CSS 定义了一大组命名颜色，以便可以更轻松地编写和阅读常�
 
 
 ### lab & oklab （（lightness a b）
-亮度 通道a( green / magenta) 通道b(blue / yellow )
+```
+lab(L a b[ / A])
+```
++ L(亮度): 数字`0-100`, 百分比`0%-100%`, 0 对应黑色, 100 对应白色
++ a(通道a( green / red)): 数字`-125-125`, 百分比`0%-100%` 表示 绿色(-125) 到 红色(125)的位置
++ b(通道b(blue / yellow )): 数字`-125-125`, 百分比`0%-100%` 表示 蓝色(-125) 到 黄色(125)的位置
+
+#### L变化`lab(0 0% 0%), lab(100 0% 0%)`
+<div class="w-full h-4" style="background-image:linear-gradient(90deg, lab(0 0% 0%), lab(100 0% 0%))"></div>
+
+#### a变化`lab(50% 0% 0%), lab(50% 100% 0%)`
+<div class="w-full h-4" style="background-image:linear-gradient(90deg, lab(50% 0% 0%), lab(50% 100% 0%))"></div>
+
+#### b变化`lab(50% 0% 0%), lab(50% 0% 100%)`
+
+<div class="w-full h-4" style="background-image:linear-gradient(90deg, lab(50% 0% 0%), lab(50% 0% 100%))"></div>
+
+
 ### lch & oklch （lightness chroma hue）
-亮度 色度 色调
+```
+lch(L C H[ / A])
+```
++ L(亮度): 数字`0-100`, 百分比`0%-100%`, 0 对应黑色, 100 对应白色
++ C(色度): 数字`0-150`, 百分比`0%-100%`, 该值是颜色色度的度量
++ H(角度): 数字`0-150`, 百分比`0%-100%`, 表示颜色的 `hue` 角度
+
+#### L变化`lch(0% 100% 0), lch(100% 100% 0)`
+<div class="w-full h-4" style="background-image:linear-gradient(90deg, lch(0% 100% 0), lch(100% 100% 0))"></div>
+
+#### a变化`lab(50% 0% 0%), lab(50% 100% 0%)`
+
+<div class="w-full h-4" style="background-image:linear-gradient(90deg, lch(50% 0% 0), lch(50% 100% 0))"></div>
+
+#### b变化`lab(50% 0% 0%), lab(50% 0% 100%)`
+
+<div class="w-full h-4" style="background-image:linear-gradient(90deg, lch(50% 50% 0), lch(50% 50% 150))"></div>
+
+# 亮度 色度 色调
 
 ### color()
 
