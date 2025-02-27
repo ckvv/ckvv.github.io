@@ -99,8 +99,8 @@ onUnmounted(() => {
 
 <template>
   <div class="flex flex-col gap-4">
-    <Upload class="self-end" @change="onUpload">
-      <button class="px-4 py-2 text-blue-500 bg-gray-100 rounded hover:text-blue-600">
+    <Upload class="self-end sticky top-24 z-10" @change="onUpload">
+      <button class="cursor-pointer px-4 py-1.5 text-black bg-blue-100 hover:bg-blue-500 hover:text-white rounded">
         {{ isUploading ? "正在上传..." : '上传' }}
       </button>
     </Upload>
