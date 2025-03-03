@@ -3,9 +3,7 @@ title: "记录收藏的一些网站、资源等"
 date: '2023-12-05'
 ---
 
-## 网站
-
-### 工具类网站
+## 工具类网站
 
 + [https://editor.method.ac/](https://editor.method.ac/)制作svg  
 + [caniuse](https://caniuse.com/)查询浏览器对Web标准的支持性  
@@ -18,14 +16,16 @@ date: '2023-12-05'
 + [pixabay](https://pixabay.com/) 令人惊叹的免费图片和免版税库存
 + [jsbench](https://jsbench.me/) JS性能优化
 + [https://esm.sh/](https://esm.sh/) 用于ES-Module格式NPM包的快速、全球内容交付网络。
++ [WuKongIM](https://github.com/WuKongIM/WuKongIM) 高性能通用通讯服务
++ [commander.js](https://github.com/tj/commander.js) node.js 命令行界面变得简单
 
-### 技术网站
+## 技术博客网站
 
 + [百度技术团队1](http://fex.baidu.com/)
 + [百度技术团队2](https://efe.baidu.com/)
 + [美团技术团队](https://tech.meituan.com/)
 
-### 文档网站
+## 文档规范网站
 
 + [tc39:javascript规范](https://tc39.es/)
 + [javascript-info教程](https://javascript.info/) JavaScript 教程学习网站
@@ -35,7 +35,7 @@ date: '2023-12-05'
 + [tackling-ts](https://exploringjs.com/tackling-ts/)
 + [web.dev](https://web.dev/)
 
-### 在线代码编辑器网站
+## 在线代码编辑器网站
 
 + [codesandbox](https://codesandbox.io/)
 + [https://codepen.io/](https://codepen.io/)
@@ -43,23 +43,12 @@ date: '2023-12-05'
 + [stackblitz](https://stackblitz.com/)
 + [runkit](https://runkit.com/)
 
+## JS工具库
 
-### UI 相关框架
-
-+ `wired-elements`: 手绘外观的基本 UI 元素
-+ [unocss](https://unocss.dev/)
-+ `windicss`: 原子化css
-+ `bulma`: css框架
-+ `sass`: Sass 的纯 JavaScript 实现.
-+ [tailwindcss](https://github.com/tailwindlabs/tailwindcss): 用于快速 UI 开发的实用优先 CSS 框架
-+ [lightningcss](https://lightningcss.dev/)
-+ [@emotion/css]
-
-### 功能
-
-+ `iconv-lite`: 文件编码转换  
-+ `JSONStream`:流式处理 JSON.parse 和 stringify
-+ `fake-progress`: 一个生成假进度的库  
++ [iconv-lite](https://github.com/ashtuchkin/iconv-lite) 文件编码转换  
++ [JSONStream](https://github.com/dominictarr/JSONStream) 流式处理 JSON.parse 和 stringify
++ [streamparser-json](https://github.com/juanjoDiaz/streamparser-json) 适用于 Node.js 和浏览器的 Javascript 中的流式处理 JSON 解析器
++ [fake-progress](https://github.com/piercus/fake-progress): 使用指数进度函数伪造进度条
 + `diff.js`: 一个JavaScript文本diff实现  
 + `workerpool`: workerpool提供了一种简单的方法来创建工作池，以动态卸载计算并管理专用工作池,runs on node.js, Chrome, Firefox, Opera, Safari, and IE10+.  
 + `vm2`: Node.js 的高级虚拟机/沙箱.
@@ -69,24 +58,30 @@ date: '2023-12-05'
 + `fast-xml-parser`: Validate XML or Parse XML to JS/JSON very fast without C/C++ based libraries  
 + `glob`: 使用 shell 使用的模式匹配文件
 + `jsoneditor` 基于 Web 查看、编辑、格式化和验证 JSON 的工具.
++ [jsPDF](https://github.com/parallax/jsPDF) 适合所有人的客户端 JavaScript PDF 生成
 + [pdfmake](https://github.com/bpampuch/pdfmake) 纯 JavaScript 中用于服务器端和客户端的 PDF 文档生成库。
 + [katex](https://katex.org/) Web 数学公式排版库
-+ [axios](https://github.com/axios/axios):一个基于 promise 的 HTTP 库，可用于浏览器和 Node.js 中进行 HTTP 请求
++ [axios](https://github.com/axios/axios) 一个基于 promise 的 HTTP 库，可用于浏览器和 Node.js 中进行 HTTP 请求
++ [alien-signals](https://github.com/stackblitz/alien-signals) 最轻的信号库
++ [qr-x](https://github.com/devtrice/qr-x) 二维码库
++ [defu](https://github.com/unjs/defu) 递归分配默认属性
++ [zx](https://github.com/google/zx)
++ [ofetch](https://github.com/unjs/ofetch) 更好的 fetch API。适用于节点、浏览器和 worker
 
-### 测试
+## 测试
 
-+ `artillery`: 负载接口测试
 + [cypress](https://github.com/cypress-io/cypress): 对浏览器中运行的任何内容进行快速、简单和可靠的测试。
-+ `vconsole` 可以用于手机端调试查看控制台、网络请求、存储等信息
-+ `autocannon` https://github.com/mcollina/autocannon 用 node 编写的 HTTP 基准测试工具.
-+ `eslint`:[eslint](https://eslint.bootcss.com/)是一个javascript代码检测工具  
++ [vconsole](https://github.com/Tencent/vConsole) 可以用于手机端调试查看控制台、网络请求、存储等信息
++ [autocannon](https://github.com/mcollina/autocannon) 用 node 编写的 HTTP 基准测试工具.
++ [eslint](https://eslint.bootcss.com/)是一个javascript代码检测工具  
 + [rewire](https://www.npmjs.com/package/rewire) rewire 为模块添加了一个特殊的 setter 和 getter，因此您可以修改它们的行为以进行更好的单元测试
 + [@faker-js/faker](https://github.com/faker-js/faker) 在浏览器和 node.js 中生成大量虚假数据，用于测试和开发
 + [k6](https://github.com/grafana/k6) 使用 Go 和 JavaScript 的现代负载测试工具
 + [artillery](https://github.com/artilleryio/artillery) 负载测试
-+ [playwright](https://github.com/microsoft/playwright) 用于 Web 测试和自动化的框架
++ [playwright](https://github.com/microsoft/playwright) Playwright 是一个用于 Web 测试和自动化的框架。它允许使用单个 API 测试 Chromium、Firefox 和 WebKit。
++ [page-spy-web](https://github.com/HuolalaTech/page-spy-web) 像 chrome devtools 一样轻松远程调试
 
-### ORM 框架
+### 数据库相关
 
 + [typeorm](https://github.com/typeorm/typeorm) 用于 Node.js 和 TypeScript 的 ORM（对象关系映射）框架
 + [Sequelize](https://github.com/sequelize/sequelize)
@@ -94,22 +89,31 @@ date: '2023-12-05'
 + [objection](https://github.com/Vincit/objection.js)
 + [prisma](https://www.prisma.io/) Prisma 是一个开源的一个ORM框架
 + [drizzle](https://github.com/drizzle-team/drizzle-orm)
++ [ioredis](https://github.com/redis/ioredis) 适用于 Node.js 的强大、注重性能且功能齐全的 Redis 客户端
++ [node-postgres](https://github.com/brianc/node-postgres) 适用于 node.js 的 PostgreSQL 客户端
++ [https://github.com/porsager/postgres](https://github.com/porsager/postgres) 适用于 Node.js、Deno、Bun 和 CloudFlare 的最快的全功能 PostgreSQL 客户端
 
 ### 服务端
 
 + [midwayjs](https://midwayjs.org/)
-+ [nestjs](https://github.com/nestjs/nest)
-+ [h3]
-+ [hono]
++ [nestjs](https://github.com/nestjs/nest) 一个渐进式 Node.js 框架，用于使用 TypeScript/JavaScript 🚀 构建高效、可扩展的企业级服务器端应用程序
++ [h3](https://github.com/unjs/h3) 为高性能和可移植性而构建的 Minimal H（TTP） 框架
++ [hono](https://github.com/honojs/hono) 基于 Web 标准构建的 Web 框架
++ [fastify](https://github.com/fastify/fastify) 快速且低开销的 Web 框架，适用于 Node.js
++ [nitro](https://github.com/nitrojs/nitro) 下一代服务器工具包。创建包含您所需的一切的 Web 服务器，并将它们部署到您喜欢的任何位置
 + [@koa/router](https://github.com/koajs/router): 由koa-router修改而来  
 + `GraphQL.js`:GraphQL的JavaScript参考实现，GraphQL是Facebook创建的API的查询语言。  
 + `apollo-server`: 封装的graphql  
 + `ws`: 简单易用，为Node.js开辟了快速且经过全面测试的Websocket客户端和服务器  
 + `http-proxy-middleware`:node.js代理中间件，用于连接，表达和浏览器同步  
++ [napi-rs](https://github.com/napi-rs/napi-rs) 通过 Node-API 在 Rust 中构建编译Node.js附加组件的框架
++ [neon](https://github.com/neon-bindings/neon) 用于编写安全快速的原生 Node.js 模块的 Rust 绑定
 
 ### 日志
 
-+ [pino]
++ [pino](https://github.com/pinojs/pino) 超快、全天然的 JSON 记录器
++ [log4js-node](https://github.com/log4js-node/log4js-node) 用于 node.js 的 log4js 
++ [winston](https://github.com/winstonjs/winston) 几乎适用于所有事物的记录器
 
 ### 工具类
 
@@ -119,9 +123,10 @@ date: '2023-12-05'
 + [ttab](https://www.npmjs.com/package/ttab) 以编程方式打开一个新的终端选项卡或窗口
 + [shikijs](https://github.com/shikijs/shiki) 语法高亮工具
 + [slidev](https://github.com/slidevjs/slidev) 面向开发人员的演示幻灯片
-+ [zx](https://github.com/google/zx)
 + [neon](https://github.com/neon-bindings/neon) 用于编写安全快速的原生 Node.js 模块的 Rust 绑定
 + [napi](https://github.com/napi-rs/napi-rs) 通过 Node-API 在 Rust 中构建编译Node.js附加组件的框架
++ [openseadragon](https://github.com/openseadragon/openseadragon) 一个基于 Web 的开源可缩放图像查看器，采用纯 JavaScript 实现。
++ [tesseract](https://github.com/naptha/tesseract.js) 适用于 100 📖🎉🖥 多种语言的纯 Javascript OCR
 
 ## 参数校验
 
@@ -138,17 +143,19 @@ date: '2023-12-05'
 + compressorjs: 利用[canvas.toBlob](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob)对图像压缩
 + jimp: 一个完全用 JavaScript 为 Node 编写的图像处理库
 + [ffmpeg](https://www.ffmpeg.org/) 用于录制、转换和流式传输音频和视频
++ [pannellum](https://github.com/mpetroff/pannellum) 一个轻量级、免费且开源的 Web 全景查看器
 
-# AI
+## AI相关
 
 + [@huggingface/transformers]
-+ [ollama]
-+ [node-llama-cpp]
-+ [sherpa-onnx]
++ [ollama](https://github.com/ollama/ollama) 启动并运行 Llama 3.3、DeepSeek-R1、Phi-4、Gemma 2 和其他大型语言模型
++ [node-llama-cpp](https://github.com/withcatai/node-llama-cpp) 使用 llama.cpp 的 node.js 绑定在计算机上本地运行 AI 模型。在生成级别的模型输出上强制实施 JSON 架构
++ [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) 跨平台, 使用带有 onnxruntime 的下一代 Kaldi 进行语音转文本 文本转语音、说话人分类和 VAD
 + [continue]
 + [onnxruntime]
 + [Open-LLM-VTuber]
 + [tensorflow](https://github.com/tensorflow/tfjs)
++ [web-llm](https://github.com/mlc-ai/web-llm) 高性能浏览器LLM内推理引擎
 
 ## 游戏
 
@@ -159,26 +166,29 @@ date: '2023-12-05'
 + [Babylon.s](https://github.com/BabylonJS/Babylon.js)
 + [playcanvas](https://github.com/playcanvas/engine)
 + [three.js](https://github.com/mrdoob/three.js)
-+ [galacean](https://github.com/galacean/engine)
++ [galacean](https://github.com/galacean/engine) 一个打字稿交互引擎，支持 2D、3D、动画、物理，基于 WebGL 和 glTF 构建
 + [model-viewer](https://github.com/google/model-viewer)
 
 ## 跨平台框架
 
 + [cordova](https://cordova.apache.org/)
-+ [electronjs](electronjs.org)
-+ [tauri](https://tauri.app/)
-+ [taro](https://docs.taro.zone/docs/)
++ [electronjs](electronjs.org) 使用 JavaScript、HTML 和 CSS 构建跨平台桌面应用程序
++ [tauri](https://tauri.app/) 使用 Web 前端构建更小、更快、更安全的桌面和移动应用程序
++ [taro](https://docs.taro.zone/docs/) 开放式跨端跨框架解决方案，支持使用 React/Vue/Nerv 等框架来开发微信/京东/百度/支付宝/字节跳动/ QQ 小程序/H5/React Native 等应用
 + [react-native](https://reactnative.dev/)
-+ [uniapp](https://uniapp.dcloud.net.cn/)
++ [uni-app](https://uniapp.dcloud.net.cn/) 使用 Vue.js 的跨平台框架
 + [nw.js]
 
 ## GIS
 
 + `tippecanoe`: Build vector tilesets from large collections of GeoJSON features  
 + `global-mercator`: 帮助使用TMS，Quadkey和Google（XYZ）瓷砖的工具.
-+ `mapnik`: [mapnik](http://mapnik.org)提供用于空间数据访问和可视化的算法和模式
++ [mapnik](http://mapnik.org)提供用于空间数据访问和可视化的算法和模式
 + [mapbox](https://www.mapbox.com/)
 + [maplibre](https://maplibre.org/maplibre-gl-js/docs/)
++ [cogeotiff](https://github.com/blacha/cogeotiff) 高性能云优化型 geotiff （COG） 阅读器
++ [cesium](https://github.com/CesiumGS/cesium) 用于世界级 3D 地球仪和地图🌎的开源 JavaScript 库
++ [openlayers]
 
 ## 打包编译工具
 
@@ -186,7 +196,7 @@ date: '2023-12-05'
 + [rollupjs](rollupjs.com)
 + [esbuild](https://esbuild.github.io/)
 + [rsbuild]()
-+ [rolldown](https://rolldown.rs/): 用于 JavaScript 的快速基于 Rust 的捆绑器
++ [rolldown](https://rolldown.rs/): 用于 JavaScript/TypeScript 的快速 Rust 打包器，具有与 Rollup 兼容的 API
 + [oxc](https://oxc.rs/): Rust 编写的为 JavaScript 构建基本的编译器工具: parser、linter、formatter、transpiler、minifier 和 resolver
 + [eslint]
 + [eslint-plugin-antfu]
@@ -198,10 +208,12 @@ date: '2023-12-05'
 + `standard-version`:使用semver和常规提交消息自动进行版本控制和CHANGELOG生成  
 + `pm2`: 具有内置负载平衡器的 Node.JS 应用程序的生产流程管理器.
 + `jsdoc`,`esdoc`,`documentation`:构建js帮助文档  
-
++ [turborepo](https://github.com/vercel/turborepo) 针对 JavaScript 和 TypeScript 优化的构建系统，用 Rust 编写
 
 ## Vue
 
++ [nuxt/ui](https://github.com/nuxt/ui) 由Reka UI和Tailwind CSS驱动的直观Vue UI库
++ [reka-ui](https://github.com/unovue/reka-ui)
 + [nutui](https://github.com/jd-opensource/nutui) 移动端
 + [element-plus](https://element-plus.org/)
 + [naive-ui](https://naiveui.com/)
@@ -221,3 +233,26 @@ date: '2023-12-05'
 + [elk](https://github.com/elk-zone/elk) 一个基于 Vue 灵活的 去中心化社交媒体 Web 客户端 (大佬写的, 可以参考学习)
 + [unplugin-vue-components]
 + [vite-plugin-pages]
++ [motion-vue](https://github.com/unovue/motion-vue) Vue 的动画库
++ [vue-vapor](https://github.com/vuejs/vue-vapor) Vue Vapor 是 Vue 的一个变体，它提供没有虚拟 DOM 的渲染
+
+## UI 相关框架
+
++ `wired-elements`: 手绘外观的基本 UI 元素
++ [unocss](https://unocss.dev/)
++ `windicss`: 原子化css
++ `bulma`: css框架
++ `sass`: Sass 的纯 JavaScript 实现.
++ [tailwindcss](https://github.com/tailwindlabs/tailwindcss): 用于快速 UI 开发的实用优先 CSS 框架
++ [lightningcss](https://lightningcss.dev/)
++ [@emotion/css](https://github.com/emotion-js/emotion) 专为高性能样式组合而设计的 CSS-in-JS 库
++ [chakra-ui](https://github.com/chakra-ui/ark) 使用 React、Svelte、Vue 和 Solid 构建您的设计系统。由状态机提供支持
++ [shadcn-ui](https://github.com/shadcn-ui/ui) 一组设计精美、可访问的组件和一个代码分发平台
++ [ui5-webcomponents](https://github.com/SAP/ui5-webcomponents) UI5 Web Components
++ [mdui](https://github.com/zdhxiong/mdui) 使用 Web 组件的 Material Design 3（Material You） UI 组件
++ [material-ui](https://github.com/mui/material-ui) 实现 Google Material Design 的综合 React 组件库
+
+## 数据
+
++ [chinese-poetry](https://github.com/chinese-poetry/chinese-poetry) 最全中华古诗词数据库, 唐宋两朝近一万四千古诗人, 接近5.5万首唐诗加26万宋诗. 两宋时期1564位词人，21050首词
++ [uber-tlc-foil-response](https://github.com/fivethirtyeight/uber-tlc-foil-response) 来自纽约市出租车和豪华轿车委员会的信息自由请求的优步行程数据
