@@ -61,6 +61,8 @@ date: '2023-12-05'
 + [jsPDF](https://github.com/parallax/jsPDF) 适合所有人的客户端 JavaScript PDF 生成
 + [pdfmake](https://github.com/bpampuch/pdfmake) 纯 JavaScript 中用于服务器端和客户端的 PDF 文档生成库。
 + [katex](https://katex.org/) Web 数学公式排版库
++ [MathJax](https://github.com/mathjax/MathJax) 在所有浏览器中美观且易于访问的数学
++ [mathlive](https://github.com/arnog/mathlive) 用于轻松数学输入的 Web 组件
 + [axios](https://github.com/axios/axios) 一个基于 promise 的 HTTP 库，可用于浏览器和 Node.js 中进行 HTTP 请求
 + [alien-signals](https://github.com/stackblitz/alien-signals) 最轻的信号库
 + [qr-x](https://github.com/devtrice/qr-x) 二维码库
@@ -156,6 +158,7 @@ date: '2023-12-05'
 + [Open-LLM-VTuber]
 + [tensorflow](https://github.com/tensorflow/tfjs)
 + [web-llm](https://github.com/mlc-ai/web-llm) 高性能浏览器LLM内推理引擎
++ [wllama](https://github.com/ngxson/wllama) llama.cpp 的 WebAssembly 绑定 - 启用浏览器LLM推理
 
 ## 游戏
 
@@ -209,6 +212,8 @@ date: '2023-12-05'
 + `pm2`: 具有内置负载平衡器的 Node.JS 应用程序的生产流程管理器.
 + `jsdoc`,`esdoc`,`documentation`:构建js帮助文档  
 + [turborepo](https://github.com/vercel/turborepo) 针对 JavaScript 和 TypeScript 优化的构建系统，用 Rust 编写
++ [electron-vite](https://github.com/alex8088/electron-vite)  新一代 Electron 开发构建工具，支持源代码保护
++ [vite-plugin-electron](https://github.com/electron-vite/vite-plugin-electron) 使开发 Electron 应用程序就像普通的 Vite 项目一样简单
 
 ## Vue
 
