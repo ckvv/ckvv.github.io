@@ -117,6 +117,46 @@ function reverseList(head) {
 }
 ```
 
-# [合并两个有序链表]
+# [合并两个有序链表](https://leetcode.cn/leetbook/read/top-interview-questions-easy/xnnbp2/)
+
+将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+
+ 
+```js
+var mergeTwoLists = function(list1, list2) {
+    let cur = null;
+    let a = list1;
+    let b = list2;
+    if(list1 && list2) {
+      if(list1?.val < list2?.val) {
+        cur = list1;
+        a = list1.next;
+      } else {
+        cur = list2;
+        b = list2.next;
+      }
+    } else {
+      return list1 || list2;
+    }
+
+    const res =  cur;
+
+    while (a && b) {
+      if(a?.val < b?.val) {
+        cur.next = a;
+        a = a?.next;
+      } else {
+        cur.next = b;
+        b = b?.next;
+      }
+      cur = cur.next;
+    }
+    if(cur) {
+      cur.next = a || b;
+    }
+    return res;
+};
+```
+
 # [回文链表]
 # [环形链表]

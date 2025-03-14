@@ -17,7 +17,8 @@ date: '2023-12-05'
 + [jsbench](https://jsbench.me/) JS性能优化
 + [https://esm.sh/](https://esm.sh/) 用于ES-Module格式NPM包的快速、全球内容交付网络。
 + [WuKongIM](https://github.com/WuKongIM/WuKongIM) 高性能通用通讯服务
-+ [commander.js](https://github.com/tj/commander.js) node.js 命令行界面变得简单
++ [follow](https://app.follow.is/) RSS 订阅阅读
+
 
 ## 技术博客网站
 
@@ -45,6 +46,7 @@ date: '2023-12-05'
 
 ## JS工具库
 
++ [commander.js](https://github.com/tj/commander.js) node.js 命令行界面变得简单
 + [iconv-lite](https://github.com/ashtuchkin/iconv-lite) 文件编码转换  
 + [JSONStream](https://github.com/dominictarr/JSONStream) 流式处理 JSON.parse 和 stringify
 + [streamparser-json](https://github.com/juanjoDiaz/streamparser-json) 适用于 Node.js 和浏览器的 Javascript 中的流式处理 JSON 解析器
@@ -97,12 +99,12 @@ date: '2023-12-05'
 
 ### 服务端
 
-+ [midwayjs](https://midwayjs.org/)
++ [midwayjs](https://midwayjs.org/) 面向前端/全栈开发者的 Node.js 无服务器框架。为下一个十年构建应用程序。可在 AWS、阿里云、腾讯云和传统 VM/容器上运行
 + [nestjs](https://github.com/nestjs/nest) 一个渐进式 Node.js 框架，用于使用 TypeScript/JavaScript 🚀 构建高效、可扩展的企业级服务器端应用程序
 + [h3](https://github.com/unjs/h3) 为高性能和可移植性而构建的 Minimal H（TTP） 框架
++ [nitro](https://github.com/nitrojs/nitro) 下一代服务器工具包。创建您所需的一切的 Web 服务器，并部署到您喜欢的任何地方
 + [hono](https://github.com/honojs/hono) 基于 Web 标准构建的 Web 框架
 + [fastify](https://github.com/fastify/fastify) 快速且低开销的 Web 框架，适用于 Node.js
-+ [nitro](https://github.com/nitrojs/nitro) 下一代服务器工具包。创建包含您所需的一切的 Web 服务器，并将它们部署到您喜欢的任何位置
 + [@koa/router](https://github.com/koajs/router): 由koa-router修改而来  
 + `GraphQL.js`:GraphQL的JavaScript参考实现，GraphQL是Facebook创建的API的查询语言。  
 + `apollo-server`: 封装的graphql  
