@@ -71,6 +71,7 @@ date: '2023-12-05'
 + [defu](https://github.com/unjs/defu) 递归分配默认属性
 + [zx](https://github.com/google/zx)
 + [ofetch](https://github.com/unjs/ofetch) 更好的 fetch API。适用于节点、浏览器和 worker
++ [commander](https://github.com/tj/commander.js) Node.js 命令行界面开发变得简单易行
 
 ## 测试
 
@@ -84,6 +85,7 @@ date: '2023-12-05'
 + [artillery](https://github.com/artilleryio/artillery) 负载测试
 + [playwright](https://github.com/microsoft/playwright) Playwright 是一个用于 Web 测试和自动化的框架。它允许使用单个 API 测试 Chromium、Firefox 和 WebKit。
 + [page-spy-web](https://github.com/HuolalaTech/page-spy-web) 像 chrome devtools 一样轻松远程调试
++ [ngrok](https://dashboard.ngrok.com/) ngrok 是您应用的入口——一个全球分布式的反向代理
 
 ### 数据库相关
 
