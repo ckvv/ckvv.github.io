@@ -163,6 +163,7 @@ date: '2023-12-05'
 + [tensorflow](https://github.com/tensorflow/tfjs)
 + [web-llm](https://github.com/mlc-ai/web-llm) 高性能浏览器LLM内推理引擎
 + [wllama](https://github.com/ngxson/wllama) llama.cpp 的 WebAssembly 绑定 - 启用浏览器LLM推理
++ [MCP](https://modelcontextprotocol.io/introduction) 模型上下文协议
 
 ## 游戏
 
