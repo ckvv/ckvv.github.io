@@ -19,6 +19,13 @@ date: '2023-12-05'
 + [WuKongIM](https://github.com/WuKongIM/WuKongIM) 高性能通用通讯服务
 + [follow](https://app.follow.is/) RSS 订阅阅读
 
+## 插画
+
++ [undraw](https://github.com/mkhairi/undraw) 由 unDraw 提供的 MIT 许可插图
+
+## Demo
+
++ [atidone](https://github.com/atinux/atidone) 一个集成了认证、服务器端渲染和 SQL 的全栈应用，使用 Nuxt 在边缘运行。
 
 ## 技术博客网站
 
@@ -86,6 +93,7 @@ date: '2023-12-05'
 + [playwright](https://github.com/microsoft/playwright) Playwright 是一个用于 Web 测试和自动化的框架。它允许使用单个 API 测试 Chromium、Firefox 和 WebKit。
 + [page-spy-web](https://github.com/HuolalaTech/page-spy-web) 像 chrome devtools 一样轻松远程调试
 + [ngrok](https://dashboard.ngrok.com/) ngrok 是您应用的入口——一个全球分布式的反向代理
++ [jsonplaceholder](https://github.com/typicode/jsonplaceholder) 一个简单的在线假 REST API 服务器
 
 ### 数据库相关
 
