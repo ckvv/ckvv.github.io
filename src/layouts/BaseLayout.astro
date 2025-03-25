@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import { LANG } from '../consts';
-import '../styles/global.css';
+import BaseHead from '@/components/BaseHead.astro';
+import Header from '@/components/Header.astro';
+import { LANG } from '@/consts';
+import '@/styles/global.css';
 
 type Props = Partial<CollectionEntry<'blog'>['data']>;
 

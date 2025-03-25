@@ -1,7 +1,7 @@
 ---
-import BaseContent from '../../components/BaseContent.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getPosts } from '../../utils';
+import BaseContent from '@/components/BaseContent.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPosts } from '@/utils';
 
 export async function getStaticPaths() {
 	const posts = await getPosts();

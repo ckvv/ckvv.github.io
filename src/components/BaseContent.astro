@@ -1,10 +1,10 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import Edit from '@/assets/edit.svg';
+import { REPOSITORY } from '@/consts';
+import { encrypt } from '@/shared';
 import { render } from 'astro:content';
 import { KEY } from 'astro:env/server';
-import Edit from '../assets/edit.svg';
-import { REPOSITORY } from '../consts';
-import { encrypt } from '../shared';
 import Cusdis from './Cusdis.astro';
 import Decrypt from './Decrypt.astro';
 import FormattedDate from './FormattedDate.astro';

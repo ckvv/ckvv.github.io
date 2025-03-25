@@ -1,7 +1,7 @@
 ---
-import Tag from '../../components/Tag.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getPosts } from '../../utils';
+import Tag from '@/components/Tag.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPosts } from '@/utils';
 
 const tags: any = Array.from((await getPosts()).map(v => v.data.tags).flat(1)).filter(v => !!v).reduce((pre, cur: any) => {
   pre[cur] = cur in pre ? pre[cur] + 1 : 1;

@@ -6,8 +6,8 @@
     "lib": ["DOM", "ESNext"],
     "baseUrl": ".",
     "paths": {
-      "@/components/*": [
-        "./src/components/*"
+      "@/*": [
+        "./src/*"
       ]
     },
     "strictNullChecks": true

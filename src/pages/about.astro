@@ -1,7 +1,7 @@
 ---
+import BaseContent from '@/components/BaseContent.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getEntry } from 'astro:content';
-import BaseContent from '../components/BaseContent.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
 
 const post = await getEntry('blog', 'about')!;
 ---

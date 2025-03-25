@@ -1,4 +1,4 @@
-import { getFileHash } from '../shared.ts';
+import { getFileHash } from '@/shared.ts';
 
 async function request(url: string, options?: RequestInit, timeout = 6000) {
   const controller = new AbortController();

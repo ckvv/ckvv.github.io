@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { file as fileAPI } from '@/api';
+import { formatFileSize, isPicture } from '@/shared.ts';
 import { onMounted, onUnmounted, ref } from 'vue';
-import { file as fileAPI } from '../../api';
-import { formatFileSize, isPicture } from '../../shared.ts';
 import Upload from './Upload.vue';
 
 const limit = 20;

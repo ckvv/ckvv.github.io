@@ -1,6 +1,6 @@
+import { SITE_DESCRIPTION, SITE_TITLE } from '@/consts';
+import { getPosts } from '@/utils';
 import rss from '@astrojs/rss';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import { getPosts } from '../utils';
 
 export async function GET(context) {
   const posts = await getPosts('blog');

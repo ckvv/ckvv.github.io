@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'astro/types';
 
 type Props = HTMLAttributes<'button'>;
 
-const { href, class: className, ...props } = Astro.props;
+const { class: className, ...props } = Astro.props;
 ---
 
 <button class="v-button text-purple-500 bg-purple-200 px-2 py-1 whitespace-nowrap rounded-lg" @click="count++ " {...props}>
