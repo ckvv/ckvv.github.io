@@ -144,9 +144,9 @@ date: '2023-12-05'
 
 ## 参数校验
 
-+ `superstruct`
-+ `parameter`
-+ `async-validator`
++ [superstruct](https://github.com/ianstormtaylor/superstruct) JavaScript（和 TypeScript）中验证数据的一种简单且可组合的方式
++ [parameter](https://github.com/node-modules/parameter)
++ [async-validator](https://github.com/yiminghe/async-validator) 异步验证表单
 + [ajv](https://github.com/ajv-validator/ajv):用于验证 JSON 数据是否符合给定的 JSON Schema 的工具
 + [joi](https://github.com/sideway/joi): JavaScript 架构描述语言和数据验证器
 + [zod](https://github.com/colinhacks/zod):一个用于 TypeScript 的数据验证库，提供了强大的类型推断和验证功能
@@ -162,17 +162,19 @@ date: '2023-12-05'
 
 ## AI相关
 
-+ [@huggingface/transformers]
++ [@huggingface/transformers](https://github.com/huggingface/transformers.js) 最先进的网页机器学习。直接在浏览器中运行 🤗 Transformers，无需服务器！
 + [ollama](https://github.com/ollama/ollama) 启动并运行 Llama 3.3、DeepSeek-R1、Phi-4、Gemma 2 和其他大型语言模型
 + [node-llama-cpp](https://github.com/withcatai/node-llama-cpp) 使用 llama.cpp 的 node.js 绑定在计算机上本地运行 AI 模型。在生成级别的模型输出上强制实施 JSON 架构
 + [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) 跨平台, 使用带有 onnxruntime 的下一代 Kaldi 进行语音转文本 文本转语音、说话人分类和 VAD
-+ [continue]
-+ [onnxruntime]
-+ [Open-LLM-VTuber]
-+ [tensorflow](https://github.com/tensorflow/tfjs)
++ [continue](https://github.com/continuedev/continue) 创建、分享和使用自定义 AI 代码助手，借助我们的开源 IDE 扩展和模型、规则、提示、文档以及其他构建块中心
++ [onnxruntime](https://github.com/Microsoft/onnxruntime) ONNX Runtime：跨平台、高性能的机器学习推理和训练加速器
++ [Open-LLM-VTuber](https://github.com/Open-LLM-VTuber/Open-LLM-VTuber) 通过免提语音交互、语音打断功能，与任意大语言模型进行对话，并且实现Live2D（实时二维动画）面部动效在跨平台本地运行。  
++ [tensorflow](https://github.com/tensorflow/tfjs) 一个用于训练和部署机器学习模型的 WebGL 加速 JavaScript 库
 + [web-llm](https://github.com/mlc-ai/web-llm) 高性能浏览器LLM内推理引擎
 + [wllama](https://github.com/ngxson/wllama) llama.cpp 的 WebAssembly 绑定 - 启用浏览器LLM推理
 + [MCP](https://modelcontextprotocol.io/introduction) 模型上下文协议
++ [langchain](https://github.com/langchain-ai/langchainjs) 构建具有上下文感知推理的应用
++ [llamaindex](https://github.com/run-llama/LlamaIndexTS) 为您的LLM应用程序提供数据框架。专注于服务器端解决方案
 
 ## 游戏
 
@@ -194,12 +196,12 @@ date: '2023-12-05'
 + [taro](https://docs.taro.zone/docs/) 开放式跨端跨框架解决方案，支持使用 React/Vue/Nerv 等框架来开发微信/京东/百度/支付宝/字节跳动/ QQ 小程序/H5/React Native 等应用
 + [react-native](https://reactnative.dev/)
 + [uni-app](https://uniapp.dcloud.net.cn/) 使用 Vue.js 的跨平台框架
-+ [nw.js]
++ [nw.js](https://github.com/nwjs/nw.js) 直接从 DOM/WebWorker 调用所有 Node.js 模块，并启用使用所有 Web 技术编写应用程序的新方式。
 
 ## GIS
 
-+ `tippecanoe`: Build vector tilesets from large collections of GeoJSON features  
-+ `global-mercator`: 帮助使用TMS，Quadkey和Google（XYZ）瓷砖的工具.
++ [tippecanoe](https://github.com/mapbox/tippecanoe): 从大量 GeoJSON 要素构建矢量瓦片集
++ [global-mercator](https://github.com/DenisCarriere/global-mercator): 帮助使用TMS，Quadkey和Google（XYZ）瓷砖的工具.
 + [mapnik](http://mapnik.org)提供用于空间数据访问和可视化的算法和模式
 + [mapbox](https://www.mapbox.com/)
 + [maplibre](https://maplibre.org/maplibre-gl-js/docs/)
@@ -216,10 +218,9 @@ date: '2023-12-05'
 + [rolldown](https://rolldown.rs/): 用于 JavaScript/TypeScript 的快速 Rust 打包器，具有与 Rollup 兼容的 API
 + [oxc](https://oxc.rs/): Rust 编写的为 JavaScript 构建基本的编译器工具: parser、linter、formatter、transpiler、minifier 和 resolver
 + [eslint]
-+ [eslint-plugin-antfu]
-+ [standard-version]
-+ [simple-git-hooks]
-+ [lint-staged]
++ [antfu/eslint-config](https://github.com/antfu/eslint-config) Antfu ESLint 配置预设
++ [simple-git-hooks](https://github.com/toplenboren/simple-git-hooks) 一个简单的适用于小型项目的 git 钩子管理器
++ [lint-staged](https://github.com/lint-staged/lint-staged) 对暂存状态的 git 文件运行格式化程序和检查器等任务
 + `nodemon`: 文件更改时重新启动node服务.
 + `swc`: swc 是一个typescript/javascript 编译器。比`babel`快很多.
 + `standard-version`:使用semver和常规提交消息自动进行版本控制和CHANGELOG生成  
@@ -257,6 +258,7 @@ date: '2023-12-05'
 
 ## UI 相关框架
 
++ [ui-libs](https://ui-libs.vercel.app) Vue 3 / Nuxt 3 的 UI 库选择器
 + `wired-elements`: 手绘外观的基本 UI 元素
 + [unocss](https://unocss.dev/)
 + `windicss`: 原子化css
