@@ -172,7 +172,12 @@ date: '2023-12-05'
 + [tensorflow](https://github.com/tensorflow/tfjs) 一个用于训练和部署机器学习模型的 WebGL 加速 JavaScript 库
 + [web-llm](https://github.com/mlc-ai/web-llm) 高性能浏览器LLM内推理引擎
 + [wllama](https://github.com/ngxson/wllama) llama.cpp 的 WebAssembly 绑定 - 启用浏览器LLM推理
-+ [MCP](https://modelcontextprotocol.io/introduction) 模型上下文协议
++ [mcp.so/](https://mcp.so/) 寻找出色的 MCP 服务器和客户端
++ [mcp](https://modelcontextprotocol.io/introduction) 模型上下文协议
++ [mcp/inspector](https://github.com/modelcontextprotocol/inspector) MCP服务器的可视化测试工具
++ [mcp/servers](https://github.com/modelcontextprotocol/servers) 模型上下文协议（MCP）的参考实现
++ [mcp/typescript](https://github.com/modelcontextprotocol/typescript-sdk) 适用于模型上下文协议服务器和客户端的官方 TypeScript 软件开发工具包
++ [mcp/specification](https://github.com/modelcontextprotocol/specification) 模型上下文协议规范
 + [langchain](https://github.com/langchain-ai/langchainjs) 构建具有上下文感知推理的应用
 + [llamaindex](https://github.com/run-llama/LlamaIndexTS) 为您的LLM应用程序提供数据框架。专注于服务器端解决方案
 
