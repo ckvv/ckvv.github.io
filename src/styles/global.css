@@ -1456,7 +1456,7 @@ iframe {
 }
 
 @media (prefers-color-scheme: dark) {
-  img,video,svg,canvas {
+  img,video,svg,canvas,pre {
     filter: invert(1) hue-rotate(180deg);
   }
 
