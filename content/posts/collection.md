@@ -106,6 +106,7 @@ date: '2023-12-05'
 + [ioredis](https://github.com/redis/ioredis) 适用于 Node.js 的强大、注重性能且功能齐全的 Redis 客户端
 + [node-postgres](https://github.com/brianc/node-postgres) 适用于 node.js 的 PostgreSQL 客户端
 + [https://github.com/porsager/postgres](https://github.com/porsager/postgres) 适用于 Node.js、Deno、Bun 和 CloudFlare 的最快的全功能 PostgreSQL 客户端
++ [pglite](https://github.com/electric-sql/pglite) 具有实时、反应式绑定的可嵌入 Postgres
 
 ### 服务端
 
@@ -277,6 +278,7 @@ date: '2023-12-05'
 + [ui5-webcomponents](https://github.com/SAP/ui5-webcomponents) UI5 Web Components
 + [mdui](https://github.com/zdhxiong/mdui) 使用 Web 组件的 Material Design 3（Material You） UI 组件
 + [material-ui](https://github.com/mui/material-ui) 实现 Google Material Design 的综合 React 组件库
++ [vanilla-extract](https://github.com/vanilla-extract-css/vanilla-extract) 零运行时样式表-TypeScript
 
 ## 数据
 
