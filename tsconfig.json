@@ -10,7 +10,10 @@
         "./src/*"
       ]
     },
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true
   },
   "include": [
     ".astro/types.d.ts",
