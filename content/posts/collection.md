@@ -151,7 +151,8 @@ date: '2023-12-05'
 + [ajv](https://github.com/ajv-validator/ajv):用于验证 JSON 数据是否符合给定的 JSON Schema 的工具
 + [joi](https://github.com/sideway/joi): JavaScript 架构描述语言和数据验证器
 + [zod](https://github.com/colinhacks/zod):一个用于 TypeScript 的数据验证库，提供了强大的类型推断和验证功能
-+ [valibot](https://github.com/fabian-hiller/valibot) 模块化和类型安全的结构数据验证库 
++ [valibot](https://github.com/fabian-hiller/valibot) 模块化和类型安全的结构数据验证库
++ [ArkType](https://github.com/arktypeio/arktype) TypeScript 的 1：1 验证器，从编辑器到运行时都进行了优化
 
 ## 多媒体相关
 
