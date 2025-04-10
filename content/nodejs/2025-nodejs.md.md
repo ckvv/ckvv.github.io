@@ -1,10 +1,10 @@
 ---
-title: "2025 年的 Node.js"
+title: "2025 年的 Node.js 开发步骤"
 tags: ["Node.js"]
 date: "2025/04/09"
 ---
 
-2025 年了该如何写 Node.js
+2025 如何通过 Node.js TypeScript 的新功能來进行轻量高效的的后端开发
 
 ## 框架选择
 
@@ -17,7 +17,7 @@ date: "2025/04/09"
 + [midway](https://midwayjs.org/)
 + [nestjs](https://nestjs.com/)
 
-需要服务器端渲染k可以考虑
+需要服务器端渲染可以考虑
 
 + [nextjs](https://nextjs.org/docs)
 + [nuxt](https://nuxt.com/)
@@ -30,16 +30,20 @@ date: "2025/04/09"
 
 ## TypeScript
 
+推荐的 `tsconfig` 配置
 ```json
 // tsconfig.json
 {
   "compilerOptions": {
-     "noEmit": true, // Optional - see note below
-     "target": "esnext",
-     "module": "nodenext",
-     "rewriteRelativeImportExtensions": true,
-     "erasableSyntaxOnly": true,
-     "verbatimModuleSyntax": true
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "noEmit": true, // Optional - see note below
+    "forceConsistentCasingInFileNames": true, //程序试图通过与磁盘上的大小写不同的大小写来包含文件，则 TypeScript 将发出错误
+    "verbatimModuleSyntax": true, // TypeScript 会原封不动保留你的 import / export 语法,  https://www.typescriptlang.org/tsconfig/#verbatimModuleSyntax
+    "erasableSyntaxOnly": true, // Node.js 仅支持不具有运行时语义的 TypeScript 特定语法
+    "skipLibCheck": true, // 跳过默认库声明文件的类型检查
+    "rewriteRelativeImportExtensions": true // 将相对导入路径中的 .ts、.tsx、.mts 和 .cts 文件扩展名重写为输出文件中对应的 JavaScript 文件扩展名
   }
 } 
 ```
@@ -58,7 +62,7 @@ date: "2025/04/09"
 + 支持自动补全与类型提示
 + 统一的项目导入方式
 
-## ESM 🚧
+## ESM
 
 ## 环境变量
 
@@ -101,7 +105,13 @@ node --test "**/*.test.js" "**/*.spec.js"
 + [ArkType](https://arktype.io/docs/intro/morphs-and-more)
 + [ajv](https://ajv.js.org/) 
 
-## API 文档 🚧
+## API 文档
+
++ [Swagger](https://swagger.io/)
++ [OpenAPI](https://tools.openapis.org/categories/sdk.html)
++ [openapi-ts](https://openapi-ts.dev/)
++ [typedoc](https://typedoc.org/)
++ [jsdoc](https://jsdoc.app/)
 
 ## 代码参考
 
