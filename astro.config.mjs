@@ -28,7 +28,6 @@ export default defineConfig({
     enabled: false,
   },
   experimental: {
-    svg: true,
   },
   env: {
     schema: {
