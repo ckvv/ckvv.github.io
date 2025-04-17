@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en" class="h-full bg-white"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.7.2"><!-- Canonical URL --><link rel="canonical" href="https://ckvv.net/blog/react/react-%E7%B1%BB%E7%BB%84%E4%BB%B6/"><!-- Primary Meta Tags --><title>React 类组件</title><meta name="title" content="React 类组件"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://ckvv.net/blog/react/react-%E7%B1%BB%E7%BB%84%E4%BB%B6/"><meta property="og:title" content="React 类组件"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://ckvv.net/blog/react/react-%E7%B1%BB%E7%BB%84%E4%BB%B6/"><meta property="twitter:title" content="React 类组件"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CLVocrKm.css">
+<style>.outline-item-active[data-astro-cid-v2nb7cev]{color:var(--color-sky-700)}
+</style></head> <body class="flex flex-col min-h-full"> <header class="sticky top-0 px-4 bg-white z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <div class="flex gap-2 md:gap-4 items-center font-bold"> <h2><a href="/">CK Blog</a></h2> </div> <div class="flex gap-2 md:gap-4"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/assets/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center hidden md:inline"> Assets <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank" aria-label="GitHub" class="hidden md:inline"> <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow font-tabular-nums">  <h1 class="text-4xl font-bold my-4">React 类组件</h1>
+  <div class="my-2 flex justify-between items-center"><div class="flex gap-4"><a href="/tag/react/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> react </a></div><span> 2024/08/28 </span></div>
+  <div class="sticky z-10 top-20 inline-block text-left w-full" data-astro-cid-v2nb7cev><div class="2xl:hidden flex justify-end" data-astro-cid-v2nb7cev><button type="button" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-haspopup="true" data-astro-cid-v2nb7cev>
+On this page
+<svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon" data-astro-cid-v2nb7cev><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" data-astro-cid-v2nb7cev></path></svg></button></div><div id="md-outline-content" class="max-h-[calc(100vh-200px)] overflow-auto hidden absolute right-0 py-2 mt-2 min-w-48 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden 2xl:-right-12 2xl:float-right 2xl:translate-x-full 2xl:max-w-[min(calc(50vw-580px),320px)]" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" data-astro-cid-v2nb7cev><a class="outline-item block px-4 py-1 text-sm break-all" href="#生命周期" data-astro-cid-v2nb7cev>生命周期</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#挂载阶段" data-astro-cid-v2nb7cev>挂载阶段</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#constructor" data-astro-cid-v2nb7cev>constructor()：</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#static-getderivedstatefrompropsnextprops-prevstate" data-astro-cid-v2nb7cev>static getDerivedStateFromProps(nextProps, prevState)：</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#render" data-astro-cid-v2nb7cev>render()：</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#componentdidmount" data-astro-cid-v2nb7cev>componentDidMount()：</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#更新阶段" data-astro-cid-v2nb7cev>更新阶段</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#static-getderivedstatefrompropsnextprops-prevstate-1" data-astro-cid-v2nb7cev>static getDerivedStateFromProps(nextProps, prevState)：</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#shouldcomponentupdatenextprops-nextstate" data-astro-cid-v2nb7cev>shouldComponentUpdate(nextProps, nextState)：</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#render-1" data-astro-cid-v2nb7cev>render()：</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#getsnapshotbeforeupdateprevprops-prevstate" data-astro-cid-v2nb7cev>getSnapshotBeforeUpdate(prevProps, prevState)：</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#componentdidupdateprevprops-prevstate-snapshot" data-astro-cid-v2nb7cev>componentDidUpdate(prevProps, prevState, snapshot)：</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#卸载阶段" data-astro-cid-v2nb7cev>卸载阶段</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#componentwillunmount" data-astro-cid-v2nb7cev>componentWillUnmount()</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#错误边界" data-astro-cid-v2nb7cev>错误边界</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#getderivedstatefromerrorerror" data-astro-cid-v2nb7cev>‌getDerivedStateFromError‌(error)</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#" data-astro-cid-v2nb7cev></a></div></div><script type="module">function f(n,o){let r,t;return(...c)=>{t?(clearTimeout(r),r=setTimeout(()=>{Date.now()-t>=o&&(n(...c),t=Date.now())},o-(Date.now()-t))):(n(...c),t=Date.now())}}function u(n){const o=document.getElementById("menu-button"),r=document.getElementById("md-outline-content"),t=n===void 0?o.getAttribute("aria-expanded")==="true":!n;o.setAttribute("aria-expanded",`${!t}`),r.style.display=t?"none":"block"}function l(){window.innerWidth>=1536&&u(!0)}window.addEventListener("resize",l);document.addEventListener("DOMContentLoaded",()=>{l();const n=document.getElementById("md-outline-content");n.onclick=e=>{e.preventDefault();const i=document.querySelector(e.target.getAttribute("href"));i&&window.scrollTo({top:i.offsetTop-64,behavior:"smooth"})};const o=document.getElementById("menu-button");o.onclick=()=>u(),document.onclick=e=>{if(window.innerWidth>=1536)return;const i=document.getElementById("md-outline-content");e.target.id!=="menu-button"&&!i.contains(e.target)&&o.getAttribute("aria-expanded")==="true"&&u()};const r=document.querySelector(".content").querySelectorAll("h1, h2, h3"),t=document.querySelectorAll(".outline-item"),c={root:null,rootMargin:"0px",threshold:.6},a=f(e=>{e.forEach(i=>{if(i.isIntersecting){const b=i.target.getAttribute("id");t.forEach(s=>{const d=`#${b}`;s.classList.remove("outline-item-active"),s.getAttribute("href")===d&&(s.classList.add("outline-item-active"),history.replaceState(null,"",d))})}})},200),m=new IntersectionObserver(a,c);r.forEach(e=>{m.observe(e)})});</script><div class="content"> <h1 id="生命周期">生命周期</h1>
+<p>类组件有一系列的生命周期方法，主要分为三个阶段：挂载阶段、更新阶段和卸载阶段</p>
+<h2 id="挂载阶段">挂载阶段</h2>
+<h3 id="constructor">constructor()：</h3>
+<p>最早被调用的生命周期方法
+通常用于初始化组件的 state 和绑定事件处理方法。
+在这个方法中，可以通过将方法绑定到当前组件实例来确保在回调中this指向正确的组件实例。例如：this.handleClick = this.handleClick.bind(this);。</p>
+<h3 id="static-getderivedstatefrompropsnextprops-prevstate">static getDerivedStateFromProps(nextProps, prevState)：</h3>
+<p>是一个静态方法，在组件实例被创建以及每次接收到新的 props 时被调用。
+此方法接收新的 props 和当前的 state 作为参数，并返回一个对象来更新 state，或者返回 null 表示不需要更新 state。
+主要用于根据 props 来同步 state，可以用于将 props 的值同步到 state 中，确保组件状态的一致性。</p>
+<h3 id="render">render()：</h3>
+<p>是 React 类组件中必须定义的方法。
+用于返回一个 React 元素，描述组件的 UI 结构。
+在这个方法中，不能进行任何有副作用的操作，如直接修改 state、进行异步请求等。它应该是一个纯函数，仅根据输入的 props 和 state 来确定输出的 UI。</p>
+<h3 id="componentdidmount">componentDidMount()：</h3>
+<p>在组件挂载到 DOM 后立即被调用。
+通常用于在这个阶段进行一些副作用操作，比如发起异步请求获取数据、添加事件监听器等。
+因为此时组件已经在 DOM 中渲染完成，可以确保 DOM 操作的安全性。</p>
+<h2 id="更新阶段">更新阶段</h2>
+<h3 id="static-getderivedstatefrompropsnextprops-prevstate-1">static getDerivedStateFromProps(nextProps, prevState)：</h3>
+<p>同样在组件更新时（由于 props 变化或 state 变化导致的重新渲染）会被调用。</p>
+<h3 id="shouldcomponentupdatenextprops-nextstate">shouldComponentUpdate(nextProps, nextState)：</h3>
+<p>此方法接收新的 props 和新的 state 作为参数。
+返回一个布尔值，决定组件是否应该重新渲染。如果返回 false，则组件不会重新渲染，这可以用于性能优化，避免不必要的渲染。</p>
+<h3 id="render-1">render()：</h3>
+<p>当组件的 props 或 state 发生变化时，会再次调用render方法来重新生成组件的 UI 结构。</p>
+<h3 id="getsnapshotbeforeupdateprevprops-prevstate">getSnapshotBeforeUpdate(prevProps, prevState)：</h3>
+<p>在更新发生之前被调用，就在组件即将更新但 DOM 还未更新时触发。
+这个方法可以返回一个值，这个值会作为参数传递给componentDidUpdate。
+通常用于获取更新前的某些 DOM 状态，比如滚动位置等。</p>
+<h3 id="componentdidupdateprevprops-prevstate-snapshot">componentDidUpdate(prevProps, prevState, snapshot)：</h3>
+<p>在组件更新完成后立即被调用。
+接收先前的 props、先前的 state 和来自getSnapshotBeforeUpdate的 snapshot 参数。
+通常用于处理更新后的副作用，比如根据新的数据再次发起异步请求、更新 DOM 元素的位置等。</p>
+<h2 id="卸载阶段">卸载阶段</h2>
+<h3 id="componentwillunmount">componentWillUnmount()</h3>
+<p>在组件从 DOM 中卸载之前被调用。
+用于清理在组件生命周期中创建的副作用，比如取消定时器、移除事件监听器、取消网络请求等，以避免内存泄漏</p>
+<h3 id="错误边界">错误边界</h3>
+<h3 id="getderivedstatefromerrorerror">‌getDerivedStateFromError‌(error)</h3>
+<p>这个方法在服务器端渲染期间也被调用，在DOM尚未更新时在“渲染阶段”调用。</p>
+<h1 id=""></h1> </div> <a class="flex gap-1 my-4 text-blue-600 cursor-pointer select-none" href="https://github.com/ckvv/ckvv.github.io/tree/main/content/react/react-类组件.md"> <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4">
+  <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+  <path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4Z" />
+</svg>
+Edit this page on GitHub
+</a> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="/blog/react/react-%E7%B1%BB%E7%BB%84%E4%BB%B6/" data-page-url="content/react/react-类组件.md" data-page-title="React 类组件" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

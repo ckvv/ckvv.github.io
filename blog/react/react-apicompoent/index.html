@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="en" class="h-full bg-white"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.7.2"><!-- Canonical URL --><link rel="canonical" href="https://ckvv.net/blog/react/react-apicompoent/"><!-- Primary Meta Tags --><title>React API &amp; 组件</title><meta name="title" content="React API &#38; 组件"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://ckvv.net/blog/react/react-apicompoent/"><meta property="og:title" content="React API &#38; 组件"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://ckvv.net/blog/react/react-apicompoent/"><meta property="twitter:title" content="React API &#38; 组件"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CLVocrKm.css">
+<style>.outline-item-active[data-astro-cid-v2nb7cev]{color:var(--color-sky-700)}
+</style></head> <body class="flex flex-col min-h-full"> <header class="sticky top-0 px-4 bg-white z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <div class="flex gap-2 md:gap-4 items-center font-bold"> <h2><a href="/">CK Blog</a></h2> </div> <div class="flex gap-2 md:gap-4"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/assets/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center hidden md:inline"> Assets <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank" aria-label="GitHub" class="hidden md:inline"> <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow font-tabular-nums">  <h1 class="text-4xl font-bold my-4">React API &amp; 组件</h1>
+  <div class="my-2 flex justify-between items-center"><div class="flex gap-4"><a href="/tag/react/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> react </a></div><span> 2024/08/25 </span></div>
+  <div class="sticky z-10 top-20 inline-block text-left w-full" data-astro-cid-v2nb7cev><div class="2xl:hidden flex justify-end" data-astro-cid-v2nb7cev><button type="button" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-haspopup="true" data-astro-cid-v2nb7cev>
+On this page
+<svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon" data-astro-cid-v2nb7cev><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" data-astro-cid-v2nb7cev></path></svg></button></div><div id="md-outline-content" class="max-h-[calc(100vh-200px)] overflow-auto hidden absolute right-0 py-2 mt-2 min-w-48 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden 2xl:-right-12 2xl:float-right 2xl:translate-x-full 2xl:max-w-[min(calc(50vw-580px),320px)]" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" data-astro-cid-v2nb7cev><a class="outline-item block px-4 py-1 text-sm break-all" href="#api" data-astro-cid-v2nb7cev>API</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#createcontext" data-astro-cid-v2nb7cev>createContext</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#forwardref" data-astro-cid-v2nb7cev>forwardRef</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#lazy" data-astro-cid-v2nb7cev>lazy</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#不要在其他组件-内部-声明-lazy-组件" data-astro-cid-v2nb7cev>不要在其他组件 内部 声明 lazy 组件</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#memo" data-astro-cid-v2nb7cev>memo</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#参考" data-astro-cid-v2nb7cev>参考</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#当-props-没有改变时跳过重新渲染" data-astro-cid-v2nb7cev>当 props 没有改变时跳过重新渲染</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#最小化-props-的变化" data-astro-cid-v2nb7cev>最小化 props 的变化</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#自定义比较函数" data-astro-cid-v2nb7cev>自定义比较函数</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#starttransition" data-astro-cid-v2nb7cev>startTransition</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#将-state-更新标记为非阻塞-transition" data-astro-cid-v2nb7cev>将 state 更新标记为非阻塞 transition</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#组件" data-astro-cid-v2nb7cev>组件</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#fragment" data-astro-cid-v2nb7cev>Fragment</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#profiler" data-astro-cid-v2nb7cev>Profiler</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#strictmode" data-astro-cid-v2nb7cev>StrictMode</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#suspense" data-astro-cid-v2nb7cev>Suspense</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#逐步加载内容" data-astro-cid-v2nb7cev>逐步加载内容</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#在新内容加载时展示过时内容" data-astro-cid-v2nb7cev>在新内容加载时展示过时内容</a></div></div><script type="module">function f(n,o){let r,t;return(...c)=>{t?(clearTimeout(r),r=setTimeout(()=>{Date.now()-t>=o&&(n(...c),t=Date.now())},o-(Date.now()-t))):(n(...c),t=Date.now())}}function u(n){const o=document.getElementById("menu-button"),r=document.getElementById("md-outline-content"),t=n===void 0?o.getAttribute("aria-expanded")==="true":!n;o.setAttribute("aria-expanded",`${!t}`),r.style.display=t?"none":"block"}function l(){window.innerWidth>=1536&&u(!0)}window.addEventListener("resize",l);document.addEventListener("DOMContentLoaded",()=>{l();const n=document.getElementById("md-outline-content");n.onclick=e=>{e.preventDefault();const i=document.querySelector(e.target.getAttribute("href"));i&&window.scrollTo({top:i.offsetTop-64,behavior:"smooth"})};const o=document.getElementById("menu-button");o.onclick=()=>u(),document.onclick=e=>{if(window.innerWidth>=1536)return;const i=document.getElementById("md-outline-content");e.target.id!=="menu-button"&&!i.contains(e.target)&&o.getAttribute("aria-expanded")==="true"&&u()};const r=document.querySelector(".content").querySelectorAll("h1, h2, h3"),t=document.querySelectorAll(".outline-item"),c={root:null,rootMargin:"0px",threshold:.6},a=f(e=>{e.forEach(i=>{if(i.isIntersecting){const b=i.target.getAttribute("id");t.forEach(s=>{const d=`#${b}`;s.classList.remove("outline-item-active"),s.getAttribute("href")===d&&(s.classList.add("outline-item-active"),history.replaceState(null,"",d))})}})},200),m=new IntersectionObserver(a,c);r.forEach(e=>{m.observe(e)})});</script><div class="content"> <h1 id="api">API</h1>
+<p>react 包还导出了一些其他的 API，这些 API 对于创建组件非常有用</p>
+<h2 id="createcontext">createContext</h2>
+<p>可以创建一个 context，你可以将其提供给子组件，通常会与 useContext 一起配合使用。</p>
+<h2 id="forwardref">forwardRef</h2>
+<p>允许组件将 DOM 节点作为 ref 暴露给父组件。</p>
+<h2 id="lazy">lazy</h2>
+<p>允许你延迟加载组件，直到该组件需要第一次被渲染。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#B392F0">lazy</span><span style="color:#E1E4E8">(load);</span></span></code></pre>
+<p>参数</p>
+<ul>
+<li><code>load</code>: 一个返回 Promise 或另一个 thenable（具有 then 方法的类 Promise 对象）的函数。React 不会在你尝试首次渲染返回的组件之前调用 load 函数。在 React 首次调用 load 后，它将等待其解析，然后将解析值的 .default 渲染为 React 组件。返回的 Promise 和 Promise 的解析值都将被缓存，因此 React 不会多次调用 load 函数。如果 Promise 被拒绝，则 React 将抛出拒绝原因给最近的错误边界处理。</li>
+</ul>
+<p>返回值</p>
+<ul>
+<li>lazy 返回一个 React 组件，你可以在 fiber 树中渲染。当懒加载组件的代码仍在加载时，尝试渲染它将会处于 暂停 状态。使用 <suspense> 可以在其加载时显示一个正在加载的提示。</suspense></li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { lazy } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> MarkdownPreview</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> lazy</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#F97583"> import</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./MarkdownPreview.js'</span><span style="color:#E1E4E8">))</span></span>
+<span class="line"><span style="color:#6A737D">// 此代码依赖于 动态 import()，因此可能需要你的打包工具或框架提供支持。使用这种模式要求导入的懒加载组件必须作为 default 导出。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">Suspense</span><span style="color:#B392F0"> fallback</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{&#x3C;</span><span style="color:#79B8FF">Loading</span><span style="color:#E1E4E8"> />}></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">h2</span><span style="color:#E1E4E8">>Preview&#x3C;/</span><span style="color:#85E89D">h2</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">MarkdownPreview</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#79B8FF">Suspense</span><span style="color:#E1E4E8">></span></span></code></pre>
+<h3 id="不要在其他组件-内部-声明-lazy-组件">不要在其他组件 内部 声明 lazy 组件</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { lazy } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// ✅ Good: 将 lazy 组件声明在组件外部</span></span>
+<span class="line"><span style="color:#6A737D">// const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Editor</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">  // 🔴 Bad: 这将导致在重新渲染时重置所有状态</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> MarkdownPreview</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> lazy</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#F97583"> import</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'./MarkdownPreview.js'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="memo">memo</h2>
+<p>React 通常在其父组件重新渲染时重新渲染一个组件。你可以使用 memo 创建一个组件，当它的父组件重新渲染时，只要它的新 props 与旧 props 相同时，React 就不会重新渲染它。这样的组件被称为 记忆化的（memoized）组件。通常 useMemo 与 useCallback 一起配合使用。</p>
+<h3 id="参考">参考</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#B392F0">memo</span><span style="color:#E1E4E8">(Component, arePropsEqual</span><span style="color:#F97583">?</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>参数</p>
+<ul>
+<li><code>Component</code>：要进行记忆化的组件。memo 不会修改该组件，而是返回一个新的、记忆化的组件。它接受任何有效的 React 组件，包括函数组件和 forwardRef 组件。</li>
+<li><code>arePropsEqual</code>：一个函数，接受两个参数：组件的前一个 props 和新的 props。如果旧的和新的 props 相等，即组件使用新的 props 渲染的输出和表现与旧的 props 完全相同，则它应该返回 true。否则返回 false。通常情况下，你不需要指定此函数。默认情况下，React 将使用 <code>Object.is</code> 比较每个 prop。</li>
+</ul>
+<p>返回值
+memo 返回一个新的 React 组件。它的行为与提供给 memo 的组件相同，只是当它的父组件重新渲染时 React 不会总是重新渲染它，除非它的 props 发生了变化。</p>
+<h3 id="当-props-没有改变时跳过重新渲染">当 props 没有改变时跳过重新渲染</h3>
+<p>通过使用 <code>memo</code>，只要其 props 没有改变，React 就不需要重新渲染。<strong>即使使用 memo，如果它自己的 state 或正在使用的 context 发生更改，组件也会重新渲染</strong>。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> const</span><span style="color:#79B8FF"> Greeting</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> memo</span><span style="color:#E1E4E8">(({ </span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      Hello,</span></span>
+<span class="line"><span style="color:#E1E4E8">      {name}</span></span>
+<span class="line"><span style="color:#E1E4E8">      !</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="最小化-props-的变化">最小化 props 的变化</h3>
+<p>useMemo 避免父组件每次都重新创建该对象</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Page</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">name</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setName</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Taylor'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">age</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setAge</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">42</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> person</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useMemo</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">    () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> ({ name, age }),</span></span>
+<span class="line"><span style="color:#E1E4E8">    [name, age]</span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">Profile</span><span style="color:#B392F0"> person</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{person} />;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> Profile</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> memo</span><span style="color:#E1E4E8">(({ </span><span style="color:#FFAB70">person</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>接受单独的值而不是整个对象</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> Page</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">name</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setName</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Taylor'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">age</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setAge</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">42</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">Profile</span><span style="color:#B392F0"> name</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{name} </span><span style="color:#B392F0">age</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{age} />;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> Profile</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> memo</span><span style="color:#E1E4E8">(({ </span><span style="color:#FFAB70">name</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">age</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>接受一个布尔值，表示是否存在某个值，而不是值本身</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> GroupsLanding</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">person</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> hasGroups</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> person.groups </span><span style="color:#F97583">!==</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#79B8FF">CallToAction</span><span style="color:#B392F0"> hasGroups</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{hasGroups} />;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> CallToAction</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> memo</span><span style="color:#E1E4E8">(({ </span><span style="color:#FFAB70">hasGroups</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="自定义比较函数">自定义比较函数</h3>
+<p>你可以提供一个自定义比较函数，React 将使用它来比较旧的和新的 props，而不是使用浅比较。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> Chart</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> memo</span><span style="color:#E1E4E8">(({ </span><span style="color:#FFAB70">dataPoints</span><span style="color:#E1E4E8"> }) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">}, arePropsEqual);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> arePropsEqual</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">oldProps</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">newProps</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // 在新的 props 与旧的 props 具有相同的输出时返回 true；否则应该返回 false</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> Object.</span><span style="color:#B392F0">is</span><span style="color:#E1E4E8">(oldProps, newProps);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="starttransition">startTransition</h2>
+<p>startTransition 可以让你在不阻塞 UI 的情况下更新 state， startTransition 与 useTransition 非常相似，但它不提供 isPending 标志来跟踪一个 transition 是否正在进行。你可以在 useTransition 不可用时调用 startTransition。例如，在组件外部（如从数据库中）使用 startTransition</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#B392F0">startTransition</span><span style="color:#E1E4E8">(scope);</span></span></code></pre>
+<p>参数</p>
+<ul>
+<li><code>scope</code>：调用一个或多个 set 函数 来更新 state 的函数。React 会立即调用没有参数的 scope，并将在 scope 函数调用期间，调度所有的 state，并将同步更新标记为 transition。</li>
+</ul>
+<p>返回值</p>
+<ul>
+<li>无</li>
+</ul>
+<p>注意事项</p>
+<ul>
+<li>startTransition 没有提供一种跟踪 transition 是否处于待定状态的方法。为了在 transition 进行时显示一个待定状态的指示器，你需要使用 useTransition</li>
+<li>传递给 startTransition 的函数必须是同步的。React 会立即执行此函数，将其执行期间发生的所有 state 更新标记为 transition。</li>
+<li>一个被标记为 transition 的 state 更新时将会被其他 state 更新打断。例如，如果你在 transition 内部更新图表组件，但在图表重新渲染时在输入框中打字，则 React 将先处理输入 state 更新，之后才会重新启动对图表组件的渲染工作。</li>
+<li>如果有多个正在进行的 transition，当前 React 会将它们集中在一起处理。这是一个限制，在未来的版本中可能会被移除。</li>
+</ul>
+<h3 id="将-state-更新标记为非阻塞-transition">将 state 更新标记为非阻塞 transition</h3>
+<p>transition 可以让用户界面在慢速设备上保持更新响应。例如，如果用户单击一个选项卡后又改变主意并单击另一个选项卡，则可以在第一次重新渲染完成之前执行此操作而无需等待。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { startTransition } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> TabContainer</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">tab</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setTab</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'about'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  function</span><span style="color:#B392F0"> selectTab</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">nextTab</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">    startTransition</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">      setTab</span><span style="color:#E1E4E8">(nextTab);</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#6A737D">  // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h1 id="组件">组件</h1>
+<p>React 提供了一些内置的组件，你可以在 JSX 中使用它们</p>
+<h2 id="fragment">Fragment</h2>
+<p>通常使用 &#x3C;>…&#x3C;/> 代替，它们都允许你在不添加额外节点的情况下将子元素组合。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#E1E4E8">&#x3C;></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">OneChild</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">AnotherChild</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/>;</span></span></code></pre>
+<h2 id="profiler">Profiler</h2>
+<p>允许你编程式测量 React 树的渲染性能</p>
+<p>参数</p>
+<ul>
+<li>id：字符串，用于标识正在测量的 UI 部分。</li>
+<li>onRender：onRender 回调函数，当包裹的组件树更新时，React 都会调用它。它接收有关渲染内容和所花费时间的信息。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">Profiler</span><span style="color:#B392F0"> id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"App"</span><span style="color:#B392F0"> onRender</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{onRender}></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">App</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#79B8FF">Profiler</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> onRender</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">id</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">phase</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">actualDuration</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">baseDuration</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">startTime</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">commitTime</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">  // 对渲染时间进行汇总或记录...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h2 id="strictmode">StrictMode</h2>
+<p>帮助你在开发过程中尽早地发现组件中的常见错误</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { StrictMode } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { createRoot } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react-dom/client'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> root</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> createRoot</span><span style="color:#E1E4E8">(document.</span><span style="color:#B392F0">getElementById</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'root'</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#E1E4E8">root.</span><span style="color:#B392F0">render</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">StrictMode</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">App</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#79B8FF">StrictMode</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>严格模式启用了以下仅在开发环境下有效的行为：</p>
+<ul>
+<li>组件将 重新渲染一次，以查找由于非纯渲染而引起的错误。</li>
+<li>组件将 重新运行 Effect 一次，以查找由于缺少 Effect 清理而引起的错误。</li>
+<li>组件将被 检查是否使用了已弃用的 API。</li>
+</ul>
+<h3 id="suspense">Suspense</h3>
+<p>允许在子组件完成加载前展示后备方案</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">Suspense</span><span style="color:#B392F0"> fallback</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{&#x3C;</span><span style="color:#79B8FF">Loading</span><span style="color:#E1E4E8"> />}></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">SomeComponent</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#79B8FF">Suspense</span><span style="color:#E1E4E8">>;</span></span></code></pre>
+<p>参数</p>
+<ul>
+<li><code>children</code>：真正的 UI 渲染内容。如果 children 在渲染中被挂起，Suspense 边界将会渲染 fallback。</li>
+<li><code>fallback</code>：真正的 UI 未渲染完成时代替其渲染的备用 UI，它可以是任何有效的 React 节点。后备方案通常是一个轻量的占位符，例如表示加载中的图标或者骨架屏。当 children 被挂起时，Suspense 将自动切换至渲染 fallback；当数据准备好时，又会自动切换至渲染 children。如果 fallback 在渲染中被挂起，那么将自动激活最近的 Suspense 边界。</li>
+</ul>
+<p>注意事项</p>
+<ul>
+<li>如果 Suspense 正在展示 React 组件树中的内容，那么当再次被挂起时，除非导致此处更新是由 startTransition 或 useDeferredValue 引起，否则 Suspense 将展示 fallback</li>
+<li>只有启用了 Suspense 的数据源才会激活 Suspense 组件， 1.支持 Suspense 的框架如 Relay 和 Next.js， 2.使用 lazy 懒加载组件代码，3.使用 use 读取 Promise 的值。（Suspense 无法 检测在 Effect 或事件处理程序中获取数据的情况）</li>
+</ul>
+<h3 id="逐步加载内容">逐步加载内容</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6A737D">// 调整之后，Biography 不需要“等待” Albums 加载完成就可以展示。</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#79B8FF">Suspense</span><span style="color:#B392F0"> fallback</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{&#x3C;</span><span style="color:#79B8FF">BigSpinner</span><span style="color:#E1E4E8"> />}></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">Biography</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#79B8FF">Suspense</span><span style="color:#B392F0"> fallback</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{&#x3C;</span><span style="color:#79B8FF">AlbumsGlimmer</span><span style="color:#E1E4E8"> />}></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">Panel</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">Albums</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">Panel</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#79B8FF">Suspense</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#79B8FF">Suspense</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 1.如果 Biography 没有加载完成，BigSpinner 会显示在整个内容区域的位置。</span></span>
+<span class="line"><span style="color:#6A737D">// 2.一旦 Biography 加载完成，BigSpinner 会被内容替换。</span></span>
+<span class="line"><span style="color:#6A737D">// 3.如果 Albums 没有加载完成，AlbumsGlimmer 会显示在 Albums 和它的父级 Panel 的位置。</span></span>
+<span class="line"><span style="color:#6A737D">// 4.最后，一旦 Albums 加载完成，它会替换 AlbumsGlimmer。</span></span></code></pre>
+<h3 id="在新内容加载时展示过时内容">在新内容加载时展示过时内容</h3>
+<p>延迟值和 transition 都可以让你避免显示 Suspense 后备方案，而是使用内联指示器。transition 将整个更新标记为非紧急的，因此它们通常由框架和路由库用于导航。另一方面，延迟值在你希望将 UI 的一部分标记为非紧急，并让它“落后于” UI 的其余部分时非常有用</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { Suspense, useDeferredValue, useState } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> SearchResults </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> './SearchResults.js'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> default</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> App</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">query</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setQuery</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> deferredQuery</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useDeferredValue</span><span style="color:#E1E4E8">(query);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> isStale</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> query </span><span style="color:#F97583">!==</span><span style="color:#E1E4E8"> deferredQuery;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        Search albums:</span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> value</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{query} </span><span style="color:#B392F0">onChange</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{</span><span style="color:#FFAB70">e</span><span style="color:#F97583"> =></span><span style="color:#B392F0"> setQuery</span><span style="color:#E1E4E8">(e.target.value)} /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#79B8FF">Suspense</span><span style="color:#B392F0"> fallback</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{&#x3C;</span><span style="color:#85E89D">h2</span><span style="color:#E1E4E8">>Loading...&#x3C;/</span><span style="color:#85E89D">h2</span><span style="color:#E1E4E8">>}></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> style</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{{ opacity: isStale </span><span style="color:#F97583">?</span><span style="color:#79B8FF"> 0.5</span><span style="color:#F97583"> :</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8"> }}></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#79B8FF">SearchResults</span><span style="color:#B392F0"> query</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{deferredQuery} /></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#79B8FF">Suspense</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre> </div> <a class="flex gap-1 my-4 text-blue-600 cursor-pointer select-none" href="https://github.com/ckvv/ckvv.github.io/tree/main/content/react/react-api&compoent.md"> <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4">
+  <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+  <path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4Z" />
+</svg>
+Edit this page on GitHub
+</a> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="/blog/react/react-apicompoent/" data-page-url="content/react/react-api&#38;compoent.md" data-page-title="React API &#38; 组件" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html><html lang="en" class="h-full bg-white"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.7.2"><!-- Canonical URL --><link rel="canonical" href="https://ckvv.net/blog/web/http%E8%AF%B7%E6%B1%82%E4%BC%A0%E5%8F%82%E8%AF%A6%E8%A7%A3/"><!-- Primary Meta Tags --><title>HTTP请求传参详解</title><meta name="title" content="HTTP请求传参详解"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://ckvv.net/blog/web/http%E8%AF%B7%E6%B1%82%E4%BC%A0%E5%8F%82%E8%AF%A6%E8%A7%A3/"><meta property="og:title" content="HTTP请求传参详解"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://ckvv.net/blog/web/http%E8%AF%B7%E6%B1%82%E4%BC%A0%E5%8F%82%E8%AF%A6%E8%A7%A3/"><meta property="twitter:title" content="HTTP请求传参详解"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CLVocrKm.css">
+<style>.outline-item-active[data-astro-cid-v2nb7cev]{color:var(--color-sky-700)}
+</style></head> <body class="flex flex-col min-h-full"> <header class="sticky top-0 px-4 bg-white z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <div class="flex gap-2 md:gap-4 items-center font-bold"> <h2><a href="/">CK Blog</a></h2> </div> <div class="flex gap-2 md:gap-4"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/assets/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center hidden md:inline"> Assets <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank" aria-label="GitHub" class="hidden md:inline"> <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow font-tabular-nums">  <h1 class="text-4xl font-bold my-4">HTTP请求传参详解</h1>
+  <div class="my-2 flex justify-between items-center"><div class="flex gap-4"></div><span> 2022/08/25 </span></div>
+  <div class="sticky z-10 top-20 inline-block text-left w-full" data-astro-cid-v2nb7cev><div class="2xl:hidden flex justify-end" data-astro-cid-v2nb7cev><button type="button" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-haspopup="true" data-astro-cid-v2nb7cev>
+On this page
+<svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon" data-astro-cid-v2nb7cev><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" data-astro-cid-v2nb7cev></path></svg></button></div><div id="md-outline-content" class="max-h-[calc(100vh-200px)] overflow-auto hidden absolute right-0 py-2 mt-2 min-w-48 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden 2xl:-right-12 2xl:float-right 2xl:translate-x-full 2xl:max-w-[min(calc(50vw-580px),320px)]" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" data-astro-cid-v2nb7cev><a class="outline-item block px-4 py-1 text-sm break-all" href="#什么是http" data-astro-cid-v2nb7cev>什么是HTTP</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#http规范" data-astro-cid-v2nb7cev>HTTP规范</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#请求传参的几种方式" data-astro-cid-v2nb7cev>请求传参的几种方式</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#url传参query-string" data-astro-cid-v2nb7cev>URL传参(Query String )</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#设置url参数的例子" data-astro-cid-v2nb7cev>设置URL参数的例子</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#headers传参" data-astro-cid-v2nb7cev>Headers传参</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#设置headers参数的例子" data-astro-cid-v2nb7cev>设置Headers参数的例子</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#body传参" data-astro-cid-v2nb7cev>Body传参</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#applicationx-www-form-urlencoded" data-astro-cid-v2nb7cev>application/x-www-form-urlencoded</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#发送applicationx-www-form-urlencoded类型请求的例子" data-astro-cid-v2nb7cev>发送application/x-www-form-urlencoded类型请求的例子</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#multipartform-data" data-astro-cid-v2nb7cev>multipart/form-data</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#发送multipartform-data类型请求的例子" data-astro-cid-v2nb7cev>发送multipart/form-data类型请求的例子</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#textplain" data-astro-cid-v2nb7cev>text/plain</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#发送textplain类型请求的例子" data-astro-cid-v2nb7cev>发送text/plain类型请求的例子</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#applicationjson" data-astro-cid-v2nb7cev>application/json</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#发送applicationjson类型请求的例子" data-astro-cid-v2nb7cev>发送application/json类型请求的例子</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#其他content-type类型" data-astro-cid-v2nb7cev>其他Content-Type类型</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#发送其他content-type类型请求的例子" data-astro-cid-v2nb7cev>发送其他Content-Type类型请求的例子</a></div></div><script type="module">function f(n,o){let r,t;return(...c)=>{t?(clearTimeout(r),r=setTimeout(()=>{Date.now()-t>=o&&(n(...c),t=Date.now())},o-(Date.now()-t))):(n(...c),t=Date.now())}}function u(n){const o=document.getElementById("menu-button"),r=document.getElementById("md-outline-content"),t=n===void 0?o.getAttribute("aria-expanded")==="true":!n;o.setAttribute("aria-expanded",`${!t}`),r.style.display=t?"none":"block"}function l(){window.innerWidth>=1536&&u(!0)}window.addEventListener("resize",l);document.addEventListener("DOMContentLoaded",()=>{l();const n=document.getElementById("md-outline-content");n.onclick=e=>{e.preventDefault();const i=document.querySelector(e.target.getAttribute("href"));i&&window.scrollTo({top:i.offsetTop-64,behavior:"smooth"})};const o=document.getElementById("menu-button");o.onclick=()=>u(),document.onclick=e=>{if(window.innerWidth>=1536)return;const i=document.getElementById("md-outline-content");e.target.id!=="menu-button"&&!i.contains(e.target)&&o.getAttribute("aria-expanded")==="true"&&u()};const r=document.querySelector(".content").querySelectorAll("h1, h2, h3"),t=document.querySelectorAll(".outline-item"),c={root:null,rootMargin:"0px",threshold:.6},a=f(e=>{e.forEach(i=>{if(i.isIntersecting){const b=i.target.getAttribute("id");t.forEach(s=>{const d=`#${b}`;s.classList.remove("outline-item-active"),s.getAttribute("href")===d&&(s.classList.add("outline-item-active"),history.replaceState(null,"",d))})}})},200),m=new IntersectionObserver(a,c);r.forEach(e=>{m.observe(e)})});</script><div class="content"> <p>本篇文章主要介绍了<code>HTTP</code>的数据结构, 以及<code>application/x-www-form-urlencoded</code>,<code>multipart/form-data</code>, <code>application/json</code>类型请求的编码方式。</p>
+<h2 id="什么是http">什么是HTTP</h2>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP">HTTP(超文本传输协议)</a> 是服务器和客户端之间交换数据的方式。是为Web浏览器与Web服务器之间的通信而设计的有两种类型的消息︰</p>
+<ul>
+<li>请求（requests）— 由客户端发送用来触发一个服务器上的动作；</li>
+<li>响应（responses）— 来自服务器的应答。</li>
+</ul>
+<p><code>HTTP</code>请求和响应具有相似的结构，由以下部分组成︰</p>
+<ul>
+<li>一行起始行用于描述要执行的请求，或者是对应的状态，成功或失败。这个起始行总是单行的。</li>
+<li>一个可选的 HTTP 头集合指明请求或描述消息正文。</li>
+<li>一个空行指示所有关于请求的元数据已经发送完毕。</li>
+<li>一个可选的包含请求相关数据的正文 (比如 HTML 表单内容), 或者响应相关的文档。 正文的大小有起始行的 <code>HTTP</code> 头来指定。</li>
+</ul>
+<p>起始行和 HTTP 消息中的 HTTP 头统称为请求头，而其有效负载被称为消息正文。
+<img src="https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages/httpmsgstructure2.png" alt="httpmsgstructure"></p>
+<h2 id="http规范">HTTP规范</h2>
+<p>HTTP 定义了一组请求方法，以表明要对给定资源执行的操作。包括</p>
+<ul>
+<li><code>GET</code>: 请求一个指定资源的表示形式，使用 GET 的请求应该只被用于获取数据。</li>
+<li><code>HEAD</code>: 请求一个与 GET 请求的响应相同的响应，但没有响应体。</li>
+<li><code>POST</code>: 用于将实体提交到指定的资源，通常导致在服务器上的状态变化或副作用。</li>
+<li><code>PUT</code>: 用请求有效载荷替换目标资源的所有当前表示。</li>
+<li><code>DELETE</code>: 删除指定的资源。</li>
+<li><code>CONNECTCONNECT</code>: 建立一个到由目标资源标识的服务器的隧道。</li>
+<li><code>OPTIONS</code>: 用于描述目标资源的通信选项。</li>
+<li><code>TRACE</code>: 沿着到目标资源的路径执行一个消息环回测试。</li>
+<li><code>PATCH</code>: 用于对资源应用部分修改。</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/30174970/186643282-28df3d02-099d-4eca-92c0-77b1fe8eec73.png" alt="HTTP请求规范"></p>
+<h2 id="请求传参的几种方式">请求传参的几种方式</h2>
+<h3 id="url传参query-string">URL传参(Query String )</h3>
+<p><a href="https://en.wikipedia.org/wiki/Query_string">Query String</a>是URL的一部分，采用<a href="https://en.wikipedia.org/wiki/Percent-encoding">百分比编码</a>的方式，我们可以通过<code>?</code>开头并用<code>&#x26;</code>符号分隔的键-值对，同时以<code>=</code>分隔键和值, 如<code>http://test.com?key1=value1&#x26;key2=value2</code>来提供额外参数。为了方便构造查询字符串，我们可以使用<a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams">URLSearchParams</a>构造</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// 传入字符串</span></span>
+<span class="line"><span style="color:#F97583">new</span><span style="color:#B392F0"> URLSearchParams</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`key1=value1&#x26;key2=value2`</span><span style="color:#E1E4E8">).</span><span style="color:#B392F0">toString</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// key1=value1&#x26;key2=value2</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 传入数组</span></span>
+<span class="line"><span style="color:#F97583">new</span><span style="color:#B392F0"> URLSearchParams</span><span style="color:#E1E4E8">([[</span><span style="color:#9ECBFF">'key1'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'value1'</span><span style="color:#E1E4E8">], [</span><span style="color:#9ECBFF">'key2'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'value2'</span><span style="color:#E1E4E8">]]); </span><span style="color:#6A737D">// key1=value1&#x26;key2=value2</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 传入对象</span></span>
+<span class="line"><span style="color:#F97583">new</span><span style="color:#B392F0"> URLSearchParams</span><span style="color:#E1E4E8">({ key1: </span><span style="color:#9ECBFF">'value1'</span><span style="color:#E1E4E8">, key2: </span><span style="color:#9ECBFF">'value2'</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 通过URL传入的参数都会被隐式地转译为百分比编码的`字符串`, 如果保护有特殊字符将被转译,非字母或数字的字符会被 percent-encoding&#x3C;https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding></span></span>
+<span class="line"><span style="color:#F97583">new</span><span style="color:#B392F0"> URLSearchParams</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`key1=1,2,3`</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// key1=1%2C2%2C3  即 key1=1,2,3</span></span>
+<span class="line"><span style="color:#F97583">new</span><span style="color:#B392F0"> URLSearchParams</span><span style="color:#E1E4E8">([[</span><span style="color:#9ECBFF">'key1'</span><span style="color:#E1E4E8">, [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">]]]); </span><span style="color:#6A737D">// key1=1%2C2%2C3  即 key1=1,2,3，数组被隐式转换为1,2,3</span></span>
+<span class="line"><span style="color:#F97583">new</span><span style="color:#B392F0"> URLSearchParams</span><span style="color:#E1E4E8">({ key1: [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">] }); </span><span style="color:#6A737D">// key1=1%2C2%2C3  即 key1=1,2,3，数组被隐式转换为1,2,3</span></span>
+<span class="line"><span style="color:#F97583">new</span><span style="color:#B392F0"> URLSearchParams</span><span style="color:#E1E4E8">({ key1: { age: </span><span style="color:#79B8FF">18</span><span style="color:#E1E4E8"> } }); </span><span style="color:#6A737D">// key1=%5Bobject+Object%5D 即 key1=[object+Object]，对象被隐式转换为[object+Object]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 对于不支持`URLSearchParams` API 的浏览器可以使用`encodeURIComponent`替代</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> getFormBody</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">params</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> formBody</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#F97583">  for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> key</span><span style="color:#F97583"> in</span><span style="color:#E1E4E8"> params) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    formBody.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`${</span><span style="color:#B392F0">encodeURIComponent</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">key</span><span style="color:#9ECBFF">)</span><span style="color:#9ECBFF">}=${</span><span style="color:#B392F0">encodeURIComponent</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">params</span><span style="color:#9ECBFF">[</span><span style="color:#E1E4E8">key</span><span style="color:#9ECBFF">])</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> formBody.</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'&#x26;'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">getFormBody</span><span style="color:#E1E4E8">({ key1: </span><span style="color:#9ECBFF">'value1'</span><span style="color:#E1E4E8">, key2: [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">] }); </span><span style="color:#6A737D">// key1=value1&#x26;key2=1%2C2%2C3 即 key1=value1&#x26;key2=1,2,3, 数组被隐式转换为1,2,3</span></span></code></pre>
+<p><code>Query String</code>只能传入<code>String</code>类型的字符串，如果我们希望传入复杂类型，前后端需要约定一种序列化参数的编码解码方案，如<a href="https://www.npmjs.com/package/qs">qs</a></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// 在前端对参数编码</span></span>
+<span class="line"><span style="color:#6A737D">// 嵌套对象</span></span>
+<span class="line"><span style="color:#E1E4E8">Qs.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">({{</span><span style="color:#9ECBFF">"key1"</span><span style="color:#E1E4E8"> : { age: </span><span style="color:#79B8FF">18</span><span style="color:#E1E4E8"> }}}) </span><span style="color:#6A737D">// key1%5Bage%5D=18 即 key1[age]=18</span></span>
+<span class="line"><span style="color:#6A737D">// 数组</span></span>
+<span class="line"><span style="color:#E1E4E8">Qs.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">({key1: [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">]}) </span><span style="color:#6A737D">//key1%5B0%5D=1&#x26;key1%5B1%5D=2&#x26;key1%5B2%5D=3 即 key1[0]=1&#x26;key1[1]=2&#x26;key1[2]=3</span></span>
+<span class="line"><span style="color:#6A737D">// 在后端我们需要调用对应的解码函数</span></span>
+<span class="line"><span style="color:#E1E4E8">Qs.</span><span style="color:#B392F0">parse</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`key1%5Bage%5D=18`</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// {"key1":{"age":"18"}}</span></span></code></pre>
+<h4 id="设置url参数的例子">设置URL参数的例子</h4>
+<p>通过<code>axios</code>设置URL参数</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> instance</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> axios.</span><span style="color:#B392F0">create</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#B392F0">  paramsSerializer</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">params</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> Qs.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">(params);</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 或者</span></span>
+<span class="line"><span style="color:#B392F0">axios</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`http://test.com?${</span><span style="color:#E1E4E8">Qs</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">stringify</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">params</span><span style="color:#9ECBFF">)</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>通过<code>fetch</code>设置URL参数</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`http://test.com?${</span><span style="color:#E1E4E8">Qs</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">stringify</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">params</span><span style="color:#9ECBFF">)</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h3 id="headers传参">Headers传参</h3>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers">Headers</a>允许客户端和服务器通过<code>request</code>和<code>response</code>传递附加信息，主要用来描述资源或服务器或客户端的行为.</p>
+<p>我们可以通过以下方式构造<code>Headers</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> headers</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Headers</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">headers.</span><span style="color:#B392F0">append</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Content-Type'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'application/json'</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h4 id="设置headers参数的例子">设置Headers参数的例子</h4>
+<p>通过<code>axios</code>设置<code>Headers</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> instance</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> axios.</span><span style="color:#B392F0">create</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  headers: {</span></span>
+<span class="line"><span style="color:#9ECBFF">    'X-Requested-With'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'XMLHttpRequest'</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#B392F0">  paramsSerializer</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">params</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> Qs.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">(params);</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 或者</span></span>
+<span class="line"><span style="color:#E1E4E8">axios.defaults.headers.common.Authorization </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> AUTH_TOKEN</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">axios.defaults.headers.post[</span><span style="color:#9ECBFF">'Content-Type'</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'application/x-www-form-urlencoded'</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>通过<code>fetch</code>设置<code>Headers</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'input'</span><span style="color:#E1E4E8">, {</span></span>
+<span class="line"><span style="color:#E1E4E8">  headers: {</span></span>
+<span class="line"><span style="color:#9ECBFF">    'X-Requested-With'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'XMLHttpRequest'</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h3 id="body传参">Body传参</h3>
+<p><a href="https://greenbytes.de/tech/webdav/draft-ietf-httpbis-p1-messaging-26.html#rfc.section.3.3">Body</a>表示<code>HTTP</code>消息中传输的数据字节，用于携带该请求或响应的有效负载正文。我们需要使用<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type">Content-Type</a>表示发送数据的<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types">MIME</a>类型</p>
+<p><code>Content-Type</code>表示形式为<code>media-type;charset;boundary;</code>如：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Content-Type: text/html; charset=UTF-8</span></span>
+<span class="line"><span>Content-Type: multipart/form-data; boundary=something</span></span></code></pre>
+<p><code>MIME</code>类型通用结构为<code>type/subtype</code>, 由类型与子类型两个字符串中间用<code>/</code>分隔而组成。不允许空格存在。<code>type</code>表示可以被分多个子类的独立类别。<code>subtype</code> 表示细分后的每个类型。<code>MIME</code>类型对大小写不敏感，但是传统写法都是小写。如果<code>MIME</code>类型与实际发送的数据不符服务器会无法识别。</p>
+<p><a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media</a>类型:</p>
+<ul>
+<li><code>text</code>: 纯文本数据，包括任何人类可读的内容、源代码或文本数据. 如<code>text/plain</code>,<code>text/html</code>,<code>text/css, text/javascript</code></li>
+<li><code>font</code>: 字体文件. 如<code>font/woff</code>,<code>font/ttf</code></li>
+<li><code>model</code>: 3D 对象或场景的模型数据. 如<code>model/gltf-binary</code>,<code>model/gltf+json</code>,<code>model/obj</code></li>
+<li><code>image</code>: 表明是某种图像。不包括视频，但包括动态图（比如动态 gif. 如<code>image/gif</code>,<code>image/png</code>,<code>image/jpeg</code>,<code>image/webp</code></li>
+<li><code>audio</code>: 音频文件, 如<code>audio/webm</code>, <code>audio/wav</code>, <code>audio/mp4</code></li>
+<li><code>video</code>: 视频文件, 如<code>video/webm</code>,<code>video/wav</code>,<code>video/mp4</code></li>
+<li><code>application</code>: 任何不明确归入其他类型之一的二进制数据；将以某种方式执行或解释的数据或需要特定应用程序或应用程序类别才能使用的二进制数据。 如<code>application/pdf</code>,<code>application/xml</code>,<code>application/json</code></li>
+<li><code>multipart</code>: 表示被分成几部分的文档类别，通常具有不同的 MIME 类型, 代表一个复合文档。 如<code>multipart/form-data</code>,<code>multipart/encrypted</code></li>
+</ul>
+<p><code>text/plain</code>表示没有特定子类型的文本文档，同样，<code>application/octet-stream</code>表示没有特定或已知子类型的二进制文档。</p>
+<p>请求常用的<code>MIME</code>Type:</p>
+<h4 id="applicationx-www-form-urlencoded">application/x-www-form-urlencoded</h4>
+<p>这应该是最常见的提交数据的方式了(设置<code>form</code>表单<code>enctype</code>为空或者设为<code>application/x-www-form-urlencoded</code>)
+他编码方式类似<a href="https://en.wikipedia.org/wiki/Query_string">Query String</a>，数据被编码成以 <code>&#x26;</code> 分隔的键 - 值对，同时以 <code>=</code> 分隔键和值。非字母或数字的字符会被 <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/percent-encoding">percent-encoding</a>, 这也就是为什么这种类型不支持二进制数据, (使用<code>multipart/form-data</code>代替)</p>
+<p>如提交数据<code>{name: 'ck', email: 'ck@test.com'}</code>被编码为</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>POST / HTTP/1.1</span></span>
+<span class="line"><span>Host: test.com</span></span>
+<span class="line"><span>Content-Type: application/x-www-form-urlencoded</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>name=ck&#x26;email=ck%40test.com</span></span></code></pre>
+<p>其他例子</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">{</span><span style="color:#B392F0">key1</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'value1'</span><span style="color:#E1E4E8">} </span><span style="color:#6A737D">// 编码为 key1=value1</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span><span style="color:#B392F0">key1</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'value1'</span><span style="color:#E1E4E8">} </span><span style="color:#6A737D">// 编码为 key1=value1</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span><span style="color:#B392F0">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'ck'</span><span style="color:#E1E4E8">, </span><span style="color:#B392F0">email</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'ck@test.com'</span><span style="color:#E1E4E8">} </span><span style="color:#6A737D">// 编码为 name=ck&#x26;email=ck%40test.com</span></span>
+<span class="line"><span style="color:#6A737D">// 同Query String, 参数只能为百分比编码的字符串, 如果需要传递复杂类型，需要对其编码为字符串格式</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span><span style="color:#B392F0">key1</span><span style="color:#E1E4E8">: [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">]} </span><span style="color:#6A737D">// 编码为 key1=1%2C2%2C3 即key1=1,2,3</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span><span style="color:#B392F0">key1</span><span style="color:#E1E4E8">: [</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">,</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">]} </span><span style="color:#6A737D">// 有的编码方案也会将其编码为 key1%5B0%5D=1&#x26;key1%5B1%5D=2&#x26;key1%5B2%5D=3 即 key1[0]=1&#x26;key1[1]=2&#x26;key1[2]=3</span></span></code></pre>
+<h5 id="发送applicationx-www-form-urlencoded类型请求的例子">发送<code>application/x-www-form-urlencoded</code>类型请求的例子</h5>
+<p>使用表单</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">form</span><span style="color:#B392F0"> action</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"https://test.com"</span><span style="color:#B392F0"> target</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"target"</span><span style="color:#B392F0"> enctype</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"application/x-www-form-urlencoded"</span><span style="color:#B392F0"> method</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"post"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">label</span><span style="color:#B392F0"> for</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">>Enter your name: &#x3C;/</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"text"</span><span style="color:#B392F0"> name</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"name"</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"name"</span><span style="color:#B392F0"> value</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"ck"</span><span style="color:#B392F0"> required</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">label</span><span style="color:#B392F0"> for</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"email"</span><span style="color:#E1E4E8">>Enter your email: &#x3C;/</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"email"</span><span style="color:#B392F0"> name</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"email"</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"email"</span><span style="color:#B392F0"> value</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"ck@test.com"</span><span style="color:#B392F0"> required</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"submit"</span><span style="color:#B392F0"> value</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"Submit"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">form</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>使用Fetch</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">await</span><span style="color:#B392F0"> fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test.com'</span><span style="color:#E1E4E8">, {</span></span>
+<span class="line"><span style="color:#E1E4E8">  method: </span><span style="color:#9ECBFF">'POST'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#6A737D">  // 当body参数为URLSearchParams类型时，Content-Type被默认设为application/x-www-form-urlencoded</span></span>
+<span class="line"><span style="color:#6A737D">  // headers: {</span></span>
+<span class="line"><span style="color:#6A737D">  //   'Content-Type': 'application/x-www-form-urlencoded',</span></span>
+<span class="line"><span style="color:#6A737D">  // }</span></span>
+<span class="line"><span style="color:#E1E4E8">  body: </span><span style="color:#F97583">new</span><span style="color:#B392F0"> URLSearchParams</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    name: </span><span style="color:#9ECBFF">'ck'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    email: </span><span style="color:#9ECBFF">'ck@test.com'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>使用Axios</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">axios</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  method: </span><span style="color:#9ECBFF">'post'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  url: </span><span style="color:#9ECBFF">'https://test.com'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#6A737D">  // 当body参数为URLSearchParams或者字符串类型时，Content-Type被默认设为application/x-www-form-urlencoded</span></span>
+<span class="line"><span style="color:#6A737D">  // headers: {</span></span>
+<span class="line"><span style="color:#6A737D">  //   'Content-Type': 'application/x-www-form-urlencoded',</span></span>
+<span class="line"><span style="color:#6A737D">  // }</span></span>
+<span class="line"><span style="color:#E1E4E8">  data: </span><span style="color:#F97583">new</span><span style="color:#B392F0"> URLSearchParams</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    name: </span><span style="color:#9ECBFF">'ck'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    email: </span><span style="color:#9ECBFF">'ck@test.com'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h4 id="multipartform-data">multipart/form-data</h4>
+<p>由于编码的原因<code>application/x-www-form-urlencoded</code>并不支持二进制数据，所以如果上传的表单包含文件则需要此方式提交(设置<code>form</code>表单<code>enctype</code>为<code>multipart/form-data</code>)
+他的编码方式是将每个值都作为一个数据块发送，并使用用户代理定义的分隔符（<code>boundary</code>）分隔每个部分。值在每个部分的 <code>Content-Disposition</code> 标头中给出。</p>
+<p>如提交数据<code>{name: 'ck', email: 'ck@test.com', avatar: &#x3C;file>c968b3620bc26294fac5626d25ccd72d.jpg}</code>被编码为</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>POST / HTTP/1.1</span></span>
+<span class="line"><span>Host: test.com</span></span>
+<span class="line"><span>Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryPj0HGKm8KjgzNzN7</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>------WebKitFormBoundaryPj0HGKm8KjgzNzN7</span></span>
+<span class="line"><span>Content-Disposition: form-data; name="name"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ck</span></span>
+<span class="line"><span>------WebKitFormBoundaryPj0HGKm8KjgzNzN7</span></span>
+<span class="line"><span>Content-Disposition: form-data; name="email"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ck@test.com</span></span>
+<span class="line"><span>------WebKitFormBoundaryPj0HGKm8KjgzNzN7</span></span>
+<span class="line"><span>Content-Disposition: form-data; name="avatar"; filename="c968b3620bc26294fac5626d25ccd72d.jpg"</span></span>
+<span class="line"><span>Content-Type: image/jpeg</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>&#x3C;binary content></span></span></code></pre>
+<h5 id="发送multipartform-data类型请求的例子">发送<code>multipart/form-data</code>类型请求的例子</h5>
+<p>使用表单</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">form</span><span style="color:#B392F0"> action</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"https://test.com"</span><span style="color:#B392F0"> target</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"target"</span><span style="color:#B392F0"> enctype</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"multipart/form-data"</span><span style="color:#B392F0"> method</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"post"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">label</span><span style="color:#B392F0"> for</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">>Enter your name: &#x3C;/</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"text"</span><span style="color:#B392F0"> name</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"name"</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"name"</span><span style="color:#B392F0"> value</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"ck"</span><span style="color:#B392F0"> required</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">label</span><span style="color:#B392F0"> for</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"email"</span><span style="color:#E1E4E8">>Enter your email: &#x3C;/</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"email"</span><span style="color:#B392F0"> name</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"email"</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"email"</span><span style="color:#B392F0"> value</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"ck@test.com"</span><span style="color:#B392F0"> required</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">label</span><span style="color:#B392F0"> for</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"avatar"</span><span style="color:#E1E4E8">>Choose a profile picture:&#x3C;/</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"file"</span><span style="color:#B392F0"> name</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"avatar"</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"avatar"</span><span style="color:#B392F0"> accept</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"image/png, image/jpeg"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"submit"</span><span style="color:#B392F0"> value</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"Submit"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">form</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>使用Fetch</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#B392F0"> getFormData</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">params</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> formData</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> FormData</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">const</span><span style="color:#79B8FF"> key</span><span style="color:#F97583"> in</span><span style="color:#E1E4E8"> params) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    formData.</span><span style="color:#B392F0">append</span><span style="color:#E1E4E8">(key, params[key]);</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> formData;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">await</span><span style="color:#B392F0"> fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test.com'</span><span style="color:#E1E4E8">, {</span></span>
+<span class="line"><span style="color:#E1E4E8">  method: </span><span style="color:#9ECBFF">"POST"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#6A737D">  // 当body参数为FormData类型时，Content-Type被默认设为multipart/form-data</span></span>
+<span class="line"><span style="color:#6A737D">  // headers: {</span></span>
+<span class="line"><span style="color:#6A737D">  //   'Content-Type': 'multipart/form-data',</span></span>
+<span class="line"><span style="color:#6A737D">  // }</span></span>
+<span class="line"><span style="color:#E1E4E8">  body: </span><span style="color:#B392F0">getFormData</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    name: </span><span style="color:#9ECBFF">'ck'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    email: </span><span style="color:#9ECBFF">'ck@test.com'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    avatar: &#x3C;</span><span style="color:#79B8FF">File</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span></code></pre>
+<p>使用Axios</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">axios</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  method: </span><span style="color:#9ECBFF">'post'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  url: </span><span style="color:#9ECBFF">'https://test.com'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#6A737D">  // 当body参数为FormData类型时，Content-Type被默认设为multipart/form-data</span></span>
+<span class="line"><span style="color:#6A737D">  // headers: {</span></span>
+<span class="line"><span style="color:#6A737D">  //   'Content-Type': 'multipart/form-data',</span></span>
+<span class="line"><span style="color:#6A737D">  // }</span></span>
+<span class="line"><span style="color:#E1E4E8">  data: </span><span style="color:#B392F0">getFormData</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    name: </span><span style="color:#9ECBFF">'ck'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    email: </span><span style="color:#9ECBFF">'ck@test.com'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    avatar: &#x3C;</span><span style="color:#79B8FF">File</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h4 id="textplain">text/plain</h4>
+<p>对于<code>text</code>文件类型若没有特定的<code>subtype</code>，就使用<code>text/plain</code>, (设置<code>form</code>表单<code>enctype</code>为<code>text/plain</code>)。 即它意味着未知的文本文件。</p>
+<p>如提交文本数据</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>name=ck</span></span>
+<span class="line"><span>email=ck@test.com</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>POST / HTTP/1.1</span></span>
+<span class="line"><span>Host: test.com</span></span>
+<span class="line"><span>Content-Type: text/plain;charset=UTF-8</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>name=ck</span></span>
+<span class="line"><span>email=ck@test.com</span></span></code></pre>
+<h5 id="发送textplain类型请求的例子">发送<code>text/plain</code>类型请求的例子</h5>
+<p>使用表单</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#6A737D">&#x3C;!--</span></span>
+<span class="line"><span style="color:#6A737D">该表单会发送以下body</span></span>
+<span class="line"><span style="color:#6A737D">name=ck</span></span>
+<span class="line"><span style="color:#6A737D">email=ck@test.com</span></span>
+<span class="line"><span style="color:#6A737D">--></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">form</span><span style="color:#B392F0"> action</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"https://test.com"</span><span style="color:#B392F0"> target</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"target"</span><span style="color:#B392F0"> enctype</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"text/plain"</span><span style="color:#B392F0"> method</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"post"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">label</span><span style="color:#B392F0"> for</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"name"</span><span style="color:#E1E4E8">>Enter your name: &#x3C;/</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"text"</span><span style="color:#B392F0"> name</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"name"</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"name"</span><span style="color:#B392F0"> value</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"ck"</span><span style="color:#B392F0"> required</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">label</span><span style="color:#B392F0"> for</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"email"</span><span style="color:#E1E4E8">>Enter your email: &#x3C;/</span><span style="color:#85E89D">label</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"email"</span><span style="color:#B392F0"> name</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"email"</span><span style="color:#B392F0"> id</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"email"</span><span style="color:#B392F0"> value</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"ck@test.com"</span><span style="color:#B392F0"> required</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">input</span><span style="color:#B392F0"> type</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"submit"</span><span style="color:#B392F0"> value</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"Submit"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">form</span><span style="color:#E1E4E8">></span></span></code></pre>
+<p>使用Fetch</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">await</span><span style="color:#B392F0"> fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test.com'</span><span style="color:#E1E4E8">, {</span></span>
+<span class="line"><span style="color:#E1E4E8">  method: </span><span style="color:#9ECBFF">'POST'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#6A737D">  // 当body参数为字符串类型时，Content-Type被默认设为text/plain</span></span>
+<span class="line"><span style="color:#6A737D">  // headers: {</span></span>
+<span class="line"><span style="color:#6A737D">  //   'Content-Type': 'text/plain',</span></span>
+<span class="line"><span style="color:#6A737D">  // }</span></span>
+<span class="line"><span style="color:#E1E4E8">  body: </span><span style="color:#9ECBFF">`name=ck</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">email=ck@test.com`</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>使用Axios</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// 当body参数为字符串类型时，Content-Type被默认设为application/x-www-form-urlencoded，所以这里需要显示设置text/plain</span></span>
+<span class="line"><span style="color:#B392F0">axios</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  method: </span><span style="color:#9ECBFF">'post'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  url: </span><span style="color:#9ECBFF">'https://test.com'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  headers: {</span></span>
+<span class="line"><span style="color:#9ECBFF">    'Content-Type'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'text/plain'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">  data: </span><span style="color:#9ECBFF">`name=ck</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">email=ck@test.com`</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h4 id="applicationjson">application/json</h4>
+<p>表示发送的数据是个<code>JSON</code>。</p>
+<blockquote>
+<p>关于为什么不是<code>text/json</code>或者<code>text/javascript</code>,<a href="https://bluesmoon.livejournal.com/227190.html">https://bluesmoon.livejournal.com/227190.html</a> I spoke to Douglas about this in the UK actually, and asked him this same question. His answer was that JSON is not really javascript (hence no text/javascript), and not really text (hence no text/<em>). Also, the IANA is less likely to hand out text/</em> types.</p>
+</blockquote>
+<p>如提交数据<code>{name: 'ck', email: 'ck@test.com'}</code>被编码为</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>POST / HTTP/1.1</span></span>
+<span class="line"><span>Host: test.com</span></span>
+<span class="line"><span>Content-Type: text/plain;charset=UTF-8</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>{"name":"ck","email":"ck@test.com"}</span></span></code></pre>
+<h5 id="发送applicationjson类型请求的例子">发送<code>application/json</code>类型请求的例子</h5>
+<p>使用Fetch</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#6A737D">// body并不支持传递JSON对象，也不会设置默认headers&#x3C;https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch#body></span></span>
+<span class="line"><span style="color:#F97583">await</span><span style="color:#B392F0"> fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test.com'</span><span style="color:#E1E4E8">, {</span></span>
+<span class="line"><span style="color:#E1E4E8">  method: </span><span style="color:#9ECBFF">"POST"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  headers: {</span></span>
+<span class="line"><span style="color:#9ECBFF">    'Content-Type'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'application/json'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">  body: </span><span style="color:#79B8FF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">stringify</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    name: </span><span style="color:#9ECBFF">'ck'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    email: </span><span style="color:#9ECBFF">'ck@test.com'</span></span>
+<span class="line"><span style="color:#E1E4E8">  })</span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span></code></pre>
+<p>使用Axios</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">axios</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  method: </span><span style="color:#9ECBFF">'post'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  url: </span><span style="color:#9ECBFF">'https://test.com'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#6A737D">  // 当body参数为JSON对象时，Content-Type被默认设为application/json</span></span>
+<span class="line"><span style="color:#6A737D">  // headers: {</span></span>
+<span class="line"><span style="color:#6A737D">  //   'Content-Type': 'application/json',</span></span>
+<span class="line"><span style="color:#6A737D">  // }</span></span>
+<span class="line"><span style="color:#E1E4E8">  data: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    name: </span><span style="color:#9ECBFF">'ck'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    email: </span><span style="color:#9ECBFF">'ck@test.com'</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<h4 id="其他content-type类型">其他<code>Content-Type</code>类型</h4>
+<p>其他类型被编码为如 <code>video/mp4</code>，<code>image/png</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>POST / HTTP/1.1</span></span>
+<span class="line"><span>Host: test.com</span></span>
+<span class="line"><span>Content-Type: &#x3C;对应MIME类型></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>&#x3C;binary content></span></span></code></pre>
+<h5 id="发送其他content-type类型请求的例子">发送其他<code>Content-Type</code>类型请求的例子</h5>
+<p>使用Fetch</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">await</span><span style="color:#B392F0"> fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'https://test.com'</span><span style="color:#E1E4E8">, {</span></span>
+<span class="line"><span style="color:#E1E4E8">  method: </span><span style="color:#9ECBFF">"POST"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  headers: {</span></span>
+<span class="line"><span style="color:#9ECBFF">    'Content-Type'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'image/png'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">  body: &#x3C;</span><span style="color:#79B8FF">Blob</span><span style="color:#E1E4E8">> // 参考 &#x3C;https://developer.mozilla.org/zh-CN/docs/Web/API/Blob></span></span>
+<span class="line"><span style="color:#E1E4E8">})</span></span></code></pre>
+<p>使用Axios</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#B392F0">axios</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  method: </span><span style="color:#9ECBFF">'post'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  url: </span><span style="color:#9ECBFF">'https://test.com'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  headers: {</span></span>
+<span class="line"><span style="color:#9ECBFF">    'Content-Type'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'image/png'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">  data: &#x3C;</span><span style="color:#79B8FF">Blob</span><span style="color:#E1E4E8">> // 参考 &#x3C;https://axios-http.com/docs/req_config></span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>感谢阅读！！！</p> </div> <a class="flex gap-1 my-4 text-blue-600 cursor-pointer select-none" href="https://github.com/ckvv/ckvv.github.io/tree/main/content/web/HTTP请求传参详解.md"> <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4">
+  <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+  <path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4Z" />
+</svg>
+Edit this page on GitHub
+</a> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="/blog/web/http%E8%AF%B7%E6%B1%82%E4%BC%A0%E5%8F%82%E8%AF%A6%E8%A7%A3/" data-page-url="content/web/HTTP请求传参详解.md" data-page-title="HTTP请求传参详解" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="en" class="h-full bg-white"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.7.2"><!-- Canonical URL --><link rel="canonical" href="https://ckvv.net/blog/posts/base64/"><!-- Primary Meta Tags --><title>Base64原理及实现</title><meta name="title" content="Base64原理及实现"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://ckvv.net/blog/posts/base64/"><meta property="og:title" content="Base64原理及实现"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://ckvv.net/blog/posts/base64/"><meta property="twitter:title" content="Base64原理及实现"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CLVocrKm.css">
+<style>.outline-item-active[data-astro-cid-v2nb7cev]{color:var(--color-sky-700)}
+</style></head> <body class="flex flex-col min-h-full"> <header class="sticky top-0 px-4 bg-white z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <div class="flex gap-2 md:gap-4 items-center font-bold"> <h2><a href="/">CK Blog</a></h2> </div> <div class="flex gap-2 md:gap-4"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/assets/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center hidden md:inline"> Assets <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank" aria-label="GitHub" class="hidden md:inline"> <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow font-tabular-nums">  <h1 class="text-4xl font-bold my-4">Base64原理及实现</h1>
+  <div class="my-2 flex justify-between items-center"><div class="flex gap-4"><a href="/tag/base64/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> base64 </a></div><span> 2019/02/19 </span></div>
+  <div class="sticky z-10 top-20 inline-block text-left w-full" data-astro-cid-v2nb7cev><div class="2xl:hidden flex justify-end" data-astro-cid-v2nb7cev><button type="button" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-haspopup="true" data-astro-cid-v2nb7cev>
+On this page
+<svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon" data-astro-cid-v2nb7cev><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" data-astro-cid-v2nb7cev></path></svg></button></div><div id="md-outline-content" class="max-h-[calc(100vh-200px)] overflow-auto hidden absolute right-0 py-2 mt-2 min-w-48 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden 2xl:-right-12 2xl:float-right 2xl:translate-x-full 2xl:max-w-[min(calc(50vw-580px),320px)]" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" data-astro-cid-v2nb7cev><a class="outline-item block px-4 py-1 text-sm break-all" href="#base64" data-astro-cid-v2nb7cev>base64</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#编码" data-astro-cid-v2nb7cev>编码</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#base64编码" data-astro-cid-v2nb7cev>Base64编码</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#javascript代码实现" data-astro-cid-v2nb7cev>javascript代码实现</a></div></div><script type="module">function f(n,o){let r,t;return(...c)=>{t?(clearTimeout(r),r=setTimeout(()=>{Date.now()-t>=o&&(n(...c),t=Date.now())},o-(Date.now()-t))):(n(...c),t=Date.now())}}function u(n){const o=document.getElementById("menu-button"),r=document.getElementById("md-outline-content"),t=n===void 0?o.getAttribute("aria-expanded")==="true":!n;o.setAttribute("aria-expanded",`${!t}`),r.style.display=t?"none":"block"}function l(){window.innerWidth>=1536&&u(!0)}window.addEventListener("resize",l);document.addEventListener("DOMContentLoaded",()=>{l();const n=document.getElementById("md-outline-content");n.onclick=e=>{e.preventDefault();const i=document.querySelector(e.target.getAttribute("href"));i&&window.scrollTo({top:i.offsetTop-64,behavior:"smooth"})};const o=document.getElementById("menu-button");o.onclick=()=>u(),document.onclick=e=>{if(window.innerWidth>=1536)return;const i=document.getElementById("md-outline-content");e.target.id!=="menu-button"&&!i.contains(e.target)&&o.getAttribute("aria-expanded")==="true"&&u()};const r=document.querySelector(".content").querySelectorAll("h1, h2, h3"),t=document.querySelectorAll(".outline-item"),c={root:null,rootMargin:"0px",threshold:.6},a=f(e=>{e.forEach(i=>{if(i.isIntersecting){const b=i.target.getAttribute("id");t.forEach(s=>{const d=`#${b}`;s.classList.remove("outline-item-active"),s.getAttribute("href")===d&&(s.classList.add("outline-item-active"),history.replaceState(null,"",d))})}})},200),m=new IntersectionObserver(a,c);r.forEach(e=>{m.observe(e)})});</script><div class="content"> <h2 id="base64">base64</h2>
+<p><strong>Base64是用64个字符来表示数据的方法</strong>。Base64要求把每三个8Bit的字节转换为四个6Bit的字节，然后把6Bit再添两位高位0，组成四个8Bit的字节，也就是说，转换后的字符串理论上将要比原来的长1/3。如果要转码数据字节不是3的倍数，最后一组填充1到2个0字节，并在最后编码完成后在结尾添加1到2个=号。
+转换后，我们每个字节范围为[00000000-00111111],所以我们可以用一个64码表来得到我们想要的字符串（也就是最终的Base64编码）标准的Base64用<code>[A-Z,a-z,0-9,+,/]</code>64个字符编码。</p>
+<h2 id="编码">编码</h2>
+<p>深入了解base64前，我们需要先了解编码。编码是信息从一种形式或格式转换为另一种形式的过程。计算机中，所有的数据在存储和运算时都使用二进制示，n位二进制组合成2的n次方个不同的信息，给每个信息规定一个具体码组，这种过程叫编码。而具体用哪些二进制数字表示哪个符号，每个人都可以约定自己的一套编码。</p>
+<p>如常用的ASCII是由美国国家标准学会制定的一种单字节字符编码，标准ASCII码使用7位二进制数（剩下的1位二进制为0）来表示所有的大写和小写字母，数字0到9、标点符号。在有的语言中128个符号是不够的，有些编码方案利用字节中闲置的最高位编入新的符号，有的利用两个（GBK等）或更多字节（utf-32等）表示一个符号（汉字）</p>
+<h2 id="base64编码">Base64编码</h2>
+<p>base64编码过程：</p>
+<ul>
+<li>ascii码<code>s133</code>对应的编码<code>115 49 51 51</code></li>
+<li>在内存2进制表示： <code>01110011 00110001 00110011 00110011</code></li>
+<li>每三组分为6Bit四组<code>011100 110011 000100 110011 001100 110000 000000 000000</code></li>
+<li>高位补0得到 <code>00011100 00110011 00000100 00110011 00001100 00110000 00000000 00000000</code></li>
+<li>对应十进制 <code>28 51 4 51 12 48 0 0</code></li>
+<li>查对照表 生成base64码<code>czEzMw==</code></li>
+</ul>
+<p>base64解码过程：</p>
+<p>base64编码过程逆向即为解码</p>
+<h2 id="javascript代码实现">javascript代码实现</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#E1E4E8">Base64 </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  _table: [</span></span>
+<span class="line"><span style="color:#9ECBFF">    'A'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'B'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'C'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'D'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'E'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'F'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'G'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'H'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'I'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'J'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'K'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'L'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'M'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'N'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'O'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'P'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'Q'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'R'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'S'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'T'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'U'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'V'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'W'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'X'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'Y'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'Z'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'a'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'b'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'c'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'd'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'e'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'f'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'g'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'h'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'i'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'j'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'k'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'l'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'm'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'n'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'o'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'p'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'q'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'r'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    's'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    't'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'u'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'v'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'w'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'x'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'y'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'z'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '0'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '1'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '2'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '3'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '4'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '5'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '6'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '7'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '8'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '9'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '+'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    '/'</span></span>
+<span class="line"><span style="color:#E1E4E8">  ],</span></span>
+<span class="line"><span style="color:#B392F0">  _getReg</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> RegExp</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`^[${</span><span style="color:#79B8FF">this</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">_table</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">join</span><span style="color:#9ECBFF">(</span><span style="color:#9ECBFF">''</span><span style="color:#9ECBFF">)</span><span style="color:#9ECBFF">}]+={0,2}$`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#B392F0">  encode</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">bin</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> codes</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> binLength</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> bin.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    un </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> binLength </span><span style="color:#F97583">%</span><span style="color:#79B8FF"> 3</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">let</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> binLength; i </span><span style="color:#F97583">+=</span><span style="color:#79B8FF"> 3</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">      let</span><span style="color:#E1E4E8"> c </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> bin[i </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 16</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">      c </span><span style="color:#F97583">|=</span><span style="color:#E1E4E8"> bin[i </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 8</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">      c </span><span style="color:#F97583">|=</span><span style="color:#E1E4E8"> bin[i];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">      // 0x3f代表16进制数3F即0011 1111</span></span>
+<span class="line"><span style="color:#E1E4E8">      codes.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">._table[c </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 18</span><span style="color:#F97583"> &#x26;</span><span style="color:#79B8FF"> 0x3F</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#E1E4E8">      codes.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">._table[c </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 12</span><span style="color:#F97583"> &#x26;</span><span style="color:#79B8FF"> 0x3F</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#E1E4E8">      codes.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">._table[c </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 6</span><span style="color:#F97583"> &#x26;</span><span style="color:#79B8FF"> 0x3F</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#E1E4E8">      codes.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">._table[c </span><span style="color:#F97583">&#x26;</span><span style="color:#79B8FF"> 0x3F</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (un </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> c</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> bin[binLength </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 16</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">      codes.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">._table[c </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 18</span><span style="color:#F97583"> &#x26;</span><span style="color:#79B8FF"> 0x3F</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#E1E4E8">      codes.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">._table[c </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 12</span><span style="color:#F97583"> &#x26;</span><span style="color:#79B8FF"> 0x3F</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#E1E4E8">      codes.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'='</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      codes.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'='</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (un </span><span style="color:#F97583">==</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">      let</span><span style="color:#E1E4E8"> c </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> bin[binLength </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 16</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">      c </span><span style="color:#F97583">|=</span><span style="color:#E1E4E8"> bin[binLength </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 8</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">      codes.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">._table[c </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 18</span><span style="color:#F97583"> &#x26;</span><span style="color:#79B8FF"> 0x3F</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#E1E4E8">      codes.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">._table[c </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 12</span><span style="color:#F97583"> &#x26;</span><span style="color:#79B8FF"> 0x3F</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#E1E4E8">      codes.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">._table[c </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 6</span><span style="color:#F97583"> &#x26;</span><span style="color:#79B8FF"> 0x3F</span><span style="color:#E1E4E8">]);</span></span>
+<span class="line"><span style="color:#E1E4E8">      codes.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'='</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> codes.</span><span style="color:#B392F0">join</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#B392F0">  decode</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">base64Str</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> bin</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> [];</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> base64StrLen</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> base64Str.</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">_getReg</span><span style="color:#E1E4E8">().</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(base64Str)) {</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#9ECBFF"> 'Base64编码格式错误'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (base64StrLen </span><span style="color:#F97583">%</span><span style="color:#79B8FF"> 4</span><span style="color:#F97583"> !==</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#9ECBFF"> 'Base64编码长度错误'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> eqCount</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> base64StrLen </span><span style="color:#F97583">-</span><span style="color:#E1E4E8"> base64Str.</span><span style="color:#B392F0">indexOf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'='</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">let</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 3</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> base64StrLen; i </span><span style="color:#F97583">+=</span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">      let</span><span style="color:#E1E4E8"> code </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">c1</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">c2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">c3</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">c4</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [base64Str.</span><span style="color:#B392F0">charAt</span><span style="color:#E1E4E8">(i </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 3</span><span style="color:#E1E4E8">), base64Str.</span><span style="color:#B392F0">charAt</span><span style="color:#E1E4E8">(i </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">), base64Str.</span><span style="color:#B392F0">charAt</span><span style="color:#E1E4E8">(i </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">), base64Str.</span><span style="color:#B392F0">charAt</span><span style="color:#E1E4E8">(i)];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">      code </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> code </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 6</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">._table.</span><span style="color:#B392F0">indexOf</span><span style="color:#E1E4E8">(c1);</span></span>
+<span class="line"><span style="color:#E1E4E8">      code </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> code </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 6</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">._table.</span><span style="color:#B392F0">indexOf</span><span style="color:#E1E4E8">(c2);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (c3 </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> '='</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#E1E4E8"> c4 </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> '='</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        code </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> code </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 6</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">._table.</span><span style="color:#B392F0">indexOf</span><span style="color:#E1E4E8">(c3);</span></span>
+<span class="line"><span style="color:#E1E4E8">        code </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> code </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 6</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">._table.</span><span style="color:#B392F0">indexOf</span><span style="color:#E1E4E8">(c4);</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (c3 </span><span style="color:#F97583">!==</span><span style="color:#9ECBFF"> '='</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#E1E4E8"> c4 </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> '='</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        code </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> code </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 6</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> this</span><span style="color:#E1E4E8">._table.</span><span style="color:#B392F0">indexOf</span><span style="color:#E1E4E8">(c3);</span></span>
+<span class="line"><span style="color:#E1E4E8">        code </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> code </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 6</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#F97583">      if</span><span style="color:#E1E4E8"> (c3 </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> '='</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        code </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> code </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 6</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">        code </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> code </span><span style="color:#F97583">&#x3C;&#x3C;</span><span style="color:#79B8FF"> 6</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">      // 0xff即11111111</span></span>
+<span class="line"><span style="color:#E1E4E8">      bin.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(code </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 16</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">      // 取得低八位</span></span>
+<span class="line"><span style="color:#E1E4E8">      bin.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(code </span><span style="color:#F97583">>></span><span style="color:#79B8FF"> 8</span><span style="color:#F97583"> &#x26;</span><span style="color:#79B8FF"> 0xFF</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      bin.</span><span style="color:#B392F0">push</span><span style="color:#E1E4E8">(code </span><span style="color:#F97583">&#x26;</span><span style="color:#79B8FF"> 0xFF</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    switch</span><span style="color:#E1E4E8"> (eqCount) {</span></span>
+<span class="line"><span style="color:#F97583">      case</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">        bin.</span><span style="color:#B392F0">pop</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">        break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">      case</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">        bin.</span><span style="color:#B392F0">pop</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">        bin.</span><span style="color:#B392F0">pop</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">        break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">      default</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">        break</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> bin;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> `1!@#$%^ghghna三个卡就能`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> ba</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Base64.</span><span style="color:#B392F0">encode</span><span style="color:#E1E4E8">(Buffer.</span><span style="color:#B392F0">from</span><span style="color:#E1E4E8">(str));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`编码前:${</span><span style="color:#E1E4E8">str</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 1!@#$%^ghghna三个卡就能</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`编码后:${</span><span style="color:#E1E4E8">ba</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// MSFAIyQlXmdoZ2huYeS4ieS4quWNoeWwseiDvQ==</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`解码:${</span><span style="color:#E1E4E8">Buffer</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">from</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">Base64</span><span style="color:#9ECBFF">.</span><span style="color:#B392F0">decode</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">ba</span><span style="color:#9ECBFF">)).</span><span style="color:#B392F0">toString</span><span style="color:#9ECBFF">()</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 1!@#$%^ghghna三个卡就能</span></span></code></pre> </div> <a class="flex gap-1 my-4 text-blue-600 cursor-pointer select-none" href="https://github.com/ckvv/ckvv.github.io/tree/main/content/posts/base64.md"> <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4">
+  <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+  <path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4Z" />
+</svg>
+Edit this page on GitHub
+</a> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="/blog/posts/base64/" data-page-url="content/posts/base64.md" data-page-title="Base64原理及实现" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en" class="h-full bg-white"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.7.2"><!-- Canonical URL --><link rel="canonical" href="https://ckvv.net/blog/posts/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><!-- Primary Meta Tags --><title>正则表达式</title><meta name="title" content="正则表达式"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://ckvv.net/blog/posts/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><meta property="og:title" content="正则表达式"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://ckvv.net/blog/posts/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><meta property="twitter:title" content="正则表达式"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CLVocrKm.css">
+<style>.outline-item-active[data-astro-cid-v2nb7cev]{color:var(--color-sky-700)}
+</style></head> <body class="flex flex-col min-h-full"> <header class="sticky top-0 px-4 bg-white z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <div class="flex gap-2 md:gap-4 items-center font-bold"> <h2><a href="/">CK Blog</a></h2> </div> <div class="flex gap-2 md:gap-4"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/assets/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center hidden md:inline"> Assets <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank" aria-label="GitHub" class="hidden md:inline"> <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow font-tabular-nums">  <h1 class="text-4xl font-bold my-4">正则表达式</h1>
+  <div class="my-2 flex justify-between items-center"><div class="flex gap-4"><a href="/tag/正则/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> 正则 </a><a href="/tag/javascript/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> javascript </a></div><span> 2024/09/06 </span></div>
+  <div class="sticky z-10 top-20 inline-block text-left w-full" data-astro-cid-v2nb7cev><div class="2xl:hidden flex justify-end" data-astro-cid-v2nb7cev><button type="button" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-haspopup="true" data-astro-cid-v2nb7cev>
+On this page
+<svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon" data-astro-cid-v2nb7cev><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" data-astro-cid-v2nb7cev></path></svg></button></div><div id="md-outline-content" class="max-h-[calc(100vh-200px)] overflow-auto hidden absolute right-0 py-2 mt-2 min-w-48 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden 2xl:-right-12 2xl:float-right 2xl:translate-x-full 2xl:max-w-[min(calc(50vw-580px),320px)]" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" data-astro-cid-v2nb7cev><a class="outline-item block px-4 py-1 text-sm break-all" href="#基础知识" data-astro-cid-v2nb7cev>基础知识</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#基础字符匹配" data-astro-cid-v2nb7cev>基础字符匹配</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#元字符含义" data-astro-cid-v2nb7cev>元字符含义</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#字符集和预定义字符" data-astro-cid-v2nb7cev>字符集和预定义字符</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#分组和捕获" data-astro-cid-v2nb7cev>分组和捕获</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#零宽断言" data-astro-cid-v2nb7cev>零宽断言</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#其他" data-astro-cid-v2nb7cev>其他</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#应用示例" data-astro-cid-v2nb7cev>应用示例</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#js-regexp-相关-api" data-astro-cid-v2nb7cev>JS RegExp 相关 API</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#regexpprototypeexec" data-astro-cid-v2nb7cev>RegExp.prototype.exec()</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#regexpprototypetest" data-astro-cid-v2nb7cev>RegExp.prototype.test()</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#regexpprototypetostring" data-astro-cid-v2nb7cev>RegExp.prototype.toString()</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#regexpprototypesymbolmatch" data-astro-cid-v2nb7cev>RegExp.prototype[Symbol.match]()</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#regexpprototypesymbolmatchall" data-astro-cid-v2nb7cev>RegExp.prototype[Symbol.matchAll]()</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#regexpprototypesymbolreplacepattern-replacement" data-astro-cid-v2nb7cev>RegExp.prototype[Symbol.replace](pattern, replacement)</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#regexpprototypesymbolreplaceallpattern-replacement" data-astro-cid-v2nb7cev>RegExp.prototype[Symbol.replaceAll](pattern, replacement)</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#regexpprototypesymbolsearchregexp" data-astro-cid-v2nb7cev>RegExp.prototype[Symbol.search](regexp)</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#regexpprototypesymbolsplit" data-astro-cid-v2nb7cev>RegExp.prototype[Symbol.split]()</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#性能问题" data-astro-cid-v2nb7cev>性能问题</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#参考文档" data-astro-cid-v2nb7cev>参考文档</a></div></div><script type="module">function f(n,o){let r,t;return(...c)=>{t?(clearTimeout(r),r=setTimeout(()=>{Date.now()-t>=o&&(n(...c),t=Date.now())},o-(Date.now()-t))):(n(...c),t=Date.now())}}function u(n){const o=document.getElementById("menu-button"),r=document.getElementById("md-outline-content"),t=n===void 0?o.getAttribute("aria-expanded")==="true":!n;o.setAttribute("aria-expanded",`${!t}`),r.style.display=t?"none":"block"}function l(){window.innerWidth>=1536&&u(!0)}window.addEventListener("resize",l);document.addEventListener("DOMContentLoaded",()=>{l();const n=document.getElementById("md-outline-content");n.onclick=e=>{e.preventDefault();const i=document.querySelector(e.target.getAttribute("href"));i&&window.scrollTo({top:i.offsetTop-64,behavior:"smooth"})};const o=document.getElementById("menu-button");o.onclick=()=>u(),document.onclick=e=>{if(window.innerWidth>=1536)return;const i=document.getElementById("md-outline-content");e.target.id!=="menu-button"&&!i.contains(e.target)&&o.getAttribute("aria-expanded")==="true"&&u()};const r=document.querySelector(".content").querySelectorAll("h1, h2, h3"),t=document.querySelectorAll(".outline-item"),c={root:null,rootMargin:"0px",threshold:.6},a=f(e=>{e.forEach(i=>{if(i.isIntersecting){const b=i.target.getAttribute("id");t.forEach(s=>{const d=`#${b}`;s.classList.remove("outline-item-active"),s.getAttribute("href")===d&&(s.classList.add("outline-item-active"),history.replaceState(null,"",d))})}})},200),m=new IntersectionObserver(a,c);r.forEach(e=>{m.observe(e)})});</script><div class="content"> <h1 id="基础知识">基础知识</h1>
+<h2 id="基础字符匹配">基础字符匹配</h2>
+<ul>
+<li>直接匹配字符本身: 例如 <code>abc</code> 匹配字符串 <code>abc</code></li>
+<li>特殊字符(如果想匹配这些字符本身，需要在前面加 \（转义字符）): <code>.</code>、<code>^</code>、<code>$</code>、<code>*</code>、<code>+</code>、<code>?</code>、<code>{}</code>、<code>[]</code>、<code>|</code>、<code>()</code>、<code>\</code>: 如果想匹配这些字符本身，需要在前面加 \（转义字符）</li>
+</ul>
+<h2 id="元字符含义">元字符含义</h2>
+<ul>
+<li><code>.</code>：匹配任意单个字符（除了换行符）。  例如：<code>a.b</code> 可匹配 “aab”、“acb” 等。</li>
+<li><code>^</code>：匹配字符串的开始。  例如：<code>^abc</code> 只能匹配以 “abc” 开头的字符串。</li>
+<li><code>$</code>：匹配字符串的结束。  例如：<code>abc$</code> 只能匹配以 “abc” 结尾的字符串。</li>
+<li><code>*</code>：匹配前一个字符零次或多次。  例如：<code>ab*</code> 可匹配 “a”、“ab”、“abb” 等。</li>
+<li><code>+</code>：匹配前一个字符一次或多次。  例如：<code>ab+</code> 可匹配 “ab”、“abb” 等，但不能匹配 “a”。</li>
+<li><code>?</code>：匹配前一个字符零次或一次（非贪婪）。  例如：<code>ab?</code> 可匹配 “a” 或 “ab”。</li>
+<li><code>{}</code>：指定匹配次数。  例如：<code>a{2,4}</code> 可匹配 “aa”、“aaa” 或 “aaaa”。
+<ul>
+<li><code>{n}</code>：匹配前一个字符 n 次。</li>
+<li><code>{n,}</code>：匹配前一个字符至少 n 次。</li>
+<li><code>{n,m}</code>：匹配前一个字符至少 n 次，至多 m 次。</li>
+</ul>
+</li>
+<li><code>\</code>: 转义特殊字符。例如：<code>\\</code> 匹配反斜杠，<code>\.</code> 匹配点号</li>
+</ul>
+<h2 id="字符集和预定义字符">字符集和预定义字符</h2>
+<ul>
+<li><code>[abc]</code>：匹配方括号中的任一字符（a、b 或 c）。  例如：<code>[aeiou]</code> 匹配任一元音字母。</li>
+<li><code>[^abc]</code>：匹配不在括号中的任意字符。  例如：<code>[^0-9]</code> 匹配任意非数字字符。</li>
+<li><code>[a-z]</code>：匹配从 a 到 z 的任意小写字母（范围匹配）。</li>
+<li>预定义字符类
+<ul>
+<li><code>\d</code>：匹配任意数字（等价于 <code>[0-9]</code>）。</li>
+<li><code>\D</code>：匹配任意非数字字符。</li>
+<li><code>\w</code>：匹配任意字母、数字或下划线（等价于 <code>[a-zA-Z0-9_]</code>）。</li>
+<li><code>\W</code>：匹配任意非字母、数字或下划线字符。</li>
+<li><code>\s</code>：匹配任意空白字符（空格、制表符等）。</li>
+<li><code>\S</code>：匹配任意非空白字符。</li>
+</ul>
+</li>
+</ul>
+<h2 id="分组和捕获">分组和捕获</h2>
+<ul>
+<li><code>()</code>：定义子表达式（分组），并捕获匹配的内容。  例如：<code>(abc)+</code> 匹配 “abc”、“abcabc”。</li>
+<li><code>|</code>：表示 “或”。  例如：<code>abc|def</code> 匹配 “abc” 或 “def”。</li>
+</ul>
+<h2 id="零宽断言">零宽断言</h2>
+<ul>
+<li>正向前瞻：<code>(?=...)</code>  例如：<code>a(?=b)</code> 匹配 “a”，仅当它后面是 “b”。</li>
+<li>负向前瞻：<code>(?!...)</code>  例如：<code>a(?!b)</code> 匹配 “a”，仅当它后面不是 “b”。</li>
+<li>正向后瞻：<code>(?&#x3C;=...)</code> 例如：<code>(?&#x3C;=b)a</code> 匹配 “a”，仅当它前面是 “b”。</li>
+<li>负向后瞻：<code>(?&#x3C;!...)</code> 例如：<code>(?&#x3C;!b)a</code> 匹配 “a”，仅当它前面不是 “b”。</li>
+</ul>
+<h2 id="其他">其他</h2>
+<ul>
+<li>默认正则是 <strong>贪婪模式</strong>，尽可能多地匹配。</li>
+<li>在量词后加 <code>?</code> 使其变为 <strong>懒惰模式</strong>，尽可能少地匹配。  例如：<code>a.*b</code> 匹配 “a…b” 整段，而 <code>a.*?b</code> 只匹配最短的 “a…b”。</li>
+<li><code>i</code>: 忽略大小写, 这个标志会使得正则表达式在匹配时忽略字母的大小写。例如，/a/i 可以匹配 ‘a’ 或 ‘A’</li>
+<li><code>g</code>: 全局匹配, 这个标志使正则表达式进行全局匹配，而不仅仅是匹配第一个符合的内容</li>
+</ul>
+<h1 id="应用示例">应用示例</h1>
+<ul>
+<li>匹配电子邮件地址：[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}</li>
+<li>匹配手机号（中国）：1[3-9]\d{9}</li>
+<li>匹配日期：\d{4}-\d{2}-\d{2}</li>
+</ul>
+<h1 id="js-regexp-相关-api">JS RegExp 相关 API</h1>
+<h2 id="regexpprototypeexec">RegExp.prototype.exec()</h2>
+<p><code>exec(str)</code>: 如果匹配成功，返回一个数组，数组的第一个元素是匹配的完整字符串，后续元素是捕获组的内容；如果没有匹配到，返回 null</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">(</span><span style="color:#79B8FF">\d</span><span style="color:#F97583">+</span><span style="color:#DBEDFF">)-(</span><span style="color:#79B8FF">\d</span><span style="color:#F97583">+</span><span style="color:#DBEDFF">)</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">exec</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'The date is 2023-10-15'</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// ['2023-10', '2023', '10', index: 12, input: 'The date is 2023-10-15', groups: undefined]</span></span></code></pre>
+<h2 id="regexpprototypetest">RegExp.prototype.test()</h2>
+<p><code>test(str)</code>: 如果正则表达式和字符串之间匹配 str 的否则为 false</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">abc</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">test</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'ABC is here'</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// true</span></span></code></pre>
+<h2 id="regexpprototypetostring">RegExp.prototype.toString()</h2>
+<h2 id="regexpprototypesymbolmatch">RegExp.prototype[Symbol.match]()</h2>
+<ul>
+<li>如果正则表达式没有使用全局标志 g，match() 方法会返回一个数组，数组的第一个元素是匹配到的完整字符串，后续元素是捕获组（如果有的话），此外该数组还包含一些额外的属性，如 index 表示匹配结果在原字符串中的起始位置，input 表示原字符串</li>
+<li>如果正则表达式使用了全局标志 g，match() 方法会返回一个包含所有匹配结果的数组，但不包含捕获组信息。如果没有匹配到任何结果，则返回 null。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#9ECBFF">"Hello, hello!"</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">match</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">hello</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">//  ['Hello', index: 0, input: 'Hello, hello!', groups: undefined ]</span></span>
+<span class="line"><span style="color:#9ECBFF">"Hello, hello!"</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">match</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">hello</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">gi</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">//  [ 'Hello', 'hello' ]</span></span></code></pre>
+<h2 id="regexpprototypesymbolmatchall">RegExp.prototype[Symbol.matchAll]()</h2>
+<p>matchAll() 方法返回一个迭代器对象，该迭代器中的每个元素都是一个数组，数组的格式与 match() 方法在不使用全局标志 g 时返回的数组格式相同，包含匹配到的完整字符串、捕获组信息以及 index 和 input 属性。如果没有匹配到任何结果，迭代器为空。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#9ECBFF">"Hello, hello!"</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">matchAll</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">hello</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">gi</span><span style="color:#E1E4E8">)]</span></span>
+<span class="line"><span style="color:#6A737D">// [ 'Hello', index: 0, input: 'Hello, hello!', groups: undefined ]</span></span>
+<span class="line"><span style="color:#6A737D">// [ 'hello', index: 7, input: 'Hello, hello!', groups: undefined ]</span></span></code></pre>
+<h2 id="regexpprototypesymbolreplacepattern-replacement">RegExp.prototype[Symbol.replace](pattern, replacement)</h2>
+<p><code>pattern</code>: 可以是一个字符串或者一个正则表达式。如果是字符串，它只会替换匹配到的第一个子字符串；如果是正则表达式，它会根据正则表达式的规则进行匹配替换，并且如果正则表达式带有 g 全局标志，则会替换所有匹配的子字符串
+<code>replacement</code>: 可以是一个字符串或者一个函数。如果是字符串，它会替换掉匹配到的内容；如果是函数，该函数会在每次匹配时被调用，函数的返回值将作为替换的内容</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#9ECBFF">"Hello, hello!"</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">replace</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">hello</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">i</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'你好'</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// '你好, hello!'</span></span>
+<span class="line"><span style="color:#9ECBFF">"Hello, hello!"</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">replace</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">hello</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">gi</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">v</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#9ECBFF"> `${</span><span style="color:#E1E4E8">v</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">toUpperCase</span><span style="color:#E1E4E8">()) </span><span style="color:#6A737D">// 'HELLO, HELLO!'</span></span></code></pre>
+<h2 id="regexpprototypesymbolreplaceallpattern-replacement">RegExp.prototype[Symbol.replaceAll](pattern, replacement)</h2>
+<p><code>pattern</code>: 可以是一个字符串或者一个正则表达式。如果是正则表达式，必须带有 <code>g</code> 全局标志，否则会抛出错误
+<code>replacement</code>: 可以是一个字符串或者一个函数，作用和 <code>replace()</code> 方法的第二个参数相同</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#9ECBFF">"Hello, hello!"</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">replaceAll</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">hello</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">gi</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">'你好'</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// '你好, 你好!'</span></span></code></pre>
+<h2 id="regexpprototypesymbolsearchregexp">RegExp.prototype[Symbol.search](regexp)</h2>
+<p><code>regexp</code>: 正则表达式对象或具有 Symbol.search 方法的任何对象, 如果 regexp 不是 RegExp 对象并且没有 Symbol.search 方法，则使用 new RegExp（regexp） 将其隐式转换为 RegExp
+<code>返回值</code>: 执行正则表达式和此字符串之间的匹配项的搜索，返回字符串中第一个匹配项的索引</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#9ECBFF">'2020-01-02'</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">search</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#DBEDFF">-</span><span style="color:#9ECBFF">/</span><span style="color:#F97583">g</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// 4</span></span></code></pre>
+<h2 id="regexpprototypesymbolsplit">RegExp.prototype[Symbol.split]()</h2>
+<h1 id="性能问题">性能问题</h1>
+<p>当正则表达式包含大量的可选分支、嵌套的分组、重复字符（如 *、+、? 等）以及复杂的字符类时，其匹配过程会变得非常复杂，从而导致性能下降。回溯是正则表达式匹配过程中的一种机制，当匹配失败时，正则引擎会回溯到之前的状态，尝试其他可能的匹配路径。</p>
+<p>例如过多的回溯会导致性能急剧下降。例如，正则表达式 <code>/.+(\d+)+/</code> 匹配字符串 <code>abc123def456</code> 时，<code>(.+)</code> 会尽可能多地匹配字符，然后 <code>(\d+)+</code> 尝试匹配数字。如果匹配失败，正则引擎会回溯 <code>(.+)</code> 匹配的字符，重新尝试 <code>(\d+)+</code> 的匹配，这个过程可能会重复多次，消耗大量时间。这种情况下，可以考虑使用其他更高效的数据处理方法，如基于字符串分割。</p>
+<p><code>/\s*,\s*/.test('\t'.repeat(N) + '\x00,')</code> 执行时间变化图</p>
+<p><img src="https://r2.ckvv.net/6e280ffae09f546898d2fad7d24319580b751a55791359d376be52c317405108.png" alt=""></p>
+<p>你可以在<a href="https://devina.io/redos-checker">https://devina.io/redos-checker</a> 检查正则表达式是否存在潜在的拒绝服务漏洞</p>
+<h1 id="参考文档">参考文档</h1>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp</a></li>
+<li><a href="https://en.wikipedia.org/wiki/ReDoS">https://en.wikipedia.org/wiki/ReDoS</a></li>
+</ul> </div> <a class="flex gap-1 my-4 text-blue-600 cursor-pointer select-none" href="https://github.com/ckvv/ckvv.github.io/tree/main/content/posts/正则表达式.md"> <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4">
+  <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+  <path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4Z" />
+</svg>
+Edit this page on GitHub
+</a> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="/blog/posts/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-page-url="content/posts/正则表达式.md" data-page-title="正则表达式" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>

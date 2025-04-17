@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en" class="h-full bg-white"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.7.2"><!-- Canonical URL --><link rel="canonical" href="https://ckvv.net/blog/nodejs/jsonwebtoken/"><!-- Primary Meta Tags --><title>JsonWebToken</title><meta name="title" content="JsonWebToken"><meta name="description" content="Welcome to my website!"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://ckvv.net/blog/nodejs/jsonwebtoken/"><meta property="og:title" content="JsonWebToken"><meta property="og:description" content="Welcome to my website!"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://ckvv.net/blog/nodejs/jsonwebtoken/"><meta property="twitter:title" content="JsonWebToken"><meta property="twitter:description" content="Welcome to my website!"><link rel="stylesheet" href="/_astro/about.CLVocrKm.css">
+<style>.outline-item-active[data-astro-cid-v2nb7cev]{color:var(--color-sky-700)}
+</style></head> <body class="flex flex-col min-h-full"> <header class="sticky top-0 px-4 bg-white z-10 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-4"> <div class="flex gap-2 md:gap-4 items-center font-bold"> <h2><a href="/">CK Blog</a></h2> </div> <div class="flex gap-2 md:gap-4"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/tag/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/assets/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center hidden md:inline"> Assets <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="/about/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank" aria-label="GitHub" class="hidden md:inline"> <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow font-tabular-nums">  <h1 class="text-4xl font-bold my-4">JsonWebToken</h1>
+  <div class="my-2 flex justify-between items-center"><div class="flex gap-4"><a href="/tag/node.js/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> node.js </a><a href="/tag/jsonwebtoken/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> jsonwebtoken </a></div><span> 2021/07/09 </span></div>
+  <div class="sticky z-10 top-20 inline-block text-left w-full" data-astro-cid-v2nb7cev><div class="2xl:hidden flex justify-end" data-astro-cid-v2nb7cev><button type="button" class="inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-haspopup="true" data-astro-cid-v2nb7cev>
+On this page
+<svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon" data-astro-cid-v2nb7cev><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" data-astro-cid-v2nb7cev></path></svg></button></div><div id="md-outline-content" class="max-h-[calc(100vh-200px)] overflow-auto hidden absolute right-0 py-2 mt-2 min-w-48 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden 2xl:-right-12 2xl:float-right 2xl:translate-x-full 2xl:max-w-[min(calc(50vw-580px),320px)]" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" data-astro-cid-v2nb7cev><a class="outline-item block px-4 py-1 text-sm break-all" href="#什么是-json-web-token" data-astro-cid-v2nb7cev>什么是 JSON Web Token？</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#什么时候应该使用-json-web-令牌" data-astro-cid-v2nb7cev>什么时候应该使用 JSON Web 令牌</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#json-web-令牌结构" data-astro-cid-v2nb7cev>JSON Web 令牌结构</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#头" data-astro-cid-v2nb7cev>头</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#有效载荷" data-astro-cid-v2nb7cev>有效载荷</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#签名" data-astro-cid-v2nb7cev>签名</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#使用-jsonwebtoken-登录" data-astro-cid-v2nb7cev>使用 jsonwebtoken 登录</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#node-中使用" data-astro-cid-v2nb7cev>node 中使用</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#jwtsignpayload-secretorprivatekey-options-callback" data-astro-cid-v2nb7cev>jwt.sign(payload, secretOrPrivateKey, [options, callback])</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#jwtverifytoken-secretorprivatekey-options-callback" data-astro-cid-v2nb7cev>jwt.verify(token, secretOrPrivateKey, [options, callback])</a></div></div><script type="module">function f(n,o){let r,t;return(...c)=>{t?(clearTimeout(r),r=setTimeout(()=>{Date.now()-t>=o&&(n(...c),t=Date.now())},o-(Date.now()-t))):(n(...c),t=Date.now())}}function u(n){const o=document.getElementById("menu-button"),r=document.getElementById("md-outline-content"),t=n===void 0?o.getAttribute("aria-expanded")==="true":!n;o.setAttribute("aria-expanded",`${!t}`),r.style.display=t?"none":"block"}function l(){window.innerWidth>=1536&&u(!0)}window.addEventListener("resize",l);document.addEventListener("DOMContentLoaded",()=>{l();const n=document.getElementById("md-outline-content");n.onclick=e=>{e.preventDefault();const i=document.querySelector(e.target.getAttribute("href"));i&&window.scrollTo({top:i.offsetTop-64,behavior:"smooth"})};const o=document.getElementById("menu-button");o.onclick=()=>u(),document.onclick=e=>{if(window.innerWidth>=1536)return;const i=document.getElementById("md-outline-content");e.target.id!=="menu-button"&&!i.contains(e.target)&&o.getAttribute("aria-expanded")==="true"&&u()};const r=document.querySelector(".content").querySelectorAll("h1, h2, h3"),t=document.querySelectorAll(".outline-item"),c={root:null,rootMargin:"0px",threshold:.6},a=f(e=>{e.forEach(i=>{if(i.isIntersecting){const b=i.target.getAttribute("id");t.forEach(s=>{const d=`#${b}`;s.classList.remove("outline-item-active"),s.getAttribute("href")===d&&(s.classList.add("outline-item-active"),history.replaceState(null,"",d))})}})},200),m=new IntersectionObserver(a,c);r.forEach(e=>{m.observe(e)})});</script><div class="content"> <h2 id="什么是-json-web-token">什么是 JSON Web Token？</h2>
+<p>JSON Web Token（JWT）是一个开放标准（RFC 7519），它定义了一种紧凑且独立的方式，用于在各方之间用 SON 对象安全地传输信息。此信息可以通过数字签名进行验证和信任。 JWT 可以使用加密算法（使用 HMAC 算法）或使用 RSA 或 ECDSA 的公钥/私钥对进行签名。</p>
+<h2 id="什么时候应该使用-json-web-令牌">什么时候应该使用 JSON Web 令牌</h2>
+<p>以下是 JSON Web 令牌有用的一些场景：</p>
+<ul>
+<li>
+<p>授权：这是使用 JWT 的最常见方案。一旦用户登录，每个后续请求将包括 JWT，允许用户访问该令牌允许的路由，服务和资源。 Single Sign On 是一种现在广泛使用 JWT 的功能，因为它的开销很小，并且能够在不同的域中轻松使用。</p>
+</li>
+<li>
+<p>信息交换：JSON Web 令牌是在各方之间安全传输信息的好方法。因为 JWT 可以签名 - 例如，使用公钥/私钥对 - 您可以确定发件人是他们所说的人。此外，由于使用标头和有效负载计算签名，您还可以验证内容是否未被篡改。</p>
+</li>
+</ul>
+<h2 id="json-web-令牌结构">JSON Web 令牌结构</h2>
+<p>JSON Web Tokens 由<code>.</code>分隔的三个部分组成，它们是：</p>
+<ul>
+<li>头</li>
+<li>有效载荷</li>
+<li>签名
+因此，JWT 通常如<code>xxxxx.yyyyy.zzzzz</code>所示.</li>
+</ul>
+<h2 id="头">头</h2>
+<p>标头通常由两部分组成：令牌的类型，即 JWT，以及正在使用的签名算法，例如 HMAC SHA256 或 RSA。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>{</span></span>
+<span class="line"><span>  "alg": "HS256",</span></span>
+<span class="line"><span>  "typ": "JWT"</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>然后，这个 JSON 被编码为 Base64Url，形成 JWT 的第一部分。</p>
+<h2 id="有效载荷">有效载荷</h2>
+<p>令牌的第二部分是有效负载，其中包含声明。声明是关于实体（通常是用户）和其他数据的声明。有三种类型:registered、public、private claims.</p>
+<ul>
+<li>registered：这些是一组预定义声明，不是强制性的，但建议使用，以提供一组有用的，可互操作的声明。其中一些是： iss（发行人）， exp（到期时间），sub（主题）， aud（观众）等。</li>
+<li>public：这些可以由使用 JWT 的人随意定义。但为避免冲突，应在 IANA JSON Web 令牌注册表中定义它们，或者将
+其定义为包含防冲突命名空间的 URI。</li>
+<li>private claims： 这是创建共享使用它们同意并既不是当事人之间的信息自定义声明注册或公众的权利要求</li>
+</ul>
+<p>然后，有效负载经过 Base64Url 编码，形成 JSON Web 令牌的第二部分。</p>
+<blockquote>
+<p>请注意，对于签名令牌，此信息虽然可以防止被篡改，但任何人都可以读取。除非加密，否则不要将秘密信息放在 JWT 的有效负载或头元素中。</p>
+</blockquote>
+<h2 id="签名">签名</h2>
+<p>要创建签名部分，您必须采用编码标头，编码的有效负载，秘密，标头中指定的算法，并对其进行签名。
+例如，如果要使用 HMAC SHA256 算法，将按以下方式创建签名：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>HMACSHA256(</span></span>
+<span class="line"><span>  base64UrlEncode(header) + "." +</span></span>
+<span class="line"><span>  base64UrlEncode(payload),</span></span>
+<span class="line"><span>  secret)</span></span></code></pre>
+<p>签名用于验证消息在此过程中未被更改，并且，在使用私钥签名的令牌的情况下，它还可以验证 JWT 的发件人是否是它所声称的人。</p>
+<ul>
+<li>结果</li>
+</ul>
+<p>输出是三个由点分隔的 Base64-URL 字符串，可以在 HTML 和 HTTP 环境中轻松传递，而与基于 XML 的标准（如 SAML）相比更加紧凑。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>//原始</span></span>
+<span class="line"><span>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmb28iOiJiYXIiLCJpYXQiOjE1NjIxMzQ0MDIsImV4cCI6MTU2MjEzNDQ2Mn0.dzH7ogImjrWX8Qc-arXHFFjgF8YcO_KBi7BCgcmQUGk</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>//Base64 解码后</span></span>
+<span class="line"><span>{"alg":"HS256","typ":"JWT"}{"foo":"bar","iat":1562134402,"exp":1562134462}�~耉��e�AϚ�q�8����b��rd</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="使用-jsonwebtoken-登录">使用 jsonwebtoken 登录</h2>
+<p>在身份验证中，当用户使用其凭据成功登录时，将返回 JSON Web 令牌。由于令牌是凭证，因此必须非常小心以防止出现安全问题。一般情况下，您不应该将令牌保留的时间超过要求。</p>
+<p>每当用户想要访问受保护的路由或资源时，用户代理应该使用承载模式发送 JWT，通常在 Authorization 标头中。标题的内容应如下所示：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Authorization: Bearer &#x3C;token></span></span></code></pre>
+<p>在某些情况下，这可以是无状态授权机制。服务器的受保护路由将检查 Authorization 标头中的有效 JWT ，如果存在，则允许用户访问受保护资源。如果 JWT 包含必要的数据，则可以减少查询数据库以进行某些操作的需要，尽管可能并非总是如此。</p>
+<p>如果在标 Authorization 头中发送令牌，则跨域资源共享（CORS）将不会成为问题，因为它不使用 cookie。</p>
+<blockquote>
+<p>请注意，使用签名令牌，令牌中包含的所有信息都会向用户或其他方公开，即使他们无法更改。这意味着您不应该在令牌中放置秘密信息。</p>
+</blockquote>
+<h2 id="node-中使用">node 中使用</h2>
+<h2 id="jwtsignpayload-secretorprivatekey-options-callback">jwt.sign(payload, secretOrPrivateKey, [options, callback])</h2>
+<ul>
+<li>Returns: JsonWebToken 字符串</li>
+<li>payload：应该是表示有效 JSON 的对象文字，缓冲区或字符串。</li>
+<li>secretOrPrivateKey : 是一个字符串，缓冲区或对象，包含 HMAC 算法的秘密或 RSA 和 ECDSA 的 PEM 编码私钥。如果是带密码的私钥，则可以使用对象{key，passphrase}（基于加密文档），在这种情况下，请确保传递算法选项。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>var jwt = require('jsonwebtoken');</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>var token = jwt.sign({ foo: 'bar' }, 'private-key',{ expiresIn: 1 *600000 });</span></span>
+<span class="line"><span></span></span></code></pre>
+<h2 id="jwtverifytoken-secretorprivatekey-options-callback">jwt.verify(token, secretOrPrivateKey, [options, callback])</h2>
+<ul>
+<li>token: JsonWebToken string</li>
+<li>secretOrPrivateKey : 是一个字符串，缓冲区或对象，包含 HMAC 算法的秘密或 RSA 和 ECDSA 的 PEM 编码私钥。如果是带密码的私钥，则可以使用对象{key，passphrase}（基于加密文档），在这种情况下，请确保传递算法选项。</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>jwt.verify(token, 'private-key', function(err, decoded) {</span></span>
+<span class="line"><span>    console.log('err:',err);</span></span>
+<span class="line"><span>    console.log('decoded:',decoded);</span></span>
+<span class="line"><span>});</span></span></code></pre> </div> <a class="flex gap-1 my-4 text-blue-600 cursor-pointer select-none" href="https://github.com/ckvv/ckvv.github.io/tree/main/content/nodejs/jsonwebtoken.md"> <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4">
+  <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+  <path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4Z" />
+</svg>
+Edit this page on GitHub
+</a> <div id="cusdis_thread" class="mt-12" data-host="https://cusdis.com" data-app-id="c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd" data-page-id="/blog/nodejs/jsonwebtoken/" data-page-url="content/nodejs/jsonwebtoken.md" data-page-title="JsonWebToken" data-iframe="/js/cusdis/iframe.umd.js" data-style="/js/cusdis/style.css"></div> <script>
+window.CUSDIS_LOCALE = {
+  powered_by: '',
+  post_comment: '发送',
+  loading: '加载中...',
+  // comment
+  email: '邮箱(可选)',
+  nickname: '昵称',
+  reply_placeholder: '内容',
+  reply_btn: '回复',
+  sending: '发送中...',
+  // reply
+  mod_badge: '管理员',
+  content_is_required: '内容不能为空',
+  nickname_is_required: '昵称不能为空',
+  comment_has_been_sent: '评论已发送, 管理员审核通过后会展示',
+};
+</script> <script async src="/js/cusdis/cusdis.min.js"></script>  </main> </body></html>
