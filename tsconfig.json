@@ -11,7 +11,7 @@
       ]
     },
     "strictNullChecks": true,
-    "exactOptionalPropertyTypes": true,
+    "exactOptionalPropertyTypes": false,
     "noImplicitAny": false,
     "skipLibCheck": true
   },
