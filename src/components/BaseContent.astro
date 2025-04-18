@@ -5,9 +5,9 @@ import { REPOSITORY } from '@/consts';
 import { encrypt } from '@/shared';
 import { render } from 'astro:content';
 import { KEY } from 'astro:env/server';
-import Cusdis from './Cusdis.astro';
 import Decrypt from './Decrypt.astro';
 import FormattedDate from './FormattedDate.astro';
+import Comment from './Giscus.astro';
 import Outline from './Outline.astro';
 import Tag from './Tag.astro';
 
@@ -52,8 +52,4 @@ const { headings, Content } = await render(post);
   </a>
 )}
 
-<Cusdis
-  pageID={post.data.id || Astro.url.pathname}
-  pageURL={post?.filePath}
-  pageTitle={post?.data.title}
-/>
+<Comment />

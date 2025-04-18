@@ -4,6 +4,10 @@
 @import "tailwindcss/preflight.css";
 @import "tailwindcss/utilities.css";
 
+.giscus {
+  margin-top: 2rem;
+}
+
 .content ul{
   list-style: disc;
 }
@@ -1460,7 +1464,7 @@ iframe {
 }
 
 @media (prefers-color-scheme: dark) {
-  img,video,svg,canvas,pre {
+  img,video,svg,canvas,pre,.giscus {
     filter: invert(1) hue-rotate(180deg);
   }
 
