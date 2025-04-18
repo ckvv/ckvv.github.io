@@ -1,4 +1,8 @@
-@import "tailwindcss";
+/* https://github.com/tailwindlabs/tailwindcss/discussions/15709 */
+/* @import "tailwindcss"; */
+@import "tailwindcss/theme.css";
+@import "tailwindcss/preflight.css";
+@import "tailwindcss/utilities.css";
 
 .content ul{
   list-style: disc;
