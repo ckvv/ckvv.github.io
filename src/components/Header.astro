@@ -9,14 +9,31 @@ import Link from './Link.astro';
 		<div class="flex gap-2 md:gap-4 items-center font-bold">
 			<h2><a href="/">{SITE_TITLE}</a></h2>
 		</div>
-		<div class="flex gap-2 md:gap-4">
-			<Link class="px-1" href="/">Home</Link>
-			<Link class="px-1" href="/tag/">Tag</Link>
-			<Link class="px-1" href="/assets/" class="hidden md:inline">Assets</Link>
-			<Link class="px-1" href="/about/">About</Link>
-			<a href={REPOSITORY} target="_blank" aria-label="GitHub" class="hidden md:inline">
-				<Github />
+		<span data-astro-button-menu class="md:hidden select-none cursor-pointer">☰</span>
+		<div class="md:visible! flex gap-2 md:gap-4 flex-col md:flex-row max-md:absolute max-md:bg-white max-md:left-0 max-md:right-0 max-md:top-16 max-md:gap-4 max-md:py-6 max-md:shadow max-md:border-t max-md:border-gray-300 max-md:invisible">
+			<Link class="px-1 justify-center" href="/">Home</Link>
+			<Link class="px-1 justify-center" href="/tag/">Tag</Link>
+			<Link class="px-1 justify-center" href="/assets/">Assets</Link>
+			<Link class="px-1 justify-center" href="/about/">About</Link>
+			<a href={REPOSITORY} target="_blank" aria-label="GitHub">
+				<Github class="m-auto" />
 			</a>
 		</div>
 	</nav>
 </header>
+
+<script>
+document.querySelector('[data-astro-button-menu]')?.addEventListener('click', (e: any) => {
+  const menu = e.target?.nextElementSibling;
+  if (!menu) {
+    return;
+  }
+  if (getComputedStyle(menu).visibility === 'hidden') {
+    e.target.textContent = 'x';
+    menu.style.visibility = 'visible';
+  } else {
+    e.target.textContent = '☰';
+    menu.style.visibility = 'hidden';
+  }
+});
+</script>
