@@ -5,6 +5,6 @@ export const CUSDIS = {
   'data-host': 'https://cusdis.com',
   'data-app-id': 'c2b015f9-9a4b-4997-b66f-f9c6ca26ebdd',
 };
-export const LANG = 'en';
+export const LANG = 'zh-CN';
 export const SITE_TITLE = `CK Blog`;
-export const SITE_DESCRIPTION = 'Welcome to my website!';
+export const SITE_DESCRIPTION = 'The blog of ckvv';
