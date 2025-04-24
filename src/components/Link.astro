@@ -9,6 +9,6 @@ const isActive = Astro.url.pathname.toLowerCase() === `${href}`.toLowerCase();
 
 <a class="group clink cursor-pointer shrink-0 select-none relative flex items-center" href={href} class:list={[className, { active: isActive }]} {...props}>
 	<slot />
-	<div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-width duration-500 ease-in-out absolute -bottom-1 left-0" style={{ width: isActive ? '100%' : '' }} />
+	<div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-[width] duration-500 ease-in-out absolute -bottom-1 left-0" style={{ width: isActive ? '100%' : '' }} />
 </a>
 
