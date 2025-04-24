@@ -3,7 +3,7 @@ import { getPosts } from '@/utils';
 import rss from '@astrojs/rss';
 
 export async function GET(context) {
-  const posts = await getPosts('blog');
+  const posts = await getPosts();
   return rss({
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,

@@ -8,7 +8,7 @@
     "node": "^22.x"
   },
   "scripts": {
-    "gen": "node ./scripts/gen.js",
+    "gen": "node --experimental-strip-types ./scripts/gen.ts",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

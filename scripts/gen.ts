@@ -1,14 +1,17 @@
 import { access, constants, writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { join, parse } from 'node:path';
 import process from 'node:process';
 
-const name = process.argv[2];
+const arg = process.argv[2];
 
-if (!name) {
+if (!arg) {
   throw new Error('file name is required');
 }
 
-const file = join(process.cwd(), 'content', `${name}.md`);
+let { dir, name, ext } = parse(arg);
+ext ||= '.md';
+
+const file = join(process.cwd(), 'content', dir, `${name}${ext}`);
 
 if (await isExist(file)) {
   throw new Error('file name is exist');
