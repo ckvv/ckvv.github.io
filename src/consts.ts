@@ -8,3 +8,16 @@ export const CUSDIS = {
 export const LANG = 'zh-CN';
 export const SITE_TITLE = `CK Blog`;
 export const SITE_DESCRIPTION = 'The blog of ckvv';
+export const NAVS = [{
+  label: 'Home',
+  heref: '/',
+}, {
+  label: 'Tag',
+  heref: '/tag/',
+}, {
+  label: 'Assets',
+  heref: '/assets/',
+}, {
+  label: 'About',
+  heref: '/about/',
+}];

@@ -1,6 +1,6 @@
 ---
 import Github from '@/assets/github.svg';
-import { REPOSITORY, SITE_TITLE } from '@/consts';
+import { NAVS, REPOSITORY, SITE_TITLE } from '@/consts';
 import Link from './Link.astro';
 ---
 
@@ -10,11 +10,14 @@ import Link from './Link.astro';
 			<h2><a href="/">{SITE_TITLE}</a></h2>
 		</div>
 		<span data-astro-button-menu class="md:hidden select-none cursor-pointer text-3xl leading-none">☰</span>
-		<div class="z-20 md:visible! flex gap-2 md:gap-4 flex-col md:flex-row max-md:absolute max-md:bg-white max-md:left-0 max-md:right-0 max-md:top-14 max-md:gap-4 max-md:py-8 max-md:shadow max-md:border-t max-md:border-gray-300 max-md:invisible">
-			<Link class="px-1 justify-center" href="/">Home</Link>
-			<Link class="px-1 justify-center" href="/tag/">Tag</Link>
-			<Link class="px-1 justify-center" href="/assets/">Assets</Link>
-			<Link class="px-1 justify-center" href="/about/">About</Link>
+		<div class="z-20 md:visible! flex gap-2 md:gap-4 flex-col md:flex-row max-md:absolute max-md:bg-white max-md:left-0 max-md:right-0 max-md:top-14 max-md:gap-4 max-md:py-6 max-md:shadow max-md:border-t max-md:border-gray-300 max-md:invisible">
+			{
+				NAVS.map(v => (
+					<Link href={v.heref} class="px-1 justify-center">
+						{v.label}
+					</Link>
+				))
+			}
 			<a href={REPOSITORY} target="_blank" aria-label="GitHub">
 				<Github class="m-auto" />
 			</a>
