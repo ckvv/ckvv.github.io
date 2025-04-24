@@ -125,7 +125,7 @@ onUnmounted(() => {
       <div v-if="isHaveMore" @click="search">
         加载更多
       </div>
-      <div v-if="!isHaveMore && !isLoading && !isHaveError">
+      <div v-if="!isHaveMore && !isLoading && !isHaveError" class="text-center text-gray-500">
         --- 到底部了 ---
       </div>
     </div>
