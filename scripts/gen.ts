@@ -18,6 +18,7 @@ if (await isExist(file)) {
 }
 await writeFile(file, `---
 title: "${name}"
+draft: true
 tags: []
 date: "${formatDate(new Date())}"
 ---

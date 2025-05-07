@@ -130,6 +130,14 @@ date: '2023-12-05'
 + [log4js-node](https://github.com/log4js-node/log4js-node) 用于 node.js 的 log4js 
 + [winston](https://github.com/winstonjs/winston) 几乎适用于所有事物的记录器
 
+### API 文档
+
++ [Swagger](https://swagger.io/)
++ [OpenAPI](https://tools.openapis.org/categories/sdk.html)
++ [openapi-ts](https://openapi-ts.dev/)
++ [typedoc](https://typedoc.org/)
++ [jsdoc](https://jsdoc.app/)
+
 ### 工具类
 
 + `nodeppt`: markdown 生成web ppt  
