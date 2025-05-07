@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="zh-CN" class="h-full bg-white"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><meta name="generator" content="Astro v5.7.5"><!-- Canonical URL --><link rel="canonical" href="https://ckvv.net/blog/ecmascript%E6%98%BE%E5%BC%8F%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"><!-- Primary Meta Tags --><title>ECMAScript中的显式资源管理</title><meta name="title" content="ECMAScript中的显式资源管理"><meta name="description" content="I am a Web full-stack engineer. I like Vue.js and Node.js. This is my blog, where I mainly share my thoughts, experiences, or knowledge."><link rel="stylesheet" href="/_astro/about.NfD55uXK.css">
+<style>.outline-item-active[data-astro-cid-v2nb7cev]{color:var(--color-sky-700)}
+</style></head> <body class="flex flex-col min-h-full"> <header class="sticky top-0 px-4 bg-white z-50 shadow-md"> <nav class="w-full max-w-6xl m-auto elect-none flex justify-between items-center text-2xl my-3 md:my-4"> <div class="flex gap-2 md:gap-4 items-center font-bold"> <h2><a href="/">CK Blog</a></h2> </div> <span data-astro-button-menu class="md:hidden select-none cursor-pointer text-3xl leading-none">☰</span> <div class="z-20 md:visible! flex gap-2 md:gap-4 flex-col md:flex-row max-md:absolute max-md:bg-white max-md:left-0 max-md:right-0 max-md:top-14 max-md:gap-4 max-md:py-6 max-md:shadow max-md:border-t max-md:border-gray-300 max-md:invisible"> <a href="/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1 justify-center"> Home <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-[width] duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a><a href="/tag/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1 justify-center"> Tag <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-[width] duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a><a href="/assets/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1 justify-center"> Assets <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-[width] duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a><a href="/about/" class="group clink cursor-pointer shrink-0 select-none relative flex items-center px-1 justify-center"> About <div class="h-1 bg-blue-500 w-0 group-hover:w-full transition-[width] duration-500 ease-in-out absolute -bottom-1 left-0" style=""></div> </a> <a href="https://github.com/ckvv/ckvv.github.io" target="_blank" aria-label="GitHub"> <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="m-auto">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.16 0 0 7.16 0 16C0 23.08 4.58 29.06 10.94 31.18C11.74 31.32 12.04 30.84 12.04 30.42C12.04 30.04 12.02 28.78 12.02 27.44C8 28.18 6.96 26.46 6.64 25.56C6.46 25.1 5.68 23.68 5 23.3C4.44 23 3.64 22.26 4.98 22.24C6.24 22.22 7.14 23.4 7.44 23.88C8.88 26.3 11.18 25.62 12.1 25.2C12.24 24.16 12.66 23.46 13.12 23.06C9.56 22.66 5.84 21.28 5.84 15.16C5.84 13.42 6.46 11.98 7.48 10.86C7.32 10.46 6.76 8.82 7.64 6.62C7.64 6.62 8.98 6.2 12.04 8.26C13.32 7.9 14.68 7.72 16.04 7.72C17.4 7.72 18.76 7.9 20.04 8.26C23.1 6.18 24.44 6.62 24.44 6.62C25.32 8.82 24.76 10.46 24.6 10.86C25.62 11.98 26.24 13.4 26.24 15.16C26.24 21.3 22.5 22.66 18.94 23.06C19.52 23.56 20.02 24.52 20.02 26.02C20.02 28.16 20 29.88 20 30.42C20 30.84 20.3 31.34 21.1 31.18C27.42 29.06 32 23.06 32 16C32 7.16 24.84 0 16 0V0Z" fill="#24292E" />
+</svg> </a> </div> </nav> </header> <script type="module">document.querySelector("[data-astro-button-menu]")?.addEventListener("click",e=>{const t=e.target?.nextElementSibling;t&&(getComputedStyle(t).visibility==="hidden"?(e.target.textContent="✕",t.style.visibility="visible"):(e.target.textContent="☰",t.style.visibility="hidden"))});</script> <main class="w-full max-w-5xl mx-auto px-4 py-8 flex-grow font-tabular-nums">  <h1 class="text-4xl font-bold my-4">ECMAScript中的显式资源管理</h1>
+  <div class="my-2 flex justify-between items-center"><div class="flex gap-4"><a href="/tag/javascript/" class="bg-gray-100 hover:bg-gray-300 text-sky-700 px-2 py-1 rounded cursor-pointer"> javascript </a></div><span class="tabular-nums"> 2025/05/07 </span></div>
+  <div class="sticky z-10 top-20 inline-block text-left w-full" data-astro-cid-v2nb7cev><div class="2xl:hidden flex justify-end" data-astro-cid-v2nb7cev><button type="button" class="shadow-md inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-haspopup="true" data-astro-cid-v2nb7cev>
+On this page
+<svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon" data-astro-cid-v2nb7cev><path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" data-astro-cid-v2nb7cev></path></svg></button></div><div id="md-outline-content" class="max-h-[calc(100vh-200px)] overflow-auto hidden absolute right-0 py-2 mt-2 min-w-48 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden 2xl:-right-12 2xl:float-right 2xl:translate-x-full 2xl:max-w-[min(calc(50vw-580px),320px)]" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" data-astro-cid-v2nb7cev><a class="outline-item block px-4 py-1 text-sm break-all" href="#explicit-resource-management-的使用背景" data-astro-cid-v2nb7cev>Explicit resource management 的使用背景</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#explicit-resource-management-是什么" data-astro-cid-v2nb7cev>Explicit resource management 是什么</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#异常处理" data-astro-cid-v2nb7cev>异常处理</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#disposablestack--asyncdisposablestack" data-astro-cid-v2nb7cev>DisposableStack &amp; AsyncDisposableStack</a><a class="outline-item block px-4 py-1 text-sm break-all" href="#参考" data-astro-cid-v2nb7cev>参考</a></div></div><script type="module">function f(n,o){let r,t;return(...c)=>{t?(clearTimeout(r),r=setTimeout(()=>{Date.now()-t>=o&&(n(...c),t=Date.now())},o-(Date.now()-t))):(n(...c),t=Date.now())}}function u(n){const o=document.getElementById("menu-button"),r=document.getElementById("md-outline-content"),t=n===void 0?o.getAttribute("aria-expanded")==="true":!n;o.setAttribute("aria-expanded",`${!t}`),r.style.display=t?"none":"block"}function l(){window.innerWidth>=1536&&u(!0)}window.addEventListener("resize",l);document.addEventListener("DOMContentLoaded",()=>{l();const n=document.getElementById("md-outline-content");n.onclick=e=>{e.preventDefault();const i=document.querySelector(e.target.getAttribute("href"));i&&window.scrollTo({top:i.offsetTop-64,behavior:"smooth"})};const o=document.getElementById("menu-button");o.onclick=()=>u(),document.onclick=e=>{if(window.innerWidth>=1536)return;const i=document.getElementById("md-outline-content");e.target.id!=="menu-button"&&!i.contains(e.target)&&o.getAttribute("aria-expanded")==="true"&&u()};const r=document.querySelector(".content").querySelectorAll("h1, h2, h3"),t=document.querySelectorAll(".outline-item"),c={root:null,rootMargin:"0px",threshold:.6},a=f(e=>{e.forEach(i=>{if(i.isIntersecting){const b=i.target.getAttribute("id");t.forEach(s=>{const d=`#${b}`;s.classList.remove("outline-item-active"),s.getAttribute("href")===d&&(s.classList.add("outline-item-active"),history.replaceState(null,"",d))})}})},200),m=new IntersectionObserver(a,c);r.forEach(e=>{m.observe(e)})});</script><div class="content"> <p><a href="https://github.com/nodejs/node/releases/tag/v24.0.0">Node 24</a> 今天正式发布了, V8 引擎已更新至 13.6 版本, 其中一个功能包含了<code>Explicit resource management</code> 的支持, 该功能是在为了解决软件开发中关于各种资源（内存、I/O 等）的生命周期和管理的常见模式。该模式通常包括资源的分配以及显式释放关键资源的能力。</p>
+<blockquote>
+<p>注意该 <code>API</code> 较新, 目前只在部分浏览器中可用, 详情参考 <a href="https://caniuse.com/mdn-javascript_statements_using">https://caniuse.com/mdn-javascript_statements_using</a></p>
+</blockquote>
+<h1 id="explicit-resource-management-的使用背景">Explicit resource management 的使用背景</h1>
+<p>例如, 有一个函数需要创建一个<code>sqlite</code> 数据库，对其进行读取和写入等各种操作，然后关闭数据库连接。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { DatabaseSync } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> "node:sqlite"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> doSomeWork</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> db</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> DatabaseSync</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">':memory:'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // use db...</span></span>
+<span class="line"><span style="color:#6A737D">    // db.exec(`</span></span>
+<span class="line"><span style="color:#6A737D">    //   CREATE TABLE t3(x, y);</span></span>
+<span class="line"><span style="color:#6A737D">    //   INSERT INTO t3 VALUES ('a', 4),</span></span>
+<span class="line"><span style="color:#6A737D">    //                         ('b', 5),</span></span>
+<span class="line"><span style="color:#6A737D">    //                         ('c', 3),</span></span>
+<span class="line"><span style="color:#6A737D">    //                         ('d', 8),</span></span>
+<span class="line"><span style="color:#6A737D">    //                         ('e', 1);</span></span>
+<span class="line"><span style="color:#6A737D">    // `);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // Close the db</span></span>
+<span class="line"><span style="color:#E1E4E8">    db.</span><span style="color:#B392F0">close</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>操作数据库可能抛出异常，所以我们无法保证<code>db.close()</code>一定被执行, 所以我们需要额外的 <code>try/finally</code> 处理</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> doSomeWork</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> db</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> DatabaseSync</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">':memory:'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">      // use file...</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    finally</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">      // Close the db</span></span>
+<span class="line"><span style="color:#E1E4E8">      db.</span><span style="color:#B392F0">close</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>如果还有其他的资源需要释放我们还需要在<code>finally</code>块中添加更多清理逻辑,还可能遇到其他麻烦比如说清理资源也可能会抛出异常(资源尚未创建等等), 引入 <code>Explicit resource management</code> 就是为了解决此类问题</p>
+<h1 id="explicit-resource-management-是什么">Explicit resource management 是什么</h1>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> doSomeWork</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">  using</span><span style="color:#79B8FF"> db</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> DatabaseSync</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">':memory:'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // use file...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><code>using</code> 是一个新关键字，它允许我们声明新的变量，有点像 <code>const</code> 。关键区别在于， <code>using</code> 声明的变量会在作用域结束时自动调用其清理函数(<code>Symbol.asyncDispose</code> 或者 <code>Symbol.dispose</code>), <code>using</code> 声明会在其包含作用域的最后，或在“提前返回”（例如 <code>return</code> 或 <code>throw n error</code>）之前执行此清理。它们还会像堆栈一样按照先进后出的顺序进行处理。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> loggy</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">id</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Disposable</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Creating ${</span><span style="color:#E1E4E8">id</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        [Symbol.dispose]() {</span></span>
+<span class="line"><span style="color:#E1E4E8">            console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Disposing ${</span><span style="color:#E1E4E8">id</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> func</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    using</span><span style="color:#79B8FF"> a</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> loggy</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"a"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    using</span><span style="color:#79B8FF"> b</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> loggy</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"b"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    {</span></span>
+<span class="line"><span style="color:#F97583">        using</span><span style="color:#79B8FF"> c</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> loggy</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"c"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">        using</span><span style="color:#79B8FF"> d</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> loggy</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"d"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#F97583">    using</span><span style="color:#79B8FF"> e</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> loggy</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"e"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">    // Unreachable.</span></span>
+<span class="line"><span style="color:#6A737D">    // Never created, never disposed.</span></span>
+<span class="line"><span style="color:#F97583">    using</span><span style="color:#79B8FF"> f</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> loggy</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"f"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#B392F0">func</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#6A737D">// Creating a</span></span>
+<span class="line"><span style="color:#6A737D">// Creating b</span></span>
+<span class="line"><span style="color:#6A737D">// Creating c</span></span>
+<span class="line"><span style="color:#6A737D">// Creating d</span></span>
+<span class="line"><span style="color:#6A737D">// Disposing d</span></span>
+<span class="line"><span style="color:#6A737D">// Disposing c</span></span>
+<span class="line"><span style="color:#6A737D">// Creating e</span></span>
+<span class="line"><span style="color:#6A737D">// Disposing e</span></span>
+<span class="line"><span style="color:#6A737D">// Disposing b</span></span>
+<span class="line"><span style="color:#6A737D">// Disposing a</span></span></code></pre>
+<h1 id="异常处理">异常处理</h1>
+<p>为了应对清理之前和清理过程中的抛出了异常, <code>SuppressedError</code> 作为 <code>Error</code> 的新子类型。它具有一个 <code>suppressed</code> 属性，用于保存最后抛出的错误，以及一个 <code>error</code> 属性，用于保存最近抛出的错误。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ErrorA</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">    name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "ErrorA"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> ErrorB</span><span style="color:#F97583"> extends</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">    name</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "ErrorB"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> throwy</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">id</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        [Symbol.dispose]() {</span></span>
+<span class="line"><span style="color:#F97583">            throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> ErrorA</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Error from ${</span><span style="color:#E1E4E8">id</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> func</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    using</span><span style="color:#79B8FF"> a</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> throwy</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"a"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> ErrorB</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"oops!"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    func</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">e</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> any</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(e.name); </span><span style="color:#6A737D">// SuppressedError</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(e.message); </span><span style="color:#6A737D">// An error was suppressed during disposal.</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(e.error.name); </span><span style="color:#6A737D">// ErrorA</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(e.error.message); </span><span style="color:#6A737D">// Error from a</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(e.suppressed.name); </span><span style="color:#6A737D">// ErrorB</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(e.suppressed.message); </span><span style="color:#6A737D">// oops!</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h1 id="disposablestack--asyncdisposablestack">DisposableStack &#x26; AsyncDisposableStack</h1>
+<p>如果您希望其他人始终如一地执行拆卸逻辑，使用<code> Disposable</code> 和 <code>AsyncDisposable</code> 定义类型可以让您的代码更易于使用。浏览器和运行时（例如 Node.js、Deno 和 Bun）中的 API 也可能选择对已经具有清理方法的对象（例如文件句柄、连接等）使用 <code>Symbol.dispose</code> 和 <code>Symbol.asyncDispose</code>,，但对于你自己的场景来说可能有点很多过度抽象</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> TempFile</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> Disposable</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">    #path</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">    #handle</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    constructor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">path</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.#path </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> path;</span></span>
+<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.#handle </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> fs.</span><span style="color:#B392F0">openSync</span><span style="color:#E1E4E8">(path, </span><span style="color:#9ECBFF">"w+"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6A737D">    // other methods</span></span>
+<span class="line"><span style="color:#E1E4E8">    [Symbol.dispose]() {</span></span>
+<span class="line"><span style="color:#6A737D">        // Close the file and delete it.</span></span>
+<span class="line"><span style="color:#E1E4E8">        fs.</span><span style="color:#B392F0">closeSync</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.#handle);</span></span>
+<span class="line"><span style="color:#E1E4E8">        fs.</span><span style="color:#B392F0">unlinkSync</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.#path);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> doSomeWork</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    using</span><span style="color:#79B8FF"> file</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> TempFile</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">".some_temp_file"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // use file...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> TempFile</span><span style="color:#F97583"> implements</span><span style="color:#B392F0"> Disposable</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">    #path</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">    #handle</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    constructor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">path</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.#path </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> path;</span></span>
+<span class="line"><span style="color:#79B8FF">        this</span><span style="color:#E1E4E8">.#handle </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> fs.</span><span style="color:#B392F0">openSync</span><span style="color:#E1E4E8">(path, </span><span style="color:#9ECBFF">"w+"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6A737D">    // other methods</span></span>
+<span class="line"><span style="color:#F97583">    async</span><span style="color:#E1E4E8"> [Symbol.asyncDispose]() {</span></span>
+<span class="line"><span style="color:#6A737D">        // Close the file and delete it.</span></span>
+<span class="line"><span style="color:#E1E4E8">        fs.</span><span style="color:#B392F0">closeSync</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.#handle);</span></span>
+<span class="line"><span style="color:#E1E4E8">        fs.</span><span style="color:#B392F0">unlinkSync</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">this</span><span style="color:#E1E4E8">.#path);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">export</span><span style="color:#F97583"> async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> doSomeWork</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    await using</span><span style="color:#79B8FF"> file</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> TempFile</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">".some_temp_file"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#6A737D">    // use file...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>通过 <code>DisposableStack</code> 和 <code>AsyncDisposableStack</code> 。这两个对象既可以用于一次性清理，也可以用于任意数量的清理。<code>DisposableStack</code> 是一个对象，它拥有多种方法来跟踪 <code>Disposable</code> 对象，并且可以为其提供 <code>DisposableStack</code> 任意清理工作的函数。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ts"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> doSomeWork</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> path</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> ".some_temp_file"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> file</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> fs.</span><span style="color:#B392F0">openSync</span><span style="color:#E1E4E8">(path, </span><span style="color:#9ECBFF">"w+"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    using</span><span style="color:#79B8FF"> cleanup</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> DisposableStack</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // 将一个清理回调函数添加到栈顶, 对象被销毁时将执行defer的回调函数</span></span>
+<span class="line"><span style="color:#E1E4E8">    cleanup.</span><span style="color:#B392F0">defer</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">        fs.</span><span style="color:#B392F0">closeSync</span><span style="color:#E1E4E8">(file);</span></span>
+<span class="line"><span style="color:#E1E4E8">        fs.</span><span style="color:#B392F0">unlinkSync</span><span style="color:#E1E4E8">(path);</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#6A737D">    // use file...</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#B392F0">someCondition</span><span style="color:#E1E4E8">()) {</span></span>
+<span class="line"><span style="color:#6A737D">        // do some more work...</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#6A737D">    // ...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h1 id="参考">参考</h1>
+<ul>
+<li><a href="https://github.com/tc39/proposal-explicit-resource-management">https://github.com/tc39/proposal-explicit-resource-management</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-2.html">https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-2.html</a></li>
+</ul> </div> <a class="flex gap-1 my-4 text-blue-600 cursor-pointer select-none" href="https://github.com/ckvv/ckvv.github.io/tree/main/content/ECMAScript显式资源管理.md"> <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4">
+  <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+  <path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4Z" />
+</svg>
+Edit this page on GitHub
+</a> <script src="https://giscus.app/client.js" data-repo="ckvv/ckvv.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkzODQzNjA2OTQ=" data-category="Announcements" data-category-id="DIC_kwDOFujg9s4CpN2G" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async>
+</script>  </main> </body></html>
