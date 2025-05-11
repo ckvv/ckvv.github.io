@@ -173,6 +173,7 @@ date: '2023-12-05'
 ## AI相关
 
 + [generative-ai-for-beginners](https://github.com/microsoft/generative-ai-for-beginners) 初学者学习构建生成式 AI 应用程序的基础知识课程
++ [Generative AI for Beginners](https://learn.microsoft.com/zh-cn/collections/zpy7c8zmq6ky0z) 来自“初学者生成式人工智能”课程的一系列额外学习工具
 + [@huggingface/transformers](https://github.com/huggingface/transformers.js) 最先进的网页机器学习。直接在浏览器中运行 🤗 Transformers，无需服务器！
 + [ollama](https://github.com/ollama/ollama) 启动并运行 Llama 3.3、DeepSeek-R1、Phi-4、Gemma 2 和其他大型语言模型
 + [node-llama-cpp](https://github.com/withcatai/node-llama-cpp) 使用 llama.cpp 的 node.js 绑定在计算机上本地运行 AI 模型。在生成级别的模型输出上强制实施 JSON 架构
