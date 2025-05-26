@@ -126,3 +126,48 @@ source ~/.zshrc
 
 python3 --version
 ```
+
+# rust
+
+```sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# 默认安装路径
+# Rustup metadata and toolchains will be installed into the Rustup
+# home directory, located at:
+
+#   /Users/chenkai/.rustup
+
+# This can be modified with the RUSTUP_HOME environment variable.
+
+# The Cargo home directory is located at:
+
+#   /Users/chenkai/.cargo
+
+# This can be modified with the CARGO_HOME environment variable.
+
+# The cargo, rustc, rustup and other commands will be added to
+# Cargo's bin directory, located at:
+
+#   /Users/chenkai/.cargo/bin
+
+# This path will then be added to your PATH environment variable by
+# modifying the profile files located at:
+
+#   /Users/chenkai/.profile
+#   /Users/chenkai/.zshenv
+
+# You can uninstall at any time with rustup self uninstall and
+# these changes will be reverted.
+```
+
+# clashx
+
+参考 https://v2free.net/doc/#/macOS/ClashX
+
+很多命令行工具（如 curl、wget、git 等）可能没有正确配置代理，因此即使 Clash 代理正在工作，命令行工具依然无法通过代理访问互联网
+
+```shell
+export http_proxy=http://127.0.0.1:1080 // 代理端口
+export https_proxy=http://127.0.0.1:1080 // 代理端口
+```
