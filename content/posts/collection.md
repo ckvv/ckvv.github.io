@@ -63,7 +63,10 @@ date: '2023-12-05'
 + `vm2`: Node.js 的高级虚拟机/沙箱.
 + `js-yaml`: js解析yaml  
 + [marked](https://github.com/markedjs/marked): markdown解析成html  
-+ `markdown-it`: markdown解析成html  
++ `markdown-it`: markdown解析成html
++ [mdbox](https://github.com/unjs/mdbox) 简单的 markdown 实用程序
++ [md4w](https://github.com/ije/md4w) 一个用 Zig & C 编写的 Markdown 渲染器，编译成 WebAssymbly
++ [remarkjs](https://github.com/remarkjs/remark) Markdown 处理器
 + `fast-xml-parser`: Validate XML or Parse XML to JS/JSON very fast without C/C++ based libraries  
 + `glob`: 使用 shell 使用的模式匹配文件
 + `jsoneditor` 基于 Web 查看、编辑、格式化和验证 JSON 的工具.
@@ -79,6 +82,7 @@ date: '2023-12-05'
 + [zx](https://github.com/google/zx)
 + [ofetch](https://github.com/unjs/ofetch) 更好的 fetch API。适用于节点、浏览器和 worker
 + [commander](https://github.com/tj/commander.js) Node.js 命令行界面开发变得简单易行
++ [minimatch](https://github.com/isaacs/minimatch) JavaScript 中的 glob 匹配器
 
 ## 测试
 
@@ -214,6 +218,7 @@ date: '2023-12-05'
 + [react-native](https://reactnative.dev/)
 + [uni-app](https://uniapp.dcloud.net.cn/) 使用 Vue.js 的跨平台框架
 + [nw.js](https://github.com/nwjs/nw.js) 直接从 DOM/WebWorker 调用所有 Node.js 模块，并启用使用所有 Web 技术编写应用程序的新方式。
++ [https://lynxjs.org/zh/](https://lynxjs.org/zh/) Web 构建跨平台应用
 
 ## GIS
 
