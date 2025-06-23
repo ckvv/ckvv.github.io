@@ -63,7 +63,9 @@ date: '2023-12-05'
 + `vm2`: Node.js 的高级虚拟机/沙箱.
 + `js-yaml`: js解析yaml  
 + [marked](https://github.com/markedjs/marked): markdown解析成html  
-+ `markdown-it`: markdown解析成html
++ [markdown-it](https://github.com/markdown-it/markdown-it): markdown解析成html
++ [unified](https://www.npmjs.com/package/unified) 使用语法树解析、检查、转换和序列化内容
++ [react-markdown](https://github.com/remarkjs/react-markdown) React 的 Markdown 组件
 + [mdbox](https://github.com/unjs/mdbox) 简单的 markdown 实用程序
 + [md4w](https://github.com/ije/md4w) 一个用 Zig & C 编写的 Markdown 渲染器，编译成 WebAssymbly
 + [remarkjs](https://github.com/remarkjs/remark) Markdown 处理器
@@ -196,6 +198,8 @@ date: '2023-12-05'
 + [mcp/specification](https://github.com/modelcontextprotocol/specification) 模型上下文协议规范
 + [langchain](https://github.com/langchain-ai/langchainjs) 构建具有上下文感知推理的应用
 + [llamaindex](https://github.com/run-llama/LlamaIndexTS) 为您的LLM应用程序提供数据框架。专注于服务器端解决方案
++ [Prompt-Engineering-Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) 提示工程指南
++ [langgraph](https://github.com/langchain-ai/langgraphjs) 用于构建可控代理的低级编排框架
 
 ## 游戏
 
