@@ -198,8 +198,12 @@ date: '2023-12-05'
 + [mcp/specification](https://github.com/modelcontextprotocol/specification) 模型上下文协议规范
 + [langchain](https://github.com/langchain-ai/langchainjs) 构建具有上下文感知推理的应用
 + [llamaindex](https://github.com/run-llama/LlamaIndexTS) 为您的LLM应用程序提供数据框架。专注于服务器端解决方案
-+ [Prompt-Engineering-Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) 提示工程指南
 + [langgraph](https://github.com/langchain-ai/langgraphjs) 用于构建可控代理的低级编排框架
++ [ai-chatbot](https://github.com/vercel/ai-chatbot) 由 Vercel 构建的功能齐全、可破解的 Next.js AI 聊天机器人
++ [cherry-studio](https://github.com/CherryHQ/cherry-studio) Cherry Studio 是一个桌面客户端，支持多个 LLM 提供程序。
++ [lobe-chat](https://github.com/lobehub/lobe-chat) 一个开源、现代设计的 ChatGPT/LLMs UI/框架。
++ [Prompt-Engineering-Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) 用于提示设计的指南、论文、讲座、笔记本和资源
++ [anthropic-cookbook](https://github.com/anthropics/anthropic-cookbook) 展示了一些有趣且有效的 Claude 使用方法。
 
 ## 游戏
 
