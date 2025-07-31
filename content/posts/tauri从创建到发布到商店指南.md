@@ -259,6 +259,49 @@ apply(from = "tauri.build.gradle.kts")
 + 下载登录transporter:  https://apps.apple.com/cn/app/transporter/id1450874784?mt=12, 上传 `ipa` 文件到`transporter`
 + 应用发布: 在appstoreconnect中选择你的ipa文件, 发布等待审核通过
 
+# 插件开发
+插件可以挂载到 Tauri 的生命周期中，暴露需求 webview API 的 Rust 代码，使用 Rust、Kotlin 或 Swift 原生代码处理命令并能处理更多需求。
+
++ 初始化插件项目， `pnpm tauri plugin new [name]`
++ 安装插件依赖，在 `src-tauri/Cargo.toml` 添加你注册的插件，你过你没发布成 npm 包需要将版本号改为文件地址, 如
+
+```toml
+tauri-plugin-test = { path = "../plugins/tauri-plugin-test" }
+```
++ 注册插件，修改文件 `src-tauri/src/lib.rs`
+
+```rs
+tauri::Builder::default()
+  .plugin(tauri_plugin_test::init())
+```
+
++ 声明插件需要的权限，修改文件 `src-tauri/capabilities/default.json`
+
+```json
+{
+  "permissions": [
+    "test:default"
+  ]
+}
+```
+
+前端调用
+```js
+import { invoke } from "@tauri-apps/api/core";
+
+invoke('plugin:test|ping', {
+  payload: {
+    value: 'hello from frontend'
+  }
+})
+  .then((response) => {
+    alert(`response from ping: ${JSON.stringify(response)}`)
+  })
+  .catch((err) => {
+    alert(`ping error: ${JSON.stringify(err)}`)
+  })
+```
+
 # 整体开发体验
 使用 `Tauri 2.0` 开发的应用, 如果是原生功能相关较少,大部分基于 Web 开发 整体体验还行, 如果涉及到原生功能, 则需要使用 Tauri 提供的插件 https://tauri.app/zh-cn/plugin/ , 对于插件不提供的功能还是需要通过安卓 或者 ios 来进行原生功能的开发. 这对于客户端不熟悉的开发者来说是比较困难, 由于 `Tauri 2.0` 刚推出不久, 相关文档也不是很详细, 相关解决方案也比较少, 需要自己去探索的内容较多
 
