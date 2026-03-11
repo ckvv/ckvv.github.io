@@ -30,7 +30,9 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
 
       - name: Enable Corepack
-        run: corepack enable
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.28.0 --activate
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
