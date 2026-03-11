@@ -16,22 +16,22 @@
     "lint": "eslint . --fix"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/react": "^4.4.2",
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/vue": "^5.1.4",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.11",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "tailwindcss": "^4.1.18",
-    "vue": "^3.5.26"
+    "@astrojs/mdx": "^5.0.0",
+    "@astrojs/react": "^5.0.0",
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/vue": "^6.0.0",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^6.0.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.1",
+    "vue": "^3.5.30"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^7.0.1",
-    "@types/react": "^19.2.8",
+    "@antfu/eslint-config": "^7.7.0",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^9.39.2",
-    "eslint-plugin-astro": "^1.5.0"
+    "eslint": "^10.0.3",
+    "eslint-plugin-astro": "^1.6.0"
   }
 }

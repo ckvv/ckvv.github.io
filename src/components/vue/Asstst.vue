@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted, ref } from 'vue';
 import { file as fileAPI } from '@/api';
 import { formatFileSize, isPicture } from '@/shared.ts';
-import { onMounted, onUnmounted, ref } from 'vue';
 import Upload from './Upload.vue';
 
 const limit = 20;
@@ -28,14 +28,14 @@ async function search() {
   isHaveMore.value = false;
   try {
     const params: any = { limit };
-    const startAfter = files.value[files.value.length - 1]?.key;
+    const startAfter = files.value.at(-1)?.key;
     if (startAfter) {
       params.startAfter = startAfter;
     }
     const result = await fileAPI.list(params);
 
     if (Array.isArray(result)) {
-      files.value = files.value.concat(result);
+      files.value = [...files.value, ...result];
 
       // 不判断 false
       if (result.length >= limit) {

@@ -2,8 +2,10 @@ import type { CollectionEntry } from 'astro:content';
 import { parse } from 'node:path';
 import { getCollection } from 'astro:content';
 
+const NAME_SEPARATOR_RE = /[_-]/;
+
 function formatName(name: string) {
-  return name.split(/[_-]/).join(' ');
+  return name.split(NAME_SEPARATOR_RE).join(' ');
 }
 
 export async function getPosts(filter?: (entry: CollectionEntry<'blog'>) => boolean) {
