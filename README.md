@@ -1,6 +1,35 @@
 # [CK'S BLOG](https://ckvv.net)
 
-My Blog
+A personal blog built with Astro and deployed to GitHub Pages.
+
+## Overview
+
+- Content-driven site powered by Markdown and MDX
+- Minimal blog layout focused on reading speed
+- Static deployment via GitHub Actions and GitHub Pages
+
+## Development
+
+This project uses `pnpm` and Node.js `24.x`.
+
+```bash
+pnpm install
+pnpm dev
+```
+
+## Build
+
+```bash
+pnpm build
+pnpm preview
+```
+
+## Project Structure
+
+- `src/`: pages, layouts, components, styles, and shared utilities
+- `content/`: blog posts and topic-based content collections
+- `public/`: static assets copied directly to the final build
+- `scripts/`: repository-specific helper scripts
 
 # Features
 

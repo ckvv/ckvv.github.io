@@ -13,7 +13,7 @@ import Link from './Link.astro';
 		<div class="z-20 md:visible! flex gap-2 md:gap-4 flex-col md:flex-row max-md:absolute max-md:bg-white max-md:left-0 max-md:right-0 max-md:top-14 max-md:gap-4 max-md:py-6 max-md:shadow max-md:border-t max-md:border-gray-300 max-md:invisible">
 			{
 				NAVS.map(v => (
-					<Link href={v.heref} class="px-1 justify-center">
+					<Link href={v.href} class="px-1 justify-center">
 						{v.label}
 					</Link>
 				))
