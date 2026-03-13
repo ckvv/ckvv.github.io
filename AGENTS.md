@@ -29,11 +29,11 @@ When the user asks for a blog post or article for this site, write the content i
 - Follow the existing date format used in this repo: `"YYYY/MM/DD"`.
 - Keep the article title and body aligned with the source material, and include a source/reference section when the post is based on an external link or document.
 - Before creating a new article, inspect nearby content to match the repository's current writing and frontmatter conventions.
-- After adding or editing blog content, run `pnpm build` as the minimum validation to confirm the content collection and route generation still work.
+- After adding or editing blog content under `content/`, skip testing and build validation for `.md` files. If the change touches any `.mdx` file, run `pnpm build` as the minimum validation to confirm the content collection and route generation still work.
 
 ## Testing Guidelines
 
-There is currently no dedicated automated test suite in this repository. Treat `pnpm lint` and `pnpm build` as the minimum validation steps before opening a pull request. When changing rendered pages, verify the affected routes in `pnpm dev` or `pnpm preview`. If you add public utility behavior, update the relevant documentation under `docs/`.
+There is currently no dedicated automated test suite in this repository. Treat `pnpm lint` and `pnpm build` as the minimum validation steps before opening a pull request, except when only updating `.md` files under `content/`; in that case, no testing is required. If a `content/` change touches any `.mdx` file, still run `pnpm build`. When changing rendered pages, verify the affected routes in `pnpm dev` or `pnpm preview`. If you add public utility behavior, update the relevant documentation under `docs/`.
 
 ## Commit & Pull Request Guidelines
 
