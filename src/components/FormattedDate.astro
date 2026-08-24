@@ -1,18 +1,11 @@
 ---
+import { formatDate } from '@/utils';
+
 interface Props {
 	date?: Date;
 }
 
 const { date } = Astro.props;
-
-export function formatDate(date: Date) {
-	const [year, month, day] = [date.getFullYear(), date.getMonth(), date.getDate()];
-	return {
-		toString() {
-			return `${year}/${`${month + 1}`.padStart(2, '0')}/${`${day}`.padStart(2, '0')}`;
-		},
-	};
-}
 ---
 
 <span class="tabular-nums">

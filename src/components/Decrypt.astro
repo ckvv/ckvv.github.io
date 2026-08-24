@@ -14,17 +14,22 @@ const { data } = Astro.props;
 <script>
   import { decrypt } from '@/shared';
 
-  async function decryptData(data: string, tip?: string) {
+  const MAX_RETRIES = 3;
+
+  async function decryptData(data: string, tip?: string, retries = 0) {
+    if (retries >= MAX_RETRIES) {
+      return null;
+    }
     try {
       // eslint-disable-next-line no-alert
       const password = prompt(tip || '请输入密码');
       if (!password) {
-        return;
+        return null;
       }
       const result = await decrypt(data, password);
       return result;
     } catch (error) {
-      return decryptData(data, '密码错误, 请重新输入密码');
+      return decryptData(data, '密码错误, 请重新输入密码', retries + 1);
     }
   }
   document.getElementById('button-decrypt')?.addEventListener('click', async function () {

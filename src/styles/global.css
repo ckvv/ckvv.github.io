@@ -1,8 +1,4 @@
-/* https://github.com/tailwindlabs/tailwindcss/discussions/15709 */
-/* @import "tailwindcss"; */
-@import "tailwindcss/theme.css";
-@import "tailwindcss/preflight.css";
-@import "tailwindcss/utilities.css";
+@import "tailwindcss";
 
 .giscus {
   margin-top: 2rem;

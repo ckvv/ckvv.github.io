@@ -6,8 +6,6 @@ type Props = HTMLAttributes<'button'>;
 const { class: className, ...props } = Astro.props;
 ---
 
-<button class="v-button text-purple-500 bg-purple-200 px-2 py-1 whitespace-nowrap rounded-lg" @click="count++ " {...props}>
+<button class:list={['v-button text-purple-500 bg-purple-200 px-2 py-1 whitespace-nowrap rounded-lg', className]} {...props}>
   <slot />
 </button>
-
-

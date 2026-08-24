@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-export default function RButton(props) {
+interface RButtonProps {
+  count?: number;
+  children?: React.ReactNode;
+}
+
+export default function RButton(props: RButtonProps) {
   const [count, setCount] = useState(props.count || 0);
 
   function handleClick() {

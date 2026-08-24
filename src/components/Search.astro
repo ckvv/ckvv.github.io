@@ -10,14 +10,24 @@ const { placeholder = '搜索' } = Astro.props;
 
 <div class="mt-2">
   <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-blue-600">
-    <SearchSVG class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6" />
-    <input data-astro-search-input type="text" class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" placeholder={placeholder} />
+    <SearchSVG class="shrink-0 text-base text-gray-500 select-none sm:text-sm/6" aria-hidden="true" />
+    <input
+      data-astro-search-input
+      type="text"
+      class="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
+      placeholder={placeholder}
+      aria-label="Search query"
+    />
     <div class="flex shrink-0 focus-within:relative">
-      <select data-astro-search-select class="col-start-1 row-start-1 w-full appearance-none rounded-md py-1.5 pr-7 pl-3 text-base text-gray-500 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6">
+      <select
+        data-astro-search-select
+        class="col-start-1 row-start-1 w-full appearance-none rounded-md py-1.5 pr-7 pl-3 text-base text-gray-500 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-blue-600 sm:text-sm/6"
+        aria-label="Search engine"
+      >
         <option>GitHub</option>
         <option>Google</option>
       </select>
-      <button data-astro-search-button class="flex items-center text-white bg-blue-500 rounded-md px-2">Search</button>
+      <button data-astro-search-button class="flex items-center text-white bg-blue-500 rounded-md px-2" aria-label="Execute search">Search</button>
     </div>
   </div>
 </div>
@@ -27,8 +37,8 @@ const searchInput = document.querySelector('[data-astro-search-input]') as HTMLI
 const select = document.querySelector('[data-astro-search-select]') as HTMLSelectElement;
 function search() {
   window.open(select?.value === 'GitHub'
-    ? `https://github.com/ckvv/ckvv.github.io/search?l=Markdown&q=${searchInput.value}`
-    : `https://www.google.com/search?q=site:${window.location.host} ${searchInput.value}`);
+    ? `https://github.com/ckvv/ckvv.github.io/search?l=Markdown&q=${encodeURIComponent(searchInput.value)}`
+    : `https://www.google.com/search?q=site:${encodeURIComponent(window.location.host)} ${encodeURIComponent(searchInput.value)}`);
 }
 searchInput.addEventListener('keyup', (e) => {
   if (e.key === 'Enter') {

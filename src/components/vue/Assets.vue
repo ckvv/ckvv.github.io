@@ -4,19 +4,25 @@ import { file as fileAPI } from '@/api';
 import { formatFileSize, isPicture } from '@/shared.ts';
 import Upload from './Upload.vue';
 
+interface FileItem {
+  key: string;
+  size: number;
+}
+
 const limit = 20;
 const isHaveError = ref(false);
 const isHaveMore = ref(false);
 const isLoading = ref(true);
 const isUploading = ref(false);
-const files = ref<{ key: string; size: number }[]>([]);
+const files = ref<FileItem[]>([]);
 
-async function onUpload(file: any) {
+async function onUpload(file: File) {
   try {
     isUploading.value = true;
-    const result = await fileAPI.upload(file);
+    const result = await fileAPI.upload(file) as FileItem;
     files.value.push(result);
   } catch (error) {
+    console.error('上传失败', error);
   } finally {
     isUploading.value = false;
   }
@@ -27,12 +33,12 @@ async function search() {
   isHaveError.value = false;
   isHaveMore.value = false;
   try {
-    const params: any = { limit };
+    const params: { limit: number; startAfter?: string } = { limit };
     const startAfter = files.value.at(-1)?.key;
     if (startAfter) {
       params.startAfter = startAfter;
     }
-    const result = await fileAPI.list(params);
+    const result = await fileAPI.list(params) as FileItem[];
 
     if (Array.isArray(result)) {
       files.value = [...files.value, ...result];
@@ -50,7 +56,7 @@ async function search() {
   }
 }
 
-async function handlerDel(e: Event, file: any, index: number, tip?: string) {
+async function handlerDel(e: Event, file: FileItem, index: number, tip?: string) {
   e.preventDefault();
   try {
     // eslint-disable-next-line no-alert
@@ -66,7 +72,7 @@ async function handlerDel(e: Event, file: any, index: number, tip?: string) {
     }
     files.value.splice(index, 1);
   } catch (error) {
-
+    console.error('删除失败', error);
   }
 }
 
@@ -82,7 +88,9 @@ async function handlerPaste(event: ClipboardEvent) {
         continue;
       }
       const file = item.getAsFile();
-      await onUpload(file);
+      if (file) {
+        await onUpload(file);
+      }
     }
   }
 }

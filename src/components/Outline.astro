@@ -13,7 +13,7 @@ const { headings } = Astro.props;
 ? (
   <div class="sticky z-10 top-20 inline-block text-left w-full">
     <div class="2xl:hidden flex justify-end">
-      <button type="button" class="shadow-md inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-haspopup="true">
+      <button type="button" class="shadow-md inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50" id="menu-button" aria-expanded="false" aria-controls="md-outline-content" aria-haspopup="true">
         On this page
         <svg class="-mr-1 size-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
           <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
@@ -21,11 +21,11 @@ const { headings } = Astro.props;
       </button>
     </div>
 
-    <div id="md-outline-content" class="max-h-[calc(100vh-200px)] overflow-auto hidden absolute right-0 py-2 mt-2 min-w-48 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden 2xl:-right-12 2xl:float-right 2xl:translate-x-full 2xl:max-w-[min(calc(50vw-580px),320px)]" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+    <nav id="md-outline-content" class="hidden max-h-[calc(100vh-200px)] overflow-auto absolute right-0 py-2 mt-2 min-w-48 max-w-full origin-top-right rounded-md bg-white ring-1 shadow-lg ring-black/5 focus:outline-hidden 2xl:-right-12 2xl:float-right 2xl:translate-x-full 2xl:max-w-[min(calc(50vw-580px),320px)]" aria-label="Table of contents">
       { headings.map((v) => {
         return <a class="outline-item block px-4 py-1 text-sm break-all" href={`#${v.slug}`}>{ v.text }</a>;
       })}
-    </div>
+    </nav>
   </div>
   )
 : null
@@ -38,10 +38,10 @@ const { headings } = Astro.props;
 </style>
 
 <script>
-function throttle(func: any, limit: number) {
-  let lastFunc: any;
-  let lastRan: any;
-  return (...args: any[]) => {
+function throttle(func: (entries: IntersectionObserverEntry[]) => void, limit: number) {
+  let lastFunc: ReturnType<typeof setTimeout>;
+  let lastRan: number;
+  return (...args: [IntersectionObserverEntry[]]) => {
     if (!lastRan) {
       func(...args);
       lastRan = Date.now();
@@ -57,80 +57,84 @@ function throttle(func: any, limit: number) {
   };
 }
 
-function toggleMenu(status?: boolean) {
-  const button = document.getElementById('menu-button')!;
-  const menu = document.getElementById('md-outline-content')!;
-  const isExpanded = status === undefined ? button.getAttribute('aria-expanded') === 'true' : !status;
-
-  // 切换状态
-  button.setAttribute('aria-expanded', `${!isExpanded}`);
-  menu.style.display = isExpanded ? 'none' : 'block';
-}
-
-function onResize() {
-  const is2xl = window.innerWidth >= 1536;
-  if (is2xl) {
-    toggleMenu(true);
+function init() {
+  const menuButton = document.getElementById('menu-button') as HTMLButtonElement;
+  const menu = document.getElementById('md-outline-content') as HTMLElement;
+  if (!menuButton || !menu) {
+    return;
   }
-}
 
-window.addEventListener('resize', onResize);
-document.addEventListener('DOMContentLoaded', () => {
-  onResize();
-  const menu = document.getElementById('md-outline-content')!;
-  menu.onclick = (e: any) => {
-    e.preventDefault();
-    const target = document.querySelector(e.target.getAttribute('href'));
-    if (target) {
-      window.scrollTo({
-        top: target.offsetTop - 64,
-        behavior: 'smooth',
-      });
+  function toggleMenu(force?: boolean) {
+    const isOpen = force !== undefined ? force : menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', `${!isOpen}`);
+    menu.classList.toggle('hidden', isOpen);
+  }
+
+  function onResize() {
+    const is2xl = window.innerWidth >= 1536;
+    if (is2xl) {
+      menu.classList.remove('hidden');
+      menuButton.setAttribute('aria-expanded', 'true');
+    } else {
+      menu.classList.add('hidden');
+      menuButton.setAttribute('aria-expanded', 'false');
     }
-  };
+  }
 
-  const menuButton = document.getElementById('menu-button')!;
-  menuButton.onclick = () => toggleMenu();
-  document.onclick = (event: any) => {
+  window.addEventListener('resize', onResize);
+  onResize();
+
+  menu.addEventListener('click', (e: Event) => {
+    const target = e.target as HTMLElement;
+    if (target.tagName === 'A') {
+      e.preventDefault();
+      const section = document.querySelector(target.getAttribute('href')!);
+      if (section) {
+        window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+      }
+    }
+  });
+
+  menuButton.addEventListener('click', () => toggleMenu());
+
+  document.addEventListener('click', (event: MouseEvent) => {
     if (window.innerWidth >= 1536) {
       return;
     }
-    const menu = document.getElementById('md-outline-content')!;
-    if (event.target.id !== 'menu-button' && !menu.contains(event.target) && menuButton.getAttribute('aria-expanded') === 'true') {
-      toggleMenu();
+    const target = event.target as HTMLElement;
+    if (target.id !== 'menu-button' && !menu.contains(target) && menuButton.getAttribute('aria-expanded') === 'true') {
+      toggleMenu(true);
     }
-  };
-
-  const sections = document.querySelector('.content')!.querySelectorAll('h1, h2, h3'); // 替换为你的锚点元素
-  const navLinks = document.querySelectorAll('.outline-item'); // 替换为你的导航链接
-
-  const observerOptions = {
-    root: null, // viewport
-    rootMargin: '0px',
-    threshold: 0.6, // 60%可见时触发
-  };
-
-  const observerCallback = throttle((entries: any[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navLinks.forEach((link) => {
-          const activeHash = `#${id}`;
-          link.classList.remove('outline-item-active');
-          if (link.getAttribute('href') === activeHash) {
-            link.classList.add('outline-item-active');
-            history.replaceState(null, '', activeHash);
-          }
-        });
-      }
-    });
-  }, 200);
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  sections.forEach((section) => {
-    observer.observe(section);
   });
-});
+
+  const sections = document.querySelector('.content')?.querySelectorAll('h1, h2, h3');
+  const navLinks = document.querySelectorAll('.outline-item');
+  if (!sections || !navLinks.length) {
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    throttle((entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach((link) => {
+            const activeHash = `#${id}`;
+            link.classList.remove('outline-item-active');
+            if (link.getAttribute('href') === activeHash) {
+              link.classList.add('outline-item-active');
+              history.replaceState(null, '', activeHash);
+            }
+          });
+        }
+      });
+    }, 200),
+    { root: null, rootMargin: '0px', threshold: 0.6 },
+  );
+
+  sections.forEach(section => observer.observe(section));
+}
+
+document.addEventListener('DOMContentLoaded', init);
 </script>
 

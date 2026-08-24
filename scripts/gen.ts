@@ -34,11 +34,8 @@ async function isExist(file) {
   }
 }
 
+// Mirrors src/utils.ts:formatDate — kept locally because this script runs standalone.
 function formatDate(date) {
   const [year, month, day] = [date.getFullYear(), date.getMonth(), date.getDate()];
-  return {
-    toString() {
-      return `${year}/${`${month + 1}`.padStart(2, '0')}/${`${day}`.padStart(2, '0')}`;
-    },
-  };
+  return `${year}/${`${month + 1}`.padStart(2, '0')}/${`${day}`.padStart(2, '0')}`;
 }

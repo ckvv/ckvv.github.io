@@ -5,6 +5,7 @@ import { KEY } from 'astro:env/server';
 import Edit from '@/assets/edit.svg';
 import { REPOSITORY } from '@/consts';
 import { encrypt } from '@/shared';
+import { estimateReadingTime } from '@/utils';
 import Decrypt from './Decrypt.astro';
 import FormattedDate from './FormattedDate.astro';
 import Comment from './Giscus.astro';
@@ -25,17 +26,21 @@ if (post.data.encrypt && post.rendered?.html) {
 }
 
 const { headings, Content } = await render(post);
+const readingTime = post.rendered?.html ? estimateReadingTime(post.rendered.html) : null;
 ---
 
 { metadata && (<h1 class="text-4xl font-bold my-4">{post.data.title}</h1>
-  <div class="my-2 flex justify-between items-center">
+  <div class="my-2 flex justify-between items-center flex-wrap gap-2">
     <div class="flex gap-4">
       {
         Array.isArray(post.data.tags)
         && post.data.tags.map(tag => <Tag href={`/tag/${tag}/`}>{tag}</Tag>)
       }
     </div>
-    <FormattedDate date={post.data.updatedDate || post.data.pubDate} />
+    <div class="flex items-center gap-4 text-sm text-gray-500">
+      {readingTime && <span>{readingTime} min read</span>}
+      <FormattedDate date={post.data.updatedDate || post.data.pubDate} />
+    </div>
   </div>
   <Outline headings={headings} />
 )}
