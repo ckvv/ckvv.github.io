@@ -1,7 +1,7 @@
 ---
 title: "移动端web兼容性"
 draft: true
-tags: ["web"]
+tags: ["Web"]
 date: "2025/08/08"
 ---
 

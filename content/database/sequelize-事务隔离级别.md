@@ -1,7 +1,7 @@
 ---
 title: "使用 Sequelize 事务读取数据库时的隔离级别"
 tags: ["Database", "Sequelize"]
-date: "2024-05-08"
+date: "2024/05/08"
 ---
 `Sequelize` 是一个流行的 Node.js ORM（对象关系映射器），它支持 PostgreSQL、MySQL、MariaDB、SQLite 和 Microsoft SQL Server 等多种数据库。在使用 Sequelize 处理事务时，可以指定事务的隔离级别。事务的隔离级别决定了一个事务可能受到其他并发事务影响的程度。
 

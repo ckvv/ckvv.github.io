@@ -1,7 +1,7 @@
 ---
 title: 深入理解UUID
 tags: ['UUID']
-date: '2021-07-09'
+date: '2021/07/09'
 ---
 
 # UUID是什么

@@ -1,7 +1,7 @@
 ---
 title: "浏览器如何渲染页面"
 tags: ["Web"]
-date: "2022-02-09"
+date: "2022/02/09"
 ---
 
 > 参考[https://coolshell.cn/articles/9666.html](https://coolshell.cn/articles/9666.html)

@@ -1,7 +1,7 @@
 ---
 title: "JavaScript脚手架"
 tags: ['JavaScript']
-date: '2021-07-09'
+date: '2021/07/09'
 ---
 
 ## 什么是脚手架

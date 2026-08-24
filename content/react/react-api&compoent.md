@@ -1,7 +1,7 @@
 ---
 title: "React API & 组件"
 tags: ['React']
-date: "2024-08-25"
+date: "2024/08/25"
 ---
 
 # API

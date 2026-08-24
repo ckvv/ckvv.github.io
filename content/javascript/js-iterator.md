@@ -1,7 +1,7 @@
 ---
 title: "js的迭代器"
 tags: ['JavaScript']
-date: '2021-07-09'
+date: '2021/07/09'
 ---
 
 ## 什么是迭代器

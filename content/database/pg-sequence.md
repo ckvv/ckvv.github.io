@@ -1,7 +1,7 @@
 ---
 title: "postgresql中的sequence"
 tags: ["Database"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 sequence 号是数据库系统按照一定规则自增的数字序列

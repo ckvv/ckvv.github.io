@@ -1,7 +1,7 @@
 ---
 title: "Redis的五种数据结构及其使用场景"
 tags: ['Redis']
-date: '2021-07-09'
+date: '2021/07/09'
 ---
 
 from [https://www.cnblogs.com/ottll/p/9470480.html](https://www.cnblogs.com/ottll/p/9470480.html)

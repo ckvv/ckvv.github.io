@@ -1,7 +1,7 @@
 ---
 title: "defineProperty"
 tags: ['JavaScript']
-date: '2021-07-09'
+date: '2021/07/09'
 ---
 Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。
 

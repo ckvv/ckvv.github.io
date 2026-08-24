@@ -1,7 +1,7 @@
 ---
 title: Reflect和Proxy
 tags: ["JavaScript"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 ## Proxy

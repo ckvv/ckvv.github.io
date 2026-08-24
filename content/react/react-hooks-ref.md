@@ -1,7 +1,7 @@
 ---
 title: "React Hook Ref"
 tags: ['React']
-date: "2024-08-24"
+date: "2024/08/24"
 ---
 
 ## useRef

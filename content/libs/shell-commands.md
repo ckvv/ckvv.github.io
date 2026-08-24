@@ -1,7 +1,7 @@
 ---
 title: "常用的shell命令总结"
 tags: ['Shell']
-date: '2021-07-09'
+date: '2021/07/09'
 ---
 
 常用的shell命令

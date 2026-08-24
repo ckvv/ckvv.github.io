@@ -1,7 +1,7 @@
 ---
 title: JsonWebToken
 tags: ["Node.js", "JsonWebToken"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 ## 什么是 JSON Web Token？

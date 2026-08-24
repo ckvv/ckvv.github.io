@@ -1,7 +1,7 @@
 ---
 title: "React 基础"
 tags: ['React']
-date: "2022-02-21"
+date: "2022/02/21"
 ---
 
 ## Hooks 基础

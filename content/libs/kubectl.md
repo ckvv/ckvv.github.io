@@ -1,7 +1,7 @@
 ---
 title: "Kubectl"
-tags: ['Tool', 'Docker']
-date: '2021-07-09'
+tags: ['Tool', 'Kubernetes']
+date: '2021/07/09'
 ---
 
 This page is an overview of the `kubectl` command.

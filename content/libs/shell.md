@@ -1,7 +1,7 @@
 ---
 title: "Shell"
 tags: ['Tool', 'Shell']
-date: '2021-07-09'
+date: '2021/07/09'
 ---
 
 ##

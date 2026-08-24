@@ -1,7 +1,7 @@
 ---
 title: "浏览器处理cookie"
 tags: ["Web", "Cookie"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 ## 设置 cookie

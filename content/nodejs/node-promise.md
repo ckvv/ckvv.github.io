@@ -1,7 +1,7 @@
 ---
 title: "node Promise 转换"
 tags: ["Node.js"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 如果你曾经使用 Javascript，你必须有经验的回调。Javascript 以其内置的异步哲学而闻名。从标准内置模块到其他框架和库，回调无处不在。这就是在 Javascript 中完成异步编程。但是回调有一个黑暗的一面。这叫 Callback Hells。

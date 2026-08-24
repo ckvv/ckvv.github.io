@@ -1,7 +1,7 @@
 ---
 title: "PostgreSQL"
 tags: ["Database"]
-date: "2023-06-21"
+date: "2023/06/21"
 ---
 
 ## [排序](https://www.postgresql.org/docs/current/queries-order.html)

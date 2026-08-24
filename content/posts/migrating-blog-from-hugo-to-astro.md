@@ -1,6 +1,6 @@
 ---
 title: "博客从Hugo迁移到Astro"
-tags: ['astro']
+tags: ['Astro']
 date: "2024/12/06"
 ---
 

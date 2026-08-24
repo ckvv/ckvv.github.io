@@ -1,7 +1,7 @@
 ---
 title: "NPM"
 tags: ['Tool', "NPM"]
-date: '2021-07-09'
+date: '2021/07/09'
 ---
 
 ## npm 配置

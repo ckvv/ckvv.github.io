@@ -1,7 +1,7 @@
 ---
 title: "React Hook Effect"
 tags: ['React']
-date: "2024-08-24"
+date: "2024/08/24"
 ---
 
 ## useEffect

@@ -1,7 +1,7 @@
 ---
 title: nodejs stream to buffer
-tag: ['Node.js']
-date: '2023-12-18'
+tags: ['Node.js']
+date: '2023/12/18'
 ---
 
 ```js

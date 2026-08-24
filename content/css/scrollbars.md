@@ -1,7 +1,7 @@
 ---
 title: "与滚动条相关的属性"
-tags: ["css"]
-date: "2022-07-27"
+tags: ["CSS"]
+date: "2022/07/27"
 ---
 
 ## 滚动条设置（overflow）

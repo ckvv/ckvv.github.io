@@ -1,7 +1,7 @@
 ---
 title: "了解什么是Polyfill"
 tags: ["JavaScript", "Polyfill"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 # 什么是 polyfill

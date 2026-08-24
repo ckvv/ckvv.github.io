@@ -1,7 +1,7 @@
 ---
 title: 你不知道的package.json
 tags: ["NPM"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 ## engines

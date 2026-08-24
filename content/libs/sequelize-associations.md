@@ -1,7 +1,7 @@
 ---
 title: sequelize建立表关系
-tage: ["Node.js", "Sequelize"]
-date: "2021-07-09"
+tags: ["Node.js", "Sequelize"]
+date: "2021/07/09"
 ---
 
 # Associations

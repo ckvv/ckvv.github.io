@@ -1,7 +1,7 @@
 ---
 title: "postgre中的复合类型"
 tags: ["Database"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 ## 声明复合类型

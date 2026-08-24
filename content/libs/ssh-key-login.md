@@ -1,6 +1,6 @@
 ---
 title: "SSH密钥登录"
-tags: ['shell']
+tags: ['Shell']
 date: "2025/07/30"
 ---
 

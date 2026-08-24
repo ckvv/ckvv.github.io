@@ -1,7 +1,7 @@
 ---
 title: "vue nextTick的原理"
-tags: ["vue"]
-date: "2022-02-09"
+tags: ["Vue"]
+date: "2022/02/09"
 ---
 
 [nextTick](https://cn.vuejs.org/v2/api/#Vue-nextTick)是 vue 的一个全局 API，

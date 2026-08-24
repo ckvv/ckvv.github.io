@@ -1,7 +1,7 @@
 ---
 title: "CentOS安装常用的软件"
 tags: ["CentOS", "Yum"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 ## 安装 pg

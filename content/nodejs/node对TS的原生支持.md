@@ -1,7 +1,7 @@
 ---
 title: "Node.js 对 TypeScript 功能的原生支持"
 tags: ['Node.js']
-date: '2024-08-06'
+date: '2024/08/06'
 ---
 
 Node.js 22.6.0 版本以后可以通过设置实验标志 `--experimental-strip-types` 来执行 TypeScript 文件, Node.js 会将 TypeScript 源代码转译为 JavaScript 源代码(目前使用`@swc/wasm-typescript`)。在转译过程中，不执行类型检查，并且类型将被丢弃。

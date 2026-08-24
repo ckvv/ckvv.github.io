@@ -1,7 +1,7 @@
 ---
 title: "js中的this"
 tags: ["JavaScript"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 js 中 this 指当前执行代码的环境对象，this 不能在执行期间被赋值如`this = null`，在绝大多数情况下，函数的调用方式决定了 this 的值

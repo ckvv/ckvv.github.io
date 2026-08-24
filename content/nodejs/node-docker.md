@@ -1,7 +1,7 @@
 ---
 title: "node程序放入docker"
 tags: ["Node.js", "Docker"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 ## 准备 demo 程序

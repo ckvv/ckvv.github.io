@@ -1,6 +1,7 @@
 ---
 title: 'HTTP请求传参详解'
-date: '2022-08-25'
+tags: ['Web']
+date: '2022/08/25'
 ---
 
 本篇文章主要介绍了`HTTP`的数据结构, 以及`application/x-www-form-urlencoded`,`multipart/form-data`, `application/json`类型请求的编码方式。

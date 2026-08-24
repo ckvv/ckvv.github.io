@@ -1,7 +1,7 @@
 ---
 title: DOM中的event
 tags: ["Web"]
-date: "2022-02-09"
+date: "2022/02/09"
 ---
 
 ## event

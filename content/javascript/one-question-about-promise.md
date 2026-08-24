@@ -1,7 +1,7 @@
 ---
 title: "一个关于Promise的问题"
 tags: ["JavaScript"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 ## 一道题带来的疑问

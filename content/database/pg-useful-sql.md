@@ -1,7 +1,7 @@
 ---
 title: "postgres有用的sql"
 tags: ["Database"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 ## 数据库迁移备份

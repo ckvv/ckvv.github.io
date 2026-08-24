@@ -31,6 +31,50 @@ When the user asks for a blog post or article for this site, write the content i
 - Before creating a new article, inspect nearby content to match the repository's current writing and frontmatter conventions.
 - After adding or editing blog content under `content/`, skip testing and build validation for `.md` files. If the change touches any `.mdx` file, run `pnpm build` as the minimum validation to confirm the content collection and route generation still work.
 
+## Content Naming & Tag Conventions
+
+Content under `content/` follows these naming and tagging conventions. Match them when adding or moving files.
+
+### File naming
+
+- Use lowercase `kebab-case` for English filenames (for example `vue-component-registration.md`). Chinese titles may use a Chinese filename, but do not mix pinyin (`guanyu-vue-...`) — prefer the English or Chinese form directly.
+- Use the `.md` extension only; never `.md.md`.
+- Avoid spaces in filenames; use hyphens to separate words.
+- A filename may reuse a topic prefix shared with its siblings (for example `react-hooks-effect.md`, `pg-trigger.md`), but keep it descriptive and short.
+- Prefer moving a post into its topic directory over leaving it in `content/posts/`. Keep `content/posts/` for general or cross-cutting articles only.
+
+### Topic directories
+
+- `ai/` — AI, agents, MCP, coding assistants (Codex/Claude Code)
+- `algorithm/` — algorithm and LeetCode notes
+- `css/` — CSS
+- `database/` — PostgreSQL, Sequelize, etc.
+- `javascript/` — JavaScript and TypeScript
+- `libs/` — tools, CLIs, and DevOps (git, docker, nginx, npm, shell, kubernetes, tauri, install guides)
+- `life/` — personal
+- `nodejs/` — Node.js, Koa
+- `react/` — React
+- `vue/` — Vue
+- `web/` — browser/Web platform APIs
+- `hide/` — drafts not meant to be published (`draft: true`)
+- `posts/` — general or cross-cutting articles that do not fit a topic directory
+
+### Frontmatter
+
+- Always include `title`, `tags`, and `date` for posts. The field is `tags` (plural) — never `tag` or `tage`.
+- Use the `date` format `"YYYY/MM/DD"` (slashes, not dashes).
+- `draft: true` keeps a post out of the build; use it for unfinished drafts.
+- `blog: false` marks non-blog pages such as `about.mdx`.
+- `encrypt: true` marks an encrypted post.
+
+### Tag vocabulary
+
+Tags are lower-cased at display time in `src/utils.ts`, so source casing does not affect grouping — but keep the source casing consistent with the list below. Add a new tag only when no existing one fits.
+
+`AI` · `Agent` · `Astro` · `Base64` · `CentOS` · `CSS` · `Claude Code` · `Codex` · `Cookie` · `Database` · `Docker` · `File API` · `GIS` · `Git` · `GitHub` · `Icon` · `JavaScript` · `JsonWebToken` · `Koa` · `Kubernetes` · `Life` · `Linux` · `MDX` · `Nginx` · `NPM` · `Node.js` · `OpenAI` · `Polyfill` · `React` · `Redis` · `Sandbox` · `Sequelize` · `Shell` · `Skills` · `Tauri` · `Tool` · `TypeScript` · `UUID` · `Vue` · `Web` · `WebAssembly` · `WebWorker` · `Windows` · `Yum`
+
+Chinese tags: `工程实践` · `微信` · `正则` · `测试` · `算法` · `计算广告` · `资源收藏` · `面试`
+
 ## Testing Guidelines
 
 There is currently no dedicated automated test suite in this repository. Treat `pnpm lint` and `pnpm build` as the minimum validation steps before opening a pull request, except when only updating `.md` files under `content/`; in that case, no testing is required. If a `content/` change touches any `.mdx` file, still run `pnpm build`. When changing rendered pages, verify the affected routes in `pnpm dev` or `pnpm preview`. If you add public utility behavior, update the relevant documentation under `docs/`.

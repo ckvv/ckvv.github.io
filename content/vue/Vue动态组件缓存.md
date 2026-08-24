@@ -1,7 +1,7 @@
 ---
 title: "Vue动态组件缓存"
 tags: ['Vue']
-date: "2023-06-01"
+date: "2023/06/01"
 ---
 
 ## 使用KeepAlive缓存组件实例

@@ -1,7 +1,7 @@
 ---
 title: "GitHub 身份验证"
 tags: ['GitHub', 'Git']
-date: '2023-08-03'
+date: '2023/08/03'
 ---
 
 GitHub基于账号用户名和密码的身份验证已被删除，常用的clone 方法有以下两种

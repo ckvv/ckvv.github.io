@@ -1,7 +1,7 @@
 ---
 title: JavaScript中的prototype
 tags: ["JavaScript"]
-date: "2021-07-09"
+date: "2021/07/09"
 ---
 
 ## 什么是原型链

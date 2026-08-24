@@ -1,7 +1,7 @@
 ---
 title: "Vue 3 UI 组件库评测"
 tags: ['Vue']
-date: "2022-06-28"
+date: "2022/06/28"
 ---
 
 Vue 3 UI                                                                   | TS/JS | SFC/JSX | Options/Composition | Desktop/Mobile/MP | Style        | 特点             | 缺点       | 推荐         |

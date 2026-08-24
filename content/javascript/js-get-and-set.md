@@ -1,7 +1,7 @@
 ---
 title: "get和set"
 tags: ['JavaScript']
-date: '2021-07-09'
+date: '2021/07/09'
 ---
 
 你可以在支持添加新属性的任何标准的内置对象或用户定义的对象内定义getter(访问方法)和setter(设置方法)。使用对象字面量语法定义getters和setters方法。

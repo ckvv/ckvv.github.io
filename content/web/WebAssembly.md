@@ -1,7 +1,7 @@
 ---
 title: "WebAssembly上手"
 tags: ['Web','WebAssembly']
-date: '2021-07-09'
+date: '2021/07/09'
 ---
 
 # WebAssembly是什么

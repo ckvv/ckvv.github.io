@@ -1,7 +1,7 @@
 ---
 title: node中的多进程
 tags: ["Node.js"]
-date: '2021-07-09'
+date: '2021/07/09'
 ---
 
 javascript 是单线程的并且只在一个进程中跑，

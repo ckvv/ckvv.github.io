@@ -1,7 +1,7 @@
 ---
 title: "CSS实现字体阴影效果"
 tags: ["CSS"]
-date: "2022-03-18"
+date: "2022/03/18"
 ---
 
 ## shadow
