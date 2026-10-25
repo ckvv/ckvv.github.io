@@ -30,6 +30,25 @@ When the user asks for a blog post or article for this site, write the content i
 - Keep the article title and body aligned with the source material, and include a source/reference section when the post is based on an external link or document.
 - Before creating a new article, inspect nearby content to match the repository's current writing and frontmatter conventions.
 - After adding or editing blog content under `content/`, skip testing and build validation for `.md` files. If the change touches any `.mdx` file, run `pnpm build` as the minimum validation to confirm the content collection and route generation still work.
+- Never put docs or rules under `content/`. The collection loader globs every `**/*.md`, so a file there becomes a published post.
+
+### AI-assisted writing
+
+The standard for what a post should be is [`docs/writing-guide.md`](docs/writing-guide.md). Read it before writing; this section holds only the repo mechanics the guide cannot know.
+
+The agent may draft, restructure, and tighten prose. It is not the author: the material, the conclusions, and the final fact check stay with the repo owner.
+
+Repo mechanics:
+
+- Internal links use the route the site generates, `/blog/<id>` with `<id>` being the path under `content/` without its extension, and must point at a file that exists. External links must be ones the author can open.
+- `description` says what the post contains, not why someone should read it.
+
+Before publishing, the owner checks, not the agent:
+
+- Every specific number, limit, and timing.
+- Every sentence with a causal claim (因为 / 所以 / 因为这样才), the easiest place for a plausible fabrication.
+- Every uniformly parallel section, which often signals paragraphs that were expanded to fill a skeleton rather than written from understanding.
+- Every "insight" the owner cannot restate unprompted. Delete what fails; an uneven post is more credible than a smooth one.
 
 ## Content Naming & Tag Conventions
 

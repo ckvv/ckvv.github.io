@@ -245,6 +245,7 @@ prelude 后续 `JSON.stringify` 上报的数据就会全部变成 `"garbage"`。
 
 - `packages/coding-agent/src/extensions/codemode/tool.ts`：schema、description 生成、工具段落预算、loadout/mode
 - `packages/coding-agent/src/extensions/codemode/execute.ts`：一次执行的全流程、worker 槽位、输出格式化、`store` 回放、`models.*`
+- `packages/coding-agent/src/extensions/mcp/index.ts`：`tool_call` 钩子消费 `reachesTools`，只等脚本点名的那几个 server
 - `packages/codemode/src/source.ts`：`// @options:` 解析与 Lark grammar
 - `packages/codemode/src/runtime/execution.ts`：host 侧生命周期、工具表、deadline/abort
 - `packages/codemode/src/runtime/vm.ts`：QuickJS 启动、确定性模式的 WASI 时钟与 PRNG、fingerprint
