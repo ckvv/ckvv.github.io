@@ -1,0 +1,199 @@
+<section id="asset-library" class="space-y-5">
+  <header class="flex flex-wrap items-center justify-between gap-3">
+    <h1 class="text-2xl font-semibold">文件库</h1>
+    <label class="cursor-pointer rounded-lg bg-blue-700 px-4 py-2 text-white hover:bg-blue-800 focus-within:outline">
+      <span data-upload-label>上传文件</span>
+      <input type="file" class="sr-only" />
+    </label>
+  </header>
+  <p role="status" class="break-all text-sm empty:hidden"></p>
+  <ul class="grid grid-cols-2 gap-x-4 gap-y-6 empty:hidden sm:grid-cols-3 md:grid-cols-4"></ul>
+  <template>
+    <li class="asset-card relative min-w-0">
+      <a target="_blank" rel="noopener" class="group block rounded-md focus-visible:outline-offset-2">
+        <div class="flex aspect-3/2 items-end overflow-hidden rounded-md border border-slate-200 bg-slate-100 group-hover:border-slate-400">
+          <img hidden loading="lazy" class="h-full w-full object-contain" alt="" />
+          <span data-kind aria-hidden="true" class="truncate px-3 py-2 font-mono text-2xl font-semibold text-slate-500"></span>
+        </div>
+        <div class="mt-2 flex items-baseline justify-between gap-2">
+          <span class="flex min-w-0 flex-1 text-sm font-medium text-slate-900">
+            <span data-stem class="truncate"></span><span data-suffix class="max-w-[50%] shrink-0 truncate"></span>
+          </span>
+          <span data-size class="shrink-0 text-xs tabular-nums text-slate-500"></span>
+        </div>
+      </a>
+      <button type="button" class="asset-delete absolute top-2 right-2 rounded bg-white px-2 py-1 text-xs text-slate-700 hover:text-red-700">删除</button>
+    </li>
+  </template>
+  <div class="py-4 text-center text-sm text-gray-600">
+    <span data-page-status aria-live="polite"></span>
+    <button data-load hidden type="button" class="rounded-md border border-gray-300 px-4 py-2">显示更多文件</button>
+  </div>
+  <noscript>请启用 JavaScript 以浏览或上传文件。</noscript>
+</section>
+
+<script>
+import type { AssetFile } from '@/api';
+import { file as fileAPI } from '@/api';
+import { formatFileSize } from '@/shared.ts';
+
+const root = document.querySelector('#asset-library')!;
+const list = root.querySelector('ul')!;
+const template = root.querySelector('template')!;
+const notice = root.querySelector('[role="status"]')!;
+const pageStatus = root.querySelector('[data-page-status]')!;
+const loadButton = root.querySelector<HTMLButtonElement>('[data-load]')!;
+const uploadLabel = root.querySelector('[data-upload-label]')!;
+const input = root.querySelector('input')!;
+const cards = new Map<string, HTMLLIElement>();
+const removed = new Set<string>();
+let cursor: string | undefined;
+let complete = false;
+let loading = false;
+let failed = false;
+let uploads = 0;
+
+function updatePagination() {
+  pageStatus.textContent = loading
+    ? '正在读取文件…'
+    : complete && !cards.size
+      ? '文件库为空，可以上传第一个文件。'
+      : '';
+  loadButton.hidden = loading || complete;
+  loadButton.textContent = failed ? '读取文件失败，点击重试' : '显示更多文件';
+}
+
+async function deleteFile(file: AssetFile) {
+  // eslint-disable-next-line no-alert
+  const password = prompt(`删除「${file.filename}」？请输入密码`);
+  if (!password) {
+    return;
+  }
+  try {
+    await fileAPI.del(file.key, password);
+    removed.add(file.key);
+    cards.get(file.key)?.remove();
+    cards.delete(file.key);
+    updatePagination();
+    notice.textContent = `已删除：${file.filename}`;
+  } catch (error) {
+    notice.textContent = `删除失败：${error instanceof Error
+      ? error.message
+      : file.filename}`;
+  }
+}
+
+function showCard(file: AssetFile) {
+  const card = template.content.querySelector('li')!.cloneNode(true) as HTMLLIElement;
+  const link = card.querySelector('a')!;
+  link.href = `https://r2.ckvv.net/${file.key.split('/').map(encodeURIComponent).join('/')}`;
+  link.title = file.filename;
+  link.setAttribute('aria-label', file.filename);
+  const dot = file.filename.lastIndexOf('.');
+  const suffix = dot > 0 && dot < file.filename.length - 1
+    ? file.filename.slice(dot)
+    : '';
+  card.querySelector('[data-stem]')!.textContent = suffix
+    ? file.filename.slice(0, dot)
+    : file.filename;
+  card.querySelector('[data-suffix]')!.textContent = suffix;
+  card.querySelector('[data-size]')!.textContent = file.size
+    ? formatFileSize(file.size)
+    : '0 B';
+  const kind = card.querySelector<HTMLElement>('[data-kind]')!;
+  kind.textContent = suffix.slice(1).toUpperCase() || 'FILE';
+  if (file.type.startsWith('image/') || /\.(?:png|jpe?g|gif|svg|webp|avif|bmp|ico|tiff?|heic)$/i.test(file.filename)) {
+    const image = card.querySelector('img')!;
+    image.onerror = () => {
+      image.hidden = true;
+      kind.hidden = false;
+    };
+    image.hidden = false;
+    kind.hidden = true;
+    image.src = link.href;
+  }
+  const button = card.querySelector('button')!;
+  button.setAttribute('aria-label', `删除 ${file.filename}`);
+  button.addEventListener('click', () => deleteFile(file));
+  const previous = cards.get(file.key);
+  if (previous) {
+    previous.replaceWith(card);
+  } else {
+    list.append(card);
+  }
+  cards.set(file.key, card);
+}
+
+async function load() {
+  if (loading || complete) {
+    return;
+  }
+  loading = true;
+  failed = false;
+  updatePagination();
+  try {
+    const page = await fileAPI.list(20, cursor);
+    for (const file of page.items) {
+      if (!cards.has(file.key) && !removed.has(file.key)) {
+        showCard(file);
+      }
+    }
+    cursor = page.nextCursor ?? undefined;
+    complete = page.nextCursor === null;
+  } catch {
+    failed = true;
+  } finally {
+    loading = false;
+    updatePagination();
+  }
+}
+
+async function upload(file: File) {
+  uploads++;
+  uploadLabel.textContent = '正在上传…';
+  notice.textContent = '';
+  try {
+    const asset = await fileAPI.upload(file);
+    removed.delete(asset.key);
+    showCard(asset);
+    updatePagination();
+    notice.textContent = `已上传：${file.name}`;
+  } catch {
+    notice.textContent = `上传失败：${file.name}`;
+  } finally {
+    if (!--uploads) {
+      uploadLabel.textContent = '上传文件';
+    }
+  }
+}
+
+input.addEventListener('change', () => {
+  const file = input.files?.[0];
+  input.value = '';
+  if (file) {
+    upload(file);
+  }
+});
+document.addEventListener('paste', async (event) => {
+  if (event.target instanceof Element && event.target.closest('input, textarea, [contenteditable]')) {
+    return;
+  }
+  const files = Array.from(event.clipboardData?.files ?? []);
+  if (!files.length) {
+    return;
+  }
+  event.preventDefault();
+  for (const file of files) await upload(file);
+});
+loadButton.addEventListener('click', load);
+load();
+</script>
+
+<style>
+@media (hover: hover) and (pointer: fine) {
+  .asset-card:not(:hover):not(:focus-within) .asset-delete {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+</style>
