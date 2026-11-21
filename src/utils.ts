@@ -8,11 +8,6 @@ function formatName(name: string) {
   return name.split(NAME_SEPARATOR_RE).join(' ');
 }
 
-export function formatDate(date: Date) {
-  const [year, month, day] = [date.getFullYear(), date.getMonth(), date.getDate()];
-  return `${year}/${`${month + 1}`.padStart(2, '0')}/${`${day}`.padStart(2, '0')}`;
-}
-
 export function estimateReadingTime(text: string): number {
   const wordsPerMinute = 200;
   const words = text.trim().split(/\s+/).length;

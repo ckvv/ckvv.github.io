@@ -1,6 +1,7 @@
 import { access, constants, writeFile } from 'node:fs/promises';
 import { join, parse } from 'node:path';
 import process from 'node:process';
+import { formatDate } from '../src/lib/date.ts';
 
 const arg = process.argv[2];
 
@@ -32,10 +33,4 @@ async function isExist(file) {
   } catch (error) {
     return false;
   }
-}
-
-// Mirrors src/utils.ts:formatDate — kept locally because this script runs standalone.
-function formatDate(date) {
-  const [year, month, day] = [date.getFullYear(), date.getMonth(), date.getDate()];
-  return `${year}/${`${month + 1}`.padStart(2, '0')}/${`${day}`.padStart(2, '0')}`;
 }
