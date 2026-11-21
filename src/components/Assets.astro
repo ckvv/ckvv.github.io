@@ -35,7 +35,7 @@
 <script>
 import type { AssetFile } from '@/api';
 import { file as fileAPI } from '@/api';
-import { formatFileSize } from '@/shared.ts';
+import { encodeAssetKey, formatFileSize } from '@/shared.ts';
 
 const root = document.querySelector('#asset-library')!;
 const list = root.querySelector('ul')!;
@@ -86,7 +86,7 @@ async function deleteFile(file: AssetFile) {
 function showCard(file: AssetFile) {
   const card = template.content.querySelector('li')!.cloneNode(true) as HTMLLIElement;
   const link = card.querySelector('a')!;
-  link.href = `https://r2.ckvv.net/${file.key.split('/').map(encodeURIComponent).join('/')}`;
+  link.href = `https://r2.ckvv.net/${encodeAssetKey(file.key)}`;
   link.title = file.filename;
   link.setAttribute('aria-label', file.filename);
   const dot = file.filename.lastIndexOf('.');

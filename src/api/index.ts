@@ -1,4 +1,4 @@
-import { getFileHash } from '@/shared.ts';
+import { encodeAssetKey, getFileHash } from '@/shared.ts';
 
 export interface AssetFile {
   key: string;
@@ -54,7 +54,7 @@ export const file = {
     return page;
   },
   async del(key: string, password: string) {
-    await request(`/${key.split('/').map(encodeURIComponent).join('/')}`, {
+    await request(`/${encodeAssetKey(key)}`, {
       headers: { Authorization: password },
       method: 'DELETE',
     });

@@ -1,3 +1,7 @@
+export function encodeAssetKey(key: string) {
+  return key.split('/').map(encodeURIComponent).join('/');
+}
+
 export async function getFileHash(file: File) {
   const arrayBuffer = await file.arrayBuffer();
   const hashBuffer = await crypto.subtle.digest('SHA-256', arrayBuffer);
