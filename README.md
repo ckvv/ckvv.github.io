@@ -42,5 +42,5 @@ pnpm preview
 # Others
 
 + Power by: [astro](https://astro.build/)
-+ Comment: [cusdis](https://cusdis.com)
++ Comment: [giscus](https://giscus.app/)
 + File Hosting: [ckvv/cloudflare-worker](https://github.com/ckvv/cloudflare-worker)
