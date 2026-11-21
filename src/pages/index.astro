@@ -1,26 +1,12 @@
 ---
-import FormattedDate from '@/components/FormattedDate.astro';
-import Link from '@/components/Link.astro';
+import PostList from '@/components/PostList.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPosts } from '@/utils';
 
-const posts = await getPosts(({ data }) => {
-	return data.blog !== false;
-});
+const posts = await getPosts(({ data }) => data.blog !== false);
 ---
-<BaseLayout>
-	<div class="text-lg flex flex-col gap-2">
-		{
-			posts.map(post => (
-				<Link href={`/blog/${post.id}/`} class="flex gap-4 hover:text-sky-700">
-					<span class="flex-grow whitespace-nowrap overflow-hidden text-ellipsis">{post.data.title} {post.data.encrypt && '🔒'}</span>
-					<p class="date">
-						<FormattedDate date={post.data.updatedDate || post.data.pubDate} />
-					</p>
-				</Link>
-			))
-		}
 
-		<div class="text-center text-gray-500">--- 到底部了 ---</div>
-	</div>
+<BaseLayout>
+  <PostList posts={posts} />
+  <div class="mt-2 text-center text-lg text-gray-500">--- 到底部了 ---</div>
 </BaseLayout>

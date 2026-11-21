@@ -1,44 +1,25 @@
 ---
-import FormattedDate from '@/components/FormattedDate.astro';
-import Link from '@/components/Link.astro';
+import PostList from '@/components/PostList.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { getPosts } from '@/utils';
 
-
 export async function getStaticPaths() {
-	const posts = await getPosts();
-
-	const tags: Record<string, any[]> = {};
-	for (const post of posts) {
-		if (Array.isArray(post.data.tags)) {
-			for (const tag of post.data.tags) {
-				tags[tag] ||= [];
-				tags[tag].push(post);
-			}
-		}
-	}
-	return Object.keys(tags).map((v) => {
-		return {
-      params: { slug: v },
-      props: { posts: tags[v] },
-    };
-	});
+  const posts = await getPosts();
+  const tags: Record<string, typeof posts> = {};
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      (tags[tag] ??= []).push(post);
+    }
+  }
+  return Object.entries(tags).map(([slug, posts]) => ({
+    params: { slug },
+    props: { posts },
+  }));
 }
 
 const { posts } = Astro.props;
 ---
 
 <BaseLayout>
-	<div class="text-lg flex flex-col gap-2">
-		{
-			posts.map(post => (
-				<Link href={`/blog/${post.id}/`} class="flex gap-4 hover:text-sky-700">
-					<span class="flex-grow whitespace-nowrap overflow-hidden text-ellipsis">{post.data.title}</span>
-					<p class="date">
-						<FormattedDate date={post.data.updatedDate || post.data.pubDate} />
-					</p>
-				</Link>
-			))
-		}
-	</div>
+  <PostList posts={posts} />
 </BaseLayout>

@@ -1,0 +1,22 @@
+---
+import type { getPosts } from '@/utils';
+import FormattedDate from './FormattedDate.astro';
+import Link from './Link.astro';
+
+interface Props {
+  posts: Awaited<ReturnType<typeof getPosts>>;
+}
+
+const { posts } = Astro.props;
+---
+
+<ul class="text-lg flex flex-col gap-2">
+  {posts.map(({ id, data }) => (
+    <li>
+      <Link href={`/blog/${id}/`} class="flex gap-4 hover:text-sky-700">
+        <span class="flex-grow whitespace-nowrap overflow-hidden text-ellipsis">{data.title} {data.encrypt && '🔒'}</span>
+        <FormattedDate date={data.updatedDate || data.pubDate} />
+      </Link>
+    </li>
+  ))}
+</ul>
