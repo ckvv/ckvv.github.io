@@ -65,7 +65,9 @@ function init() {
   }
 
   function toggleMenu(force?: boolean) {
-    const isOpen = force !== undefined ? force : menuButton.getAttribute('aria-expanded') === 'true';
+    const isOpen = force !== undefined
+      ? force
+      : menuButton.getAttribute('aria-expanded') === 'true';
     menuButton.setAttribute('aria-expanded', `${!isOpen}`);
     menu.classList.toggle('hidden', isOpen);
   }

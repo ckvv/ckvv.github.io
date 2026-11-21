@@ -42,7 +42,9 @@ export async function getPosts(filter?: (entry: CollectionEntry<'blog'>) => bool
         data: {
           ...v.data,
           title: v.data.title || formatName(parse(`${v.filePath}`).name),
-          tags: Array.isArray(v.data.tags) ? v.data.tags.map(t => t.toLocaleLowerCase()) : [],
+          tags: Array.isArray(v.data.tags)
+            ? v.data.tags.map(t => t.toLocaleLowerCase())
+            : [],
           pubDate: v.data.pubDate || v.data.date,
         },
       };

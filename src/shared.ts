@@ -10,14 +10,32 @@ export async function getFileHash(file: File) {
 
 export function formatFileSize(bytes: number, decimals = 1) {
   const k = 1024;
-  const sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']; // 单位
+  const sizes = [
+    'B',
+    'KB',
+    'MB',
+    'GB',
+    'TB',
+    'PB',
+    'EB',
+    'ZB',
+    'YB',
+  ]; // 单位
   const i = Math.floor(Math.log(bytes) / Math.log(k)); // 确定单位
 
   return `${Number.parseFloat((bytes / k ** i).toFixed(decimals))} ${sizes[i]}`;
 }
 
 export function isPicture(key: string) {
-  return ['png', 'jpg', 'jpeg', 'gif', 'tif', 'tiff', 'svg'].includes(`${key.split('.').pop()}`);
+  return [
+    'png',
+    'jpg',
+    'jpeg',
+    'gif',
+    'tif',
+    'tiff',
+    'svg',
+  ].includes(`${key.split('.').pop()}`);
 }
 
 export function arrayBufferToBase64(buffer: Iterable<number>) {
