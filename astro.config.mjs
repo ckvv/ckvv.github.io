@@ -43,10 +43,10 @@ export default defineConfig({
     mdx(),
     sitemap(),
     vue({
-      include: ['**/components/vue/*'],
+      include: ['**/components/examples/**/*.vue'],
     }),
     react({
-      include: ['**/components/react/*'],
+      include: ['**/components/examples/**/*.{jsx,tsx}'],
     }),
   ],
   devToolbar: {

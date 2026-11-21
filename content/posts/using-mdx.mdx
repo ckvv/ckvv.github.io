@@ -12,9 +12,9 @@ MDX 赋予你在 markdown 内容当中使用 JSX 的能力。 你可以导入组
 以下是在 MDX 中导入和使用 UI 组件的方法。
 
 ```jsx
-import AButton from '@/components/astro/AButton.astro'
-import VButton from '@/components/vue/VButton.vue'
-import RButton from '@/components/react/RButton.jsx'
+import AButton from '@/components/examples/AButton.astro'
+import VButton from '@/components/examples/VButton.vue'
+import RButton from '@/components/examples/RButton.tsx'
 export const count = 10;
 
 <AButton>Astro:</AButton>
@@ -22,9 +22,9 @@ export const count = 10;
 <RButton client:only="react" count={count}>React:</RButton>
 ```
 
-import AButton from '@/components/astro/AButton.astro'
-import VButton from '@/components/vue/VButton.vue'
-import RButton from '@/components/react/RButton.jsx'
+import AButton from '@/components/examples/AButton.astro'
+import VButton from '@/components/examples/VButton.vue'
+import RButton from '@/components/examples/RButton.tsx'
 export const count = 10;
 
 <AButton>Astro:</AButton>
