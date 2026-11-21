@@ -1,17 +1,11 @@
 ---
 import PostList from '@/components/PostList.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getPosts } from '@/utils';
+import { getPosts, groupPostsByTag } from '@/utils';
 
 export async function getStaticPaths() {
-  const posts = await getPosts();
-  const tags: Record<string, typeof posts> = {};
-  for (const post of posts) {
-    for (const tag of post.data.tags) {
-      (tags[tag] ??= []).push(post);
-    }
-  }
-  return Object.entries(tags).map(([slug, posts]) => ({
+  const groups = groupPostsByTag(await getPosts());
+  return Array.from(groups, ([slug, posts]) => ({
     params: { slug },
     props: { posts },
   }));

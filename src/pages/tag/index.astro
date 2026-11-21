@@ -1,19 +1,16 @@
 ---
 import Tag from '@/components/Tag.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getPosts } from '@/utils';
+import { getPosts, groupPostsByTag } from '@/utils';
 
-const tags: Record<string, number> = [...(await getPosts()).map(v => v.data.tags).flat(1)].filter(v => !!v).reduce((pre, cur: string) => {
-  pre[cur] = cur in pre ? pre[cur] + 1 : 1;
-  return pre;
-}, {} as Record<string, number>);
+const groups = groupPostsByTag(await getPosts());
 ---
 <BaseLayout>
 	<div class="text-lg tags flex flex-wrap gap-4 justify-center py-8 md:my-24 select-none">
 		{
-			Object.keys(tags).map(tag => (
+			Array.from(groups, ([tag, posts]) => (
 				<Tag href={`/tag/${tag}/`}>
-					{tag}<sup class="pl-1">{tags[tag]}</sup>
+					{tag}<sup class="pl-1">{posts.length}</sup>
 				</Tag>
 			))
 		}

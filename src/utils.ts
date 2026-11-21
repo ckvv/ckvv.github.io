@@ -19,6 +19,24 @@ export function estimateReadingTime(text: string): number {
   return Math.max(1, Math.ceil(words / wordsPerMinute));
 }
 
+export function groupPostsByTag(posts: Awaited<ReturnType<typeof getPosts>>) {
+  const groups = new Map<string, typeof posts>();
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      if (!tag.trim()) {
+        continue;
+      }
+      const group = groups.get(tag);
+      if (group) {
+        group.push(post);
+      } else {
+        groups.set(tag, [post]);
+      }
+    }
+  }
+  return groups;
+}
+
 export async function getPosts(filter?: (entry: CollectionEntry<'blog'>) => boolean) {
   const posts = await getCollection('blog', filter);
   return posts
