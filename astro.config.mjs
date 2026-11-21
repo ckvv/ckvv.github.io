@@ -9,7 +9,19 @@ import { defineConfig, envField } from 'astro/config';
 export default defineConfig({
   site: 'https://ckvv.net',
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      {
+        // Vue SFC compilation inherits Oxc's JSX options in the dev server.
+        name: 'disable-react-fast-refresh',
+        apply: 'serve',
+        config: () => ({
+          oxc: {
+            jsx: { refresh: false },
+          },
+        }),
+      },
+    ],
     css: {
       transformer: 'lightningcss',
       lightningcss: {
